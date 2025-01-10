@@ -1,0 +1,8 @@
+.ProseMirror table * p {
+  padding: 0 1px;
+  margin: 6px 2px;
+}
+
+.ProseMirror table * .is-empty::before {
+  opacity: 0;
+}

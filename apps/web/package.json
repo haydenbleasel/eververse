@@ -1,0 +1,50 @@
+{
+  "name": "web",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack -p 3002",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "analyze": "ANALYZE=true pnpm build"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "@react-hookz/web": "^25.0.1",
+    "@repo/analytics": "workspace:*",
+    "@repo/backend": "workspace:*",
+    "@repo/canvas": "workspace:*",
+    "@repo/design-system": "workspace:*",
+    "@repo/editor": "workspace:*",
+    "@repo/intercom": "workspace:*",
+    "@repo/lib": "workspace:*",
+    "@repo/next-config": "workspace:*",
+    "@repo/observability": "workspace:*",
+    "@repo/payments": "workspace:*",
+    "@repo/seo": "workspace:*",
+    "@repo/tailwind-config": "workspace:*",
+    "@repo/widget": "workspace:*",
+    "@sentry/nextjs": "^8.48.0",
+    "@t3-oss/env-nextjs": "^0.11.1",
+    "date-fns": "^4.1.0",
+    "import-in-the-middle": "^1.12.0",
+    "lucide-react": "^0.469.0",
+    "motion": "^11.16.1",
+    "next": "15.1.4",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-hook-form": "^7.54.2",
+    "react-wrap-balancer": "^1.1.1",
+    "require-in-the-middle": "^7.4.0",
+    "sonner": "^1.7.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@prisma/client": "6.2.0",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "22.10.5",
+    "@types/react": "19.0.3",
+    "fumadocs-core": "^14.7.1",
+    "typescript": "^5.7.2"
+  }
+}

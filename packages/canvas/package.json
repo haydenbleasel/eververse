@@ -1,0 +1,24 @@
+{
+  "name": "@repo/canvas",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "@repo/design-system": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/deep-equal": "^1.0.4",
+    "@types/lodash.throttle": "^4.1.9",
+    "@types/react": "^19.0.3",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@excalidraw/excalidraw": "0.17.0",
+    "@react-hookz/web": "^25.0.1",
+    "@repo/lib": "workspace:*",
+    "@repo/tailwind-config": "workspace:*",
+    "deep-equal": "^2.2.3",
+    "lodash.throttle": "^4.1.1"
+  },
+  "peerDependencies": {
+    "react": "19.0.0"
+  }
+}

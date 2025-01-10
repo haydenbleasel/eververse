@@ -1,0 +1,14 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "extends": ["ultracite"],
+  "files": {
+    "ignore": [
+      "packages/design-system/components/ui/**",
+      "packages/design-system/components/roadmap-ui/**",
+      "packages/design-system/lib/**",
+      "packages/design-system/hooks/**",
+      "apps/docs/**/*.json",
+      "apps/email/.react-email/**"
+    ]
+  }
+}

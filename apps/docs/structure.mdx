@@ -1,0 +1,49 @@
+---
+title: Structure
+description: How Eververse's codebase is structured.
+---
+
+`next-forge` is a monorepo, which means it contains multiple packages in a single repository. This is a common pattern for modern web applications, as it allows you to share code between different parts of the application, and manage them all together.
+
+The monorepo is managed by [Turborepo](https://turbo.build/repo), which is a tool for managing monorepos. It provides a simple way to manage multiple packages in a single repository, and is designed to work with modern web applications.
+
+The monorepo contains the following apps:
+
+| App | Description |
+| --- | ----------- |
+| `adf-validator` | The ADF validator, which helps validate Atlassian Document Format (ADF) schemas. |
+| `api` | The API, which contains serverless functions designed to run separately from the main app e.g. webhooks and cron jobs. |
+| `app` | The main, which contains the Next.js app. |
+| `docs` | The documentation, which contains the documentation for the app e.g. guides and tutorials. |
+| `email` | The email templates preview server, powered by react-email. |
+| `portal` | The customer-facing portal. |
+| `studio` | Prisma Studio, which is used to visually edit the local database. |
+| `web` | The website, which contains the static website for the app e.g. marketing pages and legal docs. |
+| `widget` | The embeddable Eververse widget. |
+
+It also contains the following packages:
+
+| Package | Description |
+| --- | ----------- |
+| `ai` | The AI library, which contains the AI provider for the app. |
+| `analytics` | The analytics library, including Vercel Analytics, PostHog and Google Analytics. |
+| `atlassian` | An OpenAPI client for the Atlassian API. |
+| `backend` | The backend powered by Supabase, containing the database and auth system. |
+| `canny` | The Canny API client. |
+| `canvas` | The Excalidraw canvas. |
+| `design-system` | The design system, powered by shadcn/ui. |
+| `editor` | The rich text editor, powered by Novel and TipTap. |
+| `eleven-labs` | The Eleven Labs API client for generating voice from text. |
+| `email` | The email provider and templates, powered by Resend and react-email. |
+| `github` | The GitHub API client (Octokit). |
+| `lib` | Various utility functions and types. |
+| `linear` | The Linear API client. |
+| `next-config` | Shared Next.js configuration for the apps. |
+| `observability` | The observability library, including Sentry and BetterStack. |
+| `payments` | The payments library, powered by Stripe. |
+| `productboard` | The Productboard API client. |
+| `seo` | Utility functions for SEO. |
+| `slack` | The Slack API client. |
+| `tailwind-config` | The Tailwind configuration, which contains the shared Tailwind configuration for the app. |
+| `typescript-config` | The TypeScript configuration, which contains the shared TypeScript configuration for the app. |
+| `widget` | The core functionality for the embeddable Eververse widget. |

@@ -1,0 +1,23 @@
+span[data-feature] {
+  @apply cursor-pointer text-white px-1 py-0.5 rounded-md ring-1;
+}
+
+span[data-feature]:nth-child(n + 1) {
+  @apply bg-violet-600 ring-violet-700;
+}
+
+span[data-feature]:nth-child(n + 2) {
+  @apply bg-success ring-success;
+}
+
+span[data-feature]:nth-child(n + 3) {
+  @apply bg-cyan-600 ring-cyan-700;
+}
+
+span[data-feature]:nth-child(n + 4) {
+  @apply bg-rose-600 ring-rose-700;
+}
+
+span[data-feature]:nth-child(n + 5) {
+  @apply bg-amber-600 ring-amber-700;
+}

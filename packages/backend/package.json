@@ -1,0 +1,25 @@
+{
+  "name": "@repo/backend",
+  "version": "0.0.0",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "scripts": {
+    "dev": "npm run build",
+    "build": "prisma generate --no-hints"
+  },
+  "dependencies": {
+    "@prisma/client": "6.2.0",
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.47.11",
+    "@t3-oss/env-nextjs": "^0.11.1",
+    "server-only": "^0.0.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "22.10.5",
+    "next": "^15.1.4",
+    "prisma": "6.2.0",
+    "typescript": "^5.7.2"
+  }
+}

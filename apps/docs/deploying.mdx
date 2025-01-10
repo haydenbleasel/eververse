@@ -1,0 +1,31 @@
+---
+title: Deploying Eververse
+description: How to deploy Eververse to Vercel.
+---
+
+Eververse is designed to be deployed on Vercel.
+
+To deploy Eververse on Vercel, you need to create 6 new projects:
+
+- `app`
+- `api`
+- `web`
+- `docs`
+- `portal`
+- `widget`
+
+After selecting your repository, change the Root Directory option to the app of choice e.g. `apps/app`. This should automatically detect the Next.js setup and as such, the build command and output directory.
+
+Then, add all your environment variables to the project. Finally, just hit "Deploy" and Vercel will take care of the rest!
+
+## Environment variables
+
+If you're deploying on Vercel, we recommend making use of the Team Environment Variables feature. Variables used by libraries need to exist in all packages and duplicating them can be a headache. Learn more about how [environment variables](https://docs.next-forge.com/setup/env) work in next-forge.
+
+## Integrations
+
+Eververse makes use of the following integrations to sync environment variables:
+
+- [Supabase](https://vercel.com/marketplace/supabase)
+- [Sentry](https://vercel.com/marketplace/sentry)
+- [BetterStack](https://vercel.com/marketplace/betterstack)

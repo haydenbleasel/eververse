@@ -1,0 +1,3 @@
+[data-type="mention"] {
+  @apply text-sm bg-violet-600 text-white rounded-full px-2 py-1 font-medium;
+}

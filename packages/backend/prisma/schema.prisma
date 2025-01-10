@@ -1,0 +1,1420 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters", "fullTextSearchPostgres", "postgresqlExtensions"]
+  extensions      = ["vector"]
+}
+
+datasource db {
+  provider     = "postgresql"
+  url          = env("PGBOUNCER_POSTGRES_PRISMA_URL")
+  directUrl    = env("POSTGRES_URL_NON_POOLING")
+  relationMode = "prisma"
+  extensions   = [uuid_ossp(map: "uuid-ossp", schema: "extensions")]
+}
+
+model Organization {
+  id                   String    @id(map: "idx_33219_PRIMARY") @default(cuid()) @db.VarChar(191)
+  name                 String    @db.VarChar(191)
+  logoUrl              String?   @db.VarChar(191)
+  createdAt            DateTime  @default(now()) @db.Timestamptz(6)
+  updatedAt            DateTime  @updatedAt @db.Timestamptz(6)
+  productDescription   String?
+  stripeCustomerId     String?   @db.VarChar(191)
+  stripeSubscriptionId String?   @db.VarChar(191)
+  onboardedAt          DateTime? @db.Timestamptz(6)
+  slug                 String    @db.VarChar(191)
+
+  onboardingType             organization_onboardingType?
+  feedback                   Feedback[]
+  feedbackUsers              FeedbackUser[]
+  feedbackOrganizations      FeedbackOrganization[]
+  feedbackAnalyses           FeedbackAnalysis[]
+  initiatives                Initiative[]
+  initiativePages            InitiativePage[]
+  initiativeCanvases         InitiativeCanvas[]
+  initiativeMembers          InitiativeMember[]
+  initiativeExternalLinks    InitiativeExternalLink[]
+  initiativeUpdates          InitiativeUpdate[]
+  initiativeFiles            InitiativeFile[]
+  products                   Product[]
+  groups                     Group[]
+  features                   Feature[]
+  drivers                    Driver[]
+  featureDrivers             FeatureDriver[]
+  tags                       Tag[]
+  digests                    Digest[]
+  apiKeys                    ApiKey[]
+  githubInstallations        GitHubInstallation[]
+  linearInstallations        LinearInstallation[]
+  slackInstallations         SlackInstallation[]
+  intercomInstallations      IntercomInstallation[]
+  atlassianInstallations     AtlassianInstallation[]
+  atlassianResources         AtlassianResource[]
+  atlassianWebhooks          AtlassianWebhook[]
+  installationStatusMappings InstallationStatusMapping[]
+  installationFieldMappings  InstallationFieldMapping[]
+  installationStates         InstallationState[]
+  featureStatuses            FeatureStatus[]
+  featureConnections         FeatureConnection[]
+  featureRices               FeatureRice[]
+  aiFeatureRices             AiFeatureRice[]
+  featureAssignments         FeatureAssignment[]
+  featureAssignmentRoles     FeatureAssignmentRole[]
+  changelog                  Changelog[]
+  changelogContributors      ChangelogContributor[]
+  changelogTags              ChangelogTag[]
+  portals                    Portal[]
+  portalStatuses             PortalStatus[]
+  portalFeatures             PortalFeature[]
+  portalStatusMappings       PortalStatusMapping[]
+  roadmapEvents              RoadmapEvent[]
+  feedbackFeatureLinks       FeedbackFeatureLink[]
+  featureCustomFields        FeatureCustomField[]
+  featureCustomFieldValues   FeatureCustomFieldValue[]
+  releases                   Release[]
+  portalFeatureVotes         PortalFeatureVote[]
+  portalFeatureStatusChanges PortalFeatureStatusChange[]
+  productboardImports        ProductboardImport[]
+  productboardImportJobs     ProductboardImportJob[]
+  cannyImports               CannyImport[]
+  cannyImportJobs            CannyImportJob[]
+  templates                  Template[]
+  widgets                    Widget[]
+  widgetItems                WidgetItem[]
+
+  @@map("organization")
+}
+
+model Feedback {
+  id                      String                 @id(map: "idx_33089_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt               DateTime               @default(now()) @db.Timestamptz(6)
+  updatedAt               DateTime               @updatedAt @db.Timestamptz(6)
+  title                   String
+  content                 Json                   @db.Json
+  organizationId          String                 @db.VarChar(191)
+  feedbackUserId          String?                @db.VarChar(191)
+  aiSentiment             feedback_aiSentiment?
+  aiSentimentReason       String?
+  productboardId          String?                @unique(map: "idx_33089_feedback_productboardId_key") @db.VarChar(191)
+  source                  feedback_source        @default(UI)
+  apiKeyId                String?                @db.VarChar(191)
+  processed               Boolean                @default(false)
+  example                 Boolean                @default(false)
+  cannyId                 String?                @unique(map: "idx_33089_feedback_cannyId_key") @db.VarChar(191)
+  slackMessagePublishedAt DateTime?              @db.Timestamptz(6)
+  videoUrl                String?                @db.VarChar(191)
+  audioUrl                String?                @db.VarChar(191)
+  transcript              Json?                  @db.Json
+  transcribedAt           DateTime?              @db.Timestamptz(6)
+  vector                  Unsupported("vector")?
+  organization            Organization           @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  feedbackUser            FeedbackUser?          @relation(fields: [feedbackUserId], references: [id])
+  tags                    Tag[]
+  apiKey                  ApiKey?                @relation(fields: [apiKeyId], references: [id])
+  features                FeedbackFeatureLink[]
+  analysis                FeedbackAnalysis?
+
+  @@index([apiKeyId], map: "idx_33089_feedback_apiKeyId_idx")
+  @@index([feedbackUserId], map: "idx_33089_feedback_feedbackUserId_idx")
+  @@index([organizationId], map: "idx_33089_feedback_organizationId_idx")
+  @@map("feedback")
+}
+
+model FeedbackAnalysis {
+  id              String       @id(map: "idx_33098_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt       DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt       DateTime     @updatedAt @db.Timestamptz(6)
+  feedbackId      String       @unique(map: "idx_33098_feedback_analysis_feedbackId_key") @db.VarChar(191)
+  organizationId  String       @db.VarChar(191)
+  outcomes        String?
+  painPoints      String?
+  recommendations String?
+  summary         String?
+  feedback        Feedback     @relation(fields: [feedbackId], references: [id], onDelete: Cascade)
+  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId], map: "idx_33098_feedback_analysis_organizationId_idx")
+  @@map("feedback_analysis")
+}
+
+model FeedbackUser {
+  id                     String                @id(map: "idx_33118_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt              DateTime              @default(now()) @db.Timestamptz(6)
+  updatedAt              DateTime              @updatedAt @db.Timestamptz(6)
+  email                  String                @db.VarChar(191)
+  name                   String                @db.VarChar(191)
+  imageUrl               String                @db.VarChar(191)
+  role                   String?               @db.VarChar(191)
+  organizationId         String                @db.VarChar(191)
+  feedbackOrganizationId String?               @db.VarChar(191)
+  productboardId         String?               @unique(map: "idx_33118_feedback_user_productboardId_key") @db.VarChar(191)
+  source                 feedback_user_source  @default(UI)
+  apiKeyId               String?               @db.VarChar(191)
+  example                Boolean               @default(false)
+  cannyId                String?               @unique(map: "idx_33118_feedback_user_cannyId_key") @db.VarChar(191)
+  organization           Organization          @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  feedback               Feedback[]
+  feedbackOrganization   FeedbackOrganization? @relation(fields: [feedbackOrganizationId], references: [id])
+  apiKey                 ApiKey?               @relation(fields: [apiKeyId], references: [id])
+  votes                  PortalFeatureVote[]
+
+  @@unique([email, organizationId], map: "idx_33118_feedback_user_email_organizationId_key")
+  @@index([apiKeyId], map: "idx_33118_feedback_user_apiKeyId_idx")
+  @@index([feedbackOrganizationId], map: "idx_33118_feedback_user_feedbackOrganizationId_idx")
+  @@index([organizationId], map: "idx_33118_feedback_user_organizationId_idx")
+  @@map("feedback_user")
+}
+
+model FeedbackOrganization {
+  id             String                       @id(map: "idx_33110_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime                     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime                     @updatedAt @db.Timestamptz(6)
+  name           String                       @db.VarChar(191)
+  domain         String?                      @db.VarChar(191)
+  organizationId String                       @db.VarChar(191)
+  productboardId String?                      @unique(map: "idx_33110_feedback_organization_productboardId_key") @db.VarChar(191)
+  source         feedback_organization_source @default(UI)
+  apiKeyId       String?                      @db.VarChar(191)
+  example        Boolean                      @default(false)
+  cannyId        String?                      @unique(map: "idx_33110_feedback_organization_cannyId_key") @db.VarChar(191)
+  organization   Organization                 @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  feedbackUsers  FeedbackUser[]
+  apiKey         ApiKey?                      @relation(fields: [apiKeyId], references: [id])
+
+  @@unique([domain, organizationId], map: "idx_33110_feedback_organization_domain_organizationId_key")
+  @@index([apiKeyId], map: "idx_33110_feedback_organization_apiKeyId_idx")
+  @@index([organizationId], map: "idx_33110_feedback_organization_organizationId_idx")
+  @@map("feedback_organization")
+}
+
+model FeedbackFeatureLink {
+  id             String       @id(map: "idx_33104_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  feedbackId     String       @db.VarChar(191)
+  featureId      String       @db.VarChar(191)
+  organizationId String       @db.VarChar(191)
+  creatorId      String?      @db.VarChar(191)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  feedback       Feedback     @relation(fields: [feedbackId], references: [id], onDelete: Cascade)
+  feature        Feature      @relation(fields: [featureId], references: [id], onDelete: Cascade)
+
+  @@index([featureId], map: "idx_33104_feedback_feature_link_featureId_idx")
+  @@index([feedbackId], map: "idx_33104_feedback_feature_link_feedbackId_idx")
+  @@index([organizationId], map: "idx_33104_feedback_feature_link_organizationId_idx")
+  @@map("feedback_feature_link")
+}
+
+model Initiative {
+  id             String                   @id(map: "idx_33139_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime                 @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime                 @updatedAt @db.Timestamptz(6)
+  creatorId      String                   @db.VarChar(191)
+  title          String                   @db.VarChar(191)
+  organizationId String                   @db.VarChar(191)
+  ownerId        String                   @db.VarChar(191)
+  emoji          String                   @default("rocket") @db.VarChar(191)
+  state          initiative_state         @default(ACTIVE)
+  example        Boolean                  @default(false)
+  team           InitiativeMember[]
+  organization   Organization             @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  pages          InitiativePage[]
+  canvases       InitiativeCanvas[]
+  externalLinks  InitiativeExternalLink[]
+  updates        InitiativeUpdate[]
+  files          InitiativeFile[]
+  products       Product[]
+  groups         Group[]
+  features       Feature[]
+
+  @@index([organizationId], map: "idx_33139_initiative_organizationId_idx")
+  @@map("initiative")
+}
+
+model InitiativeExternalLink {
+  id             String       @id(map: "idx_33155_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  creatorId      String       @db.VarChar(191)
+  title          String       @db.VarChar(191)
+  href           String       @db.VarChar(191)
+  initiativeId   String       @db.VarChar(191)
+  organizationId String       @db.VarChar(191)
+  initiative     Initiative   @relation(fields: [initiativeId], references: [id], onDelete: Cascade)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([initiativeId], map: "idx_33155_initiative_external_link_initiativeId_idx")
+  @@index([organizationId], map: "idx_33155_initiative_external_link_organizationId_idx")
+  @@map("initiative_external_link")
+}
+
+model InitiativeMember {
+  id             String       @id(map: "idx_33167_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  creatorId      String       @db.VarChar(191)
+  userId         String       @db.VarChar(191)
+  initiativeId   String       @db.VarChar(191)
+  organizationId String       @db.VarChar(191)
+  initiative     Initiative   @relation(fields: [initiativeId], references: [id], onDelete: Cascade)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, initiativeId], map: "idx_33167_initiative_member_userId_initiativeId_key")
+  @@index([initiativeId], map: "idx_33167_initiative_member_initiativeId_idx")
+  @@index([organizationId], map: "idx_33167_initiative_member_organizationId_idx")
+  @@map("initiative_member")
+}
+
+model InitiativePage {
+  id             String        @id(map: "idx_33173_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime      @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime      @updatedAt @db.Timestamptz(6)
+  creatorId      String        @db.VarChar(191)
+  title          String        @db.VarChar(191)
+  initiativeId   String        @db.VarChar(191)
+  organizationId String?       @db.VarChar(191)
+  default        Boolean       @default(false)
+  example        Boolean       @default(false)
+  content        Json?         @db.Json
+  initiative     Initiative    @relation(fields: [initiativeId], references: [id], onDelete: Cascade)
+  organization   Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([initiativeId], map: "idx_33173_initiative_page_initiativeId_idx")
+  @@index([organizationId], map: "idx_33173_initiative_page_organizationId_idx")
+  @@map("initiative_page")
+}
+
+model InitiativeCanvas {
+  id             String        @id(map: "idx_33148_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime      @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime      @updatedAt @db.Timestamptz(6)
+  creatorId      String        @db.VarChar(191)
+  title          String        @db.VarChar(191)
+  content        Json          @db.Json
+  initiativeId   String        @db.VarChar(191)
+  organizationId String?       @db.VarChar(191)
+  example        Boolean       @default(false)
+  initiative     Initiative    @relation(fields: [initiativeId], references: [id], onDelete: Cascade)
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+
+  @@index([initiativeId], map: "idx_33148_initiative_canvas_initiativeId_idx")
+  @@index([organizationId], map: "idx_33148_initiative_canvas_organizationId_idx")
+  @@map("initiative_canvas")
+}
+
+model InitiativeUpdate {
+  id             String       @id(map: "idx_33181_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  creatorId      String       @db.VarChar(191)
+  title          String       @db.VarChar(191)
+  content        Json         @db.Json
+  initiativeId   String       @db.VarChar(191)
+  organizationId String       @db.VarChar(191)
+  sendEmail      Boolean      @default(true)
+  sendSlack      Boolean      @default(false)
+  emailSentAt    DateTime?    @db.Timestamptz(6)
+  slackSentAt    DateTime?    @db.Timestamptz(6)
+  initiative     Initiative   @relation(fields: [initiativeId], references: [id], onDelete: Cascade)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([initiativeId], map: "idx_33181_initiative_update_initiativeId_idx")
+  @@index([organizationId], map: "idx_33181_initiative_update_organizationId_idx")
+  @@map("initiative_update")
+}
+
+model InitiativeFile {
+  id             String       @id(map: "idx_33161_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  name           String       @db.VarChar(191)
+  url            String       @db.VarChar(191)
+  creatorId      String       @db.VarChar(191)
+  initiativeId   String       @db.VarChar(191)
+  organizationId String       @db.VarChar(191)
+  initiative     Initiative   @relation(fields: [initiativeId], references: [id], onDelete: Cascade)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([initiativeId], map: "idx_33161_initiative_file_initiativeId_idx")
+  @@index([organizationId], map: "idx_33161_initiative_file_organizationId_idx")
+  @@map("initiative_file")
+}
+
+model Product {
+  id             String       @id(map: "idx_33265_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  creatorId      String       @db.VarChar(191)
+  name           String       @db.VarChar(191)
+  ownerId        String?      @db.VarChar(191)
+  organizationId String       @db.VarChar(191)
+  emoji          String       @default("package") @db.VarChar(191)
+  productboardId String?      @unique(map: "idx_33265_product_productboardId_key") @db.VarChar(191)
+  example        Boolean      @default(false)
+  cannyId        String?      @unique(map: "idx_33265_product_cannyId_key") @db.VarChar(191)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  features       Feature[]
+  groups         Group[]
+  initiatives    Initiative[]
+
+  @@index([organizationId], map: "idx_33265_product_organizationId_idx")
+  @@map("product")
+}
+
+model Group {
+  id             String       @id(map: "idx_33132_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  creatorId      String       @db.VarChar(191)
+  ownerId        String?      @db.VarChar(191)
+  name           String       @db.VarChar(191)
+  organizationId String       @db.VarChar(191)
+  productId      String?      @db.VarChar(191)
+  parentGroupId  String?      @db.VarChar(191)
+  productboardId String?      @unique(map: "idx_33132_group_productboardId_key") @db.VarChar(191)
+  emoji          String       @default("package") @db.VarChar(191)
+  cannyId        String?      @unique(map: "idx_33132_group_cannyId_key") @db.VarChar(191)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  features       Feature[]
+  initiatives    Initiative[]
+  product        Product?     @relation(fields: [productId], references: [id], onDelete: SetNull)
+
+  @@index([organizationId], map: "idx_33132_group_organizationId_idx")
+  @@index([parentGroupId], map: "idx_33132_group_parentGroupId_idx")
+  @@index([productId], map: "idx_33132_group_productId_idx")
+  @@map("group")
+}
+
+/// This model contains an expression index which requires additional setup for migrations. Visit https://pris.ly/d/expression-indexes for more info.
+model Feature {
+  id              String                    @id(map: "idx_33030_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt       DateTime                  @default(now()) @db.Timestamptz(6)
+  updatedAt       DateTime                  @updatedAt @db.Timestamptz(6)
+  ownerId         String                    @db.VarChar(191)
+  creatorId       String                    @db.VarChar(191)
+  organizationId  String                    @db.VarChar(191)
+  title           String
+  riceId          String?                   @unique(map: "idx_33030_feature_riceId_key") @db.VarChar(191)
+  aiRiceId        String?                   @unique(map: "idx_33030_feature_aiRiceId_key") @db.VarChar(191)
+  connectionId    String?                   @unique(map: "idx_33030_feature_connectionId_key") @db.VarChar(191)
+  startAt         DateTime?                 @db.Timestamptz(6)
+  endAt           DateTime?                 @db.Timestamptz(6)
+  productboardId  String?                   @unique(map: "idx_33030_feature_productboardId_key") @db.VarChar(191)
+  productId       String?                   @db.VarChar(191)
+  groupId         String?                   @db.VarChar(191)
+  parentFeatureId String?                   @db.VarChar(191)
+  statusId        String                    @db.VarChar(191)
+  source          feature_source            @default(UI)
+  apiKeyId        String?                   @db.VarChar(191)
+  example         Boolean                   @default(false)
+  cannyId         String?                   @unique(map: "idx_33030_feature_cannyId_key") @db.VarChar(191)
+  templateId      String?                   @db.VarChar(191)
+  canvas          Json?                     @db.Json
+  releaseId       String?                   @db.VarChar(191)
+  content         Json?                     @db.Json
+  vector          Unsupported("vector")?
+  organization    Organization              @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  assignments     FeatureAssignment[]
+  rice            FeatureRice?
+  aiRice          AiFeatureRice?
+  connection      FeatureConnection?
+  drivers         FeatureDriver[]
+  tags            Tag[]
+  product         Product?                  @relation(fields: [productId], references: [id], onDelete: SetNull)
+  group           Group?                    @relation(fields: [groupId], references: [id], onDelete: SetNull)
+  status          FeatureStatus             @relation(fields: [statusId], references: [id])
+  apiKey          ApiKey?                   @relation(fields: [apiKeyId], references: [id])
+  portalFeature   PortalFeature?
+  feedback        FeedbackFeatureLink[]
+  customFields    FeatureCustomFieldValue[]
+  template        Template?                 @relation(fields: [templateId], references: [id], onDelete: SetNull)
+  release         Release?                  @relation(fields: [releaseId], references: [id], onDelete: SetNull)
+  initiatives     Initiative[]
+
+  @@index([apiKeyId], map: "idx_33030_feature_apiKeyId_idx")
+  @@index([groupId], map: "idx_33030_feature_groupId_idx")
+  @@index([organizationId], map: "idx_33030_feature_organizationId_idx")
+  @@index([parentFeatureId], map: "idx_33030_feature_parentFeatureId_idx")
+  @@index([productId], map: "idx_33030_feature_productId_idx")
+  @@index([releaseId], map: "idx_33030_feature_releaseId_idx")
+  @@index([statusId], map: "idx_33030_feature_statusId_idx")
+  @@index([templateId], map: "idx_33030_feature_templateId_idx")
+  @@map("feature")
+}
+
+model FeatureStatus {
+  id                  String                      @id(map: "idx_33080_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt           DateTime                    @default(now()) @db.Timestamptz(6)
+  updatedAt           DateTime                    @updatedAt @db.Timestamptz(6)
+  organizationId      String                      @db.VarChar(191)
+  name                String                      @db.VarChar(191)
+  color               String                      @default("#8b5cf6") @db.VarChar(191)
+  order               Int
+  complete            Boolean                     @default(false)
+  productboardId      String?                     @unique(map: "idx_33080_feature_status_productboardId_key") @db.VarChar(191)
+  fromCanny           Boolean?                    @default(false)
+  organization        Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  features            Feature[]
+  statusMappings      InstallationStatusMapping[]
+  portalStatusMapping PortalStatusMapping[]
+
+  @@unique([organizationId, name], map: "idx_33080_feature_status_organizationId_name_key")
+  @@map("feature_status")
+}
+
+model FeatureConnection {
+  id                      String                 @id(map: "idx_33050_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt               DateTime               @default(now()) @db.Timestamptz(6)
+  updatedAt               DateTime               @updatedAt @db.Timestamptz(6)
+  organizationId          String                 @db.VarChar(191)
+  featureId               String                 @unique(map: "idx_33050_feature_connection_featureId_key") @db.VarChar(191)
+  externalId              String                 @db.VarChar(191)
+  href                    String                 @db.VarChar(191)
+  githubInstallationId    String?                @db.VarChar(191)
+  linearInstallationId    String?                @db.VarChar(191)
+  atlassianInstallationId String?                @db.VarChar(191)
+  organization            Organization           @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  feature                 Feature                @relation(fields: [featureId], references: [id], onDelete: Cascade)
+  githubInstallation      GitHubInstallation?    @relation(fields: [githubInstallationId], references: [id])
+  linearInstallation      LinearInstallation?    @relation(fields: [linearInstallationId], references: [id])
+  atlassianInstallation   AtlassianInstallation? @relation(fields: [atlassianInstallationId], references: [id])
+
+  @@index([atlassianInstallationId], map: "idx_33050_feature_connection_atlassianInstallationId_idx")
+  @@index([externalId], map: "idx_33050_feature_connection_externalId_idx")
+  @@index([githubInstallationId], map: "idx_33050_feature_connection_githubInstallationId_idx")
+  @@index([linearInstallationId], map: "idx_33050_feature_connection_linearInstallationId_idx")
+  @@index([organizationId], map: "idx_33050_feature_connection_organizationId_idx")
+  @@map("feature_connection")
+}
+
+model FeatureRice {
+  id             String       @id(map: "idx_33074_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  organizationId String       @db.VarChar(191)
+  featureId      String       @unique(map: "idx_33074_feature_rice_featureId_key") @db.VarChar(191)
+  reach          Int
+  impact         Int
+  confidence     Int
+  effort         Int
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  feature        Feature      @relation(fields: [featureId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId], map: "idx_33074_feature_rice_organizationId_idx")
+  @@map("feature_rice")
+}
+
+model AiFeatureRice {
+  id               String       @id(map: "idx_32949_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt        DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt        DateTime     @updatedAt @db.Timestamptz(6)
+  organizationId   String       @db.VarChar(191)
+  featureId        String       @unique(map: "idx_32949_ai_feature_rice_featureId_key") @db.VarChar(191)
+  reach            Int
+  impact           Int
+  confidence       Int
+  effort           Int
+  reachReason      String
+  impactReason     String
+  confidenceReason String
+  effortReason     String
+  organization     Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  feature          Feature      @relation(fields: [featureId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId], map: "idx_32949_ai_feature_rice_organizationId_idx")
+  @@map("ai_feature_rice")
+}
+
+model FeatureDriver {
+  id             String       @id(map: "idx_33068_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  organizationId String       @db.VarChar(191)
+  featureId      String       @db.VarChar(191)
+  driverId       String       @db.VarChar(191)
+  value          Int
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  feature        Feature      @relation(fields: [featureId], references: [id], onDelete: Cascade)
+  driver         Driver       @relation(fields: [driverId], references: [id], onDelete: Cascade)
+
+  @@index([driverId], map: "idx_33068_feature_driver_driverId_idx")
+  @@index([featureId], map: "idx_33068_feature_driver_featureId_idx")
+  @@index([organizationId], map: "idx_33068_feature_driver_organizationId_idx")
+  @@map("feature_driver")
+}
+
+model FeatureAssignment {
+  id             String                @id(map: "idx_33038_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime              @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime              @updatedAt @db.Timestamptz(6)
+  organizationId String                @db.VarChar(191)
+  featureId      String                @db.VarChar(191)
+  userId         String                @db.VarChar(191)
+  roleId         String                @db.VarChar(191)
+  organization   Organization          @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  feature        Feature               @relation(fields: [featureId], references: [id], onDelete: Cascade)
+  role           FeatureAssignmentRole @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@index([featureId], map: "idx_33038_feature_assignment_featureId_idx")
+  @@index([organizationId], map: "idx_33038_feature_assignment_organizationId_idx")
+  @@index([roleId], map: "idx_33038_feature_assignment_roleId_idx")
+  @@map("feature_assignment")
+}
+
+model FeatureAssignmentRole {
+  id             String              @id(map: "idx_33044_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime            @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime            @updatedAt @db.Timestamptz(6)
+  organizationId String              @db.VarChar(191)
+  name           String              @db.VarChar(191)
+  description    String              @db.VarChar(191)
+  organization   Organization        @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  assignments    FeatureAssignment[]
+
+  @@index([organizationId], map: "idx_33044_feature_assignment_role_organizationId_idx")
+  @@map("feature_assignment_role")
+}
+
+model FeatureCustomField {
+  id             String                    @id(map: "idx_33056_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime                  @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime                  @updatedAt @db.Timestamptz(6)
+  organizationId String                    @db.VarChar(191)
+  productboardId String?                   @unique(map: "idx_33056_feature_custom_field_productboardId_key") @db.VarChar(191)
+  description    String?                   @db.VarChar(191)
+  name           String                    @db.VarChar(191)
+  organization   Organization              @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  values         FeatureCustomFieldValue[]
+
+  @@unique([name, organizationId], map: "idx_33056_feature_custom_field_name_organizationId_key")
+  @@index([organizationId], map: "idx_33056_feature_custom_field_organizationId_idx")
+  @@map("feature_custom_field")
+}
+
+model FeatureCustomFieldValue {
+  id             String             @id(map: "idx_33062_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime           @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime           @updatedAt @db.Timestamptz(6)
+  value          String
+  organizationId String             @db.VarChar(191)
+  featureId      String             @db.VarChar(191)
+  customFieldId  String             @db.VarChar(191)
+  organization   Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  customField    FeatureCustomField @relation(fields: [customFieldId], references: [id], onDelete: Cascade)
+  feature        Feature            @relation(fields: [featureId], references: [id], onDelete: Cascade)
+
+  @@index([customFieldId], map: "idx_33062_feature_custom_field_value_customFieldId_idx")
+  @@index([featureId], map: "idx_33062_feature_custom_field_value_featureId_idx")
+  @@index([organizationId], map: "idx_33062_feature_custom_field_value_organizationId_idx")
+  @@map("feature_custom_field_value")
+}
+
+model Driver {
+  id             String          @id(map: "idx_33024_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime        @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime        @updatedAt @db.Timestamptz(6)
+  organizationId String          @db.VarChar(191)
+  name           String          @db.VarChar(191)
+  description    String          @db.VarChar(191)
+  color          String          @db.VarChar(191)
+  organization   Organization    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  drivers        FeatureDriver[]
+
+  @@index([organizationId], map: "idx_33024_driver_organizationId_idx")
+  @@map("driver")
+}
+
+model Tag {
+  id             String       @id(map: "idx_33307_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  creatorId      String       @db.VarChar(191)
+  organizationId String       @db.VarChar(191)
+  name           String       @db.VarChar(191)
+  slug           String       @db.VarChar(191)
+  description    String?      @db.VarChar(191)
+  cannyId        String?      @unique(map: "idx_33307_tag_cannyId_key") @db.VarChar(191)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  features       Feature[]
+  feedback       Feedback[]
+
+  @@unique([slug, organizationId], map: "idx_33307_tag_slug_organizationId_key")
+  @@index([organizationId], map: "idx_33307_tag_organizationId_idx")
+  @@map("tag")
+}
+
+model Digest {
+  id             String       @id(map: "idx_33018_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  organizationId String       @db.VarChar(191)
+  text           String
+  summary        String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId], map: "idx_33018_digest_organizationId_idx")
+  @@map("digest")
+}
+
+model ApiKey {
+  id                    String                 @id(map: "idx_32955_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt             DateTime               @default(now()) @db.Timestamptz(6)
+  updatedAt             DateTime               @updatedAt @db.Timestamptz(6)
+  creatorId             String                 @db.VarChar(191)
+  organizationId        String                 @db.VarChar(191)
+  name                  String                 @db.VarChar(191)
+  key                   String                 @unique(map: "idx_32955_api_key_key_key") @default(cuid()) @db.VarChar(191)
+  organization          Organization           @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  feedback              Feedback[]
+  feedbackUsers         FeedbackUser[]
+  feedbackOrganizations FeedbackOrganization[]
+  features              Feature[]
+
+  @@index([organizationId], map: "idx_32955_api_key_organizationId_idx")
+  @@map("api_key")
+}
+
+model GitHubInstallation {
+  id                 String                      @id(map: "idx_33126_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt          DateTime                    @default(now()) @db.Timestamptz(6)
+  updatedAt          DateTime                    @updatedAt @db.Timestamptz(6)
+  creatorId          String                      @db.VarChar(191)
+  organizationId     String                      @db.VarChar(191)
+  installationId     String                      @unique(map: "idx_33126_github_installation_installationId_key") @db.VarChar(191)
+  organization       Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  statusMappings     InstallationStatusMapping[]
+  featureConnections FeatureConnection[]
+
+  @@index([organizationId], map: "idx_33126_github_installation_organizationId_idx")
+  @@map("github_installation")
+}
+
+model LinearInstallation {
+  id                 String                      @id(map: "idx_33213_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt          DateTime                    @default(now()) @db.Timestamptz(6)
+  updatedAt          DateTime                    @updatedAt @db.Timestamptz(6)
+  organizationId     String                      @db.VarChar(191)
+  creatorId          String                      @db.VarChar(191)
+  accessToken        String                      @db.VarChar(191)
+  tokenType          String                      @db.VarChar(191)
+  expiresIn          Int
+  organization       Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  statusMappings     InstallationStatusMapping[]
+  featureConnections FeatureConnection[]
+
+  @@index([organizationId], map: "idx_33213_linear_installation_organizationId_idx")
+  @@map("linear_installation")
+}
+
+model SlackInstallation {
+  id                              String       @id(map: "idx_33301_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt                       DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt                       DateTime     @updatedAt @db.Timestamptz(6)
+  organizationId                  String       @db.VarChar(191)
+  creatorId                       String       @db.VarChar(191)
+  accessToken                     String       @db.VarChar(191)
+  tokenType                       String       @db.VarChar(191)
+  scope                           String       @db.VarChar(191)
+  botUserId                       String       @db.VarChar(191)
+  appId                           String       @db.VarChar(191)
+  teamName                        String       @db.VarChar(191)
+  teamId                          String       @db.VarChar(191)
+  authedUserId                    String       @db.VarChar(191)
+  incomingWebhookChannel          String       @db.VarChar(191)
+  incomingWebhookChannelId        String       @db.VarChar(191)
+  incomingWebhookConfigurationUrl String       @db.VarChar(191)
+  incomingWebhookUrl              String       @db.VarChar(191)
+  organization                    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId], map: "idx_33301_slack_installation_organizationId_idx")
+  @@map("slack_installation")
+}
+
+model IntercomInstallation {
+  id             String       @id(map: "idx_33207_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  organizationId String       @db.VarChar(191)
+  creatorId      String       @db.VarChar(191)
+  accessToken    String       @db.VarChar(191)
+  tokenType      String       @db.VarChar(191)
+  appId          String       @db.VarChar(191)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId], map: "idx_33207_intercom_installation_organizationId_idx")
+  @@map("intercom_installation")
+}
+
+model AtlassianInstallation {
+  id                 String                      @id(map: "idx_32961_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt          DateTime                    @default(now()) @db.Timestamptz(6)
+  updatedAt          DateTime                    @updatedAt @db.Timestamptz(6)
+  creatorId          String                      @db.VarChar(191)
+  organizationId     String                      @db.VarChar(191)
+  accessToken        String
+  scope              String
+  refreshToken       String
+  expiresAt          DateTime                    @db.Timestamptz(6)
+  organization       Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  resources          AtlassianResource[]
+  webhooks           AtlassianWebhook[]
+  statusMappings     InstallationStatusMapping[]
+  featureConnections FeatureConnection[]
+  fieldMappings      InstallationFieldMapping[]
+
+  @@index([organizationId], map: "idx_32961_atlassian_installation_organizationId_idx")
+  @@map("atlassian_installation")
+}
+
+model AtlassianResource {
+  id             String                @id(map: "idx_32967_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime              @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime              @updatedAt @db.Timestamptz(6)
+  creatorId      String                @db.VarChar(191)
+  organizationId String                @db.VarChar(191)
+  installationId String                @db.VarChar(191)
+  resourceId     String                @db.VarChar(191)
+  name           String                @db.VarChar(191)
+  url            String                @db.VarChar(191)
+  avatarUrl      String                @db.VarChar(191)
+  scopes         String                @db.VarChar(191)
+  organization   Organization          @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  installation   AtlassianInstallation @relation(fields: [installationId], references: [id], onDelete: Cascade)
+  webhooks       AtlassianWebhook[]
+
+  @@index([installationId], map: "idx_32967_atlassian_resource_installationId_idx")
+  @@index([organizationId], map: "idx_32967_atlassian_resource_organizationId_idx")
+  @@map("atlassian_resource")
+}
+
+model AtlassianWebhook {
+  id             String                @id(map: "idx_32973_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime              @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime              @updatedAt @db.Timestamptz(6)
+  creatorId      String                @db.VarChar(191)
+  organizationId String                @db.VarChar(191)
+  installationId String                @db.VarChar(191)
+  webhookId      Int                   @unique(map: "idx_32973_atlassian_webhook_webhookId_key")
+  lastExtendedAt DateTime              @default(now()) @db.Timestamptz(6)
+  url            String                @db.VarChar(191)
+  resourceId     String                @db.VarChar(191)
+  organization   Organization          @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  installation   AtlassianInstallation @relation(fields: [installationId], references: [id], onDelete: Cascade)
+  resource       AtlassianResource     @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+
+  @@index([installationId], map: "idx_32973_atlassian_webhook_installationId_idx")
+  @@index([organizationId], map: "idx_32973_atlassian_webhook_organizationId_idx")
+  @@index([resourceId], map: "idx_32973_atlassian_webhook_resourceId_idx")
+  @@map("atlassian_webhook")
+}
+
+model InstallationStatusMapping {
+  id                      String                 @id(map: "idx_33201_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt               DateTime               @default(now()) @db.Timestamptz(6)
+  updatedAt               DateTime               @updatedAt @db.Timestamptz(6)
+  creatorId               String                 @db.VarChar(191)
+  organizationId          String                 @db.VarChar(191)
+  featureStatusId         String                 @db.VarChar(191)
+  eventType               String                 @db.VarChar(191)
+  githubInstallationId    String?                @db.VarChar(191)
+  linearInstallationId    String?                @db.VarChar(191)
+  atlassianInstallationId String?                @db.VarChar(191)
+  eventId                 String?                @db.VarChar(191)
+  organization            Organization           @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  featureStatus           FeatureStatus          @relation(fields: [featureStatusId], references: [id], onDelete: Cascade)
+  githubInstallation      GitHubInstallation?    @relation(fields: [githubInstallationId], references: [id], onDelete: Cascade)
+  linearInstallation      LinearInstallation?    @relation(fields: [linearInstallationId], references: [id], onDelete: Cascade)
+  atlassianInstallation   AtlassianInstallation? @relation(fields: [atlassianInstallationId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, featureStatusId, eventType, eventId], map: "idx_33201_installation_status_mapping_organizationId_featureSta")
+  @@index([atlassianInstallationId], map: "idx_33201_installation_status_mapping_atlassianInstallationId_i")
+  @@index([featureStatusId], map: "idx_33201_installation_status_mapping_featureStatusId_idx")
+  @@index([githubInstallationId], map: "idx_33201_installation_status_mapping_githubInstallationId_idx")
+  @@index([linearInstallationId], map: "idx_33201_installation_status_mapping_linearInstallationId_idx")
+  @@map("installation_status_mapping")
+}
+
+model InstallationFieldMapping {
+  id                      String                                  @id(map: "idx_33189_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt               DateTime                                @default(now()) @db.Timestamptz(6)
+  updatedAt               DateTime                                @updatedAt @db.Timestamptz(6)
+  creatorId               String                                  @db.VarChar(191)
+  organizationId          String                                  @db.VarChar(191)
+  externalId              String                                  @db.VarChar(191)
+  internalId              installation_field_mapping_internalId
+  atlassianInstallationId String?                                 @db.VarChar(191)
+  externalType            String                                  @db.VarChar(191)
+  internalType            installation_field_mapping_internalType
+  organization            Organization                            @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  atlassianInstallation   AtlassianInstallation?                  @relation(fields: [atlassianInstallationId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, externalId], map: "idx_33189_installation_field_mapping_organizationId_externalId_")
+  @@index([atlassianInstallationId], map: "idx_33189_installation_field_mapping_atlassianInstallationId_id")
+  @@map("installation_field_mapping")
+}
+
+model InstallationState {
+  id             String                      @id(map: "idx_33195_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime                    @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime                    @updatedAt @db.Timestamptz(6)
+  organizationId String                      @db.VarChar(191)
+  creatorId      String                      @db.VarChar(191)
+  platform       installation_state_platform
+  organization   Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId], map: "idx_33195_installation_state_organizationId_idx")
+  @@map("installation_state")
+}
+
+model Changelog {
+  id             String                 @id(map: "idx_32994_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime               @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime               @updatedAt @db.Timestamptz(6)
+  publishAt      DateTime               @default(now()) @db.Timestamptz(6)
+  organizationId String                 @db.VarChar(191)
+  title          String                 @db.VarChar(191)
+  creatorId      String                 @db.VarChar(191)
+  status         changelog_status       @default(DRAFT)
+  example        Boolean                @default(false)
+  cannyId        String?                @unique(map: "idx_32994_changelog_cannyId_key") @db.VarChar(191)
+  slug           String?                @db.VarChar(191)
+  fromMarkdown   Boolean?               @default(false)
+  content        Json?                  @db.Json
+  vector         Unsupported("vector")?
+  organization   Organization           @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  contributors   ChangelogContributor[]
+  tags           ChangelogTag[]
+
+  @@unique([organizationId, slug], map: "idx_32994_changelog_organizationId_slug_key")
+  @@map("changelog")
+}
+
+model ChangelogContributor {
+  id             String       @id(map: "idx_33004_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  organizationId String       @db.VarChar(191)
+  changelogId    String       @db.VarChar(191)
+  userId         String       @db.VarChar(191)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  changelog      Changelog    @relation(fields: [changelogId], references: [id], onDelete: Cascade)
+
+  @@unique([changelogId, userId], map: "idx_33004_changelog_contributor_changelogId_userId_key")
+  @@index([organizationId], map: "idx_33004_changelog_contributor_organizationId_idx")
+  @@map("changelog_contributor")
+}
+
+model ChangelogTag {
+  id             String       @id(map: "idx_33010_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  organizationId String       @db.VarChar(191)
+  name           String       @db.VarChar(191)
+  fromCanny      Boolean?     @default(false)
+  fromMarkdown   Boolean?     @default(false)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  changelogs     Changelog[]
+
+  @@unique([name, organizationId], map: "idx_33010_changelog_tag_name_organizationId_key")
+  @@index([organizationId], map: "idx_33010_changelog_tag_organizationId_idx")
+  @@map("changelog_tag")
+}
+
+model Portal {
+  id              String                @id(map: "idx_33225_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt       DateTime              @default(now()) @db.Timestamptz(6)
+  updatedAt       DateTime              @updatedAt @db.Timestamptz(6)
+  organizationId  String                @db.VarChar(191)
+  name            String                @db.VarChar(191)
+  slug            String                @unique(map: "idx_33225_portal_slug_key") @db.VarChar(191)
+  enableRoadmap   Boolean               @default(true)
+  enableChangelog Boolean               @default(true)
+  organization    Organization          @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  features        PortalFeature[]
+  statuses        PortalStatus[]
+  statusMappings  PortalStatusMapping[]
+  votes           PortalFeatureVote[]
+
+  @@index([organizationId], map: "idx_33225_portal_organizationId_idx")
+  @@map("portal")
+}
+
+model PortalStatus {
+  id                   String                      @id(map: "idx_33251_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt            DateTime                    @default(now()) @db.Timestamptz(6)
+  updatedAt            DateTime                    @updatedAt @db.Timestamptz(6)
+  organizationId       String                      @db.VarChar(191)
+  name                 String                      @db.VarChar(191)
+  color                String                      @default("#8b5cf6") @db.VarChar(191)
+  order                Int
+  portalId             String                      @db.VarChar(191)
+  fromCanny            Boolean?                    @default(false)
+  organization         Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  portal               Portal                      @relation(fields: [portalId], references: [id], onDelete: Cascade)
+  portalStatusMappings PortalStatusMapping[]
+  statusChanges        PortalFeatureStatusChange[]
+
+  @@unique([organizationId, name], map: "idx_33251_portal_status_organizationId_name_key")
+  @@index([portalId], map: "idx_33251_portal_status_portalId_idx")
+  @@map("portal_status")
+}
+
+model PortalStatusMapping {
+  id              String        @id(map: "idx_33259_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt       DateTime      @default(now()) @db.Timestamptz(6)
+  updatedAt       DateTime      @updatedAt @db.Timestamptz(6)
+  organizationId  String        @db.VarChar(191)
+  portalId        String        @db.VarChar(191)
+  featureStatusId String        @db.VarChar(191)
+  portalStatusId  String        @db.VarChar(191)
+  organization    Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  portal          Portal        @relation(fields: [portalId], references: [id], onDelete: Cascade)
+  featureStatus   FeatureStatus @relation(fields: [featureStatusId], references: [id], onDelete: Cascade)
+  portalStatus    PortalStatus  @relation(fields: [portalStatusId], references: [id], onDelete: Cascade)
+
+  @@unique([portalId, featureStatusId], map: "idx_33259_portal_status_mapping_portalId_featureStatusId_key")
+  @@index([featureStatusId], map: "idx_33259_portal_status_mapping_featureStatusId_idx")
+  @@index([organizationId], map: "idx_33259_portal_status_mapping_organizationId_idx")
+  @@index([portalStatusId], map: "idx_33259_portal_status_mapping_portalStatusId_idx")
+  @@map("portal_status_mapping")
+}
+
+model PortalFeature {
+  id             String                      @id(map: "idx_33233_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime                    @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime                    @updatedAt @db.Timestamptz(6)
+  title          String                      @db.VarChar(191)
+  organizationId String                      @db.VarChar(191)
+  featureId      String                      @unique(map: "idx_33233_portal_feature_featureId_key") @db.VarChar(191)
+  portalId       String                      @db.VarChar(191)
+  creatorId      String                      @db.VarChar(191)
+  cannyId        String?                     @unique(map: "idx_33233_portal_feature_cannyId_key") @db.VarChar(191)
+  content        Json                        @db.Json
+  organization   Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  feature        Feature                     @relation(fields: [featureId], references: [id], onDelete: Cascade)
+  portal         Portal                      @relation(fields: [portalId], references: [id], onDelete: Cascade)
+  votes          PortalFeatureVote[]
+  statusChanges  PortalFeatureStatusChange[]
+
+  @@index([organizationId], map: "idx_33233_portal_feature_organizationId_idx")
+  @@index([portalId], map: "idx_33233_portal_feature_portalId_idx")
+  @@map("portal_feature")
+}
+
+model PortalFeatureVote {
+  id              String        @id(map: "idx_33245_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt       DateTime      @default(now()) @db.Timestamptz(6)
+  updatedAt       DateTime      @updatedAt @db.Timestamptz(6)
+  organizationId  String        @db.VarChar(191)
+  portalFeatureId String        @db.VarChar(191)
+  portalId        String        @db.VarChar(191)
+  feedbackUserId  String        @db.VarChar(191)
+  cannyId         String?       @unique(map: "idx_33245_portal_feature_vote_cannyId_key") @db.VarChar(191)
+  organization    Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  portalFeature   PortalFeature @relation(fields: [portalFeatureId], references: [id], onDelete: Cascade)
+  portal          Portal        @relation(fields: [portalId], references: [id], onDelete: Cascade)
+  feedbackUser    FeedbackUser  @relation(fields: [feedbackUserId], references: [id], onDelete: Cascade)
+
+  @@unique([portalFeatureId, feedbackUserId], map: "idx_33245_portal_feature_vote_portalFeatureId_feedbackUserId_ke")
+  @@index([feedbackUserId], map: "idx_33245_portal_feature_vote_feedbackUserId_idx")
+  @@index([organizationId], map: "idx_33245_portal_feature_vote_organizationId_idx")
+  @@index([portalId], map: "idx_33245_portal_feature_vote_portalId_idx")
+  @@map("portal_feature_vote")
+}
+
+model PortalFeatureStatusChange {
+  id              String        @id(map: "idx_33239_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt       DateTime      @default(now()) @db.Timestamptz(6)
+  updatedAt       DateTime      @updatedAt @db.Timestamptz(6)
+  userId          String?       @db.VarChar(191)
+  comment         String?       @db.VarChar(191)
+  cannyId         String?       @unique(map: "idx_33239_portal_feature_status_change_cannyId_key") @db.VarChar(191)
+  organizationId  String        @db.VarChar(191)
+  portalFeatureId String        @db.VarChar(191)
+  portalStatusId  String        @db.VarChar(191)
+  organization    Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  portalFeature   PortalFeature @relation(fields: [portalFeatureId], references: [id], onDelete: Cascade)
+  portalStatus    PortalStatus  @relation(fields: [portalStatusId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId], map: "idx_33239_portal_feature_status_change_organizationId_idx")
+  @@index([portalFeatureId], map: "idx_33239_portal_feature_status_change_portalFeatureId_idx")
+  @@index([portalStatusId], map: "idx_33239_portal_feature_status_change_portalStatusId_idx")
+  @@map("portal_feature_status_change")
+}
+
+model RoadmapEvent {
+  id             String       @id(map: "idx_33295_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  creatorId      String       @db.VarChar(191)
+  text           String       @db.VarChar(191)
+  date           DateTime     @db.Timestamptz(6)
+  organizationId String       @db.VarChar(191)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, date, text], map: "idx_33295_roadmap_event_organizationId_date_text_key")
+  @@map("roadmap_event")
+}
+
+model Release {
+  id             String                 @id(map: "idx_33287_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime               @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime               @updatedAt @db.Timestamptz(6)
+  organizationId String                 @db.VarChar(191)
+  creatorId      String?                @db.VarChar(191)
+  title          String
+  description    String?
+  productboardId String?                @unique(map: "idx_33287_release_productboardId_key") @db.VarChar(191)
+  endAt          DateTime?              @db.Timestamptz(6)
+  startAt        DateTime?              @db.Timestamptz(6)
+  state          release_state          @default(PLANNED)
+  jiraId         String?                @unique(map: "idx_33287_release_jiraId_key") @db.VarChar(191)
+  example        Boolean                @default(false)
+  vector         Unsupported("vector")?
+  organization   Organization           @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  features       Feature[]
+
+  @@index([organizationId], map: "idx_33287_release_organizationId_idx")
+  @@map("release")
+}
+
+model ProductboardImport {
+  id             String                  @id(map: "idx_33273_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime                @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime                @updatedAt @db.Timestamptz(6)
+  organizationId String                  @db.VarChar(191)
+  token          String
+  creatorId      String                  @db.VarChar(191)
+  organization   Organization            @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  jobs           ProductboardImportJob[]
+
+  @@index([organizationId], map: "idx_33273_productboard_import_organizationId_idx")
+  @@map("productboard_import")
+}
+
+model ProductboardImportJob {
+  id             String                         @id(map: "idx_33279_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime                       @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime                       @updatedAt @db.Timestamptz(6)
+  organizationId String                         @db.VarChar(191)
+  importId       String                         @db.VarChar(191)
+  order          Int
+  type           productboard_import_job_type
+  status         productboard_import_job_status @default(PENDING)
+  finishedAt     DateTime?                      @db.Timestamptz(6)
+  error          String?
+  count          Int                            @default(0)
+  organization   Organization                   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  import         ProductboardImport             @relation(fields: [importId], references: [id], onDelete: Cascade)
+
+  @@index([importId], map: "idx_33279_productboard_import_job_importId_idx")
+  @@index([organizationId], map: "idx_33279_productboard_import_job_organizationId_idx")
+  @@map("productboard_import_job")
+}
+
+model CannyImport {
+  id             String           @id(map: "idx_32980_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime         @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime         @updatedAt @db.Timestamptz(6)
+  organizationId String           @db.VarChar(191)
+  token          String
+  creatorId      String           @db.VarChar(191)
+  organization   Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  jobs           CannyImportJob[]
+
+  @@index([organizationId], map: "idx_32980_canny_import_organizationId_idx")
+  @@map("canny_import")
+}
+
+model CannyImportJob {
+  id             String                  @id(map: "idx_32986_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime                @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime                @updatedAt @db.Timestamptz(6)
+  organizationId String                  @db.VarChar(191)
+  importId       String                  @db.VarChar(191)
+  order          Int
+  type           canny_import_job_type
+  status         canny_import_job_status @default(PENDING)
+  finishedAt     DateTime?               @db.Timestamptz(6)
+  error          String?                 @db.VarChar(191)
+  count          Int                     @default(0)
+  organization   Organization            @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  import         CannyImport             @relation(fields: [importId], references: [id], onDelete: Cascade)
+
+  @@index([importId], map: "idx_32986_canny_import_job_importId_idx")
+  @@index([organizationId], map: "idx_32986_canny_import_job_organizationId_idx")
+  @@map("canny_import_job")
+}
+
+model Template {
+  id             String       @id(map: "idx_33313_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  organizationId String       @db.VarChar(191)
+  creatorId      String       @db.VarChar(191)
+  title          String       @db.VarChar(191)
+  description    String?      @db.VarChar(191)
+  content        Json?        @db.Json
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  features       Feature[]
+
+  @@index([organizationId], map: "idx_33313_template_organizationId_idx")
+  @@map("template")
+}
+
+model Widget {
+  id              String       @id(map: "idx_33319_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt       DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt       DateTime     @updatedAt @db.Timestamptz(6)
+  organizationId  String       @db.VarChar(191)
+  creatorId       String       @db.VarChar(191)
+  enableChangelog Boolean      @default(true)
+  enableFeedback  Boolean      @default(true)
+  enablePortal    Boolean      @default(true)
+  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  items           WidgetItem[]
+
+  @@index([organizationId], map: "idx_33319_widget_organizationId_idx")
+  @@map("widget")
+}
+
+model WidgetItem {
+  id             String       @id(map: "idx_33328_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  widgetId       String       @db.VarChar(191)
+  organizationId String       @db.VarChar(191)
+  name           String       @db.VarChar(191)
+  link           String       @db.VarChar(191)
+  icon           String       @db.VarChar(191)
+  creatorId      String       @db.VarChar(191)
+  widget         Widget       @relation(fields: [widgetId], references: [id], onDelete: Cascade)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId], map: "idx_33328_widget_item_organizationId_idx")
+  @@index([widgetId], map: "idx_33328_widget_item_widgetId_idx")
+  @@map("widget_item")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model ChangelogToChangelogTag {
+  A String @db.VarChar(191)
+  B String @db.VarChar(191)
+
+  @@id([A, B], map: "_ChangelogToChangelogTag_AB_pkey")
+  @@index([B], map: "_ChangelogToChangelogTag_B_index")
+  @@map("_ChangelogToChangelogTag")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model FeatureToInitiative {
+  A String @db.VarChar(191)
+  B String @db.VarChar(191)
+
+  @@id([A, B], map: "_FeatureToInitiative_AB_pkey")
+  @@index([B], map: "_FeatureToInitiative_B_index")
+  @@map("_FeatureToInitiative")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model FeatureToTag {
+  A String @db.VarChar(191)
+  B String @db.VarChar(191)
+
+  @@id([A, B], map: "_FeatureToTag_AB_pkey")
+  @@index([B], map: "_FeatureToTag_B_index")
+  @@map("_FeatureToTag")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model FeedbackToTag {
+  A String @db.VarChar(191)
+  B String @db.VarChar(191)
+
+  @@id([A, B], map: "_FeedbackToTag_AB_pkey")
+  @@index([B], map: "_FeedbackToTag_B_index")
+  @@map("_FeedbackToTag")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model GroupToInitiative {
+  A String @db.VarChar(191)
+  B String @db.VarChar(191)
+
+  @@id([A, B], map: "_GroupToInitiative_AB_pkey")
+  @@index([B], map: "_GroupToInitiative_B_index")
+  @@map("_GroupToInitiative")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model InitiativeToProduct {
+  A String @db.VarChar(191)
+  B String @db.VarChar(191)
+
+  @@id([A, B], map: "_InitiativeToProduct_AB_pkey")
+  @@index([B], map: "_InitiativeToProduct_B_index")
+  @@map("_InitiativeToProduct")
+}
+
+enum canny_import_job_status {
+  PENDING
+  RUNNING
+  SUCCESS
+  FAILURE
+}
+
+enum organization_membership_role {
+  MEMBER
+  EDITOR
+  ADMIN
+}
+
+enum canny_import_job_type {
+  STATUSES
+  BOARDS
+  CATEGORIES
+  TAGS
+  COMPANIES
+  USERS
+  POSTS
+  CHANGELOGS
+  VOTES
+  COMMENTS
+  STATUS_CHANGES
+}
+
+enum changelog_status {
+  DRAFT
+  PUBLISHED
+}
+
+enum eve_conversation_message_role {
+  user
+  assistant
+  system
+  function
+  data
+  tool
+}
+
+enum eve_conversation_message_type {
+  answer
+  related
+  skip
+  inquiry
+  input
+  input_related
+  tool
+  followup
+  end
+}
+
+enum feature_source {
+  UI
+  API
+  ZAPIER
+  SLACK
+  INTERCOM
+  EMAIL
+}
+
+enum feedback_aiSentiment {
+  POSITIVE
+  NEGATIVE
+  NEUTRAL
+  ANGRY
+  CONFUSED
+  INFORMATIVE
+}
+
+enum feedback_organization_source {
+  UI
+  API
+  ZAPIER
+  SLACK
+  INTERCOM
+  EMAIL
+}
+
+enum feedback_source {
+  UI
+  API
+  ZAPIER
+  SLACK
+  INTERCOM
+  EMAIL
+}
+
+enum feedback_user_source {
+  UI
+  API
+  ZAPIER
+  SLACK
+  INTERCOM
+  EMAIL
+}
+
+enum initiative_state {
+  PLANNED
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum installation_field_mapping_internalId {
+  STARTAT
+  ENDAT
+  OWNERID
+}
+
+enum installation_field_mapping_internalType {
+  STRING
+  DATE
+  NUMBER
+}
+
+enum installation_state_platform {
+  LINEAR
+  SLACK
+  INTERCOM
+  ATLASSIAN
+}
+
+enum organization_onboardingType {
+  EXAMPLE
+  IMPORT
+  BLANK
+}
+
+enum productboard_import_job_status {
+  PENDING
+  RUNNING
+  SUCCESS
+  FAILURE
+}
+
+enum productboard_import_job_type {
+  PRODUCTS
+  COMPONENTS
+  FEATURE_STATUSES
+  FEATURES
+  CUSTOM_FIELDS
+  CUSTOM_FIELD_VALUES
+  COMPANIES
+  DOMAINS
+  USERS
+  TAGS
+  NOTES
+  NOTE_TAGS
+  RELEASES
+  FEATURE_RELEASE_ASSIGNMENTS
+  JIRA_CONNECTIONS
+  NOTE_CONNECTIONS
+}
+
+enum release_state {
+  PLANNED
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}

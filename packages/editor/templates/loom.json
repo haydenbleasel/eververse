@@ -1,0 +1,881 @@
+{
+  "type": "doc",
+  "content": [
+    {
+      "type": "heading",
+      "attrs": { "level": 1 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "closed_book" } },
+        { "text": " Part 1: Product Brief (What & Why)", "type": "text" }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 2 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "globe_with_meridians" } },
+        { "text": " Overview", "type": "text" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "Provide a concise overview of the product. What is it, and why are we building it?",
+          "type": "text",
+          "marks": [{ "type": "italic" }]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 2 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "mag" } },
+        { "text": " Background and Context", "type": "text" }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "attrs": { "tight": true },
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Problem:",
+                  "type": "text",
+                  "marks": [{ "type": "bold" }]
+                },
+                { "text": " ", "type": "text" },
+                {
+                  "text": "What problem are we trying to solve?",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Challenge:",
+                  "type": "text",
+                  "marks": [{ "type": "bold" }]
+                },
+                { "text": " ", "type": "text" },
+                {
+                  "text": "What challenge are our users experiencing?",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Hypothesis:",
+                  "type": "text",
+                  "marks": [{ "type": "bold" }]
+                },
+                { "text": " ", "type": "text" },
+                {
+                  "text": "What is causing this challenge?",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Opportunity sizing:",
+                  "type": "text",
+                  "marks": [{ "type": "bold" }]
+                },
+                { "text": " ", "type": "text" },
+                {
+                  "text": "How does this product present an opportunity to solve the problem?",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 2 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "trophy" } },
+        { "text": " Success Criteria / Impact", "type": "text" }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 3 },
+      "content": [{ "text": "Metrics to measure success", "type": "text" }]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "For example:",
+          "type": "text",
+          "marks": [{ "type": "italic" }]
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "attrs": { "tight": true },
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Output: % of recordings that viewed",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Input: # of recordings using feature",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Input: # new creators using feature",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 3 },
+      "content": [{ "text": "Metrics to monitor", "type": "text" }]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "For example:",
+          "type": "text",
+          "marks": [{ "type": "italic" }]
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "attrs": { "tight": true },
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "# recordings created",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "# average recording time",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "% satisfaction with overall product",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 3 },
+      "content": [{ "text": "Team", "type": "text" }]
+    },
+    {
+      "type": "bulletList",
+      "attrs": { "tight": true },
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [{ "text": "Product Manager:", "type": "text" }]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [{ "text": "Design:", "type": "text" }]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [{ "text": "Engineering:", "type": "text" }]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [{ "text": "Data:", "type": "text" }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 3 },
+      "content": [{ "text": "Cross-Functional Sign off", "type": "text" }]
+    },
+    {
+      "type": "bulletList",
+      "attrs": { "tight": true },
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [{ "text": "Product Manager:", "type": "text" }]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [{ "text": "Design:", "type": "text" }]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [{ "text": "Engineering:", "type": "text" }]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [{ "text": "Data:", "type": "text" }]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [{ "text": "VP Product:", "type": "text" }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 1 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "bulb" } },
+        { "text": " Part 2: Solution Design", "type": "text" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "What are the design principles guiding the development of this product? What requirements does it need to fulfill?",
+          "type": "text",
+          "marks": [{ "type": "italic" }]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 2 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "triangular_ruler" } },
+        { "text": " Functional requirements", "type": "text" }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 3 },
+      "content": [{ "text": "Crawl - internal release", "type": "text" }]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "What are the minimum features and functions that need to be in place for an internal release?",
+          "type": "text",
+          "marks": [{ "type": "italic" }]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 3 },
+      "content": [{ "text": "Walk - MLP external release", "type": "text" }]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "What additional features and improvements should be included for the first external release?",
+          "type": "text",
+          "marks": [{ "type": "italic" }]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 3 },
+      "content": [{ "text": "Run - future feature add ons", "type": "text" }]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "What are the potential future features that can be added to enhance the product?",
+          "type": "text",
+          "marks": [{ "type": "italic" }]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 1 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "1st" } },
+        { "text": " Part 3: Implementation", "type": "text" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "What steps do we need to take to implement the product?",
+          "type": "text",
+          "marks": [{ "type": "italic" }]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 2 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "wrench" } },
+        { "text": " Technical Design Document", "type": "text" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "What are the architecture and design decisions for the project?",
+          "type": "text",
+          "marks": [{ "type": "italic" }]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 2 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "microscope" } },
+        { "text": " QA & Test Plan", "type": "text" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "How will we ensure that the project meets quality standards and functions as intended?",
+          "type": "text",
+          "marks": [{ "type": "italic" }]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 1 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "rocket" } },
+        { "text": " Part 4: Launch", "type": "text" }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 2 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "articulated_lorry" } },
+        { "text": " Roll Out Plan", "type": "text" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "For example:",
+          "type": "text",
+          "marks": [{ "type": "italic" }]
+        }
+      ]
+    },
+    {
+      "type": "taskList",
+      "content": [
+        {
+          "type": "taskItem",
+          "attrs": { "checked": false },
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Speaker notes clean up",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            },
+            {
+              "type": "taskList",
+              "content": [
+                {
+                  "type": "taskItem",
+                  "attrs": { "checked": false },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "Polish up QA items",
+                          "type": "text",
+                          "marks": [{ "type": "italic" }]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "taskItem",
+                  "attrs": { "checked": false },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "Add metrics to file",
+                          "type": "text",
+                          "marks": [{ "type": "italic" }]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "taskItem",
+          "attrs": { "checked": false },
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Roll out for internal launch",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            },
+            {
+              "type": "taskList",
+              "content": [
+                {
+                  "type": "taskItem",
+                  "attrs": { "checked": false },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "Release to Desktop with latest updates",
+                          "type": "text",
+                          "marks": [{ "type": "italic" }]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "taskItem",
+                  "attrs": { "checked": false },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "Flip feature flag",
+                          "type": "text",
+                          "marks": [{ "type": "italic" }]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "taskItem",
+          "attrs": { "checked": false },
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Beta Launch to Windows users",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            },
+            {
+              "type": "taskList",
+              "content": [
+                {
+                  "type": "taskItem",
+                  "attrs": { "checked": false },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "Handoff document to support",
+                          "type": "text",
+                          "marks": [{ "type": "italic" }]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 2 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "shopping_cart" } },
+        { "text": " Pricing & Packaging", "type": "text" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "Will the product be part of our free plan or only paid plans? Is it an add on?",
+          "type": "text",
+          "marks": [{ "type": "italic" }]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 2 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "love_letter" } },
+        { "text": " Communications Plan", "type": "text" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "When will communications happen? Who will be notified of this new feature? Will we send emails, in-app notifications?",
+          "type": "text",
+          "marks": [{ "type": "italic" }]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 2 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "satellite_antenna" } },
+        { "text": " GTM Brief", "type": "text" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "What does sales/success need to know to be able to sell this feature? [Ideally, this is done well ahead of launch so they can start generating excitement.] Will they need to send comms to our sales-led customers?",
+          "type": "text",
+          "marks": [{ "type": "italic" }]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 2 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "bar_chart" } },
+        { "text": " Monitoring", "type": "text" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "What dashboards will we need for monitoring (Amplitude, Mode, etc)? Who will be responsible? At what frequency will monitoring occur?",
+          "type": "text",
+          "marks": [{ "type": "italic" }]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 1 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "gift" } },
+        { "text": " Part 5: Impact", "type": "text" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "For example:",
+          "type": "text",
+          "marks": [{ "type": "italic" }]
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "attrs": { "tight": true },
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "25% increase in user engagement within the first month.",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "10% reduction in customer churn rate.",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Increase in average revenue per user by 15%.",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 1 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "notepad_spiral" } },
+        { "text": " Part 6: Notes", "type": "text" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "For example:",
+          "type": "text",
+          "marks": [{ "type": "italic" }]
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "attrs": { "tight": true },
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Consider a follow-up survey for more detailed user feedback.",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Collaborate with the marketing team for promotional content for the new feature.",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Monitor competitor responses and market changes.",
+                  "type": "text",
+                  "marks": [{ "type": "italic" }]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

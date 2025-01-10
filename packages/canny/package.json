@@ -1,0 +1,12 @@
+{
+  "name": "@repo/canny",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "ky": "^1.7.4"
+  }
+}
