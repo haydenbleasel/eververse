@@ -803,8 +803,8 @@ importers:
   packages/canvas:
     dependencies:
       '@excalidraw/excalidraw':
-        specifier: 0.17.0
-        version: 0.17.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 0.17.6
+        version: 0.17.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@react-hookz/web':
         specifier: ^25.0.1
         version: 25.0.1(js-cookie@3.0.5)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -2076,8 +2076,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@excalidraw/excalidraw@0.17.0':
-    resolution: {integrity: sha512-NzP22v5xMqxYW27ZtTHhiGFe7kE8NeBk45aoeM/mDSkXiOXPDH+PcvwzHRN/Ei+Vj/0sTPHxejn8bZyRWKGjXg==}
+  '@excalidraw/excalidraw@0.17.6':
+    resolution: {integrity: sha512-fyCl+zG/Z5yhHDh5Fq2ZGmphcrALmuOdtITm8gN4d8w4ntnaopTXcTfnAAaU3VleDC6LhTkoLOTG6P5kgREiIg==}
     peerDependencies:
       react: 19.0.0
       react-dom: 19.0.0
@@ -8447,7 +8447,7 @@ snapshots:
   '@esbuild/win32-x64@0.19.11':
     optional: true
 
-  '@excalidraw/excalidraw@0.17.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@excalidraw/excalidraw@0.17.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
