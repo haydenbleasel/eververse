@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   },
   "dependencies": {
     "@linear/sdk": "^37.0.0",

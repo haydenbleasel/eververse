@@ -5,6 +5,6 @@
     "dev": "prisma studio --schema ../../packages/backend/prisma/schema.prisma"
   },
   "devDependencies": {
-    "prisma": "6.2.0"
+    "prisma": "6.2.1"
   }
 }

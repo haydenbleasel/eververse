@@ -28,8 +28,8 @@
     "@t3-oss/env-nextjs": "^0.11.1",
     "date-fns": "^4.1.0",
     "import-in-the-middle": "^1.12.0",
-    "lucide-react": "^0.469.0",
-    "motion": "^11.16.1",
+    "lucide-react": "^0.471.0",
+    "motion": "^11.17.0",
     "next": "15.1.4",
     "react": "19.0.0",
     "react-dom": "19.0.0",
@@ -40,11 +40,11 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@prisma/client": "6.2.0",
+    "@prisma/client": "6.2.1",
     "@repo/typescript-config": "workspace:*",
     "@types/node": "22.10.5",
-    "@types/react": "19.0.3",
-    "fumadocs-core": "^14.7.1",
-    "typescript": "^5.7.2"
+    "@types/react": "19.0.4",
+    "fumadocs-core": "^14.7.2",
+    "typescript": "^5.7.3"
   }
 }
