@@ -6,7 +6,7 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "analyze": "turbo analyze",
-    "migrate": "cd packages/database && npx prisma format && npx prisma generate && npx prisma db push",
+    "migrate": "cd packages/backend && npx prisma format && npx prisma generate && npx prisma db push",
     "bump-deps": "npx npm-check-updates --deep -u -x react-day-picker,@tiptap/*,prosemirror-*,@tiptap-pro/* && pnpm install",
     "bump-ui": "npx shadcn@latest add --all --overwrite -c packages/design-system"
   },

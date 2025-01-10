@@ -59,7 +59,7 @@ const Widget = async () => {
     <div className="grid grid-cols-2 items-start divide-x">
       <WidgetForm
         data={widget}
-        widgetUrl={env.WIDGET_URL}
+        widgetUrl={env.EVERVERSE_WIDGET_URL}
         isSubscribed={Boolean(widget.organization.stripeSubscriptionId)}
         hasPortal={portals > 0}
         slug={widget.organization.slug}

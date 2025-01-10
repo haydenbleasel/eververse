@@ -4,9 +4,9 @@ import { z } from 'zod';
 export const keys = () =>
   createEnv({
     server: {
-      WIDGET_URL: z.string().url().min(1),
+      EVERVERSE_WIDGET_URL: z.string().url().min(1),
     },
     runtimeEnv: {
-      WIDGET_URL: process.env.WIDGET_URL,
+      EVERVERSE_WIDGET_URL: process.env.EVERVERSE_WIDGET_URL,
     },
   });
