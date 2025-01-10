@@ -67,7 +67,10 @@ const APIPage = async () => {
           </div>
           <div className="not-prose">
             <Button asChild variant="outline">
-              <Link href={env.DOCS_URL} className="flex items-center gap-2">
+              <Link
+                href={env.EVERVERSE_DOCS_URL}
+                className="flex items-center gap-2"
+              >
                 API documentation
                 <ArrowUpRightIcon size={16} />
               </Link>

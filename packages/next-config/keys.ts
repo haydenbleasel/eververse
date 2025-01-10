@@ -12,8 +12,8 @@ export const keys = () =>
       NEXT_RUNTIME: z.enum(['nodejs', 'edge']).optional(),
 
       // URLs
-      API_URL: z.string().url().min(1),
-      DOCS_URL: z.string().url().min(1),
+      EVERVERSE_API_URL: z.string().url().min(1),
+      EVERVERSE_DOCS_URL: z.string().url().min(1),
       EVERVERSE_PORTAL_URL: z.string().url().min(1),
       EVERVERSE_ADMIN_ORGANIZATION_ID: z.string().min(1),
 
@@ -26,9 +26,9 @@ export const keys = () =>
       NEXT_RUNTIME: process.env.NEXT_RUNTIME,
       EVERVERSE_ADMIN_ORGANIZATION_ID:
         process.env.EVERVERSE_ADMIN_ORGANIZATION_ID,
-      API_URL: process.env.API_URL,
+      EVERVERSE_API_URL: process.env.EVERVERSE_API_URL,
       EVERVERSE_PORTAL_URL: process.env.EVERVERSE_PORTAL_URL,
-      DOCS_URL: process.env.DOCS_URL,
+      EVERVERSE_DOCS_URL: process.env.EVERVERSE_DOCS_URL,
       NODE_ENV: process.env.NODE_ENV,
     },
   });

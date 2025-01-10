@@ -33,7 +33,7 @@ const links = [
     icon: MessageSquareIcon,
   },
   {
-    href: env.DOCS_URL,
+    href: env.EVERVERSE_DOCS_URL,
     label: 'Docs',
     icon: BookIcon,
   },

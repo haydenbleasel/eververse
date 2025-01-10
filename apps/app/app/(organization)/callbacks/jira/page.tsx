@@ -68,7 +68,7 @@ const registerWebhook = async (
       // @ts-expect-error "Bad API Spec"
       name: 'Eververse',
       excludeBody: false,
-      url: new URL('/webhooks/jira', env.API_URL).toString(),
+      url: new URL('/webhooks/jira', env.EVERVERSE_API_URL).toString(),
       webhooks: [
         {
           events: [
