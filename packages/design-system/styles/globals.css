@@ -1,0 +1,303 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+
+    --warning: 36 100% 50%;
+    --warning-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --radius: 0.5rem;
+
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --backdrop: 0 0% 96.1%;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+
+    --warning: 36 100% 50%;
+    --warning-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --backdrop: 0 0% 3.9%;
+  }
+}
+
+/* From shadcn-ui */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom */
+@layer base {
+  * {
+    @apply min-w-0;
+  }
+  html {
+    text-rendering: optimizelegibility;
+  }
+  body {
+    @apply min-h-[100dvh];
+  }
+  ::selection {
+    @apply bg-violet-500 text-white;
+  }
+  .bg-image-none {
+    background-image: none;
+  }
+}
+
+.radial-progress {
+  --value: 0;
+  --size: 5rem;
+  --thickness: calc(var(--size) / 15);
+
+  @apply relative inline-grid box-content rounded-full bg-transparent font-semibold place-content-center align-middle;
+
+  width: var(--size);
+  height: var(--size);
+
+  &::before,
+  &::after {
+    @apply absolute rounded-full content-[''];
+  }
+
+  &::before {
+    @apply inset-0;
+
+    background: radial-gradient(farthest-side, currentColor 98%, #0000) top /
+      var(--thickness) var(--thickness) no-repeat,
+      conic-gradient(currentColor calc(var(--value) * 1%), #0000 0);
+    mask: radial-gradient(
+      farthest-side,
+      #0000 calc(99% - var(--thickness)),
+      #000 calc(100% - var(--thickness))
+    );
+  }
+
+  &::after {
+    @apply bg-current;
+
+    inset: calc(50% - var(--thickness) / 2);
+    transform: rotate(calc(var(--value) * 3.6deg - 90deg))
+      translate(calc(var(--size) / 2 - 50%));
+  }
+}
+
+.animated-border:hover {
+  --border-size: 13px;
+  --border-angle: 0turn;
+
+  animation: bg-animated-border 10s linear infinite;
+  background-image: conic-gradient(
+      from var(--border-angle),
+      #213,
+      #112 50%,
+      #213
+    ),
+    conic-gradient(
+      from var(--border-angle),
+      transparent 20%,
+      rgb(255 255 255 / 10%),
+      rgb(255 255 255 / 20%)
+    );
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: calc(100% - (var(--border-size) * 2))
+    calc(100% - (var(--border-size) * 2)), cover;
+}
+
+@keyframes bg-animated-border {
+  to {
+    --border-angle: 1turn;
+  }
+}
+
+@property --border-angle {
+  inherits: true;
+  initial-value: 0turn;
+  syntax: "<angle>";
+}
+
+input[type="checkbox"] {
+  @apply appearance-none w-[13px] aspect-square border border-border rounded-sm;
+  @apply checked:bg-violet-500 checked:border-transparent;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500;
+}
+
+input[type="checkbox"]:checked {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+}
+
+[data-type="emoji"] {
+  @apply inline-block align-baseline;
+}
+
+[data-type="emoji"] img {
+  @apply m-0 w-4 h-4;
+}
+
+div[data-youtube-video] {
+  @apply w-full aspect-video relative rounded border shadow-sm overflow-hidden mb-4;
+}
+
+div[data-youtube-video] iframe {
+  @apply absolute inset-0 w-full h-full;
+}
+
+.moveable-control-box {
+  @apply !z-40;
+}
+
+nav[aria-label="Main"] .bg-popover {
+  @apply backdrop-blur-sm filter bg-backdrop/95 border-foreground/10;
+}
+
+[data-radix-popper-content-wrapper],
+[role="alertdialog"],
+[role="dialog"],
+[class*="bg-black/80"] {
+  @apply !z-[1000];
+}
+
+div:has(> table) {
+  @apply !overflow-clip;
+}
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+  color: var(--shiki-light);
+}
+
+.shiki span {
+  color: var(--shiki-light);
+}
+
+.dark .shiki {
+  background-color: var(--shiki-dark-bg);
+  color: var(--shiki-dark);
+  @apply border-neutral-700;
+}
+
+.dark .shiki span {
+  color: var(--shiki-dark);
+}
+
+.shiki code {
+  display: grid;
+  font-size: 13px;
+  counter-reset: line;
+}
+
+.shiki .line:before {
+  content: counter(line);
+  counter-increment: line;
+
+  @apply inline-block w-4 mr-8 text-neutral-500 dark:text-neutral-400 text-right;
+}
+
+.shiki[title]:before {
+  content: attr(title);
+  @apply inline-block text-neutral-500 dark:text-neutral-400 text-right mb-6 text-sm;
+}
+
+nav[aria-label="Main"][data-orientation="horizontal"][dir="ltr"]
+  > div[class*="left-0"] {
+  @apply !left-auto pt-2;
+}
+
+.cl-userProfile-root .cl-navbar > div:first-child > div:first-child {
+  @apply hidden;
+}

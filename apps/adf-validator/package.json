@@ -1,0 +1,34 @@
+{
+  "name": "adf-validator",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack -p 3006",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@atlaskit/adf-schema": "^46.1.0",
+    "@monaco-editor/react": "^4.6.0",
+    "@repo/design-system": "workspace:*",
+    "@repo/editor": "workspace:*",
+    "@repo/tailwind-config": "workspace:*",
+    "@t3-oss/env-nextjs": "^0.11.1",
+    "ajv": "^8.17.1",
+    "ajv-draft-04": "^1.0.0",
+    "better-ajv-errors": "^1.2.0",
+    "next": "15.1.4",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^22",
+    "@types/react": "19.0.3",
+    "@types/react-dom": "19.0.2",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5"
+  }
+}

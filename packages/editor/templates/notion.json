@@ -1,0 +1,394 @@
+{
+  "type": "doc",
+  "content": [
+    {
+      "type": "heading",
+      "attrs": { "level": 1 },
+      "content": [{ "text": "Product Requirement Doc", "type": "text" }]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        { "type": "emoji", "attrs": { "name": "bulb" } },
+        { "text": " ", "type": "text" },
+        {
+          "text": "Notion Tip:",
+          "type": "text",
+          "marks": [{ "type": "bold" }]
+        },
+        {
+          "text": " This template is intended to help teams plan, design and develop products with the greatest chance for success. It helps teams think through their work more deeply, improves asynchronous communication with other teams, and creates space for collaboration.",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 1 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "eyes" } },
+        { "text": " Problem", "type": "text" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "Example questions to answer:",
+          "type": "text",
+          "marks": [{ "type": "bold" }]
+        },
+        {
+          "text": " What problem are we solving? For whom? When do they experience this issue? What data, research and feedback do we have that explains this problem? Which customers are we working with, or hearing from, to better understand this problem? Why is solving this problem urgent? Why is it important?",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 1 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "thought_balloon" } },
+        { "text": " Proposal", "type": "text" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "Example questions to answer:",
+          "type": "text",
+          "marks": [{ "type": "bold" }]
+        },
+        {
+          "text": " How are we solving this issue? What alternatives did we consider? Why did we land with this? What is the general shape of this solution? Do you have any mocks, prototypes, relevant comparisons in the market? How will we know that we've solved this issue? What will we measure? Have we considered how we're building this to be fast, performant, scalable and/or relatively low-cost on our services?",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 1 },
+      "content": [
+        { "type": "emoji", "attrs": { "name": "airplane_departure" } },
+        { "text": " Plan", "type": "text" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "Example questions to answer:",
+          "type": "text",
+          "marks": [{ "type": "bold" }]
+        },
+        {
+          "text": " What are we building? How does it work? How do we know that it works? What are we measuring? When will it be ready?",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "Then, answer these questions:",
+          "type": "text",
+          "marks": [{ "type": "bold" }]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 2 },
+      "content": [
+        {
+          "text": "Question 1: Does everyone know what are we launching?",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "taskList",
+      "content": [
+        {
+          "type": "taskItem",
+          "attrs": { "checked": false },
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [{ "text": "Internal alignment", "type": "text" }]
+            },
+            {
+              "type": "taskList",
+              "content": [
+                {
+                  "type": "taskItem",
+                  "attrs": { "checked": false },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "Can we explain what this change is?",
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "taskItem",
+                  "attrs": { "checked": false },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "Have you shared details of this change with other functions?",
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "taskItem",
+          "attrs": { "checked": false },
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [{ "text": "External messaging", "type": "text" }]
+            },
+            {
+              "type": "taskList",
+              "content": [
+                {
+                  "type": "taskItem",
+                  "attrs": { "checked": false },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "How are we going to communicate our launch to customers?",
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "taskItem",
+                  "attrs": { "checked": false },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "How will customers understand changes due to this launch?",
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 2 },
+      "content": [
+        {
+          "text": "Question 2: Are we sure this is going to work?",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "taskList",
+      "content": [
+        {
+          "type": "taskItem",
+          "attrs": { "checked": false },
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [{ "text": "Quality", "type": "text" }]
+            },
+            {
+              "type": "taskList",
+              "content": [
+                {
+                  "type": "taskItem",
+                  "attrs": { "checked": false },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "Has this change been tested appropriately?",
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "taskItem",
+                  "attrs": { "checked": false },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "Do we have a contingency plan if the launch doesn't go well?",
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "taskItem",
+          "attrs": { "checked": false },
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [{ "text": "Measurement", "type": "text" }]
+            },
+            {
+              "type": "taskList",
+              "content": [
+                {
+                  "type": "taskItem",
+                  "attrs": { "checked": false },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "Do we know how to tell if this launch is a success or not?",
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "taskItem",
+                  "attrs": { "checked": false },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "Can others see how this launch is going?",
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": { "level": 2 },
+      "content": [
+        { "text": "Question 3: What are our launch steps?", "type": "text" }
+      ]
+    },
+    {
+      "type": "taskList",
+      "content": [
+        {
+          "type": "taskItem",
+          "attrs": { "checked": false },
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [{ "text": "Plan", "type": "text" }]
+            },
+            {
+              "type": "taskList",
+              "content": [
+                {
+                  "type": "taskItem",
+                  "attrs": { "checked": false },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "Have you agreed on launch audiences with PMM?",
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "taskItem",
+                  "attrs": { "checked": false },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "Did we agree on launch steps with PMM?",
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        { "type": "emoji", "attrs": { "name": "rocket" } },
+        { "text": " It's go time!", "type": "text" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "If you've done all of these things, it should be easy to make a short post in #slack-channel!",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "... and feel free to link to other more detailed documents",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}

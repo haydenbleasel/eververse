@@ -1,0 +1,20 @@
+{
+  "name": "@repo/payments",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "watch": "stripe listen --forward-to http://localhost:3004/webhooks/stripe",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "dependencies": {
+    "@stripe/agent-toolkit": "^0.2.0",
+    "@t3-oss/env-nextjs": "^0.11.1",
+    "stripe": "^17.5.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "typescript": "^5.7.2"
+  }
+}

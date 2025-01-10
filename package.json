@@ -1,0 +1,53 @@
+{
+  "name": "eververse",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "analyze": "turbo analyze",
+    "migrate": "cd packages/database && npx prisma format && npx prisma generate && npx prisma db push",
+    "bump-deps": "npx npm-check-updates --deep -u -x react-day-picker,@tiptap/*,prosemirror-*,@tiptap-pro/* && pnpm install",
+    "bump-ui": "npx shadcn@latest add --all --overwrite -c packages/design-system"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@repo/typescript-config": "workspace:*",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2",
+    "ultracite": "4.1.14"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "resolutions": {
+    "@tiptap/starter-kit": "^2.10.3",
+    "prosemirror-changeset": "^2.2.1",
+    "prosemirror-collab": "^1.3.1",
+    "prosemirror-commands": "^1.6.2",
+    "prosemirror-dropcursor": "^1.8.1",
+    "prosemirror-gapcursor": "^1.3.2",
+    "prosemirror-history": "^1.4.1",
+    "prosemirror-inputrules": "^1.4.0",
+    "prosemirror-keymap": "^1.2.2",
+    "prosemirror-markdown": "^1.13.1",
+    "prosemirror-menu": "^1.2.4",
+    "prosemirror-model": "^1.23.0",
+    "prosemirror-schema-basic": "^1.2.3",
+    "prosemirror-schema-list": "^1.4.1",
+    "prosemirror-state": "^1.4.3",
+    "prosemirror-tables": "^1.6.1",
+    "prosemirror-trailing-node": "^3.0.0",
+    "prosemirror-transform": "^1.10.2",
+    "prosemirror-view": "^1.37.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "react": "19.0.0",
+      "react-dom": "19.0.0"
+    }
+  },
+  "packageManager": "pnpm@9.15.3"
+}

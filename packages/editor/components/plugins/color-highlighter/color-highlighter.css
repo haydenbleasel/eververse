@@ -1,0 +1,10 @@
+[data-type="color"] {
+  @apply whitespace-nowrap text-sm bg-card rounded-full pl-1 pr-2 py-1 font-medium;
+}
+
+[data-type="color"]::before {
+  @apply border border-black/10 inline-block h-4 w-4 -mt-[3px] rounded-full mr-2 align-middle;
+
+  background-color: var(--color);
+  content: " ";
+}

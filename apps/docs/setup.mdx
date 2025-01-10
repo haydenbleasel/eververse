@@ -1,0 +1,75 @@
+---
+title: Setup
+description: How to setup Eververse locally.
+---
+
+## Operating System
+
+Eververse is designed to work on macOS, Linux and Windows; per [next-forge](https://docs.next-forge.com/setup/prerequisites#operating-system).
+
+## Node.js
+
+Eververse requires Node.js 20 or higher.
+
+<Card title="Install Node.js" icon="bolt" href="https://nodejs.org/en/download/" horizontal>
+  Install Node.js for your operating system.
+</Card>
+
+## Package Manager
+
+Eververse uses [pnpm](https://pnpm.io/) as a package manager.
+
+<Card title="Install pnpm" icon="bolt" href="https://pnpm.io/installation" horizontal>
+  Install pnpm for your operating system.
+</Card>
+
+## Stripe CLI
+
+We use the Stripe CLI to forward payments webhooks to your local machine.
+
+<Card title="Install the Stripe CLI" icon="bolt" href="https://docs.stripe.com/stripe-cli" horizontal>
+  Install the Stripe CLI for your operating system.
+</Card>
+
+Once installed, you can login to authenticate with your Stripe account.
+
+```sh Terminal
+stripe login
+```
+
+## Mintlify CLI
+
+We use the Mintlify CLI to preview these docs locally.
+
+<Card title="Install the Mintlify CLI" icon="bolt" href="https://mintlify.com/docs/development" horizontal>
+  Install the Mintlify CLI.
+</Card>
+
+## Environment Variables
+
+Eververse uses next-forge's [environment variables](https://docs.next-forge.com/setup/env) architecture to manage secrets, where each package manages its own environment variables. These environment variables are exported and composed into each app's `env.ts` file.
+
+## Development
+
+After cloning the repo, install the dependencies with:
+
+```sh Terminal
+pnpm install
+```
+
+Then, run the development server with:
+
+```sh Terminal
+pnpm dev
+```
+
+Open the localhost URLs with the relevant ports listed above to see the app, e.g.
+
+- [http://localhost:3000/](http://localhost:3000/) — The `app` app.
+- [http://localhost:3001/](http://localhost:3001/) — The `portal` app.
+- [http://localhost:3003/](http://localhost:3003/) — The `email` app.
+- [http://localhost:3002/](http://localhost:3002/) — The `web` app.
+- [http://localhost:3004/](http://localhost:3004/) — The `api` app.
+- [http://localhost:3005/](http://localhost:3005/) — The `widget` app.
+- [http://localhost:3006/](http://localhost:3006/) — The `docs` app.
+- [http://localhost:5005/](http://localhost:5005/) — The `studio` app.
