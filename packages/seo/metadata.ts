@@ -42,6 +42,19 @@ export const createMetadata = ({
       type: 'website',
       siteName: applicationName,
       locale: 'en_US',
+
+      // Patch for OG images not working due to route group?
+      images: [
+        {
+          url: new URL(
+            '/opengraph-image.png',
+            process.env.VERCEL_PROJECT_PRODUCTION_URL
+          ).toString(),
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
     },
     publisher,
     twitter: {
