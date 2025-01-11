@@ -4,8 +4,8 @@ import { z } from 'zod';
 export const keys = () =>
   createEnv({
     server: {
-      BETTERSTACK_API_KEY: z.string().min(1).optional(),
-      BETTERSTACK_URL: z.string().min(1).url().optional(),
+      BETTERSTACK_API_KEY: z.string().min(1),
+      BETTERSTACK_URL: z.string().min(1).url(),
 
       // Added by Sentry Integration, Vercel Marketplace
       SENTRY_ORG: z.string().min(1).optional(),

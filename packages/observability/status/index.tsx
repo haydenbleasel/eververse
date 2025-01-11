@@ -2,14 +2,7 @@ import 'server-only';
 import { keys } from '../keys';
 import type { BetterStackResponse } from './types';
 
-const apiKey = keys().BETTERSTACK_API_KEY;
-const url = keys().BETTERSTACK_URL;
-
 export const Status = async () => {
-  if (!apiKey || !url) {
-    return null;
-  }
-
   let statusColor = 'bg-muted-foreground';
   let statusLabel = 'Unable to fetch status';
 
@@ -18,7 +11,7 @@ export const Status = async () => {
       'https://uptime.betterstack.com/api/v2/monitors',
       {
         headers: {
-          Authorization: `Bearer ${apiKey}`,
+          Authorization: `Bearer ${keys().BETTERSTACK_API_KEY}`,
         },
       }
     );
@@ -53,7 +46,7 @@ export const Status = async () => {
       className="flex items-center gap-3 font-medium text-sm"
       target="_blank"
       rel="noreferrer"
-      href={url}
+      href={keys().BETTERSTACK_URL}
     >
       <span className="relative flex h-2 w-2">
         <span
