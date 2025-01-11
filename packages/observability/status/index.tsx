@@ -21,10 +21,13 @@ export const Status = async () => {
     }
 
     const { data } = (await response.json()) as BetterStackResponse;
+    const sites = data.filter((monitor) =>
+      monitor.attributes.url.includes('eververse.ai')
+    );
 
     const status =
-      data.filter((monitor) => monitor.attributes.status === 'up').length /
-      data.length;
+      sites.filter((monitor) => monitor.attributes.status === 'up').length /
+      sites.length;
 
     if (status === 0) {
       statusColor = 'bg-destructive';
