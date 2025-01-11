@@ -7,16 +7,14 @@ import { typographyConfig } from './typography';
 const config: Config = {
   darkMode: ['class'],
   content: [
-    './app/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './lib/**/*.{ts,tsx}',
-    './providers/**/*.{ts,tsx}',
+    '**/*.{ts,tsx}',
+    '../../packages/**/*.{ts,tsx}',
 
-    '../../packages/*/app/**/*.{ts,tsx}',
-    '../../packages/*/components/**/*.{ts,tsx}',
-    '../../packages/*/lib/**/*.{ts,tsx}',
-    '../../packages/*/providers/**/*.{ts,tsx}',
-    '../../packages/*/src/**/*.{ts,tsx}',
+    '!**/node_modules/**',
+    '!**/dist/**',
+    '!**/build/**',
+    '!**/public/**',
+    '!**/types/**',
   ],
   theme: {
     container: {
