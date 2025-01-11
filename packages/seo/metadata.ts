@@ -15,6 +15,10 @@ const author: Metadata['authors'] = {
 const publisher = 'Hayden Bleasel';
 const twitterHandle = '@haydenbleasel';
 
+const productionUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+const protocol = productionUrl?.includes('localhost') ? 'http' : 'https';
+const baseUrl = new URL(`${protocol}://${productionUrl}`);
+
 export const createMetadata = ({
   title,
   description,
@@ -46,10 +50,7 @@ export const createMetadata = ({
       // Patch for OG images not working due to route group?
       images: [
         {
-          url: new URL(
-            '/opengraph-image.png',
-            process.env.VERCEL_PROJECT_PRODUCTION_URL
-          ).toString(),
+          url: new URL('/opengraph-image.png', baseUrl).toString(),
           width: 1200,
           height: 630,
           alt: title,
