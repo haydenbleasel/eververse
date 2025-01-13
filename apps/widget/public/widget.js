@@ -35,17 +35,17 @@
   panel.style.bottom = '80px';
   panel.style.right = '1rem';
   panel.style.transformOrigin = 'right bottom';
-  panel.style.height = 'calc(70dvh + 33px)';
-  panel.style.minHeight = '80px';
-  panel.style.width = '90%';
+  panel.style.height = '0';
+  panel.style.minHeight = '100px';
+  panel.style.width = '0%';
   panel.style.maxWidth = '384px';
-  panel.style.maxHeight = '704px';
+  panel.style.maxHeight = '70dvh';
   panel.style.boxShadow = 'rgba(0, 0, 0, 0.16) 0px 5px 40px';
   panel.style.borderRadius = '16px';
   panel.style.overflow = 'hidden';
   panel.style.opacity = '0';
   panel.style.transition =
-    'width 200ms ease 0s, height 200ms ease 0s, max-height 200ms ease 0s, transform 300ms cubic-bezier(0, 1.2, 1, 1) 0s, opacity 83ms ease-out 0s';
+    'transform 300ms cubic-bezier(0, 1.2, 1, 1) 0s, opacity 83ms ease-out 0s';
   panel.style.pointerEvents = 'none';
   panel.style.userSelect = 'none';
   panel.src = panelUrl.toString();
@@ -65,6 +65,8 @@
     panel.style.opacity = isVisible ? '0' : '1';
     panel.style.pointerEvents = isVisible ? 'none' : 'all';
     panel.style.userSelect = isVisible ? 'none' : 'all';
+    panel.style.width = isVisible ? '0%' : '90%';
+    panel.style.height = isVisible ? '0' : '100%';
   });
 
   document.body.append(trigger);
