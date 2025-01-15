@@ -24,8 +24,14 @@ type PlansProperties = {
 const getPriceInterval = (price: Stripe.Price) =>
   price.recurring?.interval === 'month' ? 'MONTHLY' : 'YEARLY';
 
-export const Plans = ({ products, currentPlan, prices }: PlansProperties) => {
-  const [interval, setInterval] = useState<'MONTHLY' | 'YEARLY'>('YEARLY');
+const getPlans = ({
+  products,
+  prices,
+  currentPlan,
+  interval,
+}: PlansProperties & {
+  interval: 'MONTHLY' | 'YEARLY';
+}): PlanCardProperties['plan'][] => {
   const plans: PlanCardProperties['plan'][] = [];
 
   for (const product of products) {
@@ -111,6 +117,18 @@ export const Plans = ({ products, currentPlan, prices }: PlansProperties) => {
       'SAML authentication',
       'Audit logs',
     ],
+  });
+
+  return plans;
+};
+
+export const Plans = ({ products, currentPlan, prices }: PlansProperties) => {
+  const [interval, setInterval] = useState<'MONTHLY' | 'YEARLY'>('YEARLY');
+  const plans = getPlans({
+    products,
+    prices,
+    currentPlan,
+    interval,
   });
 
   return (
