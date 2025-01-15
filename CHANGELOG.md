@@ -1,3 +1,15 @@
+# v1.0.0 (Wed Jan 15 2025)
+
+#### 💥 Breaking Change
+
+- Initial Release [#16](https://github.com/haydenbleasel/eververse/pull/16) ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v0.0.1 (Wed Jan 15 2025)
 
 :tada: This release contains work from a new contributor! :tada:
