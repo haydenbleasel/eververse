@@ -69,7 +69,7 @@ export const Customers = ({
                   alt={name}
                   width={96}
                   height={24}
-                  className="h-6 w-24 object-contain"
+                  className="h-6 w-24 object-contain dark:invert"
                 />
               </m.div>
             ))}

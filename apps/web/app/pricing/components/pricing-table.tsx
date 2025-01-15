@@ -414,7 +414,7 @@ export const PricingTable = ({
   const [mobilePlan, setMobilePlan] = useState(plans[0]?.name);
 
   return (
-    <section className="flex flex-col gap-8 px-4 py-16 sm:px-8">
+    <section className="flex flex-col gap-8 py-16 sm:px-8">
       <div className="block md:hidden">
         <Select
           label="Choose a plan"
@@ -464,7 +464,8 @@ export const PricingTable = ({
                 'rounded-lg py-8',
                 'hidden sm:block',
                 mobilePlan === plan.name && 'block',
-                planIndex === 1 && 'bg-background shadow-sm ring-1 ring-border'
+                planIndex === 1 &&
+                  'sm:bg-background sm:shadow-sm sm:ring-1 sm:ring-border'
               )}
               key={plan.name}
             >

@@ -31,6 +31,7 @@ export const Hero = ({
                 animate={{ opacity: 1, translateY: 0 }}
                 initial={{ opacity: 0, translateY: 16 }}
                 transition={{ duration: 1, ease: 'easeInOut' }}
+                className="w-full"
               >
                 <a
                   aria-label="View latest update on Eververse changelog page"
@@ -40,7 +41,7 @@ export const Hero = ({
                 >
                   <Badge
                     variant="outline"
-                    className="gap-2 rounded-full py-0.5 pr-3 pl-0.5 font-medium"
+                    className="max-w-full gap-2 rounded-full py-0.5 pr-3 pl-0.5 font-medium"
                   >
                     <span
                       className="shrink-0 truncate rounded-full bg-foreground/5 px-2.5 py-1 text-muted-foreground text-xs"

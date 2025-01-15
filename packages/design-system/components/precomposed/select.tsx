@@ -200,7 +200,7 @@ export const Select = ({
             <CommandGroup>
               <Virtuoso
                 data={data}
-                style={{ height: '292px' }}
+                style={{ height: Math.min(292, data.length * 32) }}
                 totalCount={data.length}
                 itemContent={VirtuosoItem}
               />
