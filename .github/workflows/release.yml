@@ -42,6 +42,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Configure Tiptap Pro
+        run: |
+          npm config set "@tiptap-pro:registry" https://registry.tiptap.dev/
+          npm config set "//registry.tiptap.dev/:_authToken" ${{ secrets.TIPTAP_AUTH_TOKEN }}
+
       - name: Install dependencies
         run: pnpm install
 
