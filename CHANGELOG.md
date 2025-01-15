@@ -1,3 +1,16 @@
+# v1.0.1 (Wed Jan 15 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Resolve #17 ([@haydenbleasel](https://github.com/haydenbleasel))
+- Update types.d.ts ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.0.0 (Wed Jan 15 2025)
 
 #### 💥 Breaking Change
