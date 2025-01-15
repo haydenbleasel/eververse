@@ -11,7 +11,7 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
-    "@excalidraw/excalidraw": "0.17.0",
+    "@excalidraw/excalidraw": "0.17.6",
     "@react-hookz/web": "^25.0.1",
     "@repo/lib": "workspace:*",
     "@repo/tailwind-config": "workspace:*",
