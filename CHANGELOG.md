@@ -1,3 +1,15 @@
+# v1.0.2 (Wed Jan 15 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Update keys.ts ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.0.1 (Wed Jan 15 2025)
 
 #### ⚠️ Pushed to `main`
