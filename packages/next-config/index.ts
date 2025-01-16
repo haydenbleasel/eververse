@@ -13,10 +13,6 @@ export const config: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: new URL(process.env.SUPABASE_URL ?? '').hostname,
-      },
-      {
-        protocol: 'https',
         hostname: 'logo.clearbit.com',
       },
       {

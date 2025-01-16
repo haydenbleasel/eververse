@@ -1,9 +1,10 @@
 import { env } from '@/env';
+import { withBackend } from '@repo/backend/next-config';
 import { config, withAnalyzer } from '@repo/next-config';
 import { withLogtail, withSentry } from '@repo/observability/next-config';
 import type { NextConfig } from 'next';
 
-let nextConfig: NextConfig = withLogtail(config);
+let nextConfig: NextConfig = withBackend(withLogtail(config));
 
 if (env.VERCEL) {
   nextConfig = withSentry(nextConfig);
