@@ -8,12 +8,12 @@ import {
 } from '@repo/backend/auth/utils';
 import Climate from '@repo/design-system/components/climate';
 import { Prose } from '@repo/design-system/components/prose';
-import { pluralize } from '@repo/lib/pluralize';
 import { stripe } from '@repo/payments';
 import { createMetadata } from '@repo/seo/metadata';
 import { CircleArrowUpIcon } from 'lucide-react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import pluralize from 'pluralize';
 import { Plans } from './components/plans';
 
 export const metadata: Metadata = createMetadata({

@@ -7,7 +7,6 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "@types/pluralize": "^0.0.33",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3"
   },
@@ -19,7 +18,6 @@
     "@slack/web-api": "^7.8.0",
     "fuse.js": "^7.0.0",
     "openai": "^4.78.1",
-    "pluralize": "^8.0.0",
     "resend": "^4.0.1",
     "server-only": "^0.0.1",
     "slugify": "^1.6.6",

@@ -9,13 +9,13 @@ import {
 import { Logo } from '@repo/design-system/components/logo';
 import { Button } from '@repo/design-system/components/ui/button';
 import { MAX_FREE_MEMBERS } from '@repo/lib/consts';
-import { pluralize } from '@repo/lib/pluralize';
 import { stripe } from '@repo/payments';
 import { createMetadata } from '@repo/seo/metadata';
 import { ChevronsDownIcon, SparklesIcon } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
+import pluralize from 'pluralize';
 
 const title = 'Time to upgrade';
 const description =

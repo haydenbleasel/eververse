@@ -8,8 +8,8 @@ import {
   MAX_FREE_INITIATIVES,
   MAX_FREE_MEMBERS,
 } from '@repo/lib/consts';
-import { pluralize } from '@repo/lib/pluralize';
 import type { Stripe } from '@repo/payments';
+import pluralize from 'pluralize';
 import { useState } from 'react';
 import { AnimatedTabs } from './animated-tabs';
 import { PlanCard } from './plan-card';

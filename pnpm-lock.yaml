@@ -327,6 +327,9 @@ importers:
       novel:
         specifier: ^0.5.0
         version: 0.5.0(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6))(@types/react@19.0.4)(highlight.js@11.11.1)(immer@10.1.1)(lowlight@3.3.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      pluralize:
+        specifier: ^8.0.0
+        version: 8.0.0
       react:
         specifier: 19.0.0
         version: 19.0.0
@@ -376,6 +379,9 @@ importers:
       '@types/node':
         specifier: 22.10.5
         version: 22.10.5
+      '@types/pluralize':
+        specifier: ^0.0.33
+        version: 0.0.33
       '@types/react':
         specifier: 19.0.4
         version: 19.0.4
@@ -1399,9 +1405,6 @@ importers:
       openai:
         specifier: ^4.78.1
         version: 4.78.1(encoding@0.1.13)(zod@3.24.1)
-      pluralize:
-        specifier: ^8.0.0
-        version: 8.0.0
       react:
         specifier: 19.0.0
         version: 19.0.0
@@ -1421,9 +1424,6 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@types/pluralize':
-        specifier: ^0.0.33
-        version: 0.0.33
       tailwindcss:
         specifier: ^3.4.17
         version: 3.4.17(ts-node@10.9.2(@types/node@22.10.5)(typescript@5.7.3))

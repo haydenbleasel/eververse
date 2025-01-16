@@ -6,12 +6,12 @@ import { StackCard } from '@repo/design-system/components/stack-card';
 import { Badge } from '@repo/design-system/components/ui/badge';
 import { cn } from '@repo/design-system/lib/utils';
 import { formatDate } from '@repo/lib/format';
-import { pluralize } from '@repo/lib/pluralize';
 import { createMetadata } from '@repo/seo/metadata';
 import { ListIcon } from 'lucide-react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import pluralize from 'pluralize';
 
 const title = 'Productboard Import';
 const description = 'Track the progress of your Productboard import.';
