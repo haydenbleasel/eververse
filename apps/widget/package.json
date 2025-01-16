@@ -2,7 +2,7 @@
   "name": "widget",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack -p 3004",
+    "dev": "next dev --turbopack -p 3006",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
