@@ -76,7 +76,9 @@ export const PlanCard = ({
         <div className="flex flex-col">
           {plan.cta ? (
             <Button asChild>
-              <Link href={plan.cta}>{plan.label}</Link>
+              <a href={plan.cta} target="_blank" rel="noopener noreferrer">
+                {plan.label}
+              </a>
             </Button>
           ) : (
             <Button variant="outline" disabled>
