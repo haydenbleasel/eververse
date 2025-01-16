@@ -7,20 +7,12 @@ export const keys = () =>
       SUPABASE_SERVICE_ROLE_KEY: z.string().min(1),
       SUPABASE_URL: z.string().url().min(1),
       SUPABASE_ANON_KEY: z.string().min(1),
-      POSTGRES_URL_NON_POOLING: z
-        .string()
-        .url()
-        .min(1)
-        .startsWith('postgresql://'),
-      POSTGRES_PRISMA_URL: z.string().url().min(1).startsWith('postgresql://'),
+      POSTGRES_URL_NON_POOLING: z.string().url().min(1),
+      POSTGRES_PRISMA_URL: z.string().url().min(1),
 
       // This is a workaround key to get the prisma client to work with pgBouncer
       // https://supabase.com/partners/integrations/vercel
-      PGBOUNCER_POSTGRES_PRISMA_URL: z
-        .string()
-        .url()
-        .min(1)
-        .startsWith('postgresql://'),
+      PGBOUNCER_POSTGRES_PRISMA_URL: z.string().url().min(1),
     },
     client: {
       NEXT_PUBLIC_SUPABASE_URL: z.string().url().min(1),
