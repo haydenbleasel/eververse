@@ -1,3 +1,15 @@
+# v1.0.8 (Thu Jan 16 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Remove unused resync route ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.0.7 (Thu Jan 16 2025)
 
 #### ⚠️ Pushed to `main`
