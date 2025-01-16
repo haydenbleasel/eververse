@@ -2,9 +2,9 @@ import { getSlug } from '@/lib/slug';
 import { getUserName } from '@repo/backend/auth/format';
 import { getMembers } from '@repo/backend/auth/utils';
 import { database } from '@repo/backend/database';
+import { Prose } from '@repo/design-system/components/prose';
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { UpdateItem } from './components/update-item';
+import { notFound, redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
   title: 'Changelog',
@@ -63,18 +63,20 @@ const Changelog = async () => {
     return getUserName(member);
   };
 
-  return (
-    <div className="grid divide-y">
-      {changelogs.map((update, index) => (
-        <UpdateItem
-          key={update.id}
-          update={update}
-          index={index}
-          owner={getOwner(update.creatorId)}
-        />
-      ))}
-    </div>
-  );
+  if (!changelogs.length) {
+    return (
+      <Prose className="flex w-full max-w-none flex-col items-center justify-center gap-2 rounded-2xl border bg-secondary p-12">
+        <h1 className="m-0">No changelogs found</h1>
+        <p className="m-0">
+          There are no changelogs published for this portal.
+        </p>
+      </Prose>
+    );
+  }
+
+  const [latest] = changelogs;
+
+  return redirect(`/changelog/${latest.id}`);
 };
 
 export default Changelog;

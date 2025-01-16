@@ -3,7 +3,6 @@ import { getUserName } from '@repo/backend/auth/format';
 import { getMembers } from '@repo/backend/auth/utils';
 import { database, getJsonColumnFromTable } from '@repo/backend/database';
 import { Prose } from '@repo/design-system/components/prose';
-import { cn } from '@repo/design-system/lib/utils';
 import type { JSONContent } from '@repo/editor';
 import { contentToText } from '@repo/editor/lib/tiptap';
 import { formatDate } from '@repo/lib/format';
@@ -142,37 +141,32 @@ const Update = async (props: UpdateProperties) => {
   );
 
   return (
-    <div className="grid divide-y">
-      <div className="grid grid-cols-12 gap-8 py-8 md:py-16">
-        <div className="col-span-12 md:col-span-3">
-          <p className="font-medium text-foreground text-sm">
-            {formatDate(update.publishAt)}
-          </p>
+    <div className="grid grid-cols-[1fr_200px]">
+      <Prose className="prose-img:pointer-events-none mx-auto">
+        <h1>{update.title}</h1>
+        <Editor
+          defaultValue={content as JSONContent | undefined}
+          editable={false}
+        />
+      </Prose>
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-1">
+          <p className="text-muted-foreground text-sm">Published by</p>
+          <p className="text-sm">{getOwner(update.creatorId)}</p>
         </div>
-        <div className="col-span-12 md:col-span-9">
-          <div className="flex flex-wrap gap-2">
+        <div className="flex flex-col gap-1">
+          <p className="text-muted-foreground text-sm">Published on</p>
+          <p className="text-sm">{formatDate(update.publishAt)}</p>
+        </div>
+        <div className="flex flex-col gap-1">
+          <p className="text-muted-foreground text-sm">Tags</p>
+          <ul className="list-disc pl-4 text-sm">
             {update.tags.map((tag) => (
-              <div
-                key={tag.name}
-                className={cn(
-                  'rounded bg-card px-2 py-1 font-medium text-foreground text-xs'
-                )}
-              >
+              <li key={tag.name} className="text-sm">
                 {tag.name}
-              </div>
+              </li>
             ))}
-          </div>
-          <Prose className="prose-img:pointer-events-none mt-4">
-            <h2 className="font-semibold text-3xl">{update.title}</h2>
-            <Editor
-              defaultValue={content as JSONContent | undefined}
-              editable={false}
-            />
-
-            <p className="mt-4 text-muted-foreground text-sm">
-              Published by {getOwner(update.creatorId)}
-            </p>
-          </Prose>
+          </ul>
         </div>
       </div>
     </div>

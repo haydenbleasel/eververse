@@ -10,11 +10,13 @@ const tabs = [
     icon: MapIcon,
     label: 'Roadmap',
     href: '/',
+    active: (pathname: string) => pathname === '/',
   },
   {
     icon: ListIcon,
     label: 'Changelog',
     href: '/changelog',
+    active: (pathname: string) => pathname.startsWith('/changelog'),
   },
 ];
 
@@ -29,7 +31,7 @@ export const Tabs = () => {
           href={tab.href}
           className={cn(
             'flex items-center gap-2 border-b py-3 font-medium text-sm',
-            pathname === tab.href
+            tab.active(pathname)
               ? 'border-foreground text-foreground'
               : 'border-transparent text-muted-foreground'
           )}
