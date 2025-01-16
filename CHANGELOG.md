@@ -1,3 +1,15 @@
+# v1.0.9 (Thu Jan 16 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Reduce Changelog bandwidth on portal ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.0.8 (Thu Jan 16 2025)
 
 #### ⚠️ Pushed to `main`
