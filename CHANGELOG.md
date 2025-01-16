@@ -1,3 +1,26 @@
+# v1.0.4 (Thu Jan 16 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Finish creating .env.example files ([@haydenbleasel](https://github.com/haydenbleasel))
+- Move pluralize to app package ([@haydenbleasel](https://github.com/haydenbleasel))
+- Create transcription package ([@haydenbleasel](https://github.com/haydenbleasel))
+- Improve key validation ([@haydenbleasel](https://github.com/haydenbleasel))
+- Remove unused package ([@haydenbleasel](https://github.com/haydenbleasel))
+- Create .env.example for app ([@haydenbleasel](https://github.com/haydenbleasel))
+- Create .env.example for api ([@haydenbleasel](https://github.com/haydenbleasel))
+- Create .env.example for widget ([@haydenbleasel](https://github.com/haydenbleasel))
+- Create .env.example for portal ([@haydenbleasel](https://github.com/haydenbleasel))
+- Create .env.example for web ([@haydenbleasel](https://github.com/haydenbleasel))
+- Update package.json ([@haydenbleasel](https://github.com/haydenbleasel))
+- Expose backend next config wrapper ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.0.3 (Thu Jan 16 2025)
 
 #### ⚠️ Pushed to `main`
