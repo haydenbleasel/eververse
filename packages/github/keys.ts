@@ -5,7 +5,10 @@ export const keys = () =>
   createEnv({
     server: {
       GITHUB_APP_ID: z.string().min(1),
-      GITHUB_PRIVATE_KEY: z.string().min(1),
+      GITHUB_PRIVATE_KEY: z
+        .string()
+        .min(1)
+        .startsWith('-----BEGIN PRIVATE KEY-----'),
       GITHUB_APP_SLUG: z.string().min(1),
     },
     runtimeEnv: {
