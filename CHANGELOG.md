@@ -1,3 +1,15 @@
+# v1.0.7 (Thu Jan 16 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Allow for RSA private keys ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.0.6 (Thu Jan 16 2025)
 
 #### ⚠️ Pushed to `main`
