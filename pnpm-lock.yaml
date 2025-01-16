@@ -161,6 +161,9 @@ importers:
       '@repo/tailwind-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
+      '@repo/transcribe':
+        specifier: workspace:*
+        version: link:../../packages/transcribe
       '@t3-oss/env-nextjs':
         specifier: ^0.11.1
         version: 0.11.1(typescript@5.7.3)(zod@3.24.1)
@@ -1387,9 +1390,6 @@ importers:
       '@slack/web-api':
         specifier: ^7.8.0
         version: 7.8.0
-      assemblyai:
-        specifier: ^4.8.0
-        version: 4.8.0(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       fuse.js:
         specifier: ^7.0.0
         version: 7.0.0
@@ -1612,6 +1612,25 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
+
+  packages/transcribe:
+    dependencies:
+      '@t3-oss/env-nextjs':
+        specifier: ^0.11.1
+        version: 0.11.1(typescript@5.7.3)(zod@3.24.1)
+      assemblyai:
+        specifier: ^4.8.0
+        version: 4.8.0(bufferutil@4.0.8)(utf-8-validate@6.0.4)
+      zod:
+        specifier: ^3.24.1
+        version: 3.24.1
+    devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      typescript:
+        specifier: ^5.7.3
+        version: 5.7.3
 
   packages/typescript-config: {}
 

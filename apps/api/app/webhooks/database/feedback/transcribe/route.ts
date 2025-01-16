@@ -1,7 +1,7 @@
 import type { Feedback } from '@prisma/client';
 import { database } from '@repo/backend/database';
 import { textToContent } from '@repo/editor/lib/tiptap';
-import { assembly } from '@repo/lib/assembly';
+import { createTranscript } from '@repo/transcribe';
 
 export const maxDuration = 300;
 export const revalidate = 0;
@@ -22,10 +22,9 @@ export const POST = async (request: Request): Promise<Response> => {
     return new Response('No video or audio to transcribe', { status: 401 });
   }
 
-  const transcript = await assembly.transcripts.transcribe({
-    audio_url: (body.record.videoUrl ?? body.record.audioUrl) as string,
-    word_boost: ['eververse'],
-  });
+  const transcript = await createTranscript(
+    body.record.videoUrl ?? (body.record.audioUrl as string)
+  );
 
   await database.feedback.update({
     where: { id: body.record.id },

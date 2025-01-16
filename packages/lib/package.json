@@ -17,7 +17,6 @@
     "@logtail/next": "^0.1.7",
     "@sentry/nextjs": "^8.48.0",
     "@slack/web-api": "^7.8.0",
-    "assemblyai": "^4.8.0",
     "fuse.js": "^7.0.0",
     "openai": "^4.78.1",
     "pluralize": "^8.0.0",
