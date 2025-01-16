@@ -1,3 +1,15 @@
+# v1.0.6 (Thu Jan 16 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Fix typo in docs ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.0.5 (Thu Jan 16 2025)
 
 #### ⚠️ Pushed to `main`
