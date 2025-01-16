@@ -234,9 +234,6 @@ importers:
       '@repo/editor':
         specifier: workspace:*
         version: link:../../packages/editor
-      '@repo/eleven-labs':
-        specifier: workspace:*
-        version: link:../../packages/eleven-labs
       '@repo/email':
         specifier: workspace:*
         version: link:../../packages/email
@@ -1288,25 +1285,6 @@ importers:
       '@types/react':
         specifier: ^19.0.4
         version: 19.0.4
-      typescript:
-        specifier: ^5.7.3
-        version: 5.7.3
-
-  packages/eleven-labs:
-    dependencies:
-      '@t3-oss/env-nextjs':
-        specifier: ^0.11.1
-        version: 0.11.1(typescript@5.7.3)(zod@3.24.1)
-      zod:
-        specifier: ^3.24.1
-        version: 3.24.1
-    devDependencies:
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-      '@types/node':
-        specifier: ^22.10.5
-        version: 22.10.5
       typescript:
         specifier: ^5.7.3
         version: 5.7.3

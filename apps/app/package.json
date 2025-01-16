@@ -21,7 +21,6 @@
     "@repo/canvas": "workspace:*",
     "@repo/design-system": "workspace:*",
     "@repo/editor": "workspace:*",
-    "@repo/eleven-labs": "workspace:*",
     "@repo/email": "workspace:*",
     "@repo/github": "workspace:*",
     "@repo/intercom": "workspace:*",
