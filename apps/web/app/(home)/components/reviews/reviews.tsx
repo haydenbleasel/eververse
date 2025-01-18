@@ -5,6 +5,7 @@ import { reviews } from '@repo/lib/reviews';
 import Image from 'next/image';
 import type { StaticImageData } from 'next/image';
 import type { HTMLAttributes } from 'react';
+import { ProductHuntBadges } from './components/producthunt-badges';
 import ProductHunt from './product-hunt.svg';
 
 type ReviewsProperties = HTMLAttributes<HTMLDivElement>;
@@ -12,29 +13,16 @@ type ReviewsProperties = HTMLAttributes<HTMLDivElement>;
 export const Reviews = (properties: ReviewsProperties) => (
   <section {...properties}>
     <Container className="border-x px-4 py-16">
-      <div className="flex flex-col items-start justify-between gap-8 sm:flex-row">
+      <div className="flex flex-col items-center justify-center gap-4 text-center">
         <div>
           <h2 className="mb-4 font-semibold text-3xl tracking-tighter sm:text-5xl">
-            What people are saying
+            Loved by the community
           </h2>
           <p className="mx-auto max-w-prose text-lg text-muted-foreground">
             See what others are saying about Eververse.
           </p>
         </div>
-        <a
-          href="https://www.producthunt.com/posts/eververse?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-eververse"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=447833&theme=light"
-            alt="Eververse - Build&#0032;your&#0032;product&#0032;roadmap&#0032;at&#0032;lightspeed&#0044;&#0032;with&#0032;AI | Product Hunt"
-            width={250}
-            height={54}
-            className="aspect-[250/54] h-[42px] w-auto"
-            unoptimized
-          />
-        </a>
+        <ProductHuntBadges />
       </div>
       <div className="mt-16 gap-4 sm:columns-2 lg:columns-3">
         {reviews.map(({ author, avatar, link, source, text }) => (
