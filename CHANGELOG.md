@@ -1,3 +1,15 @@
+# v1.0.10 (Sat Jan 18 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Update ProductHunt badges ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.0.9 (Thu Jan 16 2025)
 
 #### ⚠️ Pushed to `main`
