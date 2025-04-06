@@ -113,7 +113,7 @@ export const Team = ({
         {offlineMembers.length ? (
           <>
             <p className="mt-4 font-medium text-muted-foreground text-sm">
-              Online
+              Offline
             </p>
             {offlineMembers.map((member) => (
               <div className="flex items-center gap-2" key={member.id}>
