@@ -1,7 +1,7 @@
 import { EmptyState } from '@/components/empty-state';
+import { database } from '@/lib/database';
 import { EververseRole } from '@repo/backend/auth';
 import { currentUser } from '@repo/backend/auth/utils';
-import { database } from '@repo/backend/database';
 import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
 import { Prose } from '@repo/design-system/components/prose';
 import { createMetadata } from '@repo/seo/metadata';
