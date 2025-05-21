@@ -44,7 +44,7 @@
 
   --font-weight-bold: 700;
   --backdrop: oklch(0.97 0 0);
-  --success: oklch(69.6% 0.17 162.48);
+  --color-success: oklch(69.6% 0.17 162.48);
 }
 
 .dark {
