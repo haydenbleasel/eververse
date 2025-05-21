@@ -84,7 +84,6 @@ It also contains the following packages:
 | `productboard` | The Productboard API client. |
 | `seo` | Utility functions for SEO. |
 | `slack` | The Slack API client. |
-| `tailwind-config` | The Tailwind configuration, which contains the shared Tailwind configuration for the app. |
 | `typescript-config` | The TypeScript configuration, which contains the shared TypeScript configuration for the app. |
 | `widget` | The core functionality for the embeddable Eververse widget. |
 

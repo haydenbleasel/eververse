@@ -13,7 +13,6 @@
     "@monaco-editor/react": "^4.6.0",
     "@repo/design-system": "workspace:*",
     "@repo/editor": "workspace:*",
-    "@repo/tailwind-config": "workspace:*",
     "@t3-oss/env-nextjs": "^0.11.1",
     "ajv": "^8.17.1",
     "ajv-draft-04": "^1.0.0",

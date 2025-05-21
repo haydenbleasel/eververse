@@ -17,7 +17,6 @@
     "@repo/design-system": "workspace:*",
     "@repo/lib": "workspace:*",
     "@repo/observability": "workspace:*",
-    "@repo/tailwind-config": "workspace:*",
     "@tiptap-pro/extension-details": "^2.16.3",
     "@tiptap-pro/extension-details-content": "^2.16.3",
     "@tiptap-pro/extension-details-summary": "^2.16.3",

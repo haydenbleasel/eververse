@@ -32,7 +32,6 @@
     "@repo/productboard": "workspace:*",
     "@repo/seo": "workspace:*",
     "@repo/slack": "workspace:*",
-    "@repo/tailwind-config": "workspace:*",
     "@repo/widget": "workspace:*",
     "@t3-oss/env-nextjs": "^0.11.1",
     "@tanstack/react-query": "^5.63.0",
