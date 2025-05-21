@@ -2,6 +2,7 @@ generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["driverAdapters", "fullTextSearchPostgres", "postgresqlExtensions"]
   extensions      = ["vector"]
+  output          = "client"
 }
 
 datasource db {
