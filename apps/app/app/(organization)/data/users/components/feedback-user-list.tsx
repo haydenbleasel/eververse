@@ -2,6 +2,7 @@
 
 import { getFeedbackUsers } from '@/actions/feedback-user/list';
 import { ItemList } from '@/components/item-list';
+import { Avatar } from '@repo/design-system/components/precomposed/avatar';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { formatDate } from '@repo/lib/format';
 import { useInfiniteQuery } from '@tanstack/react-query';
@@ -42,10 +43,9 @@ export const FeedbackUsersList = () => {
           title: item.name,
           description: item.email,
           caption: formatDate(item.createdAt),
-          image: {
-            src: item.imageUrl,
-            fallback: item.name,
-          },
+          image: (
+            <Avatar src={item.imageUrl} fallback={item.name.slice(0, 2)} />
+          ),
         })) ?? []
       }
       fetchNextPage={fetchNextPage}

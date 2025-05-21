@@ -1,5 +1,5 @@
+import { CompanyLogo } from '@/app/(organization)/components/company-logo';
 import type { FeedbackUser } from '@repo/backend/prisma/client';
-import { Avatar } from '@repo/design-system/components/precomposed/avatar';
 import { Dialog } from '@repo/design-system/components/precomposed/dialog';
 import { Button } from '@repo/design-system/components/ui/button';
 import {
@@ -27,7 +27,7 @@ type FeedbackOrganizationPickerProperties = {
   readonly organizationsData: {
     readonly value: string;
     readonly label: string;
-    readonly image: string;
+    readonly image: string | null;
   }[];
   readonly value: string | null;
   readonly onChange: (value: string) => void;
@@ -78,7 +78,7 @@ export const FeedbackOrganizationPicker = ({
         <Button variant="secondary" aria-expanded={open} size="sm">
           {active ? (
             <div className="flex items-center gap-2">
-              <Avatar
+              <CompanyLogo
                 size={16}
                 src={active.image}
                 fallback={active.label.slice(0, 2)}

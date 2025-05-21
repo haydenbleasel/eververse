@@ -153,7 +153,7 @@ export const FeedbackSettingsDropdown = ({
               organizationsData={organizations.map((organization) => ({
                 value: organization.id,
                 label: organization.name,
-                image: `https://logo.clearbit.com/${organization.domain}`,
+                image: organization.domain,
               }))}
               value={feedbackOrganizationId}
               onChange={setFeedbackOrganizationId}

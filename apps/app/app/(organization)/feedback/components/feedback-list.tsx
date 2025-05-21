@@ -1,7 +1,9 @@
 'use client';
+
 import { getFeedback } from '@/actions/feedback/get';
 import { ItemList } from '@/components/item-list';
 import { useFeedbackOptions } from '@/hooks/use-feedback-options';
+import { Avatar } from '@repo/design-system/components/precomposed/avatar';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { formatDate } from '@repo/lib/format';
 import { useInfiniteQuery } from '@tanstack/react-query';
@@ -43,10 +45,12 @@ export const FeedbackList = () => {
           title: item.title,
           description: item.text,
           caption: formatDate(item.createdAt),
-          image: {
-            src: item.feedbackUser?.imageUrl,
-            fallback: item.feedbackUser?.imageUrl,
-          },
+          image: item.feedbackUser?.imageUrl ? (
+            <Avatar
+              src={item.feedbackUser.imageUrl}
+              fallback={item.feedbackUser.name.slice(0, 2)}
+            />
+          ) : undefined,
         })) ?? []
       }
       fetchNextPage={fetchNextPage}

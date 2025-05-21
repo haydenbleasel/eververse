@@ -1,3 +1,4 @@
+import { CompanyLogo } from '@/app/(organization)/components/company-logo';
 import { database } from '@/lib/database';
 import { EververseRole } from '@repo/backend/auth';
 import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
@@ -122,9 +123,9 @@ export const FeedbackPanel = async ({ feedbackId }: FeedbackPanelProps) => {
               className="flex items-center gap-2"
               href={`/data/companies/${feedback.feedbackUser.feedbackOrganization.id}`}
             >
-              <Avatar
+              <CompanyLogo
                 size={20}
-                src={`https://logo.clearbit.com/${feedback.feedbackUser.feedbackOrganization.domain}`}
+                src={feedback.feedbackUser.feedbackOrganization.domain}
                 fallback={feedback.feedbackUser.feedbackOrganization.name.slice(
                   0,
                   2
