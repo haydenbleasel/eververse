@@ -1,3 +1,15 @@
+# v1.1.0 (Wed May 21 2025)
+
+#### 🚀 Enhancement
+
+- Run Supabase locally for development [#24](https://github.com/haydenbleasel/eververse/pull/24) ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.0.12 (Tue Apr 08 2025)
 
 #### ⚠️ Pushed to `main`
