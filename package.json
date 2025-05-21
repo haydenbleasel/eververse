@@ -17,8 +17,8 @@
     "@repo/typescript-config": "workspace:*",
     "concurrently": "^9.1.2",
     "turbo": "^2.5.3",
-    "typescript": "^5.7.3",
-    "ultracite": "4.1.14"
+    "typescript": "^5.8.3",
+    "ultracite": "4.2.5"
   },
   "engines": {
     "node": ">=20"
@@ -52,5 +52,5 @@
       "react-dom": "19.0.0"
     }
   },
-  "packageManager": "pnpm@9.15.3"
+  "packageManager": "pnpm@10.11.0"
 }

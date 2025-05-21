@@ -9,25 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@atlaskit/adf-schema": "^46.1.0",
-    "@monaco-editor/react": "^4.6.0",
+    "@atlaskit/adf-schema": "^49.0.0",
+    "@monaco-editor/react": "^4.7.0",
     "@repo/design-system": "workspace:*",
     "@repo/editor": "workspace:*",
-    "@t3-oss/env-nextjs": "^0.11.1",
+    "@t3-oss/env-nextjs": "^0.13.4",
     "ajv": "^8.17.1",
     "ajv-draft-04": "^1.0.0",
     "better-ajv-errors": "^1.2.0",
     "next": "15.3.2",
-    "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
     "@types/node": "^22",
-    "@types/react": "19.0.4",
-    "@types/react-dom": "19.0.2",
+    "@types/react": "19.1.5",
+    "@types/react-dom": "19.1.5",
     "postcss": "^8",
-    "tailwindcss": "^3.4.17",
+    "tailwindcss": "^4.1.7",
     "typescript": "^5"
   }
 }

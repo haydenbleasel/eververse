@@ -7,13 +7,13 @@
     "@repo/typescript-config": "workspace:*",
     "@types/deep-equal": "^1.0.4",
     "@types/lodash.throttle": "^4.1.9",
-    "@types/react": "^19.0.4",
+    "@types/react": "^19.1.5",
     "tailwindcss": "^4.1.7",
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.3"
   },
   "dependencies": {
     "@excalidraw/excalidraw": "0.17.0",
-    "@react-hookz/web": "^25.0.1",
+    "@react-hookz/web": "^25.1.1",
     "@repo/lib": "workspace:*",
     "deep-equal": "^2.2.3",
     "lodash.throttle": "^4.1.1"
