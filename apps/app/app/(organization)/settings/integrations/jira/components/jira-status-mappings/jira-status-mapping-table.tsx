@@ -4,8 +4,8 @@ import { updateJiraStatusMappings } from '@/actions/installation-status-mapping/
 import type {
   AtlassianInstallation,
   InstallationStatusMapping,
-} from '@prisma/client';
-import type { FeatureStatus } from '@prisma/client';
+} from '@repo/backend/prisma/client';
+import type { FeatureStatus } from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { ArrowRightIcon } from 'lucide-react';
 import { useState } from 'react';

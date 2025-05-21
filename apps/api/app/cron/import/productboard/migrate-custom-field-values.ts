@@ -1,6 +1,6 @@
-import type { Prisma, ProductboardImport } from '@prisma/client';
 import { getMembers } from '@repo/backend/auth/utils';
 import { database } from '@repo/backend/database';
+import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
 import { log } from '@repo/observability/log';
 import { Productboard } from '@repo/productboard';
 

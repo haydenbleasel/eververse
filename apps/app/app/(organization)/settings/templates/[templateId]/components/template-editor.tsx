@@ -2,7 +2,7 @@
 
 import { updateTemplate } from '@/actions/template/update';
 import { staticify } from '@/lib/staticify';
-import type { Template } from '@prisma/client';
+import type { Template } from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import type { EditorInstance, JSONContent } from '@repo/editor';
 import dynamic from 'next/dynamic';

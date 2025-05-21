@@ -1,7 +1,7 @@
 'use client';
 
 import { generateChangelog } from '@/actions/changelog/generate';
-import type { Changelog } from '@prisma/client';
+import type { Changelog } from '@repo/backend/prisma/client';
 import { LoadingCircle } from '@repo/design-system/components/loading-circle';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { PencilIcon, SparklesIcon } from 'lucide-react';

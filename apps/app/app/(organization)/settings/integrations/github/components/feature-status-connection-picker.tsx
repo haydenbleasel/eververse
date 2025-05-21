@@ -1,7 +1,10 @@
 'use client';
 
 import { updateInstallationStatusMapping } from '@/actions/installation-status-mapping/update';
-import type { FeatureConnection, FeatureStatus } from '@prisma/client';
+import type {
+  FeatureConnection,
+  FeatureStatus,
+} from '@repo/backend/prisma/client';
 import { Select } from '@repo/design-system/components/precomposed/select';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { useState } from 'react';

@@ -1,4 +1,4 @@
-import type { Product } from '@prisma/client';
+import type { Product } from '@repo/backend/prisma/client';
 import { Emoji } from '@repo/design-system/components/emoji';
 import { Select } from '@repo/design-system/components/precomposed/select';
 

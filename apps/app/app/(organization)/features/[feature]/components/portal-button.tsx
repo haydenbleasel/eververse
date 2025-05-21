@@ -1,9 +1,9 @@
 import { database } from '@/lib/database';
 import { getPortalUrl } from '@/lib/portal';
-import type { Feature, PortalFeature } from '@prisma/client';
 import { EververseRole } from '@repo/backend/auth';
 import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
 import { getJsonColumnFromTable } from '@repo/backend/database';
+import type { Feature, PortalFeature } from '@repo/backend/prisma/client';
 import { Link } from '@repo/design-system/components/link';
 import { Button } from '@repo/design-system/components/ui/button';
 import { textToContent } from '@repo/editor/lib/tiptap';

@@ -2,7 +2,7 @@
 
 import { updateRelease } from '@/actions/release/update';
 import { DocumentInput } from '@/components/document-input';
-import type { Release } from '@prisma/client';
+import type { Release } from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 
 type ReleaseTitleProperties = {

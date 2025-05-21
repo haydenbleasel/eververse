@@ -2,7 +2,7 @@
 
 import { updateChangelog } from '@/actions/changelog/update';
 import { DocumentInput } from '@/components/document-input';
-import type { Changelog } from '@prisma/client';
+import type { Changelog } from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 
 type ChangelogTitleProperties = {

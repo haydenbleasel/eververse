@@ -2,7 +2,7 @@
 
 import { deleteStatus } from '@/actions/feature-status/delete';
 import { updateStatus } from '@/actions/feature-status/update';
-import type { Feature, FeatureStatus } from '@prisma/client';
+import type { Feature, FeatureStatus } from '@repo/backend/prisma/client';
 import { Input } from '@repo/design-system/components/precomposed/input';
 import { Switch } from '@repo/design-system/components/precomposed/switch';
 import { handleError } from '@repo/design-system/lib/handle-error';

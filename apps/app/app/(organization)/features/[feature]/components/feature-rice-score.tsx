@@ -1,5 +1,5 @@
 import { calculateRice, impactNumberMatrix } from '@/lib/rice';
-import type { FeatureRice } from '@prisma/client';
+import type { FeatureRice } from '@repo/backend/prisma/client';
 import {
   HoverCard,
   HoverCardContent,

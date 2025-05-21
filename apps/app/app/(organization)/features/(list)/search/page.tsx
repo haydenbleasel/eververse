@@ -1,13 +1,13 @@
 import { getFeatures } from '@/actions/feature/list';
 import { FeaturesList } from '@/app/(organization)/features/components/features-list';
 import { database } from '@/lib/database';
-import type { Prisma } from '@prisma/client';
 import { EververseRole } from '@repo/backend/auth';
 import {
   currentMembers,
   currentOrganizationId,
   currentUser,
 } from '@repo/backend/auth/utils';
+import type { Prisma } from '@repo/backend/prisma/client';
 import { createMetadata } from '@repo/seo/metadata';
 import {
   HydrationBoundary,

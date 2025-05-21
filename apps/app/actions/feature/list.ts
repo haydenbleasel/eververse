@@ -11,7 +11,7 @@ import type {
   PortalFeature,
   Prisma,
   Product,
-} from '@prisma/client';
+} from '@repo/backend/prisma/client';
 import { FEEDBACK_PAGE_SIZE } from '@repo/lib/consts';
 
 export type GetFeaturesResponse = (Pick<

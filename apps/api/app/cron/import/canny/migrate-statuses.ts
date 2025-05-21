@@ -1,5 +1,5 @@
-import type { CannyImport, Prisma } from '@prisma/client';
 import { database } from '@repo/backend/database';
+import type { CannyImport, Prisma } from '@repo/backend/prisma/client';
 import { Canny } from '@repo/canny';
 import { log } from '@repo/observability/log';
 import { tailwind } from '@repo/tailwind-config';

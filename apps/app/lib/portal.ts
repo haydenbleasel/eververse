@@ -1,7 +1,7 @@
 import { env } from '@/env';
 import { database } from '@/lib/database';
-import type { PortalFeature } from '@prisma/client';
 import { currentOrganizationId } from '@repo/backend/auth/utils';
+import type { PortalFeature } from '@repo/backend/prisma/client';
 
 export const getPortalUrl = async (
   portalId?: PortalFeature['id']

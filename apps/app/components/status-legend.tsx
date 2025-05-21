@@ -1,4 +1,4 @@
-import type { FeatureStatus } from '@prisma/client';
+import type { FeatureStatus } from '@repo/backend/prisma/client';
 import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
 import { Button } from '@repo/design-system/components/ui/button';
 import {

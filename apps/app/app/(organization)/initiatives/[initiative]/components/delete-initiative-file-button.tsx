@@ -1,7 +1,7 @@
 'use client';
 
 import { deleteInitiativeFile } from '@/actions/initiative-file/delete';
-import type { InitiativeFile } from '@prisma/client';
+import type { InitiativeFile } from '@repo/backend/prisma/client';
 import { LoadingCircle } from '@repo/design-system/components/loading-circle';
 import { AlertDialog } from '@repo/design-system/components/precomposed/alert-dialog';
 import { handleError } from '@repo/design-system/lib/handle-error';

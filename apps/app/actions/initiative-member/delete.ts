@@ -1,10 +1,10 @@
 'use server';
 
 import { database } from '@/lib/database';
-import type { Initiative } from '@prisma/client';
 import type { User } from '@repo/backend/auth';
 import { EververseRole } from '@repo/backend/auth';
 import { currentUser } from '@repo/backend/auth/utils';
+import type { Initiative } from '@repo/backend/prisma/client';
 import { parseError } from '@repo/lib/parse-error';
 import { revalidatePath } from 'next/cache';
 

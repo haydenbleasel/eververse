@@ -1,5 +1,5 @@
-import type { Prisma, ProductboardImport } from '@prisma/client';
 import { database } from '@repo/backend/database';
+import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
 import { emailRegex } from '@repo/lib/email';
 import { Productboard } from '@repo/productboard';
 import commonProviders from 'email-providers/all.json' assert { type: 'json' };

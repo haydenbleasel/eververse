@@ -1,7 +1,7 @@
 import 'server-only';
-import { PrismaClient } from '@prisma/client';
 import { createClient } from '@supabase/supabase-js';
 import { keys } from './keys';
+import { PrismaClient } from './prisma/client';
 
 const env = keys();
 const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);

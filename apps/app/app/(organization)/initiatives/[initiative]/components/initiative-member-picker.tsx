@@ -2,9 +2,9 @@
 
 import { addInitiativeMember } from '@/actions/initiative-member/create';
 import { deleteInitiativeMember } from '@/actions/initiative-member/delete';
-import type { Initiative } from '@prisma/client';
 import type { User } from '@repo/backend/auth';
 import { getUserName } from '@repo/backend/auth/format';
+import type { Initiative } from '@repo/backend/prisma/client';
 import { Select } from '@repo/design-system/components/precomposed/select';
 import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
 import { Button } from '@repo/design-system/components/ui/button';

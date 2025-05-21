@@ -1,5 +1,4 @@
 import { database } from '@/lib/database';
-import type { Initiative, InitiativeUpdate } from '@prisma/client';
 import { EververseRole } from '@repo/backend/auth';
 import { getUserName } from '@repo/backend/auth/format';
 import {
@@ -8,6 +7,7 @@ import {
   currentUser,
 } from '@repo/backend/auth/utils';
 import { getJsonColumnFromTable } from '@repo/backend/database';
+import type { Initiative, InitiativeUpdate } from '@repo/backend/prisma/client';
 import { StackCard } from '@repo/design-system/components/stack-card';
 import { Button } from '@repo/design-system/components/ui/button';
 import { contentToHtml, contentToText } from '@repo/editor/lib/tiptap';

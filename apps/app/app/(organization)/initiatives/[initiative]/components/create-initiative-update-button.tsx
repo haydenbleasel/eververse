@@ -1,7 +1,7 @@
 'use client';
 
 import { createInitiativeUpdate } from '@/actions/initiative-update/create';
-import type { Initiative } from '@prisma/client';
+import type { Initiative } from '@repo/backend/prisma/client';
 import { Dialog } from '@repo/design-system/components/precomposed/dialog';
 import { Input } from '@repo/design-system/components/precomposed/input';
 import { Button } from '@repo/design-system/components/ui/button';

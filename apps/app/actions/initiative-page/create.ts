@@ -1,9 +1,9 @@
 'use server';
 
 import { database } from '@/lib/database';
-import type { Initiative, InitiativePage } from '@prisma/client';
 import { EververseRole } from '@repo/backend/auth';
 import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
+import type { Initiative, InitiativePage } from '@repo/backend/prisma/client';
 import { MAX_FREE_INITIATIVE_PAGES } from '@repo/lib/consts';
 import { parseError } from '@repo/lib/parse-error';
 import { revalidatePath } from 'next/cache';

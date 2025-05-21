@@ -2,7 +2,7 @@ import { updateFeatures } from '@/actions/feature/bulk/update';
 import { FeatureGroupPicker } from '@/components/feature-form/feature-group-picker';
 import { FeatureProductPicker } from '@/components/feature-form/feature-product-picker';
 import { nestGroups } from '@/lib/group';
-import type { Feature, Group, Product } from '@prisma/client';
+import type { Feature, Group, Product } from '@repo/backend/prisma/client';
 import { Dialog } from '@repo/design-system/components/precomposed/dialog';
 import { Button } from '@repo/design-system/components/ui/button';
 import { handleError } from '@repo/design-system/lib/handle-error';

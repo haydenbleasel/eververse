@@ -1,5 +1,5 @@
 import { useDraggable } from '@dnd-kit/core';
-import type { FeatureStatus } from '@prisma/client';
+import type { FeatureStatus } from '@repo/backend/prisma/client';
 import { cn } from '@repo/design-system/lib/utils';
 
 export const FeatureStatusCard = ({

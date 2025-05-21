@@ -1,6 +1,6 @@
 import { createFeedbackOrganization } from '@/actions/feedback-organization/create';
-import type { FeedbackUser } from '@prisma/client';
 import type { User } from '@repo/backend/auth';
+import type { FeedbackUser } from '@repo/backend/prisma/client';
 import { Input } from '@repo/design-system/components/precomposed/input';
 import { Button } from '@repo/design-system/components/ui/button';
 import { handleError } from '@repo/design-system/lib/handle-error';

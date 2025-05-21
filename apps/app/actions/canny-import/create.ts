@@ -2,8 +2,8 @@
 
 import { createPortal } from '@/actions/portal/create';
 import { database } from '@/lib/database';
-import type { canny_import_job_type } from '@prisma/client';
 import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
+import type { canny_import_job_type } from '@repo/backend/prisma/client';
 import { Canny } from '@repo/canny';
 import { parseError } from '@repo/lib/parse-error';
 import { revalidatePath } from 'next/cache';

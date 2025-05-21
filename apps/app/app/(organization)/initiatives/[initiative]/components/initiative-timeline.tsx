@@ -2,6 +2,7 @@
 
 import { FeatureItemInner } from '@/components/roadmap-item';
 import { useRoadmap } from '@/hooks/use-roadmap';
+import type { User } from '@repo/backend/auth';
 import type {
   Feature,
   FeatureStatus,
@@ -9,8 +10,7 @@ import type {
   Initiative,
   Product,
   Release,
-} from '@prisma/client';
-import type { User } from '@repo/backend/auth';
+} from '@repo/backend/prisma/client';
 import { Dialog } from '@repo/design-system/components/precomposed/dialog';
 import { Select } from '@repo/design-system/components/precomposed/select';
 import * as Gantt from '@repo/design-system/components/roadmap-ui/gantt';

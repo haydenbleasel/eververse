@@ -1,6 +1,6 @@
-import type { Prisma } from '@prisma/client';
 import { createOauth2Client } from '@repo/atlassian';
 import { database } from '@repo/backend/database';
+import type { Prisma } from '@repo/backend/prisma/client';
 import { parseError } from '@repo/lib/parse-error';
 import { log } from '@repo/observability/log';
 import { NextResponse } from 'next/server';

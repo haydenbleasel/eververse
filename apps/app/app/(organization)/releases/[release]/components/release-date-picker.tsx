@@ -1,7 +1,7 @@
 'use client';
 
 import { updateRelease } from '@/actions/release/update';
-import type { Release } from '@prisma/client';
+import type { Release } from '@repo/backend/prisma/client';
 import {
   Calendar,
   type DateRange,

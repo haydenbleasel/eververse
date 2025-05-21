@@ -1,9 +1,9 @@
+import { database } from '@repo/backend/database';
 import type {
   FeedbackOrganization,
   Prisma,
   ProductboardImport,
-} from '@prisma/client';
-import { database } from '@repo/backend/database';
+} from '@repo/backend/prisma/client';
 import { emailRegex } from '@repo/lib/email';
 import { getGravatarUrl } from '@repo/lib/gravatar';
 import { Productboard } from '@repo/productboard';

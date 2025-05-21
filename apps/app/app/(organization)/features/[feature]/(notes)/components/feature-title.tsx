@@ -2,7 +2,7 @@
 
 import { updateFeature } from '@/actions/feature/update';
 import { DocumentInput } from '@/components/document-input';
-import type { Feature } from '@prisma/client';
+import type { Feature } from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 
 type FeatureTitleProperties = {

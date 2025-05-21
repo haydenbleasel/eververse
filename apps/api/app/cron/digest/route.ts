@@ -1,7 +1,7 @@
-import type { Prisma } from '@prisma/client';
 import { generateText } from '@repo/ai';
 import { textModel } from '@repo/ai/lib/models';
 import { database } from '@repo/backend/database';
+import type { Prisma } from '@repo/backend/prisma/client';
 import { log } from '@repo/observability/log';
 import { subDays } from 'date-fns';
 import { NextResponse } from 'next/server';

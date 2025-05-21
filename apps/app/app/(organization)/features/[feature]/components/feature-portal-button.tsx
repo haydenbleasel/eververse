@@ -3,7 +3,7 @@
 import { addFeatureToPortal } from '@/actions/portal-feature/create';
 import { editFeaturePortal } from '@/actions/portal-feature/update';
 import { zodResolver } from '@hookform/resolvers/zod';
-import type { Feature, PortalFeature } from '@prisma/client';
+import type { Feature, PortalFeature } from '@repo/backend/prisma/client';
 import { Dialog } from '@repo/design-system/components/precomposed/dialog';
 import { Input } from '@repo/design-system/components/precomposed/input';
 import { Button } from '@repo/design-system/components/ui/button';

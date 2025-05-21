@@ -1,8 +1,8 @@
 'use server';
 
 import { database } from '@/lib/database';
-import type { Widget, WidgetItem } from '@prisma/client';
 import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
+import type { Widget, WidgetItem } from '@repo/backend/prisma/client';
 import { parseError } from '@repo/lib/parse-error';
 import { revalidatePath } from 'next/cache';
 

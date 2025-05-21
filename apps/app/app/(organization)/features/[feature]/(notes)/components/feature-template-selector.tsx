@@ -2,7 +2,7 @@
 
 import { updateFeatureFromTemplate } from '@/actions/feature/update';
 import { OrDivider } from '@/components/or-divider';
-import type { Feature } from '@prisma/client';
+import type { Feature } from '@repo/backend/prisma/client';
 import { Button } from '@repo/design-system/components/ui/button';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { cn } from '@repo/design-system/lib/utils';

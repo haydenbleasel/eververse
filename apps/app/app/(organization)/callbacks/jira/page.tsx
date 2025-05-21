@@ -1,8 +1,8 @@
 import { env } from '@/env';
 import { database } from '@/lib/database';
-import type { Prisma } from '@prisma/client';
 import { createOauth2Client } from '@repo/atlassian';
 import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
+import type { Prisma } from '@repo/backend/prisma/client';
 import { baseUrl } from '@repo/lib/consts';
 import { log } from '@repo/observability/log';
 import { createMetadata } from '@repo/seo/metadata';

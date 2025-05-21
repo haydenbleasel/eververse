@@ -1,9 +1,9 @@
 'use server';
 
 import { database } from '@/lib/database';
-import type { InitiativeCanvas } from '@prisma/client';
 import { EververseRole } from '@repo/backend/auth';
 import { currentUser } from '@repo/backend/auth/utils';
+import type { InitiativeCanvas } from '@repo/backend/prisma/client';
 import { parseError } from '@repo/lib/parse-error';
 
 export const updateInitiativeCanvas = async (

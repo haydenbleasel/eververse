@@ -1,12 +1,12 @@
+import type { User } from '@repo/backend/auth';
+import { getUserName } from '@repo/backend/auth/format';
 import type {
   Feature,
   FeatureStatus,
   Group,
   Initiative,
   Product,
-} from '@prisma/client';
-import type { User } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
+} from '@repo/backend/prisma/client';
 import { Avatar } from '@repo/design-system/components/precomposed/avatar';
 import { Button } from '@repo/design-system/components/ui/button';
 import {

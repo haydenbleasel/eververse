@@ -1,5 +1,5 @@
-import type { Prisma, ProductboardImport } from '@prisma/client';
 import { database } from '@repo/backend/database';
+import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
 import { slugify } from '@repo/lib/slugify';
 import { Productboard } from '@repo/productboard';
 

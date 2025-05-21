@@ -13,7 +13,6 @@ export const keys = () =>
 
       // URLs
       EVERVERSE_API_URL: z.string().url().min(1),
-      EVERVERSE_DOCS_URL: z.string().url().min(1),
       EVERVERSE_PORTAL_URL: z.string().url().min(1),
       EVERVERSE_ADMIN_ORGANIZATION_ID: z.string().min(1),
 
@@ -28,7 +27,6 @@ export const keys = () =>
         process.env.EVERVERSE_ADMIN_ORGANIZATION_ID,
       EVERVERSE_API_URL: process.env.EVERVERSE_API_URL,
       EVERVERSE_PORTAL_URL: process.env.EVERVERSE_PORTAL_URL,
-      EVERVERSE_DOCS_URL: process.env.EVERVERSE_DOCS_URL,
       NODE_ENV: process.env.NODE_ENV,
     },
   });

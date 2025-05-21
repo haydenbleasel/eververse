@@ -2,7 +2,6 @@
 
 import { env } from '@/env';
 import { database } from '@/lib/database';
-import type { InitiativeUpdate } from '@prisma/client';
 import { EververseRole } from '@repo/backend/auth';
 import { getUserName } from '@repo/backend/auth/format';
 import {
@@ -11,6 +10,7 @@ import {
   currentUser,
 } from '@repo/backend/auth/utils';
 import { getJsonColumnFromTable } from '@repo/backend/database';
+import type { InitiativeUpdate } from '@repo/backend/prisma/client';
 import { contentToHtml, contentToText } from '@repo/editor/lib/tiptap';
 import { resend } from '@repo/email';
 import { InitiativeUpdateTemplate } from '@repo/email/templates/initiative-update';

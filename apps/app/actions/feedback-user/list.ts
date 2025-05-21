@@ -1,7 +1,7 @@
 'use server';
 
 import { database } from '@/lib/database';
-import type { FeedbackUser } from '@prisma/client';
+import type { FeedbackUser } from '@repo/backend/prisma/client';
 import { FEEDBACK_PAGE_SIZE } from '@repo/lib/consts';
 
 export type GetFeedbackUsersResponse = Pick<

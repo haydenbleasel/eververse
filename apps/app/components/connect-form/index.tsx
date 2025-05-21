@@ -4,7 +4,7 @@ import type {
   AtlassianInstallation,
   GitHubInstallation,
   LinearInstallation,
-} from '@prisma/client';
+} from '@repo/backend/prisma/client';
 import { Dialog } from '@repo/design-system/components/precomposed/dialog';
 import { cn } from '@repo/design-system/lib/utils';
 import Image from 'next/image';

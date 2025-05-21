@@ -1,4 +1,3 @@
-import { env } from '@/env';
 import { Container } from '@repo/design-system/components/container';
 import { Link } from '@repo/design-system/components/link';
 import { Logo } from '@repo/design-system/components/logo';
@@ -13,7 +12,6 @@ import {
 import { cn } from '@repo/design-system/lib/utils';
 import {
   ArrowRightIcon,
-  BookIcon,
   CalendarIcon,
   CodeIcon,
   CreditCardIcon,
@@ -31,11 +29,6 @@ const links = [
     href: '/contact',
     label: 'Contact',
     icon: MessageSquareIcon,
-  },
-  {
-    href: env.EVERVERSE_DOCS_URL,
-    label: 'Docs',
-    icon: BookIcon,
   },
   {
     href: 'https://eververse.eververse.ai',

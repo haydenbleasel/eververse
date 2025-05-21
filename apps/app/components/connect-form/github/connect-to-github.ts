@@ -1,8 +1,8 @@
 'use server';
 
 import { database } from '@/lib/database';
-import type { Feature } from '@prisma/client';
 import { currentOrganizationId } from '@repo/backend/auth/utils';
+import type { Feature } from '@repo/backend/prisma/client';
 import { createOctokit } from '@repo/github';
 import { baseUrl } from '@repo/lib/consts';
 import { parseError } from '@repo/lib/parse-error';

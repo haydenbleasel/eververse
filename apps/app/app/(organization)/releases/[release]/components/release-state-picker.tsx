@@ -1,7 +1,7 @@
 'use client';
 
 import { updateRelease } from '@/actions/release/update';
-import type { Release, release_state } from '@prisma/client';
+import type { Release, release_state } from '@repo/backend/prisma/client';
 import { Select } from '@repo/design-system/components/precomposed/select';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { tailwind } from '@repo/tailwind-config';

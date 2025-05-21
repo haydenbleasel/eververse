@@ -1,13 +1,13 @@
 import { updateFeatures } from '@/actions/feature/bulk/update';
+import type { User } from '@repo/backend/auth';
+import { getUserName } from '@repo/backend/auth/format';
 import type {
   Feature,
   FeatureStatus,
   Group,
   Product,
   Release,
-} from '@prisma/client';
-import type { User } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
+} from '@repo/backend/prisma/client';
 import { Select } from '@repo/design-system/components/precomposed/select';
 import { useSidebar } from '@repo/design-system/components/ui/sidebar';
 import { handleError } from '@repo/design-system/lib/handle-error';

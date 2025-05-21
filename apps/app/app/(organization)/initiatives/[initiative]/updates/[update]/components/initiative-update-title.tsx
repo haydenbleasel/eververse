@@ -2,7 +2,7 @@
 
 import { updateInitiativeUpdate } from '@/actions/initiative-update/update';
 import { DocumentInput } from '@/components/document-input';
-import type { InitiativeUpdate } from '@prisma/client';
+import type { InitiativeUpdate } from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 
 type InitiativeUpdateTitleProperties = {

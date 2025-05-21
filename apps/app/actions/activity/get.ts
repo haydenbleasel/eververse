@@ -1,6 +1,11 @@
 'use server';
 
 import { database } from '@/lib/database';
+import { getUserName } from '@repo/backend/auth/format';
+import {
+  currentMembers,
+  currentOrganizationId,
+} from '@repo/backend/auth/utils';
 import type {
   ApiKey,
   Changelog,
@@ -19,12 +24,7 @@ import type {
   Product,
   Release,
   WidgetItem,
-} from '@prisma/client';
-import { getUserName } from '@repo/backend/auth/format';
-import {
-  currentMembers,
-  currentOrganizationId,
-} from '@repo/backend/auth/utils';
+} from '@repo/backend/prisma/client';
 import { subDays } from 'date-fns';
 
 export type GetActivityResponse = {

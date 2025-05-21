@@ -4,7 +4,7 @@ import { updateJiraFieldMappings } from '@/actions/installation-field-mapping/ji
 import type {
   AtlassianInstallation,
   InstallationFieldMapping,
-} from '@prisma/client';
+} from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { ArrowRightIcon, CalendarIcon } from 'lucide-react';
 import { useState } from 'react';

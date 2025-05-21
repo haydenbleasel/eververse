@@ -1,7 +1,7 @@
 'use client';
 
 import { deleteRelease } from '@/actions/release/delete';
-import type { Release } from '@prisma/client';
+import type { Release } from '@repo/backend/prisma/client';
 import { AlertDialog } from '@repo/design-system/components/precomposed/alert-dialog';
 import { DropdownMenu } from '@repo/design-system/components/precomposed/dropdown-menu';
 import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';

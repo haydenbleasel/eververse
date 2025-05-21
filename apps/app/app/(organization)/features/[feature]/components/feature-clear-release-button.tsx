@@ -1,7 +1,7 @@
 'use client';
 
 import { updateFeature } from '@/actions/feature/update';
-import type { Feature } from '@prisma/client';
+import type { Feature } from '@repo/backend/prisma/client';
 import { Button } from '@repo/design-system/components/ui/button';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { toast } from '@repo/design-system/lib/toast';

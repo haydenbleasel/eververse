@@ -2,7 +2,7 @@
 
 import { updateChangelog } from '@/actions/changelog/update';
 import { staticify } from '@/lib/staticify';
-import type { Changelog } from '@prisma/client';
+import type { Changelog } from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import type { EditorInstance, JSONContent } from '@repo/editor';
 import dynamic from 'next/dynamic';

@@ -1,8 +1,8 @@
 'use client';
 
 import { createInitiativeFile } from '@/actions/initiative-file/create';
-import type { Initiative } from '@prisma/client';
 import { createClient } from '@repo/backend/auth/client';
+import type { Initiative } from '@repo/backend/prisma/client';
 import { LoadingCircle } from '@repo/design-system/components/loading-circle';
 import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
 import { Button } from '@repo/design-system/components/ui/button';

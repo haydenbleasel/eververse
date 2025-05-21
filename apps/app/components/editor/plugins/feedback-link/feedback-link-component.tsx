@@ -1,5 +1,5 @@
 import { FeedbackItem } from '@/app/(organization)/feedback/components/feedback-item';
-import type { Feedback } from '@prisma/client';
+import type { Feedback } from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { NodeViewWrapper } from '@repo/editor';
 import { useEffect, useState } from 'react';

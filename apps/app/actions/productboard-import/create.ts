@@ -1,8 +1,8 @@
 'use server';
 
 import { database } from '@/lib/database';
-import type { productboard_import_job_type } from '@prisma/client';
 import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
+import type { productboard_import_job_type } from '@repo/backend/prisma/client';
 import { parseError } from '@repo/lib/parse-error';
 import { Productboard } from '@repo/productboard';
 import { revalidatePath } from 'next/cache';

@@ -1,7 +1,7 @@
 'use client';
 
 import { updateFeature } from '@/actions/feature/update';
-import type { Feature, Product } from '@prisma/client';
+import type { Feature, Product } from '@repo/backend/prisma/client';
 import { Emoji } from '@repo/design-system/components/emoji';
 import { Select } from '@repo/design-system/components/precomposed/select';
 import { handleError } from '@repo/design-system/lib/handle-error';

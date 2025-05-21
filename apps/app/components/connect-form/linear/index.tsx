@@ -1,5 +1,5 @@
 import { OrDivider } from '@/components/or-divider';
-import type { LinearInstallation } from '@prisma/client';
+import type { LinearInstallation } from '@repo/backend/prisma/client';
 import { Button } from '@repo/design-system/components/ui/button';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import type { Issue, Team } from '@repo/linear';

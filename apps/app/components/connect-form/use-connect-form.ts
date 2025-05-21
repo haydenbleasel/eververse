@@ -1,4 +1,4 @@
-import type { Feature } from '@prisma/client';
+import type { Feature } from '@repo/backend/prisma/client';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 

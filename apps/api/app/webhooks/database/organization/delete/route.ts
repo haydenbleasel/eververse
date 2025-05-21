@@ -1,4 +1,4 @@
-import type { Organization } from '@prisma/client';
+import type { Organization } from '@repo/backend/prisma/client';
 import { log } from '@repo/observability/log';
 import { stripe } from '@repo/payments';
 

@@ -3,10 +3,10 @@ import * as SettingsBar from '@/components/settings-bar';
 
 import { database } from '@/lib/database';
 import { staticify } from '@/lib/staticify';
-import type { Initiative } from '@prisma/client';
 import { EververseRole } from '@repo/backend/auth';
 import { getUserName } from '@repo/backend/auth/format';
 import { currentMembers, currentUser } from '@repo/backend/auth/utils';
+import type { Initiative } from '@repo/backend/prisma/client';
 import { Emoji } from '@repo/design-system/components/emoji';
 import { Link } from '@repo/design-system/components/link';
 import { formatDate } from '@repo/lib/format';

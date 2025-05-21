@@ -1,7 +1,7 @@
 'use client';
 
 import { useDroppable } from '@dnd-kit/core';
-import type { FeatureStatus } from '@prisma/client';
+import type { FeatureStatus } from '@repo/backend/prisma/client';
 import { cn } from '@repo/design-system/lib/utils';
 import { FeatureStatusCard } from './feature-status-card';
 
