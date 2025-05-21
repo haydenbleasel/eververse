@@ -47,7 +47,7 @@ const APIPage = async () => {
     notFound();
   }
 
-  if (organization.stripeSubscriptionId) {
+  if (!organization.stripeSubscriptionId) {
     return (
       <div className="flex h-full items-center justify-center">
         <EmptyState
