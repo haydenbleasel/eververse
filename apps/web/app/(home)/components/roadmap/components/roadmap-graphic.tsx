@@ -1,7 +1,7 @@
 'use client';
 
 import * as Gantt from '@repo/design-system/components/roadmap-ui/gantt';
-import { tailwind } from '@repo/tailwind-config';
+import { colors } from '@repo/design-system/lib/colors';
 import { addDays, addMonths, subDays, subMonths } from 'date-fns';
 import Image from 'next/image';
 
@@ -20,7 +20,7 @@ const data: (Gantt.GanttFeature & {
     status: {
       id: '1',
       name: '',
-      color: tailwind.theme.colors.emerald[500],
+      color: colors.emerald,
     },
     owner: {
       id: '1',
@@ -36,7 +36,7 @@ const data: (Gantt.GanttFeature & {
     status: {
       id: '2',
       name: '',
-      color: tailwind.theme.colors.gray[500],
+      color: colors.gray,
     },
     owner: {
       id: '1',
@@ -52,7 +52,7 @@ const data: (Gantt.GanttFeature & {
     status: {
       id: '3',
       name: '',
-      color: tailwind.theme.colors.emerald[500],
+      color: colors.emerald,
     },
     owner: {
       id: '1',
@@ -68,7 +68,7 @@ const data: (Gantt.GanttFeature & {
     status: {
       id: '4',
       name: '',
-      color: tailwind.theme.colors.yellow[500],
+      color: colors.yellow,
     },
     owner: {
       id: '1',
@@ -84,7 +84,7 @@ const data: (Gantt.GanttFeature & {
     status: {
       id: '5',
       name: '',
-      color: tailwind.theme.colors.emerald[500],
+      color: colors.emerald,
     },
     owner: {
       id: '1',
@@ -100,7 +100,7 @@ const data: (Gantt.GanttFeature & {
     status: {
       id: '6',
       name: '',
-      color: tailwind.theme.colors.blue[500],
+      color: colors.blue,
     },
     owner: {
       id: '2',
@@ -116,7 +116,7 @@ const data: (Gantt.GanttFeature & {
     status: {
       id: '7',
       name: '',
-      color: tailwind.theme.colors.red[500],
+      color: colors.red,
     },
     owner: {
       id: '3',
@@ -132,7 +132,7 @@ const data: (Gantt.GanttFeature & {
     status: {
       id: '8',
       name: '',
-      color: tailwind.theme.colors.purple[500],
+      color: colors.purple,
     },
     owner: {
       id: '4',
@@ -148,7 +148,7 @@ const data: (Gantt.GanttFeature & {
     status: {
       id: '9',
       name: '',
-      color: tailwind.theme.colors.orange[500],
+      color: colors.orange,
     },
     owner: {
       id: '5',
@@ -164,7 +164,7 @@ const data: (Gantt.GanttFeature & {
     status: {
       id: '10',
       name: '',
-      color: tailwind.theme.colors.teal[500],
+      color: colors.teal,
     },
     owner: {
       id: '6',

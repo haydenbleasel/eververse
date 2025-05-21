@@ -8,9 +8,9 @@ import type {
   PortalStatus,
   PortalStatusMapping,
 } from '@repo/backend/prisma/client';
+import { colors } from '@repo/design-system/lib/colors';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { toast } from '@repo/design-system/lib/toast';
-import { tailwind } from '@repo/tailwind-config';
 import { useState } from 'react';
 import { FeatureStatusColumn } from './feature-status-column';
 
@@ -110,7 +110,7 @@ export const StatusMappingsForm = ({
       </div>
       <div className="mt-2">
         <FeatureStatusColumn
-          color={tailwind.theme.colors.rose[500]}
+          color={colors.rose}
           name="Unmapped"
           id="unmapped"
           items={statuses.filter(

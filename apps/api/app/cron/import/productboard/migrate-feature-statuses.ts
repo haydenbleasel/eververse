@@ -1,7 +1,7 @@
 import { database } from '@repo/backend/database';
 import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
+import { colors } from '@repo/design-system/lib/colors';
 import { Productboard } from '@repo/productboard';
-import { tailwind } from '@repo/tailwind-config';
 
 type ImportJobProperties = Pick<
   ProductboardImport,
@@ -36,7 +36,7 @@ export const migrateFeatureStatuses = async ({
       organizationId,
       complete: status.completed,
       productboardId: status.id,
-      color: status.completed ? tailwind.theme.colors.emerald[500] : undefined,
+      color: status.completed ? colors.emerald : undefined,
       order: existingFeatureStatuses.length + index,
     }));
 

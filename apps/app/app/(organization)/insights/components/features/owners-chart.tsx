@@ -4,8 +4,8 @@ import { currentMembers } from '@repo/backend/auth/utils';
 import { BarChart } from '@repo/design-system/components/charts/bar';
 import type { BarChartProperties } from '@repo/design-system/components/charts/bar';
 import { StackCard } from '@repo/design-system/components/stack-card';
+import { colors } from '@repo/design-system/lib/colors';
 import { slugify } from '@repo/lib/slugify';
-import { tailwind } from '@repo/tailwind-config';
 import { UserCircleIcon } from 'lucide-react';
 
 export const OwnersChart = async () => {
@@ -50,7 +50,7 @@ export const OwnersChart = async () => {
   for (const [_index, item] of data.entries()) {
     config[item.id] = {
       label: item.name,
-      color: tailwind.theme.colors.violet[500],
+      color: colors.violet,
     };
   }
 
@@ -60,7 +60,7 @@ export const OwnersChart = async () => {
         data={data}
         config={config}
         className="mx-auto h-80"
-        color={tailwind.theme.colors.violet[500]}
+        color={colors.violet}
         xAxisKey="count"
         yAxisKey="name"
       />

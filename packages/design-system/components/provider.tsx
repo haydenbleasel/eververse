@@ -1,6 +1,6 @@
 'use client';
 
-import { tailwind } from '@repo/tailwind-config';
+import { colors } from '@repo/design-system/lib/colors';
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 import { ThemeProvider as NextThemesProvider, useTheme } from 'next-themes';
 import type { ThemeProviderProps } from 'next-themes';
@@ -45,7 +45,7 @@ export const DesignSystemProvider = ({
     <Toaster />
     <ProgressBar
       height="2px"
-      color={tailwind.theme.colors.violet[500]}
+      color={colors.violet}
       options={{ showSpinner: false }}
       shallowRouting
     />

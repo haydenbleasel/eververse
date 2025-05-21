@@ -5,8 +5,8 @@ import type { InitiativeUpdate } from '@repo/backend/prisma/client';
 import { Link } from '@repo/design-system/components/link';
 import { StackCard } from '@repo/design-system/components/stack-card';
 import { Separator } from '@repo/design-system/components/ui/separator';
+import { colors } from '@repo/design-system/lib/colors';
 import { formatDate } from '@repo/lib/format';
-import { tailwind } from '@repo/tailwind-config';
 import { NewspaperIcon } from 'lucide-react';
 import { CreateInitiativeUpdateButton } from './create-initiative-update-button';
 
@@ -18,37 +18,37 @@ const getColor = (
 ) => {
   // Not sending to any channels
   if (!update.sendEmail && !update.sendSlack) {
-    return tailwind.theme.colors.neutral[500];
+    return colors.gray;
   }
 
   // If sending to both channels...
   if (update.sendEmail && update.sendSlack) {
     // If both have been sent
     if (update.emailSentAt && update.slackSentAt) {
-      return tailwind.theme.colors.emerald[500];
+      return colors.emerald;
     }
     // If one has been sent
-    return tailwind.theme.colors.amber[500];
+    return colors.amber;
   }
 
   // If sending to email only
   if (update.emailSentAt) {
     if (update.sendEmail) {
-      return tailwind.theme.colors.emerald[500];
+      return colors.emerald;
     }
-    return tailwind.theme.colors.amber[500];
+    return colors.amber;
   }
 
   // If sending to slack only
   if (update.slackSentAt && update.sendSlack) {
     if (update.sendSlack) {
-      return tailwind.theme.colors.emerald[500];
+      return colors.emerald;
     }
-    return tailwind.theme.colors.amber[500];
+    return colors.amber;
   }
 
   // If not sending to any channels
-  return tailwind.theme.colors.neutral[500];
+  return colors.gray;
 };
 
 export const InitiativeUpdatesCard = async ({

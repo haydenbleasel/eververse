@@ -1,6 +1,6 @@
 'use client';
 
-import { tailwind } from '@repo/tailwind-config';
+import { colors } from '@repo/design-system/lib/colors';
 import { GripVerticalIcon } from 'lucide-react';
 import { LazyMotion, Reorder, domMax, useInView } from 'motion/react';
 import { useRef, useState } from 'react';
@@ -9,22 +9,22 @@ const statuses = [
   {
     name: 'Backlog',
     count: 10,
-    color: tailwind.theme.colors.gray[500],
+    color: colors.gray,
   },
   {
     name: 'In Progress',
     count: 5,
-    color: tailwind.theme.colors.amber[500],
+    color: colors.amber,
   },
   {
     name: 'In Review',
     count: 6,
-    color: tailwind.theme.colors.sky[500],
+    color: colors.sky,
   },
   {
     name: 'Done',
     count: 3,
-    color: tailwind.theme.colors.emerald[500],
+    color: colors.emerald,
   },
 ];
 

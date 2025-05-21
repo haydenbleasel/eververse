@@ -1,7 +1,7 @@
 'use client';
 
 import type { release_state } from '@repo/backend/prisma/client';
-import { tailwind } from '@repo/tailwind-config';
+import { colors } from '@repo/design-system/lib/colors';
 import { useInView } from 'motion/react';
 import { useRef } from 'react';
 
@@ -13,22 +13,22 @@ const statuses: {
   {
     name: 'Planned',
     id: 'PLANNED',
-    color: tailwind.theme.colors.gray[700],
+    color: colors.gray,
   },
   {
     name: 'In Progress',
     id: 'ACTIVE',
-    color: tailwind.theme.colors.amber[500],
+    color: colors.amber,
   },
   {
     name: 'Completed',
     id: 'COMPLETED',
-    color: tailwind.theme.colors.emerald[500],
+    color: colors.emerald,
   },
   {
     name: 'Cancelled',
     id: 'CANCELLED',
-    color: tailwind.theme.colors.rose[500],
+    color: colors.rose,
   },
 ];
 

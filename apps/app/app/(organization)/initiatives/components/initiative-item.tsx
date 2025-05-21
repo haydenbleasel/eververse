@@ -9,9 +9,9 @@ import type {
 } from '@repo/backend/prisma/client';
 import { Emoji } from '@repo/design-system/components/emoji';
 import { Link } from '@repo/design-system/components/link';
+import { colors } from '@repo/design-system/lib/colors';
 import { cn } from '@repo/design-system/lib/utils';
 import { contentToText } from '@repo/editor/lib/tiptap';
-import { tailwind } from '@repo/tailwind-config';
 import { ArrowRightIcon } from 'lucide-react';
 
 type InitiativeItemProps = {
@@ -24,18 +24,18 @@ type InitiativeItemProps = {
 
 const getBackgroundColor = (state: Initiative['state']) => {
   if (state === 'COMPLETED') {
-    return tailwind.theme.colors.emerald[500];
+    return colors.emerald;
   }
 
   if (state === 'ACTIVE') {
-    return tailwind.theme.colors.amber[500];
+    return colors.amber;
   }
 
   if (state === 'CANCELLED') {
-    return tailwind.theme.colors.rose[500];
+    return colors.rose;
   }
 
-  return tailwind.theme.colors.gray[200];
+  return colors.gray;
 };
 
 export const InitiativeItem = async ({

@@ -4,7 +4,7 @@ import {
   type AreaChartProperties,
 } from '@repo/design-system/components/charts/area';
 import { StackCard } from '@repo/design-system/components/stack-card';
-import { tailwind } from '@repo/tailwind-config';
+import { colors } from '@repo/design-system/lib/colors';
 import { ChartAreaIcon } from 'lucide-react';
 
 export const IncomingChart = async () => {
@@ -15,7 +15,7 @@ export const IncomingChart = async () => {
   const config: AreaChartProperties['config'] = {
     feedback: {
       label: 'Feedback',
-      color: tailwind.theme.colors.violet[500],
+      color: colors.violet,
     },
   };
 

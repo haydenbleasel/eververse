@@ -3,8 +3,8 @@
 import { database } from '@/lib/database';
 import { currentOrganizationId } from '@repo/backend/auth/utils';
 import type { Prisma } from '@repo/backend/prisma/client';
+import { colors } from '@repo/design-system/lib/colors';
 import { parseError } from '@repo/lib/parse-error';
-import { tailwind } from '@repo/tailwind-config';
 import { friendlyWords } from 'friendlier-words';
 import { revalidatePath } from 'next/cache';
 
@@ -48,19 +48,19 @@ export const createPortal = async (): Promise<{
               {
                 name: 'Backlog',
                 order: 0,
-                color: tailwind.theme.colors.gray[500],
+                color: colors.gray,
                 organizationId: organization.id,
               },
               {
                 name: 'In Progress',
                 order: 1,
-                color: tailwind.theme.colors.yellow[500],
+                color: colors.yellow,
                 organizationId: organization.id,
               },
               {
                 name: 'Shipped',
                 order: 2,
-                color: tailwind.theme.colors.green[500],
+                color: colors.green,
                 organizationId: organization.id,
               },
             ],

@@ -1,8 +1,8 @@
 import { database } from '@repo/backend/database';
 import type { CannyImport, Prisma } from '@repo/backend/prisma/client';
 import { Canny } from '@repo/canny';
+import { colors } from '@repo/design-system/lib/colors';
 import { log } from '@repo/observability/log';
-import { tailwind } from '@repo/tailwind-config';
 
 type ImportJobProperties = Pick<
   CannyImport,
@@ -12,25 +12,25 @@ type ImportJobProperties = Pick<
 const getColorForStatus = (status: string): string => {
   switch (status) {
     case 'open': {
-      return tailwind.theme.colors.gray[500];
+      return colors.gray;
     }
     case 'under review': {
-      return tailwind.theme.colors.teal[500];
+      return colors.teal;
     }
     case 'planned': {
-      return tailwind.theme.colors.blue[500];
+      return colors.blue;
     }
     case 'in progress': {
-      return tailwind.theme.colors.violet[500];
+      return colors.violet;
     }
     case 'complete': {
-      return tailwind.theme.colors.emerald[500];
+      return colors.emerald;
     }
     case 'closed': {
-      return tailwind.theme.colors.rose[500];
+      return colors.rose;
     }
     default: {
-      return tailwind.theme.colors.gray[500];
+      return colors.gray;
     }
   }
 };
