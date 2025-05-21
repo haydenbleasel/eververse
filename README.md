@@ -1,5 +1,10 @@
 # Eververse
 
+<div>
+  <img src="https://img.shields.io/github/actions/workflow/status/haydenbleasel/eververse/release.yml" alt="" />
+  <img src="https://img.shields.io/github/license/haydenbleasel/eververse" alt="" />
+</div>
+
 Eververse is an open source product management platform. It is a simple alternative to tools like Productboard and Cycle. Bring your product team together to explore problems, ideate solutions, prioritize features and plan roadmaps with the help of AI.
 
 Structurally, Eververse is a monorepo built on [`next-forge`](https://www.next-forge.com) - a production-grade Turborepo template for Next.js apps.
