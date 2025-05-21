@@ -1,7 +1,6 @@
 import { FeedbackItem } from '@/app/(organization)/feedback/components/feedback-item';
 import { database } from '@/lib/database';
 import { getJsonColumnFromTable } from '@repo/backend/database';
-import { Prose } from '@repo/design-system/components/prose';
 import { Separator } from '@repo/design-system/components/ui/separator';
 import { cn } from '@repo/design-system/lib/utils';
 import { contentToText } from '@repo/editor/lib/tiptap';
@@ -86,7 +85,7 @@ const FeedbackUserPage = async (props: FeedbackUserPageProperties) => {
 
   return (
     <div className="w-full px-6 py-16">
-      <Prose className="mx-auto grid w-full gap-6">
+      <div className="mx-auto grid w-full max-w-prose gap-6">
         <Image
           src={user.imageUrl}
           alt={user.name}
@@ -95,7 +94,7 @@ const FeedbackUserPage = async (props: FeedbackUserPageProperties) => {
           className="m-0 h-24 w-24 rounded-full object-fill"
         />
 
-        <div>
+        <div className="grid gap-2">
           <h2
             className={cn(
               'resize-none border-none bg-transparent p-0 font-semibold text-4xl tracking-tight shadow-none outline-none',
@@ -109,9 +108,9 @@ const FeedbackUserPage = async (props: FeedbackUserPageProperties) => {
 
         <Separator />
 
-        <div>
-          <h2>Feedback</h2>
-          <div className="not-prose space-y-1">
+        <div className="grid gap-2">
+          <h2 className="font-semibold text-lg">Feedback</h2>
+          <div className="grid gap-1">
             {modifiedFeedback.map((feedbackItem) => (
               <div
                 className="overflow-hidden rounded-md border bg-background"
@@ -122,7 +121,7 @@ const FeedbackUserPage = async (props: FeedbackUserPageProperties) => {
             ))}
           </div>
         </div>
-      </Prose>
+      </div>
     </div>
   );
 };
