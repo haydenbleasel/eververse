@@ -1,7 +1,7 @@
 import { database } from '@repo/backend/database';
 import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
 import { markdownToContent } from '@repo/editor/lib/tiptap';
-import { Productboard } from '@repo/productboard';
+import { createClient } from '@repo/productboard';
 
 type ImportJobProperties = Pick<
   ProductboardImport,
@@ -12,8 +12,22 @@ export const migrateNotes = async ({
   token,
   organizationId,
 }: ImportJobProperties): Promise<number> => {
-  const productboard = new Productboard(token);
-  const notes = await productboard.note.list();
+  const productboard = createClient({ accessToken: token });
+  const notes = await productboard.GET('/notes', {
+    params: {
+      header: {
+        'X-Version': 1,
+      },
+    },
+  });
+
+  if (notes.error) {
+    throw new Error(notes.error.errors?.source?.join(', ') ?? 'Unknown error');
+  }
+
+  if (!notes.data) {
+    throw new Error('No notes found');
+  }
 
   const databaseOrganization = await database.organization.findUnique({
     where: { id: organizationId },
@@ -29,7 +43,7 @@ export const migrateNotes = async ({
 
   const transactions: Prisma.PrismaPromise<unknown>[] = [];
 
-  const promises: Promise<Prisma.FeedbackCreateArgs['data']>[] = notes
+  const promises: Promise<Prisma.FeedbackCreateArgs['data']>[] = notes.data.data
     .filter((note) => {
       const existing = databaseOrganization.feedback.find(
         (feedback) => feedback.productboardId === note.id

@@ -1,7 +1,7 @@
 import { database } from '@repo/backend/database';
 import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
 import { emailRegex } from '@repo/lib/email';
-import { Productboard } from '@repo/productboard';
+import { createClient } from '@repo/productboard';
 import commonProviders from 'email-providers/all.json' assert { type: 'json' };
 
 type ImportJobProperties = Pick<
@@ -13,8 +13,22 @@ export const migrateDomains = async ({
   organizationId,
   token,
 }: ImportJobProperties): Promise<number> => {
-  const productboard = new Productboard(token);
-  const users = await productboard.user.list();
+  const productboard = createClient({ accessToken: token });
+  const users = await productboard.GET('/users', {
+    params: {
+      header: {
+        'X-Version': 1,
+      },
+    },
+  });
+
+  if (users.error) {
+    throw new Error(users.error.errors.map((error) => error.detail).join(', '));
+  }
+
+  if (!users.data.data) {
+    throw new Error('No users found');
+  }
 
   const existingCompanies = await database.feedbackOrganization.findMany({
     where: { organizationId },
@@ -23,7 +37,7 @@ export const migrateDomains = async ({
 
   const userDomains = new Set<string>();
 
-  for (const user of users) {
+  for (const user of users.data.data) {
     if (user.email && emailRegex.test(user.email)) {
       const [, domain] = user.email.split('@');
 

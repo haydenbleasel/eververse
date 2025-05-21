@@ -4,7 +4,7 @@ import { database } from '@/lib/database';
 import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
 import type { productboard_import_job_type } from '@repo/backend/prisma/client';
 import { parseError } from '@repo/lib/parse-error';
-import { Productboard } from '@repo/productboard';
+import { createClient } from '@repo/productboard';
 import { revalidatePath } from 'next/cache';
 
 const types: productboard_import_job_type[] = [
@@ -47,9 +47,17 @@ export const productboardImport = async (
     }
 
     try {
-      const productboard = new Productboard(token);
+      const productboard = createClient({
+        accessToken: token,
+      });
 
-      await productboard.user.list();
+      await productboard.GET('/users', {
+        params: {
+          header: {
+            'X-Version': 1,
+          },
+        },
+      });
     } catch {
       throw new Error('Please provide a valid Productboard token.');
     }

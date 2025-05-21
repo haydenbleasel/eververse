@@ -4,7 +4,7 @@ import type {
   ProductboardImport,
   release_state,
 } from '@repo/backend/prisma/client';
-import { Productboard } from '@repo/productboard';
+import { createClient } from '@repo/productboard';
 
 type ImportJobProperties = Pick<
   ProductboardImport,
@@ -15,8 +15,24 @@ export const migrateReleases = async ({
   token,
   organizationId,
 }: ImportJobProperties): Promise<number> => {
-  const productboard = new Productboard(token);
-  const releases = await productboard.release.list();
+  const productboard = createClient({ accessToken: token });
+  const releases = await productboard.GET('/releases', {
+    params: {
+      header: {
+        'X-Version': 1,
+      },
+    },
+  });
+
+  if (releases.error) {
+    throw new Error(
+      releases.error.errors.map((error) => error.detail).join(', ')
+    );
+  }
+
+  if (!releases.data) {
+    throw new Error('No releases found');
+  }
 
   const databaseOrganization = await database.organization.findUnique({
     where: { id: organizationId },
@@ -30,7 +46,7 @@ export const migrateReleases = async ({
   }
 
   const data: Prisma.ReleaseCreateManyInput[] = [];
-  const newReleases = releases.filter((release) => {
+  const newReleases = releases.data.data.filter((release) => {
     const doesExist = databaseOrganization.releases.find(
       ({ productboardId }) => productboardId === release.id
     );

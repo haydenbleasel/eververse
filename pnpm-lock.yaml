@@ -1472,13 +1472,22 @@ importers:
 
   packages/productboard:
     dependencies:
-      ky:
-        specifier: ^1.8.1
-        version: 1.8.1
+      '@t3-oss/env-nextjs':
+        specifier: ^0.13.4
+        version: 0.13.4(arktype@2.1.20)(typescript@5.8.3)(zod@3.25.17)
+      openapi-fetch:
+        specifier: ^0.14.0
+        version: 0.14.0
+      zod:
+        specifier: ^3.25.17
+        version: 3.25.17
     devDependencies:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
+      '@types/node':
+        specifier: ^22.15.21
+        version: 22.15.21
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
