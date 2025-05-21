@@ -15,6 +15,7 @@ import {
   CalendarIcon,
   CodeIcon,
   CreditCardIcon,
+  ExternalLinkIcon,
   MessageSquareIcon,
 } from 'lucide-react';
 import { LazyMotion, domAnimation } from 'motion/react';
@@ -26,7 +27,7 @@ const links = [
     icon: CreditCardIcon,
   },
   {
-    href: '/contact',
+    href: 'https://x.com/haydenbleasel',
     label: 'Contact',
     icon: MessageSquareIcon,
   },
@@ -66,11 +67,20 @@ export const Navbar = () => (
                       '!bg-transparent text-muted-foreground hover:text-foreground'
                     )}
                   >
-                    <Link href={link.href}>
+                    <Link
+                      href={link.href}
+                      className="flex flex-row items-center gap-2"
+                    >
                       <span className="hidden md:block">{link.label}</span>
                       <span className="block md:hidden">
-                        <link.icon size={16} />
+                        <link.icon size={16} className="shrink-0" />
                       </span>
+                      {link.href.includes('http') ? (
+                        <ExternalLinkIcon
+                          size={16}
+                          className="hidden shrink-0 md:block"
+                        />
+                      ) : null}
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
