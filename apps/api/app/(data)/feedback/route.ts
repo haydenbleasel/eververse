@@ -1,5 +1,8 @@
-import type { FeedbackOrganization, FeedbackUser } from '@prisma/client';
 import { database } from '@repo/backend/database';
+import type {
+  FeedbackOrganization,
+  FeedbackUser,
+} from '@repo/backend/prisma/client';
 import { textToContent } from '@repo/editor/lib/tiptap';
 import { MAX_FREE_FEEDBACK } from '@repo/lib/consts';
 import { getGravatarUrl } from '@repo/lib/gravatar';
