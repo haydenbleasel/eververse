@@ -1,4 +1,4 @@
-import '@repo/design-system/styles/globals.css';
+import './styles.css';
 import { AnalyticsProvider } from '@repo/analytics';
 import { Container } from '@repo/design-system/components/container';
 import { DesignSystemProvider } from '@repo/design-system/components/provider';

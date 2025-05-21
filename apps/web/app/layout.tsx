@@ -1,4 +1,4 @@
-import '@repo/design-system/styles/globals.css';
+import './styles.css';
 import { CallToAction } from '@/components/cta';
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';

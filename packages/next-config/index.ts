@@ -29,8 +29,6 @@ export const config: NextConfig = {
     },
   },
 
-  transpilePackages: ['tailwindcss'],
-
   // biome-ignore lint/suspicious/useAwait: "headers" is an async function
   async headers() {
     return [

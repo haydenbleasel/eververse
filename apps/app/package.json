@@ -71,6 +71,7 @@
     "@types/pluralize": "^0.0.33",
     "@types/react": "19.0.4",
     "@types/react-dom": "19.0.2",
+    "tailwindcss": "^4.1.7",
     "typescript": "^5.7.3"
   }
 }

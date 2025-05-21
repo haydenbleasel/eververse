@@ -5,12 +5,14 @@
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
     "@tailwindcss/postcss": "^4.1.3",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/lodash.throttle": "^4.1.9",
     "@types/node": "22.10.5",
     "@types/react": "^19.0.4",
     "@types/react-syntax-highlighter": "^15.5.13",
     "postcss": "^8.4.49",
-    "tailwindcss": "^4.1.3",
+    "tailwindcss": "^4.1.7",
+    "tw-animate-css": "^1.3.0",
     "typescript": "^5.7.3"
   },
   "dependencies": {

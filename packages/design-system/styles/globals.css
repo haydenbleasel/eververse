@@ -43,6 +43,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   --font-weight-bold: 700;
+  --backdrop: oklch(0.97 0 0);
 }
 
 .dark {
@@ -79,6 +80,8 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
+  
+  --backdrop: oklch(0.145 0 0);
 }
 
 @theme inline {
@@ -122,6 +125,8 @@
   --radius-xl: calc(var(--radius) + 4px);
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
+  
+  --color-backdrop: var(--backdrop);
 
   @keyframes accordion-down {
     from {
@@ -179,6 +184,7 @@
   }
 }
 
+/* This layer is for Eververse */
 ::selection {
   @apply bg-violet-500 text-white;
 }
