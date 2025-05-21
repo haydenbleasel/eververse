@@ -1,3 +1,15 @@
+# v1.1.1 (Wed May 21 2025)
+
+#### 🐛 Bug Fix
+
+- Potential fix for code scanning alert no. 3: Incomplete URL substring sanitization [#25](https://github.com/haydenbleasel/eververse/pull/25) ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.1.0 (Wed May 21 2025)
 
 #### 🚀 Enhancement
