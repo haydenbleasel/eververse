@@ -73,7 +73,6 @@ It also contains the following packages:
 | `canvas` | The Excalidraw canvas. |
 | `design-system` | The design system, powered by shadcn/ui. |
 | `editor` | The rich text editor, powered by Novel and TipTap. |
-| `eleven-labs` | The Eleven Labs API client for generating voice from text. |
 | `email` | The email provider and templates, powered by Resend and react-email. |
 | `github` | The GitHub API client (Octokit). |
 | `lib` | Various utility functions and types. |
