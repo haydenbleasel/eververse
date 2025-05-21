@@ -80,24 +80,30 @@ const convertYouTubeImgToIframe = (html: string): string => {
 
   for (const image of images) {
     const { src } = image;
-    // Check if the image src contains a YouTube link
-    if (src.includes('youtube.com')) {
-      // Create a new div element to wrap the iframe
-      const div = window.document.createElement('div');
-      div.dataset.youtubeVideo = '';
-      div.dataset.youtubeVideo = '';
+    try {
+      const url = new URL(src);
+      // Check if the image src contains a YouTube link
+      if (url.hostname.includes('youtube.com')) {
+        // Create a new div element to wrap the iframe
+        const div = window.document.createElement('div');
+        div.dataset.youtubeVideo = '';
+        div.dataset.youtubeVideo = '';
 
-      // Create the iframe element
-      const iframe = window.document.createElement('iframe');
+        // Create the iframe element
+        const iframe = window.document.createElement('iframe');
 
-      // Set the src as it was in the <img>
-      iframe.src = src;
+        // Set the src as it was in the <img>
+        iframe.src = src;
 
-      // Append the iframe to the div
-      div.append(iframe);
+        // Append the iframe to the div
+        div.append(iframe);
 
-      // Replace the image with the new div
-      image.parentNode?.replaceChild(div, image);
+        // Replace the image with the new div
+        image.parentNode?.replaceChild(div, image);
+      }
+    } catch (e) {
+      // Handle invalid URL
+      console.error(`Invalid URL: ${src}`);
     }
   }
 
