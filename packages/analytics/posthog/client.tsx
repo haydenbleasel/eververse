@@ -1,28 +1,46 @@
 'use client';
 
-import posthogRaw, { type PostHog } from 'posthog-js';
-import { PostHogProvider as PostHogProviderRaw } from 'posthog-js/react';
-import type { ReactNode } from 'react';
+import posthog from 'posthog-js';
+import { PostHogProvider as PHProvider, usePostHog } from 'posthog-js/react';
+import { type ReactNode, useEffect } from 'react';
 import { keys } from '../keys';
 
 type PostHogProviderProps = {
-  readonly children: ReactNode;
+  children: ReactNode;
 };
 
-export const PostHogProvider = (
-  properties: Omit<PostHogProviderProps, 'client'>
-) => {
-  if (process.env.NODE_ENV === 'development') {
-    return properties.children;
-  }
+export const identify = posthog.identify;
 
-  const analytics = posthogRaw.init(keys().NEXT_PUBLIC_POSTHOG_KEY, {
-    api_host: '/ingest',
-    ui_host: keys().NEXT_PUBLIC_POSTHOG_HOST,
-    person_profiles: 'identified_only',
-    capture_pageview: false, // Disable automatic pageview capture, as we capture manually
-    capture_pageleave: true, // Overrides the `capture_pageview` setting
-  }) as PostHog;
+export const PostHogProvider = ({ children }: PostHogProviderProps) => {
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      return;
+    }
 
-  return <PostHogProviderRaw client={analytics} {...properties} />;
+    posthog.init(keys().NEXT_PUBLIC_POSTHOG_KEY, {
+      api_host: '/ingest',
+      ui_host: 'https://us.posthog.com',
+      capture_pageview: false, // We capture pageviews manually
+      capture_pageleave: true, // Enable pageleave capture
+    });
+  }, []);
+
+  return <PHProvider client={posthog}>{children}</PHProvider>;
+};
+
+export const pageview = (pathname: string, searchParams: URLSearchParams) => {
+  const posthog = usePostHog();
+
+  useEffect(() => {
+    if (pathname && posthog) {
+      let url = window.origin + pathname;
+      const search = searchParams.toString();
+      if (search) {
+        url += `?${search}`;
+      }
+      posthog.capture('$pageview', { $current_url: url });
+    }
+  }, [pathname, searchParams, posthog]);
+
+  return null;
 };
