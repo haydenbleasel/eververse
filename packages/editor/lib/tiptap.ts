@@ -82,8 +82,9 @@ const convertYouTubeImgToIframe = (html: string): string => {
     const { src } = image;
     try {
       const url = new URL(src);
-      // Check if the image src contains a YouTube link
-      if (url.hostname.includes('youtube.com')) {
+      // Check if the image src belongs to a trusted YouTube domain
+      const allowedYouTubeHosts = ['youtube.com', 'www.youtube.com'];
+      if (allowedYouTubeHosts.includes(url.hostname)) {
         // Create a new div element to wrap the iframe
         const div = window.document.createElement('div');
         div.dataset.youtubeVideo = '';
