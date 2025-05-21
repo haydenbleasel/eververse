@@ -52,7 +52,6 @@ The monorepo contains the following apps:
 | `app` | The main, which contains the Next.js app. | [localhost:3000](http://localhost:3000/) |
 | `email` | The email templates preview server, powered by react-email. | [localhost:3003](http://localhost:3003/) |
 | `portal` | The customer-facing portal. | [localhost:3001](http://localhost:3001/) |
-| `studio` | Prisma Studio, which is used to visually edit the local database. | [localhost:5005](http://localhost:5005/) |
 | `web` | The website, which contains the static website for the app e.g. marketing pages and legal docs. | [localhost:3002](http://localhost:3002/) |
 
 ### Packages
