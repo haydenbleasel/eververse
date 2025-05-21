@@ -357,5 +357,5 @@ nav[aria-label="Main"][data-orientation="horizontal"][dir="ltr"]
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @apply tracking-tight;
+  @apply tracking-tight font-semibold;
 }

@@ -7,7 +7,6 @@ import {
   currentUser,
 } from '@repo/backend/auth/utils';
 import Climate from '@repo/design-system/components/climate';
-import { Prose } from '@repo/design-system/components/prose';
 import { stripe } from '@repo/payments';
 import { createMetadata } from '@repo/seo/metadata';
 import { CircleArrowUpIcon } from 'lucide-react';
@@ -53,17 +52,19 @@ const Subscribe = async () => {
 
   return (
     <div className="w-full px-6 py-16">
-      <Prose className="mx-auto grid w-full max-w-3xl gap-6">
+      <div className="mx-auto grid w-full max-w-3xl gap-6">
         <div className="flex flex-col items-center text-center">
           <CircleArrowUpIcon size={48} className="text-primary" />
-          <h1 className="mt-4 mb-2 text-3xl">Upgrade your team</h1>
-          <p className="m-0">
-            Choose a plan that works for you. All plans include a{' '}
-            <span className="font-semibold text-primary">
-              15-day free trial
-            </span>
-            .
-          </p>
+          <div className="grid gap-2">
+            <h1 className="mt-4 mb-2 text-3xl">Upgrade your team</h1>
+            <p>
+              Choose a plan that works for you. All plans include a{' '}
+              <span className="font-semibold text-primary">
+                15-day free trial
+              </span>
+              .
+            </p>
+          </div>
         </div>
         <Plans
           products={products.data}
@@ -77,7 +78,7 @@ const Subscribe = async () => {
         <div className="flex items-center justify-center">
           <Climate />
         </div>
-      </Prose>
+      </div>
     </div>
   );
 };
