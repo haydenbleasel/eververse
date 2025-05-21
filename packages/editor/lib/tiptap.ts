@@ -1,5 +1,5 @@
 import 'server-only';
-import type { JsonValue } from '@prisma/client/runtime/library';
+import type { JsonValue } from '@repo/backend/prisma/client/runtime/library';
 import { parseError } from '@repo/lib/parse-error';
 import { generateText } from '@tiptap/core';
 import { generateJSON } from '@tiptap/html';
