@@ -50,7 +50,6 @@ The monorepo contains the following apps:
 | `adf-validator` | The ADF validator, which helps validate Atlassian Document Format (ADF) schemas. | - |
 | `api` | The API, which contains serverless functions designed to run separately from the main app e.g. webhooks and cron jobs. | [localhost:3004](http://localhost:3004/) |
 | `app` | The main, which contains the Next.js app. | [localhost:3000](http://localhost:3000/) |
-| `docs` | The documentation, which contains the documentation for the app e.g. guides and tutorials. | [localhost:3006](http://localhost:3006/) |
 | `email` | The email templates preview server, powered by react-email. | [localhost:3003](http://localhost:3003/) |
 | `portal` | The customer-facing portal. | [localhost:3001](http://localhost:3001/) |
 | `studio` | Prisma Studio, which is used to visually edit the local database. | [localhost:5005](http://localhost:5005/) |
