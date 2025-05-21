@@ -3,7 +3,6 @@ import { database } from '@/lib/database';
 import emojiData from '@emoji-mart/data';
 import { EververseRole } from '@repo/backend/auth';
 import { currentMembers, currentUser } from '@repo/backend/auth/utils';
-import { Prose } from '@repo/design-system/components/prose';
 import { createMetadata } from '@repo/seo/metadata';
 import { init } from 'emoji-mart';
 import { CompassIcon } from 'lucide-react';
@@ -82,9 +81,9 @@ const Initiatives = async () => {
 
   return (
     <div className="px-6 py-16">
-      <Prose className="mx-auto w-full max-w-3xl">
+      <div className="mx-auto w-full max-w-3xl">
         <div className="flex items-start justify-between gap-3">
-          <div className="space-y-2">
+          <div className="grid gap-2">
             <h1 className="m-0 font-semibold text-4xl">{title}</h1>
             <p className="text-muted-foreground">{description}</p>
           </div>
@@ -92,7 +91,7 @@ const Initiatives = async () => {
             <CreateInitiativeButton />
           )}
         </div>
-        <div className="not-prose mt-8 divide-y">
+        <div className="mt-8 divide-y">
           {initiatives
             .sort((initiativeA, initiativeB) => {
               const stateOrder = [
@@ -121,7 +120,7 @@ const Initiatives = async () => {
               />
             ))}
         </div>
-      </Prose>
+      </div>
     </div>
   );
 };

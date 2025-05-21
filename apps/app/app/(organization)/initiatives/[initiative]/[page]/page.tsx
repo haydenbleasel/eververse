@@ -156,7 +156,6 @@ const Initiative = async (props: InitiativeProperties) => {
               editable={
                 user.user_metadata.organization_role !== EververseRole.Member
               }
-              subscribed={Boolean(organization.stripeSubscriptionId)}
             />
           </div>
         </div>
