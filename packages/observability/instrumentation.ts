@@ -14,3 +14,5 @@ export const initializeSentry = () => {
     init(opts);
   }
 };
+
+export { captureRequestError } from '@sentry/nextjs';
