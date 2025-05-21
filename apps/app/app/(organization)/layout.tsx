@@ -11,7 +11,6 @@ import {
   SidebarProvider,
 } from '@repo/design-system/components/ui/sidebar';
 import { MAX_FREE_MEMBERS } from '@repo/lib/consts';
-import { stripe } from '@repo/payments';
 import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
 import type { CSSProperties, ReactNode } from 'react';
@@ -46,18 +45,7 @@ const OrganizationLayout = async ({
     throw new Error('Organization not found');
   }
 
-  if (organization.stripeSubscriptionId) {
-    try {
-      await stripe.subscriptions.retrieve(organization.stripeSubscriptionId);
-    } catch (error) {
-      console.log(error);
-
-      await database.organization.update({
-        where: { id: organizationId },
-        data: { stripeSubscriptionId: null },
-      });
-    }
-  } else {
+  if (!organization.stripeSubscriptionId) {
     const members = await currentMembers();
 
     if (members.length > MAX_FREE_MEMBERS) {
