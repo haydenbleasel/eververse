@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.13.4",
-    "ky": "^1.8.1",
     "openapi-fetch": "^0.14.0",
     "zod": "^3.25.17"
   }
