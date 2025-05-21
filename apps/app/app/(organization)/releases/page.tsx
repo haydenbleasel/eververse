@@ -2,7 +2,6 @@ import { EmptyState } from '@/components/empty-state';
 import { database } from '@/lib/database';
 import { EververseRole } from '@repo/backend/auth';
 import { currentUser } from '@repo/backend/auth/utils';
-import { Prose } from '@repo/design-system/components/prose';
 import { createMetadata } from '@repo/seo/metadata';
 import { FlagIcon } from 'lucide-react';
 import type { Metadata } from 'next';
@@ -75,9 +74,9 @@ const Releases = async () => {
 
   return (
     <div className="px-6 py-16">
-      <Prose className="mx-auto w-full max-w-3xl">
+      <div className="mx-auto w-full max-w-3xl">
         <div className="flex items-start justify-between gap-3">
-          <div className="space-y-2">
+          <div className="grid gap-2">
             <h1 className="m-0 font-semibold text-4xl">{title}</h1>
             <p className="text-muted-foreground">{description}</p>
           </div>
@@ -85,12 +84,12 @@ const Releases = async () => {
             <CreateReleaseButton />
           )}
         </div>
-        <div className="not-prose mt-8 divide-y">
+        <div className="mt-8 divide-y">
           {releases.map((release) => (
             <ReleaseItem key={release.id} release={release} />
           ))}
         </div>
-      </Prose>
+      </div>
     </div>
   );
 };

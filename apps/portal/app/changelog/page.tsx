@@ -1,8 +1,5 @@
 import { getSlug } from '@/lib/slug';
-import { getUserName } from '@repo/backend/auth/format';
-import { getMembers } from '@repo/backend/auth/utils';
 import { database } from '@repo/backend/database';
-import { Prose } from '@repo/design-system/components/prose';
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 
@@ -27,56 +24,34 @@ const Changelog = async () => {
     notFound();
   }
 
-  const [changelogs, members] = await Promise.all([
-    database.changelog.findMany({
-      where: {
-        organizationId: portal.organizationId,
-        status: 'PUBLISHED',
-        publishAt: {
-          lte: new Date(),
-        },
+  const latestChangelog = await database.changelog.findFirst({
+    where: {
+      organizationId: portal.organizationId,
+      status: 'PUBLISHED',
+      publishAt: {
+        lte: new Date(),
       },
-      orderBy: {
-        publishAt: 'desc',
-      },
-      select: {
-        id: true,
-        title: true,
-        publishAt: true,
-        tags: {
-          select: { name: true },
-        },
-        creatorId: true,
-        content: true,
-      },
-    }),
-    getMembers(portal.organizationId),
-  ]);
+    },
+    orderBy: {
+      publishAt: 'desc',
+    },
+    select: {
+      id: true,
+    },
+  });
 
-  const getOwner = (creatorId: string) => {
-    const member = members.find(({ id }) => id === creatorId);
-
-    if (!member) {
-      return 'Unknown';
-    }
-
-    return getUserName(member);
-  };
-
-  if (!changelogs.length) {
+  if (!latestChangelog) {
     return (
-      <Prose className="grid w-full max-w-none items-center justify-center gap-2 rounded-2xl border bg-secondary p-12">
+      <div className="grid w-full max-w-none items-center justify-center gap-2 rounded-2xl border bg-secondary p-12">
         <h1 className="m-0">No changelogs found</h1>
         <p className="m-0">
           There are no changelogs published for this portal.
         </p>
-      </Prose>
+      </div>
     );
   }
 
-  const [latest] = changelogs;
-
-  return redirect(`/changelog/${latest.id}`);
+  return redirect(`/changelog/${latestChangelog.id}`);
 };
 
 export default Changelog;
