@@ -17,6 +17,6 @@
     "@types/node": "22.10.5",
     "@types/react": "19.0.4",
     "@types/react-dom": "^19.0.2",
-    "next": "15.1.4"
+    "next": "15.3.2"
   }
 }
