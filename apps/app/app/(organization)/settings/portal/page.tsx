@@ -3,7 +3,6 @@ import { database } from '@/lib/database';
 import { EververseRole } from '@repo/backend/auth';
 import { currentUser } from '@repo/backend/auth/utils';
 import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
-import { Prose } from '@repo/design-system/components/prose';
 import { createMetadata } from '@repo/seo/metadata';
 import { AppWindowIcon } from 'lucide-react';
 import type { Metadata } from 'next';
@@ -50,10 +49,10 @@ const Portal = async () => {
 
   return (
     <div className="px-6 py-16">
-      <Prose className="mx-auto grid w-full max-w-3xl gap-6">
-        <div>
+      <div className="mx-auto grid w-full max-w-3xl gap-6">
+        <div className="grid gap-2">
           <h1 className="m-0 font-semibold text-4xl">Portal</h1>
-          <p className="mt-2 mb-0 text-muted-foreground">
+          <p className="mb-0 text-muted-foreground">
             Manage your portal settings.
           </p>
         </div>
@@ -69,7 +68,7 @@ const Portal = async () => {
         <Suspense fallback={<Skeleton className="h-[500px] w-full" />}>
           <PortalStatusesCard />
         </Suspense>
-      </Prose>
+      </div>
     </div>
   );
 };

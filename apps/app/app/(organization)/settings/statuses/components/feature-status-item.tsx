@@ -90,7 +90,10 @@ export const FeatureStatusItem = ({
   };
 
   return (
-    <div key={data.id} className="grid grid-cols-12 items-center gap-8 py-3">
+    <div
+      key={data.id}
+      className="grid grid-cols-12 items-center gap-8 bg-background px-4 py-3"
+    >
       <div className="col-span-4 flex items-center gap-3">
         <GripVerticalIcon size={16} className="text-muted-foreground" />
         <Input

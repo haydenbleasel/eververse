@@ -26,12 +26,16 @@ const ProductboardImport = () => (
       className="m-0 h-8 w-8"
       alt=""
     />
-    <div>
+    <div className="grid gap-2">
       <h1 className="m-0 font-semibold text-4xl">{title}</h1>
-      <p className="mt-2 mb-0 text-muted-foreground">{description}</p>
+      <p className="mb-0 text-muted-foreground">{description}</p>
     </div>
 
-    <StackCard title="Start a new import" icon={ImportIcon}>
+    <StackCard
+      title="Start a new import"
+      icon={ImportIcon}
+      className="grid gap-2"
+    >
       <ProductboardImportForm />
       <p className="mb-0 text-muted-foreground text-sm">
         If you want Jira issues to be linked, make sure to integrate Eververse
@@ -52,7 +56,7 @@ const ProductboardImport = () => (
     >
       <div>
         <p className="font-medium">What gets imported:</p>
-        <ul className="mb-0">
+        <ul className="mb-0 list-disc space-y-1 pl-4">
           <li>Notes</li>
           <li>Features</li>
           <li>Users</li>
@@ -70,7 +74,7 @@ const ProductboardImport = () => (
       <div>
         <p className="font-medium">What doesn&apos;t get imported:</p>
 
-        <ul className="mb-0">
+        <ul className="mb-0 list-disc space-y-1 pl-4">
           <li>Drivers and Scores</li>
           <li>Product Portal</li>
           <li>Objectives</li>
@@ -85,7 +89,7 @@ const ProductboardImport = () => (
     </StackCard>
 
     <StackCard title="Mapping" icon={InfoIcon}>
-      <ul className="mb-0 text-sm">
+      <ul className="mb-0 list-disc space-y-1 pl-4 text-sm">
         <li>Notes are imported as Feedback</li>
         <li>Features are imported as-is</li>
         <li>Users are imported as-is</li>

@@ -1,6 +1,5 @@
 import { currentOrganizationId } from '@repo/backend/auth/utils';
 import { database } from '@repo/backend/database';
-import { Prose } from '@repo/design-system/components/prose';
 import { StackCard } from '@repo/design-system/components/stack-card';
 import { createMetadata } from '@repo/seo/metadata';
 import { BookIcon, BuildingIcon } from 'lucide-react';
@@ -41,8 +40,8 @@ const GeneralSettings = async () => {
 
   return (
     <div className="px-6 py-16">
-      <Prose className="mx-auto grid w-full max-w-3xl gap-6">
-        <div>
+      <div className="mx-auto grid w-full max-w-3xl gap-6">
+        <div className="grid gap-2">
           <h1 className="m-0 font-semibold text-4xl">Settings</h1>
           <p className="mt-2 mb-0 text-muted-foreground">
             Manage your organization&apos;s settings.
@@ -58,7 +57,7 @@ const GeneralSettings = async () => {
             defaultSlug={organization.slug}
           />
           <div>
-            <div className="relative aspect-square overflow-hidden overflow-hidden rounded-xl">
+            <div className="relative aspect-square overflow-hidden rounded-xl">
               <OrganizationLogoForm organizationId={organizationId} />
               {organization.logoUrl && (
                 <Image
@@ -77,7 +76,11 @@ const GeneralSettings = async () => {
             )}
           </div>
         </StackCard>
-        <StackCard title="Product Description" icon={BookIcon}>
+        <StackCard
+          title="Product Description"
+          icon={BookIcon}
+          className="grid gap-2"
+        >
           <p className="text-muted-foreground text-sm">
             By telling us about your product and its users, our AI can help you
             triage and prioritize your feedback.
@@ -86,7 +89,7 @@ const GeneralSettings = async () => {
             defaultValue={organization.productDescription ?? ''}
           />
         </StackCard>
-      </Prose>
+      </div>
     </div>
   );
 };

@@ -6,7 +6,6 @@ import { CodeBlock } from '@repo/design-system/components/code-block';
 import { Link } from '@repo/design-system/components/link';
 import { Switch } from '@repo/design-system/components/precomposed/switch';
 import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
-import { Prose } from '@repo/design-system/components/prose';
 import { StackCard } from '@repo/design-system/components/stack-card';
 import { Button } from '@repo/design-system/components/ui/button';
 import { handleError } from '@repo/design-system/lib/handle-error';
@@ -71,10 +70,12 @@ export const WidgetForm = ({
 
   return (
     <div className="space-y-6 p-8">
-      <Prose>
-        <h1 className="mb-0">Widget</h1>
-        <p className="mt-2">Create a widget for websites and apps.</p>
-      </Prose>
+      <div className="grid gap-2">
+        <h1 className="m-0 font-semibold text-4xl">Widget</h1>
+        <p className="mb-0 text-muted-foreground">
+          Create a widget for websites and apps.
+        </p>
+      </div>
 
       <StackCard title="Custom Links" className="p-4">
         {isSubscribed ? (

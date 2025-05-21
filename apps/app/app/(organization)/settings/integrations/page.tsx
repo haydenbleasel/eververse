@@ -1,5 +1,6 @@
 import { database } from '@/lib/database';
 import { Link } from '@repo/design-system/components/link';
+import { StackCard } from '@repo/design-system/components/stack-card';
 import { Badge } from '@repo/design-system/components/ui/badge';
 import { Button } from '@repo/design-system/components/ui/button';
 import { createMetadata } from '@repo/seo/metadata';
@@ -109,14 +110,14 @@ const IntegrationsSettings = async () => {
 
   return (
     <div className="grid gap-6">
-      <div>
+      <div className="grid gap-2">
         <h1 className="m-0 font-semibold text-4xl">{title}</h1>
-        <p className="mt-2 mb-0 text-muted-foreground">{description}</p>
+        <p className="mb-0 text-muted-foreground">{description}</p>
       </div>
 
-      <div className="not-prose divide-y">
+      <StackCard className="divide-y p-0">
         {integrations.map((integration) => (
-          <div key={integration.title} className="flex items-center gap-4 py-6">
+          <div key={integration.title} className="flex items-center gap-4 p-4">
             <Image
               src={integration.icon}
               alt={integration.title}
@@ -154,7 +155,7 @@ const IntegrationsSettings = async () => {
             )}
           </div>
         ))}
-      </div>
+      </StackCard>
     </div>
   );
 };

@@ -355,3 +355,7 @@ nav[aria-label="Main"][data-orientation="horizontal"][dir="ltr"]
 .cl-userProfile-root .cl-navbar > div:first-child > div:first-child {
   @apply hidden;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  @apply tracking-tight;
+}

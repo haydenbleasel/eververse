@@ -1,7 +1,7 @@
 import { database } from '@/lib/database';
 import { currentOrganizationId } from '@repo/backend/auth/utils';
 import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
-import { Prose } from '@repo/design-system/components/prose';
+import { StackCard } from '@repo/design-system/components/stack-card';
 import { Button } from '@repo/design-system/components/ui/button';
 import { createMetadata } from '@repo/seo/metadata';
 import type { Metadata } from 'next';
@@ -35,9 +35,9 @@ const StatusesSettings = async () => {
 
   return (
     <div className="px-6 py-16">
-      <Prose className="mx-auto grid w-full max-w-3xl gap-6">
+      <div className="mx-auto grid w-full max-w-3xl gap-6">
         <div className="flex items-start justify-between gap-4">
-          <div>
+          <div className="grid gap-2">
             <h1 className="m-0 font-semibold text-4xl">Statuses</h1>
             <p className="mt-2 mb-0 text-muted-foreground">
               Customize feature statuses for your organization.
@@ -55,7 +55,7 @@ const StatusesSettings = async () => {
             </Tooltip>
           )}
         </div>
-        <div className="not-prose divide-y">
+        <StackCard className="divide-y p-0">
           <div className="grid grid-cols-12 gap-8 py-3">
             <p className="col-span-4 pl-7 font-medium text-sm">Name</p>
             <p className="col-span-3 font-medium text-sm">Color</p>
@@ -64,8 +64,8 @@ const StatusesSettings = async () => {
             <div />
           </div>
           <FeatureStatusesList initialStatuses={statuses} />
-        </div>
-      </Prose>
+        </StackCard>
+      </div>
     </div>
   );
 };

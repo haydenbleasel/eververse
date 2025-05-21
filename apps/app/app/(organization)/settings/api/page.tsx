@@ -3,7 +3,6 @@ import { currentOrganizationId } from '@repo/backend/auth/utils';
 import { database } from '@repo/backend/database';
 import { Link } from '@repo/design-system/components/link';
 import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
-import { Prose } from '@repo/design-system/components/prose';
 import { Button } from '@repo/design-system/components/ui/button';
 import {
   Sheet,
@@ -47,7 +46,7 @@ const APIPage = async () => {
     notFound();
   }
 
-  if (!organization.stripeSubscriptionId) {
+  if (organization.stripeSubscriptionId) {
     return (
       <div className="flex h-full items-center justify-center">
         <EmptyState
@@ -65,37 +64,33 @@ const APIPage = async () => {
 
   return (
     <div className="px-6 py-16">
-      <Prose className="mx-auto grid w-full max-w-3xl gap-6">
+      <div className="mx-auto grid w-full max-w-3xl gap-6">
         <div className="flex items-start justify-between gap-4">
-          <div>
+          <div className="grid gap-2">
             <h1 className="m-0 font-semibold text-4xl">API</h1>
-            <p className="mt-2 mb-0 text-muted-foreground">
-              Manage your API keys.
-            </p>
+            <p className="mb-0 text-muted-foreground">Manage your API keys.</p>
           </div>
-          <div className="not-prose">
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="outline" className="flex items-center gap-2">
-                  <BookIcon size={16} className="text-muted-foreground" />
-                  <span>API documentation</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent className="overflow-y-auto sm:max-w-md">
-                <SheetHeader>
-                  <SheetTitle>Eververse API</SheetTitle>
-                  <SheetDescription className="prose prose-sm">
-                    <APIDocumentation />
-                  </SheetDescription>
-                </SheetHeader>
-              </SheetContent>
-            </Sheet>
-          </div>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" className="flex items-center gap-2">
+                <BookIcon size={16} className="text-muted-foreground" />
+                <span>API documentation</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent className="overflow-y-auto sm:max-w-md">
+              <SheetHeader>
+                <SheetTitle>Eververse API</SheetTitle>
+                <SheetDescription>
+                  <APIDocumentation />
+                </SheetDescription>
+              </SheetHeader>
+            </SheetContent>
+          </Sheet>
         </div>
         <Suspense fallback={<Skeleton className="aspect-video w-full" />}>
           <ApiKeysTable />
         </Suspense>
-      </Prose>
+      </div>
     </div>
   );
 };
