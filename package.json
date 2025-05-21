@@ -7,7 +7,7 @@
     "lint": "turbo lint",
     "analyze": "turbo analyze",
     "migrate": "cd packages/backend && npx prisma format && npx prisma generate && npx prisma db push",
-    "bump-deps": "npx npm-check-updates --deep -u -x react-day-picker,@tiptap/*,prosemirror-*,@tiptap-pro/*,@excalidraw/excalidraw && pnpm install",
+    "bump-deps": "npx npm-check-updates --deep -u -x react-day-picker,@tiptap/*,prosemirror-*,@tiptap-pro/*,@excalidraw/excalidraw,novel && pnpm install",
     "bump-ui": "npx shadcn@latest add --all --overwrite -c packages/design-system"
   },
   "devDependencies": {
