@@ -15,6 +15,7 @@ import { createMetadata } from '@repo/seo/metadata';
 import type { Metadata } from 'next';
 import Balancer from 'react-wrap-balancer';
 import { LoginForm } from './components/form';
+import { UrlErrors } from './components/url-errors';
 
 const title = 'Sign in';
 const description = 'Sign in to your account.';
@@ -137,6 +138,7 @@ const SignInPage = async () => {
           )}
         </div>
       </div>
+      <UrlErrors />
     </div>
   );
 };
