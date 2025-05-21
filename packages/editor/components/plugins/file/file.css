@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 [data-type="file"] {
   @apply text-sm bg-card rounded-full px-2 py-1 font-medium;
 }

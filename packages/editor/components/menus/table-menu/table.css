@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 .ProseMirror table * p {
   padding: 0 1px;
   margin: 6px 2px;

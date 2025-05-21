@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 html body .excalidraw {
   --button-destructive-bg-color: #ffe3e3;
   --button-destructive-color: #c92a2a;

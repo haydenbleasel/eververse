@@ -58,6 +58,7 @@
     "react-textarea-autosize": "^8.5.7",
     "react-use-intercom": "^5.4.1",
     "react-wrap-balancer": "^1.1.1",
+    "require-in-the-middle": "^7.4.0",
     "server-only": "^0.0.1",
     "sonner": "^1.7.1",
     "use-debounce": "^10.0.4",

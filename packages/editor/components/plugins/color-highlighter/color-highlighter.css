@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 [data-type="color"] {
   @apply whitespace-nowrap text-sm bg-card rounded-full pl-1 pr-2 py-1 font-medium;
 }
