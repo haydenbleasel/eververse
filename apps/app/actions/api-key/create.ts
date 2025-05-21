@@ -1,8 +1,8 @@
 'use server';
 
 import { database } from '@/lib/database';
-import type { ApiKey } from '@prisma/client';
 import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
+import type { ApiKey } from '@repo/backend/prisma/client';
 import { parseError } from '@repo/lib/parse-error';
 
 export const createAPIKey = async (

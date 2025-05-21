@@ -1,8 +1,8 @@
 'use server';
 
 import { database } from '@/lib/database';
-import type { Feature } from '@prisma/client';
 import { getJsonColumnFromTable } from '@repo/backend/database';
+import type { Feature } from '@repo/backend/prisma/client';
 import { contentToMarkdown } from '@repo/editor/lib/tiptap';
 import { createOctokit } from '@repo/github';
 import { parseError } from '@repo/lib/parse-error';

@@ -2,7 +2,7 @@
 
 import { updateInitiativePage } from '@/actions/initiative-page/update';
 import { staticify } from '@/lib/staticify';
-import type { InitiativePage } from '@prisma/client';
+import type { InitiativePage } from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import type { EditorInstance, JSONContent } from '@repo/editor';
 import dynamic from 'next/dynamic';

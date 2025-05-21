@@ -1,5 +1,5 @@
-import type { Feedback } from '@prisma/client';
 import { database, getJsonColumnFromTable } from '@repo/backend/database';
+import type { Feedback } from '@repo/backend/prisma/client';
 import { contentToText } from '@repo/editor/lib/tiptap';
 import { baseUrl } from '@repo/lib/consts';
 import { parseError } from '@repo/lib/parse-error';

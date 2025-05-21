@@ -16,7 +16,7 @@ import PitchIcon from '@/public/pitch.svg';
 import SlackIcon from '@/public/slack.svg';
 import WhimsicalIcon from '@/public/whimsical.svg';
 import ZoomIcon from '@/public/zoom.svg';
-import type { Initiative } from '@prisma/client';
+import type { Initiative } from '@repo/backend/prisma/client';
 import { Dialog } from '@repo/design-system/components/precomposed/dialog';
 import { Input } from '@repo/design-system/components/precomposed/input';
 import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';

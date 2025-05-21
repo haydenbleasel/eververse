@@ -1,4 +1,4 @@
-import type { Release } from '@prisma/client';
+import type { Release } from '@repo/backend/prisma/client';
 import { tailwind } from '@repo/tailwind-config';
 
 const getBackgroundColor = (state: Release['state']) => {

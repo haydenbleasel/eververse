@@ -1,5 +1,9 @@
-import type { CannyImport, FeedbackOrganization, Prisma } from '@prisma/client';
 import { database } from '@repo/backend/database';
+import type {
+  CannyImport,
+  FeedbackOrganization,
+  Prisma,
+} from '@repo/backend/prisma/client';
 import { Canny } from '@repo/canny';
 import { getGravatarUrl } from '@repo/lib/gravatar';
 

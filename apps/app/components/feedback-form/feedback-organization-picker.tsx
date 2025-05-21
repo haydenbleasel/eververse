@@ -1,4 +1,4 @@
-import type { FeedbackUser } from '@prisma/client';
+import type { FeedbackUser } from '@repo/backend/prisma/client';
 import { Avatar } from '@repo/design-system/components/precomposed/avatar';
 import { Dialog } from '@repo/design-system/components/precomposed/dialog';
 import { Button } from '@repo/design-system/components/ui/button';

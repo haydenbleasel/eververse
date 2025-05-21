@@ -1,7 +1,7 @@
 'use client';
 
 import { updateChangelog } from '@/actions/changelog/update';
-import type { Changelog } from '@prisma/client';
+import type { Changelog } from '@repo/backend/prisma/client';
 import { Calendar } from '@repo/design-system/components/precomposed/calendar';
 import type { SelectSingleEventHandler } from '@repo/design-system/components/precomposed/calendar';
 import { Button } from '@repo/design-system/components/ui/button';

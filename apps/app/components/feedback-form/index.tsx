@@ -13,8 +13,11 @@ import { useEffect, useState } from 'react';
 
 import { createFeedback } from '@/actions/feedback/create';
 import { staticify } from '@/lib/staticify';
-import type { FeedbackOrganization, FeedbackUser } from '@prisma/client';
 import { createClient } from '@repo/backend/auth/client';
+import type {
+  FeedbackOrganization,
+  FeedbackUser,
+} from '@repo/backend/prisma/client';
 import { Dropzone } from '@repo/design-system/components/dropzone';
 import type { EditorInstance } from '@repo/editor';
 import {

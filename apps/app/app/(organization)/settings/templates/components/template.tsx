@@ -1,7 +1,7 @@
 import { Template } from '@/app/(organization)/features/[feature]/(notes)/components/template';
 import { database } from '@/lib/database';
-import type { Template as TemplateClass } from '@prisma/client';
 import { getJsonColumnFromTable } from '@repo/backend/database';
+import type { Template as TemplateClass } from '@repo/backend/prisma/client';
 import { TemplateSettings } from './template-settings';
 
 type TemplateComponentProperties = {

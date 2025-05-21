@@ -2,7 +2,7 @@
 
 import { updateTemplate } from '@/actions/template/update';
 import { DocumentInput } from '@/components/document-input';
-import type { Template } from '@prisma/client';
+import type { Template } from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 
 type TemplateTitleProperties = {

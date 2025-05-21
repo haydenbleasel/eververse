@@ -1,12 +1,12 @@
 'use server';
 
 import { database } from '@/lib/database';
-import type { Changelog, Prisma } from '@prisma/client';
 import { generateText } from '@repo/ai';
 import { textModel } from '@repo/ai/lib/models';
 import { EververseRole } from '@repo/backend/auth';
 import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
 import { getJsonColumnFromTable } from '@repo/backend/database';
+import type { Changelog, Prisma } from '@repo/backend/prisma/client';
 import {
   contentToText,
   markdownToContent,

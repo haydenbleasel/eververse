@@ -6,7 +6,7 @@ import type {
   Feedback,
   Group,
   Product,
-} from '@prisma/client';
+} from '@repo/backend/prisma/client';
 import { Button } from '@repo/design-system/components/ui/button';
 import { Separator } from '@repo/design-system/components/ui/separator';
 import { handleError } from '@repo/design-system/lib/handle-error';

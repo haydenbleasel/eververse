@@ -1,7 +1,7 @@
 'use client';
 
 import { deleteChangelog } from '@/actions/changelog/delete';
-import type { Changelog } from '@prisma/client';
+import type { Changelog } from '@repo/backend/prisma/client';
 import { AlertDialog } from '@repo/design-system/components/precomposed/alert-dialog';
 import { DropdownMenu } from '@repo/design-system/components/precomposed/dropdown-menu';
 import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';

@@ -1,10 +1,10 @@
 'use client';
 
-import type { Organization } from '@prisma/client';
 import type { User } from '@repo/backend/auth';
 import { EververseRole } from '@repo/backend/auth';
 import { createClient } from '@repo/backend/auth/client';
 import { getUserName } from '@repo/backend/auth/format';
+import type { Organization } from '@repo/backend/prisma/client';
 import {
   Avatar,
   AvatarFallback,

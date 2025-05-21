@@ -1,9 +1,9 @@
 'use server';
 
 import { database } from '@/lib/database';
-import type { Feature } from '@prisma/client';
 import { EververseRole } from '@repo/backend/auth';
 import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
+import type { Feature } from '@repo/backend/prisma/client';
 import { MAX_FREE_FEATURES } from '@repo/lib/consts';
 import { parseError } from '@repo/lib/parse-error';
 import { revalidatePath } from 'next/cache';

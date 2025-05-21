@@ -1,8 +1,8 @@
 'use server';
 
 import { database } from '@/lib/database';
-import type { Feedback } from '@prisma/client';
 import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
+import type { Feedback } from '@repo/backend/prisma/client';
 import { textToContent } from '@repo/editor/lib/tiptap';
 import { MAX_FREE_FEEDBACK } from '@repo/lib/consts';
 import { parseError } from '@repo/lib/parse-error';

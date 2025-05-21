@@ -1,7 +1,7 @@
 'use client';
 
 import { updateFeatureStatuses } from '@/actions/feature-status/bulk/update';
-import type { Feature, FeatureStatus } from '@prisma/client';
+import type { Feature, FeatureStatus } from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { Reorder } from 'motion/react';
 import { useState } from 'react';

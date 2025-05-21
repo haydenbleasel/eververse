@@ -1,8 +1,8 @@
 'use server';
 
 import { database } from '@/lib/database';
-import type { Prisma } from '@prisma/client';
 import { currentOrganizationId } from '@repo/backend/auth/utils';
+import type { Prisma } from '@repo/backend/prisma/client';
 import { parseError } from '@repo/lib/parse-error';
 import { tailwind } from '@repo/tailwind-config';
 import { friendlyWords } from 'friendlier-words';

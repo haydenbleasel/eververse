@@ -37,7 +37,6 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@prisma/client": "6.2.1",
     "@repo/typescript-config": "workspace:*",
     "typescript": "^5.7.3"
   }

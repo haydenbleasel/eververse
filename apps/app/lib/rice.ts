@@ -1,4 +1,4 @@
-import type { FeatureRice } from '@prisma/client';
+import type { FeatureRice } from '@repo/backend/prisma/client';
 
 export const impactNumberMatrix = {
   1: 0.25,

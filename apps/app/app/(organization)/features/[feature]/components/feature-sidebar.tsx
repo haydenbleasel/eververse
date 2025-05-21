@@ -2,7 +2,6 @@ import { FeedbackItem } from '@/app/(organization)/feedback/components/feedback-
 import * as SettingsBar from '@/components/settings-bar';
 import { database } from '@/lib/database';
 import { calculateRice } from '@/lib/rice';
-import type { Feature } from '@prisma/client';
 import { EververseRole } from '@repo/backend/auth';
 import {
   currentMembers,
@@ -10,6 +9,7 @@ import {
   currentUser,
 } from '@repo/backend/auth/utils';
 import { getJsonColumnFromTable } from '@repo/backend/database';
+import type { Feature } from '@repo/backend/prisma/client';
 import { Button } from '@repo/design-system/components/ui/button';
 import { contentToText } from '@repo/editor/lib/tiptap';
 import { formatDate } from '@repo/lib/format';

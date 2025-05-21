@@ -1,10 +1,10 @@
+import { getMembers } from '@repo/backend/auth/utils';
+import { database } from '@repo/backend/database';
 import type {
   AtlassianInstallation,
   CannyImport,
   Prisma,
-} from '@prisma/client';
-import { getMembers } from '@repo/backend/auth/utils';
-import { database } from '@repo/backend/database';
+} from '@repo/backend/prisma/client';
 import { Canny } from '@repo/canny';
 import { textToContent } from '@repo/editor/lib/tiptap';
 

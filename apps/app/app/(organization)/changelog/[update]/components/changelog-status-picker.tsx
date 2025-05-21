@@ -1,7 +1,7 @@
 'use client';
 
 import { updateChangelog } from '@/actions/changelog/update';
-import type { Changelog } from '@prisma/client';
+import type { Changelog } from '@repo/backend/prisma/client';
 import { Switch } from '@repo/design-system/components/precomposed/switch';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { useState } from 'react';

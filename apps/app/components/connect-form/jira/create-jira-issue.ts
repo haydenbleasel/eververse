@@ -1,9 +1,9 @@
 'use server';
 
 import { database } from '@/lib/database';
-import type { Feature } from '@prisma/client';
 import { createOauth2Client } from '@repo/atlassian';
 import { getJsonColumnFromTable } from '@repo/backend/database';
+import type { Feature } from '@repo/backend/prisma/client';
 import { convertToAdf } from '@repo/editor/lib/jira';
 import { textToContent } from '@repo/editor/lib/tiptap';
 import { parseError } from '@repo/lib/parse-error';

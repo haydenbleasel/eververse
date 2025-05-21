@@ -2,7 +2,7 @@
 
 import { updateFeedback } from '@/actions/feedback/update';
 import { DocumentInput } from '@/components/document-input';
-import type { Feedback } from '@prisma/client';
+import type { Feedback } from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 
 type FeedbackTitleProperties = {

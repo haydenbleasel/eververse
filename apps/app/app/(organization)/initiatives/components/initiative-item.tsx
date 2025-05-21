@@ -1,12 +1,12 @@
 import { AvatarTooltip } from '@/components/avatar-tooltip';
+import type { User } from '@repo/backend/auth';
+import { getUserName } from '@repo/backend/auth/format';
+import { getJsonColumnFromTable } from '@repo/backend/database';
 import type {
   Initiative,
   InitiativeMember,
   InitiativePage,
-} from '@prisma/client';
-import type { User } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
-import { getJsonColumnFromTable } from '@repo/backend/database';
+} from '@repo/backend/prisma/client';
 import { Emoji } from '@repo/design-system/components/emoji';
 import { Link } from '@repo/design-system/components/link';
 import { cn } from '@repo/design-system/lib/utils';

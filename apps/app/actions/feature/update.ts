@@ -1,11 +1,15 @@
 'use server';
 
 import { database } from '@/lib/database';
-import type { Feature, FeatureConnection, Template } from '@prisma/client';
 import { createOauth2Client } from '@repo/atlassian';
 import { EververseRole } from '@repo/backend/auth';
 import { currentUser } from '@repo/backend/auth/utils';
 import { getJsonColumnFromTable } from '@repo/backend/database';
+import type {
+  Feature,
+  FeatureConnection,
+  Template,
+} from '@repo/backend/prisma/client';
 import { textToContent } from '@repo/editor/lib/tiptap';
 import atlassianTemplate from '@repo/editor/templates/atlassian.json';
 import loomTemplate from '@repo/editor/templates/loom.json';

@@ -1,5 +1,5 @@
-import type { Feedback } from '@prisma/client';
 import { database } from '@repo/backend/database';
+import type { Feedback } from '@repo/backend/prisma/client';
 import { textToContent } from '@repo/editor/lib/tiptap';
 import { createTranscript } from '@repo/transcribe';
 

@@ -1,5 +1,5 @@
 import { deleteFeatures } from '@/actions/feature/bulk/delete';
-import type { Feature } from '@prisma/client';
+import type { Feature } from '@repo/backend/prisma/client';
 import { AlertDialog } from '@repo/design-system/components/precomposed/alert-dialog';
 import { Button } from '@repo/design-system/components/ui/button';
 import { handleError } from '@repo/design-system/lib/handle-error';

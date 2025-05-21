@@ -10,7 +10,7 @@ import {
   useSensors,
 } from '@dnd-kit/core';
 import type { DragEndEvent, DragStartEvent } from '@dnd-kit/core';
-import type { Group, Product } from '@prisma/client';
+import type { Group, Product } from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { toast } from '@repo/design-system/lib/toast';
 import { QueryClient } from '@tanstack/react-query';

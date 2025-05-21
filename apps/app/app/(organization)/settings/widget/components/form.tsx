@@ -1,7 +1,7 @@
 'use client';
 
 import { updateWidget } from '@/actions/widget/update';
-import type { Widget, WidgetItem } from '@prisma/client';
+import type { Widget, WidgetItem } from '@repo/backend/prisma/client';
 import { CodeBlock } from '@repo/design-system/components/code-block';
 import { Link } from '@repo/design-system/components/link';
 import { Switch } from '@repo/design-system/components/precomposed/switch';

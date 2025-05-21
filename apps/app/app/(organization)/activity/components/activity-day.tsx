@@ -1,7 +1,7 @@
 import type { GetActivityResponse } from '@/actions/activity/get';
-import type { feature_source } from '@prisma/client';
 import type { User } from '@repo/backend/auth';
 import { getUserName } from '@repo/backend/auth/format';
+import type { feature_source } from '@repo/backend/prisma/client';
 import { Link } from '@repo/design-system/components/link';
 import { StackCard } from '@repo/design-system/components/stack-card';
 import {

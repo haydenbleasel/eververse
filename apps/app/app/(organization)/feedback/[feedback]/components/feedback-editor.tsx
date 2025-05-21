@@ -2,7 +2,7 @@
 
 import { updateFeedback } from '@/actions/feedback/update';
 import { staticify } from '@/lib/staticify';
-import type { Feedback } from '@prisma/client';
+import type { Feedback } from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import type { EditorInstance, JSONContent } from '@repo/editor';
 import dynamic from 'next/dynamic';

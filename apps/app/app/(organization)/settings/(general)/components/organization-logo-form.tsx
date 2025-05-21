@@ -1,8 +1,8 @@
 'use client';
 
 import { updateOrganization } from '@/actions/organization/update';
-import type { Organization } from '@prisma/client';
 import { createClient } from '@repo/backend/auth/client';
+import type { Organization } from '@repo/backend/prisma/client';
 import { Dropzone } from '@repo/design-system/components/dropzone';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { toast } from 'sonner';

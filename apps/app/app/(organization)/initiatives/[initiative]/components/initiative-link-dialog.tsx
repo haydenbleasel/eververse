@@ -1,6 +1,11 @@
 'use client';
 
-import type { Feature, FeatureStatus, Group, Product } from '@prisma/client';
+import type {
+  Feature,
+  FeatureStatus,
+  Group,
+  Product,
+} from '@repo/backend/prisma/client';
 import { Emoji } from '@repo/design-system/components/emoji';
 import { Dialog } from '@repo/design-system/components/precomposed/dialog';
 import { DropdownMenu } from '@repo/design-system/components/precomposed/dropdown-menu';

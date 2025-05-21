@@ -2,7 +2,7 @@
 
 import { updateFeature } from '@/actions/feature/update';
 import { staticify } from '@/lib/staticify';
-import type { Feature } from '@prisma/client';
+import type { Feature } from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import type { EditorInstance, JSONContent } from '@repo/editor';
 import dynamic from 'next/dynamic';

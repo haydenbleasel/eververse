@@ -1,7 +1,7 @@
 'use client';
 
 import { updateInitiative } from '@/actions/initiative/update';
-import type { Initiative, initiative_state } from '@prisma/client';
+import type { Initiative, initiative_state } from '@repo/backend/prisma/client';
 import { Select } from '@repo/design-system/components/precomposed/select';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { tailwind } from '@repo/tailwind-config';

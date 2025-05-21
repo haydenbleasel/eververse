@@ -8,7 +8,7 @@ import type {
   Feedback,
   FeedbackOrganization,
   FeedbackUser,
-} from '@prisma/client';
+} from '@repo/backend/prisma/client';
 import { AlertDialog } from '@repo/design-system/components/precomposed/alert-dialog';
 import { Dialog } from '@repo/design-system/components/precomposed/dialog';
 import { DropdownMenu } from '@repo/design-system/components/precomposed/dropdown-menu';

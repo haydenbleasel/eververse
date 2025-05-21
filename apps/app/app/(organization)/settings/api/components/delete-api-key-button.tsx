@@ -1,7 +1,7 @@
 'use client';
 
 import { deleteAPIKey } from '@/actions/api-key/delete';
-import type { ApiKey } from '@prisma/client';
+import type { ApiKey } from '@repo/backend/prisma/client';
 import { AlertDialog } from '@repo/design-system/components/precomposed/alert-dialog';
 import { Button } from '@repo/design-system/components/ui/button';
 import { handleError } from '@repo/design-system/lib/handle-error';

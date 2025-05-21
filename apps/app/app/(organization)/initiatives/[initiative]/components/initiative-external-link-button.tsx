@@ -2,7 +2,7 @@
 import { GlobeIcon } from 'lucide-react';
 import Image from 'next/image';
 
-import type { InitiativeExternalLink } from '@prisma/client';
+import type { InitiativeExternalLink } from '@repo/backend/prisma/client';
 import { externalLinkProperties } from './create-initiative-link-button';
 
 type InitiativeExternalLinkButtonProperties = Pick<

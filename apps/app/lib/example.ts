@@ -1,7 +1,7 @@
 import { database } from '@/lib/database';
 import data from '@emoji-mart/data';
 import { faker } from '@faker-js/faker';
-import type { Prisma } from '@prisma/client';
+import type { Prisma } from '@repo/backend/prisma/client';
 import { textToContent } from '@repo/editor/lib/tiptap';
 
 const castedData = data as { emojis: Record<string, string> };

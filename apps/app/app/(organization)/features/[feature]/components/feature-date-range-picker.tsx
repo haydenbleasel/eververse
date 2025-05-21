@@ -1,7 +1,7 @@
 'use client';
 
 import { updateFeature } from '@/actions/feature/update';
-import type { Feature } from '@prisma/client';
+import type { Feature } from '@repo/backend/prisma/client';
 import { Calendar } from '@repo/design-system/components/precomposed/calendar';
 import type {
   DateRange,

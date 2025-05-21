@@ -1,5 +1,5 @@
-import type { Feature, FeatureStatus } from '@prisma/client';
 import { useDebouncedEffect } from '@react-hookz/web';
+import type { Feature, FeatureStatus } from '@repo/backend/prisma/client';
 import { LoadingCircle } from '@repo/design-system/components/loading-circle';
 import { Button } from '@repo/design-system/components/ui/button';
 import { Label } from '@repo/design-system/components/ui/label';

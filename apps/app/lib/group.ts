@@ -1,4 +1,4 @@
-import type { Group } from '@prisma/client';
+import type { Group } from '@repo/backend/prisma/client';
 
 export type GroupWithSubgroups = {
   readonly id: Group['id'];

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { addChangelogTag } from '@/actions/changelog-tag/connect';
 import { createChangelogTag } from '@/actions/changelog-tag/create';
 import { removeChangelogTag } from '@/actions/changelog-tag/disconnect';
-import type { Changelog, ChangelogTag } from '@prisma/client';
+import type { Changelog, ChangelogTag } from '@repo/backend/prisma/client';
 import { Select } from '@repo/design-system/components/precomposed/select';
 import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
 import { Button } from '@repo/design-system/components/ui/button';

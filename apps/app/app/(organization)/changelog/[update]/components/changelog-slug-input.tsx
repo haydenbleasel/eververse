@@ -1,7 +1,7 @@
 'use client';
 
 import { updateChangelog } from '@/actions/changelog/update';
-import type { Changelog } from '@prisma/client';
+import type { Changelog } from '@repo/backend/prisma/client';
 import { Input } from '@repo/design-system/components/precomposed/input';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { slugifyLax } from '@repo/lib/slugify';

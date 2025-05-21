@@ -1,12 +1,16 @@
 import { AvatarTooltip } from '@/components/avatar-tooltip';
 import { database } from '@/lib/database';
-import type { Feature, FeatureConnection, FeatureStatus } from '@prisma/client';
 import type { User } from '@repo/backend/auth';
 import { getUserName } from '@repo/backend/auth/format';
 import {
   currentMembers,
   currentOrganizationId,
 } from '@repo/backend/auth/utils';
+import type {
+  Feature,
+  FeatureConnection,
+  FeatureStatus,
+} from '@repo/backend/prisma/client';
 import { Link } from '@repo/design-system/components/link';
 import { StackCard } from '@repo/design-system/components/stack-card';
 import { formatDate } from '@repo/lib/format';

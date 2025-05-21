@@ -1,4 +1,9 @@
-import type { Feature, FeatureStatus, Group, Product } from '@prisma/client';
+import type {
+  Feature,
+  FeatureStatus,
+  Group,
+  Product,
+} from '@repo/backend/prisma/client';
 import {
   Command,
   CommandEmpty,

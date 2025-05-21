@@ -1,8 +1,8 @@
 'use server';
 
 import { database } from '@/lib/database';
-import type { FeedbackUser } from '@prisma/client';
 import { currentOrganizationId } from '@repo/backend/auth/utils';
+import type { FeedbackUser } from '@repo/backend/prisma/client';
 import { getGravatarUrl } from '@repo/lib/gravatar';
 import { parseError } from '@repo/lib/parse-error';
 import { friendlyWords } from 'friendlier-words';

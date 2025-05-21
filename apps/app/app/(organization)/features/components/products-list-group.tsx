@@ -1,7 +1,7 @@
 import { deleteGroup } from '@/actions/group/delete';
 import { updateGroup } from '@/actions/group/update';
 import type { GroupWithSubgroups } from '@/lib/group';
-import type { Product } from '@prisma/client';
+import type { Product } from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { useParams, useRouter } from 'next/navigation';
 import { ProductsListItem } from './products-list-item';

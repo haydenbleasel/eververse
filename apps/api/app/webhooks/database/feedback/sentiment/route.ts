@@ -1,7 +1,7 @@
-import type { Feedback } from '@prisma/client';
 import { generateObject } from '@repo/ai';
 import { objectModel } from '@repo/ai/lib/models';
 import { database, getJsonColumnFromTable } from '@repo/backend/database';
+import type { Feedback } from '@repo/backend/prisma/client';
 import { contentToText } from '@repo/editor/lib/tiptap';
 import { z } from 'zod';
 

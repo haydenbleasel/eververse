@@ -1,7 +1,7 @@
 'use client';
 
 import { deleteInitiative } from '@/actions/initiative/delete';
-import type { Initiative } from '@prisma/client';
+import type { Initiative } from '@repo/backend/prisma/client';
 import { AlertDialog } from '@repo/design-system/components/precomposed/alert-dialog';
 import { DropdownMenu } from '@repo/design-system/components/precomposed/dropdown-menu';
 import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';

@@ -41,7 +41,6 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@prisma/client": "6.2.1",
     "@repo/typescript-config": "workspace:*",
     "@types/node": "22.10.5",
     "@types/react": "19.0.4",

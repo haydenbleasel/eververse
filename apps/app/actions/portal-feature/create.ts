@@ -2,9 +2,9 @@
 
 import { database } from '@/lib/database';
 import { getPortalUrl } from '@/lib/portal';
-import type { PortalFeature } from '@prisma/client';
 import { EververseRole } from '@repo/backend/auth';
 import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
+import type { PortalFeature } from '@repo/backend/prisma/client';
 import { parseError } from '@repo/lib/parse-error';
 import { revalidatePath } from 'next/cache';
 

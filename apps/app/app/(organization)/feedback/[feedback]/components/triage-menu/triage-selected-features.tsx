@@ -1,6 +1,6 @@
 import { CheckIcon } from 'lucide-react';
 
-import type { Feature, FeatureStatus } from '@prisma/client';
+import type { Feature, FeatureStatus } from '@repo/backend/prisma/client';
 import { Button } from '@repo/design-system/components/ui/button';
 import { Label } from '@repo/design-system/components/ui/label';
 

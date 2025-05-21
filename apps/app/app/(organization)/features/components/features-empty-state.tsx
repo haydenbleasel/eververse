@@ -3,8 +3,8 @@
 import { EmptyState } from '@/components/empty-state';
 import { useFeatureForm } from '@/components/feature-form/use-feature-form';
 import { emptyStates } from '@/lib/empty-states';
-import type { Group, Product } from '@prisma/client';
 import { EververseRole } from '@repo/backend/auth';
+import type { Group, Product } from '@repo/backend/prisma/client';
 import { Button } from '@repo/design-system/components/ui/button';
 
 type FeaturesEmptyStateProperties = {

@@ -2,9 +2,9 @@
 
 import { addChangelogContributor } from '@/actions/changelog-contributor/create';
 import { deleteChangelogContributor } from '@/actions/changelog-contributor/delete';
-import type { Changelog } from '@prisma/client';
 import type { User } from '@repo/backend/auth';
 import { getUserName } from '@repo/backend/auth/format';
+import type { Changelog } from '@repo/backend/prisma/client';
 import { Select } from '@repo/design-system/components/precomposed/select';
 import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
 import { Button } from '@repo/design-system/components/ui/button';

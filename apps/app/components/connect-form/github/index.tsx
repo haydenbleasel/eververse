@@ -1,5 +1,5 @@
 import { OrDivider } from '@/components/or-divider';
-import type { GitHubInstallation } from '@prisma/client';
+import type { GitHubInstallation } from '@repo/backend/prisma/client';
 import { Button } from '@repo/design-system/components/ui/button';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import type { RestEndpointMethodTypes } from '@repo/github';

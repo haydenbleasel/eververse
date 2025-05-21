@@ -5,6 +5,7 @@ import { deleteMarker } from '@/actions/roadmap-event/delete';
 import { FeatureItemInner } from '@/components/roadmap-item';
 import { StatusLegend } from '@/components/status-legend';
 import { useRoadmap } from '@/hooks/use-roadmap';
+import type { User } from '@repo/backend/auth';
 import type {
   Feature,
   FeatureStatus,
@@ -13,8 +14,7 @@ import type {
   Product,
   Release,
   RoadmapEvent,
-} from '@prisma/client';
-import type { User } from '@repo/backend/auth';
+} from '@repo/backend/prisma/client';
 import { Select } from '@repo/design-system/components/precomposed/select';
 import * as Gantt from '@repo/design-system/components/roadmap-ui/gantt';
 import { Stepper } from '@repo/design-system/components/stepper';

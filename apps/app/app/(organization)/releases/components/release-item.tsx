@@ -1,4 +1,4 @@
-import type { Release } from '@prisma/client';
+import type { Release } from '@repo/backend/prisma/client';
 import { Link } from '@repo/design-system/components/link';
 import { formatDate } from '@repo/lib/format';
 import { ArrowRightIcon } from 'lucide-react';

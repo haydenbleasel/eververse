@@ -1,8 +1,8 @@
 'use server';
 
 import { database } from '@/lib/database';
-import type { Prisma } from '@prisma/client';
 import { currentUser } from '@repo/backend/auth/utils';
+import type { Prisma } from '@repo/backend/prisma/client';
 import { parseError } from '@repo/lib/parse-error';
 import { revalidatePath } from 'next/cache';
 

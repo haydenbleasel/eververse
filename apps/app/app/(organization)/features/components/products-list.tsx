@@ -1,6 +1,6 @@
 'use client';
 
-import type { Group, Product } from '@prisma/client';
+import type { Group, Product } from '@repo/backend/prisma/client';
 import { usePathname } from 'next/navigation';
 import { ProductsListItem } from './products-list-item';
 import { ProductsListProduct } from './products-list-product';

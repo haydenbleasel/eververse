@@ -3,7 +3,7 @@
 import { createExampleContent } from '@/actions/example-content/create';
 import { deleteExampleContent } from '@/actions/example-content/delete';
 import { skipExampleContent } from '@/actions/example-content/skip';
-import type { Organization } from '@prisma/client';
+import type { Organization } from '@repo/backend/prisma/client';
 import { Button } from '@repo/design-system/components/ui/button';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { toast } from '@repo/design-system/lib/toast';

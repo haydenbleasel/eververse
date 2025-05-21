@@ -1,5 +1,5 @@
 import { deleteWidgetItem } from '@/actions/widget-item/delete';
-import type { WidgetItem } from '@prisma/client';
+import type { WidgetItem } from '@repo/backend/prisma/client';
 import { AlertDialog } from '@repo/design-system/components/precomposed/alert-dialog';
 import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
 import { Button } from '@repo/design-system/components/ui/button';

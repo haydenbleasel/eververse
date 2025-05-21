@@ -2,7 +2,7 @@
 
 import { updateInitiativeCanvas } from '@/actions/initiative-canvas/update';
 import { CanvasSkeleton } from '@/components/skeletons/canvas';
-import type { InitiativeCanvas } from '@prisma/client';
+import type { InitiativeCanvas } from '@repo/backend/prisma/client';
 import type { CanvasState } from '@repo/canvas';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { useTheme } from 'next-themes';

@@ -42,16 +42,16 @@ import { EmptyState } from '@/components/empty-state';
 import { useFeatureForm } from '@/components/feature-form/use-feature-form';
 import { Header } from '@/components/header';
 import { calculateRice } from '@/lib/rice';
+import type { User } from '@repo/backend/auth';
+import { EververseRole } from '@repo/backend/auth';
+import { getUserName } from '@repo/backend/auth/format';
 import type {
   FeatureStatus,
   Group,
   Prisma,
   Product,
   Release,
-} from '@prisma/client';
-import type { User } from '@repo/backend/auth';
-import { EververseRole } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
+} from '@repo/backend/prisma/client';
 import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
 import type {
   ColumnDef,

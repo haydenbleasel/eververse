@@ -2,7 +2,11 @@
 
 import { updateRice } from '@/actions/feature-rice/update';
 import { impactNumberMatrix } from '@/lib/rice';
-import type { AiFeatureRice, Feature, FeatureRice } from '@prisma/client';
+import type {
+  AiFeatureRice,
+  Feature,
+  FeatureRice,
+} from '@repo/backend/prisma/client';
 import { Select } from '@repo/design-system/components/precomposed/select';
 import { Slider } from '@repo/design-system/components/ui/slider';
 import { handleError } from '@repo/design-system/lib/handle-error';

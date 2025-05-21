@@ -1,4 +1,4 @@
-import type { FeatureStatus } from '@prisma/client';
+import type { FeatureStatus } from '@repo/backend/prisma/client';
 import { Dialog } from '@repo/design-system/components/precomposed/dialog';
 import { DropdownMenu } from '@repo/design-system/components/precomposed/dropdown-menu';
 import { Select } from '@repo/design-system/components/precomposed/select';

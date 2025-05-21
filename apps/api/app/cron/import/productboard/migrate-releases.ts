@@ -1,5 +1,9 @@
-import type { Prisma, ProductboardImport, release_state } from '@prisma/client';
 import { database } from '@repo/backend/database';
+import type {
+  Prisma,
+  ProductboardImport,
+  release_state,
+} from '@repo/backend/prisma/client';
 import { Productboard } from '@repo/productboard';
 
 type ImportJobProperties = Pick<

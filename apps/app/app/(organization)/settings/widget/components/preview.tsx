@@ -1,7 +1,7 @@
 import { database } from '@/lib/database';
 import { getPortalUrl } from '@/lib/portal';
-import type { Widget as WidgetType } from '@prisma/client';
 import { currentOrganizationId } from '@repo/backend/auth/utils';
+import type { Widget as WidgetType } from '@repo/backend/prisma/client';
 import dynamic from 'next/dynamic';
 
 type WidgetPreviewProperties = {

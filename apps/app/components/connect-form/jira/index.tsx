@@ -1,5 +1,5 @@
 import { OrDivider } from '@/components/or-divider';
-import type { AtlassianInstallation } from '@prisma/client';
+import type { AtlassianInstallation } from '@repo/backend/prisma/client';
 import { Button } from '@repo/design-system/components/ui/button';
 import { JiraIssueCreator } from './jira-issue-creator';
 import { JiraIssuePicker } from './jira-issue-picker';

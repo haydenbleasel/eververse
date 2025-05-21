@@ -1,6 +1,6 @@
-import type { CannyImport, Prisma } from '@prisma/client';
 import { getMembers } from '@repo/backend/auth/utils';
 import { database } from '@repo/backend/database';
+import type { CannyImport, Prisma } from '@repo/backend/prisma/client';
 import { Canny } from '@repo/canny';
 
 type ImportJobProperties = Pick<

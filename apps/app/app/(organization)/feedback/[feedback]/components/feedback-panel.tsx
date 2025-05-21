@@ -1,7 +1,7 @@
 import { database } from '@/lib/database';
-import type { Feedback } from '@prisma/client';
 import { EververseRole } from '@repo/backend/auth';
 import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
+import type { Feedback } from '@repo/backend/prisma/client';
 import { Link } from '@repo/design-system/components/link';
 import { Avatar } from '@repo/design-system/components/precomposed/avatar';
 import { Prose } from '@repo/design-system/components/prose';

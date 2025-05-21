@@ -1,7 +1,7 @@
 'use client';
 
 import { disconnectFeature } from '@/actions/feature-connection/delete';
-import type { FeatureConnection } from '@prisma/client';
+import type { FeatureConnection } from '@repo/backend/prisma/client';
 import { AlertDialog } from '@repo/design-system/components/precomposed/alert-dialog';
 import { Button } from '@repo/design-system/components/ui/button';
 import { handleError } from '@repo/design-system/lib/handle-error';

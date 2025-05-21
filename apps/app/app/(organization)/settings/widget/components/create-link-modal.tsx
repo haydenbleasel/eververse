@@ -3,7 +3,7 @@
 import { createWidgetItem } from '@/actions/widget-item/create';
 import { updateWidgetItem } from '@/actions/widget-item/update';
 import { zodResolver } from '@hookform/resolvers/zod';
-import type { Widget, WidgetItem } from '@prisma/client';
+import type { Widget, WidgetItem } from '@repo/backend/prisma/client';
 import { Dialog } from '@repo/design-system/components/precomposed/dialog';
 import { Input } from '@repo/design-system/components/precomposed/input';
 import { Select } from '@repo/design-system/components/precomposed/select';

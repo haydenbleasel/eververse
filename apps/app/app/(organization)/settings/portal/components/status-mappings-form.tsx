@@ -7,7 +7,7 @@ import type {
   FeatureStatus,
   PortalStatus,
   PortalStatusMapping,
-} from '@prisma/client';
+} from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { toast } from '@repo/design-system/lib/toast';
 import { tailwind } from '@repo/tailwind-config';

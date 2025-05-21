@@ -1,9 +1,9 @@
 import { FeatureItem } from '@/app/(organization)/features/components/feature-item';
 import { database } from '@/lib/database';
-import type { Feature } from '@prisma/client';
 import type { User } from '@repo/backend/auth';
 import { getUserName } from '@repo/backend/auth/format';
 import { getJsonColumnFromTable } from '@repo/backend/database';
+import type { Feature } from '@repo/backend/prisma/client';
 import { contentToText } from '@repo/editor/lib/tiptap';
 
 type ReleaseFeatureProps = {

@@ -2,7 +2,7 @@
 
 import { updateInitiativePage } from '@/actions/initiative-page/update';
 import { DocumentInput } from '@/components/document-input';
-import type { InitiativePage } from '@prisma/client';
+import type { InitiativePage } from '@repo/backend/prisma/client';
 import { handleError } from '@repo/design-system/lib/handle-error';
 
 type InitiativePageTitleProperties = {

@@ -1,9 +1,9 @@
 'use client';
 
 import { updateInitiative } from '@/actions/initiative/update';
-import type { Initiative } from '@prisma/client';
 import type { User } from '@repo/backend/auth';
 import { getUserName } from '@repo/backend/auth/format';
+import type { Initiative } from '@repo/backend/prisma/client';
 import { Select } from '@repo/design-system/components/precomposed/select';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import Image from 'next/image';

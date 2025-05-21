@@ -1,7 +1,7 @@
 import { EmptyState } from '@/components/empty-state';
 import { database } from '@/lib/database';
-import type { InitiativeUpdate } from '@prisma/client';
 import { currentUser } from '@repo/backend/auth/utils';
+import type { InitiativeUpdate } from '@repo/backend/prisma/client';
 import { Link } from '@repo/design-system/components/link';
 import { StackCard } from '@repo/design-system/components/stack-card';
 import { Separator } from '@repo/design-system/components/ui/separator';

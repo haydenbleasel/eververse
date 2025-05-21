@@ -1,5 +1,5 @@
-import type { CannyImport } from '@prisma/client';
 import { database } from '@repo/backend/database';
+import type { CannyImport } from '@repo/backend/prisma/client';
 import { Canny } from '@repo/canny';
 import { friendlyWords } from 'friendlier-words';
 

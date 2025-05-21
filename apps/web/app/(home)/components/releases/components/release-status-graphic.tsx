@@ -1,6 +1,6 @@
 'use client';
 
-import type { release_state } from '@prisma/client';
+import type { release_state } from '@repo/backend/prisma/client';
 import { tailwind } from '@repo/tailwind-config';
 import { useInView } from 'motion/react';
 import { useRef } from 'react';

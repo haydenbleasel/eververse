@@ -1,8 +1,8 @@
 'use server';
 
 import { database } from '@/lib/database';
-import type { Feedback, FeedbackUser } from '@prisma/client';
 import { getJsonColumnFromTable } from '@repo/backend/database';
+import type { Feedback, FeedbackUser } from '@repo/backend/prisma/client';
 import { contentToText } from '@repo/editor/lib/tiptap';
 import { parseError } from '@repo/lib/parse-error';
 

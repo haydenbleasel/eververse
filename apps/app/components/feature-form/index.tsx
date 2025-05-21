@@ -2,8 +2,8 @@
 
 import { createFeature } from '@/actions/feature/create';
 import { nestGroups } from '@/lib/group';
-import type { Group, Product } from '@prisma/client';
 import type { User } from '@repo/backend/auth';
+import type { Group, Product } from '@repo/backend/prisma/client';
 import { Dialog } from '@repo/design-system/components/precomposed/dialog';
 import { Input } from '@repo/design-system/components/precomposed/input';
 import { handleError } from '@repo/design-system/lib/handle-error';

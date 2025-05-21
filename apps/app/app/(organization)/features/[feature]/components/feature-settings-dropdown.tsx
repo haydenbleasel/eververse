@@ -4,7 +4,7 @@ import { deleteFeature } from '@/actions/feature/delete';
 import { createTemplateFromFeature } from '@/actions/template/create';
 import { updateTemplateFromFeature } from '@/actions/template/update';
 import { OrDivider } from '@/components/or-divider';
-import type { Feature, Template } from '@prisma/client';
+import type { Feature, Template } from '@repo/backend/prisma/client';
 import { AlertDialog } from '@repo/design-system/components/precomposed/alert-dialog';
 import { Dialog } from '@repo/design-system/components/precomposed/dialog';
 import { DropdownMenu } from '@repo/design-system/components/precomposed/dropdown-menu';

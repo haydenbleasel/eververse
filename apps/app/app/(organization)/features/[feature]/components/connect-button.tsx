@@ -1,7 +1,7 @@
 'use client';
 
 import { useConnectForm } from '@/components/connect-form/use-connect-form';
-import type { Feature } from '@prisma/client';
+import type { Feature } from '@repo/backend/prisma/client';
 import { Button } from '@repo/design-system/components/ui/button';
 
 type ConnectButtonProperties = {

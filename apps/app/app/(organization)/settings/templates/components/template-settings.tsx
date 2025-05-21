@@ -2,7 +2,7 @@
 
 import { deleteTemplate } from '@/actions/template/delete';
 import { updateTemplate } from '@/actions/template/update';
-import type { Template as TemplateClass } from '@prisma/client';
+import type { Template as TemplateClass } from '@repo/backend/prisma/client';
 import { AlertDialog } from '@repo/design-system/components/precomposed/alert-dialog';
 import { Dialog } from '@repo/design-system/components/precomposed/dialog';
 import { DropdownMenu } from '@repo/design-system/components/precomposed/dropdown-menu';

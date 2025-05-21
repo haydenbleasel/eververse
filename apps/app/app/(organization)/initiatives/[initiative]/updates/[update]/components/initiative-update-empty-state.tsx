@@ -1,7 +1,7 @@
 'use client';
 
 import { generateInitiativeUpdateContent } from '@/actions/initiative-update/generate';
-import type { Initiative, InitiativeUpdate } from '@prisma/client';
+import type { Initiative, InitiativeUpdate } from '@repo/backend/prisma/client';
 import { LoadingCircle } from '@repo/design-system/components/loading-circle';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { PencilIcon, SparklesIcon } from 'lucide-react';

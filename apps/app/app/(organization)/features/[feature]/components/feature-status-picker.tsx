@@ -1,7 +1,7 @@
 'use client';
 
 import { updateFeature } from '@/actions/feature/update';
-import type { Feature, FeatureStatus } from '@prisma/client';
+import type { Feature, FeatureStatus } from '@repo/backend/prisma/client';
 import { Select } from '@repo/design-system/components/precomposed/select';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { useState } from 'react';

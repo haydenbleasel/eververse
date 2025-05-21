@@ -1,6 +1,6 @@
 'use client';
 
-import type { Template as TemplateClass } from '@prisma/client';
+import type { Template as TemplateClass } from '@repo/backend/prisma/client';
 import { cn } from '@repo/design-system/lib/utils';
 import dynamic from 'next/dynamic';
 import type { ReactNode } from 'react';

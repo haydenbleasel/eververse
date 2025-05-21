@@ -3,7 +3,7 @@
 import { deleteProduct } from '@/actions/product/delete';
 import { updateProduct } from '@/actions/product/update';
 import { nestGroups } from '@/lib/group';
-import type { Group, Product } from '@prisma/client';
+import type { Group, Product } from '@repo/backend/prisma/client';
 import { useParams, useRouter } from 'next/navigation';
 import { ProductsListGroup } from './products-list-group';
 import { ProductsListItem } from './products-list-item';
