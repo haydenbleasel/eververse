@@ -65,7 +65,7 @@ const Changelog = async () => {
 
   if (!changelogs.length) {
     return (
-      <Prose className="flex w-full max-w-none flex-col items-center justify-center gap-2 rounded-2xl border bg-secondary p-12">
+      <Prose className="grid w-full max-w-none items-center justify-center gap-2 rounded-2xl border bg-secondary p-12">
         <h1 className="m-0">No changelogs found</h1>
         <p className="m-0">
           There are no changelogs published for this portal.
