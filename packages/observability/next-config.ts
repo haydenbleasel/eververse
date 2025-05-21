@@ -34,6 +34,15 @@ export const sentryConfig: Parameters<typeof withSentryConfig>[1] = {
    * https://vercel.com/docs/cron-jobs
    */
   automaticVercelMonitors: true,
+
+  /*
+   * Enables automatic annotation of React components.
+   * See the following for more information:
+   * https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#step-7-capture-react-component-names-optional
+   */
+  reactComponentAnnotation: {
+    enabled: true,
+  },
 };
 
 export const withSentry = (sourceConfig: object): object => {
