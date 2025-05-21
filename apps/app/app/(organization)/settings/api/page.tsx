@@ -1,16 +1,24 @@
 import { EmptyState } from '@/components/empty-state';
-import { env } from '@/env';
 import { currentOrganizationId } from '@repo/backend/auth/utils';
 import { database } from '@repo/backend/database';
 import { Link } from '@repo/design-system/components/link';
 import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
 import { Prose } from '@repo/design-system/components/prose';
 import { Button } from '@repo/design-system/components/ui/button';
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@repo/design-system/components/ui/sheet';
 import { createMetadata } from '@repo/seo/metadata';
-import { ArrowUpRightIcon, SparkleIcon } from 'lucide-react';
+import { BookIcon, SparkleIcon } from 'lucide-react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
+import { APIDocumentation } from './components/api-documentation';
 import { ApiKeysTable } from './components/api-keys-table';
 
 export const metadata: Metadata = createMetadata({
@@ -39,7 +47,7 @@ const APIPage = async () => {
     notFound();
   }
 
-  if (!organization.stripeSubscriptionId) {
+  if (organization.stripeSubscriptionId) {
     return (
       <div className="flex h-full items-center justify-center">
         <EmptyState
@@ -66,15 +74,22 @@ const APIPage = async () => {
             </p>
           </div>
           <div className="not-prose">
-            <Button asChild variant="outline">
-              <Link
-                href={env.EVERVERSE_DOCS_URL}
-                className="flex items-center gap-2"
-              >
-                API documentation
-                <ArrowUpRightIcon size={16} />
-              </Link>
-            </Button>
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="outline" className="flex items-center gap-2">
+                  <BookIcon size={16} className="text-muted-foreground" />
+                  <span>API documentation</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent className="overflow-y-auto sm:max-w-md">
+                <SheetHeader>
+                  <SheetTitle>Eververse API</SheetTitle>
+                  <SheetDescription className="prose prose-sm">
+                    <APIDocumentation />
+                  </SheetDescription>
+                </SheetHeader>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
         <Suspense fallback={<Skeleton className="aspect-video w-full" />}>
