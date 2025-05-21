@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@reference "@repo/design-system/styles/globals.css";
 
 /* stylelint-disable selector-class-pattern */
 

@@ -7,7 +7,6 @@
     "@types/deep-equal": "^1.0.4",
     "@types/html-to-text": "^9.0.4",
     "@types/react": "^19.1.5",
-    "tailwindcss": "^4.1.7",
     "typescript": "^5.8.3"
   },
   "dependencies": {

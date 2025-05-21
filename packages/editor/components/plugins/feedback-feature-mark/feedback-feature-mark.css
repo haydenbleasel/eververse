@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@reference "@repo/design-system/styles/globals.css";
 
 span[data-feature] {
   @apply cursor-pointer text-white px-1 py-0.5 rounded-md ring-1;

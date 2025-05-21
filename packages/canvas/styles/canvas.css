@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@reference "@repo/design-system/styles/globals.css";
 
 html body .excalidraw {
   --button-destructive-bg-color: #ffe3e3;
