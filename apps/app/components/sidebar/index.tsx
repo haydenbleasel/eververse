@@ -60,7 +60,7 @@ export const Sidebar = ({ user, organization }: SidebarProps) => {
 
   const handleSignOut = async () => {
     try {
-      const client = await createClient();
+      const client = createClient();
       const response = await client.auth.signOut();
 
       if (response.error) {
