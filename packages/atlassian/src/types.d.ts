@@ -4,7 +4,7 @@
  */
 
 export interface paths {
-    "/rest/api/3/announcementBanner": {
+    "/rest/api/2/announcementBanner": {
         parameters: {
             query?: never;
             header?: never;
@@ -32,7 +32,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/app/field/context/configuration/list": {
+    "/rest/api/2/app/field/context/configuration/list": {
         parameters: {
             query?: never;
             header?: never;
@@ -63,7 +63,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/app/field/value": {
+    "/rest/api/2/app/field/value": {
         parameters: {
             query?: never;
             header?: never;
@@ -89,7 +89,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/app/field/{fieldIdOrKey}/context/configuration": {
+    "/rest/api/2/app/field/{fieldIdOrKey}/context/configuration": {
         parameters: {
             query?: never;
             header?: never;
@@ -126,7 +126,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/app/field/{fieldIdOrKey}/value": {
+    "/rest/api/2/app/field/{fieldIdOrKey}/value": {
         parameters: {
             query?: never;
             header?: never;
@@ -152,7 +152,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/application-properties": {
+    "/rest/api/2/application-properties": {
         parameters: {
             query?: never;
             header?: never;
@@ -163,7 +163,7 @@ export interface paths {
          * Get application property
          * @description Returns all application properties or an application property.
          *
-         *     If you specify a value for the `key` parameter, then an application property is returned as an object (not in an array). Otherwise, an array of all editable application properties is returned. See [Set application property](#api-rest-api-3-application-properties-id-put) for descriptions of editable properties.
+         *     If you specify a value for the `key` parameter, then an application property is returned as an object (not in an array). Otherwise, an array of all editable application properties is returned. See [Set application property](#api-rest-api-2-application-properties-id-put) for descriptions of editable properties.
          *
          *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
@@ -176,7 +176,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/application-properties/advanced-settings": {
+    "/rest/api/2/application-properties/advanced-settings": {
         parameters: {
             query?: never;
             header?: never;
@@ -198,7 +198,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/application-properties/{id}": {
+    "/rest/api/2/application-properties/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -269,7 +269,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/applicationrole": {
+    "/rest/api/2/applicationrole": {
         parameters: {
             query?: never;
             header?: never;
@@ -291,7 +291,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/applicationrole/{key}": {
+    "/rest/api/2/applicationrole/{key}": {
         parameters: {
             query?: never;
             header?: never;
@@ -313,7 +313,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/attachment/content/{id}": {
+    "/rest/api/2/attachment/content/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -324,7 +324,7 @@ export interface paths {
          * Get attachment content
          * @description Returns the contents of an attachment. A `Range` header can be set to define a range of bytes within the attachment to download. See the [HTTP Range header standard](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range) for details.
          *
-         *     To return a thumbnail of the attachment, use [Get attachment thumbnail](#api-rest-api-3-attachment-thumbnail-id-get).
+         *     To return a thumbnail of the attachment, use [Get attachment thumbnail](#api-rest-api-2-attachment-thumbnail-id-get).
          *
          *     This operation can be accessed anonymously.
          *
@@ -343,7 +343,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/attachment/meta": {
+    "/rest/api/2/attachment/meta": {
         parameters: {
             query?: never;
             header?: never;
@@ -369,7 +369,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/attachment/thumbnail/{id}": {
+    "/rest/api/2/attachment/thumbnail/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -380,7 +380,7 @@ export interface paths {
          * Get attachment thumbnail
          * @description Returns the thumbnail of an attachment.
          *
-         *     To return the attachment contents, use [Get attachment content](#api-rest-api-3-attachment-content-id-get).
+         *     To return the attachment contents, use [Get attachment content](#api-rest-api-2-attachment-content-id-get).
          *
          *     This operation can be accessed anonymously.
          *
@@ -399,7 +399,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/attachment/{id}": {
+    "/rest/api/2/attachment/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -438,7 +438,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/attachment/{id}/expand/human": {
+    "/rest/api/2/attachment/{id}/expand/human": {
         parameters: {
             query?: never;
             header?: never;
@@ -449,7 +449,7 @@ export interface paths {
          * Get all metadata for an expanded attachment
          * @description Returns the metadata for the contents of an attachment, if it is an archive, and metadata for the attachment itself. For example, if the attachment is a ZIP archive, then information about the files in the archive is returned and metadata for the ZIP archive. Currently, only the ZIP archive format is supported.
          *
-         *     Use this operation to retrieve data that is presented to the user, as this operation returns the metadata for the attachment itself, such as the attachment's ID and name. Otherwise, use [ Get contents metadata for an expanded attachment](#api-rest-api-3-attachment-id-expand-raw-get), which only returns the metadata for the attachment's contents.
+         *     Use this operation to retrieve data that is presented to the user, as this operation returns the metadata for the attachment itself, such as the attachment's ID and name. Otherwise, use [ Get contents metadata for an expanded attachment](#api-rest-api-2-attachment-id-expand-raw-get), which only returns the metadata for the attachment's contents.
          *
          *     This operation can be accessed anonymously.
          *
@@ -468,7 +468,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/attachment/{id}/expand/raw": {
+    "/rest/api/2/attachment/{id}/expand/raw": {
         parameters: {
             query?: never;
             header?: never;
@@ -479,7 +479,7 @@ export interface paths {
          * Get contents metadata for an expanded attachment
          * @description Returns the metadata for the contents of an attachment, if it is an archive. For example, if the attachment is a ZIP archive, then information about the files in the archive is returned. Currently, only the ZIP archive format is supported.
          *
-         *     Use this operation if you are processing the data without presenting it to the user, as this operation only returns the metadata for the contents of the attachment. Otherwise, to retrieve data to present to the user, use [ Get all metadata for an expanded attachment](#api-rest-api-3-attachment-id-expand-human-get) which also returns the metadata for the attachment itself, such as the attachment's ID and name.
+         *     Use this operation if you are processing the data without presenting it to the user, as this operation only returns the metadata for the contents of the attachment. Otherwise, to retrieve data to present to the user, use [ Get all metadata for an expanded attachment](#api-rest-api-2-attachment-id-expand-human-get) which also returns the metadata for the attachment itself, such as the attachment's ID and name.
          *
          *     This operation can be accessed anonymously.
          *
@@ -498,7 +498,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/auditing/record": {
+    "/rest/api/2/auditing/record": {
         parameters: {
             query?: never;
             header?: never;
@@ -536,7 +536,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/avatar/{type}/system": {
+    "/rest/api/2/avatar/{type}/system": {
         parameters: {
             query?: never;
             header?: never;
@@ -560,195 +560,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/bulk/issues/delete": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * Bulk delete issues
-         * @description Use this API to submit a bulk delete request. You can delete up to 1,000 issues in a single operation.
-         *
-         *     **[Permissions](#permissions) required:**
-         *
-         *      *  Global bulk change [permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-global-permissions/).
-         *      *  Delete [issues permission](https://support.atlassian.com/jira-cloud-administration/docs/permissions-for-company-managed-projects/#Delete-issues/) in all projects that contain the selected issues.
-         *      *  Browse [project permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-project-permissions/) in all projects that contain the selected issues.
-         *      *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.
-         */
-        post: operations["submitBulkDelete"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/rest/api/3/bulk/issues/fields": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Get bulk editable fields
-         * @description Use this API to get a list of fields visible to the user to perform bulk edit operations. You can pass single or multiple issues in the query to get eligible editable fields. This API uses pagination to return responses, delivering 50 fields at a time.
-         *
-         *     **[Permissions](#permissions) required:**
-         *
-         *      *  Global bulk change [permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-global-permissions/).
-         *      *  Browse [project permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-project-permissions/) in all projects that contain the selected issues.
-         *      *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.
-         *      *  Depending on the field, any field-specific permissions required to edit it.
-         */
-        get: operations["getBulkEditableFields"];
-        put?: never;
-        /**
-         * Bulk edit issues
-         * @description Use this API to submit a bulk edit request and simultaneously edit multiple issues. There are limits applied to the number of issues and fields that can be edited. A single request can accommodate a maximum of 1000 issues (including subtasks) and 200 fields.
-         *
-         *     **[Permissions](#permissions) required:**
-         *
-         *      *  Global bulk change [permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-global-permissions/).
-         *      *  Browse [project permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-project-permissions/) in all projects that contain the selected issues.
-         *      *  Edit [issues permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-project-permissions/) in all projects that contain the selected issues.
-         *      *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.
-         */
-        post: operations["submitBulkEdit"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/rest/api/3/bulk/issues/move": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * Bulk move issues
-         * @description Use this API to submit a bulk issue move request. You can move multiple issues, but they must all be moved to and from a single project, issue type, and parent. You can't move more than 1000 issues (including subtasks) at once.
-         *
-         *     #### Scenarios: ####
-         *
-         *     This is an early version of the API and it doesn't have full feature parity with the Bulk Move UI experience.
-         *
-         *      *  Moving issue of type A to issue of type B in the same project or a different project: `SUPPORTED`
-         *      *  Moving multiple issues of type A in one project to multiple issues of type B in the same project or a different project: **`SUPPORTED`**
-         *      *  Moving a standard parent issue of type A with its multiple subtask issue types in one project to standard issue of type B and multiple subtask issue types in the same project or a different project: `SUPPORTED`
-         *      *  Moving an epic issue with its child issues to a different project without losing their relation: `NOT SUPPORTED`
-         *         (Workaround: Move them individually and stitch the relationship back with the Bulk Edit API)
-         *
-         *     #### Limits applied to bulk issue moves: ####
-         *
-         *     When using the bulk move, keep in mind that there are limits on the number of issues and fields you can include.
-         *
-         *      *  You can move up to 1,000 issues in a single operation, including any subtasks.
-         *      *  All issues must originate from the same project and share the same issue type and parent.
-         *      *  The total combined number of fields across all issues must not exceed 1,500,000. For example, if each issue includes 15,000 fields, then the maximum number of issues that can be moved is 100.
-         *
-         *     **[Permissions](#permissions) required:**
-         *
-         *      *  Global bulk change [permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-global-permissions/).
-         *      *  Move [issues permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-project-permissions/) in source projects.
-         *      *  Create [issues permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-project-permissions/) in destination projects.
-         *      *  Browse [project permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-project-permissions/) in destination projects, if moving subtasks only.
-         *      *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.
-         */
-        post: operations["submitBulkMove"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/rest/api/3/bulk/issues/transition": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Get available transitions
-         * @description Use this API to retrieve a list of transitions available for the specified issues that can be used or bulk transition operations. You can submit either single or multiple issues in the query to obtain the available transitions.
-         *
-         *     The response will provide the available transitions for issues, organized by their respective workflows. **Only the transitions that are common among the issues within that workflow and do not involve any additional field updates will be included.** For bulk transitions that require additional field updates, please utilise the Jira Cloud UI.
-         *
-         *     You can request available transitions for up to 1,000 issues in a single operation. This API uses pagination to return responses, delivering 50 workflows at a time.
-         *
-         *     **[Permissions](#permissions) required:**
-         *
-         *      *  Global bulk change [permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-global-permissions/).
-         *      *  Transition [issues permission](https://support.atlassian.com/jira-cloud-administration/docs/permissions-for-company-managed-projects/#Transition-issues/) in all projects that contain the selected issues.
-         *      *  Browse [project permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-project-permissions/) in all projects that contain the selected issues.
-         *      *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.
-         */
-        get: operations["getAvailableTransitions"];
-        put?: never;
-        /**
-         * Bulk transition issue statuses
-         * @description Use this API to submit a bulk issue status transition request. You can transition multiple issues, alongside with their valid transition Ids. You can transition up to 1,000 issues in a single operation.
-         *
-         *     **[Permissions](#permissions) required:**
-         *
-         *      *  Global bulk change [permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-global-permissions/).
-         *      *  Transition [issues permission](https://support.atlassian.com/jira-cloud-administration/docs/permissions-for-company-managed-projects/#Transition-issues/) in all projects that contain the selected issues.
-         *      *  Browse [project permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-project-permissions/) in all projects that contain the selected issues.
-         *      *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.
-         */
-        post: operations["submitBulkTransition"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/rest/api/3/bulk/queue/{taskId}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Get bulk issue operation progress
-         * @description Use this to get the progress state for the specified bulk operation `taskId`.
-         *
-         *     **[Permissions](#permissions) required:**
-         *
-         *      *  Global bulk change [permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-global-permissions/).
-         *      *  Administer Jira [global permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-global-permissions/), or be the creator of the task.
-         *
-         *     If the task is running, this resource will return:
-         *
-         *         {"taskId":"10779","status":"RUNNING","progressPercent":65,"submittedBy":{"accountId":"5b10a2844c20165700ede21g"},"created":1690180055963,"started":1690180056206,"updated":169018005829}
-         *
-         *     If the task has completed, then this resource will return:
-         *
-         *         {"processedAccessibleIssues":[10001,10002],"created":1709189449954,"progressPercent":100,"started":1709189450154,"status":"COMPLETE","submittedBy":{"accountId":"5b10a2844c20165700ede21g"},"invalidOrInaccessibleIssueCount":0,"taskId":"10000","totalIssueCount":2,"updated":1709189450354}
-         *
-         *     **Note:** You can view task progress for up to 14 days from creation.
-         */
-        get: operations["getBulkOperationProgress"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/rest/api/3/changelog/bulkfetch": {
+    "/rest/api/2/changelog/bulkfetch": {
         parameters: {
             query?: never;
             header?: never;
@@ -777,7 +589,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/classification-levels": {
+    "/rest/api/2/classification-levels": {
         parameters: {
             query?: never;
             header?: never;
@@ -799,7 +611,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/comment/list": {
+    "/rest/api/2/comment/list": {
         parameters: {
             query?: never;
             header?: never;
@@ -827,7 +639,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/comment/{commentId}/properties": {
+    "/rest/api/2/comment/{commentId}/properties": {
         parameters: {
             query?: never;
             header?: never;
@@ -855,7 +667,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/comment/{commentId}/properties/{propertyKey}": {
+    "/rest/api/2/comment/{commentId}/properties/{propertyKey}": {
         parameters: {
             query?: never;
             header?: never;
@@ -907,7 +719,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/component": {
+    "/rest/api/2/component": {
         parameters: {
             query?: never;
             header?: never;
@@ -939,7 +751,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/component/{id}": {
+    "/rest/api/2/component/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -979,7 +791,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/component/{id}/relatedIssueCounts": {
+    "/rest/api/2/component/{id}/relatedIssueCounts": {
         parameters: {
             query?: never;
             header?: never;
@@ -1008,7 +820,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/configuration": {
+    "/rest/api/2/configuration": {
         parameters: {
             query?: never;
             header?: never;
@@ -1030,7 +842,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/configuration/timetracking": {
+    "/rest/api/2/configuration/timetracking": {
         parameters: {
             query?: never;
             header?: never;
@@ -1058,7 +870,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/configuration/timetracking/list": {
+    "/rest/api/2/configuration/timetracking/list": {
         parameters: {
             query?: never;
             header?: never;
@@ -1080,7 +892,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/configuration/timetracking/options": {
+    "/rest/api/2/configuration/timetracking/options": {
         parameters: {
             query?: never;
             header?: never;
@@ -1108,7 +920,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/customFieldOption/{id}": {
+    "/rest/api/2/customFieldOption/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -1137,7 +949,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/dashboard": {
+    "/rest/api/2/dashboard": {
         parameters: {
             query?: never;
             header?: never;
@@ -1167,7 +979,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/dashboard/bulk/edit": {
+    "/rest/api/2/dashboard/bulk/edit": {
         parameters: {
             query?: never;
             header?: never;
@@ -1191,7 +1003,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/dashboard/gadgets": {
+    "/rest/api/2/dashboard/gadgets": {
         parameters: {
             query?: never;
             header?: never;
@@ -1213,7 +1025,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/dashboard/search": {
+    "/rest/api/2/dashboard/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -1222,7 +1034,7 @@ export interface paths {
         };
         /**
          * Search for dashboards
-         * @description Returns a [paginated](#pagination) list of dashboards. This operation is similar to [Get dashboards](#api-rest-api-3-dashboard-get) except that the results can be refined to include dashboards that have specific attributes. For example, dashboards with a particular name. When multiple attributes are specified only filters matching all attributes are returned.
+         * @description Returns a [paginated](#pagination) list of dashboards. This operation is similar to [Get dashboards](#api-rest-api-2-dashboard-get) except that the results can be refined to include dashboards that have specific attributes. For example, dashboards with a particular name. When multiple attributes are specified only filters matching all attributes are returned.
          *
          *     This operation can be accessed anonymously.
          *
@@ -1243,7 +1055,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/dashboard/{dashboardId}/gadget": {
+    "/rest/api/2/dashboard/{dashboardId}/gadget": {
         parameters: {
             query?: never;
             header?: never;
@@ -1280,7 +1092,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/dashboard/{dashboardId}/gadget/{gadgetId}": {
+    "/rest/api/2/dashboard/{dashboardId}/gadget/{gadgetId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -1310,7 +1122,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/dashboard/{dashboardId}/items/{itemId}/properties": {
+    "/rest/api/2/dashboard/{dashboardId}/items/{itemId}/properties": {
         parameters: {
             query?: never;
             header?: never;
@@ -1334,7 +1146,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/dashboard/{dashboardId}/items/{itemId}/properties/{propertyKey}": {
+    "/rest/api/2/dashboard/{dashboardId}/items/{itemId}/properties/{propertyKey}": {
         parameters: {
             query?: never;
             header?: never;
@@ -1388,7 +1200,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/dashboard/{id}": {
+    "/rest/api/2/dashboard/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -1430,7 +1242,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/dashboard/{id}/copy": {
+    "/rest/api/2/dashboard/{id}/copy": {
         parameters: {
             query?: never;
             header?: never;
@@ -1454,7 +1266,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/data-policy": {
+    "/rest/api/2/data-policy": {
         parameters: {
             query?: never;
             header?: never;
@@ -1474,7 +1286,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/data-policy/project": {
+    "/rest/api/2/data-policy/project": {
         parameters: {
             query?: never;
             header?: never;
@@ -1494,7 +1306,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/events": {
+    "/rest/api/2/events": {
         parameters: {
             query?: never;
             header?: never;
@@ -1516,7 +1328,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/expression/analyse": {
+    "/rest/api/2/expression/analyse": {
         parameters: {
             query?: never;
             header?: never;
@@ -1542,7 +1354,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/expression/eval": {
+    "/rest/api/2/expression/eval": {
         parameters: {
             query?: never;
             header?: never;
@@ -1591,7 +1403,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/expression/evaluate": {
+    "/rest/api/2/expression/evaluate": {
         parameters: {
             query?: never;
             header?: never;
@@ -1639,7 +1451,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field": {
+    "/rest/api/2/field": {
         parameters: {
             query?: never;
             header?: never;
@@ -1674,7 +1486,49 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/search": {
+    "/rest/api/2/field/association": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Create associations
+         * @description Associates fields with projects.
+         *
+         *     Fields will be associated with each issue type on the requested projects.
+         *
+         *     Fields will be associated with all projects that share the same field configuration which the provided projects are using. This means that while the field will be associated with the requested projects, it will also be associated with any other projects that share the same field configuration.
+         *
+         *     If a success response is returned it means that the field association has been created in any applicable contexts where it wasn't already present.
+         *
+         *     Up to 50 fields and up to 100 projects can be associated in a single request. If more fields or projects are provided a 400 response will be returned.
+         *
+         *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
+         */
+        put: operations["createAssociations"];
+        post?: never;
+        /**
+         * Remove associations
+         * @description Unassociates a set of fields with a project and issue type context.
+         *
+         *     Fields will be unassociated with all projects/issue types that share the same field configuration which the provided project and issue types are using. This means that while the field will be unassociated with the provided project and issue types, it will also be unassociated with any other projects and issue types that share the same field configuration.
+         *
+         *     If a success response is returned it means that the field association has been removed in any applicable contexts where it was present.
+         *
+         *     Up to 50 fields and up to 100 projects and issue types can be unassociated in a single request. If more fields or projects are provided a 400 response will be returned.
+         *
+         *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
+         */
+        delete: operations["removeAssociations"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/rest/api/2/field/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -1703,7 +1557,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/search/trashed": {
+    "/rest/api/2/field/search/trashed": {
         parameters: {
             query?: never;
             header?: never;
@@ -1727,7 +1581,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldId}": {
+    "/rest/api/2/field/{fieldId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -1749,7 +1603,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldId}/context": {
+    "/rest/api/2/field/{fieldId}/context": {
         parameters: {
             query?: never;
             header?: never;
@@ -1765,7 +1619,7 @@ export interface paths {
          *      *  By defining `isAnyIssueType`, limit the list of contexts returned to either those that apply to all issue types (true) or those that apply to only a subset of issue types (false)
          *      *  By defining `isGlobalContext`, limit the list of contexts return to either those that apply to all projects (global contexts) (true) or those that apply to only a subset of projects (false).
          *
-         *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
+         *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg). *Edit Workflow* [edit workflow permission](https://support.atlassian.com/jira-cloud-administration/docs/permissions-for-company-managed-projects/#Edit-Workflows)
          */
         get: operations["getContextsForField"];
         put?: never;
@@ -1784,7 +1638,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldId}/context/defaultValue": {
+    "/rest/api/2/field/{fieldId}/context/defaultValue": {
         parameters: {
             query?: never;
             header?: never;
@@ -1877,7 +1731,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldId}/context/issuetypemapping": {
+    "/rest/api/2/field/{fieldId}/context/issuetypemapping": {
         parameters: {
             query?: never;
             header?: never;
@@ -1899,7 +1753,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldId}/context/mapping": {
+    "/rest/api/2/field/{fieldId}/context/mapping": {
         parameters: {
             query?: never;
             header?: never;
@@ -1927,7 +1781,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldId}/context/projectmapping": {
+    "/rest/api/2/field/{fieldId}/context/projectmapping": {
         parameters: {
             query?: never;
             header?: never;
@@ -1949,7 +1803,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldId}/context/{contextId}": {
+    "/rest/api/2/field/{fieldId}/context/{contextId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -1977,7 +1831,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldId}/context/{contextId}/issuetype": {
+    "/rest/api/2/field/{fieldId}/context/{contextId}/issuetype": {
         parameters: {
             query?: never;
             header?: never;
@@ -2003,7 +1857,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldId}/context/{contextId}/issuetype/remove": {
+    "/rest/api/2/field/{fieldId}/context/{contextId}/issuetype/remove": {
         parameters: {
             query?: never;
             header?: never;
@@ -2027,7 +1881,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldId}/context/{contextId}/option": {
+    "/rest/api/2/field/{fieldId}/context/{contextId}/option": {
         parameters: {
             query?: never;
             header?: never;
@@ -2040,7 +1894,7 @@ export interface paths {
          *
          *     This operation works for custom field options created in Jira or the operations from this resource. **To work with issue field select list options created for Connect apps use the [Issue custom field options (apps)](#api-group-issue-custom-field-options--apps-) operations.**
          *
-         *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
+         *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg). *Edit Workflow* [edit workflow permission](https://support.atlassian.com/jira-cloud-administration/docs/permissions-for-company-managed-projects/#Edit-Workflows)
          */
         get: operations["getOptionsForContext"];
         /**
@@ -2071,7 +1925,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldId}/context/{contextId}/option/move": {
+    "/rest/api/2/field/{fieldId}/context/{contextId}/option/move": {
         parameters: {
             query?: never;
             header?: never;
@@ -2095,7 +1949,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldId}/context/{contextId}/option/{optionId}": {
+    "/rest/api/2/field/{fieldId}/context/{contextId}/option/{optionId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -2121,7 +1975,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldId}/context/{contextId}/option/{optionId}/issue": {
+    "/rest/api/2/field/{fieldId}/context/{contextId}/option/{optionId}/issue": {
         parameters: {
             query?: never;
             header?: never;
@@ -2145,7 +1999,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldId}/context/{contextId}/project": {
+    "/rest/api/2/field/{fieldId}/context/{contextId}/project": {
         parameters: {
             query?: never;
             header?: never;
@@ -2169,7 +2023,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldId}/context/{contextId}/project/remove": {
+    "/rest/api/2/field/{fieldId}/context/{contextId}/project/remove": {
         parameters: {
             query?: never;
             header?: never;
@@ -2195,7 +2049,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldId}/contexts": {
+    "/rest/api/2/field/{fieldId}/contexts": {
         parameters: {
             query?: never;
             header?: never;
@@ -2205,7 +2059,7 @@ export interface paths {
         /**
          * Get contexts for a field
          * @deprecated
-         * @description Returns a [paginated](#pagination) list of the contexts a field is used in. Deprecated, use [ Get custom field contexts](#api-rest-api-3-field-fieldId-context-get).
+         * @description Returns a [paginated](#pagination) list of the contexts a field is used in. Deprecated, use [ Get custom field contexts](#api-rest-api-2-field-fieldId-context-get).
          *
          *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
@@ -2218,7 +2072,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldId}/screens": {
+    "/rest/api/2/field/{fieldId}/screens": {
         parameters: {
             query?: never;
             header?: never;
@@ -2240,7 +2094,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldKey}/option": {
+    "/rest/api/2/field/{fieldKey}/option": {
         parameters: {
             query?: never;
             header?: never;
@@ -2274,7 +2128,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldKey}/option/suggestions/edit": {
+    "/rest/api/2/field/{fieldKey}/option/suggestions/edit": {
         parameters: {
             query?: never;
             header?: never;
@@ -2298,7 +2152,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldKey}/option/suggestions/search": {
+    "/rest/api/2/field/{fieldKey}/option/suggestions/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -2322,7 +2176,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldKey}/option/{optionId}": {
+    "/rest/api/2/field/{fieldKey}/option/{optionId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -2362,7 +2216,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{fieldKey}/option/{optionId}/issue": {
+    "/rest/api/2/field/{fieldKey}/option/{optionId}/issue": {
         parameters: {
             query?: never;
             header?: never;
@@ -2390,7 +2244,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{id}": {
+    "/rest/api/2/field/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -2404,7 +2258,7 @@ export interface paths {
          * Delete custom field
          * @description Deletes a custom field. The custom field is deleted whether it is in the trash or not. See [Edit or delete a custom field](https://confluence.atlassian.com/x/Z44fOw) for more information on trashing and deleting custom fields.
          *
-         *     This operation is [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-3-task-taskId-get) to obtain subsequent updates.
+         *     This operation is [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-2-task-taskId-get) to obtain subsequent updates.
          *
          *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
@@ -2414,7 +2268,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{id}/restore": {
+    "/rest/api/2/field/{id}/restore": {
         parameters: {
             query?: never;
             header?: never;
@@ -2436,7 +2290,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/field/{id}/trash": {
+    "/rest/api/2/field/{id}/trash": {
         parameters: {
             query?: never;
             header?: never;
@@ -2458,7 +2312,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/fieldconfiguration": {
+    "/rest/api/2/fieldconfiguration": {
         parameters: {
             query?: never;
             header?: never;
@@ -2494,7 +2348,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/fieldconfiguration/{id}": {
+    "/rest/api/2/fieldconfiguration/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -2526,7 +2380,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/fieldconfiguration/{id}/fields": {
+    "/rest/api/2/fieldconfiguration/{id}/fields": {
         parameters: {
             query?: never;
             header?: never;
@@ -2560,7 +2414,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/fieldconfigurationscheme": {
+    "/rest/api/2/fieldconfigurationscheme": {
         parameters: {
             query?: never;
             header?: never;
@@ -2592,7 +2446,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/fieldconfigurationscheme/mapping": {
+    "/rest/api/2/fieldconfigurationscheme/mapping": {
         parameters: {
             query?: never;
             header?: never;
@@ -2616,7 +2470,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/fieldconfigurationscheme/project": {
+    "/rest/api/2/fieldconfigurationscheme/project": {
         parameters: {
             query?: never;
             header?: never;
@@ -2650,7 +2504,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/fieldconfigurationscheme/{id}": {
+    "/rest/api/2/fieldconfigurationscheme/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -2682,7 +2536,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/fieldconfigurationscheme/{id}/mapping": {
+    "/rest/api/2/fieldconfigurationscheme/{id}/mapping": {
         parameters: {
             query?: never;
             header?: never;
@@ -2706,7 +2560,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/fieldconfigurationscheme/{id}/mapping/delete": {
+    "/rest/api/2/fieldconfigurationscheme/{id}/mapping/delete": {
         parameters: {
             query?: never;
             header?: never;
@@ -2730,7 +2584,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/filter": {
+    "/rest/api/2/filter": {
         parameters: {
             query?: never;
             header?: never;
@@ -2741,7 +2595,7 @@ export interface paths {
         put?: never;
         /**
          * Create filter
-         * @description Creates a filter. The filter is shared according to the [default share scope](#api-rest-api-3-filter-post). The filter is not selected as a favorite.
+         * @description Creates a filter. The filter is shared according to the [default share scope](#api-rest-api-2-filter-post). The filter is not selected as a favorite.
          *
          *     **[Permissions](#permissions) required:** Permission to access Jira.
          */
@@ -2752,7 +2606,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/filter/defaultShareScope": {
+    "/rest/api/2/filter/defaultShareScope": {
         parameters: {
             query?: never;
             header?: never;
@@ -2780,7 +2634,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/filter/favourite": {
+    "/rest/api/2/filter/favourite": {
         parameters: {
             query?: never;
             header?: never;
@@ -2812,7 +2666,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/filter/my": {
+    "/rest/api/2/filter/my": {
         parameters: {
             query?: never;
             header?: never;
@@ -2842,7 +2696,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/filter/search": {
+    "/rest/api/2/filter/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -2875,7 +2729,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/filter/{id}": {
+    "/rest/api/2/filter/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -2917,7 +2771,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/filter/{id}/columns": {
+    "/rest/api/2/filter/{id}/columns": {
         parameters: {
             query?: never;
             header?: never;
@@ -2941,11 +2795,11 @@ export interface paths {
         get: operations["getColumns"];
         /**
          * Set columns
-         * @description Sets the columns for a filter. Only navigable fields can be set as columns. Use [Get fields](#api-rest-api-3-field-get) to get the list fields in Jira. A navigable field has `navigable` set to `true`.
+         * @description Sets the columns for a filter. Only navigable fields can be set as columns. Use [Get fields](#api-rest-api-2-field-get) to get the list fields in Jira. A navigable field has `navigable` set to `true`.
          *
          *     The parameters for this resource are expressed as HTML form data. For example, in curl:
          *
-         *     `curl -X PUT -d columns=summary -d columns=description https://your-domain.atlassian.net/rest/api/3/filter/10000/columns`
+         *     `curl -X PUT -d columns=summary -d columns=description https://your-domain.atlassian.net/rest/api/2/filter/10000/columns`
          *
          *     **[Permissions](#permissions) required:** Permission to access Jira, however, columns are only set for:
          *
@@ -2975,7 +2829,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/filter/{id}/favourite": {
+    "/rest/api/2/filter/{id}/favourite": {
         parameters: {
             query?: never;
             header?: never;
@@ -3009,7 +2863,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/filter/{id}/owner": {
+    "/rest/api/2/filter/{id}/owner": {
         parameters: {
             query?: never;
             header?: never;
@@ -3031,7 +2885,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/filter/{id}/permission": {
+    "/rest/api/2/filter/{id}/permission": {
         parameters: {
             query?: never;
             header?: never;
@@ -3058,7 +2912,7 @@ export interface paths {
          * Add share permission
          * @description Add a share permissions to a filter. If you add a global share permission (one for all logged-in users or the public) it will overwrite all share permissions for the filter.
          *
-         *     Be aware that this operation uses different objects for updating share permissions compared to [Update filter](#api-rest-api-3-filter-id-put).
+         *     Be aware that this operation uses different objects for updating share permissions compared to [Update filter](#api-rest-api-2-filter-id-put).
          *
          *     **[Permissions](#permissions) required:** *Share dashboards and filters* [global permission](https://confluence.atlassian.com/x/x4dKLg) and the user must own the filter.
          */
@@ -3069,7 +2923,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/filter/{id}/permission/{permissionId}": {
+    "/rest/api/2/filter/{id}/permission/{permissionId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -3105,7 +2959,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/group": {
+    "/rest/api/2/group": {
         parameters: {
             query?: never;
             header?: never;
@@ -3115,7 +2969,7 @@ export interface paths {
         /**
          * Get group
          * @deprecated
-         * @description This operation is deprecated, use [`group/member`](#api-rest-api-3-group-member-get).
+         * @description This operation is deprecated, use [`group/member`](#api-rest-api-2-group-member-get).
          *
          *     Returns all users in a group.
          *
@@ -3145,7 +2999,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/group/bulk": {
+    "/rest/api/2/group/bulk": {
         parameters: {
             query?: never;
             header?: never;
@@ -3167,7 +3021,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/group/member": {
+    "/rest/api/2/group/member": {
         parameters: {
             query?: never;
             header?: never;
@@ -3194,7 +3048,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/group/user": {
+    "/rest/api/2/group/user": {
         parameters: {
             query?: never;
             header?: never;
@@ -3222,7 +3076,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/groups/picker": {
+    "/rest/api/2/groups/picker": {
         parameters: {
             query?: never;
             header?: never;
@@ -3252,7 +3106,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/groupuserpicker": {
+    "/rest/api/2/groupuserpicker": {
         parameters: {
             query?: never;
             header?: never;
@@ -3294,7 +3148,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/instance/license": {
+    "/rest/api/2/instance/license": {
         parameters: {
             query?: never;
             header?: never;
@@ -3316,7 +3170,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue": {
+    "/rest/api/2/issue": {
         parameters: {
             query?: never;
             header?: never;
@@ -3329,14 +3183,12 @@ export interface paths {
          * Create issue
          * @description Creates an issue or, where the option to create subtasks is enabled in Jira, a subtask. A transition may be applied, to move the issue or subtask to a workflow step other than the default start step, and issue properties set.
          *
-         *     The content of the issue or subtask is defined using `update` and `fields`. The fields that can be set in the issue or subtask are determined using the [ Get create issue metadata](#api-rest-api-3-issue-createmeta-get). These are the same fields that appear on the issue's create screen. Note that the `description`, `environment`, and any `textarea` type custom fields (multi-line text fields) take Atlassian Document Format content. Single line custom fields (`textfield`) accept a string and don't handle Atlassian Document Format content.
+         *     The content of the issue or subtask is defined using `update` and `fields`. The fields that can be set in the issue or subtask are determined using the [ Get create issue metadata](#api-rest-api-2-issue-createmeta-get). These are the same fields that appear on the issue's create screen.
          *
          *     Creating a subtask differs from creating an issue as follows:
          *
-         *      *  `issueType` must be set to a subtask issue type (use [ Get create issue metadata](#api-rest-api-3-issue-createmeta-get) to find subtask issue types).
+         *      *  `issueType` must be set to a subtask issue type (use [ Get create issue metadata](#api-rest-api-2-issue-createmeta-get) to find subtask issue types).
          *      *  `parent` must contain the ID or key of the parent issue.
-         *
-         *     In a next-gen project any issue may be made a child providing that the parent and child are members of the same project.
          *
          *     **[Permissions](#permissions) required:** *Browse projects* and *Create issues* [project permissions](https://confluence.atlassian.com/x/yodKLg) for the project in which the issue or subtask is created.
          */
@@ -3347,7 +3199,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/archive": {
+    "/rest/api/2/issue/archive": {
         parameters: {
             query?: never;
             header?: never;
@@ -3403,7 +3255,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/bulk": {
+    "/rest/api/2/issue/bulk": {
         parameters: {
             query?: never;
             header?: never;
@@ -3416,11 +3268,11 @@ export interface paths {
          * Bulk create issue
          * @description Creates upto **50** issues and, where the option to create subtasks is enabled in Jira, subtasks. Transitions may be applied, to move the issues or subtasks to a workflow step other than the default start step, and issue properties set.
          *
-         *     The content of each issue or subtask is defined using `update` and `fields`. The fields that can be set in the issue or subtask are determined using the [ Get create issue metadata](#api-rest-api-3-issue-createmeta-get). These are the same fields that appear on the issues' create screens. Note that the `description`, `environment`, and any `textarea` type custom fields (multi-line text fields) take Atlassian Document Format content. Single line custom fields (`textfield`) accept a string and don't handle Atlassian Document Format content.
+         *     The content of each issue or subtask is defined using `update` and `fields`. The fields that can be set in the issue or subtask are determined using the [ Get create issue metadata](#api-rest-api-2-issue-createmeta-get). These are the same fields that appear on the issues' create screens.
          *
          *     Creating a subtask differs from creating an issue as follows:
          *
-         *      *  `issueType` must be set to a subtask issue type (use [ Get create issue metadata](#api-rest-api-3-issue-createmeta-get) to find subtask issue types).
+         *      *  `issueType` must be set to a subtask issue type (use [ Get create issue metadata](#api-rest-api-2-issue-createmeta-get) to find subtask issue types).
          *      *  `parent` the must contain the ID or key of the parent issue.
          *
          *     **[Permissions](#permissions) required:** *Browse projects* and *Create issues* [project permissions](https://confluence.atlassian.com/x/yodKLg) for the project in which each issue or subtask is created.
@@ -3432,7 +3284,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/bulkfetch": {
+    "/rest/api/2/issue/bulkfetch": {
         parameters: {
             query?: never;
             header?: never;
@@ -3463,7 +3315,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/createmeta": {
+    "/rest/api/2/issue/createmeta": {
         parameters: {
             query?: never;
             header?: never;
@@ -3473,7 +3325,7 @@ export interface paths {
         /**
          * Get create issue metadata
          * @deprecated
-         * @description Returns details of projects, issue types within projects, and, when requested, the create screen fields for each issue type for the user. Use the information to populate the requests in [ Create issue](#api-rest-api-3-issue-post) and [Create issues](#api-rest-api-3-issue-bulk-post).
+         * @description Returns details of projects, issue types within projects, and, when requested, the create screen fields for each issue type for the user. Use the information to populate the requests in [ Create issue](#api-rest-api-2-issue-post) and [Create issues](#api-rest-api-2-issue-bulk-post).
          *
          *     Deprecated, see [Create Issue Meta Endpoint Deprecation Notice](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-1304).
          *
@@ -3492,7 +3344,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/createmeta/{projectIdOrKey}/issuetypes": {
+    "/rest/api/2/issue/createmeta/{projectIdOrKey}/issuetypes": {
         parameters: {
             query?: never;
             header?: never;
@@ -3501,7 +3353,7 @@ export interface paths {
         };
         /**
          * Get create metadata issue types for a project
-         * @description Returns a page of issue type metadata for a specified project. Use the information to populate the requests in [ Create issue](#api-rest-api-3-issue-post) and [Create issues](#api-rest-api-3-issue-bulk-post).
+         * @description Returns a page of issue type metadata for a specified project. Use the information to populate the requests in [ Create issue](#api-rest-api-2-issue-post) and [Create issues](#api-rest-api-2-issue-bulk-post).
          *
          *     This operation can be accessed anonymously.
          *
@@ -3516,7 +3368,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/createmeta/{projectIdOrKey}/issuetypes/{issueTypeId}": {
+    "/rest/api/2/issue/createmeta/{projectIdOrKey}/issuetypes/{issueTypeId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -3525,7 +3377,7 @@ export interface paths {
         };
         /**
          * Get create field metadata for a project and issue type id
-         * @description Returns a page of field metadata for a specified project and issuetype id. Use the information to populate the requests in [ Create issue](#api-rest-api-3-issue-post) and [Create issues](#api-rest-api-3-issue-bulk-post).
+         * @description Returns a page of field metadata for a specified project and issuetype id. Use the information to populate the requests in [ Create issue](#api-rest-api-2-issue-post) and [Create issues](#api-rest-api-2-issue-bulk-post).
          *
          *     This operation can be accessed anonymously.
          *
@@ -3540,7 +3392,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/limit/report": {
+    "/rest/api/2/issue/limit/report": {
         parameters: {
             query?: never;
             header?: never;
@@ -3565,7 +3417,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/picker": {
+    "/rest/api/2/issue/picker": {
         parameters: {
             query?: never;
             header?: never;
@@ -3594,7 +3446,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/properties": {
+    "/rest/api/2/issue/properties": {
         parameters: {
             query?: never;
             header?: never;
@@ -3612,7 +3464,7 @@ export interface paths {
          *     This operation is:
          *
          *      *  transactional, either all properties are updated in all eligible issues or, when errors occur, no properties are updated.
-         *      *  [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-3-task-taskId-get) to obtain subsequent updates.
+         *      *  [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-2-task-taskId-get) to obtain subsequent updates.
          *
          *     **[Permissions](#permissions) required:**
          *
@@ -3626,7 +3478,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/properties/multi": {
+    "/rest/api/2/issue/properties/multi": {
         parameters: {
             query?: never;
             header?: never;
@@ -3643,7 +3495,7 @@ export interface paths {
          *
          *     This operation is:
          *
-         *      *  [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-3-task-taskId-get) to obtain subsequent updates.
+         *      *  [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-2-task-taskId-get) to obtain subsequent updates.
          *      *  non-transactional. Updating some entities may fail. Such information will available in the task result.
          *
          *     **[Permissions](#permissions) required:**
@@ -3658,7 +3510,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/properties/{propertyKey}": {
+    "/rest/api/2/issue/properties/{propertyKey}": {
         parameters: {
             query?: never;
             header?: never;
@@ -3692,7 +3544,7 @@ export interface paths {
          *     This operation is:
          *
          *      *  transactional, either all eligible issues are updated or, when errors occur, none are updated.
-         *      *  [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-3-task-taskId-get) to obtain subsequent updates.
+         *      *  [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-2-task-taskId-get) to obtain subsequent updates.
          *
          *     **[Permissions](#permissions) required:**
          *
@@ -3718,7 +3570,7 @@ export interface paths {
          *     This operation is:
          *
          *      *  transactional, either the property is deleted from all eligible issues or, when errors occur, no properties are deleted.
-         *      *  [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-3-task-taskId-get) to obtain subsequent updates.
+         *      *  [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-2-task-taskId-get) to obtain subsequent updates.
          *
          *     **[Permissions](#permissions) required:**
          *
@@ -3732,7 +3584,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/unarchive": {
+    "/rest/api/2/issue/unarchive": {
         parameters: {
             query?: never;
             header?: never;
@@ -3766,7 +3618,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/watching": {
+    "/rest/api/2/issue/watching": {
         parameters: {
             query?: never;
             header?: never;
@@ -3793,7 +3645,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}": {
+    "/rest/api/2/issue/{issueIdOrKey}": {
         parameters: {
             query?: never;
             header?: never;
@@ -3816,11 +3668,11 @@ export interface paths {
         get: operations["getIssue"];
         /**
          * Edit issue
-         * @description Edits an issue. Issue properties may be updated as part of the edit. Please note that issue transition is not supported and is ignored here. To transition an issue, please use [Transition issue](#api-rest-api-3-issue-issueIdOrKey-transitions-post).
+         * @description Edits an issue. Issue properties may be updated as part of the edit. Please note that issue transition is not supported and is ignored here. To transition an issue, please use [Transition issue](#api-rest-api-2-issue-issueIdOrKey-transitions-post).
          *
-         *     The edits to the issue's fields are defined using `update` and `fields`. The fields that can be edited are determined using [ Get edit issue metadata](#api-rest-api-3-issue-issueIdOrKey-editmeta-get).
+         *     The edits to the issue's fields are defined using `update` and `fields`. The fields that can be edited are determined using [ Get edit issue metadata](#api-rest-api-2-issue-issueIdOrKey-editmeta-get).
          *
-         *     The parent field may be set by key or ID. For standard issue types, the parent may be removed by setting `update.parent.set.none` to *true*. Note that the `description`, `environment`, and any `textarea` type custom fields (multi-line text fields) take Atlassian Document Format content. Single line custom fields (`textfield`) accept a string and don't handle Atlassian Document Format content.
+         *     The parent field may be set by key or ID. For standard issue types, the parent may be removed by setting `update.parent.set.none` to *true*.
          *
          *     Connect apps having an app user with *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg), and Forge apps acting on behalf of users with *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg), can override the screen security configuration using `overrideScreenSecurity` and `overrideEditableFlag`.
          *
@@ -3852,7 +3704,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/assignee": {
+    "/rest/api/2/issue/{issueIdOrKey}/assignee": {
         parameters: {
             query?: never;
             header?: never;
@@ -3884,7 +3736,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/attachments": {
+    "/rest/api/2/issue/{issueIdOrKey}/attachments": {
         parameters: {
             query?: never;
             header?: never;
@@ -3906,7 +3758,7 @@ export interface paths {
          *
          *     #### curl ####
          *
-         *         curl --location --request POST 'https://your-domain.atlassian.net/rest/api/3/issue/TEST-123/attachments'
+         *         curl --location --request POST 'https://your-domain.atlassian.net/rest/api/2/issue/TEST-123/attachments'
          *          -u 'email@example.com:<api_token>'
          *          -H 'X-Atlassian-Token: no-check'
          *          --form 'file=@"myfile.txt"'
@@ -3928,7 +3780,7 @@ export interface paths {
          *
          *          form.append('file', fileStream, {knownLength: fileSizeInBytes});
          *
-         *          fetch('https://your-domain.atlassian.net/rest/api/3/issue/TEST-123/attachments', {
+         *          fetch('https://your-domain.atlassian.net/rest/api/2/issue/TEST-123/attachments', {
          *              method: 'POST',
          *              body: form,
          *              headers: {
@@ -4052,7 +3904,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/changelog": {
+    "/rest/api/2/issue/{issueIdOrKey}/changelog": {
         parameters: {
             query?: never;
             header?: never;
@@ -4079,7 +3931,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/changelog/list": {
+    "/rest/api/2/issue/{issueIdOrKey}/changelog/list": {
         parameters: {
             query?: never;
             header?: never;
@@ -4106,7 +3958,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/comment": {
+    "/rest/api/2/issue/{issueIdOrKey}/comment": {
         parameters: {
             query?: never;
             header?: never;
@@ -4145,7 +3997,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/comment/{id}": {
+    "/rest/api/2/issue/{issueIdOrKey}/comment/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -4177,6 +4029,8 @@ export interface paths {
          *      *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.
          *      *  *Edit all comments*[ project permission](https://confluence.atlassian.com/x/yodKLg) to update any comment or *Edit own comments* to update comment created by the user.
          *      *  If the comment has visibility restrictions, the user belongs to the group or has the role visibility is restricted to.
+         *
+         *     **WARNING:** Child comments inherit visibility from their parent comment. Attempting to update a child comment's visibility will result in a 400 (Bad Request) error.
          */
         put: operations["updateComment"];
         post?: never;
@@ -4197,7 +4051,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/editmeta": {
+    "/rest/api/2/issue/{issueIdOrKey}/editmeta": {
         parameters: {
             query?: never;
             header?: never;
@@ -4206,7 +4060,7 @@ export interface paths {
         };
         /**
          * Get edit issue metadata
-         * @description Returns the edit screen fields for an issue that are visible to and editable by the user. Use the information to populate the requests in [Edit issue](#api-rest-api-3-issue-issueIdOrKey-put).
+         * @description Returns the edit screen fields for an issue that are visible to and editable by the user. Use the information to populate the requests in [Edit issue](#api-rest-api-2-issue-issueIdOrKey-put).
          *
          *     This endpoint will check for these conditions:
          *
@@ -4245,7 +4099,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/notify": {
+    "/rest/api/2/issue/{issueIdOrKey}/notify": {
         parameters: {
             query?: never;
             header?: never;
@@ -4270,7 +4124,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/properties": {
+    "/rest/api/2/issue/{issueIdOrKey}/properties": {
         parameters: {
             query?: never;
             header?: never;
@@ -4297,7 +4151,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/properties/{propertyKey}": {
+    "/rest/api/2/issue/{issueIdOrKey}/properties/{propertyKey}": {
         parameters: {
             query?: never;
             header?: never;
@@ -4348,7 +4202,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/remotelink": {
+    "/rest/api/2/issue/{issueIdOrKey}/remotelink": {
         parameters: {
             query?: never;
             header?: never;
@@ -4405,7 +4259,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/remotelink/{linkId}": {
+    "/rest/api/2/issue/{issueIdOrKey}/remotelink/{linkId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -4462,7 +4316,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/transitions": {
+    "/rest/api/2/issue/{issueIdOrKey}/transitions": {
         parameters: {
             query?: never;
             header?: never;
@@ -4490,7 +4344,7 @@ export interface paths {
          * Transition issue
          * @description Performs an issue transition and, if the transition has a screen, updates the fields from the transition screen.
          *
-         *     sortByCategory To update the fields on the transition screen, specify the fields in the `fields` or `update` parameters in the request body. Get details about the fields using [ Get transitions](#api-rest-api-3-issue-issueIdOrKey-transitions-get) with the `transitions.fields` expand.
+         *     sortByCategory To update the fields on the transition screen, specify the fields in the `fields` or `update` parameters in the request body. Get details about the fields using [ Get transitions](#api-rest-api-2-issue-issueIdOrKey-transitions-get) with the `transitions.fields` expand.
          *
          *     This operation can be accessed anonymously.
          *
@@ -4506,7 +4360,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/votes": {
+    "/rest/api/2/issue/{issueIdOrKey}/votes": {
         parameters: {
             query?: never;
             header?: never;
@@ -4559,7 +4413,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/watchers": {
+    "/rest/api/2/issue/{issueIdOrKey}/watchers": {
         parameters: {
             query?: never;
             header?: never;
@@ -4613,7 +4467,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/worklog": {
+    "/rest/api/2/issue/{issueIdOrKey}/worklog": {
         parameters: {
             query?: never;
             header?: never;
@@ -4672,7 +4526,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/worklog/move": {
+    "/rest/api/2/issue/{issueIdOrKey}/worklog/move": {
         parameters: {
             query?: never;
             header?: never;
@@ -4708,7 +4562,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/worklog/{id}": {
+    "/rest/api/2/issue/{issueIdOrKey}/worklog/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -4768,7 +4622,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/worklog/{worklogId}/properties": {
+    "/rest/api/2/issue/{issueIdOrKey}/worklog/{worklogId}/properties": {
         parameters: {
             query?: never;
             header?: never;
@@ -4796,7 +4650,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issue/{issueIdOrKey}/worklog/{worklogId}/properties/{propertyKey}": {
+    "/rest/api/2/issue/{issueIdOrKey}/worklog/{worklogId}/properties/{propertyKey}": {
         parameters: {
             query?: never;
             header?: never;
@@ -4851,7 +4705,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issueLink": {
+    "/rest/api/2/issueLink": {
         parameters: {
             query?: never;
             header?: never;
@@ -4864,7 +4718,7 @@ export interface paths {
          * Create issue link
          * @description Creates a link between two issues. Use this operation to indicate a relationship between two issues and optionally add a comment to the from (outward) issue. To use this resource the site must have [Issue Linking](https://confluence.atlassian.com/x/yoXKM) enabled.
          *
-         *     This resource returns nothing on the creation of an issue link. To obtain the ID of the issue link, use `https://your-domain.atlassian.net/rest/api/3/issue/[linked issue key]?fields=issuelinks`.
+         *     This resource returns nothing on the creation of an issue link. To obtain the ID of the issue link, use `https://your-domain.atlassian.net/rest/api/2/issue/[linked issue key]?fields=issuelinks`.
          *
          *     If the link request duplicates a link, the response indicates that the issue link was created. If the request included a comment, the comment is added.
          *
@@ -4884,7 +4738,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issueLink/{linkId}": {
+    "/rest/api/2/issueLink/{linkId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -4923,7 +4777,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issueLinkType": {
+    "/rest/api/2/issueLinkType": {
         parameters: {
             query?: never;
             header?: never;
@@ -4957,7 +4811,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issueLinkType/{issueLinkTypeId}": {
+    "/rest/api/2/issueLinkType/{issueLinkTypeId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -4999,7 +4853,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issues/archive/export": {
+    "/rest/api/2/issues/archive/export": {
         parameters: {
             query?: never;
             header?: never;
@@ -5032,7 +4886,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuesecurityschemes": {
+    "/rest/api/2/issuesecurityschemes": {
         parameters: {
             query?: never;
             header?: never;
@@ -5060,7 +4914,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuesecurityschemes/level": {
+    "/rest/api/2/issuesecurityschemes/level": {
         parameters: {
             query?: never;
             header?: never;
@@ -5086,7 +4940,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuesecurityschemes/level/default": {
+    "/rest/api/2/issuesecurityschemes/level/default": {
         parameters: {
             query?: never;
             header?: never;
@@ -5108,7 +4962,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuesecurityschemes/level/member": {
+    "/rest/api/2/issuesecurityschemes/level/member": {
         parameters: {
             query?: never;
             header?: never;
@@ -5134,7 +4988,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuesecurityschemes/project": {
+    "/rest/api/2/issuesecurityschemes/project": {
         parameters: {
             query?: never;
             header?: never;
@@ -5150,7 +5004,7 @@ export interface paths {
          * Associate security scheme to project
          * @description Associates an issue security scheme with a project and remaps security levels of issues to the new levels, if provided.
          *
-         *     This operation is [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-3-task-taskId-get) to obtain subsequent updates.
+         *     This operation is [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-2-task-taskId-get) to obtain subsequent updates.
          *
          *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
@@ -5162,7 +5016,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuesecurityschemes/search": {
+    "/rest/api/2/issuesecurityschemes/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -5187,7 +5041,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuesecurityschemes/{id}": {
+    "/rest/api/2/issuesecurityschemes/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -5218,7 +5072,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuesecurityschemes/{issueSecuritySchemeId}/members": {
+    "/rest/api/2/issuesecurityschemes/{issueSecuritySchemeId}/members": {
         parameters: {
             query?: never;
             header?: never;
@@ -5242,7 +5096,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuesecurityschemes/{schemeId}": {
+    "/rest/api/2/issuesecurityschemes/{schemeId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -5264,7 +5118,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuesecurityschemes/{schemeId}/level": {
+    "/rest/api/2/issuesecurityschemes/{schemeId}/level": {
         parameters: {
             query?: never;
             header?: never;
@@ -5286,7 +5140,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuesecurityschemes/{schemeId}/level/{levelId}": {
+    "/rest/api/2/issuesecurityschemes/{schemeId}/level/{levelId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -5306,7 +5160,7 @@ export interface paths {
          * Remove issue security level
          * @description Deletes an issue security level.
          *
-         *     This operation is [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-3-task-taskId-get) to obtain subsequent updates.
+         *     This operation is [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-2-task-taskId-get) to obtain subsequent updates.
          *
          *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
@@ -5316,7 +5170,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuesecurityschemes/{schemeId}/level/{levelId}/member": {
+    "/rest/api/2/issuesecurityschemes/{schemeId}/level/{levelId}/member": {
         parameters: {
             query?: never;
             header?: never;
@@ -5338,7 +5192,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuesecurityschemes/{schemeId}/level/{levelId}/member/{memberId}": {
+    "/rest/api/2/issuesecurityschemes/{schemeId}/level/{levelId}/member/{memberId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -5360,7 +5214,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetype": {
+    "/rest/api/2/issuetype": {
         parameters: {
             query?: never;
             header?: never;
@@ -5377,6 +5231,8 @@ export interface paths {
          *
          *      *  if the user has the *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg), all issue types are returned.
          *      *  if the user has the *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for one or more projects, the issue types associated with the projects the user has permission to browse are returned.
+         *      *  if the user is anonymous then they will be able to access projects with the *Browse projects* for anonymous users
+         *      *  if the user authentication is incorrect they will fall back to anonymous
          */
         get: operations["getIssueAllTypes"];
         put?: never;
@@ -5393,7 +5249,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetype/project": {
+    "/rest/api/2/issuetype/project": {
         parameters: {
             query?: never;
             header?: never;
@@ -5417,7 +5273,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetype/{id}": {
+    "/rest/api/2/issuetype/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -5443,7 +5299,7 @@ export interface paths {
         post?: never;
         /**
          * Delete issue type
-         * @description Deletes the issue type. If the issue type is in use, all uses are updated with the alternative issue type (`alternativeIssueTypeId`). A list of alternative issue types are obtained from the [Get alternative issue types](#api-rest-api-3-issuetype-id-alternatives-get) resource.
+         * @description Deletes the issue type. If the issue type is in use, all uses are updated with the alternative issue type (`alternativeIssueTypeId`). A list of alternative issue types are obtained from the [Get alternative issue types](#api-rest-api-2-issuetype-id-alternatives-get) resource.
          *
          *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
@@ -5453,7 +5309,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetype/{id}/alternatives": {
+    "/rest/api/2/issuetype/{id}/alternatives": {
         parameters: {
             query?: never;
             header?: never;
@@ -5477,7 +5333,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetype/{id}/avatar2": {
+    "/rest/api/2/issuetype/{id}/avatar2": {
         parameters: {
             query?: never;
             header?: never;
@@ -5496,13 +5352,13 @@ export interface paths {
          *      *  `Content-Type: image/image type` Valid image types are JPEG, GIF, or PNG.
          *
          *     For example:
-         *     `curl --request POST \ --user email@example.com:<api_token> \ --header 'X-Atlassian-Token: no-check' \ --header 'Content-Type: image/< image_type>' \ --data-binary "<@/path/to/file/with/your/avatar>" \ --url 'https://your-domain.atlassian.net/rest/api/3/issuetype/{issueTypeId}'This`
+         *     `curl --request POST \ --user email@example.com:<api_token> \ --header 'X-Atlassian-Token: no-check' \ --header 'Content-Type: image/< image_type>' \ --data-binary "<@/path/to/file/with/your/avatar>" \ --url 'https://your-domain.atlassian.net/rest/api/2/issuetype/{issueTypeId}'This`
          *
          *     The avatar is cropped to a square. If no crop parameters are specified, the square originates at the top left of the image. The length of the square's sides is set to the smaller of the height or width of the image.
          *
          *     The cropped image is then used to create avatars of 16x16, 24x24, 32x32, and 48x48 in size.
          *
-         *     After creating the avatar, use [ Update issue type](#api-rest-api-3-issuetype-id-put) to set it as the issue type's displayed avatar.
+         *     After creating the avatar, use [ Update issue type](#api-rest-api-2-issuetype-id-put) to set it as the issue type's displayed avatar.
          *
          *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
@@ -5513,7 +5369,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetype/{issueTypeId}/properties": {
+    "/rest/api/2/issuetype/{issueTypeId}/properties": {
         parameters: {
             query?: never;
             header?: never;
@@ -5540,7 +5396,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetype/{issueTypeId}/properties/{propertyKey}": {
+    "/rest/api/2/issuetype/{issueTypeId}/properties/{propertyKey}": {
         parameters: {
             query?: never;
             header?: never;
@@ -5581,7 +5437,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetypescheme": {
+    "/rest/api/2/issuetypescheme": {
         parameters: {
             query?: never;
             header?: never;
@@ -5611,7 +5467,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetypescheme/mapping": {
+    "/rest/api/2/issuetypescheme/mapping": {
         parameters: {
             query?: never;
             header?: never;
@@ -5635,7 +5491,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetypescheme/project": {
+    "/rest/api/2/issuetypescheme/project": {
         parameters: {
             query?: never;
             header?: never;
@@ -5669,7 +5525,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetypescheme/{issueTypeSchemeId}": {
+    "/rest/api/2/issuetypescheme/{issueTypeSchemeId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -5701,7 +5557,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetypescheme/{issueTypeSchemeId}/issuetype": {
+    "/rest/api/2/issuetypescheme/{issueTypeSchemeId}/issuetype": {
         parameters: {
             query?: never;
             header?: never;
@@ -5727,7 +5583,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetypescheme/{issueTypeSchemeId}/issuetype/move": {
+    "/rest/api/2/issuetypescheme/{issueTypeSchemeId}/issuetype/move": {
         parameters: {
             query?: never;
             header?: never;
@@ -5755,7 +5611,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetypescheme/{issueTypeSchemeId}/issuetype/{issueTypeId}": {
+    "/rest/api/2/issuetypescheme/{issueTypeSchemeId}/issuetype/{issueTypeId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -5783,7 +5639,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetypescreenscheme": {
+    "/rest/api/2/issuetypescreenscheme": {
         parameters: {
             query?: never;
             header?: never;
@@ -5813,7 +5669,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetypescreenscheme/mapping": {
+    "/rest/api/2/issuetypescreenscheme/mapping": {
         parameters: {
             query?: never;
             header?: never;
@@ -5837,7 +5693,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetypescreenscheme/project": {
+    "/rest/api/2/issuetypescreenscheme/project": {
         parameters: {
             query?: never;
             header?: never;
@@ -5869,7 +5725,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetypescreenscheme/{issueTypeScreenSchemeId}": {
+    "/rest/api/2/issuetypescreenscheme/{issueTypeScreenSchemeId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -5897,7 +5753,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetypescreenscheme/{issueTypeScreenSchemeId}/mapping": {
+    "/rest/api/2/issuetypescreenscheme/{issueTypeScreenSchemeId}/mapping": {
         parameters: {
             query?: never;
             header?: never;
@@ -5919,7 +5775,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetypescreenscheme/{issueTypeScreenSchemeId}/mapping/default": {
+    "/rest/api/2/issuetypescreenscheme/{issueTypeScreenSchemeId}/mapping/default": {
         parameters: {
             query?: never;
             header?: never;
@@ -5941,7 +5797,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetypescreenscheme/{issueTypeScreenSchemeId}/mapping/remove": {
+    "/rest/api/2/issuetypescreenscheme/{issueTypeScreenSchemeId}/mapping/remove": {
         parameters: {
             query?: never;
             header?: never;
@@ -5963,7 +5819,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/issuetypescreenscheme/{issueTypeScreenSchemeId}/project": {
+    "/rest/api/2/issuetypescreenscheme/{issueTypeScreenSchemeId}/project": {
         parameters: {
             query?: never;
             header?: never;
@@ -5987,7 +5843,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/jql/autocompletedata": {
+    "/rest/api/2/jql/autocompletedata": {
         parameters: {
             query?: never;
             header?: never;
@@ -5998,7 +5854,7 @@ export interface paths {
          * Get field reference data (GET)
          * @description Returns reference data for JQL searches. This is a downloadable version of the documentation provided in [Advanced searching - fields reference](https://confluence.atlassian.com/x/gwORLQ) and [Advanced searching - functions reference](https://confluence.atlassian.com/x/hgORLQ), along with a list of JQL-reserved words. Use this information to assist with the programmatic creation of JQL queries or the validation of queries built in a custom query builder.
          *
-         *     To filter visible field details by project or collapse non-unique fields by field type then [Get field reference data (POST)](#api-rest-api-3-jql-autocompletedata-post) can be used.
+         *     To filter visible field details by project or collapse non-unique fields by field type then [Get field reference data (POST)](#api-rest-api-2-jql-autocompletedata-post) can be used.
          *
          *     This operation can be accessed anonymously.
          *
@@ -6023,7 +5879,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/jql/autocompletedata/suggestions": {
+    "/rest/api/2/jql/autocompletedata/suggestions": {
         parameters: {
             query?: never;
             header?: never;
@@ -6054,7 +5910,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/jql/function/computation": {
+    "/rest/api/2/jql/function/computation": {
         parameters: {
             query?: never;
             header?: never;
@@ -6086,7 +5942,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/jql/function/computation/search": {
+    "/rest/api/2/jql/function/computation/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -6110,7 +5966,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/jql/match": {
+    "/rest/api/2/jql/match": {
         parameters: {
             query?: never;
             header?: never;
@@ -6135,7 +5991,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/jql/parse": {
+    "/rest/api/2/jql/parse": {
         parameters: {
             query?: never;
             header?: never;
@@ -6161,7 +6017,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/jql/pdcleaner": {
+    "/rest/api/2/jql/pdcleaner": {
         parameters: {
             query?: never;
             header?: never;
@@ -6185,7 +6041,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/jql/sanitize": {
+    "/rest/api/2/jql/sanitize": {
         parameters: {
             query?: never;
             header?: never;
@@ -6213,7 +6069,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/label": {
+    "/rest/api/2/label": {
         parameters: {
             query?: never;
             header?: never;
@@ -6233,7 +6089,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/license/approximateLicenseCount": {
+    "/rest/api/2/license/approximateLicenseCount": {
         parameters: {
             query?: never;
             header?: never;
@@ -6255,7 +6111,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/license/approximateLicenseCount/product/{applicationKey}": {
+    "/rest/api/2/license/approximateLicenseCount/product/{applicationKey}": {
         parameters: {
             query?: never;
             header?: never;
@@ -6277,7 +6133,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/mypermissions": {
+    "/rest/api/2/mypermissions": {
         parameters: {
             query?: never;
             header?: never;
@@ -6314,7 +6170,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/mypreferences": {
+    "/rest/api/2/mypreferences": {
         parameters: {
             query?: never;
             header?: never;
@@ -6389,7 +6245,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/mypreferences/locale": {
+    "/rest/api/2/mypreferences/locale": {
         parameters: {
             query?: never;
             header?: never;
@@ -6433,7 +6289,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/myself": {
+    "/rest/api/2/myself": {
         parameters: {
             query?: never;
             header?: never;
@@ -6455,7 +6311,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/notificationscheme": {
+    "/rest/api/2/notificationscheme": {
         parameters: {
             query?: never;
             header?: never;
@@ -6485,7 +6341,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/notificationscheme/project": {
+    "/rest/api/2/notificationscheme/project": {
         parameters: {
             query?: never;
             header?: never;
@@ -6507,7 +6363,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/notificationscheme/{id}": {
+    "/rest/api/2/notificationscheme/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -6535,7 +6391,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/notificationscheme/{id}/notification": {
+    "/rest/api/2/notificationscheme/{id}/notification": {
         parameters: {
             query?: never;
             header?: never;
@@ -6559,7 +6415,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/notificationscheme/{notificationSchemeId}": {
+    "/rest/api/2/notificationscheme/{notificationSchemeId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -6581,7 +6437,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/notificationscheme/{notificationSchemeId}/notification/{notificationId}": {
+    "/rest/api/2/notificationscheme/{notificationSchemeId}/notification/{notificationId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -6603,7 +6459,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/permissions": {
+    "/rest/api/2/permissions": {
         parameters: {
             query?: never;
             header?: never;
@@ -6631,7 +6487,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/permissions/check": {
+    "/rest/api/2/permissions/check": {
         parameters: {
             query?: never;
             header?: never;
@@ -6672,7 +6528,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/permissions/project": {
+    "/rest/api/2/permissions/project": {
         parameters: {
             query?: never;
             header?: never;
@@ -6696,7 +6552,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/permissionscheme": {
+    "/rest/api/2/permissionscheme": {
         parameters: {
             query?: never;
             header?: never;
@@ -6739,9 +6595,14 @@ export interface paths {
          *
          *     The [built-in Jira permissions](https://confluence.atlassian.com/x/yodKLg) are listed below. Apps can also define custom permissions. See the [project permission](https://developer.atlassian.com/cloud/jira/platform/modules/project-permission/) and [global permission](https://developer.atlassian.com/cloud/jira/platform/modules/global-permission/) module documentation for more information.
          *
-         *     **Project permissions**
+         *     **Administration permissions**
          *
          *      *  `ADMINISTER_PROJECTS`
+         *      *  `EDIT_WORKFLOW`
+         *      *  `EDIT_ISSUE_LAYOUT`
+         *
+         *     **Project permissions**
+         *
          *      *  `BROWSE_PROJECTS`
          *      *  `MANAGE_SPRINTS_PERMISSION` (Jira Software only)
          *      *  `SERVICEDESK_AGENT` (Jira Service Desk only)
@@ -6808,7 +6669,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/permissionscheme/{schemeId}": {
+    "/rest/api/2/permissionscheme/{schemeId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -6830,7 +6691,7 @@ export interface paths {
          *      *  If you want to update only the name and description, then do not send a permissions list in the request.
          *      *  Sending an empty list will remove all permission grants from the permission scheme.
          *
-         *     If you want to add or delete a permission grant instead of updating the whole list, see [Create permission grant](#api-rest-api-3-permissionscheme-schemeId-permission-post) or [Delete permission scheme entity](#api-rest-api-3-permissionscheme-schemeId-permission-permissionId-delete).
+         *     If you want to add or delete a permission grant instead of updating the whole list, see [Create permission grant](#api-rest-api-2-permissionscheme-schemeId-permission-post) or [Delete permission scheme entity](#api-rest-api-2-permissionscheme-schemeId-permission-permissionId-delete).
          *
          *     See [About permission schemes and grants](../api-group-permission-schemes/#about-permission-schemes-and-grants) for more details.
          *
@@ -6850,7 +6711,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/permissionscheme/{schemeId}/permission": {
+    "/rest/api/2/permissionscheme/{schemeId}/permission": {
         parameters: {
             query?: never;
             header?: never;
@@ -6878,7 +6739,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/permissionscheme/{schemeId}/permission/{permissionId}": {
+    "/rest/api/2/permissionscheme/{schemeId}/permission/{permissionId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -6906,7 +6767,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/plans/plan": {
+    "/rest/api/2/plans/plan": {
         parameters: {
             query?: never;
             header?: never;
@@ -6934,7 +6795,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/plans/plan/{planId}": {
+    "/rest/api/2/plans/plan/{planId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -7007,7 +6868,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/plans/plan/{planId}/archive": {
+    "/rest/api/2/plans/plan/{planId}/archive": {
         parameters: {
             query?: never;
             header?: never;
@@ -7029,7 +6890,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/plans/plan/{planId}/duplicate": {
+    "/rest/api/2/plans/plan/{planId}/duplicate": {
         parameters: {
             query?: never;
             header?: never;
@@ -7051,7 +6912,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/plans/plan/{planId}/team": {
+    "/rest/api/2/plans/plan/{planId}/team": {
         parameters: {
             query?: never;
             header?: never;
@@ -7073,7 +6934,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/plans/plan/{planId}/team/atlassian": {
+    "/rest/api/2/plans/plan/{planId}/team/atlassian": {
         parameters: {
             query?: never;
             header?: never;
@@ -7095,7 +6956,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/plans/plan/{planId}/team/atlassian/{atlassianTeamId}": {
+    "/rest/api/2/plans/plan/{planId}/team/atlassian/{atlassianTeamId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -7136,7 +6997,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/plans/plan/{planId}/team/planonly": {
+    "/rest/api/2/plans/plan/{planId}/team/planonly": {
         parameters: {
             query?: never;
             header?: never;
@@ -7158,7 +7019,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/plans/plan/{planId}/team/planonly/{planOnlyTeamId}": {
+    "/rest/api/2/plans/plan/{planId}/team/planonly/{planOnlyTeamId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -7201,7 +7062,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/plans/plan/{planId}/trash": {
+    "/rest/api/2/plans/plan/{planId}/trash": {
         parameters: {
             query?: never;
             header?: never;
@@ -7223,7 +7084,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/priority": {
+    "/rest/api/2/priority": {
         parameters: {
             query?: never;
             header?: never;
@@ -7255,7 +7116,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/priority/default": {
+    "/rest/api/2/priority/default": {
         parameters: {
             query?: never;
             header?: never;
@@ -7277,7 +7138,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/priority/move": {
+    "/rest/api/2/priority/move": {
         parameters: {
             query?: never;
             header?: never;
@@ -7299,7 +7160,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/priority/search": {
+    "/rest/api/2/priority/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -7326,7 +7187,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/priority/{id}": {
+    "/rest/api/2/priority/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -7357,7 +7218,7 @@ export interface paths {
          * Delete priority
          * @description Deletes an issue priority.
          *
-         *     This operation is [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-3-task-taskId-get) to obtain subsequent updates.
+         *     This operation is [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-2-task-taskId-get) to obtain subsequent updates.
          *
          *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
@@ -7367,7 +7228,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/priorityscheme": {
+    "/rest/api/2/priorityscheme": {
         parameters: {
             query?: never;
             header?: never;
@@ -7395,7 +7256,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/priorityscheme/mappings": {
+    "/rest/api/2/priorityscheme/mappings": {
         parameters: {
             query?: never;
             header?: never;
@@ -7417,7 +7278,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/priorityscheme/priorities/available": {
+    "/rest/api/2/priorityscheme/priorities/available": {
         parameters: {
             query?: never;
             header?: never;
@@ -7439,7 +7300,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/priorityscheme/{schemeId}": {
+    "/rest/api/2/priorityscheme/{schemeId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -7469,7 +7330,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/priorityscheme/{schemeId}/priorities": {
+    "/rest/api/2/priorityscheme/{schemeId}/priorities": {
         parameters: {
             query?: never;
             header?: never;
@@ -7491,7 +7352,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/priorityscheme/{schemeId}/projects": {
+    "/rest/api/2/priorityscheme/{schemeId}/projects": {
         parameters: {
             query?: never;
             header?: never;
@@ -7513,7 +7374,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project": {
+    "/rest/api/2/project": {
         parameters: {
             query?: never;
             header?: never;
@@ -7523,7 +7384,7 @@ export interface paths {
         /**
          * Get all projects
          * @deprecated
-         * @description Returns all projects visible to the user. Deprecated, use [ Get projects paginated](#api-rest-api-3-project-search-get) that supports search and pagination.
+         * @description Returns all projects visible to the user. Deprecated, use [ Get projects paginated](#api-rest-api-2-project-search-get) that supports search and pagination.
          *
          *     This operation can be accessed anonymously.
          *
@@ -7557,7 +7418,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/recent": {
+    "/rest/api/2/project-template": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Create custom project
+         * @description Creates a project based on a custom template provided in the request.
+         *
+         *     The request body should contain the project details and the capabilities that comprise the project:
+         *
+         *      *  `details` \- represents the project details settings
+         *      *  `template` \- represents a list of capabilities responsible for creating specific parts of a project
+         *
+         *     A capability is defined as a unit of configuration for the project you want to create.
+         *
+         *     This operation is:
+         *
+         *      *  [asynchronous](#async). Follow the `Location` link in the response header to determine the status of the task and use [Get task](#api-rest-api-2-task-taskId-get) to obtain subsequent updates.
+         *
+         *     ***Note: This API is only supported for Jira Enterprise edition.***
+         */
+        post: operations["createProjectWithCustomTemplate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/rest/api/2/project/recent": {
         parameters: {
             query?: never;
             header?: never;
@@ -7585,7 +7479,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/search": {
+    "/rest/api/2/project/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -7613,7 +7507,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/type": {
+    "/rest/api/2/project/type": {
         parameters: {
             query?: never;
             header?: never;
@@ -7637,7 +7531,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/type/accessible": {
+    "/rest/api/2/project/type/accessible": {
         parameters: {
             query?: never;
             header?: never;
@@ -7657,7 +7551,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/type/{projectTypeKey}": {
+    "/rest/api/2/project/type/{projectTypeKey}": {
         parameters: {
             query?: never;
             header?: never;
@@ -7681,7 +7575,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/type/{projectTypeKey}/accessible": {
+    "/rest/api/2/project/type/{projectTypeKey}/accessible": {
         parameters: {
             query?: never;
             header?: never;
@@ -7703,7 +7597,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}": {
+    "/rest/api/2/project/{projectIdOrKey}": {
         parameters: {
             query?: never;
             header?: never;
@@ -7743,7 +7637,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/archive": {
+    "/rest/api/2/project/{projectIdOrKey}/archive": {
         parameters: {
             query?: never;
             header?: never;
@@ -7765,7 +7659,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/avatar": {
+    "/rest/api/2/project/{projectIdOrKey}/avatar": {
         parameters: {
             query?: never;
             header?: never;
@@ -7777,7 +7671,7 @@ export interface paths {
          * Set project avatar
          * @description Sets the avatar displayed for a project.
          *
-         *     Use [Load project avatar](#api-rest-api-3-project-projectIdOrKey-avatar2-post) to store avatars against the project, before using this operation to set the displayed avatar.
+         *     Use [Load project avatar](#api-rest-api-2-project-projectIdOrKey-avatar2-post) to store avatars against the project, before using this operation to set the displayed avatar.
          *
          *     **[Permissions](#permissions) required:** *Administer projects* [project permission](https://confluence.atlassian.com/x/yodKLg).
          */
@@ -7789,7 +7683,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/avatar/{id}": {
+    "/rest/api/2/project/{projectIdOrKey}/avatar/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -7811,7 +7705,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/avatar2": {
+    "/rest/api/2/project/{projectIdOrKey}/avatar2": {
         parameters: {
             query?: never;
             header?: never;
@@ -7840,13 +7734,13 @@ export interface paths {
          *
          *     `--data-binary "<@/path/to/file/with/your/avatar>" `
          *
-         *     `--url 'https://your-domain.atlassian.net/rest/api/3/project/{projectIdOrKey}/avatar2'`
+         *     `--url 'https://your-domain.atlassian.net/rest/api/2/project/{projectIdOrKey}/avatar2'`
          *
          *     The avatar is cropped to a square. If no crop parameters are specified, the square originates at the top left of the image. The length of the square's sides is set to the smaller of the height or width of the image.
          *
          *     The cropped image is then used to create avatars of 16x16, 24x24, 32x32, and 48x48 in size.
          *
-         *     After creating the avatar use [Set project avatar](#api-rest-api-3-project-projectIdOrKey-avatar-put) to set it as the project's displayed avatar.
+         *     After creating the avatar use [Set project avatar](#api-rest-api-2-project-projectIdOrKey-avatar-put) to set it as the project's displayed avatar.
          *
          *     **[Permissions](#permissions) required:** *Administer projects* [project permission](https://confluence.atlassian.com/x/yodKLg).
          */
@@ -7857,7 +7751,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/avatars": {
+    "/rest/api/2/project/{projectIdOrKey}/avatars": {
         parameters: {
             query?: never;
             header?: never;
@@ -7881,7 +7775,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/classification-level/default": {
+    "/rest/api/2/project/{projectIdOrKey}/classification-level/default": {
         parameters: {
             query?: never;
             header?: never;
@@ -7925,7 +7819,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/component": {
+    "/rest/api/2/project/{projectIdOrKey}/component": {
         parameters: {
             query?: never;
             header?: never;
@@ -7934,7 +7828,7 @@ export interface paths {
         };
         /**
          * Get project components paginated
-         * @description Returns a [paginated](#pagination) list of all components in a project. See the [Get project components](#api-rest-api-3-project-projectIdOrKey-components-get) resource if you want to get a full list of versions without pagination.
+         * @description Returns a [paginated](#pagination) list of all components in a project. See the [Get project components](#api-rest-api-2-project-projectIdOrKey-components-get) resource if you want to get a full list of versions without pagination.
          *
          *     If your project uses Compass components, this API will return a list of Compass components that are linked to issues in that project.
          *
@@ -7951,7 +7845,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/components": {
+    "/rest/api/2/project/{projectIdOrKey}/components": {
         parameters: {
             query?: never;
             header?: never;
@@ -7960,7 +7854,7 @@ export interface paths {
         };
         /**
          * Get project components
-         * @description Returns all components in a project. See the [Get project components paginated](#api-rest-api-3-project-projectIdOrKey-component-get) resource if you want to get a full list of components with pagination.
+         * @description Returns all components in a project. See the [Get project components paginated](#api-rest-api-2-project-projectIdOrKey-component-get) resource if you want to get a full list of components with pagination.
          *
          *     If your project uses Compass components, this API will return a paginated list of Compass components that are linked to issues in that project.
          *
@@ -7977,7 +7871,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/delete": {
+    "/rest/api/2/project/{projectIdOrKey}/delete": {
         parameters: {
             query?: never;
             header?: never;
@@ -7993,7 +7887,7 @@ export interface paths {
          *     This operation is:
          *
          *      *  transactional, that is, if part of the delete fails the project is not deleted.
-         *      *  [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-3-task-taskId-get) to obtain subsequent updates.
+         *      *  [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-2-task-taskId-get) to obtain subsequent updates.
          *
          *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
@@ -8004,7 +7898,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/features": {
+    "/rest/api/2/project/{projectIdOrKey}/features": {
         parameters: {
             query?: never;
             header?: never;
@@ -8024,7 +7918,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/features/{featureKey}": {
+    "/rest/api/2/project/{projectIdOrKey}/features/{featureKey}": {
         parameters: {
             query?: never;
             header?: never;
@@ -8044,7 +7938,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/properties": {
+    "/rest/api/2/project/{projectIdOrKey}/properties": {
         parameters: {
             query?: never;
             header?: never;
@@ -8068,7 +7962,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/properties/{propertyKey}": {
+    "/rest/api/2/project/{projectIdOrKey}/properties/{propertyKey}": {
         parameters: {
             query?: never;
             header?: never;
@@ -8110,7 +8004,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/restore": {
+    "/rest/api/2/project/{projectIdOrKey}/restore": {
         parameters: {
             query?: never;
             header?: never;
@@ -8135,7 +8029,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/role": {
+    "/rest/api/2/project/{projectIdOrKey}/role": {
         parameters: {
             query?: never;
             header?: never;
@@ -8146,7 +8040,7 @@ export interface paths {
          * Get project roles for project
          * @description Returns a list of [project roles](https://support.atlassian.com/jira-cloud-administration/docs/manage-project-roles/) for the project returning the name and self URL for each role.
          *
-         *     Note that all project roles are shared with all projects in Jira Cloud. See [Get all project roles](#api-rest-api-3-role-get) for more information.
+         *     Note that all project roles are shared with all projects in Jira Cloud. See [Get all project roles](#api-rest-api-2-role-get) for more information.
          *
          *     This operation can be accessed anonymously.
          *
@@ -8161,7 +8055,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/role/{id}": {
+    "/rest/api/2/project/{projectIdOrKey}/role/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -8172,7 +8066,7 @@ export interface paths {
          * Get project role for project
          * @description Returns a project role's details and actors associated with the project. The list of actors is sorted by display name.
          *
-         *     To check whether a user belongs to a role based on their group memberships, use [Get user](#api-rest-api-3-user-get) with the `groups` expand parameter selected. Then check whether the user keys and groups match with the actors returned for the project.
+         *     To check whether a user belongs to a role based on their group memberships, use [Get user](#api-rest-api-2-user-get) with the `groups` expand parameter selected. Then check whether the user keys and groups match with the actors returned for the project.
          *
          *     This operation can be accessed anonymously.
          *
@@ -8183,7 +8077,7 @@ export interface paths {
          * Set actors for project role
          * @description Sets the actors for a project role for a project, replacing all existing actors.
          *
-         *     To add actors to the project without overwriting the existing list, use [Add actors to project role](#api-rest-api-3-project-projectIdOrKey-role-id-post).
+         *     To add actors to the project without overwriting the existing list, use [Add actors to project role](#api-rest-api-2-project-projectIdOrKey-role-id-post).
          *
          *     **[Permissions](#permissions) required:** *Administer Projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project or *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
@@ -8192,7 +8086,7 @@ export interface paths {
          * Add actors to project role
          * @description Adds actors to a project role for the project.
          *
-         *     To replace all actors for the project, use [Set actors for project role](#api-rest-api-3-project-projectIdOrKey-role-id-put).
+         *     To replace all actors for the project, use [Set actors for project role](#api-rest-api-2-project-projectIdOrKey-role-id-put).
          *
          *     This operation can be accessed anonymously.
          *
@@ -8203,7 +8097,7 @@ export interface paths {
          * Delete actors from project role
          * @description Deletes actors from a project role for the project.
          *
-         *     To remove default actors from the project role, use [Delete default actors from project role](#api-rest-api-3-role-id-actors-delete).
+         *     To remove default actors from the project role, use [Delete default actors from project role](#api-rest-api-2-role-id-actors-delete).
          *
          *     This operation can be accessed anonymously.
          *
@@ -8215,7 +8109,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/roledetails": {
+    "/rest/api/2/project/{projectIdOrKey}/roledetails": {
         parameters: {
             query?: never;
             header?: never;
@@ -8239,7 +8133,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/statuses": {
+    "/rest/api/2/project/{projectIdOrKey}/statuses": {
         parameters: {
             query?: never;
             header?: never;
@@ -8263,7 +8157,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/version": {
+    "/rest/api/2/project/{projectIdOrKey}/version": {
         parameters: {
             query?: never;
             header?: never;
@@ -8272,7 +8166,7 @@ export interface paths {
         };
         /**
          * Get project versions paginated
-         * @description Returns a [paginated](#pagination) list of all versions in a project. See the [Get project versions](#api-rest-api-3-project-projectIdOrKey-versions-get) resource if you want to get a full list of versions without pagination.
+         * @description Returns a [paginated](#pagination) list of all versions in a project. See the [Get project versions](#api-rest-api-2-project-projectIdOrKey-versions-get) resource if you want to get a full list of versions without pagination.
          *
          *     This operation can be accessed anonymously.
          *
@@ -8287,7 +8181,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectIdOrKey}/versions": {
+    "/rest/api/2/project/{projectIdOrKey}/versions": {
         parameters: {
             query?: never;
             header?: never;
@@ -8296,7 +8190,7 @@ export interface paths {
         };
         /**
          * Get project versions
-         * @description Returns all versions in a project. The response is not paginated. Use [Get project versions paginated](#api-rest-api-3-project-projectIdOrKey-version-get) if you want to get the versions in a project with pagination.
+         * @description Returns all versions in a project. The response is not paginated. Use [Get project versions paginated](#api-rest-api-2-project-projectIdOrKey-version-get) if you want to get the versions in a project with pagination.
          *
          *     This operation can be accessed anonymously.
          *
@@ -8311,7 +8205,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectId}/email": {
+    "/rest/api/2/project/{projectId}/email": {
         parameters: {
             query?: never;
             header?: never;
@@ -8341,7 +8235,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectId}/hierarchy": {
+    "/rest/api/2/project/{projectId}/hierarchy": {
         parameters: {
             query?: never;
             header?: never;
@@ -8369,7 +8263,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectKeyOrId}/issuesecuritylevelscheme": {
+    "/rest/api/2/project/{projectKeyOrId}/issuesecuritylevelscheme": {
         parameters: {
             query?: never;
             header?: never;
@@ -8391,7 +8285,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectKeyOrId}/notificationscheme": {
+    "/rest/api/2/project/{projectKeyOrId}/notificationscheme": {
         parameters: {
             query?: never;
             header?: never;
@@ -8413,7 +8307,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectKeyOrId}/permissionscheme": {
+    "/rest/api/2/project/{projectKeyOrId}/permissionscheme": {
         parameters: {
             query?: never;
             header?: never;
@@ -8441,7 +8335,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/project/{projectKeyOrId}/securitylevel": {
+    "/rest/api/2/project/{projectKeyOrId}/securitylevel": {
         parameters: {
             query?: never;
             header?: never;
@@ -8465,7 +8359,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/projectCategory": {
+    "/rest/api/2/projectCategory": {
         parameters: {
             query?: never;
             header?: never;
@@ -8493,7 +8387,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/projectCategory/{id}": {
+    "/rest/api/2/projectCategory/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -8527,7 +8421,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/projectvalidate/key": {
+    "/rest/api/2/projectvalidate/key": {
         parameters: {
             query?: never;
             header?: never;
@@ -8549,7 +8443,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/projectvalidate/validProjectKey": {
+    "/rest/api/2/projectvalidate/validProjectKey": {
         parameters: {
             query?: never;
             header?: never;
@@ -8571,7 +8465,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/projectvalidate/validProjectName": {
+    "/rest/api/2/projectvalidate/validProjectName": {
         parameters: {
             query?: never;
             header?: never;
@@ -8593,7 +8487,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/resolution": {
+    "/rest/api/2/resolution": {
         parameters: {
             query?: never;
             header?: never;
@@ -8622,7 +8516,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/resolution/default": {
+    "/rest/api/2/resolution/default": {
         parameters: {
             query?: never;
             header?: never;
@@ -8644,7 +8538,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/resolution/move": {
+    "/rest/api/2/resolution/move": {
         parameters: {
             query?: never;
             header?: never;
@@ -8666,7 +8560,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/resolution/search": {
+    "/rest/api/2/resolution/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -8691,7 +8585,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/resolution/{id}": {
+    "/rest/api/2/resolution/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -8717,7 +8611,7 @@ export interface paths {
          * Delete resolution
          * @description Deletes an issue resolution.
          *
-         *     This operation is [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-3-task-taskId-get) to obtain subsequent updates.
+         *     This operation is [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-2-task-taskId-get) to obtain subsequent updates.
          *
          *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
@@ -8727,7 +8621,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/role": {
+    "/rest/api/2/role": {
         parameters: {
             query?: never;
             header?: never;
@@ -8742,7 +8636,7 @@ export interface paths {
          *
          *     [Project roles](https://support.atlassian.com/jira-cloud-administration/docs/manage-project-roles/) are a flexible way to to associate users and groups with projects. In Jira Cloud, the list of project roles is shared globally with all projects, but each project can have a different set of actors associated with it (unlike groups, which have the same membership throughout all Jira applications).
          *
-         *     Project roles are used in [permission schemes](#api-rest-api-3-permissionscheme-get), [email notification schemes](#api-rest-api-3-notificationscheme-get), [issue security levels](#api-rest-api-3-issuesecurityschemes-get), [comment visibility](#api-rest-api-3-comment-list-post), and workflow conditions.
+         *     Project roles are used in [permission schemes](#api-rest-api-2-permissionscheme-get), [email notification schemes](#api-rest-api-2-notificationscheme-get), [issue security levels](#api-rest-api-2-issuesecurityschemes-get), [comment visibility](#api-rest-api-2-comment-list-post), and workflow conditions.
          *
          *     #### Members and actors ####
          *
@@ -8759,7 +8653,7 @@ export interface paths {
         put?: never;
         /**
          * Create project role
-         * @description Creates a new project role with no [default actors](#api-rest-api-3-resolution-get). You can use the [Add default actors to project role](#api-rest-api-3-role-id-actors-post) operation to add default actors to the project role after creating it.
+         * @description Creates a new project role with no [default actors](#api-rest-api-2-resolution-get). You can use the [Add default actors to project role](#api-rest-api-2-role-id-actors-post) operation to add default actors to the project role after creating it.
          *
          *     *Note that although a new project role is available to all projects upon creation, any default actors that are associated with the project role are not added to projects that existed prior to the role being created.*<
          *
@@ -8772,7 +8666,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/role/{id}": {
+    "/rest/api/2/role/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -8814,7 +8708,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/role/{id}/actors": {
+    "/rest/api/2/role/{id}/actors": {
         parameters: {
             query?: never;
             header?: never;
@@ -8823,7 +8717,7 @@ export interface paths {
         };
         /**
          * Get default actors for project role
-         * @description Returns the [default actors](#api-rest-api-3-resolution-get) for the project role.
+         * @description Returns the [default actors](#api-rest-api-2-resolution-get) for the project role.
          *
          *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
@@ -8831,7 +8725,7 @@ export interface paths {
         put?: never;
         /**
          * Add default actors to project role
-         * @description Adds [default actors](#api-rest-api-3-resolution-get) to a role. You may add groups or users, but you cannot add groups and users in the same request.
+         * @description Adds [default actors](#api-rest-api-2-resolution-get) to a role. You may add groups or users, but you cannot add groups and users in the same request.
          *
          *     Changing a project role's default actors does not affect project role members for projects already created.
          *
@@ -8840,7 +8734,7 @@ export interface paths {
         post: operations["addProjectRoleActorsToRole"];
         /**
          * Delete default actors from project role
-         * @description Deletes the [default actors](#api-rest-api-3-resolution-get) from a project role. You may delete a group or user, but you cannot delete a group and a user in the same request.
+         * @description Deletes the [default actors](#api-rest-api-2-resolution-get) from a project role. You may delete a group or user, but you cannot delete a group and a user in the same request.
          *
          *     Changing a project role's default actors does not affect project role members for projects already created.
          *
@@ -8852,7 +8746,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/screens": {
+    "/rest/api/2/screens": {
         parameters: {
             query?: never;
             header?: never;
@@ -8880,7 +8774,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/screens/addToDefault/{fieldId}": {
+    "/rest/api/2/screens/addToDefault/{fieldId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -8902,7 +8796,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/screens/tabs": {
+    "/rest/api/2/screens/tabs": {
         parameters: {
             query?: never;
             header?: never;
@@ -8926,7 +8820,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/screens/{screenId}": {
+    "/rest/api/2/screens/{screenId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -8954,7 +8848,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/screens/{screenId}/availableFields": {
+    "/rest/api/2/screens/{screenId}/availableFields": {
         parameters: {
             query?: never;
             header?: never;
@@ -8976,7 +8870,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/screens/{screenId}/tabs": {
+    "/rest/api/2/screens/{screenId}/tabs": {
         parameters: {
             query?: never;
             header?: never;
@@ -9007,7 +8901,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/screens/{screenId}/tabs/{tabId}": {
+    "/rest/api/2/screens/{screenId}/tabs/{tabId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -9035,7 +8929,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/screens/{screenId}/tabs/{tabId}/fields": {
+    "/rest/api/2/screens/{screenId}/tabs/{tabId}/fields": {
         parameters: {
             query?: never;
             header?: never;
@@ -9066,7 +8960,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/screens/{screenId}/tabs/{tabId}/fields/{id}": {
+    "/rest/api/2/screens/{screenId}/tabs/{tabId}/fields/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -9088,7 +8982,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/screens/{screenId}/tabs/{tabId}/fields/{id}/move": {
+    "/rest/api/2/screens/{screenId}/tabs/{tabId}/fields/{id}/move": {
         parameters: {
             query?: never;
             header?: never;
@@ -9112,7 +9006,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/screens/{screenId}/tabs/{tabId}/move/{pos}": {
+    "/rest/api/2/screens/{screenId}/tabs/{tabId}/move/{pos}": {
         parameters: {
             query?: never;
             header?: never;
@@ -9134,7 +9028,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/screenscheme": {
+    "/rest/api/2/screenscheme": {
         parameters: {
             query?: never;
             header?: never;
@@ -9164,7 +9058,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/screenscheme/{screenSchemeId}": {
+    "/rest/api/2/screenscheme/{screenSchemeId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -9194,7 +9088,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/search": {
+    "/rest/api/2/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -9206,7 +9100,7 @@ export interface paths {
          * @deprecated
          * @description Searches for issues using [JQL](https://confluence.atlassian.com/x/egORLQ).
          *
-         *     If the JQL query expression is too large to be encoded as a query parameter, use the [POST](#api-rest-api-3-search-post) version of this resource.
+         *     If the JQL query expression is too large to be encoded as a query parameter, use the [POST](#api-rest-api-2-search-post) version of this resource.
          *
          *     This operation can be accessed anonymously.
          *
@@ -9222,7 +9116,7 @@ export interface paths {
          * @deprecated
          * @description Searches for issues using [JQL](https://confluence.atlassian.com/x/egORLQ).
          *
-         *     There is a [GET](#api-rest-api-3-search-get) version of this resource that can be used for smaller JQL query expressions.
+         *     There is a [GET](#api-rest-api-2-search-get) version of this resource that can be used for smaller JQL query expressions.
          *
          *     This operation can be accessed anonymously.
          *
@@ -9238,7 +9132,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/search/approximate-count": {
+    "/rest/api/2/search/approximate-count": {
         parameters: {
             query?: never;
             header?: never;
@@ -9265,7 +9159,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/search/id": {
+    "/rest/api/2/search/id": {
         parameters: {
             query?: never;
             header?: never;
@@ -9279,7 +9173,7 @@ export interface paths {
          * @deprecated
          * @description Searches for IDs of issues using [JQL](https://confluence.atlassian.com/x/egORLQ).
          *
-         *     Use the [Search](#api-rest-api-3-search-post) endpoint if you need to fetch more than just issue IDs. The Search endpoint returns more information, but may take much longer to respond to requests. This is because it uses a different mechanism for ordering results than this endpoint and doesn't provide the total number of results for your query.
+         *     Use the [Search](#api-rest-api-2-search-post) endpoint if you need to fetch more than just issue IDs. The Search endpoint returns more information, but may take much longer to respond to requests. This is because it uses a different mechanism for ordering results than this endpoint and doesn't provide the total number of results for your query.
          *
          *     This operation can be accessed anonymously.
          *
@@ -9295,7 +9189,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/search/jql": {
+    "/rest/api/2/search/jql": {
         parameters: {
             query?: never;
             header?: never;
@@ -9306,7 +9200,7 @@ export interface paths {
          * Search for issues using JQL enhanced search (GET)
          * @description Searches for issues using [JQL](https://confluence.atlassian.com/x/egORLQ). Recent updates might not be immediately visible in the returned search results. If you need [read-after-write](https://developer.atlassian.com/cloud/jira/platform/search-and-reconcile/) consistency, you can utilize the `reconcileIssues` parameter to ensure stronger consistency assurances. This operation can be accessed anonymously.
          *
-         *     If the JQL query expression is too large to be encoded as a query parameter, use the [POST](#api-rest-api-3-search-post) version of this resource.
+         *     If the JQL query expression is too large to be encoded as a query parameter, use the [POST](#api-rest-api-2-search-post) version of this resource.
          *
          *     **[Permissions](#permissions) required:** Issues are included in the response where the user has:
          *
@@ -9331,7 +9225,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/securitylevel/{id}": {
+    "/rest/api/2/securitylevel/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -9342,7 +9236,7 @@ export interface paths {
          * Get issue security level
          * @description Returns details of an issue security level.
          *
-         *     Use [Get issue security scheme](#api-rest-api-3-issuesecurityschemes-id-get) to obtain the IDs of issue security levels associated with the issue security scheme.
+         *     Use [Get issue security scheme](#api-rest-api-2-issuesecurityschemes-id-get) to obtain the IDs of issue security levels associated with the issue security scheme.
          *
          *     This operation can be accessed anonymously.
          *
@@ -9357,7 +9251,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/serverInfo": {
+    "/rest/api/2/serverInfo": {
         parameters: {
             query?: never;
             header?: never;
@@ -9381,7 +9275,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/settings/columns": {
+    "/rest/api/2/settings/columns": {
         parameters: {
             query?: never;
             header?: never;
@@ -9401,11 +9295,11 @@ export interface paths {
          *
          *     The `columns` parameter accepts a navigable field value and is expressed as HTML form data. To specify multiple columns, pass multiple `columns` parameters. For example, in curl:
          *
-         *     `curl -X PUT -d columns=summary -d columns=description https://your-domain.atlassian.net/rest/api/3/settings/columns`
+         *     `curl -X PUT -d columns=summary -d columns=description https://your-domain.atlassian.net/rest/api/2/settings/columns`
          *
          *     If no column details are sent, then all default columns are removed.
          *
-         *     A navigable field is one that can be used as a column on the issue navigator. Find details of navigable issue columns using [Get fields](#api-rest-api-3-field-get).
+         *     A navigable field is one that can be used as a column on the issue navigator. Find details of navigable issue columns using [Get fields](#api-rest-api-2-field-get).
          *
          *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
@@ -9417,7 +9311,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/status": {
+    "/rest/api/2/status": {
         parameters: {
             query?: never;
             header?: never;
@@ -9430,7 +9324,7 @@ export interface paths {
          *
          *     This operation can be accessed anonymously.
          *
-         *     **[Permissions](#permissions) required:** None.
+         *     [Permissions](#permissions) required: *Browse projects* [project permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-project-permissions/) for the project.
          */
         get: operations["getStatuses"];
         put?: never;
@@ -9441,7 +9335,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/status/{idOrName}": {
+    "/rest/api/2/status/{idOrName}": {
         parameters: {
             query?: never;
             header?: never;
@@ -9456,7 +9350,7 @@ export interface paths {
          *
          *     This operation can be accessed anonymously.
          *
-         *     [Permissions](#permissions) required: None.
+         *     [Permissions](#permissions) required: *Browse projects* [project permission](https://support.atlassian.com/jira-cloud-administration/docs/manage-project-permissions/) for the project.
          */
         get: operations["getStatus"];
         put?: never;
@@ -9467,7 +9361,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/statuscategory": {
+    "/rest/api/2/statuscategory": {
         parameters: {
             query?: never;
             header?: never;
@@ -9489,7 +9383,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/statuscategory/{idOrKey}": {
+    "/rest/api/2/statuscategory/{idOrKey}": {
         parameters: {
             query?: never;
             header?: never;
@@ -9498,7 +9392,7 @@ export interface paths {
         };
         /**
          * Get status category
-         * @description Returns a status category. Status categories provided a mechanism for categorizing [statuses](#api-rest-api-3-status-idOrName-get).
+         * @description Returns a status category. Status categories provided a mechanism for categorizing [statuses](#api-rest-api-2-status-idOrName-get).
          *
          *     **[Permissions](#permissions) required:** Permission to access Jira.
          */
@@ -9511,7 +9405,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/statuses": {
+    "/rest/api/2/statuses": {
         parameters: {
             query?: never;
             header?: never;
@@ -9563,7 +9457,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/statuses/search": {
+    "/rest/api/2/statuses/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -9588,7 +9482,67 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/task/{taskId}": {
+    "/rest/api/2/statuses/{statusId}/project/{projectId}/issueTypeUsages": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get issue type usages by status and project
+         * @description Returns a page of issue types in a project using a given status.
+         */
+        get: operations["getProjectIssueTypeUsagesForStatus"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/rest/api/2/statuses/{statusId}/projectUsages": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get project usages by status
+         * @description Returns a page of projects using a given status.
+         */
+        get: operations["getProjectUsagesForStatus"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/rest/api/2/statuses/{statusId}/workflowUsages": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get workflow usages by status
+         * @description Returns a page of workflows using a given status.
+         */
+        get: operations["getWorkflowUsagesForStatus"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/rest/api/2/task/{taskId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -9619,7 +9573,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/task/{taskId}/cancel": {
+    "/rest/api/2/task/{taskId}/cancel": {
         parameters: {
             query?: never;
             header?: never;
@@ -9644,7 +9598,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/uiModifications": {
+    "/rest/api/2/uiModifications": {
         parameters: {
             query?: never;
             header?: never;
@@ -9681,7 +9635,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/uiModifications/{uiModificationId}": {
+    "/rest/api/2/uiModifications/{uiModificationId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -9718,7 +9672,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/universal_avatar/type/{type}/owner/{entityId}": {
+    "/rest/api/2/universal_avatar/type/{type}/owner/{entityId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -9760,7 +9714,7 @@ export interface paths {
          *
          *     `--data-binary "<@/path/to/file/with/your/avatar>" `
          *
-         *     `--url 'https://your-domain.atlassian.net/rest/api/3/universal_avatar/type/{type}/owner/{entityId}'`
+         *     `--url 'https://your-domain.atlassian.net/rest/api/2/universal_avatar/type/{type}/owner/{entityId}'`
          *
          *     The avatar is cropped to a square. If no crop parameters are specified, the square originates at the top left of the image. The length of the square's sides is set to the smaller of the height or width of the image.
          *
@@ -9768,9 +9722,9 @@ export interface paths {
          *
          *     After creating the avatar use:
          *
-         *      *  [Update issue type](#api-rest-api-3-issuetype-id-put) to set it as the issue type's displayed avatar.
-         *      *  [Set project avatar](#api-rest-api-3-project-projectIdOrKey-avatar-put) to set it as the project's displayed avatar.
-         *      *  [Update priority](#api-rest-api-3-priority-id-put) to set it as the priority's displayed avatar.
+         *      *  [Update issue type](#api-rest-api-2-issuetype-id-put) to set it as the issue type's displayed avatar.
+         *      *  [Set project avatar](#api-rest-api-2-project-projectIdOrKey-avatar-put) to set it as the project's displayed avatar.
+         *      *  [Update priority](#api-rest-api-2-priority-id-put) to set it as the priority's displayed avatar.
          *
          *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
@@ -9781,7 +9735,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/universal_avatar/type/{type}/owner/{owningObjectId}/avatar/{id}": {
+    "/rest/api/2/universal_avatar/type/{type}/owner/{owningObjectId}/avatar/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -9803,7 +9757,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/universal_avatar/view/type/{type}": {
+    "/rest/api/2/universal_avatar/view/type/{type}": {
         parameters: {
             query?: never;
             header?: never;
@@ -9827,7 +9781,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/universal_avatar/view/type/{type}/avatar/{id}": {
+    "/rest/api/2/universal_avatar/view/type/{type}/avatar/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -9856,7 +9810,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/universal_avatar/view/type/{type}/owner/{entityId}": {
+    "/rest/api/2/universal_avatar/view/type/{type}/owner/{entityId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -9885,7 +9839,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/user": {
+    "/rest/api/2/user": {
         parameters: {
             query?: never;
             header?: never;
@@ -9923,7 +9877,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/user/assignable/multiProjectSearch": {
+    "/rest/api/2/user/assignable/multiProjectSearch": {
         parameters: {
             query?: never;
             header?: never;
@@ -9934,7 +9888,7 @@ export interface paths {
          * Find users assignable to projects
          * @description Returns a list of users who can be assigned issues in one or more projects. The list may be restricted to users whose attributes match a string.
          *
-         *     This operation takes the users in the range defined by `startAt` and `maxResults`, up to the thousandth user, and then returns only the users from that range that can be assigned issues in the projects. This means the operation usually returns fewer users than specified in `maxResults`. To get all the users who can be assigned issues in the projects, use [Get all users](#api-rest-api-3-users-search-get) and filter the records in your code.
+         *     This operation takes the users in the range defined by `startAt` and `maxResults`, up to the thousandth user, and then returns only the users from that range that can be assigned issues in the projects. This means the operation usually returns fewer users than specified in `maxResults`. To get all the users who can be assigned issues in the projects, use [Get all users](#api-rest-api-2-users-search-get) and filter the records in your code.
          *
          *     Privacy controls are applied to the response based on the users' preferences. This could mean, for example, that the user's email address is hidden. See the [Profile visibility overview](https://developer.atlassian.com/cloud/jira/platform/profile-visibility/) for more details.
          *
@@ -9951,7 +9905,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/user/assignable/search": {
+    "/rest/api/2/user/assignable/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -9964,11 +9918,11 @@ export interface paths {
          *
          *      *  a new issue, by providing the `projectKeyOrId`.
          *      *  an updated issue, by providing the `issueKey` or `issueId`.
-         *      *  to an issue during a transition (workflow action), by providing the `issueKey` or `issueId` and the transition id in `actionDescriptorId`. You can obtain the IDs of an issue's valid transitions using the `transitions` option in the `expand` parameter of [ Get issue](#api-rest-api-3-issue-issueIdOrKey-get).
+         *      *  to an issue during a transition (workflow action), by providing the `issueKey` or `issueId` and the transition id in `actionDescriptorId`. You can obtain the IDs of an issue's valid transitions using the `transitions` option in the `expand` parameter of [ Get issue](#api-rest-api-2-issue-issueIdOrKey-get).
          *
          *     In all these cases, you can pass an account ID to determine if a user can be assigned to an issue. The user is returned in the response if they can be assigned to the issue or issue transition.
          *
-         *     This operation takes the users in the range defined by `startAt` and `maxResults`, up to the thousandth user, and then returns only the users from that range that can be assigned the issue. This means the operation usually returns fewer users than specified in `maxResults`. To get all the users who can be assigned the issue, use [Get all users](#api-rest-api-3-users-search-get) and filter the records in your code.
+         *     This operation takes the users in the range defined by `startAt` and `maxResults`, up to the thousandth user, and then returns only the users from that range that can be assigned the issue. This means the operation usually returns fewer users than specified in `maxResults`. To get all the users who can be assigned the issue, use [Get all users](#api-rest-api-2-users-search-get) and filter the records in your code.
          *
          *     Privacy controls are applied to the response based on the users' preferences. This could mean, for example, that the user's email address is hidden. See the [Profile visibility overview](https://developer.atlassian.com/cloud/jira/platform/profile-visibility/) for more details.
          *
@@ -9983,7 +9937,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/user/bulk": {
+    "/rest/api/2/user/bulk": {
         parameters: {
             query?: never;
             header?: never;
@@ -10005,7 +9959,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/user/bulk/migration": {
+    "/rest/api/2/user/bulk/migration": {
         parameters: {
             query?: never;
             header?: never;
@@ -10027,7 +9981,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/user/columns": {
+    "/rest/api/2/user/columns": {
         parameters: {
             query?: never;
             header?: never;
@@ -10050,7 +10004,7 @@ export interface paths {
          *
          *     The parameters for this resource are expressed as HTML form data. For example, in curl:
          *
-         *     `curl -X PUT -d columns=summary -d columns=description https://your-domain.atlassian.net/rest/api/3/user/columns?accountId=5b10ac8d82e05b22cc7d4ef5'`
+         *     `curl -X PUT -d columns=summary -d columns=description https://your-domain.atlassian.net/rest/api/2/user/columns?accountId=5b10ac8d82e05b22cc7d4ef5'`
          *
          *     **[Permissions](#permissions) required:**
          *
@@ -10074,7 +10028,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/user/email": {
+    "/rest/api/2/user/email": {
         parameters: {
             query?: never;
             header?: never;
@@ -10094,7 +10048,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/user/email/bulk": {
+    "/rest/api/2/user/email/bulk": {
         parameters: {
             query?: never;
             header?: never;
@@ -10114,7 +10068,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/user/groups": {
+    "/rest/api/2/user/groups": {
         parameters: {
             query?: never;
             header?: never;
@@ -10136,7 +10090,43 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/user/permission/search": {
+    "/rest/api/2/user/nav4-opt-property/{propertyKey}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get user nav property
+         * @description Returns the value of a user nav preference.
+         *
+         *     Note: This operation fetches the property key value directly from RbacClient.
+         *
+         *     **[Permissions](#permissions) required:**
+         *
+         *      *  *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg), to get a property from any user.
+         *      *  Access to Jira, to get a property from the calling user's record.
+         */
+        get: operations["getUserNavProperty"];
+        /**
+         * Set user nav property
+         * @description Sets the value of a Nav4 preference. Use this resource to store Nav4 preference data against a user in the Identity service.
+         *
+         *     **[Permissions](#permissions) required:**
+         *
+         *      *  *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg), to set a property on any user.
+         *      *  Access to Jira, to set a property on the calling user's record.
+         */
+        put: operations["setUserNavProperty"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/rest/api/2/user/permission/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -10152,7 +10142,7 @@ export interface paths {
          *
          *     If no search string is provided, a list of all users with the permissions is returned.
          *
-         *     This operation takes the users in the range defined by `startAt` and `maxResults`, up to the thousandth user, and then returns only the users from that range that match the search string and have permission for the project or issue. This means the operation usually returns fewer users than specified in `maxResults`. To get all the users who match the search string and have permission for the project or issue, use [Get all users](#api-rest-api-3-users-search-get) and filter the records in your code.
+         *     This operation takes the users in the range defined by `startAt` and `maxResults`, up to the thousandth user, and then returns only the users from that range that match the search string and have permission for the project or issue. This means the operation usually returns fewer users than specified in `maxResults`. To get all the users who match the search string and have permission for the project or issue, use [Get all users](#api-rest-api-2-users-search-get) and filter the records in your code.
          *
          *     Privacy controls are applied to the response based on the users' preferences. This could mean, for example, that the user's email address is hidden. See the [Profile visibility overview](https://developer.atlassian.com/cloud/jira/platform/profile-visibility/) for more details.
          *
@@ -10172,7 +10162,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/user/picker": {
+    "/rest/api/2/user/picker": {
         parameters: {
             query?: never;
             header?: never;
@@ -10183,7 +10173,7 @@ export interface paths {
          * Find users for picker
          * @description Returns a list of users whose attributes match the query term. The returned object includes the `html` field where the matched query term is highlighted with the HTML strong tag. A list of account IDs can be provided to exclude users from the results.
          *
-         *     This operation takes the users in the range defined by `maxResults`, up to the thousandth user, and then returns only the users from that range that match the query term. This means the operation usually returns fewer users than specified in `maxResults`. To get all the users who match the query term, use [Get all users](#api-rest-api-3-users-search-get) and filter the records in your code.
+         *     This operation takes the users in the range defined by `maxResults`, up to the thousandth user, and then returns only the users from that range that match the query term. This means the operation usually returns fewer users than specified in `maxResults`. To get all the users who match the query term, use [Get all users](#api-rest-api-2-users-search-get) and filter the records in your code.
          *
          *     Privacy controls are applied to the response based on the users' preferences. This could mean, for example, that the user's email address is hidden. See the [Profile visibility overview](https://developer.atlassian.com/cloud/jira/platform/profile-visibility/) for more details.
          *
@@ -10200,7 +10190,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/user/properties": {
+    "/rest/api/2/user/properties": {
         parameters: {
             query?: never;
             header?: never;
@@ -10227,7 +10217,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/user/properties/{propertyKey}": {
+    "/rest/api/2/user/properties/{propertyKey}": {
         parameters: {
             query?: never;
             header?: never;
@@ -10236,7 +10226,7 @@ export interface paths {
         };
         /**
          * Get user property
-         * @description Returns the value of a user's property. If no property key is provided [Get user property keys](#api-rest-api-3-user-properties-get) is called.
+         * @description Returns the value of a user's property. If no property key is provided [Get user property keys](#api-rest-api-2-user-properties-get) is called.
          *
          *     Note: This operation does not access the [user properties](https://confluence.atlassian.com/x/8YxjL) created and maintained in Jira.
          *
@@ -10276,7 +10266,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/user/search": {
+    "/rest/api/2/user/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -10287,7 +10277,7 @@ export interface paths {
          * Find users
          * @description Returns a list of active users that match the search string and property.
          *
-         *     This operation first applies a filter to match the search string and property, and then takes the filtered users in the range defined by `startAt` and `maxResults`, up to the thousandth user. To get all the users who match the search string and property, use [Get all users](#api-rest-api-3-users-search-get) and filter the records in your code.
+         *     This operation first applies a filter to match the search string and property, and then takes the filtered users in the range defined by `startAt` and `maxResults`, up to the thousandth user. To get all the users who match the search string and property, use [Get all users](#api-rest-api-2-users-search-get) and filter the records in your code.
          *
          *     This operation can be accessed anonymously.
          *
@@ -10304,7 +10294,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/user/search/query": {
+    "/rest/api/2/user/search/query": {
         parameters: {
             query?: never;
             header?: never;
@@ -10315,7 +10305,7 @@ export interface paths {
          * Find users by query
          * @description Finds users with a structured query and returns a [paginated](#pagination) list of user details.
          *
-         *     This operation takes the users in the range defined by `startAt` and `maxResults`, up to the thousandth user, and then returns only the users from that range that match the structured query. This means the operation usually returns fewer users than specified in `maxResults`. To get all the users who match the structured query, use [Get all users](#api-rest-api-3-users-search-get) and filter the records in your code.
+         *     This operation takes the users in the range defined by `startAt` and `maxResults`, up to the thousandth user, and then returns only the users from that range that match the structured query. This means the operation usually returns fewer users than specified in `maxResults`. To get all the users who match the structured query, use [Get all users](#api-rest-api-2-users-search-get) and filter the records in your code.
          *
          *     **[Permissions](#permissions) required:** *Browse users and groups* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          *
@@ -10343,7 +10333,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/user/search/query/key": {
+    "/rest/api/2/user/search/query/key": {
         parameters: {
             query?: never;
             header?: never;
@@ -10354,7 +10344,7 @@ export interface paths {
          * Find user keys by query
          * @description Finds users with a structured query and returns a [paginated](#pagination) list of user keys.
          *
-         *     This operation takes the users in the range defined by `startAt` and `maxResults`, up to the thousandth user, and then returns only the users from that range that match the structured query. This means the operation usually returns fewer users than specified in `maxResults`. To get all the users who match the structured query, use [Get all users](#api-rest-api-3-users-search-get) and filter the records in your code.
+         *     This operation takes the users in the range defined by `startAt` and `maxResults`, up to the thousandth user, and then returns only the users from that range that match the structured query. This means the operation usually returns fewer users than specified in `maxResults`. To get all the users who match the structured query, use [Get all users](#api-rest-api-2-users-search-get) and filter the records in your code.
          *
          *     **[Permissions](#permissions) required:** *Browse users and groups* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          *
@@ -10382,7 +10372,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/user/viewissue/search": {
+    "/rest/api/2/user/viewissue/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -10401,7 +10391,7 @@ export interface paths {
          *      *  an issue, by providing the `issueKey`.
          *      *  any issue in a project, by providing the `projectKey`.
          *
-         *     This operation takes the users in the range defined by `startAt` and `maxResults`, up to the thousandth user, and then returns only the users from that range that match the search string and have permission to browse issues. This means the operation usually returns fewer users than specified in `maxResults`. To get all the users who match the search string and have permission to browse issues, use [Get all users](#api-rest-api-3-users-search-get) and filter the records in your code.
+         *     This operation takes the users in the range defined by `startAt` and `maxResults`, up to the thousandth user, and then returns only the users from that range that match the search string and have permission to browse issues. This means the operation usually returns fewer users than specified in `maxResults`. To get all the users who match the search string and have permission to browse issues, use [Get all users](#api-rest-api-2-users-search-get) and filter the records in your code.
          *
          *     Privacy controls are applied to the response based on the users' preferences. This could mean, for example, that the user's email address is hidden. See the [Profile visibility overview](https://developer.atlassian.com/cloud/jira/platform/profile-visibility/) for more details.
          *
@@ -10418,7 +10408,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/users": {
+    "/rest/api/2/users": {
         parameters: {
             query?: never;
             header?: never;
@@ -10442,7 +10432,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/users/search": {
+    "/rest/api/2/users/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -10466,7 +10456,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/version": {
+    "/rest/api/2/version": {
         parameters: {
             query?: never;
             header?: never;
@@ -10490,7 +10480,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/version/{id}": {
+    "/rest/api/2/version/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -10521,7 +10511,7 @@ export interface paths {
          * @deprecated
          * @description Deletes a project version.
          *
-         *     Deprecated, use [ Delete and replace version](#api-rest-api-3-version-id-removeAndSwap-post) that supports swapping version values in custom fields, in addition to the swapping for `fixVersion` and `affectedVersion` provided in this resource.
+         *     Deprecated, use [ Delete and replace version](#api-rest-api-2-version-id-removeAndSwap-post) that supports swapping version values in custom fields, in addition to the swapping for `fixVersion` and `affectedVersion` provided in this resource.
          *
          *     Alternative versions can be provided to update issues that use the deleted version in `fixVersion` or `affectedVersion`. If alternatives are not provided, occurrences of `fixVersion` and `affectedVersion` that contain the deleted version are cleared.
          *
@@ -10535,7 +10525,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/version/{id}/mergeto/{moveIssuesTo}": {
+    "/rest/api/2/version/{id}/mergeto/{moveIssuesTo}": {
         parameters: {
             query?: never;
             header?: never;
@@ -10547,7 +10537,7 @@ export interface paths {
          * Merge versions
          * @description Merges two project versions. The merge is completed by deleting the version specified in `id` and replacing any occurrences of its ID in `fixVersion` with the version ID specified in `moveIssuesTo`.
          *
-         *     Consider using [ Delete and replace version](#api-rest-api-3-version-id-removeAndSwap-post) instead. This resource supports swapping version values in `fixVersion`, `affectedVersion`, and custom fields.
+         *     Consider using [ Delete and replace version](#api-rest-api-2-version-id-removeAndSwap-post) instead. This resource supports swapping version values in `fixVersion`, `affectedVersion`, and custom fields.
          *
          *     This operation can be accessed anonymously.
          *
@@ -10561,7 +10551,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/version/{id}/move": {
+    "/rest/api/2/version/{id}/move": {
         parameters: {
             query?: never;
             header?: never;
@@ -10585,7 +10575,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/version/{id}/relatedIssueCounts": {
+    "/rest/api/2/version/{id}/relatedIssueCounts": {
         parameters: {
             query?: never;
             header?: never;
@@ -10613,7 +10603,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/version/{id}/relatedwork": {
+    "/rest/api/2/version/{id}/relatedwork": {
         parameters: {
             query?: never;
             header?: never;
@@ -10653,7 +10643,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/version/{id}/removeAndSwap": {
+    "/rest/api/2/version/{id}/removeAndSwap": {
         parameters: {
             query?: never;
             header?: never;
@@ -10679,7 +10669,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/version/{id}/unresolvedIssueCount": {
+    "/rest/api/2/version/{id}/unresolvedIssueCount": {
         parameters: {
             query?: never;
             header?: never;
@@ -10703,7 +10693,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/version/{versionId}/relatedwork/{relatedWorkId}": {
+    "/rest/api/2/version/{versionId}/relatedwork/{relatedWorkId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -10727,7 +10717,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/webhook": {
+    "/rest/api/2/webhook": {
         parameters: {
             query?: never;
             header?: never;
@@ -10763,7 +10753,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/webhook/failed": {
+    "/rest/api/2/webhook/failed": {
         parameters: {
             query?: never;
             header?: never;
@@ -10791,7 +10781,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/webhook/refresh": {
+    "/rest/api/2/webhook/refresh": {
         parameters: {
             query?: never;
             header?: never;
@@ -10815,7 +10805,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflow": {
+    "/rest/api/2/workflow": {
         parameters: {
             query?: never;
             header?: never;
@@ -10825,7 +10815,7 @@ export interface paths {
         /**
          * Get all workflows
          * @deprecated
-         * @description Returns all workflows in Jira or a workflow. Deprecated, use [Get workflows paginated](#api-rest-api-3-workflow-search-get).
+         * @description Returns all workflows in Jira or a workflow. Deprecated, use [Get workflows paginated](#api-rest-api-2-workflow-search-get).
          *
          *     If the `workflowName` parameter is specified, the workflow is returned as an object (not in an array). Otherwise, an array of workflow objects is returned.
          *
@@ -11575,7 +11565,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflow/rule/config": {
+    "/rest/api/2/workflow/rule/config": {
         parameters: {
             query?: never;
             header?: never;
@@ -11623,7 +11613,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflow/rule/config/delete": {
+    "/rest/api/2/workflow/rule/config/delete": {
         parameters: {
             query?: never;
             header?: never;
@@ -11651,7 +11641,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflow/search": {
+    "/rest/api/2/workflow/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -11675,7 +11665,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflow/transitions/{transitionId}/properties": {
+    "/rest/api/2/workflow/transitions/{transitionId}/properties": {
         parameters: {
             query?: never;
             header?: never;
@@ -11715,7 +11705,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflow/{entityId}": {
+    "/rest/api/2/workflow/{entityId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -11744,7 +11734,67 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflows": {
+    "/rest/api/2/workflow/{workflowId}/project/{projectId}/issueTypeUsages": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get issue types in a project that are using a given workflow
+         * @description Returns a page of issue types using a given workflow within a project.
+         */
+        get: operations["getWorkflowProjectIssueTypeUsages"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/rest/api/2/workflow/{workflowId}/projectUsages": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get projects using a given workflow
+         * @description Returns a page of projects using a given workflow.
+         */
+        get: operations["getProjectUsagesForWorkflow"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/rest/api/2/workflow/{workflowId}/workflowSchemes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get workflow schemes which are using a given workflow
+         * @description Returns a page of workflow schemes using a given workflow.
+         */
+        get: operations["getWorkflowSchemeUsagesForWorkflow"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/rest/api/2/workflows": {
         parameters: {
             query?: never;
             header?: never;
@@ -11769,7 +11819,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflows/capabilities": {
+    "/rest/api/2/workflows/capabilities": {
         parameters: {
             query?: never;
             header?: never;
@@ -11808,7 +11858,7 @@ export interface paths {
          *
          *     ##### Parent or child blocking validator #####
          *
-         *     A validator to block the child issue\\u2019s transition depending on the parent issue\\u2019s status.
+         *     A validator to block the child issue's transition depending on the parent issue's status.
          *
          *         {
          *            "ruleKey" : "system:parent-or-child-blocking-validator"
@@ -11961,7 +12011,7 @@ export interface paths {
          *      *  DateFieldValidator
          *      *  WindowsDateValidator
          *
-         *     ##### Proforma: Forms attached validator #####
+         *     ##### Pro forma: Forms attached validator #####
          *
          *     Validates that one or more forms are attached to the issue.
          *
@@ -12319,7 +12369,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflows/create": {
+    "/rest/api/2/workflows/create": {
         parameters: {
             query?: never;
             header?: never;
@@ -12344,7 +12394,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflows/create/validation": {
+    "/rest/api/2/workflows/create/validation": {
         parameters: {
             query?: never;
             header?: never;
@@ -12369,7 +12419,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflows/search": {
+    "/rest/api/2/workflows/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -12394,7 +12444,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflows/update": {
+    "/rest/api/2/workflows/update": {
         parameters: {
             query?: never;
             header?: never;
@@ -12419,7 +12469,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflows/update/validation": {
+    "/rest/api/2/workflows/update/validation": {
         parameters: {
             query?: never;
             header?: never;
@@ -12444,7 +12494,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflowscheme": {
+    "/rest/api/2/workflowscheme": {
         parameters: {
             query?: never;
             header?: never;
@@ -12472,7 +12522,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflowscheme/project": {
+    "/rest/api/2/workflowscheme/project": {
         parameters: {
             query?: never;
             header?: never;
@@ -12504,7 +12554,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflowscheme/read": {
+    "/rest/api/2/workflowscheme/read": {
         parameters: {
             query?: never;
             header?: never;
@@ -12529,7 +12579,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflowscheme/update": {
+    "/rest/api/2/workflowscheme/update": {
         parameters: {
             query?: never;
             header?: never;
@@ -12554,7 +12604,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflowscheme/update/mappings": {
+    "/rest/api/2/workflowscheme/update/mappings": {
         parameters: {
             query?: never;
             header?: never;
@@ -12579,7 +12629,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflowscheme/{id}": {
+    "/rest/api/2/workflowscheme/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -12613,7 +12663,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflowscheme/{id}/createdraft": {
+    "/rest/api/2/workflowscheme/{id}/createdraft": {
         parameters: {
             query?: never;
             header?: never;
@@ -12635,7 +12685,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflowscheme/{id}/default": {
+    "/rest/api/2/workflowscheme/{id}/default": {
         parameters: {
             query?: never;
             header?: never;
@@ -12673,7 +12723,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflowscheme/{id}/draft": {
+    "/rest/api/2/workflowscheme/{id}/draft": {
         parameters: {
             query?: never;
             header?: never;
@@ -12711,7 +12761,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflowscheme/{id}/draft/default": {
+    "/rest/api/2/workflowscheme/{id}/draft/default": {
         parameters: {
             query?: never;
             header?: never;
@@ -12745,7 +12795,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflowscheme/{id}/draft/issuetype/{issueType}": {
+    "/rest/api/2/workflowscheme/{id}/draft/issuetype/{issueType}": {
         parameters: {
             query?: never;
             header?: never;
@@ -12779,7 +12829,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflowscheme/{id}/draft/publish": {
+    "/rest/api/2/workflowscheme/{id}/draft/publish": {
         parameters: {
             query?: never;
             header?: never;
@@ -12794,7 +12844,7 @@ export interface paths {
          *
          *     Where the draft workflow includes new workflow statuses for an issue type, mappings are provided to update issues with the original workflow status to the new workflow status.
          *
-         *     This operation is [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-3-task-taskId-get) to obtain updates.
+         *     This operation is [asynchronous](#async). Follow the `location` link in the response to determine the status of the task and use [Get task](#api-rest-api-2-task-taskId-get) to obtain updates.
          *
          *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
@@ -12805,7 +12855,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflowscheme/{id}/draft/workflow": {
+    "/rest/api/2/workflowscheme/{id}/draft/workflow": {
         parameters: {
             query?: never;
             header?: never;
@@ -12839,7 +12889,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflowscheme/{id}/issuetype/{issueType}": {
+    "/rest/api/2/workflowscheme/{id}/issuetype/{issueType}": {
         parameters: {
             query?: never;
             header?: never;
@@ -12877,7 +12927,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/workflowscheme/{id}/workflow": {
+    "/rest/api/2/workflowscheme/{id}/workflow": {
         parameters: {
             query?: never;
             header?: never;
@@ -12915,7 +12965,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/worklog/deleted": {
+    "/rest/api/2/workflowscheme/{workflowSchemeId}/projectUsages": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get projects which are using a given workflow scheme
+         * @description Returns a page of projects using a given workflow scheme.
+         */
+        get: operations["getProjectUsagesForWorkflowScheme"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/rest/api/2/worklog/deleted": {
         parameters: {
             query?: never;
             header?: never;
@@ -12941,7 +13011,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/worklog/list": {
+    "/rest/api/2/worklog/list": {
         parameters: {
             query?: never;
             header?: never;
@@ -12968,7 +13038,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/rest/api/3/worklog/updated": {
+    "/rest/api/2/worklog/updated": {
         parameters: {
             query?: never;
             header?: never;
@@ -13189,10 +13259,11 @@ export interface paths {
         /**
          * Set app property (Forge)
          * @description Sets the value of a Forge app's property.
-         *     These values can be retrieved in [Jira expressions](https://developer.atlassian.com/cloud/jira/platform/jira-expressions/)
-         *     through the `app` [context variable](https://developer.atlassian.com/cloud/jira/platform/jira-expressions/#context-variables).
+         *     These values can be retrieved in [Jira expressions](/cloud/jira/platform/jira-expressions/)
+         *     through the `app` [context variable](/cloud/jira/platform/jira-expressions/#context-variables).
+         *     They are also available in [entity property display conditions](/platform/forge/manifest-reference/display-conditions/entity-property-conditions/).
          *
-         *     For other use cases, use the [Storage API](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api/).
+         *     For other use cases, use the [Storage API](/platform/forge/runtime-reference/storage-api/).
          *
          *     The value of the request body must be a [valid](http://tools.ietf.org/html/rfc4627), non-empty JSON blob. The maximum length is 32768 characters.
          *
@@ -13456,6 +13527,11 @@ export interface components {
             readonly parentName?: string;
             /** @description The type of the associated record. */
             readonly typeName?: string;
+        };
+        /** @description Field association for example PROJECT\_ID. */
+        AssociationContextObject: {
+            identifier?: Record<string, never>;
+            type: string;
         };
         /** @description Details about an attachment. */
         Attachment: {
@@ -13796,6 +13872,78 @@ export interface components {
             /** @description System avatars list. */
             readonly system?: components["schemas"]["Avatar"][];
         };
+        /** @description The payload for creating a board column */
+        BoardColumnPayload: {
+            /**
+             * Format: int64
+             * @description The maximum issue constraint for the column
+             */
+            maximumIssueConstraint?: number;
+            /**
+             * Format: int64
+             * @description The minimum issue constraint for the column
+             */
+            minimumIssueConstraint?: number;
+            /**
+             * @description The name of the column
+             * @example TODO
+             */
+            name?: string;
+            /**
+             * @description The status IDs for the column
+             * @example pcri:status:ref:done
+             */
+            statusIds?: components["schemas"]["ProjectCreateResourceIdentifier"][];
+        };
+        /** @description The payload for setting a board feature */
+        BoardFeaturePayload: {
+            /**
+             * @description The key of the feature
+             * @enum {string}
+             */
+            featureKey?: "ESTIMATION" | "SPRINT";
+            /**
+             * @description Whether the feature should be turned on or off
+             * @enum {boolean}
+             */
+            state?: true | false;
+        };
+        /** @description The payload for creating a board */
+        BoardPayload: {
+            /**
+             * @description Takes in a JQL string to create a new filter. If no value is provided, it'll default to a JQL filter for the project creating
+             * @example project = 'My Project'
+             */
+            boardFilterJQL?: string;
+            /**
+             * @description Card color settings of the board
+             * @enum {string}
+             */
+            cardColorStrategy?: "ISSUE_TYPE" | "REQUEST_TYPE" | "ASSIGNEE" | "PRIORITY" | "NONE" | "CUSTOM";
+            cardLayout?: components["schemas"]["CardLayout"];
+            /** @description Card layout settings of the board */
+            cardLayouts?: components["schemas"]["CardLayoutField"][];
+            /** @description The columns of the board */
+            columns?: components["schemas"]["BoardColumnPayload"][];
+            /** @description Feature settings for the board */
+            features?: components["schemas"]["BoardFeaturePayload"][];
+            /** @description The name of the board */
+            name?: string;
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            /** @description The quick filters for the board. */
+            quickFilters?: components["schemas"]["QuickFilterPayload"][];
+            /**
+             * @description Whether sprints are supported on the board
+             * @default true
+             */
+            supportsSprint: boolean;
+            swimlanes?: components["schemas"]["SwimlanesPayload"];
+            workingDaysConfig?: components["schemas"]["WorkingDaysConfig"];
+        };
+        BoardsPayload: {
+            /** @description The boards to be associated with the project. */
+            boards?: components["schemas"]["BoardPayload"][];
+        } | null;
         /** @description Details for changing owners of shareable entities */
         BulkChangeOwnerDetails: {
             /** @description Whether the name is fixed automatically if it's duplicated after changing owner. */
@@ -13857,15 +14005,6 @@ export interface components {
                 [key: string]: string;
             };
         };
-        /** @description Bulk Edit Get Fields Response. */
-        BulkEditGetFields: {
-            /** @description The end cursor for use in pagination. */
-            readonly endingBefore?: string;
-            /** @description List of all the fields */
-            readonly fields?: components["schemas"]["IssueBulkEditField"][];
-            /** @description The start cursor for use in pagination. */
-            readonly startingAfter?: string;
-        };
         /** @description Details of a request to bulk edit shareable entity. */
         BulkEditShareableEntityRequest: {
             /**
@@ -13922,7 +14061,7 @@ export interface components {
              *
              *     Multiple `fields` parameters can be included in a request.
              *
-             *     Note: All navigable fields are returned by default. This differs from [GET issue](#api-rest-api-3-issue-issueIdOrKey-get) where the default is all fields. */
+             *     Note: All navigable fields are returned by default. This differs from [GET issue](#api-rest-api-2-issue-issueIdOrKey-get) where the default is all fields. */
             fields?: string[];
             /** @description Reference fields by their key (rather than ID). The default is `false`. */
             fieldsByKeys?: boolean;
@@ -13954,61 +14093,12 @@ export interface components {
             /** @description The list of issues. */
             readonly issues?: components["schemas"]["IssueBean"][];
         };
-        BulkOperationErrorResponse: {
-            errors?: components["schemas"]["ErrorMessage"][];
-        };
         BulkOperationErrorResult: {
             elementErrors?: components["schemas"]["ErrorCollection"];
             /** Format: int32 */
             failedElementNumber?: number;
             /** Format: int32 */
             status?: number;
-        };
-        BulkOperationProgress: {
-            /**
-             * Format: date-time
-             * @description A timestamp of when the task was submitted.
-             */
-            created?: string;
-            /** @description Map of issue IDs for which the operation failed and that the user has permission to view, to their one or more reasons for failure. These reasons are open-ended text descriptions of the error and are not selected from a predefined list of standard reasons. */
-            failedAccessibleIssues?: {
-                [key: string]: string[];
-            };
-            /**
-             * Format: int32
-             * @description The number of issues that are either invalid or issues that the user doesn't have permission to view, regardless of the success or failure of the operation.
-             */
-            invalidOrInaccessibleIssueCount?: number;
-            /** @description List of issue IDs for which the operation was successful and that the user has permission to view. */
-            processedAccessibleIssues?: number[];
-            /**
-             * Format: int64
-             * @description Progress of the task as a percentage.
-             */
-            progressPercent?: number;
-            /**
-             * Format: date-time
-             * @description A timestamp of when the task was started.
-             */
-            started?: string;
-            /**
-             * @description The status of the task.
-             * @enum {string}
-             */
-            status?: "ENQUEUED" | "RUNNING" | "COMPLETE" | "FAILED" | "CANCEL_REQUESTED" | "CANCELLED" | "DEAD";
-            submittedBy?: components["schemas"]["User"];
-            /** @description The ID of the task. */
-            readonly taskId?: string;
-            /**
-             * Format: int32
-             * @description The number of issues that the bulk operation was attempted on.
-             */
-            totalIssueCount?: number;
-            /**
-             * Format: date-time
-             * @description A timestamp of when the task progress was last updated.
-             */
-            updated?: string;
         };
         /** @description Details of global and project permissions granted to the user. */
         BulkPermissionGrants: {
@@ -14044,20 +14134,24 @@ export interface components {
             /** @description List of project IDs. */
             projects?: number[];
         };
-        /** @description Bulk Transition Get Available Transitions Response. */
-        BulkTransitionGetAvailableTransitions: {
-            /** @description List of available transitions for bulk transition operation for requested issues grouped by workflow */
-            readonly availableTransitions?: components["schemas"]["IssueBulkTransitionForWorkflow"][];
-            /** @description The end cursor for use in pagination. */
-            readonly endingBefore?: string;
-            /** @description The start cursor for use in pagination. */
-            readonly startingAfter?: string;
+        /** @description Card layout configuration. */
+        CardLayout: {
+            /**
+             * @description Whether to show days in column
+             * @default false
+             * @enum {boolean}
+             */
+            showDaysInColumn: true | false;
         };
-        BulkTransitionSubmitInput: {
-            /** @description List of all the issue IDs or keys that are to be bulk transitioned. */
-            selectedIssueIdsOrKeys: string[];
-            /** @description The ID of the transition that is to be performed on the issues. */
-            transitionId: string;
+        /** @description Card layout settings of the board */
+        CardLayoutField: {
+            fieldId?: string;
+            /** Format: int64 */
+            id?: number;
+            /** @enum {string} */
+            mode?: "PLAN" | "WORK";
+            /** Format: int32 */
+            position?: number;
         };
         /** @description A change item. */
         ChangeDetails: {
@@ -14161,8 +14255,8 @@ export interface components {
         Comment: {
             /** @description The ID of the user who created the comment. */
             readonly author?: components["schemas"]["UserDetails"];
-            /** @description The comment text in [Atlassian Document Format](https://developer.atlassian.com/cloud/jira/platform/apis/document/structure/). */
-            body?: unknown;
+            /** @description The comment text. */
+            body?: string;
             /**
              * Format: date-time
              * @description The date and time at which the comment was created.
@@ -14293,6 +14387,18 @@ export interface components {
              */
             operation?: "ANY" | "ALL";
         } | null;
+        /** @description The payload for creating a condition group in a workflow */
+        ConditionGroupPayload: {
+            /** @description The nested conditions of the condition group. */
+            conditionGroup?: components["schemas"]["ConditionGroupPayload"][];
+            /** @description The rules for this condition. */
+            conditions?: components["schemas"]["RulePayload"][];
+            /**
+             * @description Determines how the conditions in the group are evaluated. Accepts either `ANY` or `ALL`. If `ANY` is used, at least one condition in the group must be true for the group to evaluate to true. If `ALL` is used, all conditions in the group must be true for the group to evaluate to true.
+             * @enum {string}
+             */
+            operation?: "ANY" | "ALL";
+        };
         /** @description The conditions group associated with the transition. */
         ConditionGroupUpdate: {
             /** @description The nested conditions of the condition group. */
@@ -14718,29 +14824,29 @@ export interface components {
             avatarId?: number;
             /**
              * Format: int64
-             * @description The ID of the project's category. A complete list of category IDs is found using the [Get all project categories](#api-rest-api-3-projectCategory-get) operation.
+             * @description The ID of the project's category. A complete list of category IDs is found using the [Get all project categories](#api-rest-api-2-projectCategory-get) operation.
              */
             categoryId?: number;
             /** @description A brief description of the project. */
             description?: string;
             /**
              * Format: int64
-             * @description The ID of the field configuration scheme for the project. Use the [Get all field configuration schemes](#api-rest-api-3-fieldconfigurationscheme-get) operation to get a list of field configuration scheme IDs. If you specify the field configuration scheme you cannot specify the project template key.
+             * @description The ID of the field configuration scheme for the project. Use the [Get all field configuration schemes](#api-rest-api-2-fieldconfigurationscheme-get) operation to get a list of field configuration scheme IDs. If you specify the field configuration scheme you cannot specify the project template key.
              */
             fieldConfigurationScheme?: number;
             /**
              * Format: int64
-             * @description The ID of the issue security scheme for the project, which enables you to control who can and cannot view issues. Use the [Get issue security schemes](#api-rest-api-3-issuesecurityschemes-get) resource to get all issue security scheme IDs.
+             * @description The ID of the issue security scheme for the project, which enables you to control who can and cannot view issues. Use the [Get issue security schemes](#api-rest-api-2-issuesecurityschemes-get) resource to get all issue security scheme IDs.
              */
             issueSecurityScheme?: number;
             /**
              * Format: int64
-             * @description The ID of the issue type scheme for the project. Use the [Get all issue type schemes](#api-rest-api-3-issuetypescheme-get) operation to get a list of issue type scheme IDs. If you specify the issue type scheme you cannot specify the project template key.
+             * @description The ID of the issue type scheme for the project. Use the [Get all issue type schemes](#api-rest-api-2-issuetypescheme-get) operation to get a list of issue type scheme IDs. If you specify the issue type scheme you cannot specify the project template key.
              */
             issueTypeScheme?: number;
             /**
              * Format: int64
-             * @description The ID of the issue type screen scheme for the project. Use the [Get all issue type screen schemes](#api-rest-api-3-issuetypescreenscheme-get) operation to get a list of issue type screen scheme IDs. If you specify the issue type screen scheme you cannot specify the project template key.
+             * @description The ID of the issue type screen scheme for the project. Use the [Get all issue type screen schemes](#api-rest-api-2-issuetypescreenscheme-get) operation to get a list of issue type screen scheme IDs. If you specify the issue type screen scheme you cannot specify the project template key.
              */
             issueTypeScreenScheme?: number;
             /** @description Project keys must be unique and start with an uppercase letter followed by one or more uppercase alphanumeric characters. The maximum length is 10 characters. */
@@ -14753,12 +14859,12 @@ export interface components {
             name: string;
             /**
              * Format: int64
-             * @description The ID of the notification scheme for the project. Use the [Get notification schemes](#api-rest-api-3-notificationscheme-get) resource to get a list of notification scheme IDs.
+             * @description The ID of the notification scheme for the project. Use the [Get notification schemes](#api-rest-api-2-notificationscheme-get) resource to get a list of notification scheme IDs.
              */
             notificationScheme?: number;
             /**
              * Format: int64
-             * @description The ID of the permission scheme for the project. Use the [Get all permission schemes](#api-rest-api-3-permissionscheme-get) resource to see a list of all permission scheme IDs.
+             * @description The ID of the permission scheme for the project. Use the [Get all permission schemes](#api-rest-api-2-permissionscheme-get) resource to see a list of all permission scheme IDs.
              */
             permissionScheme?: number;
             /**
@@ -14775,7 +14881,7 @@ export interface components {
             url?: string;
             /**
              * Format: int64
-             * @description The ID of the workflow scheme for the project. Use the [Get all workflow schemes](#api-rest-api-3-workflowscheme-get) operation to get a list of workflow scheme IDs. If you specify the workflow scheme you cannot specify the project template key.
+             * @description The ID of the workflow scheme for the project. Use the [Get all workflow schemes](#api-rest-api-2-workflowscheme-get) operation to get a list of workflow scheme IDs. If you specify the workflow scheme you cannot specify the project template key.
              */
             workflowScheme?: number;
         };
@@ -15476,6 +15582,35 @@ export interface components {
             /** @description The value of the custom field option. */
             value?: string;
         };
+        /** @description Defines the payload for the custom field definitions. See https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-fields/\#api-rest-api-3-field-post */
+        CustomFieldPayload: {
+            /**
+             * @description The type of the custom field
+             * @example See https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-fields/#api-rest-api-3-field-post `type` for values
+             */
+            cfType?: string;
+            /**
+             * @description The description of the custom field
+             * @example This is a custom field
+             */
+            description?: string;
+            /**
+             * @description The name of the custom field
+             * @example My Custom Field
+             */
+            name?: string;
+            /**
+             * @description The strategy to use when there is a conflict with an existing custom field. FAIL - Fail execution, this always needs to be unique; USE - Use the existing entity and ignore new entity parameters
+             * @enum {string}
+             */
+            onConflict?: "FAIL" | "USE" | "NEW";
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            /**
+             * @description The searcher key of the custom field
+             * @example See https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-fields/#api-rest-api-3-field-post `searcherKey` for values
+             */
+            searcherKey?: string;
+        } | null;
         /** @description Details about the replacement for a deleted version. */
         CustomFieldReplacement: {
             /**
@@ -15513,6 +15648,85 @@ export interface components {
         CustomFieldValueUpdateDetails: {
             /** @description The list of custom field update details. */
             updates?: components["schemas"]["CustomFieldValueUpdate"][];
+        };
+        /** @description The specific request object for creating a project with template. */
+        CustomTemplateRequestDTO: {
+            boards?: components["schemas"]["BoardsPayload"];
+            field?: components["schemas"]["FieldCapabilityPayload"];
+            issueType?: components["schemas"]["IssueTypeProjectCreatePayload"];
+            notification?: components["schemas"]["NotificationSchemePayload"];
+            permissionScheme?: components["schemas"]["PermissionPayloadDTO"];
+            project?: components["schemas"]["ProjectPayload"];
+            role?: components["schemas"]["RolesCapabilityPayload"];
+            scope?: components["schemas"]["ScopePayload"];
+            security?: components["schemas"]["SecuritySchemePayload"];
+            workflow?: components["schemas"]["WorkflowCapabilityPayload"];
+        };
+        /** @description Project Details */
+        CustomTemplatesProjectDetails: {
+            /**
+             * @description The access level of the project. Only used by team-managed project
+             * @example private
+             * @enum {string}
+             */
+            accessLevel?: "open" | "limited" | "private" | "free";
+            /** @description Additional properties of the project */
+            additionalProperties?: {
+                [key: string]: string;
+            };
+            /**
+             * @description The default assignee when creating issues in the project
+             * @example PROJECT_LEAD
+             * @enum {string}
+             */
+            assigneeType?: "PROJECT_DEFAULT" | "COMPONENT_LEAD" | "PROJECT_LEAD" | "UNASSIGNED";
+            /**
+             * Format: int64
+             * @description The ID of the project's avatar. Use the \[Get project avatars\](\#api-rest-api-3-project-projectIdOrKey-avatar-get) operation to list the available avatars in a project.
+             * @example 10200
+             */
+            avatarId?: number;
+            /**
+             * Format: int64
+             * @description The ID of the project's category. A complete list of category IDs is found using the [Get all project categories](#api-rest-api-2-projectCategory-get) operation.
+             */
+            categoryId?: number;
+            /**
+             * @description Brief description of the project
+             * @example This is a project for Foo Bar
+             */
+            description?: string;
+            /**
+             * @description Whether components are enabled for the project. Only used by company-managed project
+             * @default false
+             * @example false
+             */
+            enableComponents: boolean;
+            /**
+             * @description Project keys must be unique and start with an uppercase letter followed by one or more uppercase alphanumeric characters. The maximum length is 10 characters.
+             * @example PRJ
+             */
+            key?: string;
+            /**
+             * @description The default language for the project
+             * @example en
+             */
+            language?: string;
+            /**
+             * @description The account ID of the project lead. Either `lead` or `leadAccountId` must be set when creating a project. Cannot be provided with `lead`.
+             * @example 1234567890
+             */
+            leadAccountId?: string;
+            /**
+             * @description Name of the project
+             * @example Project Foo Bar
+             */
+            name?: string;
+            /**
+             * @description A link to information about this project, such as project documentation
+             * @example https://www.example.com
+             */
+            url?: string;
         };
         /** @description Details of a dashboard. */
         Dashboard: {
@@ -15787,8 +16001,12 @@ export interface components {
             status?: number;
         };
         ErrorCollections: Record<string, never>;
+        /** @example {
+         *       "message": "The request is not from a Connect app."
+         *     } */
         ErrorMessage: {
-            message?: string;
+            /** @description The error message. */
+            message: string;
         };
         Errors: {
             issueIsSubtask?: components["schemas"]["Error"];
@@ -15933,6 +16151,28 @@ export interface components {
             /** @description The stable ID of the field. */
             stableId?: string;
         };
+        /** @description Details of field associations with projects. */
+        FieldAssociationsRequest: {
+            /** @description Contexts to associate/unassociate the fields with. */
+            associationContexts: components["schemas"]["AssociationContextObject"][];
+            /** @description Fields to associate/unassociate with projects. */
+            fields: components["schemas"]["FieldIdentifierObject"][];
+        };
+        /** @description Defines the payload for the fields, screens, screen schemes, issue type screen schemes, field layouts, and field layout schemes */
+        FieldCapabilityPayload: {
+            /** @description The custom field definitions. See https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-fields/\#api-rest-api-3-field-post */
+            customFieldDefinitions?: components["schemas"]["CustomFieldPayload"][] | null;
+            fieldLayoutScheme?: components["schemas"]["FieldLayoutSchemePayload"];
+            /** @description The field layouts configuration. */
+            fieldLayouts?: components["schemas"]["FieldLayoutPayload"][] | null;
+            /** @description The issue layouts configuration */
+            issueLayouts?: components["schemas"]["IssueLayoutPayload"][] | null;
+            issueTypeScreenScheme?: components["schemas"]["IssueTypeScreenSchemePayload"];
+            /** @description The screen schemes See https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-screen-schemes/\#api-rest-api-3-screenscheme-post */
+            screenScheme?: components["schemas"]["ScreenSchemePayload"][] | null;
+            /** @description The screens. See https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-screens/\#api-rest-api-3-screens-post */
+            screens?: components["schemas"]["ScreenPayload"][] | null;
+        } | null;
         /** @description A clause that asserts whether a field was changed. For example, `status CHANGED AFTER startOfMonth(-1M)`.See [CHANGED](https://confluence.atlassian.com/x/dgiiLQ#Advancedsearching-operatorsreference-CHANGEDCHANGED) for more information about the CHANGED operator. */
         FieldChangedClause: {
             field: components["schemas"]["JqlQueryField"];
@@ -16071,6 +16311,16 @@ export interface components {
             /** @description Whether the content of the field can be searched. */
             searchable?: boolean;
         };
+        FieldIdIdentifier: {
+            type: "FieldIdIdentifier";
+        } & (Omit<components["schemas"]["FieldIdentifierObject"], "type"> & {
+            identifier?: string;
+        });
+        /** @description Identifier for a field for example FIELD\_ID. */
+        FieldIdentifierObject: {
+            identifier?: Record<string, never>;
+            type: string;
+        };
         /** @description Information about the most recent use of a field. */
         FieldLastUsed: {
             /**
@@ -16088,6 +16338,49 @@ export interface components {
              */
             value?: string;
         };
+        /** @description Defines the payload for the field layout configuration. See https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-field-configurations/\#api-rest-api-3-fieldconfiguration-post */
+        FieldLayoutConfiguration: {
+            /** @description Whether to show the field */
+            field?: boolean;
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            /** @description Whether the field is required */
+            required?: boolean;
+        };
+        /** @description Defines the payload for the field layouts. See https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-field-configurations/\#api-group-issue-field-configurations" + fieldlayout is what users would see as "Field Configuration" in Jira's UI - https://support.atlassian.com/jira-cloud-administration/docs/manage-issue-field-configurations/ */
+        FieldLayoutPayload: {
+            /** @description The field layout configuration. See https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-field-configurations/\#api-rest-api-3-fieldconfiguration-post */
+            configuration?: components["schemas"]["FieldLayoutConfiguration"][];
+            /**
+             * @description The description of the field layout
+             * @example This is a field layout
+             */
+            description?: string;
+            /**
+             * @description The name of the field layout
+             * @example My Field Layout
+             */
+            name?: string;
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+        } | null;
+        /** @description Defines the payload for the field layout schemes. See "Field Configuration Scheme" - https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-field-configurations/\#api-rest-api-3-fieldconfigurationscheme-post https://support.atlassian.com/jira-cloud-administration/docs/configure-a-field-configuration-scheme/ */
+        FieldLayoutSchemePayload: {
+            defaultFieldLayout?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            /**
+             * @description The description of the field layout scheme
+             * @example This is a field layout scheme
+             */
+            description?: string;
+            /** @description There is a default configuration "fieldlayout" that is applied to all issue types using this scheme that don't have an explicit mapping users can create (or re-use existing) configurations for other issue types and map them to this scheme */
+            explicitMappings?: {
+                [key: string]: components["schemas"]["ProjectCreateResourceIdentifier"];
+            };
+            /**
+             * @description The name of the field layout scheme
+             * @example My Field Layout Scheme
+             */
+            name?: string;
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+        } | null;
         /** @description The metadata describing an issue field. */
         FieldMetadata: {
             /** @description The list of values allowed in the field. */
@@ -16258,7 +16551,7 @@ export interface components {
             readonly owner?: components["schemas"]["User"];
             /**
              * Format: uri
-             * @description A URL to view the filter results in Jira, using the [Search for issues using JQL](#api-rest-api-3-filter-search-get) operation with the filter's JQL string to return the filter results. For example, *https://your-domain.atlassian.net/rest/api/3/search?jql=project+%3D+SSP+AND+issuetype+%3D+Bug*.
+             * @description A URL to view the filter results in Jira, using the [Search for issues using JQL](#api-rest-api-2-filter-search-get) operation with the filter's JQL string to return the filter results. For example, *https://your-domain.atlassian.net/rest/api/2/search?jql=project+%3D+SSP+AND+issuetype+%3D+Bug*.
              */
             readonly searchUrl?: string;
             /**
@@ -16308,7 +16601,7 @@ export interface components {
             readonly owner?: components["schemas"]["User"];
             /**
              * Format: uri
-             * @description A URL to view the filter results in Jira, using the [Search for issues using JQL](#api-rest-api-3-filter-search-get) operation with the filter's JQL string to return the filter results. For example, *https://your-domain.atlassian.net/rest/api/3/search?jql=project+%3D+SSP+AND+issuetype+%3D+Bug*.
+             * @description A URL to view the filter results in Jira, using the [Search for issues using JQL](#api-rest-api-2-filter-search-get) operation with the filter's JQL string to return the filter results. For example, *https://your-domain.atlassian.net/rest/api/2/search?jql=project+%3D+SSP+AND+issuetype+%3D+Bug*.
              */
             readonly searchUrl?: string;
             /**
@@ -16399,6 +16692,20 @@ export interface components {
         FoundUsersAndGroups: {
             groups?: components["schemas"]["FoundGroups"];
             users?: components["schemas"]["FoundUsers"];
+        };
+        /** @description The payload for the layout details for the start end of a transition */
+        FromLayoutPayload: {
+            /**
+             * Format: int32
+             * @description The port that the transition can be made from
+             */
+            fromPort?: number;
+            status?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            /**
+             * Format: int32
+             * @description The port that the transition goes to
+             */
+            toPortOverride?: number;
         };
         /** @description An operand that is a function. See [Advanced searching - functions reference](https://confluence.atlassian.com/x/dwiiLQ) for more information about JQL functions. */
         FunctionOperand: {
@@ -16594,6 +16901,8 @@ export interface components {
             issueSources?: components["schemas"]["GetIssueSourceResponse"][];
             /** @description The plan name. */
             name: string;
+            /** @description Default scenario ID. */
+            scenarioId: string;
             /**
              * @description The plan status. This is "Active", "Trashed" or "Archived".
              * @enum {string}
@@ -16776,7 +17085,7 @@ export interface components {
         IdBean: {
             /**
              * Format: int64
-             * @description The ID of the permission scheme to associate with the project. Use the [Get all permission schemes](#api-rest-api-3-permissionscheme-get) resource to get a list of permission scheme IDs.
+             * @description The ID of the permission scheme to associate with the project. Use the [Get all permission schemes](#api-rest-api-2-permissionscheme-get) resource to get a list of permission scheme IDs.
              */
             id: number;
         };
@@ -16873,100 +17182,6 @@ export interface components {
                     [key: string]: unknown;
                 };
             };
-        };
-        /** @description Issue Bulk Delete Payload */
-        IssueBulkDeletePayload: {
-            /** @description List of issue IDs or keys which are to be bulk deleted. These IDs or keys can be from different projects and issue types. */
-            selectedIssueIdsOrKeys: string[];
-            /**
-             * @description A boolean value that indicates whether to send a bulk change notification when the issues are being deleted.
-             *
-             *     If `true`, dispatches a bulk notification email to users about the updates.
-             * @default true
-             */
-            sendBulkNotification: boolean;
-        };
-        IssueBulkEditField: {
-            /** @description Description of the field. */
-            description?: string;
-            /** @description A list of options related to the field, applicable in contexts where multiple selections are allowed. */
-            fieldOptions?: components["schemas"]["IssueBulkOperationsFieldOption"][];
-            /** @description The unique ID of the field. */
-            id?: string;
-            /** @description Indicates whether the field is mandatory for the operation. */
-            isRequired?: boolean;
-            /** @description Specifies supported actions (like add, replace, remove) on multi-select fields via an enum. */
-            multiSelectFieldOptions?: ("ADD" | "REMOVE" | "REPLACE" | "REMOVE_ALL")[];
-            /** @description The display name of the field. */
-            name?: string;
-            /** @description A URL to fetch additional data for the field */
-            searchUrl?: string;
-            /** @description The type of the field. */
-            type?: string;
-            /** @description A message indicating why the field is unavailable for editing. */
-            unavailableMessage?: string;
-        };
-        /** @description Issue Bulk Edit Payload */
-        IssueBulkEditPayload: {
-            /** @description An object that defines the values to be updated in specified fields of an issue. The structure and content of this parameter vary depending on the type of field being edited. Although the order is not significant, ensure that field IDs align with those in selectedActions. */
-            editedFieldsInput: components["schemas"]["JiraIssueFields"];
-            /** @description List of all the field IDs that are to be bulk edited. Each field ID in this list corresponds to a specific attribute of an issue that is set to be modified in the bulk edit operation. The relevant field ID can be obtained by calling the Bulk Edit Get Fields REST API (documentation available on this page itself). */
-            selectedActions: string[];
-            /** @description List of issue IDs or keys which are to be bulk edited. These IDs or keys can be from different projects and issue types. */
-            selectedIssueIdsOrKeys: string[];
-            /**
-             * @description A boolean value that indicates whether to send a bulk change notification when the issues are being edited.
-             *
-             *     If `true`, dispatches a bulk notification email to users about the updates.
-             * @default true
-             */
-            sendBulkNotification: boolean;
-        };
-        /** @description Issue Bulk Move Payload */
-        IssueBulkMovePayload: {
-            /**
-             * @description A boolean value that indicates whether to send a bulk change notification when the issues are being moved.
-             *
-             *     If `true`, dispatches a bulk notification email to users about the updates.
-             * @default true
-             */
-            sendBulkNotification: boolean;
-            /** @description An object representing the mapping of issues and data related to destination entities, like fields and statuses, that are required during a bulk move.
-             *
-             *     The key is a string that is created by concatenating the following three entities in order, separated by commas. The format is `<project ID or key>,<issueType ID>,<parent ID or key>`. It should be unique across mappings provided in the payload. If you provide multiple mappings for the same key, only one will be processed. However, the operation won't fail, so the error may be hard to track down.
-             *
-             *      *  ***Destination project*** (Required): ID or key of the project to which the issues are being moved.
-             *      *  ***Destination issueType*** (Required): ID of the issueType to which the issues are being moved.
-             *      *  ***Destination parent ID or key*** (Optional): ID or key of the issue which will become the parent of the issues being moved. Only required when the destination issueType is a subtask. */
-            targetToSourcesMapping?: {
-                [key: string]: components["schemas"]["targetToSourcesMapping"];
-            };
-        };
-        IssueBulkOperationsFieldOption: Record<string, never>;
-        IssueBulkTransitionForWorkflow: {
-            /** @description Indicates whether all the transitions of this workflow are available in the transitions list or not. */
-            readonly isTransitionsFiltered?: boolean;
-            /** @description List of issue keys from the request which are associated with this workflow. */
-            readonly issues?: string[];
-            /** @description List of transitions available for issues from the request which are associated with this workflow.
-             *
-             *      **This list includes only those transitions that are common across the issues in this workflow and do not involve any additional field updates.**  */
-            readonly transitions?: components["schemas"]["SimplifiedIssueTransition"][];
-        };
-        /** @description Issue Bulk Transition Payload */
-        IssueBulkTransitionPayload: {
-            /** @description List of objects and each object has two properties:
-             *
-             *      *  Issues that will be bulk transitioned.
-             *      *  TransitionId that corresponds to a specific transition of issues that share the same workflow. */
-            bulkTransitionInputs: components["schemas"]["BulkTransitionSubmitInput"][];
-            /**
-             * @description A boolean value that indicates whether to send a bulk change notification when the issues are being transitioned.
-             *
-             *     If `true`, dispatches a bulk notification email to users about the updates.
-             * @default true
-             */
-            sendBulkNotification: boolean;
         };
         /** @description List of changelogs that belong to single issue */
         IssueChangeLog: {
@@ -17101,12 +17316,32 @@ export interface components {
             /** @description Whether the bulk operation occurs only when the property is present on or absent from an issue. */
             hasProperty?: boolean;
         };
-        IssueLimitReportRequest: {
-            /** @description A list of fields and their respective approaching limit threshold. Required for querying issues approaching limits. Optional for querying issues breaching limits. Accepted fields are: `comment`, `worklog`, `attachment`, `remoteIssueLinks`, and `issuelinks`. Example: `{"issuesApproachingLimitParams": {"comment": 4500, "attachment": 1800}}` */
-            issuesApproachingLimitParams?: {
-                [key: string]: number;
-            };
+        /** @description Defines the payload to configure the issue layout item for a project. */
+        IssueLayouItemtPayload: {
+            itemKey?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            /**
+             * @description The item section type
+             * @enum {string}
+             */
+            sectionType?: "content" | "primaryContext" | "secondaryContext";
+            /**
+             * @description The item type. Currently only support FIELD
+             * @enum {string}
+             */
+            type?: "FIELD";
         };
+        /** @description Defines the payload to configure the issue layouts for a project. */
+        IssueLayoutPayload: {
+            containerId?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            /**
+             * @description The issue layout type
+             * @enum {string}
+             */
+            issueLayoutType?: "ISSUE_VIEW" | "ISSUE_CREATE" | "REQUEST_FORM";
+            /** @description The configuration of items in the issue layout */
+            items?: components["schemas"]["IssueLayouItemtPayload"][];
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+        } | null;
         IssueLimitReportResponseBean: {
             /** @description A list of ids of issues approaching the limit and their field count */
             issuesApproachingLimit?: {
@@ -17143,28 +17378,28 @@ export interface components {
         };
         /** @description This object is used as follows:
          *
-         *      *  In the [ issueLink](#api-rest-api-3-issueLink-post) resource it defines and reports on the type of link between the issues. Find a list of issue link types with [Get issue link types](#api-rest-api-3-issueLinkType-get).
-         *      *  In the [ issueLinkType](#api-rest-api-3-issueLinkType-post) resource it defines and reports on issue link types. */
+         *      *  In the [ issueLink](#api-rest-api-2-issueLink-post) resource it defines and reports on the type of link between the issues. Find a list of issue link types with [Get issue link types](#api-rest-api-2-issueLinkType-get).
+         *      *  In the [ issueLinkType](#api-rest-api-2-issueLinkType-post) resource it defines and reports on issue link types. */
         IssueLinkType: {
             /** @description The ID of the issue link type and is used as follows:
              *
-             *      *  In the [ issueLink](#api-rest-api-3-issueLink-post) resource it is the type of issue link. Required on create when `name` isn't provided. Otherwise, read only.
-             *      *  In the [ issueLinkType](#api-rest-api-3-issueLinkType-post) resource it is read only. */
+             *      *  In the [ issueLink](#api-rest-api-2-issueLink-post) resource it is the type of issue link. Required on create when `name` isn't provided. Otherwise, read only.
+             *      *  In the [ issueLinkType](#api-rest-api-2-issueLinkType-post) resource it is read only. */
             id?: string;
             /** @description The description of the issue link type inward link and is used as follows:
              *
-             *      *  In the [ issueLink](#api-rest-api-3-issueLink-post) resource it is read only.
-             *      *  In the [ issueLinkType](#api-rest-api-3-issueLinkType-post) resource it is required on create and optional on update. Otherwise, read only. */
+             *      *  In the [ issueLink](#api-rest-api-2-issueLink-post) resource it is read only.
+             *      *  In the [ issueLinkType](#api-rest-api-2-issueLinkType-post) resource it is required on create and optional on update. Otherwise, read only. */
             inward?: string;
             /** @description The name of the issue link type and is used as follows:
              *
-             *      *  In the [ issueLink](#api-rest-api-3-issueLink-post) resource it is the type of issue link. Required on create when `id` isn't provided. Otherwise, read only.
-             *      *  In the [ issueLinkType](#api-rest-api-3-issueLinkType-post) resource it is required on create and optional on update. Otherwise, read only. */
+             *      *  In the [ issueLink](#api-rest-api-2-issueLink-post) resource it is the type of issue link. Required on create when `id` isn't provided. Otherwise, read only.
+             *      *  In the [ issueLinkType](#api-rest-api-2-issueLinkType-post) resource it is required on create and optional on update. Otherwise, read only. */
             name?: string;
             /** @description The description of the issue link type outward link and is used as follows:
              *
-             *      *  In the [ issueLink](#api-rest-api-3-issueLink-post) resource it is read only.
-             *      *  In the [ issueLinkType](#api-rest-api-3-issueLinkType-post) resource it is required on create and optional on update. Otherwise, read only. */
+             *      *  In the [ issueLink](#api-rest-api-2-issueLink-post) resource it is read only.
+             *      *  In the [ issueLinkType](#api-rest-api-2-issueLinkType-post) resource it is required on create and optional on update. Otherwise, read only. */
             outward?: string;
             /**
              * Format: uri
@@ -17261,15 +17496,6 @@ export interface components {
         } & {
             [key: string]: unknown;
         };
-        IssueTransitionStatus: {
-            /**
-             * Format: int32
-             * @description The unique ID of the status.
-             */
-            readonly statusId?: number;
-            /** @description The name of the status. */
-            readonly statusName?: string;
-        };
         IssueTypeCreateBean: {
             /** @description The description of the issue type. */
             description?: string;
@@ -17325,6 +17551,22 @@ export interface components {
             /** @description Whether this issue type is used to create subtasks. */
             readonly subtask?: boolean;
         };
+        /** @description The payload for creating an issue type hierarchy */
+        IssueTypeHierarchyPayload: {
+            /**
+             * Format: int32
+             * @description The hierarchy level of the issue type. 0, 1, 2, 3 .. n; Negative values for subtasks
+             */
+            hierarchyLevel?: number;
+            /** @description The name of the issue type */
+            name?: string;
+            /**
+             * @description The conflict strategy to use when the issue type already exists. FAIL - Fail execution, this always needs to be unique; USE - Use the existing entity and ignore new entity parameters
+             * @enum {string}
+             */
+            onConflict?: "FAIL" | "USE" | "NEW";
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+        } | null;
         /** @description The list of issue type IDs. */
         IssueTypeIds: {
             /** @description The list of issue type IDs. */
@@ -17388,6 +17630,37 @@ export interface components {
             /** @description Whether this issue type is used to create subtasks. */
             readonly subtask?: boolean;
         };
+        /** @description The payload for creating an issue type */
+        IssueTypePayload: {
+            /**
+             * Format: int64
+             * @description The avatar ID of the issue type. Go to https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-avatars/\#api-rest-api-3-avatar-type-system-get to choose an avatarId existing in Jira
+             */
+            avatarId?: number | null;
+            /** @description The description of the issue type */
+            description?: string | null;
+            /**
+             * Format: int32
+             * @description The hierarchy level of the issue type. 0, 1, 2, 3 .. n; Negative values for subtasks
+             */
+            hierarchyLevel?: number;
+            /** @description The name of the issue type */
+            name?: string;
+            /**
+             * @description The conflict strategy to use when the issue type already exists. FAIL - Fail execution, this always needs to be unique; USE - Use the existing entity and ignore new entity parameters
+             * @enum {string}
+             */
+            onConflict?: "FAIL" | "USE" | "NEW";
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+        } | null;
+        /** @description The payload for creating issue types in a project */
+        IssueTypeProjectCreatePayload: {
+            /** @description Defines the issue type hierarhy to be created and used during this project creation. This will only add new levels if there isn't an existing level */
+            issueTypeHierarchy?: components["schemas"]["IssueTypeHierarchyPayload"][] | null;
+            issueTypeScheme?: components["schemas"]["IssueTypeSchemePayload"];
+            /** @description Only needed if you want to create issue types, you can otherwise use the ids of issue types in the scheme configuration */
+            issueTypes?: components["schemas"]["IssueTypePayload"][] | null;
+        } | null;
         /** @description Details of an issue type scheme. */
         IssueTypeScheme: {
             /** @description The ID of the default issue type of the issue type scheme. */
@@ -17423,6 +17696,20 @@ export interface components {
             issueTypeId: string;
             /** @description The ID of the issue type scheme. */
             issueTypeSchemeId: string;
+        };
+        /** @description The payload for creating issue type schemes */
+        IssueTypeSchemePayload: {
+            defaultIssueTypeId?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            /** @description The description of the issue type scheme */
+            description?: string | null;
+            /**
+             * @description The issue type IDs for the issue type scheme
+             * @example pcri:issueType:id:10001
+             */
+            issueTypeIds?: components["schemas"]["ProjectCreateResourceIdentifier"][];
+            /** @description The name of the issue type scheme */
+            name?: string;
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
         };
         /** @description Details of the association between an issue type scheme and project. */
         IssueTypeSchemeProjectAssociation: {
@@ -17491,6 +17778,25 @@ export interface components {
             /** @description The list of issue type to screen scheme mappings. A *default* entry cannot be specified because a default entry is added when an issue type screen scheme is created. */
             issueTypeMappings: components["schemas"]["IssueTypeScreenSchemeMapping"][];
         };
+        /** @description Defines the payload for the issue type screen schemes. See https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-type-screen-schemes/\#api-rest-api-3-issuetypescreenscheme-post */
+        IssueTypeScreenSchemePayload: {
+            defaultScreenScheme?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            /**
+             * @description The description of the issue type screen scheme
+             * @example This is an issue type screen scheme
+             */
+            description?: string;
+            /** @description The IDs of the screen schemes for the issue type IDs and default. A default entry is required to create an issue type screen scheme, it defines the mapping for all issue types without a screen scheme. */
+            explicitMappings?: {
+                [key: string]: components["schemas"]["ProjectCreateResourceIdentifier"];
+            };
+            /**
+             * @description The name of the issue type screen scheme
+             * @example My Issue Type Screen Scheme
+             */
+            name?: string;
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+        } | null;
         /** @description Associated issue type screen scheme and project. */
         IssueTypeScreenSchemeProjectAssociation: {
             /** @description The ID of the issue type screen scheme. */
@@ -17655,7 +17961,7 @@ export interface components {
             issues?: components["schemas"]["JExpEvaluateIssuesMetaBean"];
         };
         JQLCountRequestBean: {
-            /** @description A [JQL](https://confluence.atlassian.com/x/egORLQ) expression. For performance reasons, this parameter requires a bounded query. A bounded query is a query with a search restriction. Additionally, `orderBy` clause can contain a maximum of 7 fields. */
+            /** @description A [JQL](https://confluence.atlassian.com/x/egORLQ) expression. For performance reasons, this parameter requires a bounded query. A bounded query is a query with a search restriction. */
             jql?: string;
         };
         JQLCountResultsBean: {
@@ -17728,39 +18034,6 @@ export interface components {
              * @enum {string}
              */
             validation: "strict" | "warn" | "none";
-        };
-        JiraCascadingSelectField: {
-            childOptionValue?: components["schemas"]["JiraSelectedOptionField"];
-            fieldId: string;
-            parentOptionValue: components["schemas"]["JiraSelectedOptionField"];
-        };
-        JiraColorField: {
-            color: components["schemas"]["JiraColorInput"];
-            fieldId: string;
-        };
-        JiraColorInput: {
-            name: string;
-        };
-        JiraComponentField: {
-            /** Format: int64 */
-            componentId: number;
-        };
-        JiraDateField: {
-            date?: components["schemas"]["JiraDateInput"];
-            fieldId: string;
-        };
-        JiraDateInput: {
-            formattedDate: string;
-        };
-        JiraDateTimeField: {
-            dateTime: components["schemas"]["JiraDateTimeInput"];
-            fieldId: string;
-        };
-        JiraDateTimeInput: {
-            formattedDateTime: string;
-        };
-        JiraDurationField: {
-            originalEstimateField: string;
         };
         /** @description Details about the analysed Jira expression. */
         JiraExpressionAnalysis: {
@@ -17955,194 +18228,6 @@ export interface components {
              */
             value: number;
         };
-        JiraGroupInput: {
-            groupName: string;
-        };
-        JiraIssueFields: {
-            /** @description Add or clear a cascading select field:
-             *
-             *      *  To add, specify `optionId` for both parent and child.
-             *      *  To clear the child, set its `optionId` to null.
-             *      *  To clear both, set the parent's `optionId` to null. */
-            cascadingSelectFields?: components["schemas"]["JiraCascadingSelectField"][];
-            /** @description Add or clear a number field:
-             *
-             *      *  To add, specify a numeric `value`.
-             *      *  To clear, set `value` to `null`. */
-            clearableNumberFields?: components["schemas"]["JiraNumberField"][];
-            /** @description Add or clear a color field:
-             *
-             *      *  To add, specify the color `name`. Available colors are: `purple`, `blue`, `green`, `teal`, `yellow`, `orange`, `grey`, `dark purple`, `dark blue`, `dark green`, `dark teal`, `dark yellow`, `dark orange`, `dark grey`.
-             *      *  To clear, set the color `name` to an empty string. */
-            colorFields?: components["schemas"]["JiraColorField"][];
-            /** @description Add or clear a date picker field:
-             *
-             *      *  To add, specify the date in `d/mmm/yy` format or ISO format `dd-mm-yyyy`.
-             *      *  To clear, set `formattedDate` to an empty string. */
-            datePickerFields?: components["schemas"]["JiraDateField"][];
-            /** @description Add or clear the planned start date and time:
-             *
-             *      *  To add, specify the date and time in ISO format for `formattedDateTime`.
-             *      *  To clear, provide an empty string for `formattedDateTime`. */
-            dateTimePickerFields?: components["schemas"]["JiraDateTimeField"][];
-            /** @description Set the issue type field by providing an `issueTypeId`. */
-            issueType?: components["schemas"]["JiraIssueTypeField"];
-            /** @description Edit a labels field:
-             *
-             *      *  Options include `ADD`, `REPLACE`, `REMOVE`, or `REMOVE_ALL` for bulk edits.
-             *      *  To clear labels, use the `REMOVE_ALL` option with an empty `labels` array. */
-            labelsFields?: components["schemas"]["JiraLabelsField"][];
-            /** @description Add or clear a multi-group picker field:
-             *
-             *      *  To add groups, provide an array of groups with `groupName`s.
-             *      *  To clear all groups, use an empty `groups` array. */
-            multipleGroupPickerFields?: components["schemas"]["JiraMultipleGroupPickerField"][];
-            /** @description Assign or unassign multiple users to/from a field:
-             *
-             *      *  To assign, provide an array of user `accountId`s.
-             *      *  To clear, set `users` to `null`. */
-            multipleSelectClearableUserPickerFields?: components["schemas"]["JiraMultipleSelectUserPickerField"][];
-            /** @description Add or clear a multi-select field:
-             *
-             *      *  To add, provide an array of options with `optionId`s.
-             *      *  To clear, use an empty `options` array. */
-            multipleSelectFields?: components["schemas"]["JiraMultipleSelectField"][];
-            /** @description Edit a multi-version picker field like Fix Versions/Affects Versions:
-             *
-             *      *  Options include `ADD`, `REPLACE`, `REMOVE`, or `REMOVE_ALL` for bulk edits.
-             *      *  To clear the field, use the `REMOVE_ALL` option with an empty `versions` array. */
-            multipleVersionPickerFields?: components["schemas"]["JiraMultipleVersionPickerField"][];
-            /** @description Edit a multi select components field:
-             *
-             *      *  Options include `ADD`, `REPLACE`, `REMOVE`, or `REMOVE_ALL` for bulk edits.
-             *      *  To clear, use the `REMOVE_ALL` option with an empty `components` array. */
-            multiselectComponents?: components["schemas"]["JiraMultiSelectComponentField"];
-            /** @description Edit the original estimate field. */
-            originalEstimateField?: components["schemas"]["JiraDurationField"];
-            /** @description Set the priority of an issue by specifying a `priorityId`. */
-            priority?: components["schemas"]["JiraPriorityField"];
-            /** @description Add or clear a rich text field:
-             *
-             *      *  To add, provide `adfValue`. Note that rich text fields only support ADF values.
-             *      *  To clear, use an empty `richText` object.
-             *
-             *     For ADF format details, refer to: [Atlassian Document Format](https://developer.atlassian.com/cloud/jira/platform/apis/document/structure). */
-            richTextFields?: components["schemas"]["JiraRichTextField"][];
-            /** @description Add or clear a single group picker field:
-             *
-             *      *  To add, specify the group with `groupName`.
-             *      *  To clear, set `groupName` to an empty string. */
-            singleGroupPickerFields?: components["schemas"]["JiraSingleGroupPickerField"][];
-            /** @description Add or clear a single line text field:
-             *
-             *      *  To add, provide the `text` value.
-             *      *  To clear, set `text` to an empty string. */
-            singleLineTextFields?: components["schemas"]["JiraSingleLineTextField"][];
-            /** @description Edit assignment for single select user picker fields like Assignee/Reporter:
-             *
-             *      *  To assign an issue, specify the user's `accountId`.
-             *      *  To unassign an issue, set `user` to `null`.
-             *      *  For automatic assignment, set `accountId` to `-1`. */
-            singleSelectClearableUserPickerFields?: components["schemas"]["JiraSingleSelectUserPickerField"][];
-            /** @description Add or clear a single select field:
-             *
-             *      *  To add, specify the option with an `optionId`.
-             *      *  To clear, pass an option with `optionId` as `-1`. */
-            singleSelectFields?: components["schemas"]["JiraSingleSelectField"][];
-            /** @description Add or clear a single version picker field:
-             *
-             *      *  To add, specify the version with a `versionId`.
-             *      *  To clear, set `versionId` to `-1`. */
-            singleVersionPickerFields?: components["schemas"]["JiraSingleVersionPickerField"][];
-            /** @description Edit the time tracking field. */
-            timeTrackingField?: components["schemas"]["JiraTimeTrackingField"];
-            /** @description Add or clear a URL field:
-             *
-             *      *  To add, provide the `url` with the desired URL value.
-             *      *  To clear, set `url` to an empty string. */
-            urlFields?: components["schemas"]["JiraUrlField"][];
-        };
-        JiraIssueTypeField: {
-            issueTypeId: string;
-        };
-        JiraLabelsField: {
-            /** @enum {string} */
-            bulkEditMultiSelectFieldOption: "ADD" | "REMOVE" | "REPLACE" | "REMOVE_ALL";
-            fieldId: string;
-            labels: components["schemas"]["JiraLabelsInput"][];
-        };
-        JiraLabelsInput: {
-            name: string;
-        };
-        JiraMultiSelectComponentField: {
-            /** @enum {string} */
-            bulkEditMultiSelectFieldOption: "ADD" | "REMOVE" | "REPLACE" | "REMOVE_ALL";
-            components: components["schemas"]["JiraComponentField"][];
-            fieldId: string;
-        };
-        JiraMultipleGroupPickerField: {
-            fieldId: string;
-            groups: components["schemas"]["JiraGroupInput"][];
-        };
-        JiraMultipleSelectField: {
-            fieldId: string;
-            options: components["schemas"]["JiraSelectedOptionField"][];
-        };
-        JiraMultipleSelectUserPickerField: {
-            fieldId: string;
-            users?: components["schemas"]["JiraUserField"][];
-        };
-        JiraMultipleVersionPickerField: {
-            /** @enum {string} */
-            bulkEditMultiSelectFieldOption: "ADD" | "REMOVE" | "REPLACE" | "REMOVE_ALL";
-            fieldId: string;
-            versions: components["schemas"]["JiraVersionField"][];
-        };
-        JiraNumberField: {
-            fieldId: string;
-            /** Format: double */
-            value?: number;
-        };
-        JiraPriorityField: {
-            priorityId: string;
-        };
-        JiraRichTextField: {
-            fieldId: string;
-            richText: components["schemas"]["JiraRichTextInput"];
-        };
-        JiraRichTextInput: {
-            adfValue?: {
-                [key: string]: unknown;
-            };
-        };
-        JiraSelectedOptionField: {
-            /** Format: int64 */
-            optionId?: number;
-        };
-        JiraSingleGroupPickerField: {
-            fieldId: string;
-            group: components["schemas"]["JiraGroupInput"];
-        };
-        JiraSingleLineTextField: {
-            fieldId: string;
-            text: string;
-        };
-        /** @description Add or clear a single select field:
-         *
-         *      *  To add, specify the option with an `optionId`.
-         *      *  To clear, pass an option with `optionId` as `-1`. */
-        JiraSingleSelectField: {
-            fieldId: string;
-            option: components["schemas"]["JiraSelectedOptionField"];
-        };
-        JiraSingleSelectUserPickerField: {
-            fieldId: string;
-            user?: components["schemas"]["JiraUserField"];
-        };
-        JiraSingleVersionPickerField: {
-            fieldId: string;
-            version: components["schemas"]["JiraVersionField"];
-        };
         /** @description Details of a status. */
         JiraStatus: {
             /** @description The description of the status. */
@@ -18157,23 +18242,14 @@ export interface components {
              * @enum {string}
              */
             statusCategory?: "TODO" | "IN_PROGRESS" | "DONE";
-            /** @description Projects and issue types where the status is used. Only available if the `usages` expand is requested. */
-            usages?: components["schemas"]["ProjectIssueTypes"][];
-            /** @description The workflows that use this status. Only available if the `workflowUsages` expand is requested. */
-            workflowUsages?: components["schemas"]["WorkflowUsages"][];
-        };
-        JiraTimeTrackingField: {
-            timeRemaining: string;
-        };
-        JiraUrlField: {
-            fieldId: string;
-            url: string;
-        };
-        JiraUserField: {
-            accountId: string;
-        };
-        JiraVersionField: {
-            versionId?: string;
+            /** @description Deprecated. See the [deprecation notice](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2298) for details.
+             *
+             *     Projects and issue types where the status is used. Only available if the `usages` expand is requested. */
+            usages?: components["schemas"]["ProjectIssueTypes"][] | null;
+            /** @description Deprecated. See the [deprecation notice](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2298) for details.
+             *
+             *     The workflows that use this status. Only available if the `workflowUsages` expand is requested. */
+            workflowUsages?: components["schemas"]["WorkflowUsages"][] | null;
         };
         /** @description Details of a workflow. */
         JiraWorkflow: {
@@ -18185,6 +18261,7 @@ export interface components {
             id?: string;
             /** @description Indicates if the workflow can be edited. */
             isEditable?: boolean;
+            loopedTransitionContainerLayout?: components["schemas"]["WorkflowLayout"];
             /** @description The name of the workflow. */
             name?: string;
             scope?: components["schemas"]["WorkflowScope"];
@@ -18197,8 +18274,10 @@ export interface components {
             transitions?: components["schemas"]["WorkflowTransitions"][];
             /** @description The last edited date of the workflow. */
             updated?: string | null;
-            /** @description Use the optional `workflows.usages` expand to get additional information about the projects and issue types associated with the requested workflows. */
-            usages?: components["schemas"]["ProjectIssueTypes"][];
+            /** @description Deprecated. See the [deprecation notice](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2298) for details.
+             *
+             *     Use the optional `workflows.usages` expand to get additional information about the projects and issue types associated with the requested workflows. */
+            usages?: components["schemas"]["ProjectIssueTypes"][] | null;
             version?: components["schemas"]["DocumentVersion"];
         };
         /** @description Details of a status. */
@@ -18217,8 +18296,10 @@ export interface components {
             statusCategory?: "TODO" | "IN_PROGRESS" | "DONE";
             /** @description The reference of the status. */
             statusReference?: string;
-            /** @description The `statuses.usages` expand is an optional parameter that can be used when reading and updating statuses in Jira. It provides additional information about the projects and issue types associated with the requested statuses. */
-            usages?: components["schemas"]["ProjectIssueTypes"][];
+            /** @description Deprecated. See the [deprecation notice](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2298) for details.
+             *
+             *     The `statuses.usages` expand is an optional parameter that can be used when reading and updating statuses in Jira. It provides additional information about the projects and issue types associated with the requested statuses. */
+            usages?: components["schemas"]["ProjectIssueTypes"][] | null;
         };
         /** @description Jql function precomputation. */
         JqlFunctionPrecomputationBean: {
@@ -18534,38 +18615,6 @@ export interface components {
             /** @description The locale code. The Java the locale format is used: a two character language code (ISO 639), an underscore, and two letter country code (ISO 3166). For example, en\_US represents a locale of English (United States). Required on create. */
             locale?: string;
         };
-        /** @description List of string of inputs */
-        MandatoryFieldValue: {
-            /**
-             * @description If `true`, will try to retain original non-null issue field values on move.
-             * @default true
-             */
-            retain: boolean;
-            /**
-             * @description Will treat as `MandatoryFieldValue` if type is `raw` or `empty`
-             * @default raw
-             * @enum {string|null}
-             */
-            type: "adf" | "raw";
-            /** @description Value for each field. Provide a `list of strings` for non-ADF fields. */
-            value: string[];
-        };
-        /** @description An object notation input */
-        MandatoryFieldValueForADF: {
-            /**
-             * @description If `true`, will try to retain original non-null issue field values on move.
-             * @default true
-             */
-            retain: boolean;
-            /**
-             * @description Will treat as `MandatoryFieldValueForADF` if type is `adf`
-             * @default raw
-             * @enum {string}
-             */
-            type: "adf" | "raw";
-            /** @description Value for each field. Accepts Atlassian Document Format (ADF) for rich text fields like `description`, `environments`. For ADF format details, refer to: [Atlassian Document Format](https://developer.atlassian.com/cloud/jira/platform/apis/document/structure) */
-            value: Record<string, never>;
-        };
         /** @description Overrides, for the selected issue types, any status mappings provided in `statusMappingsByWorkflows`. Status mappings are required when the new workflow for an issue type doesn't contain all statuses that the old workflow has. Status mappings can be provided by a combination of `statusMappingsByWorkflows` and `statusMappingsByIssueTypeOverride`. */
         MappingsByIssueTypeOverride: {
             /** @description The ID of the issue type for this mapping. */
@@ -18657,6 +18706,11 @@ export interface components {
             readonly self?: string;
         } & {
             [key: string]: unknown;
+        };
+        NonWorkingDay: {
+            /** Format: int64 */
+            id?: number;
+            iso8601Date?: string;
         };
         /** @description Details about a notification. */
         Notification: {
@@ -18754,6 +18808,20 @@ export interface components {
         } & {
             [key: string]: unknown;
         };
+        /** @description The event ID to use for reference in the payload */
+        NotificationSchemeEventIDPayload: {
+            /**
+             * @description The event ID to use for reference in the payload
+             * @example 1
+             */
+            id?: string;
+        };
+        /** @description The payload for creating a notification scheme event. Defines which notifications should be sent for a specific event */
+        NotificationSchemeEventPayload: {
+            event?: components["schemas"]["NotificationSchemeEventIDPayload"];
+            /** @description The configuration for notification recipents */
+            notifications?: components["schemas"]["NotificationSchemeNotificationDetailsPayload"][];
+        };
         /** @description The ID of an event that is being mapped to notifications. */
         NotificationSchemeEventTypeId: {
             /** @description The ID of the notification scheme event. */
@@ -18777,6 +18845,74 @@ export interface components {
         } & {
             [key: string]: unknown;
         };
+        /** @description The configuration for notification recipents */
+        NotificationSchemeNotificationDetailsPayload: {
+            /** @description The type of notification. */
+            notificationType?: string;
+            /** @description The parameter of the notification, should be eiither null if not required, or PCRI. */
+            parameter?: string;
+        };
+        /**
+         * @description The payload for creating a notification scheme. The user has to supply the ID for the default notification scheme. For CMP this is provided in the project payload and should be left empty, for TMP it's provided using this payload
+         * @example CMP:  "project": {
+         *                      "pcri": "pcri:project:ref:new-project1",
+         *                      "notificationSchemeId": "pcri:notificationScheme:id:10000",
+         *                      ...
+         *                   }
+         *     TMP: "notification": {
+         *            "pcri": "pcri:notificationScheme:ref:notification1",
+         *            "name": "Simplified Notification Scheme",
+         *            "notificationSchemeEvents": [
+         *              {
+         *                "event": {
+         *                  "id": "1"
+         *                },
+         *                "notifications": [
+         *                  {
+         *                    "notificationType": "CurrentAssignee"
+         *                  },
+         *                  {
+         *                    "notificationType": "Reporter"
+         *                  },
+         *                  {
+         *                    "notificationType": "AllWatchers"
+         *                  }
+         *                ]
+         *              },
+         *              {
+         *                "event": {
+         *                  "id": "2"
+         *                },
+         *                "notifications": [
+         *                  {
+         *                    "notificationType": "CurrentAssignee"
+         *                  },
+         *                  {
+         *                    "notificationType": "Reporter"
+         *                  },
+         *                  {
+         *                    "notificationType": "AllWatchers"
+         *                  }
+         *                ]
+         *              },...
+         *            ]
+         *          }
+         *
+         */
+        NotificationSchemePayload: {
+            /** @description The description of the notification scheme */
+            description?: string;
+            /** @description The name of the notification scheme */
+            name?: string;
+            /** @description The events and notifications for the notification scheme */
+            notificationSchemeEvents?: components["schemas"]["NotificationSchemeEventPayload"][];
+            /**
+             * @description The strategy to use when there is a conflict with an existing entity
+             * @enum {string}
+             */
+            onConflict?: "FAIL" | "USE" | "NEW";
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+        } | null;
         OldToNewSecurityLevelMappingsBean: {
             /** @description The new issue security level ID. Providing null will clear the assigned old level from issues. */
             newLevelId: string;
@@ -20860,6 +20996,8 @@ export interface components {
             query: string;
             /** @description The syntax tree of the query. Empty if the query was invalid. */
             structure?: components["schemas"]["JqlQuery"];
+            /** @description The list of warning messages */
+            warnings?: string[];
         };
         /** @description Details for permissions of shareable entities */
         PermissionDetails: {
@@ -20887,6 +21025,17 @@ export interface components {
         } & {
             [key: string]: unknown;
         };
+        /** @description List of permission grants */
+        PermissionGrantDTO: {
+            applicationAccess?: string[];
+            groupCustomFields?: components["schemas"]["ProjectCreateResourceIdentifier"][];
+            groups?: components["schemas"]["ProjectCreateResourceIdentifier"][];
+            permissionKeys?: string[];
+            projectRoles?: components["schemas"]["ProjectCreateResourceIdentifier"][];
+            specialGrants?: string[];
+            userCustomFields?: components["schemas"]["ProjectCreateResourceIdentifier"][];
+            users?: components["schemas"]["ProjectCreateResourceIdentifier"][];
+        };
         /** @description List of permission grants. */
         PermissionGrants: {
             /** @description Expand options that include additional permission grant details in the response. */
@@ -20905,6 +21054,24 @@ export interface components {
             /** @description The identifier associated with the `type` value that defines the holder of the permission. */
             value?: string;
         };
+        /** @description The payload to create a permission scheme */
+        PermissionPayloadDTO: {
+            /** @description Configuration to generate addon role. Default is false if null */
+            addAddonRole?: boolean;
+            /** @description The description of the permission scheme */
+            description?: string;
+            /** @description List of permission grants */
+            grants?: components["schemas"]["PermissionGrantDTO"][];
+            /** @description The name of the permission scheme */
+            name?: string;
+            /**
+             * @description The strategy to use when there is a conflict with an existing permission scheme. FAIL - Fail execution, this always needs to be unique; USE - Use the existing entity and ignore new entity parameters; NEW - If the entity exist, try and create a new one with a different name
+             * @default NEW
+             * @enum {string}
+             */
+            onConflict: "FAIL" | "USE" | "NEW";
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+        } | null;
         /** @description Details of a permission scheme. */
         PermissionScheme: {
             /** @description A description for the permission scheme. */
@@ -21123,7 +21290,7 @@ export interface components {
              * @description The date when the project is deleted permanently.
              */
             readonly retentionTillDate?: string;
-            /** @description The name and self URL for each role defined in the project. For more information, see [Create project role](#api-rest-api-3-role-post). */
+            /** @description The name and self URL for each role defined in the project. For more information, see [Create project role](#api-rest-api-2-role-post). */
             readonly roles?: {
                 [key: string]: string;
             };
@@ -21146,7 +21313,7 @@ export interface components {
              * @description Unique ID for next-gen projects.
              */
             readonly uuid?: string;
-            /** @description The versions defined in the project. For more information, see [Create version](#api-rest-api-3-version-post). */
+            /** @description The versions defined in the project. For more information, see [Create version](#api-rest-api-2-version-post). */
             readonly versions?: components["schemas"]["Version"][];
         };
         /** @description A project and issueType ID pair that identifies a status mapping. */
@@ -21239,6 +21406,24 @@ export interface components {
              */
             readonly self?: string;
         };
+        /**
+         * @description Every project-created entity has an ID that must be unique within the scope of the project creation. PCRI (Project Create Resource Identifier) is a standard format for creating IDs and references to other project entities. PCRI format is defined as follows: pcri:\[entityType\]:\[type\]:\[entityId\] entityType - the type of an entity, e.g. status, role, workflow type - PCRI type, either `id` - The ID of an entity that already exists in the target site, or `ref` - A unique reference to an entity that is being created entityId - entity identifier, if type is `id` - must be an existing entity ID that exists in the Jira site, if `ref` - must be unique across all entities in the scope of this project template creation
+         * @example pcri:permissionScheme:id:10001
+         */
+        ProjectCreateResourceIdentifier: {
+            anID?: boolean;
+            areference?: boolean;
+            entityId?: string;
+            entityType?: string;
+            id?: string;
+            /** @enum {string} */
+            type?: "id" | "ref";
+        };
+        /** @description Request to create a project using a custom template */
+        ProjectCustomTemplateCreateRequestDTO: {
+            details?: components["schemas"]["CustomTemplatesProjectDetails"];
+            template?: components["schemas"]["CustomTemplateRequestDTO"];
+        };
         /** @description Details about data policies for a list of projects. */
         ProjectDataPolicies: {
             /** @description List of projects with data policies. */
@@ -21316,6 +21501,12 @@ export interface components {
             /** @description The ID of the project. */
             id: string;
         } | null;
+        ProjectIdAssociationContext: {
+            type: "ProjectIdAssociationContext";
+        } & (Omit<components["schemas"]["AssociationContextObject"], "type"> & {
+            /** Format: int64 */
+            identifier?: number;
+        });
         /** @description The identifiers for a project. */
         ProjectIdentifierBean: {
             /**
@@ -21403,12 +21594,14 @@ export interface components {
             /** @description The project and issue type mappings. */
             mappings: components["schemas"]["ProjectIssueTypeMapping"][];
         };
-        /** @description Use the optional `workflows.usages` expand to get additional information about the projects and issue types associated with the requested workflows. */
+        /** @description Deprecated. See the [deprecation notice](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2298) for details.
+         *
+         *     Use the optional `workflows.usages` expand to get additional information about the projects and issue types associated with the requested workflows. */
         ProjectIssueTypes: {
             /** @description IDs of the issue types */
             issueTypes?: (string | null)[] | null;
             project?: components["schemas"]["ProjectId"];
-        };
+        } | null;
         /** @description Details of an issue type hierarchy level. */
         ProjectIssueTypesHierarchyLevel: {
             /**
@@ -21442,6 +21635,23 @@ export interface components {
             simpleBoard?: boolean;
             simplified?: boolean;
             url?: string;
+        };
+        /** @description The payload for creating a project */
+        ProjectPayload: {
+            fieldLayoutSchemeId?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            issueSecuritySchemeId?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            issueTypeSchemeId?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            issueTypeScreenSchemeId?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            notificationSchemeId?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            permissionSchemeId?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            /**
+             * @description The [project type](https://confluence.atlassian.com/x/GwiiLQ#Jiraapplicationsoverview-Productfeaturesandprojecttypes), which defines the application-specific feature set. If you don't specify the project template you have to specify the project type.
+             * @example software
+             * @enum {string}
+             */
+            projectTypeKey?: "software" | "business" | "service_desk" | "product_discovery";
+            workflowSchemeId?: components["schemas"]["ProjectCreateResourceIdentifier"];
         };
         /** @description Permissions which a user has on a project. */
         ProjectPermissions: {
@@ -21495,7 +21705,7 @@ export interface components {
             };
             /**
              * Format: int64
-             * @description The ID of the project role. Use [Get all project roles](#api-rest-api-3-role-get) to get a list of project role IDs.
+             * @description The ID of the project role. Use [Get all project roles](#api-rest-api-2-role-get) to get a list of project role IDs.
              */
             readonly id?: number;
         };
@@ -21562,6 +21772,18 @@ export interface components {
             /** @description The key of the project type. */
             readonly key?: string;
         };
+        /** @description The project. */
+        ProjectUsage: {
+            /** @description The project ID. */
+            id?: string;
+        };
+        /** @description A page of projects. */
+        ProjectUsagePage: {
+            /** @description Page token for the next page of project usages. */
+            nextPageToken?: string;
+            /** @description The list of projects. */
+            values?: components["schemas"]["ProjectUsage"][];
+        };
         /** @description Details about data policies for a project. */
         ProjectWithDataPolicy: {
             /** @description Data policy. */
@@ -21595,6 +21817,15 @@ export interface components {
             entityId?: string;
             /** @description The name of the workflow. */
             name: string;
+        };
+        /** @description The payload for defining quick filters */
+        QuickFilterPayload: {
+            /** @description The description of the quick filter */
+            description?: string;
+            /** @description The jql query for the quick filter */
+            jqlQuery?: string;
+            /** @description The name of the quick filter */
+            name?: string;
         };
         /** @description ID of a registered webhook or error messages explaining why a webhook wasn't registered. */
         RegisteredWebhook: {
@@ -21755,9 +21986,9 @@ export interface components {
         };
         /** @description Details of the permission. */
         RestrictedPermission: {
-            /** @description The ID of the permission. Either `id` or `key` must be specified. Use [Get all permissions](#api-rest-api-3-permissions-get) to get the list of permissions. */
+            /** @description The ID of the permission. Either `id` or `key` must be specified. Use [Get all permissions](#api-rest-api-2-permissions-get) to get the list of permissions. */
             id?: string;
-            /** @description The key of the permission. Either `id` or `key` must be specified. Use [Get all permissions](#api-rest-api-3-permissions-get) to get the list of permissions. */
+            /** @description The key of the permission. Either `id` or `key` must be specified. Use [Get all permissions](#api-rest-api-2-permissions-get) to get the list of permissions. */
             key?: string;
         } & {
             [key: string]: unknown;
@@ -21792,6 +22023,39 @@ export interface components {
              */
             readonly type?: "atlassian-group-role-actor" | "atlassian-user-role-actor";
         };
+        /** @description The payload used to create a project role. It is optional for CMP projects, as a default role actor will be provided. TMP will add new role actors to the table. */
+        RolePayload: {
+            /**
+             * @description The default actors for the role. By adding default actors, the role will be added to any future projects created
+             * @example [pcri:user:id:1234]
+             */
+            defaultActors?: components["schemas"]["ProjectCreateResourceIdentifier"][];
+            /** @description The description of the role */
+            description?: string;
+            /** @description The name of the role */
+            name?: string;
+            /**
+             * @description The strategy to use when there is a conflict with an existing project role. FAIL - Fail execution, this always needs to be unique; USE - Use the existing entity and ignore new entity parameters
+             * @default USE
+             * @enum {string}
+             */
+            onConflict: "FAIL" | "USE" | "NEW";
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            /**
+             * @description The type of the role. Only used by project-scoped project
+             * @example EDITABLE
+             * @enum {string}
+             */
+            type?: "HIDDEN" | "VIEWABLE" | "EDITABLE";
+        };
+        RolesCapabilityPayload: {
+            /** @description A map of role PCRI (can be ID or REF) to a list of user or group PCRI IDs to associate with the role and project. */
+            roleToProjectActors?: {
+                [key: string]: components["schemas"]["ProjectCreateResourceIdentifier"][];
+            };
+            /** @description The list of roles to create. */
+            roles?: components["schemas"]["RolePayload"][];
+        } | null;
         /** @description A rule configuration. */
         RuleConfiguration: {
             /**
@@ -21803,6 +22067,18 @@ export interface components {
             tag?: string;
             /** @description Configuration of the rule, as it is stored by the Connect or the Forge app on the rule configuration page. */
             value: string;
+        };
+        /** @description The payload for creating rules in a workflow */
+        RulePayload: {
+            /** @description The parameters of the rule */
+            parameters?: {
+                [key: string]: string;
+            };
+            /**
+             * @description The key of the rule. See https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-workflows/\#api-rest-api-3-workflows-capabilities-get
+             * @example system:update-field
+             */
+            ruleKey?: string;
         };
         /** @description The sanitized JQL queries for the given account IDs. */
         SanitizedJqlQueries: {
@@ -21832,6 +22108,14 @@ export interface components {
         } & {
             [key: string]: unknown;
         };
+        /** @description The payload for creating a scope. Defines if a project is team-managed project or company-managed project */
+        ScopePayload: {
+            /**
+             * @description The type of the scope. Use `GLOBAL` or empty for company-managed project, and `PROJECT` for team-managed project
+             * @enum {string}
+             */
+            type?: "GLOBAL" | "PROJECT";
+        } | null;
         /** @description A screen. */
         Screen: {
             /** @description The description of the screen. */
@@ -21853,6 +22137,22 @@ export interface components {
             /** @description The name of the screen. The name must be unique. The maximum length is 255 characters. */
             name: string;
         };
+        /** @description Defines the payload for the field screens. See https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-screens/\#api-rest-api-3-screens-post */
+        ScreenPayload: {
+            /**
+             * @description The description of the screen
+             * @example This is a screen
+             */
+            description?: string;
+            /**
+             * @description The name of the screen
+             * @example My Screen
+             */
+            name?: string;
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            /** @description The tabs of the screen. See https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-screen-tab-fields/\#api-rest-api-3-screens-screenid-tabs-tabid-fields-post */
+            tabs?: components["schemas"]["TabPayload"][];
+        } | null;
         /** @description A screen scheme. */
         ScreenScheme: {
             /** @description The description of the screen scheme. */
@@ -21886,6 +22186,25 @@ export interface components {
              */
             readonly id: number;
         };
+        /** @description Defines the payload for the screen schemes. See https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-screen-schemes/\#api-rest-api-3-screenscheme-post */
+        ScreenSchemePayload: {
+            defaultScreen?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            /**
+             * @description The description of the screen scheme
+             * @example This is a screen scheme
+             */
+            description?: string;
+            /**
+             * @description The name of the screen scheme
+             * @example My Screen Scheme
+             */
+            name?: string;
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            /** @description Similar to the field layout scheme those mappings allow users to set different screens for different operations: default - always there, applied to all operations that don't have an explicit mapping `create`, `view`, `edit` - specific operations that are available and users can assign a different screen for each one of them https://support.atlassian.com/jira-cloud-administration/docs/manage-screen-schemes/\#Associating-a-screen-with-an-issue-operation */
+            screens?: {
+                [key: string]: components["schemas"]["ProjectCreateResourceIdentifier"];
+            };
+        } | null;
         /** @description The IDs of the screens for the screen types of the screen scheme. */
         ScreenTypes: {
             /**
@@ -21972,7 +22291,7 @@ export interface components {
              *
              *     Multiple `fields` parameters can be included in a request.
              *
-             *     Note: By default, this resource returns IDs only. This differs from [GET issue](#api-rest-api-3-issue-issueIdOrKey-get) where the default is all fields. */
+             *     Note: By default, this resource returns IDs only. This differs from [GET issue](#api-rest-api-2-issue-issueIdOrKey-get) where the default is all fields. */
             fields?: string[];
             /** @description Reference fields by their key (rather than ID). The default is `false`. */
             fieldsByKeys?: boolean;
@@ -21985,7 +22304,7 @@ export interface components {
             jql?: string;
             /**
              * Format: int32
-             * @description The maximum number of items to return. Depending on search criteria, real number of items returned may be smaller. It returns max 5000 issues
+             * @description The maximum number of items to return per page. To manage page size, API may return fewer items per page where a large number of fields are requested. The greatest number of items returned per page is achieved when requesting `id` or `key` only. It returns max 5000 issues.
              * @default 50
              */
             maxResults: number;
@@ -21993,7 +22312,7 @@ export interface components {
             nextPageToken?: string;
             /** @description A list of up to 5 issue properties to include in the results. This parameter accepts a comma-separated list. */
             properties?: string[];
-            /** @description Strong consistency issue ids to be reconciled with search results. Accepts max 50 ids. All issues must exist. */
+            /** @description Strong consistency issue ids to be reconciled with search results. Accepts max 50 ids */
             reconcileIssues?: number[];
         };
         /** @description The result of a JQL search with issues reconsilation. */
@@ -22049,7 +22368,7 @@ export interface components {
              *
              *     Multiple `fields` parameters can be included in a request.
              *
-             *     Note: All navigable fields are returned by default. This differs from [GET issue](#api-rest-api-3-issue-issueIdOrKey-get) where the default is all fields. */
+             *     Note: All navigable fields are returned by default. This differs from [GET issue](#api-rest-api-2-issue-issueIdOrKey-get) where the default is all fields. */
             fields?: string[];
             /** @description Reference fields by their key (rather than ID). The default is `false`. */
             fieldsByKeys?: boolean;
@@ -22145,6 +22464,36 @@ export interface components {
         } & {
             [key: string]: unknown;
         };
+        /** @description The payload for creating a security level member. See https://support.atlassian.com/jira-cloud-administration/docs/configure-issue-security-schemes/ */
+        SecurityLevelMemberPayload: {
+            /** @description Defines the value associated with the type. For reporter this would be \{"null"\}; for users this would be the names of specific users); for group this would be group names like \{"administrators", "jira-administrators", "jira-users"\} */
+            parameter?: string;
+            /**
+             * @description The type of the security level member
+             * @enum {string}
+             */
+            type?: "group" | "reporter" | "users";
+        };
+        /** @description The payload for creating a security level. See https://support.atlassian.com/jira-cloud-administration/docs/configure-issue-security-schemes/ */
+        SecurityLevelPayload: {
+            /**
+             * @description The description of the security level
+             * @example Newly created issue security level
+             */
+            description?: string;
+            /**
+             * @description Whether the security level is default for the security scheme
+             * @enum {boolean}
+             */
+            isDefault?: true | false;
+            /**
+             * @description The name of the security level
+             * @example New Security Level
+             */
+            name?: string;
+            /** @description The members of the security level */
+            securityLevelMembers?: components["schemas"]["SecurityLevelMemberPayload"][];
+        };
         /** @description Details about a security scheme. */
         SecurityScheme: {
             /**
@@ -22193,6 +22542,22 @@ export interface components {
             /** @description The list of level members which should be added to the issue security scheme level. */
             members?: components["schemas"]["SecuritySchemeLevelMemberBean"][];
         };
+        /** @description The payload for creating a security scheme. See https://support.atlassian.com/jira-cloud-administration/docs/configure-issue-security-schemes/ */
+        SecuritySchemePayload: {
+            /**
+             * @description The description of the security scheme
+             * @example Newly created issue security scheme
+             */
+            description?: string;
+            /**
+             * @description The name of the security scheme
+             * @example New Security Scheme
+             */
+            name?: string;
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            /** @description The security levels for the security scheme */
+            securityLevels?: components["schemas"]["SecurityLevelPayload"][];
+        } | null;
         /** @description Details about an issue security scheme. */
         SecuritySchemeWithProjects: {
             /**
@@ -22253,14 +22618,7 @@ export interface components {
              */
             serverTime?: string;
             /** @description The default timezone of the Jira server. In a format known as Olson Time Zones, IANA Time Zones or TZ Database Time Zones. */
-            serverTimeZone?: {
-                displayName?: string;
-                /** Format: int32 */
-                dstsavings?: number;
-                id?: string;
-                /** Format: int32 */
-                rawOffset?: number;
-            };
+            serverTimeZone?: string;
             /** @description The name of the Jira instance. */
             serverTitle?: string;
             /** @description The version of Jira. */
@@ -22334,7 +22692,7 @@ export interface components {
              * @description The unique identifier of the share permission.
              */
             readonly id?: number;
-            /** @description The project that the filter is shared with. This is similar to the project object returned by [Get project](#api-rest-api-3-project-projectIdOrKey-get) but it contains a subset of the properties, which are: `self`, `id`, `key`, `assigneeType`, `name`, `roles`, `avatarUrls`, `projectType`, `simplified`.
+            /** @description The project that the filter is shared with. This is similar to the project object returned by [Get project](#api-rest-api-2-project-projectIdOrKey-get) but it contains a subset of the properties, which are: `self`, `id`, `key`, `assigneeType`, `name`, `roles`, `avatarUrls`, `projectType`, `simplified`.
              *     For a request, specify the `id` for the project. */
             project?: components["schemas"]["Project"];
             /** @description The project role that the filter is shared with.
@@ -22436,7 +22794,7 @@ export interface components {
             issueTypeIds: string[];
             /** @description The project ID for the usage. */
             projectId: string;
-        };
+        } | null;
         SimplifiedHierarchyLevel: {
             /**
              * Format: int64
@@ -22474,17 +22832,6 @@ export interface components {
              * @description The ID of the project configuration. This property is deprecated, see [Change oticen: Removing hierarchy level IDs from next-gen APIs](https://developer.atlassian.com/cloud/jira/platform/change-notice-removing-hierarchy-level-ids-from-next-gen-apis/).
              */
             projectConfigurationId?: number;
-        };
-        SimplifiedIssueTransition: {
-            /** @description The issue status change of the transition. */
-            readonly to?: components["schemas"]["IssueTransitionStatus"];
-            /**
-             * Format: int32
-             * @description The unique ID of the transition.
-             */
-            readonly transitionId?: number;
-            /** @description The name of the transition. */
-            readonly transitionName?: string;
         };
         SoftwareNavigationInfo: {
             /** Format: int64 */
@@ -22612,19 +22959,62 @@ export interface components {
         } & {
             [key: string]: unknown;
         };
-        /**
-         * @deprecated
-         * @description The status reference and port that a transition is connected to.
-         */
-        StatusReferenceAndPort: {
+        /** @description The payload for creating a status */
+        StatusPayload: {
+            /** @description The description of the status */
+            description?: string;
+            /** @description The name of the status */
+            name?: string;
             /**
-             * Format: int32
-             * @description The port this transition uses to connect to this status.
+             * @description The conflict strategy for the status already exists. FAIL - Fail execution, this always needs to be unique; USE - Use the existing entity and ignore new entity parameters; NEW - Create a new entity
+             * @enum {string}
              */
-            port?: number;
-            /** @description The reference of this status. */
-            statusReference: string;
-        } | null;
+            onConflict?: "FAIL" | "USE" | "NEW";
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            /**
+             * @description The status category of the status. The value is case-sensitive.
+             * @enum {string}
+             */
+            statusCategory?: "TODO" | "IN_PROGRESS" | "DONE";
+        };
+        /** @description The list of issue types. */
+        StatusProjectIssueTypeUsage: {
+            /** @description The issue type ID. */
+            id?: string;
+        };
+        /** @description The issue types using this status in a project. */
+        StatusProjectIssueTypeUsageDTO: {
+            issueTypes?: components["schemas"]["StatusProjectIssueTypeUsagePage"];
+            /** @description The project ID. */
+            projectId?: string;
+            /** @description The status ID. */
+            statusId?: string;
+        };
+        /** @description A page of issue types. */
+        StatusProjectIssueTypeUsagePage: {
+            /** @description Page token for the next page of issue type usages. */
+            nextPageToken?: string;
+            /** @description The list of issue types. */
+            values?: components["schemas"]["StatusProjectIssueTypeUsage"][];
+        };
+        /** @description The project. */
+        StatusProjectUsage: {
+            /** @description The project ID. */
+            id?: string;
+        };
+        /** @description The projects using this status. */
+        StatusProjectUsageDTO: {
+            projects?: components["schemas"]["StatusProjectUsagePage"];
+            /** @description The status ID. */
+            statusId?: string;
+        };
+        /** @description A page of projects. */
+        StatusProjectUsagePage: {
+            /** @description Page token for the next page of issue type usages. */
+            nextPageToken?: string;
+            /** @description The list of projects. */
+            values?: components["schemas"]["StatusProjectUsage"][];
+        };
         /** @description The scope of the status. */
         StatusScope: {
             project?: components["schemas"]["ProjectId"];
@@ -22655,6 +23045,24 @@ export interface components {
             /** @description The list of statuses that will be updated. */
             statuses: components["schemas"]["StatusUpdate"][];
         };
+        /** @description Workflows using the status. */
+        StatusWorkflowUsageDTO: {
+            /** @description The status ID. */
+            statusId?: string;
+            workflows?: components["schemas"]["StatusWorkflowUsagePage"];
+        };
+        /** @description A page of workflows. */
+        StatusWorkflowUsagePage: {
+            /** @description Page token for the next page of issue type usages. */
+            nextPageToken?: string;
+            /** @description The list of statuses. */
+            values?: components["schemas"]["StatusWorkflowUsageWorkflow"][];
+        };
+        /** @description The worflow. */
+        StatusWorkflowUsageWorkflow: {
+            /** @description The workflow ID. */
+            id?: string;
+        };
         /** @description The statuses associated with each workflow. */
         StatusesPerWorkflow: {
             /** @description The ID of the initial status for the workflow. */
@@ -22666,9 +23074,6 @@ export interface components {
         };
         StreamingResponseBody: Record<string, never>;
         StringList: Record<string, never>;
-        SubmittedBulkOperation: {
-            taskId?: string;
-        };
         /** @description An issue suggested for use in the issue picker auto-completion. */
         SuggestedIssue: {
             /**
@@ -22721,10 +23126,38 @@ export interface components {
              */
             startAt?: number;
         };
+        /** @description The payload for custom swimlanes */
+        SwimlanePayload: {
+            /** @description The description of the quick filter */
+            description?: string;
+            /** @description The jql query for the quick filter */
+            jqlQuery?: string;
+            /** @description The name of the quick filter */
+            name?: string;
+        };
+        /** @description The payload for customising a swimlanes on a board */
+        SwimlanesPayload: {
+            /** @description The custom swimlane definitions. */
+            customSwimlanes?: components["schemas"]["SwimlanePayload"][];
+            /** @description The name of the custom swimlane to use for work items that don't match any other swimlanes. */
+            defaultCustomSwimlaneName?: string;
+            /**
+             * @description The swimlane strategy for the board.
+             * @enum {string}
+             */
+            swimlaneStrategy?: "none" | "custom" | "parentChild" | "assignee" | "assigneeUnassignedFirst" | "epic" | "project" | "issueparent" | "issuechildren" | "request_type";
+        };
         /** @description List of system avatars. */
         SystemAvatars: {
             /** @description A list of avatar details. */
             readonly system?: components["schemas"]["Avatar"][];
+        };
+        /** @description Defines the payload for the tabs of the screen. See https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-screen-tab-fields/\#api-rest-api-3-screens-screenid-tabs-tabid-fields-post */
+        TabPayload: {
+            /** @description The list of resource identifier of the field associated to the tab. See https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-screen-tab-fields/\#api-rest-api-3-screens-screenid-tabs-tabid-fields-post */
+            fields?: components["schemas"]["ProjectCreateResourceIdentifier"][];
+            /** @description The name of the tab */
+            name?: string;
         };
         /** @description Details about a task. */
         TaskProgressBeanJsonNode: {
@@ -22950,6 +23383,16 @@ export interface components {
             /** @description The URL of the configuration page for the time tracking provider app. For example, *\/example/config/url*. This property is only returned if the `adminPageKey` property is set in the module descriptor of the time tracking provider app. */
             readonly url?: string;
         };
+        /** @description The payload for the layout details for the destination end of a transition */
+        ToLayoutPayload: {
+            /**
+             * Format: int32
+             * @description Defines where the transition line will be connected to a status. Port 0 to 7 are acceptable values.
+             * @example 1
+             */
+            port?: number;
+            status?: components["schemas"]["ProjectCreateResourceIdentifier"];
+        };
         /** @description Details of a workflow transition. */
         Transition: {
             /** @description The description of the transition. */
@@ -22974,6 +23417,40 @@ export interface components {
              */
             type: "global" | "initial" | "directed";
         };
+        /** @description The payload for creating a transition in a workflow. Can be DIRECTED, GLOBAL, SELF-LOOPED, GLOBAL LOOPED */
+        TransitionPayload: {
+            /** @description The actions that are performed when the transition is made */
+            actions?: components["schemas"]["RulePayload"][];
+            conditions?: components["schemas"]["ConditionGroupPayload"];
+            /** @description Mechanism in Jira for triggering certain actions, like notifications, automations, etc. Unless a custom notification scheme is configure, it's better not to provide any value here */
+            customIssueEventId?: string;
+            /** @description The description of the transition */
+            description?: string;
+            /** @description The statuses that the transition can be made from */
+            from?: components["schemas"]["FromLayoutPayload"][];
+            /**
+             * Format: int32
+             * @description The id of the transition
+             */
+            id?: number;
+            /** @description The name of the transition */
+            name?: string;
+            /** @description The properties of the transition */
+            properties?: {
+                [key: string]: string;
+            };
+            to?: components["schemas"]["ToLayoutPayload"];
+            transitionScreen?: components["schemas"]["RulePayload"];
+            /** @description The triggers that are performed when the transition is made */
+            triggers?: components["schemas"]["RulePayload"][];
+            /**
+             * @description The type of the transition
+             * @enum {string}
+             */
+            type?: "global" | "initial" | "directed";
+            /** @description The validators that are performed when the transition is made */
+            validators?: components["schemas"]["RulePayload"][];
+        };
         /** @description The details of a transition screen. */
         TransitionScreenDetails: {
             /** @description The ID of the screen. */
@@ -22981,7 +23458,7 @@ export interface components {
             /** @description The name of the screen. */
             name?: string;
         };
-        /** @description The transition update data. Note that a transition can have either the deprecated `to`/`from` fields or the `toStatusReference`/`links` fields, but never both nor a combination. */
+        /** @description The transition update data. */
         TransitionUpdateDTO: {
             /** @description The post-functions of the transition. */
             actions?: components["schemas"]["WorkflowRuleConfiguration"][];
@@ -22990,22 +23467,16 @@ export interface components {
             customIssueEventId?: string;
             /** @description The description of the transition. */
             description?: string;
-            /**
-             * @deprecated
-             * @description The statuses and ports that the transition can start from. This field is deprecated - use `toStatusReference`/`links` instead.
-             */
-            from?: components["schemas"]["StatusReferenceAndPort"][];
             /** @description The ID of the transition. */
-            id: string;
+            id?: string;
             /** @description The statuses the transition can start from, and the mapping of ports between the statuses. */
             links?: components["schemas"]["WorkflowTransitionLinks"][];
             /** @description The name of the transition. */
-            name: string;
+            name?: string;
             /** @description The properties of the transition. */
             properties?: {
                 [key: string]: string;
             };
-            to?: components["schemas"]["StatusReferenceAndPort"];
             /** @description The status the transition goes to. */
             toStatusReference?: string;
             transitionScreen?: components["schemas"]["WorkflowRuleConfiguration"];
@@ -23015,7 +23486,7 @@ export interface components {
              * @description The transition type.
              * @enum {string}
              */
-            type: "INITIAL" | "GLOBAL" | "DIRECTED";
+            type?: "INITIAL" | "GLOBAL" | "DIRECTED";
             /** @description The validators of the transition. */
             validators?: components["schemas"]["WorkflowRuleConfiguration"][];
         } & {
@@ -23236,14 +23707,14 @@ export interface components {
             avatarId?: number;
             /**
              * Format: int64
-             * @description The ID of the project's category. A complete list of category IDs is found using the [Get all project categories](#api-rest-api-3-projectCategory-get) operation. To remove the project category from the project, set the value to `-1.`
+             * @description The ID of the project's category. A complete list of category IDs is found using the [Get all project categories](#api-rest-api-2-projectCategory-get) operation. To remove the project category from the project, set the value to `-1.`
              */
             categoryId?: number;
             /** @description A brief description of the project. */
             description?: string;
             /**
              * Format: int64
-             * @description The ID of the issue security scheme for the project, which enables you to control who can and cannot view issues. Use the [Get issue security schemes](#api-rest-api-3-issuesecurityschemes-get) resource to get all issue security scheme IDs.
+             * @description The ID of the issue security scheme for the project, which enables you to control who can and cannot view issues. Use the [Get issue security schemes](#api-rest-api-2-issuesecurityschemes-get) resource to get all issue security scheme IDs.
              */
             issueSecurityScheme?: number;
             /** @description Project keys must be unique and start with an uppercase letter followed by one or more uppercase alphanumeric characters. The maximum length is 10 characters. */
@@ -23256,12 +23727,12 @@ export interface components {
             name?: string;
             /**
              * Format: int64
-             * @description The ID of the notification scheme for the project. Use the [Get notification schemes](#api-rest-api-3-notificationscheme-get) resource to get a list of notification scheme IDs.
+             * @description The ID of the notification scheme for the project. Use the [Get notification schemes](#api-rest-api-2-notificationscheme-get) resource to get a list of notification scheme IDs.
              */
             notificationScheme?: number;
             /**
              * Format: int64
-             * @description The ID of the permission scheme for the project. Use the [Get all permission schemes](#api-rest-api-3-permissionscheme-get) resource to see a list of all permission scheme IDs.
+             * @description The ID of the permission scheme for the project. Use the [Get all permission schemes](#api-rest-api-2-permissionscheme-get) resource to see a list of all permission scheme IDs.
              */
             permissionScheme?: number;
             /** @description Previous project keys to be released from the current project. Released keys must belong to the current project and not contain the current project key */
@@ -23386,7 +23857,7 @@ export interface components {
              * @description The URL of the user.
              */
             readonly self?: string;
-            /** @description The time zone specified in the user's profile. Depending on the user’s privacy setting, this may be returned as null. */
+            /** @description The time zone specified in the user's profile. If the user's time zone is not visible to the current user (due to user's profile setting), or if a time zone has not been set, the instance's default time zone will be returned. */
             readonly timeZone?: string;
         };
         UserBean: {
@@ -23518,6 +23989,10 @@ export interface components {
             key?: string;
             username?: string;
         };
+        UserNavPropertyJsonBean: {
+            key?: string;
+            value?: string;
+        };
         /** @description Details of a permission and its availability to a user. */
         UserPermission: {
             /** @description Indicate whether the permission key is deprecated. Note that deprecated keys cannot be used in the `permissions parameter of Get my permissions. Deprecated keys are not returned by Get all permissions.` */
@@ -23526,9 +24001,9 @@ export interface components {
             description?: string;
             /** @description Whether the permission is available to the user in the queried context. */
             havePermission?: boolean;
-            /** @description The ID of the permission. Either `id` or `key` must be specified. Use [Get all permissions](#api-rest-api-3-permissions-get) to get the list of permissions. */
+            /** @description The ID of the permission. Either `id` or `key` must be specified. Use [Get all permissions](#api-rest-api-2-permissions-get) to get the list of permissions. */
             id?: string;
-            /** @description The key of the permission. Either `id` or `key` must be specified. Use [Get all permissions](#api-rest-api-3-permissions-get) to get the list of permissions. */
+            /** @description The key of the permission. Either `id` or `key` must be specified. Use [Get all permissions](#api-rest-api-2-permissions-get) to get the list of permissions. */
             key?: string;
             /** @description The name of the permission. */
             name?: string;
@@ -23831,6 +24306,8 @@ export interface components {
             issuePropertyKeysFilter?: string[];
             /** @description The JQL filter that specifies which issues the webhook is sent for. */
             jqlFilter: string;
+            /** @description The URL that specifies where the webhooks are sent. */
+            url: string;
         };
         /** @description A list of webhooks. */
         WebhookDetails: {
@@ -23917,6 +24394,14 @@ export interface components {
             /** @description The trigger rules available. */
             triggerRules?: components["schemas"]["AvailableWorkflowTriggers"][];
         };
+        /** @description The payload for creating a workflows. See https://www.atlassian.com/software/jira/guides/workflows/overview\#what-is-a-jira-workflow */
+        WorkflowCapabilityPayload: {
+            /** @description The statuses for the workflow */
+            statuses?: components["schemas"]["StatusPayload"][];
+            workflowScheme?: components["schemas"]["WorkflowSchemePayload"];
+            /** @description The transitions for the workflow */
+            workflows?: components["schemas"]["WorkflowPayload"][];
+        } | null;
         /** @description A compound workflow transition rule condition. This object returns `nodeType` as `compound`. */
         WorkflowCompoundCondition: {
             /** @description The list of workflow conditions. */
@@ -23938,6 +24423,7 @@ export interface components {
         WorkflowCreate: {
             /** @description The description of the workflow to create. */
             description?: string;
+            loopedTransitionContainerLayout?: components["schemas"]["WorkflowLayout"];
             /** @description The name of the workflow to create. */
             name: string;
             startPointLayout?: components["schemas"]["WorkflowLayout"];
@@ -23948,11 +24434,11 @@ export interface components {
         };
         /** @description The create workflows payload. */
         WorkflowCreateRequest: {
-            scope: components["schemas"]["WorkflowScope"];
+            scope?: components["schemas"]["WorkflowScope"];
             /** @description The statuses to associate with the workflows. */
-            statuses: components["schemas"]["WorkflowStatusUpdate"][];
+            statuses?: components["schemas"]["WorkflowStatusUpdate"][];
             /** @description The details of the workflows to create. */
-            workflows: components["schemas"]["WorkflowCreate"][];
+            workflows?: components["schemas"]["WorkflowCreate"][];
         };
         /** @description Details of the created workflows and statuses. */
         WorkflowCreateResponse: {
@@ -24018,8 +24504,10 @@ export interface components {
             id: string;
             /** @description The name of the workflow. */
             name: string;
-            /** @description Use the optional `workflows.usages` expand to get additional information about the projects and issue types associated with the workflows in the workflow scheme. */
-            usage: components["schemas"]["SimpleUsage"][];
+            /** @description Deprecated. See the [deprecation notice](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2298) for details.
+             *
+             *     Use the optional `workflows.usages` expand to get additional information about the projects and issue types associated with the workflows in the workflow scheme. */
+            usage: components["schemas"]["SimpleUsage"][] | null;
             version: components["schemas"]["DocumentVersion"];
         };
         /** @description Operations allowed on a workflow */
@@ -24028,6 +24516,58 @@ export interface components {
             canDelete: boolean;
             /** @description Whether the workflow can be updated. */
             canEdit: boolean;
+        };
+        /** @description The payload for creating workflow, see https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-workflows/\#api-rest-api-3-workflows-create-post */
+        WorkflowPayload: {
+            /**
+             * @description The description of the workflow
+             * @example a software workflow
+             */
+            description?: string;
+            loopedTransitionContainerLayout?: components["schemas"]["WorkflowStatusLayoutPayload"];
+            /**
+             * @description The name of the workflow
+             * @example Software Simplified Workflow
+             */
+            name?: string;
+            /**
+             * @description The strategy to use if there is a conflict with another workflow
+             * @default NEW
+             * @enum {string}
+             */
+            onConflict: "FAIL" | "USE" | "NEW";
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            startPointLayout?: components["schemas"]["WorkflowStatusLayoutPayload"];
+            /** @description The statuses to be used in the workflow */
+            statuses?: components["schemas"]["WorkflowStatusPayload"][];
+            /** @description The transitions for the workflow */
+            transitions?: components["schemas"]["TransitionPayload"][];
+        };
+        /** @description The issue type. */
+        WorkflowProjectIssueTypeUsage: {
+            /** @description The ID of the issue type. */
+            id?: string;
+        };
+        /** @description Issue types associated with the workflow for a project. */
+        WorkflowProjectIssueTypeUsageDTO: {
+            issueTypes?: components["schemas"]["WorkflowProjectIssueTypeUsagePage"];
+            /** @description The ID of the project. */
+            projectId?: string;
+            /** @description The ID of the workflow. */
+            workflowId?: string;
+        };
+        /** @description A page of issue types. */
+        WorkflowProjectIssueTypeUsagePage: {
+            /** @description Token for the next page of issue type usages. */
+            nextPageToken?: string;
+            /** @description The list of issue types. */
+            values?: components["schemas"]["WorkflowProjectIssueTypeUsage"][];
+        };
+        /** @description Projects using the workflow. */
+        WorkflowProjectUsageDTO: {
+            projects?: components["schemas"]["ProjectUsagePage"];
+            /** @description The workflow ID. */
+            workflowId?: string;
         };
         WorkflowReadRequest: {
             /** @description The list of projects and issue types to query. */
@@ -24170,11 +24710,30 @@ export interface components {
             /** @description The name of the workflow scheme. */
             name: string;
         };
+        /** @description The payload for creating a workflow scheme. See https://www.atlassian.com/software/jira/guides/workflows/overview\#what-is-a-jira-workflow-scheme */
+        WorkflowSchemePayload: {
+            defaultWorkflow?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            /** @description The description of the workflow scheme */
+            description?: string;
+            /** @description Association between issuetypes and workflows */
+            explicitMappings?: {
+                [key: string]: components["schemas"]["ProjectCreateResourceIdentifier"];
+            };
+            /** @description The name of the workflow scheme */
+            name?: string;
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+        };
         /** @description An associated workflow scheme and project. */
         WorkflowSchemeProjectAssociation: {
             /** @description The ID of the project. */
             projectId: string;
             /** @description The ID of the workflow scheme. If the workflow scheme ID is `null`, the operation assigns the default workflow scheme. */
+            workflowSchemeId?: string;
+        };
+        /** @description Projects using the workflow scheme. */
+        WorkflowSchemeProjectUsageDTO: {
+            projects?: components["schemas"]["ProjectUsagePage"];
+            /** @description The workflow scheme ID. */
             workflowSchemeId?: string;
         };
         /** @description The workflow scheme read request body. */
@@ -24192,8 +24751,10 @@ export interface components {
             id: string;
             /** @description The name of the workflow scheme. */
             name: string;
-            /** @description The IDs of projects using the workflow scheme. */
-            projectIdsUsingScheme: string[];
+            /** @description Deprecated. See the [deprecation notice](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2298) for details.
+             *
+             *     The IDs of projects using the workflow scheme. */
+            projectIdsUsingScheme?: (string | null)[] | null;
             scope: components["schemas"]["WorkflowScope"];
             /** @description Indicates if there's an [asynchronous task](#async-operations) for this workflow scheme. */
             taskId?: string | null;
@@ -24239,6 +24800,24 @@ export interface components {
             statuses?: components["schemas"]["StatusMetadata"][];
             /** @description The statuses associated with each workflow. */
             statusesPerWorkflow?: components["schemas"]["StatusesPerWorkflow"][];
+        };
+        /** @description The worflow scheme. */
+        WorkflowSchemeUsage: {
+            /** @description The workflow scheme ID. */
+            id?: string;
+        };
+        /** @description Workflow schemes using the workflow. */
+        WorkflowSchemeUsageDTO: {
+            /** @description The workflow ID. */
+            workflowId?: string;
+            workflowSchemes?: components["schemas"]["WorkflowSchemeUsagePage"];
+        };
+        /** @description A page of workflow schemes. */
+        WorkflowSchemeUsagePage: {
+            /** @description Token for the next page of issue type usages. */
+            nextPageToken?: string;
+            /** @description The list of workflow schemes. */
+            values?: components["schemas"]["WorkflowSchemeUsage"][];
         };
         /** @description The scope of the workflow. */
         WorkflowScope: {
@@ -24300,19 +24879,6 @@ export interface components {
                 [key: string]: unknown;
             };
         };
-        /**
-         * @deprecated
-         * @description The status reference and port that a transition is connected to.
-         */
-        WorkflowStatusAndPort: {
-            /**
-             * Format: int32
-             * @description The port the transition is connected to this status.
-             */
-            port?: number | null;
-            /** @description The reference of this status. */
-            statusReference?: string;
-        } | null;
         /** @description The x and y location of the status in the workflow. */
         WorkflowStatusLayout: {
             /**
@@ -24326,6 +24892,30 @@ export interface components {
              */
             y?: number | null;
         } | null;
+        /** @description The layout of the workflow status. */
+        WorkflowStatusLayoutPayload: {
+            /**
+             * Format: double
+             * @description The x coordinate of the status.
+             * @example 1
+             */
+            x?: number;
+            /**
+             * Format: double
+             * @description The y coordinate of the status.
+             * @example 2
+             */
+            y?: number;
+        };
+        /** @description The statuses to be used in the workflow */
+        WorkflowStatusPayload: {
+            layout?: components["schemas"]["WorkflowStatusLayoutPayload"];
+            pcri?: components["schemas"]["ProjectCreateResourceIdentifier"];
+            /** @description The properties of the workflow status. */
+            properties?: {
+                [key: string]: string;
+            };
+        };
         /** @description Details of the status being updated. */
         WorkflowStatusUpdate: {
             /** @description The description of the status. */
@@ -24423,7 +25013,7 @@ export interface components {
             /** @description A list of workflows. */
             updateResults: components["schemas"]["WorkflowTransitionRulesUpdateErrorDetails"][];
         };
-        /** @description The transitions of the workflow. Note that a transition can have either the deprecated `to`/`from` fields or the `toStatusReference`/`links` fields, but never both nor a combination. */
+        /** @description The transitions of the workflow. */
         WorkflowTransitions: {
             /** @description The post-functions of the transition. */
             actions?: components["schemas"]["WorkflowRuleConfiguration"][];
@@ -24432,11 +25022,6 @@ export interface components {
             customIssueEventId?: string | null;
             /** @description The description of the transition. */
             description?: string;
-            /**
-             * @deprecated
-             * @description The statuses and ports that the transition can start from. This field is deprecated - use `toStatusReference`/`links` instead.
-             */
-            from?: components["schemas"]["WorkflowStatusAndPort"][];
             /** @description The ID of the transition. */
             id?: string;
             /** @description The statuses the transition can start from, and the mapping of ports between the statuses. */
@@ -24447,7 +25032,6 @@ export interface components {
             properties?: {
                 [key: string]: string;
             };
-            to?: components["schemas"]["WorkflowStatusAndPort"];
             /** @description The status the transition goes to. */
             toStatusReference?: string;
             transitionScreen?: components["schemas"]["WorkflowRuleConfiguration"];
@@ -24480,6 +25064,7 @@ export interface components {
             description?: string;
             /** @description The ID of this workflow. */
             id: string;
+            loopedTransitionContainerLayout?: components["schemas"]["WorkflowLayout"];
             startPointLayout?: components["schemas"]["WorkflowLayout"];
             /** @description The mapping of old to new status ID for a specific project and issue type. */
             statusMappings?: components["schemas"]["StatusMappingDTO"][];
@@ -24494,9 +25079,9 @@ export interface components {
         /** @description The update workflows payload. */
         WorkflowUpdateRequest: {
             /** @description The statuses to associate with the workflows. */
-            statuses: components["schemas"]["WorkflowStatusUpdate"][];
+            statuses?: components["schemas"]["WorkflowStatusUpdate"][];
             /** @description The details of the workflows to update. */
-            workflows: components["schemas"]["WorkflowUpdate"][];
+            workflows?: components["schemas"]["WorkflowUpdate"][];
         };
         WorkflowUpdateResponse: {
             /** @description List of updated statuses. */
@@ -24510,13 +25095,15 @@ export interface components {
             payload: components["schemas"]["WorkflowUpdateRequest"];
             validationOptions?: components["schemas"]["ValidationOptionsForUpdate"];
         };
-        /** @description The workflows that use this status. Only available if the `workflowUsages` expand is requested. */
+        /** @description Deprecated. See the [deprecation notice](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2298) for details.
+         *
+         *     The workflows that use this status. Only available if the `workflowUsages` expand is requested. */
         WorkflowUsages: {
             /** @description Workflow ID. */
             workflowId?: string;
             /** @description Workflow name. */
             workflowName?: string;
-        };
+        } | null;
         /** @description The details about a workflow validation error. */
         WorkflowValidationError: {
             /** @description An error code. */
@@ -24544,12 +25131,26 @@ export interface components {
             /** @description The list of workflows with transition rules to delete. */
             workflows: components["schemas"]["WorkflowTransitionRulesDetails"][];
         };
+        /** @description Working days configuration */
+        WorkingDaysConfig: {
+            friday?: boolean;
+            /** Format: int64 */
+            id?: number;
+            monday?: boolean;
+            nonWorkingDays?: components["schemas"]["NonWorkingDay"][];
+            saturday?: boolean;
+            sunday?: boolean;
+            thursday?: boolean;
+            timezoneId?: string;
+            tuesday?: boolean;
+            wednesday?: boolean;
+        };
         /** @description Details of a worklog. */
         Worklog: {
             /** @description Details of the user who created the worklog. */
             readonly author?: components["schemas"]["UserDetails"];
-            /** @description A comment about the worklog in [Atlassian Document Format](https://developer.atlassian.com/cloud/jira/platform/apis/document/structure/). Optional when creating or updating a worklog. */
-            comment?: unknown;
+            /** @description A comment about the worklog. Optional when creating or updating a worklog. */
+            comment?: string;
             /**
              * Format: date-time
              * @description The datetime on which the worklog was created.
@@ -24605,92 +25206,6 @@ export interface components {
             /** @description Whether the workspace contains any content inaccessible to the requesting application. */
             readonly anyContentBlocked?: boolean;
         };
-        /** @description Can contain multiple field values of following types depending on `type` key */
-        fields: {
-            /**
-             * @description If `true`, will try to retain original non-null issue field values on move.
-             * @default true
-             */
-            retain: boolean;
-            /** @enum {string} */
-            type?: "adf" | "raw";
-            value?: Record<string, never>;
-        } | components["schemas"]["MandatoryFieldValue"] | components["schemas"]["MandatoryFieldValueForADF"];
-        /** @description Classification mapping for classifications in source issues to respective target classification. */
-        targetClassification: {
-            /** @description An object with the key as the ID of the target classification and value with the list of the IDs of the current source classifications. */
-            classifications: {
-                [key: string]: string[];
-            };
-            /** @description ID of the source issueType to which issues present in `issueIdOrKeys` belongs. */
-            issueType?: string;
-            /** @description ID or key of the source project to which issues present in `issueIdOrKeys` belongs. */
-            projectKeyOrId?: string;
-        } | null;
-        /** @description Field mapping for mandatory fields in target */
-        targetMandatoryFields: {
-            /** @description Contains the value of mandatory fields */
-            fields: {
-                [key: string]: components["schemas"]["fields"];
-            };
-        } | null;
-        /** @description Status mapping for statuses in source workflow to respective target status in target workflow. */
-        targetStatus: {
-            /** @description An object with the key as the ID of the target status and value with the list of the IDs of the current source statuses. */
-            statuses: {
-                [key: string]: string[];
-            };
-        } | null;
-        /** @description An object representing the mapping of issues and data related to destination entities, like fields and statuses, that are required during a bulk move. */
-        targetToSourcesMapping: {
-            /** @description If `true`, when issues are moved into this target group, they will adopt the target project's default classification, if they don't have a classification already. If they do have a classification, it will be kept the same even after the move. Leave `targetClassification` empty when using this.
-             *
-             *     If `false`, you must provide a `targetClassification` mapping for each classification associated with the selected issues.
-             *
-             *     [Benefit from data classification](https://support.atlassian.com/security-and-access-policies/docs/what-is-data-classification/) */
-            inferClassificationDefaults: boolean;
-            /** @description If `true`, values from the source issues will be retained for the mandatory fields in the field configuration of the destination project. The `targetMandatoryFields` property shouldn't be defined.
-             *
-             *     If `false`, the user is required to set values for mandatory fields present in the field configuration of the destination project. Provide input by defining the `targetMandatoryFields` property */
-            inferFieldDefaults: boolean;
-            /** @description If `true`, the statuses of issues being moved in this target group that are not present in the target workflow will be changed to the default status of the target workflow (see below). Leave `targetStatus` empty when using this.
-             *
-             *     If `false`, you must provide a `targetStatus` for each status not present in the target workflow.
-             *
-             *     The default status in a workflow is referred to as the "initial status". Each workflow has its own unique initial status. When an issue is created, it is automatically assigned to this initial status. Read more about configuring initial statuses: [Configure the initial status | Atlassian Support.](https://support.atlassian.com/jira-cloud-administration/docs/configure-the-initial-status/) */
-            inferStatusDefaults: boolean;
-            /** @description When an issue is moved, its subtasks (if there are any) need to be moved with it. `inferSubtaskTypeDefault` helps with moving the subtasks by picking a random subtask type in the target project.
-             *
-             *     If `true`, subtasks will automatically move to the same project as their parent.
-             *
-             *     When they move:
-             *
-             *      *  Their `issueType` will be set to the default for subtasks in the target project.
-             *      *  Values for mandatory fields will be retained from the source issues
-             *      *  Specifying separate mapping for implicit subtasks won’t be allowed.
-             *
-             *     If `false`, you must manually move the subtasks. They will retain the parent which they had in the current project after being moved. */
-            inferSubtaskTypeDefault: boolean;
-            /** @description List of issue IDs or keys to be moved. These issues must be from the same project, have the same issue type, and be from the same parent (if they’re subtasks). */
-            issueIdsOrKeys?: string[];
-            /** @description List of the objects containing classifications in the source issues and their new values which need to be set during the bulk move operation.
-             *
-             *      *  **You should only define this property when `inferClassificationDefaults` is `false`.**
-             *      *  **In order to provide mapping for issues which don't have a classification, use `"-1"`.** */
-            targetClassification?: components["schemas"]["targetClassification"][] | null;
-            /** @description List of objects containing mandatory fields in the target field configuration and new values that need to be set during the bulk move operation.
-             *
-             *     The new values will only be applied if the field is mandatory in the target project and at least one issue from the source has that field empty, or if the field context is different in the target project (e.g. project-scoped version fields).
-             *
-             *     **You should only define this property when `inferFieldDefaults` is `false`.** */
-            targetMandatoryFields?: components["schemas"]["targetMandatoryFields"][] | null;
-            /** @description List of the objects containing statuses in the source workflow and their new values which need to be set during the bulk move operation.
-             *
-             *     The new values will only be applied if the source status is invalid for the target project and issue type.
-             *
-             *     **You should only define this property when `inferStatusDefaults` is `false`.** */
-            targetStatus?: components["schemas"]["targetStatus"][] | null;
-        };
     };
     responses: never;
     parameters: never;
@@ -24715,6 +25230,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"hashId":"9HN2FJK9DM8BHRWERVW3RRTGDJ4G4D5C","isDismissible":false,"isEnabled":true,"message":"This is a public, enabled, non-dismissible banner, set using the API","visibility":"public"} */
                     "application/json": components["schemas"]["AnnouncementBannerConfiguration"];
                 };
             };
@@ -24733,6 +25249,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example "Only admins can read banner configuration." */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -24772,6 +25289,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example "Banner message cannot be null." */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -24790,6 +25308,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example "Only admins can update banner configuration." */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -24835,6 +25354,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":1000,"startAt":0,"total":2,"values":[{"customFieldId":"customfield_10035","fieldContextId":"10010","id":"10000"},{"configuration":{"maxValue":10000,"minValue":0},"customFieldId":"customfield_10036","fieldContextId":"10011","id":"10001","schema":{"properties":{"amount":{"type":"number"},"currency":{"type":"string"}},"required":["amount","currency"]}}]} */
                     "application/json": components["schemas"]["PageBeanBulkContextualConfiguration"];
                 };
             };
@@ -24968,6 +25488,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":1000,"startAt":0,"total":2,"values":[{"id":"10000","fieldContextId":"10010"},{"id":"10001","fieldContextId":"10011","configuration":{"minValue":0,"maxValue":10000},"schema":{"properties":{"amount":{"type":"number"},"currency":{"type":"string"}},"required":["amount","currency"]}}]} */
                     "application/json": components["schemas"]["PageBeanContextualConfiguration"];
                 };
             };
@@ -25167,6 +25688,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"defaultValue":"","desc":"Jira home directory","id":"jira.home","key":"jira.home","name":"jira.home","type":"string","value":"/var/jira/jira-home"},{"defaultValue":"CLONE -","id":"jira.clone.prefix","key":"jira.clone.prefix","name":"The prefix added to the Summary field of cloned issues","type":"string","value":"CLONE -"}] */
                     "application/json": components["schemas"]["ApplicationProperty"][];
                 };
             };
@@ -25205,6 +25727,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"defaultValue":"","desc":"Jira home directory","id":"jira.home","key":"jira.home","name":"jira.home","type":"string","value":"/var/jira/jira-home"},{"defaultValue":"CLONE -","id":"jira.clone.prefix","key":"jira.clone.prefix","name":"The prefix added to the Summary field of cloned issues","type":"string","value":"CLONE -"}] */
                     "application/json": components["schemas"]["ApplicationProperty"][];
                 };
             };
@@ -25306,6 +25829,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"defaultGroups":["jira-software-users"],"defaultGroupsDetails":[{"groupId":"276f955c-63d7-42c8-9520-92d01dca0625","name":"jira-software-users","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"}],"defined":false,"groupDetails":[{"groupId":"42c8955c-63d7-42c8-9520-63d7aca0625","name":"jira-testers","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=42c8955c-63d7-42c8-9520-63d7aca0625"},{"groupId":"276f955c-63d7-42c8-9520-92d01dca0625","name":"jira-software-users","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"}],"groups":["jira-software-users","jira-testers"],"hasUnlimitedSeats":false,"key":"jira-software","name":"Jira Software","numberOfSeats":10,"platform":false,"remainingSeats":5,"selectedByDefault":false,"userCount":5,"userCountDescription":"5 developers"},{"defaultGroups":["jira-core-users"],"defaultGroupsDetails":[{"groupId":"92d01dca0625-42c8-42c8-9520-276f955c","name":"jira-core-users","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=92d01dca0625-42c8-42c8-9520-276f955c"}],"defined":false,"groupDetails":[{"groupId":"92d01dca0625-42c8-42c8-9520-276f955c","name":"jira-core-users","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=92d01dca0625-42c8-42c8-9520-276f955c"}],"groups":["jira-core-users"],"hasUnlimitedSeats":false,"key":"jira-core","name":"Jira Core","numberOfSeats":1,"platform":true,"remainingSeats":1,"selectedByDefault":false,"userCount":0,"userCountDescription":"0 users"}] */
                     "application/json": components["schemas"]["ApplicationRole"][];
                 };
             };
@@ -25330,7 +25854,7 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                /** @description The key of the application role. Use the [Get all application roles](#api-rest-api-3-applicationrole-get) operation to get the key for each application role. */
+                /** @description The key of the application role. Use the [Get all application roles](#api-rest-api-2-applicationrole-get) operation to get the key for each application role. */
                 key: string;
             };
             cookie?: never;
@@ -25343,6 +25867,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultGroups":["jira-software-users"],"defaultGroupsDetails":[{"groupId":"276f955c-63d7-42c8-9520-92d01dca0625","name":"jira-software-users","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"}],"defined":false,"groupDetails":[{"groupId":"42c8955c-63d7-42c8-9520-63d7aca0625","name":"jira-testers","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=42c8955c-63d7-42c8-9520-63d7aca0625"},{"groupId":"276f955c-63d7-42c8-9520-92d01dca0625","name":"jira-software-users","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"}],"groups":["jira-software-users","jira-testers"],"hasUnlimitedSeats":false,"key":"jira-software","name":"Jira Software","numberOfSeats":10,"platform":false,"remainingSeats":5,"selectedByDefault":false,"userCount":5,"userCountDescription":"5 developers"} */
                     "application/json": components["schemas"]["ApplicationRole"];
                 };
             };
@@ -25462,6 +25987,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"enabled":true,"uploadLimit":1000000} */
                     "application/json": components["schemas"]["AttachmentSettings"];
                 };
             };
@@ -25563,6 +26089,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"author":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"content":"https://your-domain.atlassian.net/jira/rest/api/3/attachment/content/10001","created":"2023-06-24T19:24:50.000+0000","filename":"debuglog.txt","id":10001,"mimeType":"text/plain","self":"https://your-domain.atlassian.net/rest/api/2/attachments/10001","size":2460} */
                     "application/json": components["schemas"]["AttachmentMetadata"];
                 };
             };
@@ -25648,6 +26175,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"entries":[{"index":0,"label":"MG00N067.JPG","mediaType":"image/jpeg","path":"MG00N067.JPG","size":"119 kB"},{"index":1,"label":"Allegro from Duet in C Major.mp3","mediaType":"audio/mpeg","path":"Allegro from Duet in C Major.mp3","size":"1.36 MB"},{"index":2,"label":"long/path/thanks/to/.../reach/the/leaf.txt","mediaType":"text/plain","path":"long/path/thanks/to/lots/of/subdirectories/inside/making/it/quite/hard/to/reach/the/leaf.txt","size":"0.0 k"}],"id":7237823,"mediaType":"application/zip","name":"images.zip","totalEntryCount":39} */
                     "application/json": components["schemas"]["AttachmentArchiveMetadataReadable"];
                 };
             };
@@ -25702,6 +26230,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"entries":[{"entryIndex":0,"mediaType":"audio/mpeg","name":"Allegro from Duet in C Major.mp3","size":1430174},{"entryIndex":1,"mediaType":"text/rtf","name":"lrm.rtf","size":331}],"totalEntryCount":24} */
                     "application/json": components["schemas"]["AttachmentArchiveImpl"];
                 };
             };
@@ -25764,6 +26293,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"limit":1000,"offset":0,"records":[{"associatedItems":[{"id":"jira-software-users","name":"jira-software-users","parentId":"1","parentName":"Jira Internal Directory","typeName":"GROUP"}],"authorAccountId":"5ab8f18d741e9c2c7e9d4538","authorKey":"administrator","category":"user management","changedValues":[{"changedFrom":"user@atlassian.com","changedTo":"newuser@atlassian.com","fieldName":"email"}],"created":"2014-03-19T18:45:42.967+0000","description":"Optional description","eventSource":"Jira Connect Plugin","id":1,"objectItem":{"id":"user","name":"user","parentId":"1","parentName":"Jira Internal Directory","typeName":"USER"},"remoteAddress":"192.168.1.1","summary":"User created"}],"total":1} */
                     "application/json": components["schemas"]["AuditRecords"];
                 };
             };
@@ -25808,6 +26338,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"system":[{"id":"1000","isDeletable":false,"isSelected":false,"isSystemAvatar":true,"urls":{"16x16":"/secure/useravatar?size=xsmall&avatarId=10040&avatarType=project","24x24":"/secure/useravatar?size=small&avatarId=10040&avatarType=project","32x32":"/secure/useravatar?size=medium&avatarId=10040&avatarType=project","48x48":"/secure/useravatar?avatarId=10040&avatarType=project"}}]} */
                     "application/json": components["schemas"]["SystemAvatars"];
                 };
             };
@@ -25824,462 +26355,6 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
-            };
-        };
-    };
-    submitBulkDelete: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** @description The request body containing the issues to be deleted. */
-        requestBody: {
-            content: {
-                /** @example {
-                 *       "selectedIssueIdsOrKeys": [
-                 *         "10001",
-                 *         "10002"
-                 *       ],
-                 *       "sendBulkNotification": false
-                 *     } */
-                "application/json": components["schemas"]["IssueBulkDeletePayload"];
-            };
-        };
-        responses: {
-            /** @description Returned if the request is successful. */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["SubmittedBulkOperation"];
-                };
-            };
-            /** @description Returned if the request is invalid. */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
-            };
-            /** @description Returned if the authentication credentials are incorrect or missing. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
-            };
-            /** @description Returned if the user does not have the necessary permission. */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
-            };
-        };
-    };
-    getBulkEditableFields: {
-        parameters: {
-            query: {
-                /** @description The IDs or keys of the issues to get editable fields from. */
-                issueIdsOrKeys: string;
-                /** @description (Optional)The text to search for in the editable fields. */
-                searchText?: string;
-                /** @description (Optional)The end cursor for use in pagination. */
-                endingBefore?: string;
-                /** @description (Optional)The start cursor for use in pagination. */
-                startingAfter?: string;
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Returned if the request is successful. */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkEditGetFields"];
-                };
-            };
-            /** @description Returned if the request is not valid. */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
-            };
-            /** @description Returned if the authentication credentials are incorrect or missing. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
-            };
-            /** @description Returned if the user does not have the necessary permission. */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
-            };
-            /** @description Returned if no editable fields are found for the provided issue IDs. */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
-            };
-        };
-    };
-    submitBulkEdit: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** @description The request body containing the issues to be edited and the new field values. */
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["IssueBulkEditPayload"];
-            };
-        };
-        responses: {
-            /** @description Returned if the request is successful. */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["SubmittedBulkOperation"];
-                };
-            };
-            /** @description Returned if the request is invalid. */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
-            };
-            /** @description Returned if the authentication credentials are incorrect or missing. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
-            };
-        };
-    };
-    submitBulkMove: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                /** @example {
-                 *       "sendBulkNotification": true,
-                 *       "targetToSourcesMapping": {
-                 *         "PROJECT-KEY,10001": {
-                 *           "inferClassificationDefaults": false,
-                 *           "inferFieldDefaults": false,
-                 *           "inferStatusDefaults": false,
-                 *           "inferSubtaskTypeDefault": true,
-                 *           "issueIdsOrKeys": [
-                 *             "ISSUE-1"
-                 *           ],
-                 *           "targetClassification": [
-                 *             {
-                 *               "classifications": {
-                 *                 "5bfa70f7-4af1-44f5-9e12-1ce185f15a38": [
-                 *                   "bd58e74c-c31b-41a7-ba69-9673ebd9dae9",
-                 *                   "-1"
-                 *                 ]
-                 *               }
-                 *             }
-                 *           ],
-                 *           "targetMandatoryFields": [
-                 *             {
-                 *               "fields": {
-                 *                 "customfield_10000": {
-                 *                   "retain": false,
-                 *                   "type": "raw",
-                 *                   "value": [
-                 *                     "value-1",
-                 *                     "value-2"
-                 *                   ]
-                 *                 },
-                 *                 "description": {
-                 *                   "retain": true,
-                 *                   "type": "adf",
-                 *                   "value": {
-                 *                     "content": [
-                 *                       {
-                 *                         "content": [
-                 *                           {
-                 *                             "text": "New description value",
-                 *                             "type": "text"
-                 *                           }
-                 *                         ],
-                 *                         "type": "paragraph"
-                 *                       }
-                 *                     ],
-                 *                     "type": "doc",
-                 *                     "version": 1
-                 *                   }
-                 *                 },
-                 *                 "fixVersions": {
-                 *                   "retain": false,
-                 *                   "type": "raw",
-                 *                   "value": [
-                 *                     "10009"
-                 *                   ]
-                 *                 },
-                 *                 "labels": {
-                 *                   "retain": false,
-                 *                   "type": "raw",
-                 *                   "value": [
-                 *                     "label-1",
-                 *                     "label-2"
-                 *                   ]
-                 *                 }
-                 *               }
-                 *             }
-                 *           ],
-                 *           "targetStatus": [
-                 *             {
-                 *               "statuses": {
-                 *                 "10001": [
-                 *                   "10002",
-                 *                   "10003"
-                 *                 ]
-                 *               }
-                 *             }
-                 *           ]
-                 *         }
-                 *       }
-                 *     } */
-                "application/json": components["schemas"]["IssueBulkMovePayload"];
-            };
-        };
-        responses: {
-            /** @description Returned if the request is successful. */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["SubmittedBulkOperation"];
-                };
-            };
-            /** @description Returned if the request is invalid. */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
-            };
-            /** @description Returned if the authentication credentials are incorrect or missing. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
-            };
-        };
-    };
-    getAvailableTransitions: {
-        parameters: {
-            query: {
-                /** @description Comma (,) separated Ids or keys of the issues to get transitions available for them. */
-                issueIdsOrKeys: string;
-                /** @description (Optional)The end cursor for use in pagination. */
-                endingBefore?: string;
-                /** @description (Optional)The start cursor for use in pagination. */
-                startingAfter?: string;
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Returned if the request is successful. */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkTransitionGetAvailableTransitions"];
-                };
-            };
-            /** @description Returned if the request is not valid. For example, if a provided issue ID or key is invalid. */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
-            };
-            /** @description Returned if the authentication credentials are incorrect or missing. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
-            };
-            /** @description Returned if the user does not have the necessary permission. */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
-            };
-        };
-    };
-    submitBulkTransition: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** @description The request body containing the issues to be transitioned. */
-        requestBody: {
-            content: {
-                /** @example {
-                 *       "bulkTransitionInputs": [
-                 *         {
-                 *           "selectedIssueIdsOrKeys": [
-                 *             "10001",
-                 *             "10002"
-                 *           ],
-                 *           "transitionId": "11"
-                 *         },
-                 *         {
-                 *           "selectedIssueIdsOrKeys": [
-                 *             "TEST-1"
-                 *           ],
-                 *           "transitionId": "2"
-                 *         }
-                 *       ],
-                 *       "sendBulkNotification": false
-                 *     } */
-                "application/json": components["schemas"]["IssueBulkTransitionPayload"];
-            };
-        };
-        responses: {
-            /** @description Returned if the request is successful. */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["SubmittedBulkOperation"];
-                };
-            };
-            /** @description Returned if the request is invalid. */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
-            };
-            /** @description Returned if the authentication credentials are incorrect or missing. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
-            };
-            /** @description Returned if the user does not have the necessary permission. */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
-            };
-        };
-    };
-    getBulkOperationProgress: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description The ID of the task. */
-                taskId: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Returned if the request is successful. */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationProgress"];
-                };
-            };
-            /** @description Returned if the request is invalid. */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
-            };
-            /** @description Returned if the authentication credentials are incorrect or missing. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkOperationErrorResponse"];
-                };
             };
         };
     };
@@ -26303,6 +26378,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"issueChangeLogs":[{"changeHistories":[{"author":{"accountId":"5b10a2844c20165700ede21g","active":true,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"},"created":1492070429,"id":"10001","items":[{"field":"fields","fieldId":"fieldId","fieldtype":"jira","fromString":"old summary","toString":"new summary"}]},{"author":{"accountId":"5b10a2844c20165700ede21g","active":true,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"},"created":1492071429,"id":"10002","items":[{"field":"fields","fieldId":"fieldId","fieldtype":"jira","fromString":"old summary 2","toString":"new summary 2"}]}],"issueId":"10100"}],"nextPageToken":"UxAQBFRF"} */
                     "application/json": components["schemas"]["BulkChangelogResponseBean"];
                 };
             };
@@ -26335,6 +26411,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"classifications":[{"id":"ari:cloud:platform::classification-tag/5bfa70f7-4af1-44f5-9e12-1ce185f15a38","status":"published","name":"Restricted","rank":1,"description":"Data we hold that would be very damaging and would cause loss of trust with customers and present legal risk to Atlassian and/or customers if mishandled","guideline":"Access to data must be restricted to only individuals who need access in order to perform their job duties.","color":"RED"},{"id":"ari:cloud:platform::classification-tag/bd58e74c-c31b-41a7-ba69-9673ebd9dae9","status":"archived","name":"Protected","rank":2,"description":"Data we hold that could cause loss of trust with customers or present legal risk to Atlassian if mishandled","guideline":"Access to systems or APIs mapping data to other identifiers must be carefully controlled.","color":"ORANGE"},{"id":"ari:cloud:platform::classification-tag/a82d653e-1035-4aa2-b9de-4265511fd487","status":"published","name":"Confidential","rank":3,"description":"Data we hold that would likely be damaging and could cause loss of trust with our customers if mishandled","guideline":"Data should be encrypted at rest and in transit.","color":"BLUE"},{"id":"ari:cloud:platform::classification-tag/a82d653e-1035-4aa2-b9de-4265511fd487","status":"published","name":"system-tag"}]} */
                     "application/json": components["schemas"]["DataClassificationLevelsBean"];
                 };
             };
@@ -26381,6 +26458,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":1048576,"startAt":0,"total":1,"values":[{"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.","created":"2021-01-17T12:34:00.000+0000","id":"10000","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/comment/10000","updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"Administrators","type":"role","value":"Administrators"}}]} */
                     "application/json": components["schemas"]["PageBeanComment"];
                 };
             };
@@ -26411,6 +26489,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"keys":[{"key":"issue.support","self":"https://your-domain.atlassian.net/rest/api/2/issue/EX-2/properties/issue.support"}]} */
                     "application/json": components["schemas"]["PropertyKeys"];
                 };
             };
@@ -26464,6 +26543,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"key":"issue.support","value":{"system.conversation.id":"b1bf38be-5e94-4b40-a3b8-9278735ee1e6","system.support.time":"1m"}} */
                     "application/json": components["schemas"]["EntityProperty"];
                 };
             };
@@ -26644,6 +26724,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":false,"maxResults":2,"startAt":0,"total":2,"values":[{"description":"This is a component","id":"10000","name":"Component1","self":"http://www.example.com/jira/rest/api/2/component/10000"},{"ari":"ari:cloud:graph::integration-context/ecda99d9-9b42-4bf7-8b4f-ecb5fcf5868c/component/10001","description":"This is a global component","id":"10001","metadata":{"key1":"value1","key2":"value2"},"name":"Component2","self":"http://www.example.com/jira/rest/api/2/component/10001"}]} */
                     "application/json": components["schemas"]["PageBean2ComponentJsonBean"];
                 };
             };
@@ -26690,6 +26771,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"ari":"ari:cloud:compass:fdb3fdec-4e70-be56-11ee-0242ac120002:component/fdb3fdec-4e70-11ee-be56-0242ac120002/fdb3fdec-11ee-4e70-be56-0242ac120002","assignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"assigneeType":"PROJECT_LEAD","description":"This is a Jira component","id":"10000","isAssigneeTypeValid":false,"lead":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"metadata":{"icon":"https://www.example.com/icon.png"},"name":"Component 1","project":"HSP","projectId":10000,"realAssignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"realAssigneeType":"PROJECT_LEAD","self":"https://your-domain.atlassian.net/rest/api/2/component/10000"} */
                     "application/json": components["schemas"]["ProjectComponent"];
                 };
             };
@@ -26747,6 +26829,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"ari":"ari:cloud:compass:fdb3fdec-4e70-be56-11ee-0242ac120002:component/fdb3fdec-4e70-11ee-be56-0242ac120002/fdb3fdec-11ee-4e70-be56-0242ac120002","assignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"assigneeType":"PROJECT_LEAD","description":"This is a Jira component","id":"10000","isAssigneeTypeValid":false,"lead":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"metadata":{"icon":"https://www.example.com/icon.png"},"name":"Component 1","project":"HSP","projectId":10000,"realAssignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"realAssigneeType":"PROJECT_LEAD","self":"https://your-domain.atlassian.net/rest/api/2/component/10000"} */
                     "application/json": components["schemas"]["ProjectComponent"];
                 };
             };
@@ -26795,6 +26878,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"ari":"ari:cloud:compass:fdb3fdec-4e70-be56-11ee-0242ac120002:component/fdb3fdec-4e70-11ee-be56-0242ac120002/fdb3fdec-11ee-4e70-be56-0242ac120002","assignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"assigneeType":"PROJECT_LEAD","description":"This is a Jira component","id":"10000","isAssigneeTypeValid":false,"lead":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"metadata":{"icon":"https://www.example.com/icon.png"},"name":"Component 1","project":"HSP","projectId":10000,"realAssignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"realAssigneeType":"PROJECT_LEAD","self":"https://your-domain.atlassian.net/rest/api/2/component/10000"} */
                     "application/json": components["schemas"]["ProjectComponent"];
                 };
             };
@@ -26899,6 +26983,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"issueCount":23,"self":"https://your-domain.atlassian.net/rest/api/2/component/10000"} */
                     "application/json": components["schemas"]["ComponentIssuesCount"];
                 };
             };
@@ -26933,6 +27018,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"attachmentsEnabled":true,"issueLinkingEnabled":true,"subTasksEnabled":false,"timeTrackingConfiguration":{"defaultUnit":"day","timeFormat":"pretty","workingDaysPerWeek":5.0,"workingHoursPerDay":8.0},"timeTrackingEnabled":true,"unassignedIssuesAllowed":false,"votingEnabled":true,"watchingEnabled":true} */
                     "application/json": components["schemas"]["Configuration"];
                 };
             };
@@ -26960,6 +27046,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"key":"Jira","name":"JIRA provided time tracking","url":"/example/config/url"} */
                     "application/json": components["schemas"]["TimeTrackingProvider"];
                 };
             };
@@ -27051,6 +27138,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"key":"Jira","name":"JIRA provided time tracking","url":"/example/config/url"}] */
                     "application/json": components["schemas"]["TimeTrackingProvider"][];
                 };
             };
@@ -27085,6 +27173,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultUnit":"hour","timeFormat":"pretty","workingDaysPerWeek":5.5,"workingHoursPerDay":7.6} */
                     "application/json": components["schemas"]["TimeTrackingConfiguration"];
                 };
             };
@@ -27129,6 +27218,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultUnit":"hour","timeFormat":"pretty","workingDaysPerWeek":5.5,"workingHoursPerDay":7.6} */
                     "application/json": components["schemas"]["TimeTrackingConfiguration"];
                 };
             };
@@ -27173,6 +27263,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"self":"https://your-domain.atlassian.net/rest/api/2/customFieldOption/10000","value":"To Do"} */
                     "application/json": components["schemas"]["CustomFieldOption"];
                 };
             };
@@ -27220,6 +27311,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"dashboards":[{"id":"10000","isFavourite":false,"name":"System Dashboard","popularity":1,"self":"https://your-domain.atlassian.net/rest/api/2/dashboard/10000","sharePermissions":[{"type":"global"}],"view":"https://your-domain.atlassian.net/secure/Dashboard.jspa?selectPageId=10000"},{"id":"20000","isFavourite":true,"name":"Build Engineering","owner":{"key":"Mia","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","name":"mia","displayName":"Mia Krystof","avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"}},"popularity":1,"self":"https://your-domain.atlassian.net/rest/api/2/dashboard/20000","sharePermissions":[{"group":{"name":"administrators","self":"https://your-domain.atlassian.net/rest/api/2/group?groupname=administrators"},"id":10105,"type":"group"}],"view":"https://your-domain.atlassian.net/secure/Dashboard.jspa?selectPageId=20000"}],"maxResults":10,"next":"https://your-domain.atlassian.net/rest/api/2/dashboard?startAt=10","prev":"https://your-domain.atlassian.net/rest/api/2/dashboard?startAt=0","startAt":10,"total":143} */
                     "application/json": components["schemas"]["PageOfDashboards"];
                 };
             };
@@ -27276,6 +27368,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"10000","isFavourite":false,"name":"System Dashboard","popularity":1,"self":"https://your-domain.atlassian.net/rest/api/2/dashboard/10000","sharePermissions":[{"type":"global"}],"view":"https://your-domain.atlassian.net/secure/Dashboard.jspa?selectPageId=10000"} */
                     "application/json": components["schemas"]["Dashboard"];
                 };
             };
@@ -27346,6 +27439,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"action":"changePermission","entityErrors":{"10002":{"errorMessages":["Only owner or editors of the dashboard can change permissions."],"errors":{}}}} */
                     "application/json": components["schemas"]["BulkEditShareableEntityResponse"];
                 };
             };
@@ -27384,6 +27478,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"gadgets":[{"moduleKey":"com.atlassian.plugins.atlassian-connect-plugin:com.atlassian.connect.node.sample-addon__sample-dashboard-item","title":"Issue statistics"},{"uri":"rest/gadgets/1.0/g/com.atlassian.streams.streams-jira-plugin:activitystream-gadget/gadgets/activitystream-gadget.xml","title":"Activity Stream"}]} */
                     "application/json": components["schemas"]["AvailableDashboardGadgetsResponse"];
                 };
             };
@@ -27461,6 +27556,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"self":"https://your-domain.atlassian.net/rest/api/2/dashboard/search?expand=owner&maxResults=50&startAt=0","startAt":0,"total":2,"values":[{"description":"Testing program","id":"1","isFavourite":true,"name":"Testing","owner":{"self":"https://your-domain.atlassian.net/user?accountId=5b10a2844c20165700ede21g","displayName":"Mia","active":true,"accountId":"5b10a2844c20165700ede21g","avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"}},"popularity":1,"self":"https://your-domain.atlassian.net/rest/api/2/dashboard/1","sharePermissions":[{"type":"global"}],"view":"https://your-domain.atlassian.net/Dashboard.jspa?selectPageId=1"},{"description":"Quantum initiative","id":"2","isFavourite":false,"name":"Quantum ","owner":{"self":"https://your-domain.atlassian.net/user?accountId=5b10a2844c20165700ede21g","displayName":"Mia","active":true,"accountId":"5b10a2844c20165700ede21g","avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"}},"popularity":0,"self":"https://your-domain.atlassian.net/rest/api/2/dashboard/2","sharePermissions":[{"type":"loggedin"}],"view":"https://your-domain.atlassian.net/Dashboard.jspa?selectPageId=2"}]} */
                     "application/json": components["schemas"]["PageBeanDashboard"];
                 };
             };
@@ -27514,6 +27610,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"gadgets":[{"id":10001,"moduleKey":"com.atlassian.plugins.atlassian-connect-plugin:com.atlassian.connect.node.sample-addon__sample-dashboard-item","color":"blue","position":{"row":0,"column":0},"title":"Issue statistics"},{"id":10002,"moduleKey":"com.atlassian.plugins.atlassian-connect-plugin:com.atlassian.connect.node.sample-addon__sample-dashboard-graph","color":"red","position":{"row":1,"column":0},"title":"Activity stream"},{"id":10003,"moduleKey":"com.atlassian.plugins.atlassian-connect-plugin:com.atlassian.connect.node.sample-addon__sample-dashboard-item","color":"yellow","position":{"row":0,"column":1},"title":"Bubble chart"}]} */
                     "application/json": components["schemas"]["DashboardGadgetResponse"];
                 };
             };
@@ -27530,6 +27627,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The dashboard you requested either does not exist or you don't have the required permissions to perform this action."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -27567,6 +27665,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"color":"blue","id":10001,"moduleKey":"com.atlassian.plugins.atlassian-connect-plugin:com.atlassian.connect.node.sample-addon__sample-dashboard-item","position":{"column":1,"row":0},"title":"Issue statistics"} */
                     "application/json": components["schemas"]["DashboardGadget"];
                 };
             };
@@ -27576,6 +27675,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Cannot add another gadget. The maximum number of gadgets the dashboard can hold has been reached."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -27592,6 +27692,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The dashboard you requested either does not exist or you don't have the required permissions to perform this action."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -27638,6 +27739,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The gadget cannot be placed in the selected row. The selected row does not exist on the dashboard."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -27654,6 +27756,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The dashboard you requested either does not exist or you don't have the required permissions to perform this action."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -27695,6 +27798,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The dashboard gadget was not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -27720,6 +27824,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"keys":[{"key":"issue.support","self":"https://your-domain.atlassian.net/rest/api/2/issue/EX-2/properties/issue.support"}]} */
                     "application/json": components["schemas"]["PropertyKeys"];
                 };
             };
@@ -27765,6 +27870,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"key":"issue.support","value":{"system.conversation.id":"b1bf38be-5e94-4b40-a3b8-9278735ee1e6","system.support.time":"1m"}} */
                     "application/json": components["schemas"]["EntityProperty"];
                 };
             };
@@ -27844,6 +27950,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The JSON data provided for the property has too many levels. It must be an object with all keys and values as strings."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -27957,6 +28064,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"10000","isFavourite":false,"name":"System Dashboard","popularity":1,"self":"https://your-domain.atlassian.net/rest/api/2/dashboard/10000","sharePermissions":[{"type":"global"}],"view":"https://your-domain.atlassian.net/secure/Dashboard.jspa?selectPageId=10000"} */
                     "application/json": components["schemas"]["Dashboard"];
                 };
             };
@@ -28023,6 +28131,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"10000","isFavourite":false,"name":"System Dashboard","popularity":1,"self":"https://your-domain.atlassian.net/rest/api/2/dashboard/10000","sharePermissions":[{"type":"global"}],"view":"https://your-domain.atlassian.net/secure/Dashboard.jspa?selectPageId=10000"} */
                     "application/json": components["schemas"]["Dashboard"];
                 };
             };
@@ -28129,6 +28238,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"10000","isFavourite":false,"name":"System Dashboard","popularity":1,"self":"https://your-domain.atlassian.net/rest/api/2/dashboard/10000","sharePermissions":[{"type":"global"}],"view":"https://your-domain.atlassian.net/secure/Dashboard.jspa?selectPageId=10000"} */
                     "application/json": components["schemas"]["Dashboard"];
                 };
             };
@@ -28176,6 +28286,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"anyContentBlocked":false} */
                     "application/json": components["schemas"]["WorkspaceDataPolicy"];
                 };
             };
@@ -28185,6 +28296,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only apps can access this resource."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -28194,6 +28306,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":[""],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -28217,6 +28330,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"projectDataPolicies":[{"dataPolicy":{"anyContentBlocked":false},"id":1000},{"dataPolicy":{"anyContentBlocked":true},"id":1001}]} */
                     "application/json": components["schemas"]["ProjectDataPolicies"];
                 };
             };
@@ -28226,6 +28340,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Invalid request: some projects are not available or do not exist."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -28235,6 +28350,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only apps can access this resource."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -28244,6 +28360,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":[""],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -28264,6 +28381,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"id":1,"name":"Issue Created"},{"id":2,"name":"Issue Updated"}] */
                     "application/json": components["schemas"]["IssueEvent"][];
                 };
             };
@@ -28320,6 +28438,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"results":[{"expression":"analysed expression","errors":[{"line":1,"column":4,"message":"!, -, typeof, (, IDENTIFIER, null, true, false, NUMBER, STRING, TEMPLATE_LITERAL, new, [ or { expected, > encountered.","type":"syntax"},{"message":"Jira expression is too long (1040), limit: 1000 characters","type":"other"},{"message":"Jira expression has too many nodes (150), limit: 100 leaves","type":"other"}],"valid":false},{"expression":"issues.map(i => {idAndKey: [i.id, i.key], summary: i.summary, comments: i.comments})","valid":true,"type":"List<{idAndKey: [Number, String], summary: String, comments: List<Comment>}>","complexity":{"expensiveOperations":"N","variables":{"N":"issues"}}},{"expression":"issues.map(i => i.id > '0')","errors":[{"expression":"i.id > 0","message":"Can't compare Number to String.","type":"type"}],"valid":false,"type":"TypeError"}]} */
                     "application/json": components["schemas"]["JiraExpressionsAnalysis"];
                 };
             };
@@ -28421,6 +28540,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"value":"The expression's result. This value can be any JSON, not necessarily a String","meta":{"complexity":{"steps":{"value":1,"limit":10000},"expensiveOperations":{"value":3,"limit":10},"beans":{"value":0,"limit":1000},"primitiveValues":{"value":1,"limit":10000}},"issues":{"jql":{"startAt":0,"maxResults":1000,"count":140,"totalCount":140,"validationWarnings":["There is a problem with the JQL query."]}}}} */
                     "application/json": components["schemas"]["JiraExpressionResult"];
                 };
             };
@@ -28436,6 +28556,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Evaluation failed: \"issue['a' + 'b']\" - Unrecognized property of `issue`: \"ab\" ('a' + 'b'). Available properties of type 'Issue' are: 'assignee', 'comments', 'description', 'id', 'issueType', 'key', 'priority', 'project', 'properties', 'reporter', 'status', 'summary'"],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -28452,6 +28573,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Issue does not exist or you do not have permission to see it."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -28527,6 +28649,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"value":"The expression's result. This value can be any JSON, not necessarily a String","meta":{"complexity":{"steps":{"value":1,"limit":10000},"expensiveOperations":{"value":3,"limit":10},"beans":{"value":0,"limit":1000},"primitiveValues":{"value":1,"limit":10000}},"issues":{"jql":{"nextPageToken":"EgQIlMIC"}}}} */
                     "application/json": components["schemas"]["JExpEvaluateJiraExpressionResultBean"];
                 };
             };
@@ -28544,6 +28667,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Evaluation failed: \"issue['a' + 'b']\" - Unrecognized property of `issue`: \"ab\" ('a' + 'b'). Available properties of type 'Issue' are: 'assignee', 'comments', 'description', 'id', 'issueType', 'key', 'priority', 'project', 'properties', 'reporter', 'status', 'summary'"],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -28560,6 +28684,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Issue does not exist or you do not have permission to see it."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -28580,6 +28705,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"clauseNames":["description"],"custom":false,"id":"description","name":"Description","navigable":true,"orderable":true,"schema":{"system":"description","type":"string"},"searchable":true},{"clauseNames":["summary"],"custom":false,"id":"summary","key":"summary","name":"Summary","navigable":true,"orderable":true,"schema":{"system":"summary","type":"string"},"searchable":true}] */
                     "application/json": components["schemas"]["FieldDetails"][];
                 };
             };
@@ -28618,6 +28744,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"clauseNames":["cf[10101]","New custom field"],"custom":true,"id":"customfield_10101","key":"customfield_10101","name":"New custom field","navigable":true,"orderable":true,"schema":{"custom":"com.atlassian.jira.plugin.system.customfieldtypes:project","customId":10101,"type":"project"},"searchable":true,"untranslatedName":"New custom field"} */
                     "application/json": components["schemas"]["FieldDetails"];
                 };
             };
@@ -28626,6 +28753,142 @@ export interface operations {
              *      *  the user does not have permission to create custom fields.
              *      *  any of the request object properties have invalid or missing values. */
             400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    createAssociations: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Payload containing the fields to associate and the projects to associate them to. */
+        requestBody: {
+            content: {
+                /** @example {
+                 *       "associationContexts": [
+                 *         {
+                 *           "identifier": 10000,
+                 *           "type": "PROJECT_ID"
+                 *         },
+                 *         {
+                 *           "identifier": 10001,
+                 *           "type": "PROJECT_ID"
+                 *         }
+                 *       ],
+                 *       "fields": [
+                 *         {
+                 *           "identifier": "customfield_10000",
+                 *           "type": "FIELD_ID"
+                 *         },
+                 *         {
+                 *           "identifier": "customfield_10001",
+                 *           "type": "FIELD_ID"
+                 *         }
+                 *       ]
+                 *     } */
+                "application/json": components["schemas"]["FieldAssociationsRequest"];
+            };
+        };
+        responses: {
+            /** @description Returned if the field association validation passes. */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Returned if the request is invalid. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if the authentication credentials are incorrect or missing. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if the field, project, or issue type is not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    removeAssociations: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Payload containing the fields to uassociate and the projects and issue types to unassociate them to. */
+        requestBody: {
+            content: {
+                /** @example {
+                 *       "associationContexts": [
+                 *         {
+                 *           "identifier": 10000,
+                 *           "type": "PROJECT_ID"
+                 *         },
+                 *         {
+                 *           "identifier": 10001,
+                 *           "type": "PROJECT_ID"
+                 *         }
+                 *       ],
+                 *       "fields": [
+                 *         {
+                 *           "identifier": "customfield_10000",
+                 *           "type": "FIELD_ID"
+                 *         },
+                 *         {
+                 *           "identifier": "customfield_10001",
+                 *           "type": "FIELD_ID"
+                 *         }
+                 *       ]
+                 *     } */
+                "application/json": components["schemas"]["FieldAssociationsRequest"];
+            };
+        };
+        responses: {
+            /** @description Returned if the field association validation passes. */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Returned if the request is invalid. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if the authentication credentials are incorrect or missing. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if the field, project, or issue type is not found. */
+            404: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -28663,6 +28926,7 @@ export interface operations {
                  *      *  `isLocked` returns information about whether the field is locked
                  *      *  `searcherKey` returns the searcher key for each custom field */
                 expand?: string;
+                projectIds?: number[];
             };
             header?: never;
             path?: never;
@@ -28676,6 +28940,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":false,"maxResults":50,"startAt":0,"total":2,"values":[{"id":"customfield_10000","name":"Approvers","schema":{"custom":"com.atlassian.jira.plugin.system.customfieldtypes:multiuserpicker","customId":10000,"items":"user","type":"array"},"description":"Contains users needed for approval. This custom field was created by Jira Service Desk.","key":"customfield_10000","stableId":"sfid:approvers","isLocked":true,"searcherKey":"com.atlassian.jira.plugin.system.customfieldtypes:userpickergroupsearcher","screensCount":2,"contextsCount":2,"lastUsed":{"type":"TRACKED","value":"2021-01-28T07:37:40.000+0000"}},{"id":"customfield_10001","name":"Change reason","schema":{"custom":"com.atlassian.jira.plugin.system.customfieldtypes:select","customId":10001,"type":"option"},"description":"Choose the reason for the change request","key":"customfield_10001","stableId":"sfid:change-reason","isLocked":false,"searcherKey":"com.atlassian.jira.plugin.system.customfieldtypes:multiselectsearcher","screensCount":2,"contextsCount":2,"projectsCount":2,"lastUsed":{"type":"NOT_TRACKED"}}]} */
                     "application/json": components["schemas"]["PageBeanField"];
                 };
             };
@@ -28685,6 +28950,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only custom fields can be queried."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -28701,6 +28967,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access fields."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -28736,6 +29003,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":false,"maxResults":50,"startAt":0,"total":1,"values":[{"id":"customfield_10000","name":"Approvers","schema":{"custom":"com.atlassian.jira.plugin.system.customfieldtypes:multiuserpicker","customId":10003,"type":"array"},"description":"Contains users needed for approval. This custom field was created by Jira Service Desk.","key":"customfield_10003","trashedDate":"2022-10-06T07:32:47.000+0000","trashedBy":{"accountId":"5b10a2844c20165700ede21g","active":true,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"},"plannedDeletionDate":"2022-10-24T07:32:47.000+0000"}]} */
                     "application/json": components["schemas"]["PageBeanField"];
                 };
             };
@@ -28745,6 +29013,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only custom fields can be queried."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -28761,6 +29030,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access fields."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -28803,6 +29073,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["searcherKey is invalid for the field type."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -28819,6 +29090,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can edit custom fields."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -28828,6 +29100,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The custom field was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -28862,6 +29135,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"startAt":0,"total":2,"values":[{"id":"10025","name":"Bug fields context","description":"A context used to define the custom field options for bugs.","isGlobalContext":true,"isAnyIssueType":false},{"id":"10026","name":"Task fields context","description":"A context used to define the custom field options for tasks.","isGlobalContext":false,"isAnyIssueType":false}]} */
                     "application/json": components["schemas"]["PageBeanCustomFieldContext"];
                 };
             };
@@ -28878,6 +29152,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access custom field contexts."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -28887,6 +29162,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The custom field was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -28922,6 +29198,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"10025","name":"Bug fields context","description":"A context used to define the custom field options for bugs.","projectIds":[],"issueTypeIds":["10010"]} */
                     "application/json": components["schemas"]["CreateCustomFieldContext"];
                 };
             };
@@ -28952,6 +29229,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Sub-tasks are disabled in Jira. At least one of the issue types is a sub-task."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -28982,6 +29260,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":50,"startAt":0,"total":3,"values":[{"contextId":"10100","optionId":"10001"},{"contextId":"10101","optionId":"10003"},{"contextId":"10103"}]} */
                     "application/json": components["schemas"]["PageBeanCustomFieldContextDefaultValue"];
                 };
             };
@@ -28998,6 +29277,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access custom field contexts."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29007,6 +29287,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The custom field was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29062,6 +29343,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["All default values in the request must have the same type."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29078,6 +29360,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access custom field contexts."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29087,6 +29370,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The context was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29117,6 +29401,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"startAt":0,"total":3,"values":[{"contextId":"10001","issueTypeId":"10010"},{"contextId":"10001","issueTypeId":"10011"},{"contextId":"10002","isAnyIssueType":true}]} */
                     "application/json": components["schemas"]["PageBeanIssueTypeToContextMapping"];
                 };
             };
@@ -29133,6 +29418,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access custom field contexts."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29182,6 +29468,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":50,"startAt":0,"total":3,"values":[{"projectId":"10000","issueTypeId":"10000","contextId":"10000"},{"projectId":"10000","issueTypeId":"10001","contextId":null},{"projectId":"10001","issueTypeId":"10002","contextId":"10003"}]} */
                     "application/json": components["schemas"]["PageBeanContextForProjectAndIssueType"];
                 };
             };
@@ -29191,6 +29478,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Duplicate project and issue type mappings cannot be provided."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29207,6 +29495,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access custom field contexts."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29216,6 +29505,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["These projects were not found: 10005."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29246,6 +29536,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"startAt":0,"total":2,"values":[{"contextId":"10025","projectId":"10001"},{"contextId":"10026","isGlobalContext":true}]} */
                     "application/json": components["schemas"]["PageBeanCustomFieldContextProjectMapping"];
                 };
             };
@@ -29262,6 +29553,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access custom field contexts."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29271,6 +29563,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The custom field was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29313,6 +29606,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The contextId has to be provided."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29329,6 +29623,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access custom field contexts."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29338,6 +29633,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The context was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29372,6 +29668,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The contextId has to be provided."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29388,6 +29685,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access custom field contexts."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29397,6 +29695,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The context was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29442,6 +29741,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["These issue types are already associated with the context: 10001."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29458,6 +29758,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access custom field contexts."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29467,6 +29768,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The context was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29476,6 +29778,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Sub-tasks are disabled in Jira. At least one of the issue types is a sub-task."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29521,6 +29824,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["These issue types are not associated with the context: 10002."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29537,6 +29841,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access custom field contexts."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29546,6 +29851,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The context was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29580,6 +29886,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"startAt":0,"total":4,"values":[{"id":"10001","value":"New York"},{"id":"10002","value":"Boston","disabled":true},{"id":"10004","value":"Denver"},{"id":"10003","value":"Brooklyn","optionId":"10001"}]} */
                     "application/json": components["schemas"]["PageBeanCustomFieldContextOption"];
                 };
             };
@@ -29589,6 +29896,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The custom field doesn't support options."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29605,6 +29913,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can manage custom field options."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29614,6 +29923,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The custom field was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29662,6 +29972,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"options":[{"disabled":false,"id":"10001","value":"Scranton"},{"disabled":true,"id":"10002","value":"Manhattan"},{"disabled":false,"id":"10003","value":"The Electric City"}]} */
                     "application/json": components["schemas"]["CustomFieldUpdatedContextOptionsList"];
                 };
             };
@@ -29671,6 +29982,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The custom field doesn't support options."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29687,6 +29999,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can manage custom field options."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29696,6 +30009,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The custom field was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29742,6 +30056,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"options":[{"disabled":false,"id":"10001","value":"Scranton"},{"disabled":true,"id":"10002","optionId":"10000","value":"Manhattan"},{"disabled":false,"id":"10003","value":"The Electric City"}]} */
                     "application/json": components["schemas"]["CustomFieldCreatedContextOptionsList"];
                 };
             };
@@ -29751,6 +30066,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The custom field doesn't support options."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29767,6 +30083,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can manage custom field options."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29776,6 +30093,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The custom field was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29821,6 +30139,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["'after' and 'position' were provided. Only 'after' or 'position' can be specified."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29837,6 +30156,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can manage custom field options."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29846,6 +30166,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The custom field was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29880,6 +30201,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The custom field doesn't support options."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29896,6 +30218,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can manage custom field options."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29905,6 +30228,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The custom field was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -29937,6 +30261,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"self":"https://your-domain.atlassian.net/rest/api/2/task/1","id":"1","description":"Remove option 1 from issues matched by '*', and replace with option 3","status":"COMPLETE","result":{"errors":{"errorMessages":["Option 2 cannot be set on issue MKY-5 as it is not in the correct scope"],"errors":{},"httpStatusCode":{"empty":false,"present":true}},"modifiedIssues":[10001,10010],"unmodifiedIssues":[10005]},"elapsedRuntime":42} */
                     "application/json": components["schemas"]["TaskProgressBeanRemoveOptionFromIssuesResult"];
                 };
             };
@@ -29953,6 +30278,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Connect and Forge app users with Administer Jira global permission can override screen security."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -30005,6 +30331,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The projectIds must not contain duplicates."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -30021,6 +30348,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access custom field contexts."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -30030,6 +30358,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The context was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -30075,6 +30404,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The projectIds must not contain duplicates."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -30091,6 +30421,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access custom field contexts."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -30100,6 +30431,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The context was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -30128,6 +30460,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":false,"maxResults":1,"startAt":0,"total":5,"values":[{"id":10001,"name":"Default Context"}]} */
                     "application/json": components["schemas"]["PageBeanContext"];
                 };
             };
@@ -30172,6 +30505,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":false,"maxResults":1,"startAt":0,"total":5,"values":[{"id":10001,"name":"Default Screen","description":"Provides for the update of all system fields.","tab":{"id":10000,"name":"Fields Tab"}}]} */
                     "application/json": components["schemas"]["PageBeanScreenWithTab"];
                 };
             };
@@ -30204,7 +30538,7 @@ export interface operations {
                 /** @description The field key is specified in the following format: **$(app-key)\_\_$(field-key)**. For example, *example-add-on\_\_example-issue-field*. To determine the `fieldKey` value, do one of the following:
                  *
                  *      *  open the app's plugin descriptor, then **app-key** is the key at the top and **field-key** is the key in the `jiraIssueFields` module. **app-key** can also be found in the app listing in the Atlassian Universal Plugin Manager.
-                 *      *  run [Get fields](#api-rest-api-3-field-get) and in the field details the value is returned in `key`. For example, `"key": "teams-add-on__team-issue-field"` */
+                 *      *  run [Get fields](#api-rest-api-2-field-get) and in the field details the value is returned in `key`. For example, `"key": "teams-add-on__team-issue-field"` */
                 fieldKey: string;
             };
             cookie?: never;
@@ -30217,6 +30551,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":false,"maxResults":1,"nextPage":"https://your-domain.atlassian.net/rest/api/2/field/fieldKey/option?startAt=1&maxResults=1","self":"https://your-domain.atlassian.net/rest/api/2/field/fieldKey/option?startAt=0&maxResults=1","startAt":0,"total":10,"values":[{"id":1,"value":"Team 1","properties":{"leader":{"name":"Leader Name","email":"lname@example.com"},"members":42,"description":"The team's description","founded":"2016-06-06"},"config":{"scope":{"projects":[],"projects2":[{"id":1001,"attributes":["notSelectable"]},{"id":1002,"attributes":["notSelectable"]}],"global":{}},"attributes":[]}}]} */
                     "application/json": components["schemas"]["PageBeanIssueFieldOption"];
                 };
             };
@@ -30244,7 +30579,7 @@ export interface operations {
                 /** @description The field key is specified in the following format: **$(app-key)\_\_$(field-key)**. For example, *example-add-on\_\_example-issue-field*. To determine the `fieldKey` value, do one of the following:
                  *
                  *      *  open the app's plugin descriptor, then **app-key** is the key at the top and **field-key** is the key in the `jiraIssueFields` module. **app-key** can also be found in the app listing in the Atlassian Universal Plugin Manager.
-                 *      *  run [Get fields](#api-rest-api-3-field-get) and in the field details the value is returned in `key`. For example, `"key": "teams-add-on__team-issue-field"` */
+                 *      *  run [Get fields](#api-rest-api-2-field-get) and in the field details the value is returned in `key`. For example, `"key": "teams-add-on__team-issue-field"` */
                 fieldKey: string;
             };
             cookie?: never;
@@ -30294,6 +30629,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":1,"value":"Team 1","properties":{"leader":{"name":"Leader Name","email":"lname@example.com"},"members":42,"description":"The team's description","founded":"2016-06-06"},"config":{"scope":{"projects":[],"projects2":[{"id":1001,"attributes":["notSelectable"]},{"id":1002,"attributes":["notSelectable"]}],"global":{}},"attributes":[]}} */
                     "application/json": components["schemas"]["IssueFieldOption"];
                 };
             };
@@ -30335,7 +30671,7 @@ export interface operations {
                 /** @description The field key is specified in the following format: **$(app-key)\_\_$(field-key)**. For example, *example-add-on\_\_example-issue-field*. To determine the `fieldKey` value, do one of the following:
                  *
                  *      *  open the app's plugin descriptor, then **app-key** is the key at the top and **field-key** is the key in the `jiraIssueFields` module. **app-key** can also be found in the app listing in the Atlassian Universal Plugin Manager.
-                 *      *  run [Get fields](#api-rest-api-3-field-get) and in the field details the value is returned in `key`. For example, `"key": "teams-add-on__team-issue-field"` */
+                 *      *  run [Get fields](#api-rest-api-2-field-get) and in the field details the value is returned in `key`. For example, `"key": "teams-add-on__team-issue-field"` */
                 fieldKey: string;
             };
             cookie?: never;
@@ -30348,6 +30684,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":false,"maxResults":1,"nextPage":"https://your-domain.atlassian.net/rest/api/2/field/fieldKey/option/suggestions?startAt=1&maxResults=1","self":"https://your-domain.atlassian.net/rest/api/2/field/fieldKey/option/suggestions?startAt=0&maxResults=1","startAt":0,"total":10,"values":[{"id":1,"value":"Team 1","properties":{"leader":{"name":"Leader Name","email":"lname@example.com"},"members":42,"description":"The team's description","founded":"2016-06-06"}}]} */
                     "application/json": components["schemas"]["PageBeanIssueFieldOption"];
                 };
             };
@@ -30382,7 +30719,7 @@ export interface operations {
                 /** @description The field key is specified in the following format: **$(app-key)\_\_$(field-key)**. For example, *example-add-on\_\_example-issue-field*. To determine the `fieldKey` value, do one of the following:
                  *
                  *      *  open the app's plugin descriptor, then **app-key** is the key at the top and **field-key** is the key in the `jiraIssueFields` module. **app-key** can also be found in the app listing in the Atlassian Universal Plugin Manager.
-                 *      *  run [Get fields](#api-rest-api-3-field-get) and in the field details the value is returned in `key`. For example, `"key": "teams-add-on__team-issue-field"` */
+                 *      *  run [Get fields](#api-rest-api-2-field-get) and in the field details the value is returned in `key`. For example, `"key": "teams-add-on__team-issue-field"` */
                 fieldKey: string;
             };
             cookie?: never;
@@ -30395,6 +30732,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":false,"maxResults":1,"nextPage":"https://your-domain.atlassian.net/rest/api/2/field/fieldKey/option/suggestions?startAt=1&maxResults=1","self":"https://your-domain.atlassian.net/rest/api/2/field/fieldKey/option/suggestions?startAt=0&maxResults=1","startAt":0,"total":10,"values":[{"id":1,"value":"Team 1","properties":{"leader":{"name":"Leader Name","email":"lname@example.com"},"members":42,"description":"The team's description","founded":"2016-06-06"}}]} */
                     "application/json": components["schemas"]["PageBeanIssueFieldOption"];
                 };
             };
@@ -30422,7 +30760,7 @@ export interface operations {
                 /** @description The field key is specified in the following format: **$(app-key)\_\_$(field-key)**. For example, *example-add-on\_\_example-issue-field*. To determine the `fieldKey` value, do one of the following:
                  *
                  *      *  open the app's plugin descriptor, then **app-key** is the key at the top and **field-key** is the key in the `jiraIssueFields` module. **app-key** can also be found in the app listing in the Atlassian Universal Plugin Manager.
-                 *      *  run [Get fields](#api-rest-api-3-field-get) and in the field details the value is returned in `key`. For example, `"key": "teams-add-on__team-issue-field"` */
+                 *      *  run [Get fields](#api-rest-api-2-field-get) and in the field details the value is returned in `key`. For example, `"key": "teams-add-on__team-issue-field"` */
                 fieldKey: string;
                 /** @description The ID of the option to be returned. */
                 optionId: number;
@@ -30437,6 +30775,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":1,"value":"Team 1","properties":{"leader":{"name":"Leader Name","email":"lname@example.com"},"members":42,"description":"The team's description","founded":"2016-06-06"},"config":{"scope":{"projects":[],"projects2":[{"id":1001,"attributes":["notSelectable"]},{"id":1002,"attributes":["notSelectable"]}],"global":{}},"attributes":[]}} */
                     "application/json": components["schemas"]["IssueFieldOption"];
                 };
             };
@@ -30471,7 +30810,7 @@ export interface operations {
                 /** @description The field key is specified in the following format: **$(app-key)\_\_$(field-key)**. For example, *example-add-on\_\_example-issue-field*. To determine the `fieldKey` value, do one of the following:
                  *
                  *      *  open the app's plugin descriptor, then **app-key** is the key at the top and **field-key** is the key in the `jiraIssueFields` module. **app-key** can also be found in the app listing in the Atlassian Universal Plugin Manager.
-                 *      *  run [Get fields](#api-rest-api-3-field-get) and in the field details the value is returned in `key`. For example, `"key": "teams-add-on__team-issue-field"` */
+                 *      *  run [Get fields](#api-rest-api-2-field-get) and in the field details the value is returned in `key`. For example, `"key": "teams-add-on__team-issue-field"` */
                 fieldKey: string;
                 /** @description The ID of the option to be updated. */
                 optionId: number;
@@ -30524,6 +30863,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":1,"value":"Team 1","properties":{"leader":{"name":"Leader Name","email":"lname@example.com"},"members":42,"description":"The team's description","founded":"2016-06-06"},"config":{"scope":{"projects":[],"projects2":[{"id":1001,"attributes":["notSelectable"]},{"id":1002,"attributes":["notSelectable"]}],"global":{}},"attributes":[]}} */
                     "application/json": components["schemas"]["IssueFieldOption"];
                 };
             };
@@ -30558,7 +30898,7 @@ export interface operations {
                 /** @description The field key is specified in the following format: **$(app-key)\_\_$(field-key)**. For example, *example-add-on\_\_example-issue-field*. To determine the `fieldKey` value, do one of the following:
                  *
                  *      *  open the app's plugin descriptor, then **app-key** is the key at the top and **field-key** is the key in the `jiraIssueFields` module. **app-key** can also be found in the app listing in the Atlassian Universal Plugin Manager.
-                 *      *  run [Get fields](#api-rest-api-3-field-get) and in the field details the value is returned in `key`. For example, `"key": "teams-add-on__team-issue-field"` */
+                 *      *  run [Get fields](#api-rest-api-2-field-get) and in the field details the value is returned in `key`. For example, `"key": "teams-add-on__team-issue-field"` */
                 fieldKey: string;
                 /** @description The ID of the option to be deleted. */
                 optionId: number;
@@ -30616,7 +30956,7 @@ export interface operations {
                 /** @description The field key is specified in the following format: **$(app-key)\_\_$(field-key)**. For example, *example-add-on\_\_example-issue-field*. To determine the `fieldKey` value, do one of the following:
                  *
                  *      *  open the app's plugin descriptor, then **app-key** is the key at the top and **field-key** is the key in the `jiraIssueFields` module. **app-key** can also be found in the app listing in the Atlassian Universal Plugin Manager.
-                 *      *  run [Get fields](#api-rest-api-3-field-get) and in the field details the value is returned in `key`. For example, `"key": "teams-add-on__team-issue-field"` */
+                 *      *  run [Get fields](#api-rest-api-2-field-get) and in the field details the value is returned in `key`. For example, `"key": "teams-add-on__team-issue-field"` */
                 fieldKey: string;
                 /** @description The ID of the option to be deselected. */
                 optionId: number;
@@ -30631,6 +30971,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"self":"https://your-domain.atlassian.net/rest/api/2/task/1","id":"1","description":"Remove option 1 from issues matched by '*', and replace with option 3","status":"COMPLETE","result":{"errors":{"errorMessages":["Option 2 cannot be set on issue MKY-5 as it is not in the correct scope"],"errors":{},"httpStatusCode":{"empty":false,"present":true}},"modifiedIssues":[10001,10010],"unmodifiedIssues":[10005]},"elapsedRuntime":42} */
                     "application/json": components["schemas"]["TaskProgressBeanRemoveOptionFromIssuesResult"];
                 };
             };
@@ -30647,6 +30988,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Connect and Forge app users with Administer Jira global permission can override screen security."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -30875,6 +31217,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":50,"startAt":0,"total":2,"values":[{"id":10000,"name":"Default Field Configuration","description":"The default field configuration description","isDefault":true},{"id":10001,"name":"My Field Configuration","description":"My field configuration description"}]} */
                     "application/json": components["schemas"]["PageBeanFieldConfigurationDetails"];
                 };
             };
@@ -30917,6 +31260,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"description":"My field configuration description","id":10001,"name":"My Field Configuration"} */
                     "application/json": components["schemas"]["FieldConfiguration"];
                 };
             };
@@ -31076,6 +31420,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":50,"startAt":0,"total":2,"values":[{"description":"For example operating system, software platform and/or hardware specifications (include as appropriate for the issue).","id":"environment","isHidden":false,"isRequired":false},{"id":"description","isHidden":false,"isRequired":false}]} */
                     "application/json": components["schemas"]["PageBeanFieldConfigurationItem"];
                 };
             };
@@ -31199,6 +31544,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":10,"startAt":0,"total":3,"values":[{"id":"10000","name":"Field Configuration Scheme for Bugs","description":"This field configuration scheme is for bugs only."},{"id":"10001","name":"Field Configuration Scheme for software related projects","description":"We can use this one for software projects."},{"id":"10002","name":"Field Configuration Scheme for Epics","description":"Use this one for Epic issue type."}]} */
                     "application/json": components["schemas"]["PageBeanFieldConfigurationScheme"];
                 };
             };
@@ -31249,6 +31595,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"description":"We can use this one for software projects.","id":"10002","name":"Field Configuration Scheme for software related projects"} */
                     "application/json": components["schemas"]["FieldConfigurationScheme"];
                 };
             };
@@ -31258,6 +31605,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["A field configuration scheme is using this name."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -31274,6 +31622,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access field configurations."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -31301,6 +31650,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"startAt":0,"total":5,"values":[{"fieldConfigurationSchemeId":"10020","issueTypeId":"10000","fieldConfigurationId":"10010"},{"fieldConfigurationSchemeId":"10020","issueTypeId":"10001","fieldConfigurationId":"10010"},{"fieldConfigurationSchemeId":"10021","issueTypeId":"10002","fieldConfigurationId":"10000"},{"fieldConfigurationSchemeId":"10022","issueTypeId":"default","fieldConfigurationId":"10011"},{"fieldConfigurationSchemeId":"10023","issueTypeId":"default","fieldConfigurationId":"10000"}]} */
                     "application/json": components["schemas"]["PageBeanFieldConfigurationIssueTypeItem"];
                 };
             };
@@ -31356,6 +31706,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":50,"startAt":0,"total":5,"values":[{"projectIds":["10","11"]},{"fieldConfigurationScheme":{"id":"10002","name":"Field Configuration Scheme for software related projects","description":"We can use this one for software projects."},"projectIds":["12","13","14"]}]} */
                     "application/json": components["schemas"]["PageBeanFieldConfigurationSchemeProjects"];
                 };
             };
@@ -31414,6 +31765,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only classic projects can have field configuration schemes assigned."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -31430,6 +31782,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access field configurations."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -31439,6 +31792,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The project was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -31480,6 +31834,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["A field configuration scheme is using this name."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -31496,6 +31851,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access field configurations."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -31505,6 +31861,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The field configuration scheme was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -31671,6 +32028,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The issueTypeIds must not contain duplicates."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -31689,6 +32047,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access field configurations."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -31698,6 +32057,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The field configuration scheme was not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -31736,6 +32096,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"approximateLastUsed":null,"description":"Lists all open bugs","favourite":true,"favouritedCount":0,"id":"10000","jql":"type = Bug and resolution is empty","name":"All Open Bugs","owner":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"searchUrl":"https://your-domain.atlassian.net/rest/api/2/search?jql=type%20%3D%20Bug%20and%20resolutino%20is%20empty","self":"https://your-domain.atlassian.net/rest/api/2/filter/10000","sharePermissions":[],"subscriptions":{"end-index":0,"items":[],"max-results":0,"size":0,"start-index":0},"viewUrl":"https://your-domain.atlassian.net/issues/?filter=10000"} */
                     "application/json": components["schemas"]["Filter"];
                 };
             };
@@ -31770,6 +32131,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"scope":"GLOBAL"} */
                     "application/json": components["schemas"]["DefaultShareScope"];
                 };
             };
@@ -31804,6 +32166,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"scope":"GLOBAL"} */
                     "application/json": components["schemas"]["DefaultShareScope"];
                 };
             };
@@ -31844,6 +32207,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"approximateLastUsed":"2023-03-01T13:15:00.000+0000","description":"Lists all open bugs","favourite":true,"favouritedCount":0,"id":"10000","jql":"type = Bug and resolution is empty","name":"All Open Bugs","owner":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"searchUrl":"https://your-domain.atlassian.net/rest/api/2/search?jql=type%20%3D%20Bug%20and%20resolutino%20is%20empty","self":"https://your-domain.atlassian.net/rest/api/2/filter/10000","sharePermissions":[],"subscriptions":{"end-index":0,"items":[],"max-results":0,"size":0,"start-index":0},"viewUrl":"https://your-domain.atlassian.net/issues/?filter=10000"},{"approximateLastUsed":null,"description":"Issues assigned to me","favourite":true,"favouritedCount":0,"id":"10010","jql":"assignee = currentUser() and resolution is empty","name":"My issues","owner":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"searchUrl":"https://your-domain.atlassian.net/rest/api/2/search?jql=assignee+in+%28currentUser%28%29%29+and+resolution+is+empty","self":"https://your-domain.atlassian.net/rest/api/2/filter/10010","sharePermissions":[{"id":10000,"type":"global"},{"id":10010,"project":{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000"},"id":"10000","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"key":"EX","name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/EX","simplified":false,"style":"classic"},"type":"project"}],"subscriptions":{"end-index":0,"items":[],"max-results":0,"size":0,"start-index":0},"viewUrl":"https://your-domain.atlassian.net/issues/?filter=10010"}] */
                     "application/json": components["schemas"]["Filter"][];
                 };
             };
@@ -31879,6 +32243,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"approximateLastUsed":"2023-03-01T13:15:00.000+0000","description":"Lists all open bugs","favourite":true,"favouritedCount":0,"id":"10000","jql":"type = Bug and resolution is empty","name":"All Open Bugs","owner":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"searchUrl":"https://your-domain.atlassian.net/rest/api/2/search?jql=type%20%3D%20Bug%20and%20resolutino%20is%20empty","self":"https://your-domain.atlassian.net/rest/api/2/filter/10000","sharePermissions":[],"subscriptions":{"end-index":0,"items":[],"max-results":0,"size":0,"start-index":0},"viewUrl":"https://your-domain.atlassian.net/issues/?filter=10000"},{"approximateLastUsed":null,"description":"Issues assigned to me","favourite":true,"favouritedCount":0,"id":"10010","jql":"assignee = currentUser() and resolution is empty","name":"My issues","owner":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"searchUrl":"https://your-domain.atlassian.net/rest/api/2/search?jql=assignee+in+%28currentUser%28%29%29+and+resolution+is+empty","self":"https://your-domain.atlassian.net/rest/api/2/filter/10010","sharePermissions":[{"id":10000,"type":"global"},{"id":10010,"project":{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000"},"id":"10000","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"key":"EX","name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/EX","simplified":false,"style":"classic"},"type":"project"}],"subscriptions":{"end-index":0,"items":[],"max-results":0,"size":0,"start-index":0},"viewUrl":"https://your-domain.atlassian.net/issues/?filter=10010"}] */
                     "application/json": components["schemas"]["Filter"][];
                 };
             };
@@ -31954,6 +32319,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"self":"https://your-domain.atlassian.net/rest/api/2/filter/search?accountId=&maxResults=50&filterName=&orderBy=name&startAt=0&expand=description,owner,jql,searchUrl,viewUrl,favourite,favouritedCount,sharePermissions,editPermissions,isWritable,subscriptions,approximateLastUsed","startAt":0,"total":2,"values":[{"approximateLastUsed":"2023-03-01T13:15:00.000+0000","description":"Lists all open bugs","editPermissions":[],"expand":"description,owner,jql,searchUrl,viewUrl,favourite,favouritedCount,sharePermissions,editPermissions,isWritable,approximateLastUsed,subscriptions","favourite":false,"favouritedCount":0,"id":"10000","jql":"type = Bug and resolution is empty","name":"All Open Bugs","owner":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"searchUrl":"https://your-domain.atlassian.net/rest/api/2/search?jql=type%20%3D%20Bug%20and%20resolutino%20is%20empty","self":"https://your-domain.atlassian.net/rest/api/2/filter/10000","sharePermissions":[],"subscriptions":[],"viewUrl":"https://your-domain.atlassian.net/issues/?filter=10000"},{"approximateLastUsed":null,"description":"Issues assigned to me","editPermissions":[{"id":10010,"project":{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10002","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10002","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10002","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10002"},"deleted":true,"deletedBy":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"deletedDate":"2022-11-11T13:35:29.000+0000","id":"10002","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"key":"MKY","name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"retentionTillDate":"2023-01-10T13:35:29.000+0000","self":"https://your-domain.atlassian.net/rest/api/2/project/MKY","simplified":false,"style":"classic"},"role":{"self":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor"},{"actorUser":{"accountId":"5b10a2844c20165700ede21g"},"displayName":"Mia Krystof","id":10241,"type":"atlassian-user-role-actor"}],"scope":{"project":{"id":"10000","key":"KEY","name":"Next Gen Project"},"type":"PROJECT"}},"type":"project"},{"group":{"groupId":"276f955c-63d7-42c8-9520-92d01dca0625","name":"jira-administrators","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"},"id":10010,"type":"group"}],"expand":"description,owner,jql,searchUrl,viewUrl,favourite,favouritedCount,sharePermissions,editPermissions,isWritable,approximateLastUsed,subscriptions","favourite":true,"favouritedCount":123,"id":"10010","jql":"assignee = currentUser() and resolution is empty","name":"My issues","owner":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"searchUrl":"https://your-domain.atlassian.net/rest/api/2/search?jql=assignee+in+%28currentUser%28%29%29+and+resolution+is+empty","self":"https://your-domain.atlassian.net/rest/api/2/filter/10010","sharePermissions":[{"id":10000,"type":"global"},{"id":10010,"project":{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000"},"id":"10000","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"key":"EX","name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/EX","simplified":false,"style":"classic"},"type":"project"}],"subscriptions":[{"id":1,"user":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":true,"applicationRoles":{"items":[],"size":1},"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","groups":{"items":[],"size":3},"key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"}}],"viewUrl":"https://your-domain.atlassian.net/issues/?filter=10010"}]} */
                     "application/json": components["schemas"]["PageBeanFilterDetails"];
                 };
             };
@@ -32006,6 +32372,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"approximateLastUsed":"2023-03-01T13:15:00.000+0000","description":"Lists all open bugs","favourite":true,"favouritedCount":0,"id":"10000","jql":"type = Bug and resolution is empty","name":"All Open Bugs","owner":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"searchUrl":"https://your-domain.atlassian.net/rest/api/2/search?jql=type%20%3D%20Bug%20and%20resolutino%20is%20empty","self":"https://your-domain.atlassian.net/rest/api/2/filter/10000","sharePermissions":[],"subscriptions":{"end-index":0,"items":[],"max-results":0,"size":0,"start-index":0},"viewUrl":"https://your-domain.atlassian.net/issues/?filter=10000"} */
                     "application/json": components["schemas"]["Filter"];
                 };
             };
@@ -32061,6 +32428,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"approximateLastUsed":"2023-03-01T13:15:00.000+0000","description":"Lists all open bugs","favourite":true,"favouritedCount":0,"id":"10000","jql":"type = Bug and resolution is empty","name":"All Open Bugs","owner":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"searchUrl":"https://your-domain.atlassian.net/rest/api/2/search?jql=type%20%3D%20Bug%20and%20resolutino%20is%20empty","self":"https://your-domain.atlassian.net/rest/api/2/filter/10000","sharePermissions":[],"subscriptions":{"end-index":0,"items":[],"max-results":0,"size":0,"start-index":0},"viewUrl":"https://your-domain.atlassian.net/issues/?filter=10000"} */
                     "application/json": components["schemas"]["Filter"];
                 };
             };
@@ -32133,6 +32501,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"label":"Key","value":"issuekey"},{"label":"Summary","value":"summary"}] */
                     "application/json": components["schemas"]["ColumnItem"][];
                 };
             };
@@ -32268,6 +32637,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"approximateLastUsed":"2023-03-01T13:15:00.000+0000","description":"Lists all open bugs","favourite":true,"favouritedCount":0,"id":"10000","jql":"type = Bug and resolution is empty","name":"All Open Bugs","owner":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"searchUrl":"https://your-domain.atlassian.net/rest/api/2/search?jql=type%20%3D%20Bug%20and%20resolutino%20is%20empty","self":"https://your-domain.atlassian.net/rest/api/2/filter/10000","sharePermissions":[],"subscriptions":{"end-index":0,"items":[],"max-results":0,"size":0,"start-index":0},"viewUrl":"https://your-domain.atlassian.net/issues/?filter=10000"} */
                     "application/json": components["schemas"]["Filter"];
                 };
             };
@@ -32307,6 +32677,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"approximateLastUsed":"2023-03-01T13:15:00.000+0000","description":"Lists all open bugs","favourite":true,"favouritedCount":0,"id":"10000","jql":"type = Bug and resolution is empty","name":"All Open Bugs","owner":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"searchUrl":"https://your-domain.atlassian.net/rest/api/2/search?jql=type%20%3D%20Bug%20and%20resolutino%20is%20empty","self":"https://your-domain.atlassian.net/rest/api/2/filter/10000","sharePermissions":[],"subscriptions":{"end-index":0,"items":[],"max-results":0,"size":0,"start-index":0},"viewUrl":"https://your-domain.atlassian.net/issues/?filter=10000"} */
                     "application/json": components["schemas"]["Filter"];
                 };
             };
@@ -32395,6 +32766,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"id":10000,"type":"global"},{"id":10010,"project":{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000"},"id":"10000","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"key":"EX","name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/EX","simplified":false,"style":"classic"},"type":"project"},{"id":10010,"project":{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10002","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10002","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10002","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10002"},"deleted":true,"deletedBy":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"deletedDate":"2022-11-11T13:35:29.000+0000","id":"10002","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"key":"MKY","name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"retentionTillDate":"2023-01-10T13:35:29.000+0000","self":"https://your-domain.atlassian.net/rest/api/2/project/MKY","simplified":false,"style":"classic"},"role":{"self":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor"},{"actorUser":{"accountId":"5b10a2844c20165700ede21g"},"displayName":"Mia Krystof","id":10241,"type":"atlassian-user-role-actor"}],"scope":{"project":{"id":"10000","key":"KEY","name":"Next Gen Project"},"type":"PROJECT"}},"type":"project"},{"group":{"groupId":"276f955c-63d7-42c8-9520-92d01dca0625","name":"jira-administrators","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"},"id":10010,"type":"group"}] */
                     "application/json": components["schemas"]["SharePermission"][];
                 };
             };
@@ -32444,6 +32816,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"id":10000,"type":"global"},{"id":10010,"project":{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000"},"id":"10000","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"key":"EX","name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/EX","simplified":false,"style":"classic"},"type":"project"},{"id":10010,"project":{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10002","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10002","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10002","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10002"},"deleted":true,"deletedBy":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"deletedDate":"2022-11-11T13:35:29.000+0000","id":"10002","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"key":"MKY","name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"retentionTillDate":"2023-01-10T13:35:29.000+0000","self":"https://your-domain.atlassian.net/rest/api/2/project/MKY","simplified":false,"style":"classic"},"role":{"self":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor"},{"actorUser":{"accountId":"5b10a2844c20165700ede21g"},"displayName":"Mia Krystof","id":10241,"type":"atlassian-user-role-actor"}],"scope":{"project":{"id":"10000","key":"KEY","name":"Next Gen Project"},"type":"PROJECT"}},"type":"project"},{"group":{"groupId":"276f955c-63d7-42c8-9520-92d01dca0625","name":"jira-administrators","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"},"id":10010,"type":"group"}] */
                     "application/json": components["schemas"]["SharePermission"][];
                 };
             };
@@ -32497,6 +32870,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":10000,"type":"global"} */
                     "application/json": components["schemas"]["SharePermission"];
                 };
             };
@@ -32639,6 +33013,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"expand":"users","groupId":"276f955c-63d7-42c8-9520-92d01dca0625","name":"power-users","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625","users":{"end-index":0,"items":[{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"}],"max-results":50,"size":1,"start-index":0}} */
                     "application/json": components["schemas"]["Group"];
                 };
             };
@@ -32748,6 +33123,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":10,"startAt":0,"total":2,"values":[{"groupId":"276f955c-63d7-42c8-9520-92d01dca0625","name":"jdog-developers"},{"groupId":"6e87dc72-4f1f-421f-9382-2fee8b652487","name":"juvenal-bot"}]} */
                     "application/json": components["schemas"]["PageBeanGroupDetails"];
                 };
             };
@@ -32771,6 +33147,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Browse users and groups permission is required to view groups."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -32780,6 +33157,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Couldn't retrieve groups with the site-admin accessType."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -32797,7 +33175,7 @@ export interface operations {
                 includeInactiveUsers?: boolean;
                 /** @description The index of the first item to return in a page of results (page offset). */
                 startAt?: number;
-                /** @description The maximum number of items to return per page. */
+                /** @description The maximum number of items to return per page (number should be between 1 and 50). */
                 maxResults?: number;
             };
             header?: never;
@@ -32812,6 +33190,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":false,"maxResults":2,"nextPage":"https://your-domain.atlassian.net/rest/api/2/group/member?groupId=276f955c-63d7-42c8-9520-92d01dca0625&includeInactiveUsers=false&startAt=4&maxResults=2","self":"https://your-domain.atlassian.net/rest/api/2/group/member?groupId=276f955c-63d7-42c8-9520-92d01dca0625&includeInactiveUsers=false&startAt=2&maxResults=2","startAt":3,"total":5,"values":[{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":true,"avatarUrls":{},"displayName":"Mia","emailAddress":"mia@example.com","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"},{"accountId":"5b10a0effa615349cb016cd8","accountType":"atlassian","active":false,"avatarUrls":{},"displayName":"Will","emailAddress":"will@example.com","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a0effa615349cb016cd8","timeZone":"Australia/Sydney"}]} */
                     "application/json": components["schemas"]["PageBeanUserDetails"];
                 };
             };
@@ -32979,7 +33358,7 @@ export interface operations {
     findGroups: {
         parameters: {
             query?: {
-                /** @description This parameter is deprecated, setting it does not affect the results. To find groups containing a particular user, use [Get user groups](#api-rest-api-3-user-groups-get). */
+                /** @description This parameter is deprecated, setting it does not affect the results. To find groups containing a particular user, use [Get user groups](#api-rest-api-2-user-groups-get). */
                 accountId?: string;
                 /** @description The string to find in group names. */
                 query?: string;
@@ -33007,6 +33386,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"groups":[{"groupId":"276f955c-63d7-42c8-9520-92d01dca0625","html":"<b>j</b>dog-developers","name":"jdog-developers"},{"groupId":"6e87dc72-4f1f-421f-9382-2fee8b652487","html":"<b>j</b>uvenal-bot","name":"juvenal-bot"}],"header":"Showing 20 of 25 matching groups","total":25} */
                     "application/json": components["schemas"]["FoundGroups"];
                 };
             };
@@ -33046,6 +33426,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"groups":{"groups":[{"groupId":"276f955c-63d7-42c8-9520-92d01dca0625","html":"<b>j</b>dog-developers","name":"jdog-developers"},{"groupId":"6e87dc72-4f1f-421f-9382-2fee8b652487","html":"<b>j</b>uvenal-bot","name":"juvenal-bot"}],"header":"Showing 20 of 25 matching groups","total":25},"users":{"header":"Showing 20 of 25 matching groups","total":25,"users":[{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","avatarUrl":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","displayName":"Mia Krystof","html":"<strong>Mi</strong>a Krystof - <strong>mi</strong>a@example.com (<strong>mi</strong>a)","key":"mia","name":"mia"}]}} */
                     "application/json": components["schemas"]["FoundUsersAndGroups"];
                 };
             };
@@ -33094,6 +33475,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"applications":[{"id":"jira-core","plan":"PAID"},{"id":"jira-product-discovery","plan":"FREE"},{"id":"jira-servicedesk","plan":"FREE"},{"id":"jira-software","plan":"PAID"}]} */
                     "application/json": components["schemas"]["License"];
                 };
             };
@@ -33134,36 +33516,8 @@ export interface operations {
                  *           "10000",
                  *           "10002"
                  *         ],
-                 *         "customfield_40000": {
-                 *           "content": [
-                 *             {
-                 *               "content": [
-                 *                 {
-                 *                   "text": "Occurs on all orders",
-                 *                   "type": "text"
-                 *                 }
-                 *               ],
-                 *               "type": "paragraph"
-                 *             }
-                 *           ],
-                 *           "type": "doc",
-                 *           "version": 1
-                 *         },
-                 *         "customfield_50000": {
-                 *           "content": [
-                 *             {
-                 *               "content": [
-                 *                 {
-                 *                   "text": "Could impact day-to-day work.",
-                 *                   "type": "text"
-                 *                 }
-                 *               ],
-                 *               "type": "paragraph"
-                 *             }
-                 *           ],
-                 *           "type": "doc",
-                 *           "version": 1
-                 *         },
+                 *         "customfield_40000": "Occurs on all orders",
+                 *         "customfield_50000": "Could impact day-to-day work.",
                  *         "customfield_60000": "jira-software-users",
                  *         "customfield_70000": [
                  *           "jira-administrators",
@@ -33172,37 +33526,9 @@ export interface operations {
                  *         "customfield_80000": {
                  *           "value": "red"
                  *         },
-                 *         "description": {
-                 *           "content": [
-                 *             {
-                 *               "content": [
-                 *                 {
-                 *                   "text": "Order entry fails when selecting supplier.",
-                 *                   "type": "text"
-                 *                 }
-                 *               ],
-                 *               "type": "paragraph"
-                 *             }
-                 *           ],
-                 *           "type": "doc",
-                 *           "version": 1
-                 *         },
-                 *         "duedate": "2019-05-11",
-                 *         "environment": {
-                 *           "content": [
-                 *             {
-                 *               "content": [
-                 *                 {
-                 *                   "text": "UAT",
-                 *                   "type": "text"
-                 *                 }
-                 *               ],
-                 *               "type": "paragraph"
-                 *             }
-                 *           ],
-                 *           "type": "doc",
-                 *           "version": 1
-                 *         },
+                 *         "description": "Order entry fails when selecting supplier.",
+                 *         "duedate": "2019-03-11",
+                 *         "environment": "UAT",
                  *         "fixVersions": [
                  *           {
                  *             "id": "10001"
@@ -33241,7 +33567,16 @@ export interface operations {
                  *           }
                  *         ]
                  *       },
-                 *       "update": {}
+                 *       "update": {
+                 *         "worklog": [
+                 *           {
+                 *             "add": {
+                 *               "started": "2019-07-05T11:05:00.000+0000",
+                 *               "timeSpent": "60m"
+                 *             }
+                 *           }
+                 *         ]
+                 *       }
                  *     } */
                 "application/json": components["schemas"]["IssueUpdateDetails"];
             };
@@ -33253,6 +33588,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"10000","key":"ED-24","self":"https://your-domain.atlassian.net/rest/api/2/issue/10000","transition":{"status":200,"errorCollection":{"errorMessages":[],"errors":{}}}} */
                     "application/json": components["schemas"]["CreatedIssue"];
                 };
             };
@@ -33270,6 +33606,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Field 'priority' is required"],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -33329,6 +33666,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errors":{"issueIsSubtask":{"count":3,"issueIdsOrKeys":["ST-1","ST-2","ST-3"],"message":"Issue is subtask."},"issuesInArchivedProjects":{"count":2,"issueIdsOrKeys":["AR-1","AR-2"],"message":"Issue exists in archived project."},"issuesInUnlicensedProjects":{"count":3,"issueIdsOrKeys":["UL-1","UL-2","UL-3"],"message":"Issues with these IDs are in unlicensed projects."},"issuesNotFound":{"count":3,"issueIdsOrKeys":["PR-1","PR-2","PR-3"],"message":"Issue not found."}},"numberOfIssuesUpdated":10} */
                     "application/json": components["schemas"]["IssueArchivalSyncResponse"];
                 };
             };
@@ -33343,6 +33681,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["No valid issue to archive or unarchive. Bad request."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -33352,6 +33691,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["User is not logged in."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -33361,6 +33701,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only admins can archive or unarchive issues. Access denied."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -33370,6 +33711,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The number of issues to archive or unarchive exceeds the hard limit of 1000. Precondition failed."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -33398,6 +33740,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example "https://your-domain.atlassian.net/rest/api/2/task/1010" */
                     "application/json": string;
                 };
             };
@@ -33407,6 +33750,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Invalid JQL. Bad request."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -33416,6 +33760,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["User is not logged in."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -33425,6 +33770,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Archiving issues is only available for premium editions of Jira."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -33434,6 +33780,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["An issue archival task is already running with ID 1010. To start a new one, cancel the task or wait for it to finish."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -33466,36 +33813,8 @@ export interface operations {
                  *               "10000",
                  *               "10002"
                  *             ],
-                 *             "customfield_40000": {
-                 *               "content": [
-                 *                 {
-                 *                   "content": [
-                 *                     {
-                 *                       "text": "Occurs on all orders",
-                 *                       "type": "text"
-                 *                     }
-                 *                   ],
-                 *                   "type": "paragraph"
-                 *                 }
-                 *               ],
-                 *               "type": "doc",
-                 *               "version": 1
-                 *             },
-                 *             "customfield_50000": {
-                 *               "content": [
-                 *                 {
-                 *                   "content": [
-                 *                     {
-                 *                       "text": "Could impact day-to-day work.",
-                 *                       "type": "text"
-                 *                     }
-                 *                   ],
-                 *                   "type": "paragraph"
-                 *                 }
-                 *               ],
-                 *               "type": "doc",
-                 *               "version": 1
-                 *             },
+                 *             "customfield_40000": "Occurs on all orders",
+                 *             "customfield_50000": "Could impact day-to-day work.",
                  *             "customfield_60000": "jira-software-users",
                  *             "customfield_70000": [
                  *               "jira-administrators",
@@ -33504,37 +33823,9 @@ export interface operations {
                  *             "customfield_80000": {
                  *               "value": "red"
                  *             },
-                 *             "description": {
-                 *               "content": [
-                 *                 {
-                 *                   "content": [
-                 *                     {
-                 *                       "text": "Order entry fails when selecting supplier.",
-                 *                       "type": "text"
-                 *                     }
-                 *                   ],
-                 *                   "type": "paragraph"
-                 *                 }
-                 *               ],
-                 *               "type": "doc",
-                 *               "version": 1
-                 *             },
-                 *             "duedate": "2011-03-11",
-                 *             "environment": {
-                 *               "content": [
-                 *                 {
-                 *                   "content": [
-                 *                     {
-                 *                       "text": "UAT",
-                 *                       "type": "text"
-                 *                     }
-                 *                   ],
-                 *                   "type": "paragraph"
-                 *                 }
-                 *               ],
-                 *               "type": "doc",
-                 *               "version": 1
-                 *             },
+                 *             "description": "Order entry fails when selecting supplier.",
+                 *             "duedate": "2019-03-11",
+                 *             "environment": "UAT",
                  *             "fixVersions": [
                  *               {
                  *                 "id": "10001"
@@ -33547,6 +33838,9 @@ export interface operations {
                  *               "bugfix",
                  *               "blitz_test"
                  *             ],
+                 *             "parent": {
+                 *               "key": "PROJ-123"
+                 *             },
                  *             "priority": {
                  *               "id": "20000"
                  *             },
@@ -33597,36 +33891,8 @@ export interface operations {
                  *               "10000",
                  *               "10002"
                  *             ],
-                 *             "customfield_40000": {
-                 *               "content": [
-                 *                 {
-                 *                   "content": [
-                 *                     {
-                 *                       "text": "Occurs on all orders",
-                 *                       "type": "text"
-                 *                     }
-                 *                   ],
-                 *                   "type": "paragraph"
-                 *                 }
-                 *               ],
-                 *               "type": "doc",
-                 *               "version": 1
-                 *             },
-                 *             "customfield_50000": {
-                 *               "content": [
-                 *                 {
-                 *                   "content": [
-                 *                     {
-                 *                       "text": "Could impact day-to-day work.",
-                 *                       "type": "text"
-                 *                     }
-                 *                   ],
-                 *                   "type": "paragraph"
-                 *                 }
-                 *               ],
-                 *               "type": "doc",
-                 *               "version": 1
-                 *             },
+                 *             "customfield_40000": "Occurs on all orders",
+                 *             "customfield_50000": "Could impact day-to-day work.",
                  *             "customfield_60000": "jira-software-users",
                  *             "customfield_70000": [
                  *               "jira-administrators",
@@ -33635,37 +33901,9 @@ export interface operations {
                  *             "customfield_80000": {
                  *               "value": "red"
                  *             },
-                 *             "description": {
-                 *               "content": [
-                 *                 {
-                 *                   "content": [
-                 *                     {
-                 *                       "text": "Order remains pending after approved.",
-                 *                       "type": "text"
-                 *                     }
-                 *                   ],
-                 *                   "type": "paragraph"
-                 *                 }
-                 *               ],
-                 *               "type": "doc",
-                 *               "version": 1
-                 *             },
+                 *             "description": "Order remains pending after approved.",
                  *             "duedate": "2019-04-16",
-                 *             "environment": {
-                 *               "content": [
-                 *                 {
-                 *                   "content": [
-                 *                     {
-                 *                       "text": "UAT",
-                 *                       "type": "text"
-                 *                     }
-                 *                   ],
-                 *                   "type": "paragraph"
-                 *                 }
-                 *               ],
-                 *               "type": "doc",
-                 *               "version": 1
-                 *             },
+                 *             "environment": "UAT",
                  *             "fixVersions": [
                  *               {
                  *                 "id": "10001"
@@ -33677,6 +33915,9 @@ export interface operations {
                  *             "labels": [
                  *               "new_release"
                  *             ],
+                 *             "parent": {
+                 *               "id": "10034"
+                 *             },
                  *             "priority": {
                  *               "id": "20000"
                  *             },
@@ -33722,6 +33963,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"issues":[{"id":"10000","key":"ED-24","self":"https://your-domain.atlassian.net/rest/api/2/issue/10000","transition":{"status":200,"errorCollection":{"errorMessages":[],"errors":{}}}},{"id":"10001","key":"ED-25","self":"https://your-domain.atlassian.net/rest/api/2/issue/10001"}],"errors":[]} */
                     "application/json": components["schemas"]["CreatedIssues"];
                 };
             };
@@ -33739,6 +33981,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"issues":[],"errors":[{"elementErrors":{"errorMessages":[],"errors":{"issuetype":"The issue type selected is invalid.","project":"Sub-tasks must be created in the same project as the parent."}},"failedElementNumber":0,"status":400},{"elementErrors":{"errorMessages":[],"errors":{"issuetype":"The issue type selected is invalid.","project":"Sub-tasks must be created in the same project as the parent."}},"failedElementNumber":1,"status":400}]} */
                     "application/json": components["schemas"]["CreatedIssues"];
                 };
             };
@@ -33788,6 +34031,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"expand":"schema,names","issueErrors":[],"issues":[{"expand":"","fields":{"summary":"My first example issue","project":{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000"},"id":"10000","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"key":"EX","name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/EX","simplified":false,"style":"classic"},"assignee":{"accountId":"5b10a2844c20165700ede21g","active":true,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"}},"id":"10002","key":"EX-1","self":"https://your-domain.atlassian.net/rest/api/2/issue/10002"},{"expand":"","fields":{"summary":"My second example issue","project":{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10001","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10001","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10001","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10001"},"id":"10001","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"key":"ABC","name":"Alphabetical","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/ABC","simplified":false,"style":"classic"},"assignee":{"accountId":"5b10a2844c20165700ede21g","active":true,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"}},"id":"10005","key":"EX-2","self":"https://your-domain.atlassian.net/rest/api/2/issue/10003"},{"expand":"","fields":{"summary":"My fourth example issue","project":{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10002","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10002","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10002","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10002"},"deleted":true,"deletedBy":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"deletedDate":"2022-11-11T13:35:29.000+0000","id":"10002","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"key":"MKY","name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"retentionTillDate":"2023-01-10T13:35:29.000+0000","self":"https://your-domain.atlassian.net/rest/api/2/project/MKY","simplified":false,"style":"classic"},"assignee":{"accountId":"5b10a2844c20165700ede21g","active":true,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"}},"id":"10005","key":"EX-4","self":"https://your-domain.atlassian.net/rest/api/2/issue/10005"}]} */
                     "application/json": components["schemas"]["BulkIssueResults"];
                 };
             };
@@ -33818,7 +34062,7 @@ export interface operations {
                 issuetypeIds?: string[];
                 /** @description List of issue type names. This parameter accepts a comma-separated list. Multiple issue type names can also be provided using an ampersand-separated list. For example, `issuetypeNames=name1,name2&issuetypeNames=name3`. This parameter may be provided with `issuetypeIds`. */
                 issuetypeNames?: string[];
-                /** @description Use [expand](#expansion) to include additional information about issue metadata in the response. This parameter accepts `projects.issuetypes.fields`, which returns information about the fields in the issue creation screen for each issue type. Fields hidden from the screen are not returned. Use the information to populate the `fields` and `update` fields in [Create issue](#api-rest-api-3-issue-post) and [Create issues](#api-rest-api-3-issue-bulk-post). */
+                /** @description Use [expand](#expansion) to include additional information about issue metadata in the response. This parameter accepts `projects.issuetypes.fields`, which returns information about the fields in the issue creation screen for each issue type. Fields hidden from the screen are not returned. Use the information to populate the `fields` and `update` fields in [Create issue](#api-rest-api-2-issue-post) and [Create issues](#api-rest-api-2-issue-bulk-post). */
                 expand?: string;
             };
             header?: never;
@@ -33833,6 +34077,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"projects":[{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000&avatarId=10011","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000&avatarId=10011","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000&avatarId=10011","48x48":"https://your-domain.atlassian.net/secure/projectavatar?pid=10000&avatarId=10011"},"id":"10000","issuetypes":[{"description":"An error in the code","fields":{"issuetype":{"allowedValues":["set"],"autoCompleteUrl":"issuetype","hasDefaultValue":false,"key":"issuetype","name":"Issue Type","required":true}},"iconUrl":"https://your-domain.atlassian.net/images/icons/issuetypes/bug.png","id":"1","name":"Bug","self":"https://your-domain.atlassian.net/rest/api/2/issueType/1","subtask":false}],"key":"ED","name":"Edison Project","self":"https://your-domain.atlassian.net/rest/api/2/project/ED"}]} */
                     "application/json": components["schemas"]["IssueCreateMetadata"];
                 };
             };
@@ -33868,6 +34113,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"issueTypes":[{"description":"An error in the code","iconUrl":"https://your-domain.atlassian.net/images/icons/issuetypes/bug.png","id":"1","name":"Bug","self":"https://your-domain.atlassian.net/rest/api/2/issueType/1","subtask":false}],"maxResults":1,"startAt":0,"total":1} */
                     "application/json": components["schemas"]["PageOfCreateMetaIssueTypes"];
                 };
             };
@@ -33877,6 +34123,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Parameter 'maxResults' must not exceed the limit '200'"],"errors":{},"httpStatusCode":{"empty":false,"present":true}} */
                     "application/json": unknown;
                 };
             };
@@ -33914,6 +34161,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"fields":[{"fieldId":"assignee","hasDefaultValue":false,"key":"assignee","name":"Assignee","operations":["set"],"required":true}],"maxResults":1,"startAt":0,"total":1} */
                     "application/json": components["schemas"]["PageOfCreateMetaIssueTypeWithField"];
                 };
             };
@@ -33923,6 +34171,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Parameter 'maxResults' must not exceed the limit '200'"],"errors":{},"httpStatusCode":{"empty":false,"present":true}} */
                     "application/json": unknown;
                 };
             };
@@ -33947,11 +34196,7 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["IssueLimitReportRequest"];
-            };
-        };
+        requestBody?: never;
         responses: {
             /** @description Returned if the request is successful. */
             200: {
@@ -33959,18 +34204,9 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"issuesApproachingLimit":{"attachment":{"15070L":1822,"15111L":1999},"comment":{"10000L":4997,"15073L":4999,"15110L":5000},"remoteIssueLinks":{"15107L":2000},"worklog":{"15101L":10342}},"issuesBreachingLimit":{"attachment":{"15057L":2005,"15116L":2065,"15117L":3005},"comment":{"15055L":5202},"issuelinks":{"15058L":2120},"remoteIssueLinks":{"15059L":2094},"worklog":{"15056L":10085,"15169L":120864}},"limits":{"attachment":2000,"comment":5000,"issuelinks":2000,"remoteIssueLinks":2000,"worklog":10000}} */
                     "application/json": components["schemas"]["IssueLimitReportResponseBean"];
                 };
-            };
-            /** @description Returned if the request is invalid. Other possible reasons:
-             *
-             *      *  the field queried is not supported
-             *      *  the threshold is not within the supported range */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
             };
             /** @description Returned if the authentication credentials are incorrect or missing. */
             401: {
@@ -34278,6 +34514,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errors":{"issueIsSubtask":{"count":3,"issueIdsOrKeys":["ST-1","ST-2","ST-3"],"message":"Issue is subtask."},"issuesInArchivedProjects":{"count":2,"issueIdsOrKeys":["AR-1","AR-2"],"message":"Issue exists in archived project."},"issuesNotFound":{"count":3,"issueIdsOrKeys":["PR-1","PR-2","PR-3"],"message":"Issue not found."}},"numberOfIssuesUpdated":10} */
                     "application/json": components["schemas"]["IssueArchivalSyncResponse"];
                 };
             };
@@ -34291,6 +34528,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["No valid issue to archive or unarchive. Bad request."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -34300,6 +34538,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["User is not logged in."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -34309,6 +34548,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only admins can archive or unarchive issues. Access denied."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -34318,6 +34558,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The number of issues to archive or unarchive exceeds the hard limit of 1000. Precondition failed."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -34350,6 +34591,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"issuesIsWatching":{"10001":true,"10002":false,"10005":true}} */
                     "application/json": components["schemas"]["BulkIssueIsWatching"];
                 };
             };
@@ -34379,7 +34621,7 @@ export interface operations {
                  *
                  *     This parameter may be specified multiple times. For example, `fields=field1,field2& fields=field3`.
                  *
-                 *     Note: All fields are returned by default. This differs from [Search for issues using JQL (GET)](#api-rest-api-3-search-get) and [Search for issues using JQL (POST)](#api-rest-api-3-search-post) where the default is all navigable fields. */
+                 *     Note: All fields are returned by default. This differs from [Search for issues using JQL (GET)](#api-rest-api-2-search-get) and [Search for issues using JQL (POST)](#api-rest-api-2-search-post) where the default is all navigable fields. */
                 fields?: string[];
                 /** @description Whether fields in `fields` are referenced by keys rather than IDs. This parameter is useful where fields have been added by a connect app and a field's key may differ from its ID. */
                 fieldsByKeys?: boolean;
@@ -34406,7 +34648,7 @@ export interface operations {
                  *
                  *     This parameter may be specified multiple times. For example, `properties=prop1,prop2& properties=prop3`. */
                 properties?: string[];
-                /** @description Whether the project in which the issue is created is added to the user's **Recently viewed** project list, as shown under **Projects** in Jira. This also populates the [JQL issues search](#api-rest-api-3-search-get) `lastViewed` field. */
+                /** @description Whether the project in which the issue is created is added to the user's **Recently viewed** project list, as shown under **Projects** in Jira. This also populates the [JQL issues search](#api-rest-api-2-search-get) `lastViewed` field. */
                 updateHistory?: boolean;
                 /** @description Whether to fail the request quickly in case of an error while loading fields for an issue. For `failFast=true`, if one field fails, the entire operation fails. For `failFast=false`, the operation will continue even if a field fails. It will return a valid response, but without values for the failed field(s). */
                 failFast?: boolean;
@@ -34426,6 +34668,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"fields":{"watcher":{"isWatching":false,"self":"https://your-domain.atlassian.net/rest/api/2/issue/EX-1/watchers","watchCount":1},"attachment":[{"author":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"content":"https://your-domain.atlassian.net/jira/rest/api/3/attachment/content/10001","created":"2023-06-24T19:24:50.000+0000","filename":"debuglog.txt","id":10001,"mimeType":"text/plain","self":"https://your-domain.atlassian.net/rest/api/2/attachments/10001","size":2460}],"sub-tasks":[{"id":"10000","outwardIssue":{"fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}},"id":"10003","key":"ED-2","self":"https://your-domain.atlassian.net/rest/api/2/issue/ED-2"},"type":{"id":"10000","inward":"Parent","name":"","outward":"Sub-task"}}],"description":"Main order flow broken","project":{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000"},"id":"10000","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"key":"EX","name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/EX","simplified":false,"style":"classic"},"comment":[{"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.","created":"2021-01-17T12:34:00.000+0000","id":"10000","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/comment/10000","updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"Administrators","type":"role","value":"Administrators"}}],"issuelinks":[{"id":"10001","outwardIssue":{"fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}},"id":"10004L","key":"PR-2","self":"https://your-domain.atlassian.net/rest/api/2/issue/PR-2"},"type":{"id":"10000","inward":"depends on","name":"Dependent","outward":"is depended by"}},{"id":"10002","inwardIssue":{"fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}},"id":"10004","key":"PR-3","self":"https://your-domain.atlassian.net/rest/api/2/issue/PR-3"},"type":{"id":"10000","inward":"depends on","name":"Dependent","outward":"is depended by"}}],"worklog":[{"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"comment":"I did some work here.","id":"100028","issueId":"10002","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/worklog/10000","started":"2021-01-17T12:34:00.000+0000","timeSpent":"3h 20m","timeSpentSeconds":12000,"updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"276f955c-63d7-42c8-9520-92d01dca0625","type":"group","value":"jira-developers"}}],"updated":1,"timetracking":{"originalEstimate":"10m","originalEstimateSeconds":600,"remainingEstimate":"3m","remainingEstimateSeconds":200,"timeSpent":"6m","timeSpentSeconds":400}},"id":"10002","key":"ED-1","self":"https://your-domain.atlassian.net/rest/api/2/issue/10002"} */
                     "application/json": components["schemas"]["IssueBean"];
                 };
             };
@@ -34470,21 +34713,7 @@ export interface operations {
             content: {
                 /** @example {
                  *       "fields": {
-                 *         "customfield_10000": {
-                 *           "content": [
-                 *             {
-                 *               "content": [
-                 *                 {
-                 *                   "text": "Investigation underway",
-                 *                   "type": "text"
-                 *                 }
-                 *               ],
-                 *               "type": "paragraph"
-                 *             }
-                 *           ],
-                 *           "type": "doc",
-                 *           "version": 1
-                 *         },
+                 *         "customfield_10000": "Investigation underway",
                  *         "customfield_10010": 1,
                  *         "summary": "Completed orders still displaying in pending"
                  *       },
@@ -34752,6 +34981,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"author":{"accountId":"5b10a2844c20165700ede21g","active":true,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"},"content":"https://your-domain.atlassian.net/rest/api/2/attachment/content/10000","created":1651316514000,"filename":"picture.jpg","id":"10001","mimeType":"image/jpeg","self":"https://your-domain.atlassian.net/rest/api/2/attachments/10000","size":23123,"thumbnail":"https://your-domain.atlassian.net/rest/api/2/attachment/thumbnail/10000"},{"author":{"accountId":"5b10a2844c20165700ede21g","active":true,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"},"content":"https://your-domain.atlassian.net/rest/api/2/attachment/content/10001","created":1658898511000,"filename":"dbeuglog.txt","mimeType":"text/plain","self":"https://your-domain.atlassian.net/rest/api/2/attachments/10001","size":2460}] */
                     "application/json": components["schemas"]["Attachment"][];
                 };
             };
@@ -34810,6 +35040,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":false,"maxResults":2,"nextPage":"https://your-domain.atlassian.net/rest/api/2/issue/TT-1/changelog?&startAt=4&maxResults=2","self":"https://your-domain.atlassian.net/rest/api/2/issue/TT-1/changelog?startAt=2&maxResults=2","startAt":2,"total":5,"values":[{"author":{"accountId":"5b10a2844c20165700ede21g","active":true,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"},"created":"1970-01-18T06:27:50.429+0000","id":"10001","items":[{"field":"fields","fieldtype":"jira","fieldId":"fieldId","from":null,"fromString":"","to":null,"toString":"label-1"}]},{"author":{"accountId":"5b10a2844c20165700ede21g","active":true,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"},"created":"1970-01-18T06:27:51.429+0000","id":"10002","items":[{"field":"fields","fieldtype":"jira","fieldId":"fieldId","from":null,"fromString":"label-1","to":null,"toString":"label-1 label-2"}]}]} */
                     "application/json": components["schemas"]["PageBeanChangelog"];
                 };
             };
@@ -34850,6 +35081,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"histories":[{"author":{"accountId":"5b10a2844c20165700ede21g","active":true,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"},"created":"1970-01-18T06:27:50.429+0000","id":"10001","items":[{"field":"fields","fieldtype":"jira","fieldId":"fieldId","from":null,"fromString":"","to":null,"toString":"label-1"}]},{"author":{"accountId":"5b10a2844c20165700ede21g","active":true,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"},"created":"1970-01-18T06:27:51.429+0000","id":"10002","items":[{"field":"fields","fieldtype":"jira","fieldId":"fieldId","from":null,"fromString":"label-1","to":null,"toString":"label-1 label-2"}]}],"maxResults":2,"startAt":0,"total":2} */
                     "application/json": components["schemas"]["PageOfChangelogs"];
                 };
             };
@@ -34896,6 +35128,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"comments":[{"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.","created":"2021-01-17T12:34:00.000+0000","id":"10000","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/comment/10000","updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"Administrators","type":"role","value":"Administrators"}}],"maxResults":1,"startAt":0,"total":1} */
                     "application/json": components["schemas"]["PageOfComments"];
                 };
             };
@@ -34938,21 +35171,7 @@ export interface operations {
         requestBody: {
             content: {
                 /** @example {
-                 *       "body": {
-                 *         "content": [
-                 *           {
-                 *             "content": [
-                 *               {
-                 *                 "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.",
-                 *                 "type": "text"
-                 *               }
-                 *             ],
-                 *             "type": "paragraph"
-                 *           }
-                 *         ],
-                 *         "type": "doc",
-                 *         "version": 1
-                 *       },
+                 *       "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.",
                  *       "visibility": {
                  *         "identifier": "Administrators",
                  *         "type": "role",
@@ -34969,6 +35188,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.","created":"2021-01-17T12:34:00.000+0000","id":"10000","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/comment/10000","updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"Administrators","type":"role","value":"Administrators"}} */
                     "application/json": components["schemas"]["Comment"];
                 };
             };
@@ -35028,6 +35248,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.","created":"2021-01-17T12:34:00.000+0000","id":"10000","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/comment/10000","updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"Administrators","type":"role","value":"Administrators"}} */
                     "application/json": components["schemas"]["Comment"];
                 };
             };
@@ -35069,21 +35290,7 @@ export interface operations {
         requestBody: {
             content: {
                 /** @example {
-                 *       "body": {
-                 *         "content": [
-                 *           {
-                 *             "content": [
-                 *               {
-                 *                 "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.",
-                 *                 "type": "text"
-                 *               }
-                 *             ],
-                 *             "type": "paragraph"
-                 *           }
-                 *         ],
-                 *         "type": "doc",
-                 *         "version": 1
-                 *       },
+                 *       "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.",
                  *       "visibility": {
                  *         "identifier": "Administrators",
                  *         "type": "role",
@@ -35100,6 +35307,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.","created":"2021-01-17T12:34:00.000+0000","id":"10000","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/comment/10000","updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"Administrators","type":"role","value":"Administrators"}} */
                     "application/json": components["schemas"]["Comment"];
                 };
             };
@@ -35128,9 +35336,7 @@ export interface operations {
     };
     deleteComment: {
         parameters: {
-            query?: {
-                parentId?: string;
-            };
+            query?: never;
             header?: never;
             path: {
                 /** @description The ID or key of the issue. */
@@ -35202,6 +35408,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"fields":{"summary":{"allowedValues":["red","blue"],"defaultValue":"red","hasDefaultValue":false,"key":"field_key","name":"My Multi Select","operations":["set","add"],"required":false,"schema":{"custom":"com.atlassian.jira.plugin.system.customfieldtypes:multiselect","customId":10001,"items":"option","type":"array"}}}} */
                     "application/json": components["schemas"]["IssueUpdateMetadata"];
                 };
             };
@@ -35339,6 +35546,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"keys":[{"key":"issue.support","self":"https://your-domain.atlassian.net/rest/api/2/issue/EX-2/properties/issue.support"}]} */
                     "application/json": components["schemas"]["PropertyKeys"];
                 };
             };
@@ -35371,6 +35579,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"key":"issue.support","value":{"system.conversation.id":"b1bf38be-5e94-4b40-a3b8-9278735ee1e6","system.support.time":"1m"}} */
                     "application/json": components["schemas"]["EntityProperty"];
                 };
             };
@@ -35515,6 +35724,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"application":{"name":"My Acme Tracker","type":"com.acme.tracker"},"globalId":"system=http://www.mycompany.com/support&id=1","id":10000,"object":{"icon":{"title":"Support Ticket","url16x16":"http://www.mycompany.com/support/ticket.png"},"status":{"icon":{"link":"http://www.mycompany.com/support?id=1&details=closed","title":"Case Closed","url16x16":"http://www.mycompany.com/support/resolved.png"},"resolved":true},"summary":"Customer support issue","title":"TSTSUP-111","url":"http://www.mycompany.com/support?id=1"},"relationship":"causes","self":"https://your-domain.atlassian.net/rest/api/issue/MKY-1/remotelink/10000"},{"application":{"name":"My Acme Tester","type":"com.acme.tester"},"globalId":"system=http://www.anothercompany.com/tester&id=1234","id":10001,"object":{"icon":{"title":"Test Case","url16x16":"http://www.anothercompany.com/tester/images/testcase.gif"},"status":{"icon":{"link":"http://www.anothercompany.com/tester/person?accountId=5b10a2844c20165700ede21g","title":"Tested by Mia Krystof","url16x16":"http://www.anothercompany.com/tester/images/person/mia.gif"},"resolved":false},"summary":"Test that the submit button saves the item","title":"Test Case #1234","url":"http://www.anothercompany.com/tester/testcase/1234"},"relationship":"is tested by","self":"https://your-domain.atlassian.net/rest/api/issue/MKY-1/remotelink/10001"}] */
                     "application/json": components["schemas"]["RemoteIssueLink"];
                 };
             };
@@ -35602,6 +35812,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":10000,"self":"https://your-domain.atlassian.net/rest/api/issue/MKY-1/remotelink/10000"} */
                     "application/json": components["schemas"]["RemoteIssueLinkIdentifies"];
                 };
             };
@@ -35611,6 +35822,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":10000,"self":"https://your-domain.atlassian.net/rest/api/issue/MKY-1/remotelink/10000"} */
                     "application/json": components["schemas"]["RemoteIssueLinkIdentifies"];
                 };
             };
@@ -35620,6 +35832,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":[],"errors":{"title":"'title' is required."}} */
                     "application/json": unknown;
                 };
             };
@@ -35718,6 +35931,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"application":{"name":"My Acme Tracker","type":"com.acme.tracker"},"globalId":"system=http://www.mycompany.com/support&id=1","id":10000,"object":{"icon":{"title":"Support Ticket","url16x16":"http://www.mycompany.com/support/ticket.png"},"status":{"icon":{"link":"http://www.mycompany.com/support?id=1&details=closed","title":"Case Closed","url16x16":"http://www.mycompany.com/support/resolved.png"},"resolved":true},"summary":"Customer support issue","title":"TSTSUP-111","url":"http://www.mycompany.com/support?id=1"},"relationship":"causes","self":"https://your-domain.atlassian.net/rest/api/issue/MKY-1/remotelink/10000"} */
                     "application/json": components["schemas"]["RemoteIssueLink"];
                 };
             };
@@ -35813,6 +36027,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":[],"errors":{"title":"'title' is required."}} */
                     "application/json": unknown;
                 };
             };
@@ -35893,7 +36108,7 @@ export interface operations {
     getTransitions: {
         parameters: {
             query?: {
-                /** @description Use [expand](#expansion) to include additional information about transitions in the response. This parameter accepts `transitions.fields`, which returns information about the fields in the transition screen for each transition. Fields hidden from the screen are not returned. Use this information to populate the `fields` and `update` fields in [Transition issue](#api-rest-api-3-issue-issueIdOrKey-transitions-post). */
+                /** @description Use [expand](#expansion) to include additional information about transitions in the response. This parameter accepts `transitions.fields`, which returns information about the fields in the transition screen for each transition. Fields hidden from the screen are not returned. Use this information to populate the `fields` and `update` fields in [Transition issue](#api-rest-api-2-issue-issueIdOrKey-transitions-post). */
                 expand?: string;
                 /** @description The ID of the transition. */
                 transitionId?: string;
@@ -35919,6 +36134,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"transitions":[{"fields":{"summary":{"allowedValues":["red","blue"],"defaultValue":"red","hasDefaultValue":false,"key":"field_key","name":"My Multi Select","operations":["set","add"],"required":false,"schema":{"custom":"com.atlassian.jira.plugin.system.customfieldtypes:multiselect","customId":10001,"items":"option","type":"array"}}},"hasScreen":false,"id":"2","isAvailable":true,"isConditional":false,"isGlobal":false,"isInitial":false,"name":"Close Issue","to":{"description":"The issue is currently being worked on.","iconUrl":"https://your-domain.atlassian.net/images/icons/progress.gif","id":"10000","name":"In Progress","self":"https://your-domain.atlassian.net/rest/api/2/status/10000","statusCategory":{"colorName":"yellow","id":1,"key":"in-flight","name":"In Progress","self":"https://your-domain.atlassian.net/rest/api/2/statuscategory/1"}}},{"fields":{"summary":{"allowedValues":["red","blue"],"defaultValue":"red","hasDefaultValue":false,"key":"field_key","name":"My Multi Select","operations":["set","add"],"required":false,"schema":{"custom":"com.atlassian.jira.plugin.system.customfieldtypes:multiselect","customId":10001,"items":"option","type":"array"}},"colour":{"allowedValues":["red","blue"],"defaultValue":"red","hasDefaultValue":false,"key":"field_key","name":"My Multi Select","operations":["set","add"],"required":false,"schema":{"custom":"com.atlassian.jira.plugin.system.customfieldtypes:multiselect","customId":10001,"items":"option","type":"array"}}},"hasScreen":true,"id":"711","name":"QA Review","to":{"description":"The issue is closed.","iconUrl":"https://your-domain.atlassian.net/images/icons/closed.gif","id":"5","name":"Closed","self":"https://your-domain.atlassian.net/rest/api/2/status/5","statusCategory":{"colorName":"green","id":9,"key":"completed","self":"https://your-domain.atlassian.net/rest/api/2/statuscategory/9"}}}]} */
                     "application/json": components["schemas"]["Transitions"];
                 };
             };
@@ -35953,7 +36169,7 @@ export interface operations {
                 /** @example {
                  *       "fields": {
                  *         "assignee": {
-                 *           "name": "bob"
+                 *           "name": "Will"
                  *         },
                  *         "resolution": {
                  *           "name": "Fixed"
@@ -35990,21 +36206,7 @@ export interface operations {
                  *         "comment": [
                  *           {
                  *             "add": {
-                 *               "body": {
-                 *                 "content": [
-                 *                   {
-                 *                     "content": [
-                 *                       {
-                 *                         "text": "Bug has been fixed",
-                 *                         "type": "text"
-                 *                       }
-                 *                     ],
-                 *                     "type": "paragraph"
-                 *                   }
-                 *                 ],
-                 *                 "type": "doc",
-                 *                 "version": 1
-                 *               }
+                 *               "body": "Bug has been fixed."
                  *             }
                  *           }
                  *         ]
@@ -36097,6 +36299,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"hasVoted":true,"self":"https://your-domain.atlassian.net/rest/api/issue/MKY-1/votes","voters":[{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"}],"votes":24} */
                     "application/json": components["schemas"]["Votes"];
                 };
             };
@@ -36224,6 +36427,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isWatching":false,"self":"https://your-domain.atlassian.net/rest/api/2/issue/EX-1/watchers","watchCount":1,"watchers":[{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"}]} */
                     "application/json": components["schemas"]["Watchers"];
                 };
             };
@@ -36382,6 +36586,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"maxResults":1,"startAt":0,"total":1,"worklogs":[{"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"comment":"I did some work here.","id":"100028","issueId":"10002","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/worklog/10000","started":"2021-01-17T12:34:00.000+0000","timeSpent":"3h 20m","timeSpentSeconds":12000,"updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"276f955c-63d7-42c8-9520-92d01dca0625","type":"group","value":"jira-developers"}}]} */
                     "application/json": components["schemas"]["PageOfWorklogs"];
                 };
             };
@@ -36436,21 +36641,7 @@ export interface operations {
         requestBody: {
             content: {
                 /** @example {
-                 *       "comment": {
-                 *         "content": [
-                 *           {
-                 *             "content": [
-                 *               {
-                 *                 "text": "I did some work here.",
-                 *                 "type": "text"
-                 *               }
-                 *             ],
-                 *             "type": "paragraph"
-                 *           }
-                 *         ],
-                 *         "type": "doc",
-                 *         "version": 1
-                 *       },
+                 *       "comment": "I did some work here.",
                  *       "started": "2021-01-17T12:34:00.000+0000",
                  *       "timeSpentSeconds": 12000,
                  *       "visibility": {
@@ -36692,6 +36883,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"comment":"I did some work here.","id":"100028","issueId":"10002","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/worklog/10000","started":"2021-01-17T12:34:00.000+0000","timeSpent":"3h 20m","timeSpentSeconds":12000,"updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"276f955c-63d7-42c8-9520-92d01dca0625","type":"group","value":"jira-developers"}} */
                     "application/json": components["schemas"]["Worklog"];
                 };
             };
@@ -36747,21 +36939,7 @@ export interface operations {
         requestBody: {
             content: {
                 /** @example {
-                 *       "comment": {
-                 *         "content": [
-                 *           {
-                 *             "content": [
-                 *               {
-                 *                 "text": "I did some work here.",
-                 *                 "type": "text"
-                 *               }
-                 *             ],
-                 *             "type": "paragraph"
-                 *           }
-                 *         ],
-                 *         "type": "doc",
-                 *         "version": 1
-                 *       },
+                 *       "comment": "I did some work here.",
                  *       "started": "2021-01-17T12:34:00.000+0000",
                  *       "timeSpentSeconds": 12000,
                  *       "visibility": {
@@ -36779,6 +36957,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"comment":"I did some work here.","id":"100028","issueId":"10002","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/worklog/10000","started":"2021-01-17T12:34:00.000+0000","timeSpent":"3h 20m","timeSpentSeconds":12000,"updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"276f955c-63d7-42c8-9520-92d01dca0625","type":"group","value":"jira-developers"}} */
                     "application/json": components["schemas"]["Worklog"];
                 };
             };
@@ -36901,6 +37080,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"keys":[{"key":"issue.support","self":"https://your-domain.atlassian.net/rest/api/2/issue/EX-2/properties/issue.support"}]} */
                     "application/json": components["schemas"]["PropertyKeys"];
                 };
             };
@@ -36952,6 +37132,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"key":"issue.support","value":{"system.conversation.id":"b1bf38be-5e94-4b40-a3b8-9278735ee1e6","system.support.time":"1m"}} */
                     "application/json": components["schemas"]["EntityProperty"];
                 };
             };
@@ -37121,21 +37302,7 @@ export interface operations {
             content: {
                 /** @example {
                  *       "comment": {
-                 *         "body": {
-                 *           "content": [
-                 *             {
-                 *               "content": [
-                 *                 {
-                 *                   "text": "Linked related issue!",
-                 *                   "type": "text"
-                 *                 }
-                 *               ],
-                 *               "type": "paragraph"
-                 *             }
-                 *           ],
-                 *           "type": "doc",
-                 *           "version": 1
-                 *         },
+                 *         "body": "Linked related issue!",
                  *         "visibility": {
                  *           "identifier": "276f955c-63d7-42c8-9520-92d01dca0625",
                  *           "type": "group",
@@ -37219,6 +37386,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"10001","inwardIssue":{"fields":{"issuetype":{"avatarId":10002,"description":"A problem with the software.","entityId":"9d7dd6f7-e8b6-4247-954b-7b2c9b2a5ba2","hierarchyLevel":0,"iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype\",","id":"1","name":"Bug","scope":{"project":{"id":"10000"},"type":"PROJECT"},"self":"https://your-domain.atlassian.net/rest/api/2/issueType/1","subtask":false},"priority":{"description":"Very little impact.","iconUrl":"https://your-domain.atlassian.net/images/icons/priorities/trivial.png","id":"2","name":"Trivial","self":"https://your-domain.atlassian.net/rest/api/2/priority/5","statusColor":"#cfcfcf"},"status":{"description":"The issue is closed.","iconUrl":"https://your-domain.atlassian.net/images/icons/closed.gif","id":"5","name":"Closed","self":"https://your-domain.atlassian.net/rest/api/2/status/5","statusCategory":{"colorName":"green","id":9,"key":"completed","self":"https://your-domain.atlassian.net/rest/api/2/statuscategory/9"}}},"id":"10004","key":"PR-3","self":"https://your-domain.atlassian.net/rest/api/2/issue/PR-3"},"outwardIssue":{"fields":{"issuetype":{"avatarId":1,"description":"A task that needs to be done.","hierarchyLevel":0,"iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10299&avatarType=issuetype\",","id":"3","name":"Task","self":"https://your-domain.atlassian.net/rest/api/2/issueType/3","subtask":false},"priority":{"description":"Major loss of function.","iconUrl":"https://your-domain.atlassian.net/images/icons/priorities/major.png","id":"1","name":"Major","self":"https://your-domain.atlassian.net/rest/api/2/priority/3","statusColor":"#009900"},"status":{"description":"The issue is currently being worked on.","iconUrl":"https://your-domain.atlassian.net/images/icons/progress.gif","id":"10000","name":"In Progress","self":"https://your-domain.atlassian.net/rest/api/2/status/10000","statusCategory":{"colorName":"yellow","id":1,"key":"in-flight","name":"In Progress","self":"https://your-domain.atlassian.net/rest/api/2/statuscategory/1"}}},"id":"10004L","key":"PR-2","self":"https://your-domain.atlassian.net/rest/api/2/issue/PR-2"},"type":{"id":"1000","inward":"Duplicated by","name":"Duplicate","outward":"Duplicates","self":"https://your-domain.atlassian.net/rest/api/2/issueLinkType/1000"}} */
                     "application/json": components["schemas"]["IssueLink"];
                 };
             };
@@ -37317,6 +37485,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"issueLinkTypes":[{"id":"1000","inward":"Duplicated by","name":"Duplicate","outward":"Duplicates","self":"https://your-domain.atlassian.net/rest/api/2/issueLinkType/1000"},{"id":"1010","inward":"Blocked by","name":"Blocks","outward":"Blocks","self":"https://your-domain.atlassian.net/rest/api/2/issueLinkType/1010"}]} */
                     "application/json": components["schemas"]["IssueLinkTypes"];
                 };
             };
@@ -37360,6 +37529,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"1000","inward":"Duplicated by","name":"Duplicate","outward":"Duplicates","self":"https://your-domain.atlassian.net/rest/api/2/issueLinkType/1000"} */
                     "application/json": components["schemas"]["IssueLinkType"];
                 };
             };
@@ -37408,6 +37578,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"1000","inward":"Duplicated by","name":"Duplicate","outward":"Duplicates","self":"https://your-domain.atlassian.net/rest/api/2/issueLinkType/1000"} */
                     "application/json": components["schemas"]["IssueLinkType"];
                 };
             };
@@ -37465,6 +37636,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"1000","inward":"Duplicated by","name":"Duplicate","outward":"Duplicates","self":"https://your-domain.atlassian.net/rest/api/2/issueLinkType/1000"} */
                     "application/json": components["schemas"]["IssueLinkType"];
                 };
             };
@@ -37587,6 +37759,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"payload":"{projects=[FOO, BAR], reporters=[uuid-rep-001, uuid-rep-002], issueTypes=[10001, 10002], archivedDate={dateAfterInstant=2023-01-01, dateBeforeInstant=2023-01-12}, archivedBy=[uuid-rep-001, uuid-rep-002]}","progress":0,"status":"ENQUEUED","submittedTime":1623230887000,"taskId":"10990"} */
                     "application/json": components["schemas"]["ExportArchivedIssuesTaskProgressResponse"];
                 };
             };
@@ -37599,6 +37772,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example ["Your filter contains invalid values {errorMessage}"] */
                     "application/json": unknown;
                 };
             };
@@ -37608,6 +37782,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["User is not logged in."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -37617,6 +37792,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["User is not an admin."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -37626,6 +37802,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["An issue archival task is already running with ID 1010. To start a new one, cancel the task or wait for it to finish."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -37646,6 +37823,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"issueSecuritySchemes":[{"defaultSecurityLevelId":10021,"description":"Description for the default issue security scheme","id":10000,"name":"Default Issue Security Scheme","self":"https://your-domain.atlassian.net/rest/api/2/issuesecurityschemes/10000"}]} */
                     "application/json": components["schemas"]["SecuritySchemes"];
                 };
             };
@@ -37701,6 +37879,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"10001"} */
                     "application/json": components["schemas"]["SecuritySchemeId"];
                 };
             };
@@ -37710,6 +37889,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The length of the description must not exceed 4,000 characters."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -37728,6 +37908,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -37759,6 +37940,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":50,"startAt":0,"total":1,"values":[{"description":"Only the reporter and internal staff can see this issue.","id":"10021","isDefault":true,"issueSecuritySchemeId":"10001","name":"Reporter Only","self":"https://your-domain.atlassian.net/rest/api/2/issuesecurityscheme/level?id=10021"}]} */
                     "application/json": components["schemas"]["PageBeanSecurityLevel"];
                 };
             };
@@ -37768,6 +37950,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["-1000 is not a valid value. id must be zero or a positive integer."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -37786,6 +37969,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -37831,6 +38015,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["some-wrong-string is not a valid value. The issue security scheme ID must be a positive integer."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -37849,6 +38034,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -37858,6 +38044,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Issue security scheme with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -37897,6 +38084,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"startAt":0,"total":3,"values":[{"id":"10000","issueSecurityLevelId":"20010","issueSecuritySchemeId":"10010","holder":{"expand":"group","type":"group"}}]} */
                     "application/json": components["schemas"]["PageBeanSecurityLevelMember"];
                 };
             };
@@ -37920,6 +38108,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -37949,6 +38138,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"issueSecuritySchemeId":"10000","projectId":"10000"} */
                     "application/json": components["schemas"]["PageBeanIssueSecuritySchemeToProjectMapping"];
                 };
             };
@@ -38019,6 +38209,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["some-wrong-string is not a valid value. The issue security scheme ID must be a positive integer."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38037,6 +38228,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38046,6 +38238,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Issue security scheme with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38084,6 +38277,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":10000,"self":"https://your-domain.atlassian.net/rest/api/2/issuesecurityscheme/10000","name":"Default scheme","description":"Default scheme description","defaultLevel":10001,"projectIds":[10002]} */
                     "application/json": components["schemas"]["PageBeanSecuritySchemeWithProjects"];
                 };
             };
@@ -38093,6 +38287,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["-1000 is not a valid value. id must be zero or a positive integer."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -38109,6 +38304,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -38119,7 +38315,7 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                /** @description The ID of the issue security scheme. Use the [Get issue security schemes](#api-rest-api-3-issuesecurityschemes-get) operation to get a list of issue security scheme IDs. */
+                /** @description The ID of the issue security scheme. Use the [Get issue security schemes](#api-rest-api-2-issuesecurityschemes-get) operation to get a list of issue security scheme IDs. */
                 id: number;
             };
             cookie?: never;
@@ -38132,6 +38328,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultSecurityLevelId":10021,"description":"Description for the default issue security scheme","id":10000,"levels":[{"description":"Only the reporter and internal staff can see this issue.","id":"10021","name":"Reporter Only","self":"https://your-domain.atlassian.net/rest/api/2/securitylevel/10021"}],"name":"Default Issue Security Scheme","self":"https://your-domain.atlassian.net/rest/api/2/issuesecurityschemes/10000"} */
                     "application/json": components["schemas"]["SecurityScheme"];
                 };
             };
@@ -38186,6 +38383,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The length of the description must not exceed 4,000 characters."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38204,6 +38402,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38213,6 +38412,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Issue security scheme with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38238,7 +38438,7 @@ export interface operations {
             };
             header?: never;
             path: {
-                /** @description The ID of the issue security scheme. Use the [Get issue security schemes](#api-rest-api-3-issuesecurityschemes-get) operation to get a list of issue security scheme IDs. */
+                /** @description The ID of the issue security scheme. Use the [Get issue security schemes](#api-rest-api-2-issuesecurityschemes-get) operation to get a list of issue security scheme IDs. */
                 issueSecuritySchemeId: number;
             };
             cookie?: never;
@@ -38251,6 +38451,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"startAt":0,"total":3,"values":[{"id":10000,"issueSecurityLevelId":10020,"holder":{"expand":"user","type":"user","user":{"accountId":"5b10a2844c20165700ede21g","active":true,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"}}},{"id":10001,"issueSecurityLevelId":10020,"holder":{"expand":"group","parameter":"jira-core-users","type":"group","value":"9c559b11-6c5d-4f96-992c-a746cabab28b"}},{"id":10002,"issueSecurityLevelId":10021,"holder":{"type":"assignee"}}]} */
                     "application/json": components["schemas"]["PageBeanIssueSecurityLevelMember"];
                 };
             };
@@ -38311,6 +38512,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example "You can't delete an issue security scheme if any projects are associated with it." */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38329,6 +38531,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38338,6 +38541,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Issue security scheme with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38392,6 +38596,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["some-wrong-string is not a valid value. The issue security scheme ID must be a positive integer."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38410,6 +38615,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38419,6 +38625,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Issue security scheme with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38461,6 +38668,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The length of the description must not exceed 4,000 characters."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38479,6 +38687,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38488,6 +38697,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Issue security scheme with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38525,6 +38735,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example "You can't delete an issue security scheme if any projects are associated with it." */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38543,6 +38754,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38552,6 +38764,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Issue security scheme with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38610,6 +38823,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["some-wrong-string is not a valid value. The issue security scheme ID must be a positive integer."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38628,6 +38842,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38637,6 +38852,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Issue security scheme with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38691,6 +38907,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38700,6 +38917,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Issue security scheme with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -38720,15 +38938,9 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"avatarId":1,"description":"A task that needs to be done.","hierarchyLevel":0,"iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10299&avatarType=issuetype\",","id":"3","name":"Task","self":"https://your-domain.atlassian.net/rest/api/2/issueType/3","subtask":false},{"avatarId":10002,"description":"A problem with the software.","entityId":"9d7dd6f7-e8b6-4247-954b-7b2c9b2a5ba2","hierarchyLevel":0,"iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype\",","id":"1","name":"Bug","scope":{"project":{"id":"10000"},"type":"PROJECT"},"self":"https://your-domain.atlassian.net/rest/api/2/issueType/1","subtask":false}] */
                     "application/json": components["schemas"]["IssueTypeDetails"][];
                 };
-            };
-            /** @description Returned if the authentication credentials are incorrect or missing. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
             };
         };
     };
@@ -38817,18 +39029,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"avatarId":10002,"description":"A problem with the software.","entityId":"9d7dd6f7-e8b6-4247-954b-7b2c9b2a5ba2","hierarchyLevel":0,"iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype\",","id":"1","name":"Bug","scope":{"project":{"id":"10000"},"type":"PROJECT"},"self":"https://your-domain.atlassian.net/rest/api/2/issueType/1","subtask":false},{"avatarId":1,"description":"A task that needs to be done.","hierarchyLevel":0,"iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10299&avatarType=issuetype\",","id":"3","name":"Task","scope":{"project":{"id":"10000"},"type":"PROJECT"},"self":"https://your-domain.atlassian.net/rest/api/2/issueType/3","subtask":false}] */
                     "application/json": components["schemas"]["IssueTypeDetails"][];
                 };
             };
             /** @description Returned if the request is not valid. */
             400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Returned if the authentication credentials are incorrect or missing. */
-            401: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -38864,18 +39070,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"avatarId":1,"description":"A task that needs to be done.","hierarchyLevel":0,"iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10299&avatarType=issuetype\",","id":"3","name":"Task","self":"https://your-domain.atlassian.net/rest/api/2/issueType/3","subtask":false} */
                     "application/json": components["schemas"]["IssueTypeDetails"];
                 };
             };
             /** @description Returned if the issue type ID is invalid. */
             400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Returned if the authentication credentials are incorrect or missing. */
-            401: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -39027,6 +39227,13 @@ export interface operations {
                 };
                 content?: never;
             };
+            /** @description Returned if a resource related to deletion is locked. */
+            423: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
         };
     };
     getAlternativeIssueTypes: {
@@ -39047,15 +39254,9 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"avatarId":1,"description":"A task that needs to be done.","hierarchyLevel":0,"iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10299&avatarType=issuetype\",","id":"3","name":"Task","self":"https://your-domain.atlassian.net/rest/api/2/issueType/3","subtask":false},{"avatarId":10002,"description":"A problem with the software.","entityId":"9d7dd6f7-e8b6-4247-954b-7b2c9b2a5ba2","hierarchyLevel":0,"iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype\",","id":"1","name":"Bug","scope":{"project":{"id":"10000"},"type":"PROJECT"},"self":"https://your-domain.atlassian.net/rest/api/2/issueType/1","subtask":false}] */
                     "application/json": components["schemas"]["IssueTypeDetails"][];
                 };
-            };
-            /** @description Returned if the authentication credentials are incorrect or missing. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
             };
             /** @description Returned if:
              *
@@ -39098,6 +39299,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"1010","isDeletable":true,"isSelected":false,"isSystemAvatar":false} */
                     "application/json": components["schemas"]["Avatar"];
                 };
             };
@@ -39155,6 +39357,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"keys":[{"key":"issue.support","self":"https://your-domain.atlassian.net/rest/api/2/issue/EX-2/properties/issue.support"}]} */
                     "application/json": components["schemas"]["PropertyKeys"];
                 };
             };
@@ -39184,7 +39387,7 @@ export interface operations {
             path: {
                 /** @description The ID of the issue type. */
                 issueTypeId: string;
-                /** @description The key of the property. Use [Get issue type property keys](#api-rest-api-3-issuetype-issueTypeId-properties-get) to get a list of all issue type property keys. */
+                /** @description The key of the property. Use [Get issue type property keys](#api-rest-api-2-issuetype-issueTypeId-properties-get) to get a list of all issue type property keys. */
                 propertyKey: string;
             };
             cookie?: never;
@@ -39197,6 +39400,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"key":"issue.support","value":{"system.conversation.id":"b1bf38be-5e94-4b40-a3b8-9278735ee1e6","system.support.time":"1m"}} */
                     "application/json": components["schemas"]["EntityProperty"];
                 };
             };
@@ -39308,7 +39512,7 @@ export interface operations {
             path: {
                 /** @description The ID of the issue type. */
                 issueTypeId: string;
-                /** @description The key of the property. Use [Get issue type property keys](#api-rest-api-3-issuetype-issueTypeId-properties-get) to get a list of all issue type property keys. */
+                /** @description The key of the property. Use [Get issue type property keys](#api-rest-api-2-issuetype-issueTypeId-properties-get) to get a list of all issue type property keys. */
                 propertyKey: string;
             };
             cookie?: never;
@@ -39386,6 +39590,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"startAt":0,"total":3,"values":[{"id":"10000","name":"Default Issue Type Scheme","description":"Default issue type scheme is the list of global issue types. All newly created issue types will automatically be added to this scheme.","defaultIssueTypeId":"10003","isDefault":true},{"id":"10001","name":"SUP: Kanban Issue Type Scheme","description":"A collection of issue types suited to use in a kanban style project.","projects":{"isLast":true,"maxResults":100,"startAt":0,"total":1,"values":[{"avatarUrls":{"16x16":"secure/projectavatar?size=xsmall&pid=10000","24x24":"secure/projectavatar?size=small&pid=10000","32x32":"secure/projectavatar?size=medium&pid=10000","48x48":"secure/projectavatar?size=large&pid=10000"},"id":"10000","key":"EX","name":"Example","projectCategory":{"description":"Project category description","id":"10000","name":"A project category"},"projectTypeKey":"ProjectTypeKey{key='software'}","self":"project/EX","simplified":false}]}},{"id":"10002","name":"HR: Scrum issue type scheme","description":"","defaultIssueTypeId":"10004","issueTypes":{"isLast":true,"maxResults":100,"startAt":0,"total":1,"values":[{"description":"Improvement Issue Type","hierarchyLevel":-1,"iconUrl":"www.example.com","id":"1000L","name":"Improvements","subtask":true}]}}]} */
                     "application/json": components["schemas"]["PageBeanIssueTypeScheme"];
                 };
             };
@@ -39441,6 +39646,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"issueTypeSchemeId":"10010"} */
                     "application/json": components["schemas"]["IssueTypeSchemeID"];
                 };
             };
@@ -39450,6 +39656,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The default issue type ID has to be present in issue type IDs list."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39466,6 +39673,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access issue type schemes."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39475,6 +39683,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The name is used by another scheme."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39502,6 +39711,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"startAt":0,"total":4,"values":[{"issueTypeSchemeId":"10000","issueTypeId":"10000"},{"issueTypeSchemeId":"10000","issueTypeId":"10001"},{"issueTypeSchemeId":"10000","issueTypeId":"10002"},{"issueTypeSchemeId":"10001","issueTypeId":"10000"}]} */
                     "application/json": components["schemas"]["PageBeanIssueTypeSchemeMapping"];
                 };
             };
@@ -39550,6 +39760,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"startAt":0,"total":3,"values":[{"issueTypeScheme":{"id":"10000","name":"Default Issue Type Scheme","description":"Default issue type scheme is the list of global issue types. All newly created issue types will automatically be added to this scheme.","defaultIssueTypeId":"10003","isDefault":true},"projectIds":["10000","10001"]},{"issueTypeScheme":{"id":"10001","name":"SUP: Kanban Issue Type Scheme","description":"A collection of issue types suited to use in a kanban style project."},"projectIds":["10002"]},{"issueTypeScheme":{"id":"10002","name":"HR: Scrum issue type scheme","description":"","defaultIssueTypeId":"10004","issueTypes":{"isLast":true,"maxResults":100,"startAt":0,"total":1,"values":[{"description":"Improvement Issue Type","hierarchyLevel":-1,"iconUrl":"www.example.com","id":"1000L","name":"Improvements","subtask":true}]}},"projectIds":["10003","10004","10005"]}]} */
                     "application/json": components["schemas"]["PageBeanIssueTypeSchemeProjects"];
                 };
             };
@@ -39608,6 +39819,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["This issue type scheme can't be assigned to the project. This is because some issues in this project use issue types not present in the scheme. Before assigning the scheme to the project, update the issue types on these issues: 7"],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39624,6 +39836,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access issue type schemes."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39633,6 +39846,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The issue type scheme was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39674,6 +39888,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The default issue type has to be one of the issue types of the scheme."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39690,6 +39905,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access issue type schemes."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39699,6 +39915,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The issue type scheme was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39731,6 +39948,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The default issue type scheme can't be removed."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39747,6 +39965,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access issue type schemes."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39756,6 +39975,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The issue type scheme was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39799,6 +40019,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["These issue types were not added because they are already present in the issue type scheme: 10002, 10003"],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39815,6 +40036,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access issue type schemes."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39824,6 +40046,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["These issue types were not found: 10000, 10002"],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39868,6 +40091,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The issue type scheme does not include some of the specified issue types. Issue type IDs missing from the scheme are:  10007, 10008"],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39884,6 +40108,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access issue type schemes."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39893,6 +40118,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The issue type scheme was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39927,6 +40153,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Can't remove the last standard issue type from the issue type scheme."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39943,6 +40170,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access issue type schemes."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39952,6 +40180,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The issue type was not found in the issue type scheme."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -39988,6 +40217,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"startAt":0,"total":2,"values":[{"id":"1","name":"Default Issue Type Screen Scheme","description":"The default issue type screen scheme"},{"id":"10000","name":"Office issue type screen scheme","description":"Managing office projects","projects":{"isLast":true,"maxResults":100,"startAt":0,"total":1,"values":[{"avatarUrls":{"16x16":"secure/projectavatar?size=xsmall&pid=10000","24x24":"secure/projectavatar?size=small&pid=10000","32x32":"secure/projectavatar?size=medium&pid=10000","48x48":"secure/projectavatar?size=large&pid=10000"},"id":"10000","key":"EX","name":"Example","projectCategory":{"description":"Project category description","id":"10000","name":"A project category"},"projectTypeKey":"ProjectTypeKey{key='software'}","self":"project/EX","simplified":false}]}}]} */
                     "application/json": components["schemas"]["PageBeanIssueTypeScreenScheme"];
                 };
             };
@@ -40051,6 +40281,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"10001"} */
                     "application/json": components["schemas"]["IssueTypeScreenSchemeId"];
                 };
             };
@@ -40060,6 +40291,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["One or more issue type IDs are repeated, an issue type ID can only be specified once."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40076,6 +40308,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access issue type screen schemes."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40085,6 +40318,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["One or more issue type IDs were not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40094,6 +40328,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Sub-tasks are disabled in Jira. At least one of the issue types is a sub-task."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40121,6 +40356,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"startAt":0,"total":4,"values":[{"issueTypeId":"10000","issueTypeScreenSchemeId":"10020","screenSchemeId":"10010"},{"issueTypeId":"10001","issueTypeScreenSchemeId":"10021","screenSchemeId":"10010"},{"issueTypeId":"10002","issueTypeScreenSchemeId":"10022","screenSchemeId":"10010"},{"issueTypeId":"default","issueTypeScreenSchemeId":"10023","screenSchemeId":"10011"}]} */
                     "application/json": components["schemas"]["PageBeanIssueTypeScreenSchemeItem"];
                 };
             };
@@ -40169,6 +40405,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"startAt":0,"total":1,"values":[{"issueTypeScreenScheme":{"id":"1","name":"Default Issue Type Screen Scheme","description":"The default issue type screen scheme"},"projectIds":["10000","10001"]}]} */
                     "application/json": components["schemas"]["PageBeanIssueTypeScreenSchemesProjects"];
                 };
             };
@@ -40231,6 +40468,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only classic projects can have issue type screen schemes assigned."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40247,6 +40485,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access issue type screen schemes."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40256,6 +40495,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The issue type screen scheme was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40297,6 +40537,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The issue type screen scheme name is in use."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40313,6 +40554,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access issue type screen schemes."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40322,6 +40564,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The issue type screen scheme was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40354,6 +40597,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The issue type screen scheme cannot be deleted because it is assigned to one or more projects."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40377,6 +40621,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The issue type screen scheme was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40429,6 +40674,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["A default mapping cannot be added."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40452,6 +40698,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The issue type screen scheme was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40461,6 +40708,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Sub-tasks are disabled in Jira. At least one of the issue types is a sub-task."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40500,6 +40748,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The screenSchemeId has to be provided."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40516,6 +40765,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access issue type screen schemes."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40525,6 +40775,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The issue type screen scheme was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40568,6 +40819,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The issueTypeIds must not contain duplicates."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40584,6 +40836,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access issue type screen schemes."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40593,6 +40846,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The issue type screen scheme was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -40622,6 +40876,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"startAt":0,"total":1,"values":[{"avatarUrls":{"16x16":"secure/projectavatar?size=xsmall&pid=10000","24x24":"secure/projectavatar?size=small&pid=10000","32x32":"secure/projectavatar?size=medium&pid=10000","48x48":"secure/projectavatar?size=large&pid=10000"},"id":"10000","key":"EX","name":"Example","projectCategory":{"description":"Project category description","id":"10000","name":"A project category"},"projectTypeKey":"ProjectTypeKey{key='software'}","self":"project/EX","simplified":false}]} */
                     "application/json": components["schemas"]["PageBeanProjectDetails"];
                 };
             };
@@ -40663,6 +40918,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"jqlReservedWords":["empty","and","or","in","distinct"],"visibleFieldNames":[{"displayName":"summary","operators":["~","!~","is","is not"],"orderable":"true","searchable":"true","types":["java.lang.String"],"value":"summary"},{"auto":"true","cfid":"cf[10880]","displayName":"Sprint - cf[10880]","operators":["=","!=","in","not in","is","is not"],"orderable":"true","searchable":"true","types":["com.atlassian.greenhopper.service.sprint.Sprint"],"value":"Sprint"}],"visibleFunctionNames":[{"displayName":"standardIssueTypes()","isList":"true","types":["com.atlassian.jira.issue.issuetype.IssueType"],"value":"standardIssueTypes()"},{"displayName":"issuesWithText()","supportsListAndSingleValueOperators":"true","types":["com.atlassian.jira.issue.issuetype.IssueType"],"value":"issuesWithText()"}]} */
                     "application/json": components["schemas"]["JQLReferenceData"];
                 };
             };
@@ -40702,6 +40958,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"jqlReservedWords":["empty","and","or","in","distinct"],"visibleFieldNames":[{"displayName":"summary","operators":["~","!~","is","is not"],"orderable":"true","searchable":"true","types":["java.lang.String"],"value":"summary"},{"auto":"true","cfid":"cf[10061]","displayName":"Component - cf[10061]","operators":["=","!=","in","not in","is","is not"],"orderable":"true","types":["com.atlassian.jira.issue.customfields.option.Option"],"value":"cf[10061]"},{"auto":"true","cfid":"cf[10062]","displayName":"Component - cf[10062]","operators":["=","!=","in","not in","is","is not"],"orderable":"true","types":["com.atlassian.jira.issue.customfields.option.Option"],"value":"cf[10062]"},{"auto":"true","displayName":"Component - Component[Dropdown]","operators":["=","!=","in","not in","is","is not"],"searchable":"true","types":["com.atlassian.jira.issue.customfields.option.Option"],"value":"\"Component[Dropdown]\""}],"visibleFunctionNames":[{"displayName":"standardIssueTypes()","isList":"true","types":["com.atlassian.jira.issue.issuetype.IssueType"],"value":"standardIssueTypes()"}]} */
                     "application/json": components["schemas"]["JQLReferenceData"];
                 };
             };
@@ -40745,6 +41002,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"results":[{"displayName":"<b>Ac</b>tiveObjects (AO)","value":"ActiveObjects"},{"displayName":"Atlassian Connect (<b>AC</b>)","value":"Atlassian Connect"},{"displayName":"Atlassian Connect in Jira (<b>AC</b>JIRA)","value":"Atlassian Connect in Jira"}]} */
                     "application/json": components["schemas"]["AutoCompleteSuggestions"];
                 };
             };
@@ -40796,6 +41054,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"startAt":0,"total":1,"values":[{"arguments":["Test"],"created":"2023-10-14T05:25:20.000+0000","field":"issue","functionKey":"ari:cloud:ecosystem::extension/00000000-1111-2222-3333-4444444/111111-2222-3333-4444-55555/static/issuesWithText","functionName":"issuesWithText","id":"cf75a1b0-4ac6-4bd8-8a50-29a465a96520","operator":"in","updated":"2023-10-14T05:25:20.000+0000","used":"2023-10-14T05:25:20.000+0000","value":"issue in (TEST-1, TEST-2, TEST-3)"},{"arguments":["10001"],"created":"2023-10-14T05:25:20.000+0000","error":"Error message to be displayed to the user","field":"issue","functionKey":"ari:cloud:ecosystem::extension/00000000-1111-2222-3333-4444444/111111-2222-3333-4444-55555/static/issuesWithText","functionName":"issuesWithText","id":"2a854f11-d0e1-4260-aea8-64a562a7062a","operator":"=","updated":"2023-10-14T05:25:20.000+0000","used":"2023-10-14T05:25:20.000+0000"}]} */
                     "application/json": components["schemas"]["PageBean2JqlFunctionPrecomputationBean"];
                 };
             };
@@ -40936,6 +41195,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"notFoundPrecomputationIDs":["cce1ef75-d566-40f8-a1a8-a9067f70ad69","82583f5d-0a44-454b-a1f5-4e06838fbf80"],"precomputations":[{"arguments":["Test"],"created":"2023-10-14T05:25:20.000+0000","field":"issue","functionKey":"ari:cloud:ecosystem::extension/00000000-1111-2222-3333-4444444/111111-2222-3333-4444-55555/static/issuesWithText","functionName":"issuesWithText","id":"cf75a1b0-4ac6-4bd8-8a50-29a465a96520","operator":"in","updated":"2023-10-14T05:25:20.000+0000","used":"2023-10-14T05:25:20.000+0000","value":"issue in (TEST-1, TEST-2, TEST-3)"},{"arguments":["10001"],"created":"2023-10-14T05:25:20.000+0000","error":"Error message to be displayed to the user","field":"issue","functionKey":"ari:cloud:ecosystem::extension/00000000-1111-2222-3333-4444444/111111-2222-3333-4444-55555/static/issuesWithText","functionName":"issuesWithText","id":"2a854f11-d0e1-4260-aea8-64a562a7062a","operator":"=","updated":"2023-10-14T05:25:20.000+0000","used":"2023-10-14T05:25:20.000+0000"}]} */
                     "application/json": components["schemas"]["JqlFunctionPrecomputationGetByIdResponse"];
                 };
             };
@@ -41000,6 +41260,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"matches":[{"matchedIssues":[10000,10004],"errors":[]},{"matchedIssues":[100134,10025,10236],"errors":[]},{"matchedIssues":[],"errors":[]},{"matchedIssues":[],"errors":["Invalid JQL: broken = value"]}]} */
                     "application/json": components["schemas"]["IssueMatches"];
                 };
             };
@@ -41049,6 +41310,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"queries":[{"query":"summary ~ test AND (labels in (urgent, blocker) OR lastCommentedBy = currentUser()) AND status CHANGED AFTER -5d ORDER BY updated DESC","structure":{"orderBy":{"fields":[{"direction":"desc","field":{"encodedName":"updated","name":"updated"}}]},"where":{"clauses":[{"field":{"encodedName":"summary","name":"summary"},"operand":{"encodedValue":"test","value":"test"},"operator":"~"},{"clauses":[{"field":{"encodedName":"labels","name":"labels"},"operand":{"encodedOperand":"urgent, blocker)","values":[{"encodedValue":"urgent","value":"urgent"},{"encodedValue":"blocker","value":"blocker"}]},"operator":"in"},{"field":{"encodedName":"lastCommentedBy","name":"lastCommentedBy","property":[{"entity":"issue","key":"propertyKey","path":"path.in.property","type":"user"}]},"operand":{"arguments":[],"encodedOperand":"currentUser()","function":"currentUser"},"operator":"="}],"operator":"or"},{"field":{"encodedName":"status","name":"status"},"operator":"changed","predicates":[{"operand":{"arguments":["-1M"],"encodedOperand":"startOfMonth(-1M)","function":"startOfMonth"},"operator":"after"}]}],"operator":"and"}}},{"query":"issue.property[\"spaces here\"].value in (\"Service requests\", Incidents)","structure":{"where":{"field":{"encodedName":"issue.property[\"spaces here\"].value","name":"issue.property[spaces here].value","property":[{"entity":"issue","key":"spaces here","path":"value"}]},"operand":{"encodedOperand":"(\"Service requests\", Incidents)","values":[{"encodedValue":"\"Service requests\"","value":"Service requests"},{"encodedValue":"Incidents","value":"Incidents"}]},"operator":"in"}}},{"errors":["Error in the JQL Query: Expecting operator but got 'query'. The valid operators are '=', '!=', '<', '>', '<=', '>=', '~', '!~', 'IN', 'NOT IN', 'IS' and 'IS NOT'. (line 1, character 9)"],"query":"invalid query"},{"errors":["The operator '=' is not supported by the 'summary' field."],"query":"summary = test"},{"errors":["Operator 'in' does not support the non-list value '\"test\"' for field 'summary'."],"query":"summary in test"},{"query":"project = INVALID","warnings":["The value 'INVALID' does not exist for the field 'project'."]},{"errors":["Field 'universe' does not exist or you do not have permission to view it."],"query":"universe = 42"}]} */
                     "application/json": components["schemas"]["ParsedJqlQueries"];
                 };
             };
@@ -41095,6 +41357,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"queriesWithUnknownUsers":[{"convertedQuery":"assignee = unknown","originalQuery":"assignee = mia"}],"queryStrings":["issuetype = Bug AND assignee in (abcde-12345) AND reporter in (abc551-c4e99) order by lastViewed DESC"]} */
                     "application/json": components["schemas"]["ConvertedJQLQueries"];
                 };
             };
@@ -41156,6 +41419,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"queries":[{"initialQuery":"project = 'Sample project'","sanitizedQuery":"project = 12345"},{"initialQuery":"project = 'Sample project'","sanitizedQuery":"project = 'Sample project'","accountId":"5b10ac8d82e05b22cc7d4ef5"},{"initialQuery":"project = 'Sample project'","sanitizedQuery":"project = 12345","accountId":"cda2aa1395ac195d951b3387"},{"initialQuery":"non-parsable query","errors":{"errorMessages":["Error in the JQL Query: Expecting operator but got 'query'. The valid operators are '=', '!=', '<', '>', '<=', '>=', '~', '!~', 'IN', 'NOT IN', 'IS' and 'IS NOT'. (line 1, character 9)"],"errors":{}},"accountId":"5b10ac8d82e05b22cc7d4ef5"}]} */
                     "application/json": components["schemas"]["SanitizedJqlQueries"];
                 };
             };
@@ -41165,6 +41429,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The queries has to be provided."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -41183,6 +41448,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -41208,6 +41474,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":false,"maxResults":2,"startAt":0,"total":100,"values":["performance","security"]} */
                     "application/json": components["schemas"]["PageBeanString"];
                 };
             };
@@ -41228,6 +41495,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"key":"license.totalApproximateUserCount","value":"1000"} */
                     "application/json": components["schemas"]["LicenseMetric"];
                 };
             };
@@ -41246,6 +41514,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access license details."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollections"];
                 };
             };
@@ -41269,6 +41538,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"key":"license.jira-software.approximateUserCount","value":"115"} */
                     "application/json": components["schemas"]["LicenseMetric"];
                 };
             };
@@ -41287,6 +41557,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access license details."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -41303,7 +41574,7 @@ export interface operations {
                 issueKey?: string;
                 /** @description The ID of the issue. */
                 issueId?: string;
-                /** @description A list of permission keys. (Required) This parameter accepts a comma-separated list. To get the list of available permissions, use [Get all permissions](#api-rest-api-3-permissions-get). */
+                /** @description A list of permission keys. (Required) This parameter accepts a comma-separated list. To get the list of available permissions, use [Get all permissions](#api-rest-api-2-permissions-get). */
                 permissions?: string;
                 projectUuid?: string;
                 projectConfigurationUuid?: string;
@@ -41322,6 +41593,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"permissions":{"EDIT_ISSUES":{"description":"Ability to edit issues.","havePermission":true,"id":"12","key":"EDIT_ISSUES","name":"Edit Issues","type":"PROJECT"}}} */
                     "application/json": components["schemas"]["Permissions"];
                 };
             };
@@ -41484,6 +41756,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"locale":"en_US"} */
                     "application/json": components["schemas"]["Locale"];
                 };
             };
@@ -41586,6 +41859,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":true,"applicationRoles":{"items":[],"size":1},"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","groups":{"items":[],"size":3},"key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"} */
                     "application/json": components["schemas"]["User"];
                 };
             };
@@ -41633,6 +41907,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":false,"maxResults":6,"startAt":1,"total":5,"values":[{"description":"description","expand":"notificationSchemeEvents,user,group,projectRole,field,all","id":10100,"name":"notification scheme name","notificationSchemeEvents":[{"event":{"description":"Event published when an issue is created","id":1,"name":"Issue created"},"notifications":[{"expand":"group","group":{"groupId":"276f955c-63d7-42c8-9520-92d01dca0625","name":"jira-administrators","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"},"id":1,"notificationType":"Group","parameter":"jira-administrators","recipient":"276f955c-63d7-42c8-9520-92d01dca0625"},{"id":2,"notificationType":"CurrentAssignee"},{"expand":"projectRole","id":3,"notificationType":"ProjectRole","parameter":"10360","projectRole":{"self":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor"},{"actorUser":{"accountId":"5b10a2844c20165700ede21g"},"displayName":"Mia Krystof","id":10241,"type":"atlassian-user-role-actor"}],"scope":{"project":{"id":"10000","key":"KEY","name":"Next Gen Project"},"type":"PROJECT"}},"recipient":"10360"},{"emailAddress":"rest-developer@atlassian.com","id":4,"notificationType":"EmailAddress","parameter":"rest-developer@atlassian.com","recipient":"rest-developer@atlassian.com"},{"expand":"user","id":5,"notificationType":"User","parameter":"5b10a2844c20165700ede21g","recipient":"5b10a2844c20165700ede21g","user":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"}},{"expand":"field","field":{"clauseNames":["cf[10101]","New custom field"],"custom":true,"id":"customfield_10101","key":"customfield_10101","name":"New custom field","navigable":true,"orderable":true,"schema":{"custom":"com.atlassian.jira.plugin.system.customfieldtypes:project","customId":10101,"type":"project"},"searchable":true,"untranslatedName":"New custom field"},"id":6,"notificationType":"GroupCustomField","parameter":"customfield_10101","recipient":"customfield_10101"}]},{"event":{"description":"Custom event that is published together with an issue created event","id":20,"name":"Custom event","templateEvent":{"description":"Event published when an issue is created","id":1,"name":"Issue created"}},"notifications":[{"expand":"group","group":{"groupId":"276f955c-63d7-42c8-9520-92d01dca0625","name":"jira-administrators","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"},"id":1,"notificationType":"Group","parameter":"jira-administrators","recipient":"276f955c-63d7-42c8-9520-92d01dca0625"},{"id":2,"notificationType":"CurrentAssignee"},{"expand":"projectRole","id":3,"notificationType":"ProjectRole","parameter":"10360","projectRole":{"self":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor"},{"actorUser":{"accountId":"5b10a2844c20165700ede21g"},"displayName":"Mia Krystof","id":10241,"type":"atlassian-user-role-actor"}],"scope":{"project":{"id":"10000","key":"KEY","name":"Next Gen Project"},"type":"PROJECT"}},"recipient":"10360"},{"emailAddress":"rest-developer@atlassian.com","id":4,"notificationType":"EmailAddress","parameter":"rest-developer@atlassian.com","recipient":"rest-developer@atlassian.com"},{"expand":"user","id":5,"notificationType":"User","parameter":"5b10a2844c20165700ede21g","recipient":"5b10a2844c20165700ede21g","user":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"}},{"expand":"field","field":{"clauseNames":["cf[10101]","New custom field"],"custom":true,"id":"customfield_10101","key":"customfield_10101","name":"New custom field","navigable":true,"orderable":true,"schema":{"custom":"com.atlassian.jira.plugin.system.customfieldtypes:project","customId":10101,"type":"project"},"searchable":true,"untranslatedName":"New custom field"},"id":6,"notificationType":"GroupCustomField","parameter":"customfield_10101","recipient":"customfield_10101"}]}],"projects":[10001,10002],"self":"https://your-domain.atlassian.net/rest/api/2/notificationscheme"}]} */
                     "application/json": components["schemas"]["PageBeanNotificationScheme"];
                 };
             };
@@ -41642,6 +41917,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["%20. is not a valid value. id must be zero or a positive integer."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -41690,6 +41966,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"10001"} */
                     "application/json": components["schemas"]["NotificationSchemeId"];
                 };
             };
@@ -41699,6 +41976,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The length of the description must not exceed 4000 characters."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -41717,6 +41995,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -41746,6 +42025,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":50,"startAt":0,"total":4,"values":[{"notificationSchemeId":"10001","projectId":"100001"}]} */
                     "application/json": components["schemas"]["PageBeanNotificationSchemeAndProjectMappingJsonBean"];
                 };
             };
@@ -41784,7 +42064,7 @@ export interface operations {
             };
             header?: never;
             path: {
-                /** @description The ID of the notification scheme. Use [Get notification schemes paginated](#api-rest-api-3-notificationscheme-get) to get a list of notification scheme IDs. */
+                /** @description The ID of the notification scheme. Use [Get notification schemes paginated](#api-rest-api-2-notificationscheme-get) to get a list of notification scheme IDs. */
                 id: number;
             };
             cookie?: never;
@@ -41797,6 +42077,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"description":"description","expand":"notificationSchemeEvents,user,group,projectRole,field,all","id":10100,"name":"notification scheme name","notificationSchemeEvents":[{"event":{"description":"Event published when an issue is created","id":1,"name":"Issue created"},"notifications":[{"expand":"group","group":{"groupId":"276f955c-63d7-42c8-9520-92d01dca0625","name":"jira-administrators","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"},"id":1,"notificationType":"Group","parameter":"jira-administrators","recipient":"276f955c-63d7-42c8-9520-92d01dca0625"},{"id":2,"notificationType":"CurrentAssignee"},{"expand":"projectRole","id":3,"notificationType":"ProjectRole","parameter":"10360","projectRole":{"self":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor"},{"actorUser":{"accountId":"5b10a2844c20165700ede21g"},"displayName":"Mia Krystof","id":10241,"type":"atlassian-user-role-actor"}],"scope":{"project":{"id":"10000","key":"KEY","name":"Next Gen Project"},"type":"PROJECT"}},"recipient":"10360"},{"emailAddress":"rest-developer@atlassian.com","id":4,"notificationType":"EmailAddress","parameter":"rest-developer@atlassian.com","recipient":"rest-developer@atlassian.com"},{"expand":"user","id":5,"notificationType":"User","parameter":"5b10a2844c20165700ede21g","recipient":"5b10a2844c20165700ede21g","user":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"}},{"expand":"field","field":{"clauseNames":["cf[10101]","New custom field"],"custom":true,"id":"customfield_10101","key":"customfield_10101","name":"New custom field","navigable":true,"orderable":true,"schema":{"custom":"com.atlassian.jira.plugin.system.customfieldtypes:project","customId":10101,"type":"project"},"searchable":true,"untranslatedName":"New custom field"},"id":6,"notificationType":"GroupCustomField","parameter":"customfield_10101","recipient":"customfield_10101"}]},{"event":{"description":"Custom event that is published together with an issue created event","id":20,"name":"Custom event","templateEvent":{"description":"Event published when an issue is created","id":1,"name":"Issue created"}},"notifications":[{"expand":"group","group":{"groupId":"276f955c-63d7-42c8-9520-92d01dca0625","name":"jira-administrators","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"},"id":1,"notificationType":"Group","parameter":"jira-administrators","recipient":"276f955c-63d7-42c8-9520-92d01dca0625"},{"id":2,"notificationType":"CurrentAssignee"},{"expand":"projectRole","id":3,"notificationType":"ProjectRole","parameter":"10360","projectRole":{"self":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor"},{"actorUser":{"accountId":"5b10a2844c20165700ede21g"},"displayName":"Mia Krystof","id":10241,"type":"atlassian-user-role-actor"}],"scope":{"project":{"id":"10000","key":"KEY","name":"Next Gen Project"},"type":"PROJECT"}},"recipient":"10360"},{"emailAddress":"rest-developer@atlassian.com","id":4,"notificationType":"EmailAddress","parameter":"rest-developer@atlassian.com","recipient":"rest-developer@atlassian.com"},{"expand":"user","id":5,"notificationType":"User","parameter":"5b10a2844c20165700ede21g","recipient":"5b10a2844c20165700ede21g","user":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"}},{"expand":"field","field":{"clauseNames":["cf[10101]","New custom field"],"custom":true,"id":"customfield_10101","key":"customfield_10101","name":"New custom field","navigable":true,"orderable":true,"schema":{"custom":"com.atlassian.jira.plugin.system.customfieldtypes:project","customId":10101,"type":"project"},"searchable":true,"untranslatedName":"New custom field"},"id":6,"notificationType":"GroupCustomField","parameter":"customfield_10101","recipient":"customfield_10101"}]}],"projects":[10001,10002],"self":"https://your-domain.atlassian.net/rest/api/2/notificationscheme"} */
                     "application/json": components["schemas"]["NotificationScheme"];
                 };
             };
@@ -41858,6 +42139,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The length of the description must not exceed 4000 characters."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -41876,6 +42158,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -41885,6 +42168,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Notification scheme with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -41936,6 +42220,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Event type with ID 2 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -41954,6 +42239,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -41963,6 +42249,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Notification scheme with ID 10001 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -41995,6 +42282,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You can’t delete the default notification scheme."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -42013,6 +42301,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -42022,6 +42311,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Notification scheme with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -42074,6 +42364,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -42083,6 +42374,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Notification scheme with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -42103,6 +42395,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"permissions":{"BULK_CHANGE":{"description":"Ability to modify a collection of issues at once. For example, resolve multiple issues in one step.","key":"BULK_CHANGE","name":"Bulk Change","type":"GLOBAL"}}} */
                     "application/json": components["schemas"]["Permissions"];
                 };
             };
@@ -42165,6 +42458,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"globalPermissions":["ADMINISTER"],"projectPermissions":[{"issues":[10010,10013,10014],"permission":"EDIT_ISSUES","projects":[10001]}]} */
                     "application/json": components["schemas"]["BulkPermissionGrants"];
                 };
             };
@@ -42180,6 +42474,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":[],"errors":{"PERMISSION_123":"Unrecognized permission"}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -42189,6 +42484,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can perform this operation."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -42257,6 +42553,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"permissionSchemes":[{"description":"description","id":10000,"name":"Example permission scheme","self":"https://your-domain.atlassian.net/rest/api/2/permissionscheme/10000"}]} */
                     "application/json": components["schemas"]["PermissionSchemes"];
                 };
             };
@@ -42313,6 +42610,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"description":"description","id":10000,"name":"Example permission scheme","permissions":[{"holder":{"expand":"group","parameter":"jira-core-users","type":"group","value":"ca85fac0-d974-40ca-a615-7af99c48d24f"},"id":10000,"permission":"ADMINISTER_PROJECTS","self":"https://your-domain.atlassian.net/rest/api/2/permissionscheme/permission/10000"}],"self":"https://your-domain.atlassian.net/rest/api/2/permissionscheme/10000"} */
                     "application/json": components["schemas"]["PermissionScheme"];
                 };
             };
@@ -42367,6 +42665,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"description":"description","id":10000,"name":"Example permission scheme","permissions":[{"holder":{"expand":"group","parameter":"jira-core-users","type":"group","value":"ca85fac0-d974-40ca-a615-7af99c48d24f"},"id":10000,"permission":"ADMINISTER_PROJECTS","self":"https://your-domain.atlassian.net/rest/api/2/permissionscheme/permission/10000"}],"self":"https://your-domain.atlassian.net/rest/api/2/permissionscheme/10000"} */
                     "application/json": components["schemas"]["PermissionScheme"];
                 };
             };
@@ -42432,6 +42731,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"description":"description","id":10000,"name":"Example permission scheme","permissions":[{"holder":{"expand":"group","parameter":"jira-core-users","type":"group","value":"ca85fac0-d974-40ca-a615-7af99c48d24f"},"id":10000,"permission":"ADMINISTER_PROJECTS","self":"https://your-domain.atlassian.net/rest/api/2/permissionscheme/permission/10000"}],"self":"https://your-domain.atlassian.net/rest/api/2/permissionscheme/10000"} */
                     "application/json": components["schemas"]["PermissionScheme"];
                 };
             };
@@ -42531,6 +42831,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"expand":"user,group,projectRole,field,all","permissions":[{"holder":{"expand":"group","parameter":"jira-core-users","type":"group","value":"ca85fac0-d974-40ca-a615-7af99c48d24f"},"id":10000,"permission":"ADMINISTER_PROJECTS","self":"https://your-domain.atlassian.net/rest/api/2/permissionscheme/permission/10000"}]} */
                     "application/json": components["schemas"]["PermissionGrants"];
                 };
             };
@@ -42591,6 +42892,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"holder":{"expand":"group","parameter":"jira-core-users","type":"group","value":"ca85fac0-d974-40ca-a615-7af99c48d24f"},"id":10000,"permission":"ADMINISTER_PROJECTS","self":"https://your-domain.atlassian.net/rest/api/2/permissionscheme/permission/10000"} */
                     "application/json": components["schemas"]["PermissionGrant"];
                 };
             };
@@ -42647,6 +42949,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"holder":{"expand":"group","parameter":"jira-core-users","type":"group","value":"ca85fac0-d974-40ca-a615-7af99c48d24f"},"id":10000,"permission":"ADMINISTER_PROJECTS","self":"https://your-domain.atlassian.net/rest/api/2/permissionscheme/permission/10000"} */
                     "application/json": components["schemas"]["PermissionGrant"];
                 };
             };
@@ -42734,6 +43037,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"cursor":"","isLast":true,"maxResults":2,"nextPageCursor":"2","total":10,"values":[{"id":"100","issueSources":[{"type":"Project","value":10000}],"name":"Plan 1","scenarioId":"200","status":"Active"},{"id":"200","issueSources":[{"type":"Board","value":20000}],"name":"Plan 2","scenarioId":"300","status":"Trashed"}]} */
                     "application/json": components["schemas"]["PageWithCursorGetPlanResponseForPage"];
                 };
             };
@@ -42759,7 +43063,10 @@ export interface operations {
     };
     createPlan: {
         parameters: {
-            query?: never;
+            query?: {
+                /** @description Whether to accept group IDs instead of group names. Group names are deprecated. */
+                useGroupId?: boolean;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -42882,7 +43189,10 @@ export interface operations {
     };
     getPlan: {
         parameters: {
-            query?: never;
+            query?: {
+                /** @description Whether to return group IDs instead of group names. Group names are deprecated. */
+                useGroupId?: boolean;
+            };
             header?: never;
             path: {
                 /** @description The ID of the plan. */
@@ -42898,6 +43208,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"crossProjectReleases":[{"name":"x-plr","releaseIds":[345]}],"customFields":[{"customFieldId":34,"filter":false},{"customFieldId":39,"filter":true}],"exclusionRules":{"issueIds":[1,2],"issueTypeIds":[13,23],"numberOfDaysToShowCompletedIssues":50,"releaseIds":[14,24],"workStatusCategoryIds":[12,22],"workStatusIds":[11,21]},"id":23,"issueSources":[{"type":"Project","value":12},{"type":"Filter","value":10293}],"lastSaved":"2024-10-03T10:15:30Z","leadAccountId":"628f5e86d5ec1f006ne7363x2s","name":"Onset TBJ Plan","permissions":[{"holder":{"type":"AccountId","value":"04jekw86d5jjje006ne7363x2s"},"type":"Edit"}],"scheduling":{"dependencies":"Concurrent","endDate":{"dateCustomFieldId":1098,"type":"DateCustomField"},"estimation":"Hours","inferredDates":"ReleaseDates","startDate":{"type":"TargetStartDate"}},"status":"Active"} */
                     "application/json": components["schemas"]["GetPlanResponse"];
                 };
             };
@@ -42932,7 +43243,10 @@ export interface operations {
     };
     updatePlan: {
         parameters: {
-            query?: never;
+            query?: {
+                /** @description Whether to accept group IDs instead of group names. Group names are deprecated. */
+                useGroupId?: boolean;
+            };
             header?: never;
             path: {
                 /** @description The ID of the plan. */
@@ -43161,6 +43475,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"cursor":"","isLast":true,"maxResults":2,"nextPageCursor":"2","total":10,"values":[{"id":"1","name":"Team 1","type":"PlanOnly"},{"id":"2","type":"Atlassian"}]} */
                     "application/json": components["schemas"]["PageWithCursorGetTeamResponseForPage"];
                 };
             };
@@ -43292,6 +43607,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"capacity":220.0,"id":"98WA-2JBO-12N3-2298","issueSourceId":1,"planningStyle":"Scrum","sprintLength":2} */
                     "application/json": components["schemas"]["GetAtlassianTeamResponse"];
                 };
             };
@@ -43573,6 +43889,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"capacity":30.0,"id":123,"issueSourceId":1,"memberAccountIds":["mek2-3jno-01n3","kdsn-2nk3-2nn1"],"name":"Team1","planningStyle":"Scrum","sprintLength":2} */
                     "application/json": components["schemas"]["GetPlanOnlyTeamResponse"];
                 };
             };
@@ -43825,6 +44142,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"description":"Major loss of function.","iconUrl":"https://your-domain.atlassian.net/images/icons/priorities/major.png","id":"1","name":"Major","self":"https://your-domain.atlassian.net/rest/api/2/priority/3","statusColor":"#009900"},{"description":"Very little impact.","iconUrl":"https://your-domain.atlassian.net/images/icons/priorities/trivial.png","id":"2","name":"Trivial","self":"https://your-domain.atlassian.net/rest/api/2/priority/5","statusColor":"#cfcfcf"}] */
                     "application/json": components["schemas"]["Priority"][];
                 };
             };
@@ -43862,6 +44180,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"10001"} */
                     "application/json": components["schemas"]["PriorityId"];
                 };
             };
@@ -43871,6 +44190,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The length of the description must not exceed 255 characters."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -43889,6 +44209,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access issue type screen schemes."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -43925,6 +44246,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The id has to be provided."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -43943,6 +44265,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -43952,6 +44275,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Priority with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -43992,6 +44316,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The ids must contain no more than 1,000 items."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -44010,6 +44335,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -44019,6 +44345,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Priority with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -44054,6 +44381,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":50,"startAt":0,"total":2,"values":[{"description":"Major loss of function.","iconUrl":"https://your-domain.atlassian.net/images/icons/priorities/major.png","id":"1","isDefault":true,"name":"Major","self":"https://your-domain.atlassian.net/rest/api/2/priority/3","statusColor":"#009900"},{"description":"Very little impact.","iconUrl":"https://your-domain.atlassian.net/images/icons/priorities/trivial.png","id":"2","isDefault":false,"name":"Trivial","self":"https://your-domain.atlassian.net/rest/api/2/priority/5","statusColor":"#cfcfcf"}]} */
                     "application/json": components["schemas"]["PageBeanPriority"];
                 };
             };
@@ -44086,6 +44414,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"description":"Major loss of function.","iconUrl":"https://your-domain.atlassian.net/images/icons/priorities/major.png","id":"1","name":"Major","self":"https://your-domain.atlassian.net/rest/api/2/priority/3","statusColor":"#009900"} */
                     "application/json": components["schemas"]["Priority"];
                 };
             };
@@ -44142,6 +44471,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The length of the description must not exceed 255 characters."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -44160,6 +44490,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -44169,6 +44500,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Priority with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -44201,6 +44533,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The newPriority has to be provided."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -44219,6 +44552,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -44228,6 +44562,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Priority with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -44274,6 +44609,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":50,"startAt":0,"total":1,"values":[{"description":"This is the default scheme used by all new and unassigned projects","id":"1","isDefault":true,"name":"Default Priority Scheme","priorities":{"isLast":true,"maxResults":50,"startAt":0,"total":3,"values":[{"description":"Serious problem that could block progress.","iconUrl":"/images/icons/priorities/high.svg","id":"1","isDefault":false,"name":"High","statusColor":"#f15C75"},{"description":"Has the potential to affect progress.","iconUrl":"/images/icons/priorities/medium.svg","id":"2","isDefault":true,"name":"Medium","statusColor":"#f79232"},{"description":"Minor problem or easily worked around.","iconUrl":"/images/icons/priorities/low.svg","id":"3","isDefault":false,"name":"Low","statusColor":"#707070"}]},"projects":{"isLast":true,"maxResults":50,"startAt":0,"total":1,"values":[{"avatarUrls":{"16x16":"secure/projectavatar?size=xsmall&pid=10000","24x24":"secure/projectavatar?size=small&pid=10000","32x32":"secure/projectavatar?size=medium&pid=10000","48x48":"secure/projectavatar?size=large&pid=10000"},"id":"10000","key":"EX","name":"Example","projectCategory":{"description":"Project category description","id":"10000","name":"A project category"},"projectTypeKey":"ProjectTypeKey{key='software'}","self":"project/EX","simplified":false}]}}]} */
                     "application/json": components["schemas"]["PageBeanPrioritySchemeWithPaginatedPrioritiesAndProjects"];
                 };
             };
@@ -44336,6 +44672,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"10001"} */
                     "application/json": components["schemas"]["PrioritySchemeId"];
                 };
             };
@@ -44345,6 +44682,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"10001","task":{"self":"https://your-domain.atlassian.net/rest/api/2/task/1","id":"1","description":"Task description","status":"COMPLETE","result":"the task result, this may be any JSON","submittedBy":10000,"progress":100,"elapsedRuntime":156,"submitted":1501708132800,"started":1501708132900,"finished":1501708133000,"lastUpdate":1501708133000}} */
                     "application/json": components["schemas"]["PrioritySchemeId"];
                 };
             };
@@ -44420,6 +44758,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":50,"startAt":0,"total":3,"values":[{"description":"Serious problem that could block progress.","iconUrl":"/images/icons/priorities/high.svg","id":"1","isDefault":false,"name":"High","statusColor":"#f15C75"},{"description":"Has the potential to affect progress.","iconUrl":"/images/icons/priorities/medium.svg","id":"2","isDefault":true,"name":"Medium","statusColor":"#f79232"},{"description":"Minor problem or easily worked around.","iconUrl":"/images/icons/priorities/low.svg","id":"3","isDefault":false,"name":"Low","statusColor":"#707070"}]} */
                     "application/json": components["schemas"]["PageBeanPriorityWithSequence"];
                 };
             };
@@ -44465,6 +44804,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":50,"startAt":0,"total":3,"values":[{"description":"Serious problem that could block progress.","iconUrl":"/images/icons/priorities/high.svg","id":"1","isDefault":false,"name":"High","statusColor":"#f15C75"},{"description":"Has the potential to affect progress.","iconUrl":"/images/icons/priorities/medium.svg","id":"2","isDefault":true,"name":"Medium","statusColor":"#f79232"},{"description":"Minor problem or easily worked around.","iconUrl":"/images/icons/priorities/low.svg","id":"3","isDefault":false,"name":"Low","statusColor":"#707070"}]} */
                     "application/json": components["schemas"]["PageBeanPriorityWithSequence"];
                 };
             };
@@ -44549,6 +44889,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"task":{"self":"https://your-domain.atlassian.net/rest/api/2/task/1","id":"1","description":"Task description","status":"COMPLETE","result":"the task result, this may be any JSON","submittedBy":10000,"progress":100,"elapsedRuntime":156,"submitted":1501708132800,"started":1501708132900,"finished":1501708133000,"lastUpdate":1501708133000},"updated":{"description":"This is the default scheme used by all new and unassigned projects","id":"1","isDefault":true,"name":"Default Priority Scheme","priorities":{"isLast":true,"maxResults":50,"startAt":0,"total":3,"values":[{"description":"Serious problem that could block progress.","iconUrl":"/images/icons/priorities/high.svg","id":"1","isDefault":false,"name":"High","statusColor":"#f15C75"},{"description":"Has the potential to affect progress.","iconUrl":"/images/icons/priorities/medium.svg","id":"2","isDefault":true,"name":"Medium","statusColor":"#f79232"},{"description":"Minor problem or easily worked around.","iconUrl":"/images/icons/priorities/low.svg","id":"3","isDefault":false,"name":"Low","statusColor":"#707070"}]},"projects":{"isLast":true,"maxResults":50,"startAt":0,"total":1,"values":[{"avatarUrls":{"16x16":"secure/projectavatar?size=xsmall&pid=10000","24x24":"secure/projectavatar?size=small&pid=10000","32x32":"secure/projectavatar?size=medium&pid=10000","48x48":"secure/projectavatar?size=large&pid=10000"},"id":"10000","key":"EX","name":"Example","projectCategory":{"description":"Project category description","id":"10000","name":"A project category"},"projectTypeKey":"ProjectTypeKey{key='software'}","self":"project/EX","simplified":false}]}}} */
                     "application/json": components["schemas"]["UpdatePrioritySchemeResponseBean"];
                 };
             };
@@ -44664,6 +45005,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":50,"startAt":0,"total":3,"values":[{"description":"Serious problem that could block progress.","iconUrl":"/images/icons/priorities/high.svg","id":"1","isDefault":false,"name":"High","statusColor":"#f15C75"},{"description":"Has the potential to affect progress.","iconUrl":"/images/icons/priorities/medium.svg","id":"2","isDefault":true,"name":"Medium","statusColor":"#f79232"},{"description":"Minor problem or easily worked around.","iconUrl":"/images/icons/priorities/low.svg","id":"3","isDefault":false,"name":"Low","statusColor":"#707070"}]} */
                     "application/json": components["schemas"]["PageBeanPriorityWithSequence"];
                 };
             };
@@ -44710,6 +45052,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":50,"startAt":0,"total":1,"values":[{"avatarUrls":{"16x16":"secure/projectavatar?size=xsmall&pid=10000","24x24":"secure/projectavatar?size=small&pid=10000","32x32":"secure/projectavatar?size=medium&pid=10000","48x48":"secure/projectavatar?size=large&pid=10000"},"id":"10000","key":"EX","name":"Example","projectCategory":{"description":"Project category description","id":"10000","name":"A project category"},"projectTypeKey":"ProjectTypeKey{key='software'}","self":"project/EX","simplified":false}]} */
                     "application/json": components["schemas"]["PageBeanProject"];
                 };
             };
@@ -44756,6 +45099,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000"},"id":"10000","insight":{"lastIssueUpdateTime":1619069825000,"totalIssueCount":100},"key":"EX","name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/EX","simplified":false,"style":"CLASSIC"},{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10001","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10001","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10001","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10001"},"id":"10001","insight":{"lastIssueUpdateTime":1619069825000,"totalIssueCount":100},"key":"ABC","name":"Alphabetical","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/ABC","simplified":false,"style":"CLASSIC"}] */
                     "application/json": components["schemas"]["Project"][];
                 };
             };
@@ -44803,6 +45147,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":10010,"key":"EX","self":"https://your-domain.atlassian.net/jira/rest/api/2/project/10042"} */
                     "application/json": components["schemas"]["ProjectIdentifiers"];
                 };
             };
@@ -44826,6 +45171,31 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    createProjectWithCustomTemplate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The JSON payload containing the project details and capabilities */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ProjectCustomTemplateCreateRequestDTO"];
+            };
+        };
+        responses: {
+            /** @description The project creation task has been queued for execution */
+            303: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
             };
         };
     };
@@ -44858,6 +45228,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000"},"id":"10000","insight":{"lastIssueUpdateTime":1619069825000,"totalIssueCount":100},"key":"EX","name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/EX","simplified":false,"style":"CLASSIC"},{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10001","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10001","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10001","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10001"},"id":"10001","insight":{"lastIssueUpdateTime":1619069825000,"totalIssueCount":100},"key":"ABC","name":"Alphabetical","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/ABC","simplified":false,"style":"CLASSIC"}] */
                     "application/json": components["schemas"]["Project"][];
                 };
             };
@@ -44886,7 +45257,7 @@ export interface operations {
                 maxResults?: number;
                 /** @description [Order](#ordering) the results by a field.
                  *
-                 *      *  `category` Sorts by project category. A complete list of category IDs is found using [Get all project categories](#api-rest-api-3-projectCategory-get).
+                 *      *  `category` Sorts by project category. A complete list of category IDs is found using [Get all project categories](#api-rest-api-2-projectCategory-get).
                  *      *  `issueCount` Sorts by the total number of issues in each project.
                  *      *  `key` Sorts by project key.
                  *      *  `lastIssueUpdatedTime` Sorts by the last issue update time.
@@ -44903,7 +45274,7 @@ export interface operations {
                 query?: string;
                 /** @description Orders results by the [project type](https://confluence.atlassian.com/x/GwiiLQ#Jiraapplicationsoverview-Productfeaturesandprojecttypes). This parameter accepts a comma-separated list. Valid values are `business`, `service_desk`, and `software`. */
                 typeKey?: string;
-                /** @description The ID of the project's category. A complete list of category IDs is found using the [Get all project categories](#api-rest-api-3-projectCategory-get) operation. */
+                /** @description The ID of the project's category. A complete list of category IDs is found using the [Get all project categories](#api-rest-api-2-projectCategory-get) operation. */
                 categoryId?: number;
                 /** @description Filter results by projects for which the user can:
                  *
@@ -44951,6 +45322,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":false,"maxResults":2,"nextPage":"https://your-domain.atlassian.net/rest/api/2/project/search?startAt=2&maxResults=2","self":"https://your-domain.atlassian.net/rest/api/2/project/search?startAt=0&maxResults=2","startAt":0,"total":7,"values":[{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000"},"id":"10000","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"key":"EX","name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/EX","simplified":false,"style":"classic"},{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10001","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10001","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10001","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10001"},"id":"10001","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"key":"ABC","name":"Alphabetical","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/ABC","simplified":false,"style":"classic"}]} */
                     "application/json": components["schemas"]["PageBeanProject"];
                 };
             };
@@ -44992,6 +45364,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"color":"#FFFFFF","descriptionI18nKey":"jira.project.type.business.description","formattedKey":"Business","icon":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4xLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAzMiAzMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzIgMzIiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZmlsbD0iIzY2NjY2NiIgZD0iTTE2LDBDNy4yLDAsMCw3LjIsMCwxNmMwLDguOCw3LjIsMTYsMTYsMTZjOC44LDAsMTYtNy4yLDE2LTE2QzMyLDcuMiwyNC44LDAsMTYsMHogTTI1LjcsMjMNCgkJYzAsMS44LTEuNCwzLjItMy4yLDMuMkg5LjJDNy41LDI2LjIsNiwyNC44LDYsMjNWOS44QzYsOCw3LjUsNi42LDkuMiw2LjZoMTMuMmMwLjIsMCwwLjQsMCwwLjcsMC4xbC0yLjgsMi44SDkuMg0KCQlDOSw5LjQsOC44LDkuNiw4LjgsOS44VjIzYzAsMC4yLDAuMiwwLjQsMC40LDAuNGgxMy4yYzAuMiwwLDAuNC0wLjIsMC40LTAuNHYtNS4zbDIuOC0yLjhWMjN6IE0xNS45LDIxLjNMMTEsMTYuNGwyLTJsMi45LDIuOQ0KCQlMMjYuNCw2LjhjMC42LDAuNywxLjIsMS41LDEuNywyLjNMMTUuOSwyMS4zeiIvPg0KPC9nPg0KPC9zdmc+","key":"business"},{"color":"#AAAAAA","descriptionI18nKey":"jira.project.type.software.description","formattedKey":"Software","icon":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4xLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAzMiAzMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzIgMzIiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZmlsbD0iIzY2NjY2NiIgZD0iTTE2LDBDNy4yLDAsMCw3LjIsMCwxNmMwLDguOCw3LjIsMTYsMTYsMTZjOC44LDAsMTYtNy4yLDE2LTE2QzMyLDcuMiwyNC44LDAsMTYsMHogTTI1LjcsMjMNCgkJYzAsMS44LTEuNCwzLjItMy4yLDMuMkg5LjJDNy41LDI2LjIsNiwyNC44LDYsMjNWOS44QzYsOCw3LjUsNi42LDkuMiw2LjZoMTMuMmMwLjIsMCwwLjQsMCwwLjcsMC4xbC0yLjgsMi44SDkuMg0KCQlDOSw5LjQsOC44LDkuNiw4LjgsOS44VjIzYzAsMC4yLDAuMiwwLjQsMC40LDAuNGgxMy4yYzAuMiwwLDAuNC0wLjIsMC40LTAuNHYtNS4zbDIuOC0yLjhWMjN6IE0xNS45LDIxLjNMMTEsMTYuNGwyLTJsMi45LDIuOQ0KCQlMMjYuNCw2LjhjMC42LDAuNywxLjIsMS41LDEuNywyLjNMMTUuOSwyMS4zeiIvPg0KPC9nPg0KPC9zdmc+","key":"software"}] */
                     "application/json": components["schemas"]["ProjectType"][];
                 };
             };
@@ -45019,6 +45392,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"color":"#FFFFFF","descriptionI18nKey":"jira.project.type.business.description","formattedKey":"Business","icon":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4xLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAzMiAzMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzIgMzIiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZmlsbD0iIzY2NjY2NiIgZD0iTTE2LDBDNy4yLDAsMCw3LjIsMCwxNmMwLDguOCw3LjIsMTYsMTYsMTZjOC44LDAsMTYtNy4yLDE2LTE2QzMyLDcuMiwyNC44LDAsMTYsMHogTTI1LjcsMjMNCgkJYzAsMS44LTEuNCwzLjItMy4yLDMuMkg5LjJDNy41LDI2LjIsNiwyNC44LDYsMjNWOS44QzYsOCw3LjUsNi42LDkuMiw2LjZoMTMuMmMwLjIsMCwwLjQsMCwwLjcsMC4xbC0yLjgsMi44SDkuMg0KCQlDOSw5LjQsOC44LDkuNiw4LjgsOS44VjIzYzAsMC4yLDAuMiwwLjQsMC40LDAuNGgxMy4yYzAuMiwwLDAuNC0wLjIsMC40LTAuNHYtNS4zbDIuOC0yLjhWMjN6IE0xNS45LDIxLjNMMTEsMTYuNGwyLTJsMi45LDIuOQ0KCQlMMjYuNCw2LjhjMC42LDAuNywxLjIsMS41LDEuNywyLjNMMTUuOSwyMS4zeiIvPg0KPC9nPg0KPC9zdmc+","key":"business"},{"color":"#AAAAAA","descriptionI18nKey":"jira.project.type.software.description","formattedKey":"Software","icon":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4xLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAzMiAzMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzIgMzIiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZmlsbD0iIzY2NjY2NiIgZD0iTTE2LDBDNy4yLDAsMCw3LjIsMCwxNmMwLDguOCw3LjIsMTYsMTYsMTZjOC44LDAsMTYtNy4yLDE2LTE2QzMyLDcuMiwyNC44LDAsMTYsMHogTTI1LjcsMjMNCgkJYzAsMS44LTEuNCwzLjItMy4yLDMuMkg5LjJDNy41LDI2LjIsNiwyNC44LDYsMjNWOS44QzYsOCw3LjUsNi42LDkuMiw2LjZoMTMuMmMwLjIsMCwwLjQsMCwwLjcsMC4xbC0yLjgsMi44SDkuMg0KCQlDOSw5LjQsOC44LDkuNiw4LjgsOS44VjIzYzAsMC4yLDAuMiwwLjQsMC40LDAuNGgxMy4yYzAuMiwwLDAuNC0wLjIsMC40LTAuNHYtNS4zbDIuOC0yLjhWMjN6IE0xNS45LDIxLjNMMTEsMTYuNGwyLTJsMi45LDIuOQ0KCQlMMjYuNCw2LjhjMC42LDAuNywxLjIsMS41LDEuNywyLjNMMTUuOSwyMS4zeiIvPg0KPC9nPg0KPC9zdmc+","key":"software"}] */
                     "application/json": components["schemas"]["ProjectType"][];
                 };
             };
@@ -45042,6 +45416,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"color":"#FFFFFF","descriptionI18nKey":"jira.project.type.business.description","formattedKey":"Business","icon":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4xLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAzMiAzMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzIgMzIiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZmlsbD0iIzY2NjY2NiIgZD0iTTE2LDBDNy4yLDAsMCw3LjIsMCwxNmMwLDguOCw3LjIsMTYsMTYsMTZjOC44LDAsMTYtNy4yLDE2LTE2QzMyLDcuMiwyNC44LDAsMTYsMHogTTI1LjcsMjMNCgkJYzAsMS44LTEuNCwzLjItMy4yLDMuMkg5LjJDNy41LDI2LjIsNiwyNC44LDYsMjNWOS44QzYsOCw3LjUsNi42LDkuMiw2LjZoMTMuMmMwLjIsMCwwLjQsMCwwLjcsMC4xbC0yLjgsMi44SDkuMg0KCQlDOSw5LjQsOC44LDkuNiw4LjgsOS44VjIzYzAsMC4yLDAuMiwwLjQsMC40LDAuNGgxMy4yYzAuMiwwLDAuNC0wLjIsMC40LTAuNHYtNS4zbDIuOC0yLjhWMjN6IE0xNS45LDIxLjNMMTEsMTYuNGwyLTJsMi45LDIuOQ0KCQlMMjYuNCw2LjhjMC42LDAuNywxLjIsMS41LDEuNywyLjNMMTUuOSwyMS4zeiIvPg0KPC9nPg0KPC9zdmc+","key":"business"} */
                     "application/json": components["schemas"]["ProjectType"];
                 };
             };
@@ -45079,6 +45454,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"color":"#FFFFFF","descriptionI18nKey":"jira.project.type.business.description","formattedKey":"Business","icon":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4xLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAzMiAzMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzIgMzIiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZmlsbD0iIzY2NjY2NiIgZD0iTTE2LDBDNy4yLDAsMCw3LjIsMCwxNmMwLDguOCw3LjIsMTYsMTYsMTZjOC44LDAsMTYtNy4yLDE2LTE2QzMyLDcuMiwyNC44LDAsMTYsMHogTTI1LjcsMjMNCgkJYzAsMS44LTEuNCwzLjItMy4yLDMuMkg5LjJDNy41LDI2LjIsNiwyNC44LDYsMjNWOS44QzYsOCw3LjUsNi42LDkuMiw2LjZoMTMuMmMwLjIsMCwwLjQsMCwwLjcsMC4xbC0yLjgsMi44SDkuMg0KCQlDOSw5LjQsOC44LDkuNiw4LjgsOS44VjIzYzAsMC4yLDAuMiwwLjQsMC40LDAuNGgxMy4yYzAuMiwwLDAuNC0wLjIsMC40LTAuNHYtNS4zbDIuOC0yLjhWMjN6IE0xNS45LDIxLjNMMTEsMTYuNGwyLTJsMi45LDIuOQ0KCQlMMjYuNCw2LjhjMC42LDAuNywxLjIsMS41LDEuNywyLjNMMTUuOSwyMS4zeiIvPg0KPC9nPg0KPC9zdmc+","key":"business"} */
                     "application/json": components["schemas"]["ProjectType"];
                 };
             };
@@ -45127,6 +45503,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"assigneeType":"PROJECT_LEAD","avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000"},"components":[{"ari":"ari:cloud:compass:fdb3fdec-4e70-be56-11ee-0242ac120002:component/fdb3fdec-4e70-11ee-be56-0242ac120002/fdb3fdec-11ee-4e70-be56-0242ac120002","assignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"assigneeType":"PROJECT_LEAD","description":"This is a Jira component","id":"10000","isAssigneeTypeValid":false,"lead":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"metadata":{"icon":"https://www.example.com/icon.png"},"name":"Component 1","project":"HSP","projectId":10000,"realAssignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"realAssigneeType":"PROJECT_LEAD","self":"https://your-domain.atlassian.net/rest/api/2/component/10000"}],"description":"This project was created as an example for REST.","email":"from-jira@example.com","id":"10000","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"issueTypes":[{"avatarId":1,"description":"A task that needs to be done.","hierarchyLevel":0,"iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10299&avatarType=issuetype\",","id":"3","name":"Task","self":"https://your-domain.atlassian.net/rest/api/2/issueType/3","subtask":false},{"avatarId":10002,"description":"A problem with the software.","entityId":"9d7dd6f7-e8b6-4247-954b-7b2c9b2a5ba2","hierarchyLevel":0,"iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype\",","id":"1","name":"Bug","scope":{"project":{"id":"10000"},"type":"PROJECT"},"self":"https://your-domain.atlassian.net/rest/api/2/issueType/1","subtask":false}],"key":"EX","lead":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"properties":{"propertyKey":"propertyValue"},"roles":{"Developers":"https://your-domain.atlassian.net/rest/api/2/project/EX/role/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/EX","simplified":false,"style":"classic","url":"https://www.example.com","versions":[]} */
                     "application/json": components["schemas"]["Project"];
                 };
             };
@@ -45190,6 +45567,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"assigneeType":"PROJECT_LEAD","avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000"},"components":[{"ari":"ari:cloud:compass:fdb3fdec-4e70-be56-11ee-0242ac120002:component/fdb3fdec-4e70-11ee-be56-0242ac120002/fdb3fdec-11ee-4e70-be56-0242ac120002","assignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"assigneeType":"PROJECT_LEAD","description":"This is a Jira component","id":"10000","isAssigneeTypeValid":false,"lead":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"metadata":{"icon":"https://www.example.com/icon.png"},"name":"Component 1","project":"HSP","projectId":10000,"realAssignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"realAssigneeType":"PROJECT_LEAD","self":"https://your-domain.atlassian.net/rest/api/2/component/10000"}],"description":"This project was created as an example for REST.","email":"from-jira@example.com","id":"10000","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"issueTypes":[{"avatarId":1,"description":"A task that needs to be done.","hierarchyLevel":0,"iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10299&avatarType=issuetype\",","id":"3","name":"Task","self":"https://your-domain.atlassian.net/rest/api/2/issueType/3","subtask":false},{"avatarId":10002,"description":"A problem with the software.","entityId":"9d7dd6f7-e8b6-4247-954b-7b2c9b2a5ba2","hierarchyLevel":0,"iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype\",","id":"1","name":"Bug","scope":{"project":{"id":"10000"},"type":"PROJECT"},"self":"https://your-domain.atlassian.net/rest/api/2/issueType/1","subtask":false}],"key":"EX","lead":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"properties":{"propertyKey":"propertyValue"},"roles":{"Developers":"https://your-domain.atlassian.net/rest/api/2/project/EX/role/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/EX","simplified":false,"style":"classic","url":"https://www.example.com","versions":[]} */
                     "application/json": components["schemas"]["Project"];
                 };
             };
@@ -45439,6 +45817,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"1010","isDeletable":true,"isSelected":false,"isSystemAvatar":false} */
                     "application/json": components["schemas"]["Avatar"];
                 };
             };
@@ -45494,6 +45873,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"custom":[{"id":"1010","isDeletable":true,"isSelected":false,"isSystemAvatar":false,"urls":{"16x16":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10080&avatarType=project","24x24":"https://your-domain.atlassian.net/secure/viewavatar?size=small&avatarId=10080&avatarType=project","32x32":"https://your-domain.atlassian.net/secure/viewavatar?size=medium&avatarId=10080&avatarType=project","48x48":"https://your-domain.atlassian.net/secure/viewavatar?avatarId=10080&avatarType=project"}}],"system":[{"id":"1000","isDeletable":false,"isSelected":false,"isSystemAvatar":true,"urls":{"16x16":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10040&avatarType=project","24x24":"https://your-domain.atlassian.net/secure/viewavatar?size=small&avatarId=10040&avatarType=project","32x32":"https://your-domain.atlassian.net/secure/viewavatar?size=medium&avatarId=10040&avatarType=project","48x48":"https://your-domain.atlassian.net/secure/viewavatar?avatarId=10040&avatarType=project"}}]} */
                     "application/json": components["schemas"]["ProjectAvatars"];
                 };
             };
@@ -45531,6 +45911,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"classification":{"id":"ari:cloud:platform::classification-tag/5bfa70f7-4af1-44f5-9e12-1ce185f15a38","status":"published","name":"Restricted","rank":1,"description":"Data we hold that would be very damaging and would cause loss of trust with customers and present legal risk if mishandled","guideline":"Access to data must be restricted to only individuals who need access in order to perform their job duties.","color":"RED"}} */
                     "application/json": unknown;
                 };
             };
@@ -45679,6 +46060,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":false,"maxResults":2,"nextPage":"https://your-domain.atlassian.net/rest/api/2/project/PR/component?startAt=2&maxResults=2","self":"https://your-domain.atlassian.net/rest/api/2/project/PR/component?startAt=0&maxResults=2","startAt":0,"total":7,"values":[{"assignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"assigneeType":"PROJECT_LEAD","componentBean":{"ari":"ari:cloud:compass:fdb3fdec-4e70-be56-11ee-0242ac120002:component/fdb3fdec-4e70-11ee-be56-0242ac120002/fdb3fdec-11ee-4e70-be56-0242ac120002","assignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"assigneeType":"PROJECT_LEAD","description":"This is a Jira component","id":"10000","isAssigneeTypeValid":false,"lead":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"metadata":{"icon":"https://www.example.com/icon.png"},"name":"Component 1","project":"HSP","projectId":10000,"realAssignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"realAssigneeType":"PROJECT_LEAD","self":"https://your-domain.atlassian.net/rest/api/2/component/10000"},"description":"This is a Jira component","id":"10000","isAssigneeTypeValid":false,"issueCount":1,"lead":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"name":"Component 1","project":"HSP","projectId":10000,"realAssignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"realAssigneeType":"PROJECT_LEAD","self":"https://your-domain.atlassian.net/rest/api/2/component/10000"},{"assignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"assigneeType":"PROJECT_LEAD","componentBean":{"ari":"ari:cloud:compass:fdb3fdec-4e70-be56-11ee-0242ac120002:component/fdb3fdec-11ee-4e70-be56-0242ac120002/fdb3fdec-4e70-11ee-be56-0242ac120002","assignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"assigneeType":"PROJECT_LEAD","description":"This is a another Jira component","id":"10050","isAssigneeTypeValid":false,"lead":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"metadata":{"icon":"https://www.example.com/icon.png"},"name":"PXA","project":"PROJECTKEY","projectId":10000,"realAssignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"realAssigneeType":"PROJECT_LEAD","self":"https://your-domain.atlassian.net/rest/api/2/component/10000"},"description":"This is a another Jira component","id":"10050","isAssigneeTypeValid":false,"issueCount":5,"lead":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"name":"PXA","project":"PROJECTKEY","projectId":10000,"realAssignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"realAssigneeType":"PROJECT_LEAD","self":"https://your-domain.atlassian.net/rest/api/2/component/10000"}]} */
                     "application/json": components["schemas"]["PageBeanComponentWithIssueCount"];
                 };
             };
@@ -45719,6 +46101,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"ari":"ari:cloud:compass:fdb3fdec-4e70-be56-11ee-0242ac120002:component/fdb3fdec-4e70-11ee-be56-0242ac120002/fdb3fdec-11ee-4e70-be56-0242ac120002","assignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"assigneeType":"PROJECT_LEAD","description":"This is a Jira component","id":"10000","isAssigneeTypeValid":false,"lead":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"metadata":{"icon":"https://www.example.com/icon.png"},"name":"Component 1","project":"HSP","projectId":10000,"realAssignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"realAssigneeType":"PROJECT_LEAD","self":"https://your-domain.atlassian.net/rest/api/2/component/10000"},{"ari":"ari:cloud:compass:fdb3fdec-4e70-be56-11ee-0242ac120002:component/fdb3fdec-11ee-4e70-be56-0242ac120002/fdb3fdec-4e70-11ee-be56-0242ac120002","assignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"assigneeType":"PROJECT_LEAD","description":"This is a another Jira component","id":"10050","isAssigneeTypeValid":false,"lead":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"metadata":{"icon":"https://www.example.com/icon.png"},"name":"PXA","project":"PROJECTKEY","projectId":10000,"realAssignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"realAssigneeType":"PROJECT_LEAD","self":"https://your-domain.atlassian.net/rest/api/2/component/10000"}] */
                     "application/json": components["schemas"]["ProjectComponent"][];
                 };
             };
@@ -45800,6 +46183,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"features":[{"feature":"jsw.classic.roadmap","imageUri":"https://jira.atlassian.com/s/sb53l8/b/3/ab8a7691e4738b4f147e293f0864adfd5b8d3c85/_/download/resources/com.atlassian.jira.rest:classic-project-features/simple-roadmap-feature.svg","localisedDescription":"Your roadmap is an optimized location to create and manage your epics.","localisedName":"Roadmap","prerequisites":[],"projectId":10001,"state":"ENABLED","toggleLocked":true},{"feature":"jsw.classic.backlog","imageUri":"https://jira.atlassian.com/s/sb53l8/b/3/ab8a7691e4738b4f147e293f0864adfd5b8d3c85/_/download/resources/com.atlassian.jira.rest:classic-project-features/simple-backlog-feature.svg","localisedDescription":"Plan and prioritize work in a dedicated space. To enable and configure the backlog for each board, go to board settings.","localisedName":"Backlog","prerequisites":[],"projectId":10001,"state":"ENABLED","toggleLocked":true}]} */
                     "application/json": components["schemas"]["ContainerForProjectFeatures"];
                 };
             };
@@ -45861,6 +46245,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"features":[{"feature":"jsw.classic.roadmap","imageUri":"https://jira.atlassian.com/s/sb53l8/b/3/ab8a7691e4738b4f147e293f0864adfd5b8d3c85/_/download/resources/com.atlassian.jira.rest:classic-project-features/simple-roadmap-feature.svg","localisedDescription":"Your roadmap is an optimized location to create and manage your epics.","localisedName":"Roadmap","prerequisites":[],"projectId":10001,"state":"ENABLED","toggleLocked":true},{"feature":"jsw.classic.backlog","imageUri":"https://jira.atlassian.com/s/sb53l8/b/3/ab8a7691e4738b4f147e293f0864adfd5b8d3c85/_/download/resources/com.atlassian.jira.rest:classic-project-features/simple-backlog-feature.svg","localisedDescription":"Plan and prioritize work in a dedicated space. To enable and configure the backlog for each board, go to board settings.","localisedName":"Backlog","prerequisites":[],"projectId":10001,"state":"ENABLED","toggleLocked":true}]} */
                     "application/json": components["schemas"]["ContainerForProjectFeatures"];
                 };
             };
@@ -45912,6 +46297,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"keys":[{"key":"issue.support","self":"https://your-domain.atlassian.net/rest/api/2/issue/EX-2/properties/issue.support"}]} */
                     "application/json": components["schemas"]["PropertyKeys"];
                 };
             };
@@ -45952,7 +46338,7 @@ export interface operations {
             path: {
                 /** @description The project ID or project key (case sensitive). */
                 projectIdOrKey: string;
-                /** @description The project property key. Use [Get project property keys](#api-rest-api-3-project-projectIdOrKey-properties-get) to get a list of all project property keys. */
+                /** @description The project property key. Use [Get project property keys](#api-rest-api-2-project-projectIdOrKey-properties-get) to get a list of all project property keys. */
                 propertyKey: string;
             };
             cookie?: never;
@@ -45965,6 +46351,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"key":"issue.support","value":{"system.conversation.id":"b1bf38be-5e94-4b40-a3b8-9278735ee1e6","system.support.time":"1m"}} */
                     "application/json": components["schemas"]["EntityProperty"];
                 };
             };
@@ -46076,7 +46463,7 @@ export interface operations {
             path: {
                 /** @description The project ID or project key (case sensitive). */
                 projectIdOrKey: string;
-                /** @description The project property key. Use [Get project property keys](#api-rest-api-3-project-projectIdOrKey-properties-get) to get a list of all project property keys. */
+                /** @description The project property key. Use [Get project property keys](#api-rest-api-2-project-projectIdOrKey-properties-get) to get a list of all project property keys. */
                 propertyKey: string;
             };
             cookie?: never;
@@ -46138,6 +46525,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"assigneeType":"PROJECT_LEAD","avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000"},"components":[{"ari":"ari:cloud:compass:fdb3fdec-4e70-be56-11ee-0242ac120002:component/fdb3fdec-4e70-11ee-be56-0242ac120002/fdb3fdec-11ee-4e70-be56-0242ac120002","assignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"assigneeType":"PROJECT_LEAD","description":"This is a Jira component","id":"10000","isAssigneeTypeValid":false,"lead":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"metadata":{"icon":"https://www.example.com/icon.png"},"name":"Component 1","project":"HSP","projectId":10000,"realAssignee":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"realAssigneeType":"PROJECT_LEAD","self":"https://your-domain.atlassian.net/rest/api/2/component/10000"}],"description":"This project was created as an example for REST.","email":"from-jira@example.com","id":"10000","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"issueTypes":[{"avatarId":1,"description":"A task that needs to be done.","hierarchyLevel":0,"iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10299&avatarType=issuetype\",","id":"3","name":"Task","self":"https://your-domain.atlassian.net/rest/api/2/issueType/3","subtask":false},{"avatarId":10002,"description":"A problem with the software.","entityId":"9d7dd6f7-e8b6-4247-954b-7b2c9b2a5ba2","hierarchyLevel":0,"iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype\",","id":"1","name":"Bug","scope":{"project":{"id":"10000"},"type":"PROJECT"},"self":"https://your-domain.atlassian.net/rest/api/2/issueType/1","subtask":false}],"key":"EX","lead":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"properties":{"propertyKey":"propertyValue"},"roles":{"Developers":"https://your-domain.atlassian.net/rest/api/2/project/EX/role/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/EX","simplified":false,"style":"classic","url":"https://www.example.com","versions":[]} */
                     "application/json": components["schemas"]["Project"];
                 };
             };
@@ -46182,6 +46570,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"Administrators":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10002","Developers":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10000","Users":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10001"} */
                     "application/json": {
                         [key: string]: string;
                     };
@@ -46213,7 +46602,7 @@ export interface operations {
             path: {
                 /** @description The project ID or project key (case sensitive). */
                 projectIdOrKey: string;
-                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-3-role-get) to get a list of project role IDs. */
+                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-2-role-get) to get a list of project role IDs. */
                 id: number;
             };
             cookie?: never;
@@ -46226,6 +46615,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"actors":[{"actorGroup":{"displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2","name":"jira-developers"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor","user":"jira-developers"},{"actorUser":{"accountId":"5b10a2844c20165700ede21g"},"displayName":"Mia Krystof","id":10241,"type":"atlassian-user-role-actor"}],"description":"A project role that represents developers in a project","id":10360,"name":"Developers","scope":{"project":{"id":"10000","key":"KEY","name":"Next Gen Project"},"type":"PROJECT"},"self":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10360"} */
                     "application/json": components["schemas"]["ProjectRole"];
                 };
             };
@@ -46262,7 +46652,7 @@ export interface operations {
             path: {
                 /** @description The project ID or project key (case sensitive). */
                 projectIdOrKey: string;
-                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-3-role-get) to get a list of project role IDs. */
+                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-2-role-get) to get a list of project role IDs. */
                 id: number;
             };
             cookie?: never;
@@ -46290,6 +46680,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"actors":[{"actorGroup":{"displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2","name":"jira-developers"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor","user":"jira-developers"},{"actorUser":{"accountId":"5b10a2844c20165700ede21g"},"displayName":"Mia Krystof","id":10241,"type":"atlassian-user-role-actor"}],"description":"A project role that represents developers in a project","id":10360,"name":"Developers","scope":{"project":{"id":"10000","key":"KEY","name":"Next Gen Project"},"type":"PROJECT"},"self":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10360"} */
                     "application/json": components["schemas"]["ProjectRole"];
                 };
             };
@@ -46327,7 +46718,7 @@ export interface operations {
             path: {
                 /** @description The project ID or project key (case sensitive). */
                 projectIdOrKey: string;
-                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-3-role-get) to get a list of project role IDs. */
+                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-2-role-get) to get a list of project role IDs. */
                 id: number;
             };
             cookie?: never;
@@ -46352,6 +46743,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"actors":[{"actorGroup":{"displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2","name":"jira-developers"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor","user":"jira-developers"},{"actorUser":{"accountId":"5b10a2844c20165700ede21g"},"displayName":"Mia Krystof","id":10241,"type":"atlassian-user-role-actor"}],"description":"A project role that represents developers in a project","id":10360,"name":"Developers","scope":{"project":{"id":"10000","key":"KEY","name":"Next Gen Project"},"type":"PROJECT"},"self":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10360"} */
                     "application/json": components["schemas"]["ProjectRole"];
                 };
             };
@@ -46396,7 +46788,7 @@ export interface operations {
             path: {
                 /** @description The project ID or project key (case sensitive). */
                 projectIdOrKey: string;
-                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-3-role-get) to get a list of project role IDs. */
+                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-2-role-get) to get a list of project role IDs. */
                 id: number;
             };
             cookie?: never;
@@ -46451,6 +46843,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"self":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","admin":false,"default":true,"roleConfigurable":true,"translatedName":"Developers"}] */
                     "application/json": components["schemas"]["ProjectRoleDetails"][];
                 };
             };
@@ -46488,6 +46881,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"id":"3","name":"Task","self":"https://your-domain.atlassian.net/rest/api/2/issueType/3","statuses":[{"description":"The issue is currently being worked on.","iconUrl":"https://your-domain.atlassian.net/images/icons/progress.gif","id":"10000","name":"In Progress","self":"https://your-domain.atlassian.net/rest/api/2/status/10000"},{"description":"The issue is closed.","iconUrl":"https://your-domain.atlassian.net/images/icons/closed.gif","id":"5","name":"Closed","self":"https://your-domain.atlassian.net/rest/api/2/status/5"}],"subtask":false}] */
                     "application/json": components["schemas"]["IssueTypeWithStatus"][];
                 };
             };
@@ -46549,6 +46943,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":false,"maxResults":2,"nextPage":"https://your-domain.atlassian.net/rest/api/2/project/PR/version?startAt=2&maxResults=2","self":"https://your-domain.atlassian.net/rest/api/2/project/PR/version?startAt=0&maxResults=2","startAt":0,"total":7,"values":[{"archived":false,"description":"An excellent version","id":"10000","name":"New Version 1","overdue":true,"projectId":10000,"releaseDate":"2010-07-06","released":true,"self":"https://your-domain.atlassian.net/rest/api/2/version/10000","userReleaseDate":"6/Jul/2010"},{"archived":false,"description":"Minor Bugfix version","id":"10010","issuesStatusForFixVersion":{"done":100,"inProgress":20,"toDo":10,"unmapped":0},"name":"Next Version","overdue":false,"projectId":10000,"released":false,"self":"https://your-domain.atlassian.net/rest/api/2/version/10010"}]} */
                     "application/json": components["schemas"]["PageBeanVersion"];
                 };
             };
@@ -46582,6 +46977,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"archived":false,"description":"An excellent version","id":"10000","name":"New Version 1","overdue":true,"projectId":10000,"releaseDate":1278385482288,"releaseDateSet":true,"released":true,"self":"https://your-domain.atlassian.net/rest/api/2/version/10000","startDateSet":false,"userReleaseDate":"6/Jul/2010"},{"archived":false,"description":"Minor Bugfix version","id":"10010","issuesStatusForFixVersion":{"done":100,"inProgress":20,"toDo":10,"unmapped":0},"name":"Next Version","overdue":false,"projectId":10000,"releaseDateSet":false,"released":false,"self":"https://your-domain.atlassian.net/rest/api/2/version/10010","startDateSet":false}] */
                     "application/json": components["schemas"]["Version"][];
                 };
             };
@@ -46612,6 +47008,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"emailAddress":"jira@example.customdomain.com","emailAddressStatus":["Email address or domain not verified."]} */
                     "application/json": components["schemas"]["ProjectEmailAddress"];
                 };
             };
@@ -46715,6 +47112,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"hierarchy":[{"issueTypes":[{"avatarId":10324,"entityId":"ce32639b-8911-4689-81da-65681f451516","id":10008,"name":"Story"},{"avatarId":10324,"entityId":"ffdbced5-fbfc-4370-a848-94e2ce3751af","id":10001,"name":"Bug"}],"level":0,"name":"Base"},{"issueTypes":[{"avatarId":10179,"entityId":"80f20d47-34dc-4680-8937-936b7e762a35","id":10007,"name":"Epic"}],"level":1,"name":"Epic"},{"issueTypes":[{"avatarId":10573,"entityId":"210b4879-15cc-414c-9746-f8f6b6be0a72","id":10009,"name":"Subtask"}],"level":-1,"name":"Subtask"}],"projectId":10030} */
                     "application/json": components["schemas"]["ProjectIssueTypeHierarchy"];
                 };
             };
@@ -46759,6 +47157,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultSecurityLevelId":10021,"description":"Description for the default issue security scheme","id":10000,"levels":[{"description":"Only the reporter and internal staff can see this issue.","id":"10021","name":"Reporter Only","self":"https://your-domain.atlassian.net/rest/api/2/securitylevel/10021"}],"name":"Default Issue Security Scheme","self":"https://your-domain.atlassian.net/rest/api/2/issuesecurityschemes/10000"} */
                     "application/json": components["schemas"]["SecurityScheme"];
                 };
             };
@@ -46820,6 +47219,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"description":"description","expand":"notificationSchemeEvents,user,group,projectRole,field,all","id":10100,"name":"notification scheme name","notificationSchemeEvents":[{"event":{"description":"Event published when an issue is created","id":1,"name":"Issue created"},"notifications":[{"expand":"group","group":{"groupId":"276f955c-63d7-42c8-9520-92d01dca0625","name":"jira-administrators","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"},"id":1,"notificationType":"Group","parameter":"jira-administrators","recipient":"276f955c-63d7-42c8-9520-92d01dca0625"},{"id":2,"notificationType":"CurrentAssignee"},{"expand":"projectRole","id":3,"notificationType":"ProjectRole","parameter":"10360","projectRole":{"self":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor"},{"actorUser":{"accountId":"5b10a2844c20165700ede21g"},"displayName":"Mia Krystof","id":10241,"type":"atlassian-user-role-actor"}],"scope":{"project":{"id":"10000","key":"KEY","name":"Next Gen Project"},"type":"PROJECT"}},"recipient":"10360"},{"emailAddress":"rest-developer@atlassian.com","id":4,"notificationType":"EmailAddress","parameter":"rest-developer@atlassian.com","recipient":"rest-developer@atlassian.com"},{"expand":"user","id":5,"notificationType":"User","parameter":"5b10a2844c20165700ede21g","recipient":"5b10a2844c20165700ede21g","user":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"}},{"expand":"field","field":{"clauseNames":["cf[10101]","New custom field"],"custom":true,"id":"customfield_10101","key":"customfield_10101","name":"New custom field","navigable":true,"orderable":true,"schema":{"custom":"com.atlassian.jira.plugin.system.customfieldtypes:project","customId":10101,"type":"project"},"searchable":true,"untranslatedName":"New custom field"},"id":6,"notificationType":"GroupCustomField","parameter":"customfield_10101","recipient":"customfield_10101"}]},{"event":{"description":"Custom event that is published together with an issue created event","id":20,"name":"Custom event","templateEvent":{"description":"Event published when an issue is created","id":1,"name":"Issue created"}},"notifications":[{"expand":"group","group":{"groupId":"276f955c-63d7-42c8-9520-92d01dca0625","name":"jira-administrators","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"},"id":1,"notificationType":"Group","parameter":"jira-administrators","recipient":"276f955c-63d7-42c8-9520-92d01dca0625"},{"id":2,"notificationType":"CurrentAssignee"},{"expand":"projectRole","id":3,"notificationType":"ProjectRole","parameter":"10360","projectRole":{"self":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor"},{"actorUser":{"accountId":"5b10a2844c20165700ede21g"},"displayName":"Mia Krystof","id":10241,"type":"atlassian-user-role-actor"}],"scope":{"project":{"id":"10000","key":"KEY","name":"Next Gen Project"},"type":"PROJECT"}},"recipient":"10360"},{"emailAddress":"rest-developer@atlassian.com","id":4,"notificationType":"EmailAddress","parameter":"rest-developer@atlassian.com","recipient":"rest-developer@atlassian.com"},{"expand":"user","id":5,"notificationType":"User","parameter":"5b10a2844c20165700ede21g","recipient":"5b10a2844c20165700ede21g","user":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"}},{"expand":"field","field":{"clauseNames":["cf[10101]","New custom field"],"custom":true,"id":"customfield_10101","key":"customfield_10101","name":"New custom field","navigable":true,"orderable":true,"schema":{"custom":"com.atlassian.jira.plugin.system.customfieldtypes:project","customId":10101,"type":"project"},"searchable":true,"untranslatedName":"New custom field"},"id":6,"notificationType":"GroupCustomField","parameter":"customfield_10101","recipient":"customfield_10101"}]}],"projects":[10001,10002],"self":"https://your-domain.atlassian.net/rest/api/2/notificationscheme"} */
                     "application/json": components["schemas"]["NotificationScheme"];
                 };
             };
@@ -46874,6 +47274,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"description":"description","id":10000,"name":"Example permission scheme","self":"https://your-domain.atlassian.net/rest/api/2/permissionscheme/10000"} */
                     "application/json": components["schemas"]["PermissionScheme"];
                 };
             };
@@ -46935,6 +47336,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"description":"description","id":10000,"name":"Example permission scheme","self":"https://your-domain.atlassian.net/rest/api/2/permissionscheme/10000"} */
                     "application/json": components["schemas"]["PermissionScheme"];
                 };
             };
@@ -46982,6 +47384,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"levels":[{"description":"Only the reporter and internal staff can see this issue.","id":"100000","name":"Reporter Only","self":"https://your-domain.atlassian.net/rest/api/2/securitylevel/100000"},{"description":"Only internal staff can see this issue.","id":"100001","name":"Staff Only","self":"https://your-domain.atlassian.net/rest/api/2/securitylevel/100001"}]} */
                     "application/json": components["schemas"]["ProjectIssueSecurityLevels"];
                 };
             };
@@ -47009,6 +47412,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},{"description":"Second Project Category","id":"10001","name":"SECOND","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10001"}] */
                     "application/json": components["schemas"]["ProjectCategory"][];
                 };
             };
@@ -47044,6 +47448,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"description":"Created Project Category","id":"10100","name":"CREATED","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10100"} */
                     "application/json": components["schemas"]["ProjectCategory"];
                 };
             };
@@ -47098,6 +47503,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"} */
                     "application/json": components["schemas"]["ProjectCategory"];
                 };
             };
@@ -47142,6 +47548,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"description":"Updated Project Category","id":"10100","name":"UPDATED","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10100"} */
                     "application/json": components["schemas"]["UpdatedProjectCategory"];
                 };
             };
@@ -47238,6 +47645,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":[],"errors":{"projectKey":"A project with that project key already exists."}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -47268,6 +47676,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example "VPNE" */
                     "application/json": string;
                 };
             };
@@ -47298,6 +47707,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example "Valid Project Name Example" */
                     "application/json": string;
                 };
             };
@@ -47339,6 +47749,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"description":"A fix for this issue is checked into the tree and tested.","id":"10000","name":"Fixed","self":"https://your-domain.atlassian.net/rest/api/2/resolution/1"},{"description":"This is what it is supposed to do.","id":"10001","name":"Works as designed","self":"https://your-domain.atlassian.net/rest/api/2/resolution/3"}] */
                     "application/json": components["schemas"]["Resolution"][];
                 };
             };
@@ -47374,6 +47785,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"10001"} */
                     "application/json": components["schemas"]["ResolutionId"];
                 };
             };
@@ -47383,6 +47795,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The length of the description must not exceed 255 characters."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -47401,6 +47814,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -47437,6 +47851,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The id has to be provided."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -47455,6 +47870,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -47464,6 +47880,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Priority with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -47504,6 +47921,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The IDs must contain no more than 1,000 items."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -47522,6 +47940,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -47531,6 +47950,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Resolution with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -47560,6 +47980,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":50,"startAt":0,"total":1,"values":[{"description":"This is what it is supposed to do.","id":"10001","isDefault":true,"name":"Works as designed"}]} */
                     "application/json": components["schemas"]["PageBeanResolutionJsonBean"];
                 };
             };
@@ -47592,6 +48013,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"description":"A fix for this issue is checked into the tree and tested.","id":"10000","name":"Fixed","self":"https://your-domain.atlassian.net/rest/api/2/resolution/1"} */
                     "application/json": components["schemas"]["Resolution"];
                 };
             };
@@ -47646,6 +48068,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The length of the description must not exceed 255 characters."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -47664,6 +48087,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -47673,6 +48097,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Resolution with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -47708,6 +48133,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The id has to be provided."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -47726,6 +48152,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["You are not authorized to perform this action. Administrator privileges are required."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -47735,6 +48162,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Priority with ID 10000 not found."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -47764,6 +48192,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"actors":[{"actorGroup":{"displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2","name":"jira-developers"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor","user":"jira-developers"},{"actorUser":{"accountId":"5b10a2844c20165700ede21g"},"displayName":"Mia Krystof","id":10241,"type":"atlassian-user-role-actor"}],"description":"A project role that represents developers in a project","id":10360,"name":"Developers","scope":{"project":{"id":"10000","key":"KEY","name":"Next Gen Project"},"type":"PROJECT"},"self":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10360"}] */
                     "application/json": components["schemas"]["ProjectRole"][];
                 };
             };
@@ -47806,6 +48235,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"description":"A project role that represents developers in a project","id":10360,"name":"Developers","self":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10360"} */
                     "application/json": components["schemas"]["ProjectRole"];
                 };
             };
@@ -47844,7 +48274,7 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-3-role-get) to get a list of project role IDs. */
+                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-2-role-get) to get a list of project role IDs. */
                 id: number;
             };
             cookie?: never;
@@ -47857,6 +48287,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"actors":[{"actorGroup":{"displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2","name":"jira-developers"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor","user":"jira-developers"},{"actorUser":{"accountId":"5b10a2844c20165700ede21g"},"displayName":"Mia Krystof","id":10241,"type":"atlassian-user-role-actor"}],"description":"A project role that represents developers in a project","id":10360,"name":"Developers","scope":{"project":{"id":"10000","key":"KEY","name":"Next Gen Project"},"type":"PROJECT"},"self":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10360"} */
                     "application/json": components["schemas"]["ProjectRole"];
                 };
             };
@@ -47888,7 +48319,7 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-3-role-get) to get a list of project role IDs. */
+                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-2-role-get) to get a list of project role IDs. */
                 id: number;
             };
             cookie?: never;
@@ -47909,6 +48340,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"actors":[{"actorGroup":{"displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2","name":"jira-developers"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor","user":"jira-developers"},{"actorUser":{"accountId":"5b10a2844c20165700ede21g"},"displayName":"Mia Krystof","id":10241,"type":"atlassian-user-role-actor"}],"description":"A project role that represents developers in a project","id":10360,"name":"Developers","scope":{"project":{"id":"10000","key":"KEY","name":"Next Gen Project"},"type":"PROJECT"},"self":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10360"} */
                     "application/json": components["schemas"]["ProjectRole"];
                 };
             };
@@ -47947,7 +48379,7 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-3-role-get) to get a list of project role IDs. */
+                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-2-role-get) to get a list of project role IDs. */
                 id: number;
             };
             cookie?: never;
@@ -47968,6 +48400,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"actors":[{"actorGroup":{"displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2","name":"jira-developers"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor","user":"jira-developers"},{"actorUser":{"accountId":"5b10a2844c20165700ede21g"},"displayName":"Mia Krystof","id":10241,"type":"atlassian-user-role-actor"}],"description":"A project role that represents developers in a project","id":10360,"name":"Developers","scope":{"project":{"id":"10000","key":"KEY","name":"Next Gen Project"},"type":"PROJECT"},"self":"https://your-domain.atlassian.net/rest/api/2/project/MKY/role/10360"} */
                     "application/json": components["schemas"]["ProjectRole"];
                 };
             };
@@ -48004,12 +48437,12 @@ export interface operations {
     deleteProjectRole: {
         parameters: {
             query?: {
-                /** @description The ID of the project role that will replace the one being deleted. */
+                /** @description The ID of the project role that will replace the one being deleted. The swap will attempt to swap the role in schemes (notifications, permissions, issue security), workflows, worklogs and comments. */
                 swap?: number;
             };
             header?: never;
             path: {
-                /** @description The ID of the project role to delete. Use [Get all project roles](#api-rest-api-3-role-get) to get a list of project role IDs. */
+                /** @description The ID of the project role to delete. Use [Get all project roles](#api-rest-api-2-role-get) to get a list of project role IDs. */
                 id: number;
             };
             cookie?: never;
@@ -48065,7 +48498,7 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-3-role-get) to get a list of project role IDs. */
+                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-2-role-get) to get a list of project role IDs. */
                 id: number;
             };
             cookie?: never;
@@ -48078,6 +48511,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"actors":[{"actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor"}]} */
                     "application/json": components["schemas"]["ProjectRole"];
                 };
             };
@@ -48116,7 +48550,7 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-3-role-get) to get a list of project role IDs. */
+                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-2-role-get) to get a list of project role IDs. */
                 id: number;
             };
             cookie?: never;
@@ -48138,6 +48572,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"actors":[{"actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor"}]} */
                     "application/json": components["schemas"]["ProjectRole"];
                 };
             };
@@ -48183,7 +48618,7 @@ export interface operations {
             };
             header?: never;
             path: {
-                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-3-role-get) to get a list of project role IDs. */
+                /** @description The ID of the project role. Use [Get all project roles](#api-rest-api-2-role-get) to get a list of project role IDs. */
                 id: number;
             };
             cookie?: never;
@@ -48196,6 +48631,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"actors":[{"actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"},"displayName":"jira-developers","id":10240,"name":"jira-developers","type":"atlassian-group-role-actor"}]} */
                     "application/json": components["schemas"]["ProjectRole"];
                 };
             };
@@ -48260,6 +48696,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"self":"https://your-domain.atlassian.net/rest/api/2/screens","startAt":0,"total":3,"values":[{"id":1,"name":"Default Screen","description":"Provides for the update all system fields."},{"id":2,"name":"Workflow Screen","description":"This screen is used in the workflow and enables you to assign issues."},{"id":3,"name":"Resolve Issue Screen","description":"Offers the ability to set resolution, change fix versions, and assign an issue."}]} */
                     "application/json": components["schemas"]["PageBeanScreen"];
                 };
             };
@@ -48302,6 +48739,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":10005,"name":"Resolve Security Issue Screen","description":"Enables changes to resolution and linked issues."} */
                     "application/json": components["schemas"]["Screen"];
                 };
             };
@@ -48311,6 +48749,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The name is used by another screen."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -48327,6 +48766,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can manage screens."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -48407,6 +48847,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"startAt":0,"total":2,"values":[{"screenId":10000,"tabId":10001,"tabName":"My Custom Tab 1"},{"screenId":10001,"tabId":10002,"tabName":"My Custom Tab 2"}]} */
                     "application/json": unknown;
                 };
             };
@@ -48459,6 +48900,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":10005,"name":"Resolve Security Issue Screen","description":"Enables changes to resolution and linked issues."} */
                     "application/json": components["schemas"]["Screen"];
                 };
             };
@@ -48468,6 +48910,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The name is used by another screen."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -48484,6 +48927,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can manage screens."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -48493,6 +48937,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The screen was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -48523,6 +48968,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The screen is used in a screen scheme."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -48539,6 +48985,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can manage screens."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -48548,6 +48995,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The screen was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -48676,6 +49124,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":10000,"name":"Fields Tab"} */
                     "application/json": components["schemas"]["ScreenableTab"];
                 };
             };
@@ -48733,6 +49182,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":10000,"name":"Fields Tab"} */
                     "application/json": components["schemas"]["ScreenableTab"];
                 };
             };
@@ -48886,6 +49336,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"summary","name":"Summary"} */
                     "application/json": components["schemas"]["ScreenableField"];
                 };
             };
@@ -49117,6 +49568,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"self":"https://your-domain.atlassian.net/rest/api/2/screenscheme?maxResults=25&startAt=0","startAt":0,"total":2,"values":[{"id":10010,"name":"Employee screen scheme","description":"Manage employee data","screens":{"default":10017,"edit":10019,"create":10019,"view":10020},"issueTypeScreenSchemes":{"isLast":true,"maxResults":100,"startAt":0,"total":1,"values":[{"id":"10000","name":"Office issue type screen scheme","description":"Managing office projects"}]}},{"id":10032,"name":"Office screen scheme","description":"Manage office data","screens":{"default":10020}}]} */
                     "application/json": components["schemas"]["PageBeanScreenScheme"];
                 };
             };
@@ -49164,6 +49616,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":10001} */
                     "application/json": components["schemas"]["ScreenSchemeId"];
                 };
             };
@@ -49173,6 +49626,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The name is used by another scheme."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -49189,6 +49643,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access screen schemes."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -49198,6 +49653,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["One or more screens assigned to screen types was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -49242,6 +49698,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The name is used by another scheme."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -49258,6 +49715,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access screen schemes."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -49267,6 +49725,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The screen scheme was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -49297,6 +49756,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The screen scheme cannot be deleted as it is in use in an issue type screen scheme."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -49313,6 +49773,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access screen schemes."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -49322,6 +49783,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The screen scheme was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -49338,7 +49800,7 @@ export interface operations {
                 jql?: string;
                 /** @description The index of the first item to return in a page of results (page offset). */
                 startAt?: number;
-                /** @description The maximum number of items to return per page. To manage page size, Jira may return fewer items per page where a large number of fields are requested. The greatest number of items returned per page is achieved when requesting `id` or `key` only. */
+                /** @description The maximum number of items to return per page. To manage page size, Jira may return fewer items per page where a large number of fields or properties are requested. The greatest number of items returned per page is achieved when requesting `id` or `key` only. */
                 maxResults?: number;
                 /** @description Determines how to validate the JQL query and treat the validation results. Supported values are:
                  *
@@ -49364,7 +49826,7 @@ export interface operations {
                  *
                  *     This parameter may be specified multiple times. For example, `fields=field1,field2&fields=field3`.
                  *
-                 *     Note: All navigable fields are returned by default. This differs from [GET issue](#api-rest-api-3-issue-issueIdOrKey-get) where the default is all fields. */
+                 *     Note: All navigable fields are returned by default. This differs from [GET issue](#api-rest-api-2-issue-issueIdOrKey-get) where the default is all fields. */
                 fields?: string[];
                 /** @description Use [expand](#expansion) to include additional information about issues in the response. This parameter accepts a comma-separated list. Expand options include:
                  *
@@ -49396,6 +49858,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"expand":"names,schema","issues":[{"expand":"","fields":{"watcher":{"isWatching":false,"self":"https://your-domain.atlassian.net/rest/api/2/issue/EX-1/watchers","watchCount":1},"attachment":[{"author":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"content":"https://your-domain.atlassian.net/jira/rest/api/3/attachment/content/10001","created":"2023-06-24T19:24:50.000+0000","filename":"debuglog.txt","id":10001,"mimeType":"text/plain","self":"https://your-domain.atlassian.net/rest/api/2/attachments/10001","size":2460}],"sub-tasks":[{"id":"10000","outwardIssue":{"fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}},"id":"10003","key":"ED-2","self":"https://your-domain.atlassian.net/rest/api/2/issue/ED-2"},"type":{"id":"10000","inward":"Parent","name":"","outward":"Sub-task"}}],"description":"Main order flow broken","project":{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000"},"id":"10000","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"key":"EX","name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/EX","simplified":false,"style":"classic"},"comment":[{"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.","created":"2021-01-17T12:34:00.000+0000","id":"10000","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/comment/10000","updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"Administrators","type":"role","value":"Administrators"}}],"issuelinks":[{"id":"10001","outwardIssue":{"fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}},"id":"10004L","key":"PR-2","self":"https://your-domain.atlassian.net/rest/api/2/issue/PR-2"},"type":{"id":"10000","inward":"depends on","name":"Dependent","outward":"is depended by"}},{"id":"10002","inwardIssue":{"fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}},"id":"10004","key":"PR-3","self":"https://your-domain.atlassian.net/rest/api/2/issue/PR-3"},"type":{"id":"10000","inward":"depends on","name":"Dependent","outward":"is depended by"}}],"worklog":[{"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"comment":"I did some work here.","id":"100028","issueId":"10002","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/worklog/10000","started":"2021-01-17T12:34:00.000+0000","timeSpent":"3h 20m","timeSpentSeconds":12000,"updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"276f955c-63d7-42c8-9520-92d01dca0625","type":"group","value":"jira-developers"}}],"updated":1,"timetracking":{"originalEstimate":"10m","originalEstimateSeconds":600,"remainingEstimate":"3m","remainingEstimateSeconds":200,"timeSpent":"6m","timeSpentSeconds":400}},"id":"10002","key":"ED-1","self":"https://your-domain.atlassian.net/rest/api/2/issue/10002"}],"maxResults":50,"startAt":0,"total":1,"warningMessages":["The value 'bar' does not exist for the field 'foo'."]} */
                     "application/json": components["schemas"]["SearchResults"];
                 };
             };
@@ -49451,6 +49914,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"expand":"names,schema","issues":[{"expand":"","fields":{"watcher":{"isWatching":false,"self":"https://your-domain.atlassian.net/rest/api/2/issue/EX-1/watchers","watchCount":1},"attachment":[{"author":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"content":"https://your-domain.atlassian.net/jira/rest/api/3/attachment/content/10001","created":"2023-06-24T19:24:50.000+0000","filename":"debuglog.txt","id":10001,"mimeType":"text/plain","self":"https://your-domain.atlassian.net/rest/api/2/attachments/10001","size":2460}],"sub-tasks":[{"id":"10000","outwardIssue":{"fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}},"id":"10003","key":"ED-2","self":"https://your-domain.atlassian.net/rest/api/2/issue/ED-2"},"type":{"id":"10000","inward":"Parent","name":"","outward":"Sub-task"}}],"description":"Main order flow broken","project":{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000"},"id":"10000","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"key":"EX","name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/EX","simplified":false,"style":"classic"},"comment":[{"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.","created":"2021-01-17T12:34:00.000+0000","id":"10000","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/comment/10000","updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"Administrators","type":"role","value":"Administrators"}}],"issuelinks":[{"id":"10001","outwardIssue":{"fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}},"id":"10004L","key":"PR-2","self":"https://your-domain.atlassian.net/rest/api/2/issue/PR-2"},"type":{"id":"10000","inward":"depends on","name":"Dependent","outward":"is depended by"}},{"id":"10002","inwardIssue":{"fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}},"id":"10004","key":"PR-3","self":"https://your-domain.atlassian.net/rest/api/2/issue/PR-3"},"type":{"id":"10000","inward":"depends on","name":"Dependent","outward":"is depended by"}}],"worklog":[{"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"comment":"I did some work here.","id":"100028","issueId":"10002","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/worklog/10000","started":"2021-01-17T12:34:00.000+0000","timeSpent":"3h 20m","timeSpentSeconds":12000,"updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"276f955c-63d7-42c8-9520-92d01dca0625","type":"group","value":"jira-developers"}}],"updated":1,"timetracking":{"originalEstimate":"10m","originalEstimateSeconds":600,"remainingEstimate":"3m","remainingEstimateSeconds":200,"timeSpent":"6m","timeSpentSeconds":400}},"id":"10002","key":"ED-1","self":"https://your-domain.atlassian.net/rest/api/2/issue/10002"}],"maxResults":50,"startAt":0,"total":1,"warningMessages":["The value 'bar' does not exist for the field 'foo'."]} */
                     "application/json": components["schemas"]["SearchResults"];
                 };
             };
@@ -49566,9 +50030,11 @@ export interface operations {
                  *
                  *     Additionally, `orderBy` clause can contain a maximum of 7 fields. */
                 jql?: string;
-                /** @description The token for a page to fetch that is not the first page. The first page has a `nextPageToken` of `null`. Use the `nextPageToken` to fetch the next page of issues. */
+                /** @description The token for a page to fetch that is not the first page. The first page has a `nextPageToken` of `null`. Use the `nextPageToken` to fetch the next page of issues.
+                 *
+                 *     Note: The `nextPageToken` field is **not included** in the response for the last page, indicating there is no next page. */
                 nextPageToken?: string;
-                /** @description The maximum number of items to return. Depending on search criteria, real number of items returned may be smaller. It returns max 5000 issues. */
+                /** @description The maximum number of items to return per page. To manage page size, API may return fewer items per page where a large number of fields or properties are requested. The greatest number of items returned per page is achieved when requesting `id` or `key` only. It returns max 5000 issues. */
                 maxResults?: number;
                 /** @description A list of fields to return for each issue, use it to retrieve a subset of fields. This parameter accepts a comma-separated list. Expand options include:
                  *
@@ -49587,7 +50053,7 @@ export interface operations {
                  *
                  *     Multiple `fields` parameters can be included in a request.
                  *
-                 *     Note: By default, this resource returns IDs only. This differs from [GET issue](#api-rest-api-3-issue-issueIdOrKey-get) where the default is all fields. */
+                 *     Note: By default, this resource returns IDs only. This differs from [GET issue](#api-rest-api-2-issue-issueIdOrKey-get) where the default is all fields. */
                 fields?: string[];
                 /** @description Use [expand](#expansion) to include additional information about issues in the response. Note that, unlike the majority of instances where `expand` is specified, `expand` is defined as a comma-delimited string of values. The expand options are:
                  *
@@ -49608,7 +50074,7 @@ export interface operations {
                 fieldsByKeys?: boolean;
                 /** @description Fail this request early if we can't retrieve all field data. */
                 failFast?: boolean;
-                /** @description Strong consistency issue ids to be reconciled with search results. Accepts max 50 ids. All issues must exist. */
+                /** @description Strong consistency issue ids to be reconciled with search results. Accepts max 50 ids */
                 reconcileIssues?: number[];
             };
             header?: never;
@@ -49623,6 +50089,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"issues":[{"expand":"","fields":{"watcher":{"isWatching":false,"self":"https://your-domain.atlassian.net/rest/api/2/issue/EX-1/watchers","watchCount":1},"attachment":[{"author":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"content":"https://your-domain.atlassian.net/jira/rest/api/3/attachment/content/10000","created":"2022-10-06T07:32:47.000+0000","filename":"picture.jpg","id":10000,"mimeType":"image/jpeg","self":"https://your-domain.atlassian.net/rest/api/3/attachments/10000","size":23123,"thumbnail":"https://your-domain.atlassian.net/jira/rest/api/3/attachment/thumbnail/10000"}],"sub-tasks":[{"id":"10000","outwardIssue":{"fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}},"id":"10003","key":"ED-2","self":"https://your-domain.atlassian.net/rest/api/2/issue/ED-2"},"type":{"id":"10000","inward":"Parent","name":"","outward":"Sub-task"}}],"description":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Main order flow broken"}]}]},"project":{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000"},"id":"10000","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"key":"EX","name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/EX","simplified":false,"style":"classic"},"comment":[{"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper."}]}]},"created":"2021-01-17T12:34:00.000+0000","id":"10000","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/comment/10000","updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"Administrators","type":"role","value":"Administrators"}}],"issuelinks":[{"id":"10001","outwardIssue":{"fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}},"id":"10004L","key":"PR-2","self":"https://your-domain.atlassian.net/rest/api/2/issue/PR-2"},"type":{"id":"10000","inward":"depends on","name":"Dependent","outward":"is depended by"}},{"id":"10002","inwardIssue":{"fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}},"id":"10004","key":"PR-3","self":"https://your-domain.atlassian.net/rest/api/2/issue/PR-3"},"type":{"id":"10000","inward":"depends on","name":"Dependent","outward":"is depended by"}}],"worklog":[{"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"comment":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"I did some work here."}]}]},"id":"100028","issueId":"10002","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/worklog/10000","started":"2021-01-17T12:34:00.000+0000","timeSpent":"3h 20m","timeSpentSeconds":12000,"updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"276f955c-63d7-42c8-9520-92d01dca0625","type":"group","value":"jira-developers"}}],"updated":1,"timetracking":{"originalEstimate":"10m","originalEstimateSeconds":600,"remainingEstimate":"3m","remainingEstimateSeconds":200,"timeSpent":"6m","timeSpentSeconds":400}},"id":"10002","key":"ED-1","self":"https://your-domain.atlassian.net/rest/api/2/issue/10002"}],"nextPageToken":"EgQIlMIC"} */
                     "application/json": components["schemas"]["SearchAndReconcileResults"];
                 };
             };
@@ -49635,13 +50102,6 @@ export interface operations {
             };
             /** @description Returned if the authentication credentials are incorrect or missing. */
             401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Returned if any of the ids provided in reconcileIssues were not found */
-            404: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -49668,6 +50128,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"issues":[{"expand":"","fields":{"watcher":{"isWatching":false,"self":"https://your-domain.atlassian.net/rest/api/2/issue/EX-1/watchers","watchCount":1},"attachment":[{"author":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"content":"https://your-domain.atlassian.net/jira/rest/api/3/attachment/content/10000","created":"2022-10-06T07:32:47.000+0000","filename":"picture.jpg","id":10000,"mimeType":"image/jpeg","self":"https://your-domain.atlassian.net/rest/api/3/attachments/10000","size":23123,"thumbnail":"https://your-domain.atlassian.net/jira/rest/api/3/attachment/thumbnail/10000"}],"sub-tasks":[{"id":"10000","outwardIssue":{"fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}},"id":"10003","key":"ED-2","self":"https://your-domain.atlassian.net/rest/api/2/issue/ED-2"},"type":{"id":"10000","inward":"Parent","name":"","outward":"Sub-task"}}],"description":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Main order flow broken"}]}]},"project":{"avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000","48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000"},"id":"10000","insight":{"lastIssueUpdateTime":"2021-04-22T05:37:05.000+0000","totalIssueCount":100},"key":"EX","name":"Example","projectCategory":{"description":"First Project Category","id":"10000","name":"FIRST","self":"https://your-domain.atlassian.net/rest/api/2/projectCategory/10000"},"self":"https://your-domain.atlassian.net/rest/api/2/project/EX","simplified":false,"style":"classic"},"comment":[{"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper."}]}]},"created":"2021-01-17T12:34:00.000+0000","id":"10000","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/comment/10000","updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"Administrators","type":"role","value":"Administrators"}}],"issuelinks":[{"id":"10001","outwardIssue":{"fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}},"id":"10004L","key":"PR-2","self":"https://your-domain.atlassian.net/rest/api/2/issue/PR-2"},"type":{"id":"10000","inward":"depends on","name":"Dependent","outward":"is depended by"}},{"id":"10002","inwardIssue":{"fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}},"id":"10004","key":"PR-3","self":"https://your-domain.atlassian.net/rest/api/2/issue/PR-3"},"type":{"id":"10000","inward":"depends on","name":"Dependent","outward":"is depended by"}}],"worklog":[{"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"comment":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"I did some work here."}]}]},"id":"100028","issueId":"10002","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/worklog/10000","started":"2021-01-17T12:34:00.000+0000","timeSpent":"3h 20m","timeSpentSeconds":12000,"updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"276f955c-63d7-42c8-9520-92d01dca0625","type":"group","value":"jira-developers"}}],"updated":1,"timetracking":{"originalEstimate":"10m","originalEstimateSeconds":600,"remainingEstimate":"3m","remainingEstimateSeconds":200,"timeSpent":"6m","timeSpentSeconds":400}},"id":"10002","key":"ED-1","self":"https://your-domain.atlassian.net/rest/api/2/issue/10002"}],"nextPageToken":"EgQIlMIC"} */
                     "application/json": components["schemas"]["SearchAndReconcileResults"];
                 };
             };
@@ -49680,13 +50141,6 @@ export interface operations {
             };
             /** @description Returned if the authentication credentials are incorrect or missing. */
             401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Returned if any of the ids provided in reconcileIssues were not found */
-            404: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -49712,6 +50166,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"description":"Only the reporter and internal staff can see this issue.","id":"10021","name":"Reporter Only","self":"https://your-domain.atlassian.net/rest/api/2/securitylevel/10021"} */
                     "application/json": components["schemas"]["SecurityLevel"];
                 };
             };
@@ -49746,6 +50201,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"baseUrl":"https://your-domain.atlassian.net","buildDate":"2020-03-26T22:20:59.000+0000","buildNumber":582,"defaultLocale":{"locale":"en_AU"},"displayUrl":"https://instance.jira.your-domain.com","displayUrlConfluence":"https://instance.confluence.your-domain.com","displayUrlServicedeskHelpCenter":"https://instance.help.your-domain.com","scmInfo":"1f51473f5c7b75c1a69a0090f4832cdc5053702a","serverTime":"2020-03-31T16:43:50.000+0000","serverTimeZone":"Australia/Sydney","serverTitle":"My Jira instance","version":"1001.0.0-SNAPSHOT","versionNumbers":[5,0,0]} */
                     "application/json": components["schemas"]["ServerInformation"];
                 };
             };
@@ -49773,6 +50229,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"label":"Key","value":"issuekey"},{"label":"Summary","value":"summary"}] */
                     "application/json": components["schemas"]["ColumnItem"][];
                 };
             };
@@ -49863,6 +50320,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"description":"The issue is currently being worked on.","iconUrl":"https://your-domain.atlassian.net/images/icons/progress.gif","id":"10000","name":"In Progress","self":"https://your-domain.atlassian.net/rest/api/2/status/10000","statusCategory":{"colorName":"yellow","id":1,"key":"in-flight","name":"In Progress","self":"https://your-domain.atlassian.net/rest/api/2/statuscategory/1"}},{"description":"The issue is closed.","iconUrl":"https://your-domain.atlassian.net/images/icons/closed.gif","id":"5","name":"Closed","self":"https://your-domain.atlassian.net/rest/api/2/status/5","statusCategory":{"colorName":"green","id":9,"key":"completed","self":"https://your-domain.atlassian.net/rest/api/2/statuscategory/9"}}] */
                     "application/json": components["schemas"]["StatusDetails"][];
                 };
             };
@@ -49893,6 +50351,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"description":"The issue is currently being worked on.","iconUrl":"https://your-domain.atlassian.net/images/icons/progress.gif","id":"10000","name":"In Progress","self":"https://your-domain.atlassian.net/rest/api/2/status/10000","statusCategory":{"colorName":"yellow","id":1,"key":"in-flight","name":"In Progress","self":"https://your-domain.atlassian.net/rest/api/2/statuscategory/1"}} */
                     "application/json": components["schemas"]["StatusDetails"];
                 };
             };
@@ -49931,6 +50390,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"colorName":"yellow","id":1,"key":"in-flight","name":"In Progress","self":"https://your-domain.atlassian.net/rest/api/2/statuscategory/1"},{"colorName":"green","id":9,"key":"completed","self":"https://your-domain.atlassian.net/rest/api/2/statuscategory/9"}] */
                     "application/json": components["schemas"]["StatusCategory"][];
                 };
             };
@@ -49961,6 +50421,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"colorName":"yellow","id":1,"key":"in-flight","name":"In Progress","self":"https://your-domain.atlassian.net/rest/api/2/statuscategory/1"} */
                     "application/json": components["schemas"]["StatusCategory"];
                 };
             };
@@ -49983,7 +50444,9 @@ export interface operations {
     getStatusesById: {
         parameters: {
             query: {
-                /** @description Use [expand](#expansion) to include additional information in the response. This parameter accepts a comma-separated list. Expand options include:
+                /** @description Deprecated. See the [deprecation notice](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2298) for details.
+                 *
+                 *     Use [expand](#expansion) to include additional information in the response. This parameter accepts a comma-separated list. Expand options include:
                  *
                  *      *  `usages` Returns the project and issue types that use the status in their workflow.
                  *      *  `workflowUsages` Returns the workflows that use the status. */
@@ -50005,6 +50468,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"description":"The issue is resolved","id":"1000","name":"Finished","scope":{"project":{"id":"1"},"type":"PROJECT"},"statusCategory":"DONE","usages":[{"issueTypes":["10002"],"project":{"id":"1"}}],"workflowUsages":[{"workflowId":"545d80a3-91ff-4949-8b0d-a2bc484e70e5","workflowName":"Workflow 1"}]}] */
                     "application/json": components["schemas"]["JiraStatus"][];
                 };
             };
@@ -50063,6 +50527,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The name is too long, maxSize=255"],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -50117,6 +50582,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"description":"The issue is resolved","id":"1000","name":"Finished","scope":{"project":{"id":"1"},"type":"PROJECT"},"statusCategory":"DONE","usages":[],"workflowUsages":[]}] */
                     "application/json": components["schemas"]["JiraStatus"][];
                 };
             };
@@ -50126,6 +50592,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The name is too long, maxSize=255"],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -50174,6 +50641,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The name is too long, maxSize=255"],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -50189,7 +50657,9 @@ export interface operations {
     search: {
         parameters: {
             query?: {
-                /** @description Use [expand](#expansion) to include additional information in the response. This parameter accepts a comma-separated list. Expand options include:
+                /** @description Deprecated. See the [deprecation notice](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2298) for details.
+                 *
+                 *     Use [expand](#expansion) to include additional information in the response. This parameter accepts a comma-separated list. Expand options include:
                  *
                  *      *  `usages` Returns the project and issue types that use the status in their workflow.
                  *      *  `workflowUsages` Returns the workflows that use the status. */
@@ -50217,6 +50687,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":2,"nextPage":"https://your-domain.atlassian.net/rest/api/2/statuses/search?startAt=2&maxResults=2","self":"https://your-domain.atlassian.net/rest/api/2/statuses/search?startAt=0&maxResults=2","startAt":0,"total":5,"values":[{"description":"The issue is resolved","id":"1000","name":"Finished","scope":{"project":{"id":"1"},"type":"PROJECT"},"statusCategory":"DONE","usages":[{"issueTypes":["10002"],"project":{"id":"1"}}],"workflowUsages":[{"workflowId":"545d80a3-91ff-4949-8b0d-a2bc484e70e5","workflowName":"Workflow 1"}]}]} */
                     "application/json": components["schemas"]["PageOfStatuses"];
                 };
             };
@@ -50229,6 +50700,167 @@ export interface operations {
             };
             /** @description Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation. */
             401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    getProjectIssueTypeUsagesForStatus: {
+        parameters: {
+            query?: {
+                /** @description The cursor for pagination */
+                nextPageToken?: string;
+                /** @description The maximum number of results to return. Must be an integer between 1 and 200. */
+                maxResults?: number;
+            };
+            header?: never;
+            path: {
+                /** @description The statusId to fetch issue type usages for */
+                statusId: string;
+                /** @description The projectId to fetch issue type usages for */
+                projectId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Returned if the request is successful. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    /** @example {"issueTypes":{"nextPageToken":"eyJvIjoyfQ==","values":[{"id":"1000"}]},"projectId":"2000","statusId":"1000"} */
+                    "application/json": components["schemas"]["StatusProjectIssueTypeUsageDTO"];
+                };
+            };
+            /** @description Returned if the request is not valid. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    /** @example {"errorMessages":["Invalid format of nextPageToken"],"errors":{}} */
+                    "application/json": unknown;
+                };
+            };
+            /** @description Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if the status with the given ID does not exist. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    getProjectUsagesForStatus: {
+        parameters: {
+            query?: {
+                /** @description The cursor for pagination */
+                nextPageToken?: string;
+                /** @description The maximum number of results to return. Must be an integer between 1 and 200. */
+                maxResults?: number;
+            };
+            header?: never;
+            path: {
+                /** @description The statusId to fetch project usages for */
+                statusId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Returned if the request is successful. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    /** @example {"projects":{"nextPageToken":"eyJvIjoyfQ==","values":[{"id":"1000"}]},"statusId":"1000"} */
+                    "application/json": components["schemas"]["StatusProjectUsageDTO"];
+                };
+            };
+            /** @description Returned if the request is not valid. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    /** @example {"errorMessages":["Invalid format of nextPageToken"],"errors":{}} */
+                    "application/json": unknown;
+                };
+            };
+            /** @description Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if the status with the given ID does not exist. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    getWorkflowUsagesForStatus: {
+        parameters: {
+            query?: {
+                /** @description The cursor for pagination */
+                nextPageToken?: string;
+                /** @description The maximum number of results to return. Must be an integer between 1 and 200. */
+                maxResults?: number;
+            };
+            header?: never;
+            path: {
+                /** @description The statusId to fetch workflow usages for */
+                statusId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Returned if the request is successful. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    /** @example {"statusId":"1000","workflows":{"nextPageToken":"eyJvIjoyfQ==","values":[{"id":"545d80a3-91ff-4949-8b0d-a2bc484e70e5"}]}} */
+                    "application/json": components["schemas"]["StatusWorkflowUsageDTO"];
+                };
+            };
+            /** @description Returned if the request is not valid. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    /** @example {"errorMessages":["Invalid format of nextPageToken"],"errors":{}} */
+                    "application/json": unknown;
+                };
+            };
+            /** @description Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if the status with the given ID does not exist. */
+            404: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -50254,6 +50886,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"self":"https://your-domain.atlassian.net/rest/api/2/task/1","id":"1","description":"Task description","status":"COMPLETE","result":"the task result, this may be any JSON","submittedBy":10000,"progress":100,"elapsedRuntime":156,"submitted":1501708132800,"started":1501708132900,"finished":1501708133000,"lastUpdate":1501708133000} */
                     "application/json": components["schemas"]["TaskProgressBeanObject"];
                 };
             };
@@ -50364,6 +50997,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"startAt":0,"total":3,"values":[{"id":"d7dbda8a-6239-4b63-8e13-a5ef975c8e61","name":"Reveal Story Points","description":"Reveals Story Points field when any Sprint is selected.","self":"https://api.atlassian.com/ex/jira/{cloudid}/rest/api/2/uiModifications/d7dbda8a-6239-4b63-8e13-a5ef975c8e61","data":"{field: 'Story Points', config: {hidden: false}}","contexts":[{"id":"1533537a-bda3-4ac6-8481-846128cd9ef4","projectId":"10000","issueTypeId":"10000","viewType":"GIC","isAvailable":true},{"id":"c016fefa-6eb3-40c9-8596-4c4ef273e67c","projectId":"10000","issueTypeId":"10001","viewType":"IssueView","isAvailable":true},{"id":"1016defa-7ew3-40c5-8696-4c1efg73e67s","projectId":"10000","issueTypeId":"10002","viewType":"IssueTransition","isAvailable":true}]},{"id":"e4fe8db5-f82f-416b-a3aa-b260b55da577","name":"Set Assignee","description":"Sets the Assignee field automatically.","self":"https://api.atlassian.com/ex/jira/{cloudid}/rest/api/2/uiModifications/e4fe8db5-f82f-416b-a3aa-b260b55da577","contexts":[{"id":"8b3740f9-8780-4958-8228-69dcfbda11d9","projectId":"10000","issueTypeId":"10000","viewType":"GIC","isAvailable":true}]},{"id":"1453f993-79ce-4389-a36d-eb72d5c85dd6","name":"Hide Labels","description":"Hides Labels if any component is provided.","self":"https://api.atlassian.com/ex/jira/{cloudid}/rest/api/2/uiModifications/1453f993-79ce-4389-a36d-eb72d5c85dd6","contexts":[]},{"id":"d3f4097e-8d8e-451e-9fb6-27c3c8c3bfff","name":"Wildcard example","description":"This context is applied to all issue types","self":"https://api.atlassian.com/ex/jira/{cloudid}/rest/api/2/uiModifications/d3f4097e-8d8e-451e-9fb6-27c3c8c3bfff","contexts":[{"id":"521f2181-5d5e-46ea-9fc9-871bbf245b8b","projectId":"10000","issueTypeId":null,"viewType":"GIC","isAvailable":true}]}]} */
                     "application/json": components["schemas"]["PageBeanUiModificationDetails"];
                 };
             };
@@ -50437,6 +51071,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"d7dbda8a-6239-4b63-8e13-a5ef975c8e61","self":"https://api.atlassian.com/ex/jira/{cloudid}/rest/api/2/uiModifications/d7dbda8a-6239-4b63-8e13-a5ef975c8e61"} */
                     "application/json": components["schemas"]["UiModificationIdentifiers"];
                 };
             };
@@ -50467,6 +51102,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"details":{"issueTypesNotFound":{"10001":["10000","10001"]},"projectNotFound":["10000"]},"errorMessages":["Project with ID '10000' was not found.","Project with ID '10001'. The following issue types were not found: [10000, 10001]"],"errors":{}} */
                     "application/json": components["schemas"]["DetailedErrorCollection"];
                 };
             };
@@ -50546,6 +51182,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"details":{"issueTypesNotFound":{"10001":["10000","10001"]},"projectNotFound":["10000"]},"errorMessages":["Project with ID '10000' was not found.","Project with ID '10001'. The following issue types were not found: [10000, 10001]"],"errors":{}} */
                     "application/json": components["schemas"]["DetailedErrorCollection"];
                 };
             };
@@ -50615,6 +51252,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"custom":[{"id":"1010","isDeletable":true,"isSelected":false,"isSystemAvatar":false,"urls":{"16x16":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10080&avatarType=project","24x24":"https://your-domain.atlassian.net/secure/viewavatar?size=small&avatarId=10080&avatarType=project","32x32":"https://your-domain.atlassian.net/secure/viewavatar?size=medium&avatarId=10080&avatarType=project","48x48":"https://your-domain.atlassian.net/secure/viewavatar?avatarId=10080&avatarType=project"}}],"system":[{"id":"1000","isDeletable":false,"isSelected":false,"isSystemAvatar":true,"urls":{"16x16":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10040&avatarType=project","24x24":"https://your-domain.atlassian.net/secure/viewavatar?size=small&avatarId=10040&avatarType=project","32x32":"https://your-domain.atlassian.net/secure/viewavatar?size=medium&avatarId=10040&avatarType=project","48x48":"https://your-domain.atlassian.net/secure/viewavatar?avatarId=10040&avatarType=project"}}]} */
                     "application/json": components["schemas"]["Avatars"];
                 };
             };
@@ -50665,6 +51303,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"id":"1010","isDeletable":true,"isSelected":false,"isSystemAvatar":false} */
                     "application/json": components["schemas"]["Avatar"];
                 };
             };
@@ -50783,9 +51422,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "*/*": unknown;
                     "application/json": components["schemas"]["ErrorCollection"];
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/png": unknown;
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/svg+xml": unknown;
                 };
             };
@@ -50795,9 +51437,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "*/*": unknown;
                     "application/json": components["schemas"]["ErrorCollection"];
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/png": unknown;
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/svg+xml": unknown;
                 };
             };
@@ -50807,9 +51452,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "*/*": unknown;
                     "application/json": components["schemas"]["ErrorCollection"];
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/png": unknown;
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/svg+xml": unknown;
                 };
             };
@@ -50852,9 +51500,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "*/*": unknown;
                     "application/json": components["schemas"]["ErrorCollection"];
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/png": unknown;
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/svg+xml": unknown;
                 };
             };
@@ -50864,9 +51515,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "*/*": unknown;
                     "application/json": components["schemas"]["ErrorCollection"];
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/png": unknown;
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/svg+xml": unknown;
                 };
             };
@@ -50876,9 +51530,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "*/*": unknown;
                     "application/json": components["schemas"]["ErrorCollection"];
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/png": unknown;
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/svg+xml": unknown;
                 };
             };
@@ -50888,9 +51545,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "*/*": unknown;
                     "application/json": components["schemas"]["ErrorCollection"];
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/png": unknown;
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/svg+xml": unknown;
                 };
             };
@@ -50933,9 +51593,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "*/*": unknown;
                     "application/json": components["schemas"]["ErrorCollection"];
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/png": unknown;
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/svg+xml": unknown;
                 };
             };
@@ -50945,9 +51608,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "*/*": unknown;
                     "application/json": components["schemas"]["ErrorCollection"];
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/png": unknown;
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/svg+xml": unknown;
                 };
             };
@@ -50957,9 +51623,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "*/*": unknown;
                     "application/json": components["schemas"]["ErrorCollection"];
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/png": unknown;
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/svg+xml": unknown;
                 };
             };
@@ -50969,9 +51638,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "*/*": unknown;
                     "application/json": components["schemas"]["ErrorCollection"];
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/png": unknown;
+                    /** @example {"errorMessages":["Human readable error message"],"errors":{}} */
                     "image/svg+xml": unknown;
                 };
             };
@@ -51004,6 +51676,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":true,"applicationRoles":{"items":[],"size":1},"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","groups":{"items":[],"size":3},"key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"} */
                     "application/json": components["schemas"]["User"];
                 };
             };
@@ -51053,6 +51726,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":true,"applicationRoles":{"items":[],"size":1},"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","groups":{"items":[],"size":3},"key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"} */
                     "application/json": components["schemas"]["User"];
                 };
             };
@@ -51160,6 +51834,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},{"accountId":"5b10ac8d82e05b22cc7d4ef5","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=48&s=48"},"displayName":"Emma Richards","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10ac8d82e05b22cc7d4ef5"}] */
                     "application/json": components["schemas"]["User"][];
                 };
             };
@@ -51234,6 +51909,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":true,"applicationRoles":{"items":[],"size":1},"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","groups":{"items":[],"size":3},"key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"} */
                     "application/json": components["schemas"]["User"][];
                 };
             };
@@ -51298,6 +51974,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":100,"startAt":0,"total":1,"values":[{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":true,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"}]} */
                     "application/json": components["schemas"]["PageBeanUser"];
                 };
             };
@@ -51341,6 +52018,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"username":"mia","accountId":"5b10a2844c20165700ede21g"},{"username":"emma","accountId":"5b10ac8d82e05b22cc7d4ef5"}] */
                     "application/json": components["schemas"]["UserMigrationBean"][];
                 };
             };
@@ -51525,6 +52203,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example name@example.com */
                     "application/json": components["schemas"]["UnrestrictedUserEmail"];
                 };
             };
@@ -51624,6 +52303,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"groupId":"276f955c-63d7-42c8-9520-92d01dca0625","name":"jira-administrators","self":"https://your-domain.atlassian.net/rest/api/2/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"} */
                     "application/json": components["schemas"]["GroupName"][];
                 };
             };
@@ -51650,6 +52330,126 @@ export interface operations {
             };
         };
     };
+    getUserNavProperty: {
+        parameters: {
+            query?: {
+                /** @description The account ID of the user, which uniquely identifies the user across all Atlassian products. For example, *5b10ac8d82e05b22cc7d4ef5*. */
+                accountId?: string;
+            };
+            header?: never;
+            path: {
+                /** @description The key of the user's property. */
+                propertyKey: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Returned if the request is successful. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserNavPropertyJsonBean"];
+                };
+            };
+            /** @description Returned if `accountId` is missing or `propertyKey` is missing. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if the authentication credentials are incorrect or missing. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if the user does not have the necessary permission or is not accessing their user record. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if either the user or property key is not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    setUserNavProperty: {
+        parameters: {
+            query?: {
+                /** @description The account ID of the user, which uniquely identifies the user across all Atlassian products. For example, *5b10ac8d82e05b22cc7d4ef5*. */
+                accountId?: string;
+            };
+            header?: never;
+            path: {
+                /** @description The key of the nav property. The maximum length is 255 characters. */
+                propertyKey: string;
+            };
+            cookie?: never;
+        };
+        /** @description The value of the property. The value has to be a boolean [JSON](https://tools.ietf.org/html/rfc4627) value. The maximum length of the property value is 32768 bytes. */
+        requestBody: {
+            content: {
+                "application/json": unknown;
+            };
+        };
+        responses: {
+            /** @description Returned if the user property is updated/created. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Returned if `accountId` is missing. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if the authentication credentials are incorrect or missing. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if the user does not have the necessary permission or is not accessing their user record. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if the user is not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if the property key is not specified. */
+            405: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
     findUsersWithAllPermissions: {
         parameters: {
             query: {
@@ -51661,7 +52461,7 @@ export interface operations {
                 accountId?: string;
                 /** @description A comma separated list of permissions. Permissions can be specified as any:
                  *
-                 *      *  permission returned by [Get all permissions](#api-rest-api-3-permissions-get).
+                 *      *  permission returned by [Get all permissions](#api-rest-api-2-permissions-get).
                  *      *  custom project permission added by Connect apps.
                  *      *  (deprecated) one of the following:
                  *
@@ -51719,6 +52519,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},{"accountId":"5b10ac8d82e05b22cc7d4ef5","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=48&s=48"},"displayName":"Emma Richards","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10ac8d82e05b22cc7d4ef5"}] */
                     "application/json": components["schemas"]["User"][];
                 };
             };
@@ -51792,6 +52593,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"header":"Showing 20 of 25 matching groups","total":25,"users":[{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","avatarUrl":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","displayName":"Mia Krystof","html":"<strong>Mi</strong>a Krystof - <strong>mi</strong>a@example.com (<strong>mi</strong>a)","key":"mia","name":"mia"}]} */
                     "application/json": components["schemas"]["FoundUsers"];
                 };
             };
@@ -51840,6 +52642,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"keys":[{"key":"issue.support","self":"https://your-domain.atlassian.net/rest/api/2/issue/EX-2/properties/issue.support"}]} */
                     "application/json": components["schemas"]["PropertyKeys"];
                 };
             };
@@ -51898,6 +52701,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"key":"issue.support","value":{"system.conversation.id":"b1bf38be-5e94-4b40-a3b8-9278735ee1e6","system.support.time":"1m"}} */
                     "application/json": components["schemas"]["EntityProperty"];
                 };
             };
@@ -52093,6 +52897,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},{"accountId":"5b10ac8d82e05b22cc7d4ef5","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=48&s=48"},"displayName":"Emma Richards","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10ac8d82e05b22cc7d4ef5"}] */
                     "application/json": components["schemas"]["User"][];
                 };
             };
@@ -52279,6 +53084,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},{"accountId":"5b10ac8d82e05b22cc7d4ef5","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=48&s=48"},"displayName":"Emma Richards","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10ac8d82e05b22cc7d4ef5"}] */
                     "application/json": components["schemas"]["User"][];
                 };
             };
@@ -52336,6 +53142,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},{"accountId":"5b10ac8d82e05b22cc7d4ef5","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=48&s=48"},"displayName":"Emma Richards","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10ac8d82e05b22cc7d4ef5"}] */
                     "application/json": components["schemas"]["User"][];
                 };
             };
@@ -52382,6 +53189,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},{"accountId":"5b10ac8d82e05b22cc7d4ef5","accountType":"atlassian","active":false,"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=48&s=48"},"displayName":"Emma Richards","key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10ac8d82e05b22cc7d4ef5"}] */
                     "application/json": components["schemas"]["User"][];
                 };
             };
@@ -52435,6 +53243,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"archived":false,"description":"An excellent version","id":"10000","name":"New Version 1","project":"PXA","projectId":10000,"releaseDate":"2010-07-06","released":true,"self":"https://your-domain.atlassian.net/rest/api/2/version/10000","userReleaseDate":"6/Jul/2010"} */
                     "application/json": components["schemas"]["Version"];
                 };
             };
@@ -52490,6 +53299,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"archived":false,"description":"An excellent version","id":"10000","name":"New Version 1","overdue":true,"projectId":10000,"releaseDate":"2010-07-06","released":true,"self":"https://your-domain.atlassian.net/rest/api/2/version/10000","userReleaseDate":"6/Jul/2010"} */
                     "application/json": components["schemas"]["Version"];
                 };
             };
@@ -52543,6 +53353,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"archived":false,"description":"An excellent version","id":"10000","name":"New Version 1","project":"PXA","projectId":10000,"releaseDate":"2010-07-06","released":true,"self":"https://your-domain.atlassian.net/rest/api/2/version/10000","userReleaseDate":"6/Jul/2010"} */
                     "application/json": components["schemas"]["Version"];
                 };
             };
@@ -52696,6 +53507,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"archived":false,"description":"An excellent version","id":"10000","name":"New Version 1","overdue":true,"projectId":10000,"releaseDate":"2010-07-06","released":true,"self":"https://your-domain.atlassian.net/rest/api/2/version/10000","userReleaseDate":"6/Jul/2010"} */
                     "application/json": components["schemas"]["Version"];
                 };
             };
@@ -52747,6 +53559,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"customFieldUsage":[{"customFieldId":10000,"fieldName":"Field1","issueCountWithVersionInCustomField":2},{"customFieldId":10010,"fieldName":"Field2","issueCountWithVersionInCustomField":3}],"issueCountWithCustomFieldsShowingVersion":54,"issuesAffectedCount":101,"issuesFixedCount":23,"self":"https://your-domain.atlassian.net/rest/api/2/version/10000"} */
                     "application/json": components["schemas"]["VersionIssueCounts"];
                 };
             };
@@ -52787,6 +53600,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"category":"Design","issueId":10001,"relatedWorkId":"fabcdef6-7878-1234-beaf-43211234abcd","title":"Design link","url":"https://www.atlassian.com"},{"category":"Communications","relatedWorkId":"fabcdef6-7878-1234-beaf-43211234abce","title":"Chat application","url":"https://www.atlassian.com"},{"category":"External Link","issueId":10003,"relatedWorkId":"fabcdef6-7878-1234-beaf-43211234abcf","url":"https://www.atlassian.com"}] */
                     "application/json": components["schemas"]["VersionRelatedWork"][];
                 };
             };
@@ -52841,6 +53655,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"category":"Design","relatedWorkId":"fabcdef6-7878-1234-beaf-43211234abcd","title":"Design link","url":"https://www.atlassian.com"} */
                     "application/json": components["schemas"]["VersionRelatedWork"];
                 };
             };
@@ -52900,6 +53715,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"category":"Design","relatedWorkId":"fabcdef6-7878-1234-beaf-43211234abcd","title":"Design link","url":"https://www.atlassian.com"} */
                     "application/json": components["schemas"]["VersionRelatedWork"];
                 };
             };
@@ -53002,6 +53818,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"issuesCount":30,"issuesUnresolvedCount":23,"self":"https://your-domain.atlassian.net/rest/api/2/version/10000"} */
                     "application/json": components["schemas"]["VersionUnresolvedIssuesCount"];
                 };
             };
@@ -53097,6 +53914,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":3,"startAt":0,"total":3,"values":[{"events":["jira:issue_updated","jira:issue_created"],"expirationDate":"2019-06-01T12:42:30.000+0000","fieldIdsFilter":["summary","customfield_10029"],"id":10000,"jqlFilter":"project = PRJ","url":"https://your-app.example.com/webhook-received"},{"events":["jira:issue_created"],"expirationDate":"2019-06-01T12:42:30.000+0000","id":10001,"jqlFilter":"issuetype = Bug","url":"https://your-app.example.com/webhook-received"},{"events":["issue_property_set"],"expirationDate":"2019-06-01T12:42:30.000+0000","id":10002,"issuePropertyKeysFilter":["my-issue-property-key"],"jqlFilter":"project = PRJ","url":"https://your-app.example.com/webhook-received"}]} */
                     "application/json": components["schemas"]["PageBeanWebhook"];
                 };
             };
@@ -53170,6 +53988,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"webhookRegistrationResult":[{"createdWebhookId":1000},{"errors":["The clause watchCount is unsupported"]},{"createdWebhookId":1001}]} */
                     "application/json": components["schemas"]["ContainerForRegisteredWebhooks"];
                 };
             };
@@ -53260,6 +54079,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"values":[{"id":"1","body":"{\"data\":\"webhook data\"}","url":"https://example.com","failureTime":1573118132000},{"id":"2","url":"https://example.com","failureTime":1573540473480}],"maxResults":100,"next":"https://your-domain.atlassian.net/rest/api/2/webhook/failed?failedAfter=1573540473480&maxResults=100"} */
                     "application/json": components["schemas"]["FailedWebhooks"];
                 };
             };
@@ -53309,6 +54129,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"expirationDate":"2019-06-01T12:42:30.000+0000"} */
                     "application/json": components["schemas"]["WebhooksExpirationDate"];
                 };
             };
@@ -53350,6 +54171,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"default":true,"description":"A classic Jira workflow","lastModifiedDate":"01-01-2011","lastModifiedUser":"admin","lastModifiedUserAccountId":"5b10a2844c20165700ede21g","name":"classic workflow","steps":5}] */
                     "application/json": components["schemas"]["DeprecatedWorkflow"][];
                 };
             };
@@ -53479,6 +54301,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"entityId":"d7178e8d-bf6c-4c0c-9e90-758a0b965b67","name":"Workflow 1"} */
                     "application/json": components["schemas"]["WorkflowIDs"];
                 };
             };
@@ -53488,6 +54311,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The request body parameters are missing."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -53504,6 +54328,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access the workflow configuration."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -53513,6 +54338,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Status with ID 10000 was not found"],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -53550,6 +54376,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":10,"startAt":0,"total":1,"values":[{"workflowId":{"name":"My Workflow name","draft":false},"postFunctions":[{"id":"b4d6cbdc-59f5-11e9-8647-d663bd873d93","key":"postfunction-key","configuration":{"value":"{ \"color\": \"red\" }","disabled":false,"tag":"Sample tag"},"transition":{"id":1,"name":"Open"}}],"conditions":[{"id":"d663bd873d93-59f5-11e9-8647-b4d6cbdc","key":"condition-key","configuration":{"value":"{ \"size\": \"medium\" }","disabled":false,"tag":"Another tag"},"transition":{"id":1,"name":"Open"}}],"validators":[{"id":"11e9-59f5-b4d6cbdc-8647-d663bd873d93","key":"validator-key","configuration":{"value":"\"{ \\\"shape\\\": \\\"square\\\" }\"","disabled":false},"transition":{"id":1,"name":"Open"}}]}]} */
                     "application/json": components["schemas"]["PageBeanWorkflowTransitionRules"];
                 };
             };
@@ -53645,6 +54472,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"updateResults":[{"workflowId":{"name":"Workflow with one rule not updated","draft":false},"ruleUpdateErrors":{"example-rule-id":["The rule with this id does not exist: example-rule-id"]},"updateErrors":[]},{"workflowId":{"name":"Workflow with all rules successfully updated","draft":true},"ruleUpdateErrors":{},"updateErrors":[]},{"workflowId":{"name":"Non-existing workflow","draft":false},"ruleUpdateErrors":{},"updateErrors":["Workflow not found: WorkflowIdBean{name=Non-existing workflow, draft=false}"]}]} */
                     "application/json": components["schemas"]["WorkflowTransitionRulesUpdateErrors"];
                 };
             };
@@ -53709,6 +54537,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"updateResults":[{"workflowId":{"name":"Workflow with one rule not updated","draft":false},"ruleUpdateErrors":{"example-rule-id":["The rule with this id does not exist: example-rule-id"]},"updateErrors":[]},{"workflowId":{"name":"Workflow with all rules successfully updated","draft":true},"ruleUpdateErrors":{},"updateErrors":[]},{"workflowId":{"name":"Non-existing workflow","draft":false},"ruleUpdateErrors":{},"updateErrors":["Workflow not found: WorkflowIdBean{name=Non-existing workflow, draft=false}"]}]} */
                     "application/json": components["schemas"]["WorkflowTransitionRulesUpdateErrors"];
                 };
             };
@@ -53718,6 +54547,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Jira Administration permission is required to access workflow configuration."],"errors":{},"httpStatusCode":{"empty":false,"present":true}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -53777,6 +54607,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":false,"maxResults":1,"startAt":0,"total":5,"values":[{"id":{"name":"SCRUM Workflow","entityId":"5ed312c5-f7a6-4a78-a1f6-8ff7f307d063"},"description":"A workflow used for Software projects in the SCRUM methodology","transitions":[{"id":"5","name":"In Progress","description":"Start working on the issue.","from":["10","13"],"to":"14","type":"directed","screen":{"id":"10000","name":"Issue screen"},"rules":{"conditionsTree":{"nodeType":"compound","operator":"AND","conditions":[{"nodeType":"simple","type":"PermissionCondition","configuration":{"permissionKey":"WORK_ON_ISSUES"}},{"nodeType":"simple","type":"PermissionCondition","configuration":{"permissionKey":"RESOLVE_ISSUES"}}]},"validators":[{"type":"FieldRequiredValidator","configuration":{"errorMessage":"A custom error message","fields":["description","assignee"],"ignoreContext":true}}],"postFunctions":[{"type":"UpdateIssueStatusFunction"},{"type":"GenerateChangeHistoryFunction"},{"type":"FireIssueEventFunction"}]},"properties":{"jira.fieldscreen.id":1}}],"statuses":[{"id":"3","name":"In Progress","properties":{"issueEditable":false,"jira.issue.editable":"false"}}],"isDefault":false,"schemes":[{"id":"10001","name":"Test Workflow Scheme"}],"projects":[{"avatarUrls":{"16x16":"secure/projectavatar?size=xsmall&pid=10000","24x24":"secure/projectavatar?size=small&pid=10000","32x32":"secure/projectavatar?size=medium&pid=10000","48x48":"secure/projectavatar?size=large&pid=10000"},"id":"10000","key":"EX","name":"Example","projectCategory":{"description":"Project category description","id":"10000","name":"A project category"},"projectTypeKey":"ProjectTypeKey{key='software'}","self":"project/EX","simplified":false}],"hasDraftWorkflow":true,"operations":{"canEdit":true,"canDelete":false},"created":"2018-12-10T16:30:15.000+0000","updated":"2018-12-11T11:45:13.000+0000"}]} */
                     "application/json": components["schemas"]["PageBeanWorkflow"];
                 };
             };
@@ -53793,6 +54624,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access workflows."],"errors":{}} */
                     "application/json": components["schemas"]["ErrorCollection"];
                 };
             };
@@ -53825,6 +54657,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"id":"jira.i18n.title","key":"jira.i18n.title","value":"some.title"},{"id":"jira.permission","key":"jira.permission","value":"createissue"}] */
                     "application/json": components["schemas"]["WorkflowTransitionProperty"];
                 };
             };
@@ -53890,6 +54723,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"key":"jira.i18n.title","value":"some.title","id":"jira.i18n.title"} */
                     "application/json": components["schemas"]["WorkflowTransitionProperty"];
                 };
             };
@@ -53962,6 +54796,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"key":"jira.i18n.title","value":"some.title","id":"jira.i18n.title"} */
                     "application/json": components["schemas"]["WorkflowTransitionProperty"];
                 };
             };
@@ -54083,6 +54918,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Cannot delete an active workflow."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -54099,6 +54935,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access the workflow configuration."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -54108,21 +54945,183 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The workflow was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
+            };
+        };
+    };
+    getWorkflowProjectIssueTypeUsages: {
+        parameters: {
+            query?: {
+                /** @description The cursor for pagination */
+                nextPageToken?: string;
+                /** @description The maximum number of results to return. Must be an integer between 1 and 200. */
+                maxResults?: number;
+            };
+            header?: never;
+            path: {
+                /** @description The workflow ID */
+                workflowId: string;
+                /** @description The project ID */
+                projectId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Returned if the request is successful. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    /** @example {"issueTypes":{"nextPageToken":"eyJvIjoyfQ==","values":[{"id":"1000"}]},"projectId":"6e2bde9f-f213-4920-95cd-28e015af59a1","workflowId":"2000"} */
+                    "application/json": components["schemas"]["WorkflowProjectIssueTypeUsageDTO"];
+                };
+            };
+            /** @description Returned if the request is not valid. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    /** @example {"errorMessages":["Invalid format of nextPageToken"],"errors":{}} */
+                    "application/json": unknown;
+                };
+            };
+            /** @description Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if the workflow with the given ID does not exist. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    getProjectUsagesForWorkflow: {
+        parameters: {
+            query?: {
+                /** @description The cursor for pagination */
+                nextPageToken?: string;
+                /** @description The maximum number of results to return. Must be an integer between 1 and 200. */
+                maxResults?: number;
+            };
+            header?: never;
+            path: {
+                /** @description The workflow ID */
+                workflowId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Returned if the request is successful. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    /** @example {"projects":{"nextPageToken":"eyJvIjoyfQ==","values":[{"id":"1003"}]},"workflowId":"fb759d53-a3a4-45ff-9de4-547c4b638dde"} */
+                    "application/json": components["schemas"]["WorkflowProjectUsageDTO"];
+                };
+            };
+            /** @description Returned if the request is not valid. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    /** @example {"errorMessages":["Invalid format of nextPageToken"],"errors":{}} */
+                    "application/json": unknown;
+                };
+            };
+            /** @description Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if the workflow with the given ID does not exist. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    getWorkflowSchemeUsagesForWorkflow: {
+        parameters: {
+            query?: {
+                /** @description The cursor for pagination */
+                nextPageToken?: string;
+                /** @description The maximum number of results to return. Must be an integer between 1 and 200. */
+                maxResults?: number;
+            };
+            header?: never;
+            path: {
+                /** @description The workflow ID */
+                workflowId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Returned if the request is successful. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    /** @example {"workflowId":"fb759d53-a3a4-45ff-9de4-547c4b638dde","workflowSchemes":{"nextPageToken":"eyJvIjoyfQ==","values":[{"id":"1000"}]}} */
+                    "application/json": components["schemas"]["WorkflowSchemeUsageDTO"];
+                };
+            };
+            /** @description Returned if the request is not valid. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    /** @example {"errorMessages":["Invalid format of nextPageToken"],"errors":{}} */
+                    "application/json": unknown;
+                };
+            };
+            /** @description Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if the workflow with the given ID does not exist. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };
     readWorkflows: {
         parameters: {
             query?: {
-                /** @description Use [expand](#expansion) to include additional information in the response. This parameter accepts a comma-separated list. Expand options include:
+                /** @description Deprecated. See the [deprecation notice](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2298) for details.
+                 *
+                 *     Use [expand](#expansion) to include additional information in the response. This parameter accepts a comma-separated list. Expand options include:
                  *
                  *      *  `workflows.usages` Returns the project and issue types that each workflow is associated with.
                  *      *  `statuses.usages` Returns the project and issue types that each status is associated with. */
                 expand?: string;
-                /** @description Return the new fields (`toStatusReference`/`links`) instead of the deprecated fields (`to`/`from`) for workflow transition port mappings. */
-                useTransitionLinksFormat?: boolean;
                 /** @description Return the new field `approvalConfiguration` instead of the deprecated status properties for approval configuration. */
                 useApprovalConfiguration?: boolean;
             };
@@ -54150,6 +55149,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"statuses":[{"description":"","id":"10001","name":"To Do","scope":{"type":"GLOBAL"},"statusCategory":"TODO","statusReference":"10001","usages":[]},{"description":"","id":"10002","name":"In Progress","scope":{"type":"GLOBAL"},"statusCategory":"IN_PROGRESS","statusReference":"10002","usages":[]},{"description":"","id":"10003","name":"Done","scope":{"type":"GLOBAL"},"statusCategory":"DONE","statusReference":"10003","usages":[]}],"workflows":[{"description":"","id":"b9ff2384-d3b6-4d4e-9509-3ee19f607168","isEditable":true,"name":"Workflow 1","scope":{"type":"GLOBAL"},"startPointLayout":{"x":-100.00030899047852,"y":-153.00020599365234},"statuses":[{"deprecated":false,"layout":{"x":317.0000915527344,"y":-16.0},"properties":{},"statusReference":"10002"},{"deprecated":false,"layout":{"x":508.000244140625,"y":-16.0},"properties":{},"statusReference":"10003"},{"deprecated":false,"layout":{"x":114.99993896484375,"y":-16.0},"properties":{},"statusReference":"10001"}],"transitions":[{"actions":[],"description":"","id":"11","links":[],"name":"To Do","properties":{},"toStatusReference":"10001","triggers":[],"type":"GLOBAL","validators":[]},{"actions":[],"description":"","id":"21","links":[],"name":"In Progress","properties":{},"toStatusReference":"10002","triggers":[],"type":"GLOBAL","validators":[]},{"actions":[],"description":"","id":"41","links":[{"fromPort":0,"fromStatusReference":"10001","toPort":1}],"name":"Start work","properties":{},"toStatusReference":"10002","triggers":[],"type":"DIRECTED","validators":[]},{"actions":[],"description":"","id":"1","links":[],"name":"Create","properties":{},"toStatusReference":"10001","triggers":[],"type":"INITIAL","validators":[]},{"actions":[],"description":"","id":"31","links":[],"name":"Done","properties":{},"toStatusReference":"10003","triggers":[],"type":"GLOBAL","validators":[]}],"usages":[],"version":{"id":"f010ac1b-3dd3-43a3-aa66-0ee8a447f76e","versionNumber":0}}]} */
                     "application/json": components["schemas"]["WorkflowReadResponse"];
                 };
             };
@@ -54188,6 +55188,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"connectRules":[{"addonKey":"com.atlassian.jira.refapp","createUrl":"/validators/jira-expression/create?id={validator.id}","description":"Validates if the given Jira expression is true.","editUrl":"/validators/jira-expression/edit?id={validator.id}","moduleKey":"jiraExpressionValidator","name":"Jira expression validator (by APPNAME)","ruleKey":"connect:expression-validator","ruleType":"Validator","viewUrl":"/validators/jira-expression/view?id={validator.id}"}],"editorScope":"GLOBAL","forgeRules":[{"description":"A Jira workflow validator example.","id":"ari:cloud:ecosystem::extension/9df6d15f-1bbe-443e-be08-150309e8dbb0/f6a3bed3-737f-4e7a-8942-130df302b749/static/workflow-validator-example-workflow-validator","name":"workflow-validator","ruleKey":"forge:expression-validator","ruleType":"Validator"}],"projectTypes":["software","business"],"systemRules":[{"description":"Automatically assign a request to someone after moving the request using a particular transition.","incompatibleRuleKeys":[],"isAvailableForInitialTransition":true,"isVisible":true,"name":"Assign a request","ruleKey":"system:change-assignee","ruleType":"Function"}],"triggerRules":[{"availableTypes":[{"description":"Automatically transitions the issue when a related branch is created in a connected repository","name":"Branch created","type":"com.atlassian.jira.plugins.jira-development-integration-plugin:branch-created-trigger"}],"ruleKey":"system:development-triggers"}]} */
                     "application/json": components["schemas"]["WorkflowCapabilities"];
                 };
             };
@@ -54278,13 +55279,11 @@ export interface operations {
                  *             {
                  *               "actions": [],
                  *               "description": "",
-                 *               "from": [],
                  *               "id": "1",
+                 *               "links": [],
                  *               "name": "Create",
                  *               "properties": {},
-                 *               "to": {
-                 *                 "statusReference": "f0b24de5-25e7-4fab-ab94-63d81db6c0c0"
-                 *               },
+                 *               "toStatusReference": "f0b24de5-25e7-4fab-ab94-63d81db6c0c0",
                  *               "triggers": [],
                  *               "type": "INITIAL",
                  *               "validators": []
@@ -54292,13 +55291,11 @@ export interface operations {
                  *             {
                  *               "actions": [],
                  *               "description": "",
-                 *               "from": [],
                  *               "id": "11",
+                 *               "links": [],
                  *               "name": "To Do",
                  *               "properties": {},
-                 *               "to": {
-                 *                 "statusReference": "f0b24de5-25e7-4fab-ab94-63d81db6c0c0"
-                 *               },
+                 *               "toStatusReference": "f0b24de5-25e7-4fab-ab94-63d81db6c0c0",
                  *               "triggers": [],
                  *               "type": "GLOBAL",
                  *               "validators": []
@@ -54306,29 +55303,31 @@ export interface operations {
                  *             {
                  *               "actions": [],
                  *               "description": "",
-                 *               "from": [],
                  *               "id": "21",
+                 *               "links": [],
                  *               "name": "In Progress",
                  *               "properties": {},
-                 *               "to": {
-                 *                 "statusReference": "c7a35bf0-c127-4aa6-869f-4033730c61d8"
-                 *               },
+                 *               "toStatusReference": "c7a35bf0-c127-4aa6-869f-4033730c61d8",
                  *               "triggers": [],
                  *               "type": "GLOBAL",
                  *               "validators": []
                  *             },
                  *             {
                  *               "actions": [],
-                 *               "description": "",
-                 *               "from": [],
+                 *               "description": "Move a work item from in progress to done",
                  *               "id": "31",
+                 *               "links": [
+                 *                 {
+                 *                   "fromPort": 0,
+                 *                   "fromStatusReference": "c7a35bf0-c127-4aa6-869f-4033730c61d8",
+                 *                   "toPort": 1
+                 *                 }
+                 *               ],
                  *               "name": "Done",
                  *               "properties": {},
-                 *               "to": {
-                 *                 "statusReference": "6b3fc04d-3316-46c5-a257-65751aeb8849"
-                 *               },
+                 *               "toStatusReference": "6b3fc04d-3316-46c5-a257-65751aeb8849",
                  *               "triggers": [],
-                 *               "type": "GLOBAL",
+                 *               "type": "DIRECTED",
                  *               "validators": []
                  *             }
                  *           ]
@@ -54345,6 +55344,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"statuses":[{"description":"","id":"10001","name":"To Do","scope":{"type":"GLOBAL"},"statusCategory":"TODO","statusReference":"10001","usages":[]},{"description":"","id":"10002","name":"In Progress","scope":{"type":"GLOBAL"},"statusCategory":"IN_PROGRESS","statusReference":"10002","usages":[]},{"description":"","id":"10003","name":"Done","scope":{"type":"GLOBAL"},"statusCategory":"DONE","statusReference":"10003","usages":[]}],"workflows":[{"description":"","id":"b9ff2384-d3b6-4d4e-9509-3ee19f607168","isEditable":true,"name":"Software workflow 1","scope":{"type":"GLOBAL"},"startPointLayout":{"x":-100.00030899047852,"y":-153.00020599365234},"statuses":[{"deprecated":false,"layout":{"x":317.0000915527344,"y":-16.0},"properties":{},"statusReference":"10002"},{"deprecated":false,"layout":{"x":508.000244140625,"y":-16.0},"properties":{},"statusReference":"10003"},{"deprecated":false,"layout":{"x":114.99993896484375,"y":-16.0},"properties":{},"statusReference":"10001"}],"transitions":[{"actions":[],"description":"","id":"11","links":[],"name":"To Do","properties":{},"toStatusReference":"10001","triggers":[],"type":"GLOBAL","validators":[]},{"actions":[],"description":"","id":"21","links":[],"name":"In Progress","properties":{},"toStatusReference":"10002","triggers":[],"type":"GLOBAL","validators":[]},{"actions":[],"description":"","id":"1","links":[],"name":"Create","properties":{},"toStatusReference":"10001","triggers":[],"type":"INITIAL","validators":[]},{"actions":[],"description":"Move a work item from in progress to done","id":"31","links":[{"fromPort":0,"fromStatusReference":"10002","toPort":1}],"name":"Done","properties":{},"toStatusReference":"10003","triggers":[],"type":"DIRECTED","validators":[]}],"usages":[],"version":{"id":"f010ac1b-3dd3-43a3-aa66-0ee8a447f76e","versionNumber":0}}]} */
                     "application/json": components["schemas"]["WorkflowCreateResponse"];
                 };
             };
@@ -54357,6 +55357,13 @@ export interface operations {
             };
             /** @description Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation. */
             401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if another workflow configuration update task is ongoing. */
+            409: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -54436,13 +55443,11 @@ export interface operations {
                  *               {
                  *                 "actions": [],
                  *                 "description": "",
-                 *                 "from": [],
                  *                 "id": "1",
+                 *                 "links": [],
                  *                 "name": "Create",
                  *                 "properties": {},
-                 *                 "to": {
-                 *                   "statusReference": "f0b24de5-25e7-4fab-ab94-63d81db6c0c0"
-                 *                 },
+                 *                 "toStatusReference": "f0b24de5-25e7-4fab-ab94-63d81db6c0c0",
                  *                 "triggers": [],
                  *                 "type": "INITIAL",
                  *                 "validators": []
@@ -54450,13 +55455,11 @@ export interface operations {
                  *               {
                  *                 "actions": [],
                  *                 "description": "",
-                 *                 "from": [],
                  *                 "id": "11",
+                 *                 "links": [],
                  *                 "name": "To Do",
                  *                 "properties": {},
-                 *                 "to": {
-                 *                   "statusReference": "f0b24de5-25e7-4fab-ab94-63d81db6c0c0"
-                 *                 },
+                 *                 "toStatusReference": "f0b24de5-25e7-4fab-ab94-63d81db6c0c0",
                  *                 "triggers": [],
                  *                 "type": "GLOBAL",
                  *                 "validators": []
@@ -54464,29 +55467,31 @@ export interface operations {
                  *               {
                  *                 "actions": [],
                  *                 "description": "",
-                 *                 "from": [],
                  *                 "id": "21",
+                 *                 "links": [],
                  *                 "name": "In Progress",
                  *                 "properties": {},
-                 *                 "to": {
-                 *                   "statusReference": "c7a35bf0-c127-4aa6-869f-4033730c61d8"
-                 *                 },
+                 *                 "toStatusReference": "c7a35bf0-c127-4aa6-869f-4033730c61d8",
                  *                 "triggers": [],
                  *                 "type": "GLOBAL",
                  *                 "validators": []
                  *               },
                  *               {
                  *                 "actions": [],
-                 *                 "description": "",
-                 *                 "from": [],
+                 *                 "description": "Move a work item from in progress to done",
                  *                 "id": "31",
+                 *                 "links": [
+                 *                   {
+                 *                     "fromPort": 0,
+                 *                     "fromStatusReference": "c7a35bf0-c127-4aa6-869f-4033730c61d8",
+                 *                     "toPort": 1
+                 *                   }
+                 *                 ],
                  *                 "name": "Done",
                  *                 "properties": {},
-                 *                 "to": {
-                 *                   "statusReference": "6b3fc04d-3316-46c5-a257-65751aeb8849"
-                 *                 },
+                 *                 "toStatusReference": "6b3fc04d-3316-46c5-a257-65751aeb8849",
                  *                 "triggers": [],
-                 *                 "type": "GLOBAL",
+                 *                 "type": "DIRECTED",
                  *                 "validators": []
                  *               }
                  *             ]
@@ -54510,6 +55515,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errors":[{"code":"NON_UNIQUE_STATUS_NAME","elementReference":{"statusReference":"1f0443ff-47e4-4306-9c26-0af696059a43"},"level":"ERROR","message":"You must use a unique status name.","type":"STATUS"}]} */
                     "application/json": components["schemas"]["WorkflowValidationErrorList"];
                 };
             };
@@ -54565,6 +55571,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":false,"maxResults":50,"nextPage":"https://your-domain.atlassian.net/rest/api/3/workflows/search?startAt=50","self":"https://your-domain.atlassian.net/rest/api/3/workflows/search","startAt":0,"statuses":[{"description":"","id":"10001","name":"To Do","scope":{"type":"GLOBAL"},"statusCategory":"TODO","statusReference":"10001","usages":[]},{"description":"","id":"10002","name":"In Progress","scope":{"type":"GLOBAL"},"statusCategory":"IN_PROGRESS","statusReference":"10002","usages":[]},{"description":"","id":"10003","name":"Done","scope":{"type":"GLOBAL"},"statusCategory":"DONE","statusReference":"10003","usages":[]}],"total":100,"values":[{"description":"","id":"b9ff2384-d3b6-4d4e-9509-3ee19f607168","isEditable":true,"name":"Workflow 1","scope":{"type":"GLOBAL"},"startPointLayout":{"x":-100.00030899047852,"y":-153.00020599365234},"statuses":[{"deprecated":false,"layout":{"x":317.0000915527344,"y":-16.0},"properties":{},"statusReference":"10002"},{"deprecated":false,"layout":{"x":508.000244140625,"y":-16.0},"properties":{},"statusReference":"10003"},{"deprecated":false,"layout":{"x":114.99993896484375,"y":-16.0},"properties":{},"statusReference":"10001"}],"transitions":[{"actions":[],"description":"","id":"11","links":[],"name":"To Do","properties":{},"toStatusReference":"10001","triggers":[],"type":"GLOBAL","validators":[]},{"actions":[],"description":"","id":"21","links":[],"name":"In Progress","properties":{},"toStatusReference":"10002","triggers":[],"type":"GLOBAL","validators":[]},{"actions":[],"description":"","id":"41","links":[{"fromPort":0,"fromStatusReference":"10001","toPort":1}],"name":"Start work","properties":{},"toStatusReference":"10002","triggers":[],"type":"DIRECTED","validators":[]},{"actions":[],"description":"","id":"1","links":[],"name":"Create","properties":{},"toStatusReference":"10001","triggers":[],"type":"INITIAL","validators":[]},{"actions":[],"description":"","id":"31","links":[],"name":"Done","properties":{},"toStatusReference":"10003","triggers":[],"type":"GLOBAL","validators":[]}],"usages":[],"version":{"id":"f010ac1b-3dd3-43a3-aa66-0ee8a447f76e","versionNumber":0}}]} */
                     "application/json": components["schemas"]["WorkflowSearchResponse"];
                 };
             };
@@ -54676,13 +55683,11 @@ export interface operations {
                  *             {
                  *               "actions": [],
                  *               "description": "",
-                 *               "from": [],
                  *               "id": "1",
+                 *               "links": [],
                  *               "name": "Create",
                  *               "properties": {},
-                 *               "to": {
-                 *                 "statusReference": "f0b24de5-25e7-4fab-ab94-63d81db6c0c0"
-                 *               },
+                 *               "toStatusReference": "f0b24de5-25e7-4fab-ab94-63d81db6c0c0",
                  *               "triggers": [],
                  *               "type": "INITIAL",
                  *               "validators": []
@@ -54690,13 +55695,11 @@ export interface operations {
                  *             {
                  *               "actions": [],
                  *               "description": "",
-                 *               "from": [],
                  *               "id": "11",
+                 *               "links": [],
                  *               "name": "To Do",
                  *               "properties": {},
-                 *               "to": {
-                 *                 "statusReference": "f0b24de5-25e7-4fab-ab94-63d81db6c0c0"
-                 *               },
+                 *               "toStatusReference": "f0b24de5-25e7-4fab-ab94-63d81db6c0c0",
                  *               "triggers": [],
                  *               "type": "GLOBAL",
                  *               "validators": []
@@ -54704,29 +55707,31 @@ export interface operations {
                  *             {
                  *               "actions": [],
                  *               "description": "",
-                 *               "from": [],
                  *               "id": "21",
+                 *               "links": [],
                  *               "name": "In Progress",
                  *               "properties": {},
-                 *               "to": {
-                 *                 "statusReference": "c7a35bf0-c127-4aa6-869f-4033730c61d8"
-                 *               },
+                 *               "toStatusReference": "c7a35bf0-c127-4aa6-869f-4033730c61d8",
                  *               "triggers": [],
                  *               "type": "GLOBAL",
                  *               "validators": []
                  *             },
                  *             {
                  *               "actions": [],
-                 *               "description": "",
-                 *               "from": [],
+                 *               "description": "Move a work item from in progress to done",
                  *               "id": "31",
+                 *               "links": [
+                 *                 {
+                 *                   "fromPort": 0,
+                 *                   "fromStatusReference": "c7a35bf0-c127-4aa6-869f-4033730c61d8",
+                 *                   "toPort": 1
+                 *                 }
+                 *               ],
                  *               "name": "Done",
                  *               "properties": {},
-                 *               "to": {
-                 *                 "statusReference": "6b3fc04d-3316-46c5-a257-65751aeb8849"
-                 *               },
+                 *               "toStatusReference": "6b3fc04d-3316-46c5-a257-65751aeb8849",
                  *               "triggers": [],
-                 *               "type": "GLOBAL",
+                 *               "type": "DIRECTED",
                  *               "validators": []
                  *             }
                  *           ],
@@ -54747,6 +55752,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"statuses":[{"description":"","id":"10001","name":"To Do","scope":{"type":"GLOBAL"},"statusCategory":"TODO","statusReference":"10001","usages":[]},{"description":"","id":"10002","name":"In Progress","scope":{"type":"GLOBAL"},"statusCategory":"IN_PROGRESS","statusReference":"10002","usages":[]},{"description":"","id":"10003","name":"Done","scope":{"type":"GLOBAL"},"statusCategory":"DONE","statusReference":"10003","usages":[]}],"taskId":"10001","workflows":[{"description":"","id":"b9ff2384-d3b6-4d4e-9509-3ee19f607168","isEditable":true,"name":"Software workflow 1","scope":{"type":"GLOBAL"},"startPointLayout":{"x":-100.00030899047852,"y":-153.00020599365234},"statuses":[{"deprecated":false,"layout":{"x":317.0000915527344,"y":-16.0},"properties":{},"statusReference":"10002"},{"deprecated":false,"layout":{"x":508.000244140625,"y":-16.0},"properties":{},"statusReference":"10003"},{"deprecated":false,"layout":{"x":114.99993896484375,"y":-16.0},"properties":{},"statusReference":"10001"}],"transitions":[{"actions":[],"description":"","id":"21","links":[],"name":"In Progress","properties":{},"toStatusReference":"10002","triggers":[],"type":"GLOBAL","validators":[]},{"actions":[],"description":"","id":"31","links":[{"fromPort":0,"fromStatusReference":"10002","toPort":1}],"name":"Done","properties":{},"toStatusReference":"10003","triggers":[],"type":"DIRECTED","validators":[]},{"actions":[],"description":"","id":"1","links":[],"name":"Create","properties":{},"toStatusReference":"10001","triggers":[],"type":"INITIAL","validators":[]},{"actions":[],"description":"","id":"11","links":[],"name":"To Do","properties":{},"toStatusReference":"10002","triggers":[],"type":"GLOBAL","validators":[]}],"usages":[],"version":{"id":"f010ac1b-3dd3-43a3-aa66-0ee8a447f76e","versionNumber":0}}]} */
                     "application/json": components["schemas"]["WorkflowUpdateResponse"];
                 };
             };
@@ -54759,6 +55765,13 @@ export interface operations {
             };
             /** @description Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation. */
             401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if another workflow configuration update task is ongoing. */
+            409: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -54853,13 +55866,11 @@ export interface operations {
                  *               {
                  *                 "actions": [],
                  *                 "description": "",
-                 *                 "from": [],
                  *                 "id": "1",
+                 *                 "links": [],
                  *                 "name": "Create",
                  *                 "properties": {},
-                 *                 "to": {
-                 *                   "statusReference": "f0b24de5-25e7-4fab-ab94-63d81db6c0c0"
-                 *                 },
+                 *                 "toStatusReference": "f0b24de5-25e7-4fab-ab94-63d81db6c0c0",
                  *                 "triggers": [],
                  *                 "type": "INITIAL",
                  *                 "validators": []
@@ -54867,13 +55878,11 @@ export interface operations {
                  *               {
                  *                 "actions": [],
                  *                 "description": "",
-                 *                 "from": [],
                  *                 "id": "11",
+                 *                 "links": [],
                  *                 "name": "To Do",
                  *                 "properties": {},
-                 *                 "to": {
-                 *                   "statusReference": "f0b24de5-25e7-4fab-ab94-63d81db6c0c0"
-                 *                 },
+                 *                 "toStatusReference": "f0b24de5-25e7-4fab-ab94-63d81db6c0c0",
                  *                 "triggers": [],
                  *                 "type": "GLOBAL",
                  *                 "validators": []
@@ -54881,29 +55890,31 @@ export interface operations {
                  *               {
                  *                 "actions": [],
                  *                 "description": "",
-                 *                 "from": [],
                  *                 "id": "21",
+                 *                 "links": [],
                  *                 "name": "In Progress",
                  *                 "properties": {},
-                 *                 "to": {
-                 *                   "statusReference": "c7a35bf0-c127-4aa6-869f-4033730c61d8"
-                 *                 },
+                 *                 "toStatusReference": "c7a35bf0-c127-4aa6-869f-4033730c61d8",
                  *                 "triggers": [],
                  *                 "type": "GLOBAL",
                  *                 "validators": []
                  *               },
                  *               {
                  *                 "actions": [],
-                 *                 "description": "",
-                 *                 "from": [],
+                 *                 "description": "Move a work item from in progress to done",
                  *                 "id": "31",
+                 *                 "links": [
+                 *                   {
+                 *                     "fromPort": 0,
+                 *                     "fromStatusReference": "c7a35bf0-c127-4aa6-869f-4033730c61d8",
+                 *                     "toPort": 1
+                 *                   }
+                 *                 ],
                  *                 "name": "Done",
                  *                 "properties": {},
-                 *                 "to": {
-                 *                   "statusReference": "6b3fc04d-3316-46c5-a257-65751aeb8849"
-                 *                 },
+                 *                 "toStatusReference": "6b3fc04d-3316-46c5-a257-65751aeb8849",
                  *                 "triggers": [],
-                 *                 "type": "GLOBAL",
+                 *                 "type": "DIRECTED",
                  *                 "validators": []
                  *               }
                  *             ],
@@ -54931,6 +55942,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errors":[{"code":"NON_UNIQUE_STATUS_NAME","elementReference":{"statusReference":"1f0443ff-47e4-4306-9c26-0af696059a43"},"level":"ERROR","message":"You must use a unique status name.","type":"STATUS"}]} */
                     "application/json": components["schemas"]["WorkflowValidationErrorList"];
                 };
             };
@@ -54970,6 +55982,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"isLast":true,"maxResults":50,"startAt":0,"total":2,"values":[{"defaultWorkflow":"jira","description":"The description of the example workflow scheme.","id":101010,"issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"name":"Example workflow scheme","self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/101010"},{"defaultWorkflow":"jira","description":"The description of the another example workflow scheme.","id":101011,"issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"name":"Another example workflow scheme","self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/101011"}]} */
                     "application/json": components["schemas"]["PageBeanWorkflowScheme"];
                 };
             };
@@ -55017,6 +56030,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultWorkflow":"jira","description":"The description of the example workflow scheme.","draft":false,"id":101010,"issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"name":"Example workflow scheme","self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/101010"} */
                     "application/json": components["schemas"]["WorkflowScheme"];
                 };
             };
@@ -55061,6 +56075,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"values":[{"projectIds":["10010","10020"],"workflowScheme":{"defaultWorkflow":"jira","description":"The description of the example workflow scheme.","id":101010,"issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"name":"Example workflow scheme","self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/101010"}}]} */
                     "application/json": components["schemas"]["ContainerOfWorkflowSchemeAssociations"];
                 };
             };
@@ -55070,6 +56085,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":[],"errors":{"projectId":"The ID of a project has to be provided."}} */
                     "application/json": unknown;
                 };
             };
@@ -55086,6 +56102,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access workflow scheme associations."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -55123,6 +56140,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only classic projects can have workflow schemes assigned."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -55139,6 +56157,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Only Jira administrators can access workflow scheme associations."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -55148,6 +56167,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["The workflow scheme was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -55156,7 +56176,9 @@ export interface operations {
     readWorkflowSchemes: {
         parameters: {
             query?: {
-                /** @description Use [expand](#expansion) to include additional information in the response. This parameter accepts a comma-separated list. Expand options include:
+                /** @description Deprecated. See the [deprecation notice](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2298) for details.
+                 *
+                 *     Use [expand](#expansion) to include additional information in the response. This parameter accepts a comma-separated list. Expand options include:
                  *
                  *      *  `workflows.usages` Returns the project and issue types that each workflow in the workflow scheme is associated with. */
                 expand?: string;
@@ -55186,6 +56208,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"defaultWorkflow":{"description":"This is the default workflow for Software Development projects.","id":"3e59db0f-ed6c-47ce-8d50-80c0c4572677","name":"Default Software Development Workflow","usage":[{"issueTypeIds":[],"projectId":"10047"}],"version":{"id":"657812fc-bc72-400f-aae0-df8d88db3d9g","versionNumber":1}},"description":"This is the workflow scheme for the Software Development project type.","id":"3g78dg2a-ns2n-56ab-9812-42h5j1464567","name":"Software Developer Workflow Scheme","projectIdsUsingScheme":["10047"],"scope":{"project":{"id":"10047"},"type":"GLOBAL"},"taskId":"3f83dg2a-ns2n-56ab-9812-42h5j1461629","version":{"id":"527213fc-bc72-400f-aae0-df8d88db2c8a","versionNumber":1},"workflowsForIssueTypes":[{"issueTypeIds":["10013"],"workflow":{"description":"This is the workflow for the Software Development bug issue type.","id":"5e79ae0f-ed6c-47ce-8d50-80c0c4572745","name":"Software Development Bug Workflow","usage":[{"issueTypeIds":["10013"],"projectId":"10047"}],"version":{"id":"897812dc-bc72-400f-aae0-df8d88fe3d8f","versionNumber":1}}}]}] */
                     "application/json": components["schemas"]["WorkflowSchemeReadResponse"][];
                 };
             };
@@ -55320,6 +56343,13 @@ export interface operations {
                 };
                 content?: never;
             };
+            /** @description Returned if another workflow configuration update task is ongoing. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
         };
     };
     updateWorkflowSchemeMappings: {
@@ -55354,6 +56384,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"statusMappingsByIssueTypes":[{"issueTypeId":"10000","statusIds":["10000","10001"]}],"statusMappingsByWorkflows":[{"sourceWorkflowId":"10000","statusIds":["10000","10001"],"targetWorkflowId":"10001"}],"statuses":[{"category":"TODO","id":"10000","name":"To Do"}],"statusesPerWorkflow":[{"initialStatusId":"10000","statuses":["10000","10001"],"workflowId":"10000"}]} */
                     "application/json": components["schemas"]["WorkflowSchemeUpdateRequiredMappingsResponse"];
                 };
             };
@@ -55394,6 +56425,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultWorkflow":"jira","description":"The description of the example workflow scheme.","draft":false,"id":101010,"issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"name":"Example workflow scheme","self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/101010"} */
                     "application/json": components["schemas"]["WorkflowScheme"];
                 };
             };
@@ -55451,6 +56483,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultWorkflow":"jira","description":"The description of the example workflow scheme.","draft":false,"id":101010,"issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"name":"Example workflow scheme","self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/101010"} */
                     "application/json": components["schemas"]["WorkflowScheme"];
                 };
             };
@@ -55553,6 +56586,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultWorkflow":"scrum workflow","description":"The description of the example workflow scheme.","draft":true,"id":17218781,"issueTypeMappings":{"10000":"jira","10001":"jira"},"lastModified":"Today 6:38 PM","lastModifiedUser":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":true,"applicationRoles":{"items":[],"size":1},"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","groups":{"items":[],"size":3},"key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"},"name":"Example workflow scheme","originalDefaultWorkflow":"jira","originalIssueTypeMappings":{"10001":"builds workflow"},"self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/17218781/draft"} */
                     "application/json": components["schemas"]["WorkflowScheme"];
                 };
             };
@@ -55600,6 +56634,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"workflow":"jira"} */
                     "application/json": components["schemas"]["DefaultWorkflow"];
                 };
             };
@@ -55653,6 +56688,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultWorkflow":"jira","description":"The description of the example workflow scheme.","draft":false,"id":101010,"issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"name":"Example workflow scheme","self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/101010"} */
                     "application/json": components["schemas"]["WorkflowScheme"];
                 };
             };
@@ -55707,6 +56743,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultWorkflow":"jira","description":"The description of the example workflow scheme.","draft":false,"id":101010,"issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"name":"Example workflow scheme","self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/101010"} */
                     "application/json": components["schemas"]["WorkflowScheme"];
                 };
             };
@@ -55758,6 +56795,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultWorkflow":"scrum workflow","description":"The description of the example workflow scheme.","draft":true,"id":17218781,"issueTypeMappings":{"10000":"jira","10001":"jira"},"lastModified":"Today 6:38 PM","lastModifiedUser":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":true,"applicationRoles":{"items":[],"size":1},"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","groups":{"items":[],"size":3},"key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"},"name":"Example workflow scheme","originalDefaultWorkflow":"jira","originalIssueTypeMappings":{"10001":"builds workflow"},"self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/17218781/draft"} */
                     "application/json": components["schemas"]["WorkflowScheme"];
                 };
             };
@@ -55818,6 +56856,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultWorkflow":"scrum workflow","description":"The description of the example workflow scheme.","draft":true,"id":17218781,"issueTypeMappings":{"10000":"jira","10001":"jira"},"lastModified":"Today 6:38 PM","lastModifiedUser":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":true,"applicationRoles":{"items":[],"size":1},"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","groups":{"items":[],"size":3},"key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"},"name":"Example workflow scheme","originalDefaultWorkflow":"jira","originalIssueTypeMappings":{"10001":"builds workflow"},"self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/17218781/draft"} */
                     "application/json": components["schemas"]["WorkflowScheme"];
                 };
             };
@@ -55917,6 +56956,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"workflow":"jira"} */
                     "application/json": components["schemas"]["DefaultWorkflow"];
                 };
             };
@@ -55973,6 +57013,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultWorkflow":"scrum workflow","description":"The description of the example workflow scheme.","draft":true,"id":17218781,"issueTypeMappings":{"10000":"jira","10001":"jira"},"lastModified":"Today 6:38 PM","lastModifiedUser":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":true,"applicationRoles":{"items":[],"size":1},"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","groups":{"items":[],"size":3},"key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"},"name":"Example workflow scheme","originalDefaultWorkflow":"jira","originalIssueTypeMappings":{"10001":"builds workflow"},"self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/17218781/draft"} */
                     "application/json": components["schemas"]["WorkflowScheme"];
                 };
             };
@@ -56027,6 +57068,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultWorkflow":"scrum workflow","description":"The description of the example workflow scheme.","draft":true,"id":17218781,"issueTypeMappings":{"10000":"jira","10001":"jira"},"lastModified":"Today 6:38 PM","lastModifiedUser":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":true,"applicationRoles":{"items":[],"size":1},"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","groups":{"items":[],"size":3},"key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"},"name":"Example workflow scheme","originalDefaultWorkflow":"jira","originalIssueTypeMappings":{"10001":"builds workflow"},"self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/17218781/draft"} */
                     "application/json": components["schemas"]["WorkflowScheme"];
                 };
             };
@@ -56076,6 +57118,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"issueType":"10000","workflow":"jira"} */
                     "application/json": components["schemas"]["IssueTypeWorkflowMapping"];
                 };
             };
@@ -56132,6 +57175,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultWorkflow":"scrum workflow","description":"The description of the example workflow scheme.","draft":true,"id":17218781,"issueTypeMappings":{"10000":"jira","10001":"jira"},"lastModified":"Today 6:38 PM","lastModifiedUser":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":true,"applicationRoles":{"items":[],"size":1},"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","groups":{"items":[],"size":3},"key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"},"name":"Example workflow scheme","originalDefaultWorkflow":"jira","originalIssueTypeMappings":{"10001":"builds workflow"},"self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/17218781/draft"} */
                     "application/json": components["schemas"]["WorkflowScheme"];
                 };
             };
@@ -56185,6 +57229,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultWorkflow":"scrum workflow","description":"The description of the example workflow scheme.","draft":true,"id":17218781,"issueTypeMappings":{"10000":"jira","10001":"jira"},"lastModified":"Today 6:38 PM","lastModifiedUser":{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","active":true,"applicationRoles":{"items":[],"size":1},"avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"},"displayName":"Mia Krystof","emailAddress":"mia@example.com","groups":{"items":[],"size":3},"key":"","name":"","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g","timeZone":"Australia/Sydney"},"name":"Example workflow scheme","originalDefaultWorkflow":"jira","originalIssueTypeMappings":{"10001":"builds workflow"},"self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/17218781/draft"} */
                     "application/json": components["schemas"]["WorkflowScheme"];
                 };
             };
@@ -56277,6 +57322,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Issue type with ID '2','4' is missing the mappings required for statuses with IDs 10004."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -56304,6 +57350,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"errorMessages":["Draft workflow scheme was not found."],"errors":{}} */
                     "application/json": unknown;
                 };
             };
@@ -56330,6 +57377,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultMapping":false,"issueTypes":["10000","10001"],"workflow":"jira"} */
                     "application/json": components["schemas"]["IssueTypesWorkflowMapping"];
                 };
             };
@@ -56388,6 +57436,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultWorkflow":"jira","description":"The description of the example workflow scheme.","draft":false,"id":101010,"issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"name":"Example workflow scheme","self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/101010"} */
                     "application/json": components["schemas"]["WorkflowScheme"];
                 };
             };
@@ -56499,6 +57548,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"issueType":"10000","workflow":"jira"} */
                     "application/json": components["schemas"]["IssueTypeWorkflowMapping"];
                 };
             };
@@ -56555,6 +57605,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultWorkflow":"jira","description":"The description of the example workflow scheme.","draft":false,"id":101010,"issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"name":"Example workflow scheme","self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/101010"} */
                     "application/json": components["schemas"]["WorkflowScheme"];
                 };
             };
@@ -56611,6 +57662,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultWorkflow":"jira","description":"The description of the example workflow scheme.","draft":false,"id":101010,"issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"name":"Example workflow scheme","self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/101010"} */
                     "application/json": components["schemas"]["WorkflowScheme"];
                 };
             };
@@ -56667,6 +57719,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultMapping":false,"issueTypes":["10000","10001"],"workflow":"jira"} */
                     "application/json": components["schemas"]["IssueTypesWorkflowMapping"];
                 };
             };
@@ -56725,6 +57778,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"defaultWorkflow":"jira","description":"The description of the example workflow scheme.","draft":false,"id":101010,"issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"name":"Example workflow scheme","self":"https://your-domain.atlassian.net/rest/api/2/workflowscheme/101010"} */
                     "application/json": components["schemas"]["WorkflowScheme"];
                 };
             };
@@ -56820,6 +57874,59 @@ export interface operations {
             };
         };
     };
+    getProjectUsagesForWorkflowScheme: {
+        parameters: {
+            query?: {
+                /** @description The cursor for pagination */
+                nextPageToken?: string;
+                /** @description The maximum number of results to return. Must be an integer between 1 and 200. */
+                maxResults?: number;
+            };
+            header?: never;
+            path: {
+                /** @description The workflow scheme ID */
+                workflowSchemeId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Returned if the request is successful. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    /** @example {"projects":{"nextPageToken":"eyJvIjoyfQ==","values":[{"id":"1003"}]},"workflowSchemeId":"10005"} */
+                    "application/json": components["schemas"]["WorkflowSchemeProjectUsageDTO"];
+                };
+            };
+            /** @description Returned if the request is not valid. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    /** @example {"errorMessages":["Invalid format of nextPageToken"],"errors":{}} */
+                    "application/json": unknown;
+                };
+            };
+            /** @description Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if the workflow scheme with the given ID does not exist. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
     getIdsOfWorklogsDeletedSince: {
         parameters: {
             query?: {
@@ -56838,6 +57945,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"lastPage":true,"nextPage":"https://your-domain.atlassian.net/api/~ver~/worklog/deleted?since=1438013693136","self":"https://your-domain.atlassian.net/api/~ver~/worklog/deleted?since=1438013671562","since":1438013671562,"until":1438013693136,"values":[{"properties":[],"updatedTime":1438013671562,"worklogId":103},{"properties":[],"updatedTime":1438013672165,"worklogId":104},{"properties":[],"updatedTime":1438013693136,"worklogId":105}]} */
                     "application/json": components["schemas"]["ChangedWorklogs"];
                 };
             };
@@ -56881,6 +57989,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example [{"author":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"comment":"I did some work here.","id":"100028","issueId":"10002","self":"https://your-domain.atlassian.net/rest/api/2/issue/10010/worklog/10000","started":"2021-01-17T12:34:00.000+0000","timeSpent":"3h 20m","timeSpentSeconds":12000,"updateAuthor":{"accountId":"5b10a2844c20165700ede21g","active":false,"displayName":"Mia Krystof","self":"https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10a2844c20165700ede21g"},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"identifier":"276f955c-63d7-42c8-9520-92d01dca0625","type":"group","value":"jira-developers"}}] */
                     "application/json": components["schemas"]["Worklog"][];
                 };
             };
@@ -56920,6 +58029,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {"lastPage":true,"nextPage":"https://your-domain.atlassian.net/api/~ver~/worklog/updated?since=1438013693136","self":"https://your-domain.atlassian.net/api/~ver~/worklog/updated?since=1438013671562","since":1438013671562,"until":1438013693136,"values":[{"properties":[],"updatedTime":1438013671562,"worklogId":103},{"properties":[],"updatedTime":1438013672165,"worklogId":104},{"properties":[],"updatedTime":1438013693136,"worklogId":105}]} */
                     "application/json": components["schemas"]["ChangedWorklogs"];
                 };
             };
@@ -56950,6 +58060,14 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "keys": [
+                     *         {
+                     *           "self": "https://your-domain.atlassian.net/jira/rest/atlassian-connect/1/addon/example.app.key/properties/propertyKey",
+                     *           "key": "propertyKey"
+                     *         }
+                     *       ]
+                     *     } */
                     "application/json": components["schemas"]["PropertyKeys"];
                 };
             };
@@ -56959,6 +58077,10 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "Access to this resource must be authenticated as an app.",
+                     *       "statusCode": 401
+                     *     } */
                     "application/json": components["schemas"]["OperationMessage"];
                 };
             };
@@ -56984,6 +58106,11 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "self": "https://your-domain.atlassian.net/jira/rest/atlassian-connect/1/addon/example.app.key/properties/propertyKey",
+                     *       "key": "propertyKey",
+                     *       "value": "propertyValue"
+                     *     } */
                     "application/json": components["schemas"]["EntityProperty"];
                 };
             };
@@ -56993,6 +58120,10 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "The property key cannot be longer than 127 characters.",
+                     *       "statusCode": 400
+                     *     } */
                     "application/json": components["schemas"]["OperationMessage"];
                 };
             };
@@ -57002,6 +58133,10 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "Access to this resource must be authenticated as an app.",
+                     *       "statusCode": 401
+                     *     } */
                     "application/json": components["schemas"]["OperationMessage"];
                 };
             };
@@ -57011,6 +58146,10 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "Property with key not found.",
+                     *       "statusCode": 404
+                     *     } */
                     "application/json": components["schemas"]["OperationMessage"];
                 };
             };
@@ -57040,6 +58179,10 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "Property updated.",
+                     *       "statusCode": 200
+                     *     } */
                     "application/json": components["schemas"]["OperationMessage"];
                 };
             };
@@ -57049,6 +58192,10 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "Property created.",
+                     *       "statusCode": 201
+                     *     } */
                     "application/json": components["schemas"]["OperationMessage"];
                 };
             };
@@ -57061,6 +58208,10 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "The property key cannot be longer than 127 characters.",
+                     *       "statusCode": 400
+                     *     } */
                     "application/json": components["schemas"]["OperationMessage"];
                 };
             };
@@ -57070,6 +58221,10 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "Access to this resource must be authenticated as an app.",
+                     *       "statusCode": 401
+                     *     } */
                     "application/json": components["schemas"]["OperationMessage"];
                 };
             };
@@ -57102,6 +58257,10 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "The property key cannot be longer than 127 characters.",
+                     *       "statusCode": 400
+                     *     } */
                     "application/json": components["schemas"]["OperationMessage"];
                 };
             };
@@ -57111,6 +58270,10 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "Access to this resource must be authenticated as an app.",
+                     *       "statusCode": 401
+                     *     } */
                     "application/json": components["schemas"]["OperationMessage"];
                 };
             };
@@ -57120,6 +58283,10 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "Property with key not found.",
+                     *       "statusCode": 404
+                     *     } */
                     "application/json": components["schemas"]["OperationMessage"];
                 };
             };
@@ -57149,6 +58316,9 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "The request is not from a Connect app."
+                     *     } */
                     "application/json": components["schemas"]["ErrorMessage"];
                 };
             };
@@ -57184,6 +58354,9 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "Installation failed. The app com.example.app.key has duplicate module keys: [module-key]. Please contact the app vendor."
+                     *     } */
                     "application/json": components["schemas"]["ErrorMessage"];
                 };
             };
@@ -57193,6 +58366,9 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "The request is not from a Connect app."
+                     *     } */
                     "application/json": components["schemas"]["ErrorMessage"];
                 };
             };
@@ -57225,6 +58401,9 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "The request is not from a Connect app."
+                     *     } */
                     "application/json": components["schemas"]["ErrorMessage"];
                 };
             };
@@ -57377,6 +58556,59 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "workflowEntityId": "a498d711-685d-428d-8c3e-bc03bb450ea7",
+                     *       "invalidRules": [
+                     *         "55d44f1d-c859-42e5-9c27-2c5ec3f340b1"
+                     *       ],
+                     *       "validRules": [
+                     *         {
+                     *           "workflowId": {
+                     *             "name": "Workflow name",
+                     *             "draft": true
+                     *           },
+                     *           "postFunctions": [
+                     *             {
+                     *               "id": "123",
+                     *               "key": "WorkflowKey",
+                     *               "configuration": {
+                     *                 "value": "WorkflowValidator"
+                     *               },
+                     *               "transition": {
+                     *                 "name": "transition",
+                     *                 "id": 123
+                     *               }
+                     *             }
+                     *           ],
+                     *           "conditions": [
+                     *             {
+                     *               "id": "123",
+                     *               "key": "WorkflowKey",
+                     *               "configuration": {
+                     *                 "value": "WorkflowValidator"
+                     *               },
+                     *               "transition": {
+                     *                 "name": "transition",
+                     *                 "id": 123
+                     *               }
+                     *             }
+                     *           ],
+                     *           "validators": [
+                     *             {
+                     *               "id": "123",
+                     *               "key": "WorkflowKey",
+                     *               "configuration": {
+                     *                 "value": "WorkflowValidator"
+                     *               },
+                     *               "transition": {
+                     *                 "name": "transition",
+                     *                 "id": 123
+                     *               }
+                     *             }
+                     *           ]
+                     *         }
+                     *       ]
+                     *     } */
                     "application/json": components["schemas"]["WorkflowRulesSearchDetails"];
                 };
             };
@@ -57486,6 +58718,10 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "Property updated.",
+                     *       "statusCode": 200
+                     *     } */
                     "application/json": components["schemas"]["OperationMessage"];
                 };
             };
@@ -57495,6 +58731,10 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "Property created.",
+                     *       "statusCode": 201
+                     *     } */
                     "application/json": components["schemas"]["OperationMessage"];
                 };
             };
@@ -57507,6 +58747,10 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "The property key can't be longer than 127 characters.",
+                     *       "statusCode": 400
+                     *     } */
                     "application/json": components["schemas"]["OperationMessage"];
                 };
             };
@@ -57523,6 +58767,11 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "errorMessages": [
+                     *         "Access to this resource must be authenticated as an app."
+                     *       ]
+                     *     } */
                     "application/json": unknown;
                 };
             };
@@ -57553,6 +58802,10 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "The property key cannot be longer than 127 characters.",
+                     *       "statusCode": 400
+                     *     } */
                     "application/json": components["schemas"]["OperationMessage"];
                 };
             };
@@ -57569,6 +58822,11 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "errorMessages": [
+                     *         "Access to this resource must be authenticated as an app."
+                     *       ]
+                     *     } */
                     "application/json": unknown;
                 };
             };
@@ -57578,6 +58836,10 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    /** @example {
+                     *       "message": "Property with key not found.",
+                     *       "statusCode": 404
+                     *     } */
                     "application/json": components["schemas"]["OperationMessage"];
                 };
             };

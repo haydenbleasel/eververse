@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npm run build",
-    "build": ""
+    "build": "npx -y openapi-typescript@latest https://developer.atlassian.com/cloud/jira/platform/swagger.v3.json -o ./src/types.d.ts"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
