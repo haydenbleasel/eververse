@@ -131,6 +131,9 @@ importers:
       '@repo/canny':
         specifier: workspace:*
         version: link:../../packages/canny
+      '@repo/design-system':
+        specifier: workspace:*
+        version: link:../../packages/design-system
       '@repo/editor':
         specifier: workspace:*
         version: link:../../packages/editor
@@ -167,6 +170,9 @@ importers:
       '@repo/transcribe':
         specifier: workspace:*
         version: link:../../packages/transcribe
+      '@repo/widget':
+        specifier: workspace:*
+        version: link:../../packages/widget
       '@t3-oss/env-nextjs':
         specifier: ^0.11.1
         version: 0.11.1(typescript@5.7.3)(zod@3.24.1)
@@ -395,12 +401,6 @@ importers:
         specifier: ^5.7.3
         version: 5.7.3
 
-  apps/docs:
-    devDependencies:
-      typescript:
-        specifier: ^5.7.3
-        version: 5.7.3
-
   apps/email:
     dependencies:
       '@react-email/components':
@@ -619,55 +619,6 @@ importers:
       fumadocs-core:
         specifier: ^14.7.2
         version: 14.7.2(@types/react@19.0.4)(next@15.3.2(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      typescript:
-        specifier: ^5.7.3
-        version: 5.7.3
-
-  apps/widget:
-    dependencies:
-      '@repo/backend':
-        specifier: workspace:*
-        version: link:../../packages/backend
-      '@repo/design-system':
-        specifier: workspace:*
-        version: link:../../packages/design-system
-      '@repo/next-config':
-        specifier: workspace:*
-        version: link:../../packages/next-config
-      '@repo/observability':
-        specifier: workspace:*
-        version: link:../../packages/observability
-      '@repo/tailwind-config':
-        specifier: workspace:*
-        version: link:../../packages/tailwind-config
-      '@repo/widget':
-        specifier: workspace:*
-        version: link:../../packages/widget
-      '@t3-oss/env-nextjs':
-        specifier: ^0.11.1
-        version: 0.11.1(typescript@5.7.3)(zod@3.25.13)
-      import-in-the-middle:
-        specifier: ^1.12.0
-        version: 1.12.0
-      next:
-        specifier: 15.3.2
-        version: 15.3.2(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      react:
-        specifier: 19.0.0
-        version: 19.0.0
-      react-dom:
-        specifier: 19.0.0
-        version: 19.0.0(react@19.0.0)
-      require-in-the-middle:
-        specifier: ^7.4.0
-        version: 7.4.0
-    devDependencies:
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../../packages/typescript-config
-      '@types/react':
-        specifier: 19.0.4
-        version: 19.0.4
       typescript:
         specifier: ^5.7.3
         version: 5.7.3
@@ -11880,12 +11831,6 @@ snapshots:
     optionalDependencies:
       typescript: 5.7.3
 
-  '@t3-oss/env-core@0.11.1(typescript@5.7.3)(zod@3.25.13)':
-    dependencies:
-      zod: 3.25.13
-    optionalDependencies:
-      typescript: 5.7.3
-
   '@t3-oss/env-nextjs@0.11.1(typescript@5.6.2)(zod@3.25.13)':
     dependencies:
       '@t3-oss/env-core': 0.11.1(typescript@5.6.2)(zod@3.25.13)
@@ -11897,13 +11842,6 @@ snapshots:
     dependencies:
       '@t3-oss/env-core': 0.11.1(typescript@5.7.3)(zod@3.24.1)
       zod: 3.24.1
-    optionalDependencies:
-      typescript: 5.7.3
-
-  '@t3-oss/env-nextjs@0.11.1(typescript@5.7.3)(zod@3.25.13)':
-    dependencies:
-      '@t3-oss/env-core': 0.11.1(typescript@5.7.3)(zod@3.25.13)
-      zod: 3.25.13
     optionalDependencies:
       typescript: 5.7.3
 

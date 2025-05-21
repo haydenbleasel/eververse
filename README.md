@@ -54,7 +54,6 @@ The monorepo contains the following apps:
 | `portal` | The customer-facing portal. | [localhost:3001](http://localhost:3001/) |
 | `studio` | Prisma Studio, which is used to visually edit the local database. | [localhost:5005](http://localhost:5005/) |
 | `web` | The website, which contains the static website for the app e.g. marketing pages and legal docs. | [localhost:3002](http://localhost:3002/) |
-| `widget` | The embeddable Eververse widget. | [localhost:3005](http://localhost:3005/) |
 
 ### Packages
 
