@@ -44,6 +44,7 @@
 
   --font-weight-bold: 700;
   --backdrop: oklch(0.97 0 0);
+  --success: oklch(69.6% 0.17 162.48);
 }
 
 .dark {
@@ -82,6 +83,7 @@
   --sidebar-ring: oklch(0.439 0 0);
 
   --backdrop: oklch(0.145 0 0);
+  --success: oklch(69.6% 0.17 162.48);
 }
 
 @theme inline {
