@@ -2,7 +2,7 @@
 
 import { FeatureItemInner } from '@/components/roadmap-item';
 import type { User } from '@repo/backend/auth';
-import * as Gantt from '@repo/design-system/components/roadmap-ui/gantt';
+import * as Gantt from '@repo/design-system/components/ui/kibo-ui/gantt';
 import { useRouter } from 'next/navigation';
 
 type QuarterlyRoadmapGanttProperties = {

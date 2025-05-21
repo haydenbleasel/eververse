@@ -1,6 +1,6 @@
 'use client';
 
-import * as Calendar from '@repo/design-system/components/roadmap-ui/calendar';
+import * as Calendar from '@repo/design-system/components/ui/kibo-ui/calendar';
 import { colors } from '@repo/design-system/lib/colors';
 import { addDays, addMonths, subDays, subMonths } from 'date-fns';
 

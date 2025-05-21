@@ -1,3 +1,18 @@
+import { Button } from '@repo/design-system/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@repo/design-system/components/ui/dropdown-menu';
+import {
+  TableBody as TableBodyRaw,
+  TableCell as TableCellRaw,
+  TableHead as TableHeadRaw,
+  TableHeader as TableHeaderRaw,
+  Table as TableRaw,
+  TableRow as TableRowRaw,
+} from '@repo/design-system/components/ui/table';
 import { cn } from '@repo/design-system/lib/utils';
 import type {
   Cell,
@@ -15,38 +30,14 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import { Button } from '@repo/design-system/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@repo/design-system/components/ui/dropdown-menu';
-import {
-  TableBody as TableBodyRaw,
-  TableCell as TableCellRaw,
-  TableHead as TableHeadRaw,
-  TableHeader as TableHeaderRaw,
-  Table as TableRaw,
-  TableRow as TableRowRaw,
-} from '@repo/design-system/components/ui/table';
+import { atom, useAtom } from 'jotai';
 import { ArrowDownIcon, ArrowUpIcon, ChevronsUpDownIcon } from 'lucide-react';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { createContext, useContext } from 'react';
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
 
-type TableState = {
-  sorting: SortingState;
-  setSorting: (sorting: SortingState) => void;
-};
+export type { ColumnDef } from '@tanstack/react-table';
 
-export const useTable = create<TableState>()(
-  devtools((set) => ({
-    sorting: [],
-    setSorting: (sorting: SortingState) => set(() => ({ sorting })),
-  }))
-);
+const sortingAtom = atom<SortingState>([]);
 
 export const TableContext = createContext<{
   data: unknown[];
@@ -71,7 +62,7 @@ export function TableProvider<TData, TValue>({
   children,
   className,
 }: TableProviderProps<TData, TValue>) {
-  const { sorting, setSorting } = useTable();
+  const [sorting, setSorting] = useAtom(sortingAtom);
   const table = useReactTable({
     data,
     columns,

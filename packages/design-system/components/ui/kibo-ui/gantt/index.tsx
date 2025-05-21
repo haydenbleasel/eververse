@@ -1,12 +1,5 @@
 'use client';
 
-import {
-  DndContext,
-  MouseSensor,
-  useDraggable,
-  useSensor,
-} from '@dnd-kit/core';
-import { restrictToHorizontalAxis } from '@dnd-kit/modifiers';
 import { Card } from '@repo/design-system/components/ui/card';
 import {
   ContextMenu,
@@ -15,6 +8,13 @@ import {
   ContextMenuTrigger,
 } from '@repo/design-system/components/ui/context-menu';
 import { cn } from '@repo/design-system/lib/utils';
+import {
+  DndContext,
+  MouseSensor,
+  useDraggable,
+  useSensor,
+} from '@dnd-kit/core';
+import { restrictToHorizontalAxis } from '@dnd-kit/modifiers';
 import { useMouse, useThrottle, useWindowScroll } from '@uidotdev/usehooks';
 import { formatDate, getDate } from 'date-fns';
 import { formatDistance, isSameDay } from 'date-fns';
@@ -31,6 +31,7 @@ import {
   startOfDay,
   startOfMonth,
 } from 'date-fns';
+import { atom, useAtom } from 'jotai';
 import throttle from 'lodash.throttle';
 import { PlusIcon, TrashIcon } from 'lucide-react';
 import {
@@ -50,28 +51,12 @@ import type {
   ReactNode,
   RefObject,
 } from 'react';
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
 
-export type GanttState = {
-  dragging: boolean;
-  setDragging: (dragging: boolean) => void;
-  resizing: boolean;
-  setResizing: (resizing: boolean) => void;
-  scrollX: number;
-  setScrollX: (scrollX: number) => void;
-};
+const draggingAtom = atom(false);
+const scrollXAtom = atom(0);
 
-export const useGantt = create<GanttState>()(
-  devtools((set) => ({
-    dragging: false,
-    setDragging: (dragging: boolean) => set(() => ({ dragging })),
-    resizing: false,
-    setResizing: (resizing: boolean) => set(() => ({ resizing })),
-    scrollX: 0,
-    setScrollX: (scrollX: number) => set(() => ({ scrollX })),
-  }))
-);
+export const useGanttDragging = () => useAtom(draggingAtom);
+export const useGanttScrollX = () => useAtom(scrollXAtom);
 
 export type GanttStatus = {
   id: string;
@@ -318,11 +303,11 @@ export type GanttContentHeaderProps = {
   columns: number;
 };
 
-export const GanttContentHeader = ({
+export const GanttContentHeader: FC<GanttContentHeaderProps> = ({
   title,
   columns,
   renderHeaderItem,
-}: GanttContentHeaderProps) => {
+}) => {
   const id = useId();
 
   return (
@@ -359,7 +344,7 @@ export const GanttContentHeader = ({
   );
 };
 
-const DailyHeader = () => {
+const DailyHeader: FC = () => {
   const gantt = useContext(GanttContext);
 
   return gantt.timelineData.map((year) =>
@@ -397,7 +382,7 @@ const DailyHeader = () => {
   );
 };
 
-const MonthlyHeader = () => {
+const MonthlyHeader: FC = () => {
   const gantt = useContext(GanttContext);
 
   return gantt.timelineData.map((year) => (
@@ -416,7 +401,7 @@ const MonthlyHeader = () => {
   ));
 };
 
-const QuarterlyHeader = () => {
+const QuarterlyHeader: FC = () => {
   const gantt = useContext(GanttContext);
 
   return gantt.timelineData.map((year) =>
@@ -450,7 +435,7 @@ export type GanttHeaderProps = {
   className?: string;
 };
 
-export const GanttHeader = ({ className }: GanttHeaderProps) => {
+export const GanttHeader: FC<GanttHeaderProps> = ({ className }) => {
   const gantt = useContext(GanttContext);
   const Header = headers[gantt.range];
 
@@ -468,15 +453,15 @@ export const GanttHeader = ({ className }: GanttHeaderProps) => {
 
 export type GanttSidebarItemProps = {
   feature: GanttFeature;
-  onSelectItem: (id: string) => void;
+  onSelectItem?: (id: string) => void;
   className?: string;
 };
 
-export const GanttSidebarItem = ({
+export const GanttSidebarItem: FC<GanttSidebarItemProps> = ({
   feature,
   onSelectItem,
   className,
-}: GanttSidebarItemProps) => {
+}) => {
   const tempEndAt =
     feature.endAt && isSameDay(feature.startAt, feature.endAt)
       ? addDays(feature.endAt, 1)
@@ -487,13 +472,13 @@ export const GanttSidebarItem = ({
 
   const handleClick: MouseEventHandler<HTMLDivElement> = (event) => {
     if (event.target === event.currentTarget) {
-      onSelectItem(feature.id);
+      onSelectItem?.(feature.id);
     }
   };
 
   const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (event) => {
     if (event.key === 'Enter') {
-      onSelectItem(feature.id);
+      onSelectItem?.(feature.id);
     }
   };
 
@@ -528,7 +513,7 @@ export const GanttSidebarItem = ({
   );
 };
 
-export const GanttSidebarHeader = () => (
+export const GanttSidebarHeader: FC = () => (
   <div
     className="sticky top-0 z-10 flex shrink-0 items-end justify-between gap-2.5 border-border/50 border-b bg-backdrop/90 p-2.5 font-medium text-muted-foreground text-xs backdrop-blur-sm"
     style={{ height: 'var(--gantt-header-height)' }}
@@ -545,11 +530,11 @@ export type GanttSidebarGroupProps = {
   className?: string;
 };
 
-export const GanttSidebarGroup = ({
+export const GanttSidebarGroup: FC<GanttSidebarGroupProps> = ({
   children,
   name,
   className,
-}: GanttSidebarGroupProps) => (
+}) => (
   <div className={className}>
     <p
       style={{ height: 'var(--gantt-row-height)' }}
@@ -566,7 +551,10 @@ export type GanttSidebarProps = {
   className?: string;
 };
 
-export const GanttSidebar = ({ children, className }: GanttSidebarProps) => (
+export const GanttSidebar: FC<GanttSidebarProps> = ({
+  children,
+  className,
+}) => (
   <div
     data-roadmap-ui="gantt-sidebar"
     className={cn(
@@ -584,11 +572,11 @@ export type GanttAddFeatureHelperProps = {
   className?: string;
 };
 
-export const GanttAddFeatureHelper = ({
+export const GanttAddFeatureHelper: FC<GanttAddFeatureHelperProps> = ({
   top,
   className,
-}: GanttAddFeatureHelperProps) => {
-  const { scrollX } = useGantt();
+}) => {
+  const [scrollX] = useGanttScrollX();
   const gantt = useContext(GanttContext);
   const [mousePosition, mouseRef] = useMouse<HTMLDivElement>();
 
@@ -629,9 +617,12 @@ export type GanttColumnProps = {
   isColumnSecondary?: (item: number) => boolean;
 };
 
-export const GanttColumn = ({ index, isColumnSecondary }: GanttColumnProps) => {
+export const GanttColumn: FC<GanttColumnProps> = ({
+  index,
+  isColumnSecondary,
+}) => {
   const gantt = useContext(GanttContext);
-  const { dragging } = useGantt();
+  const [dragging] = useGanttDragging();
   const [mousePosition, mouseRef] = useMouse<HTMLDivElement>();
   const [hovering, setHovering] = useState(false);
   const [windowScroll] = useWindowScroll();
@@ -669,10 +660,10 @@ export type GanttColumnsProps = {
   isColumnSecondary?: (item: number) => boolean;
 };
 
-export const GanttColumns = ({
+export const GanttColumns: FC<GanttColumnsProps> = ({
   columns,
   isColumnSecondary,
-}: GanttColumnsProps) => {
+}) => {
   const id = useId();
 
   return (
@@ -698,10 +689,10 @@ export type GanttCreateMarkerTriggerProps = {
   className?: string;
 };
 
-export const GanttCreateMarkerTrigger = ({
+export const GanttCreateMarkerTrigger: FC<GanttCreateMarkerTriggerProps> = ({
   onCreateMarker,
   className,
-}: GanttCreateMarkerTriggerProps) => {
+}) => {
   const gantt = useContext(GanttContext);
   const [mousePosition, mouseRef] = useMouse<HTMLDivElement>();
   const [windowScroll] = useWindowScroll();
@@ -749,12 +740,12 @@ export type GanttFeatureDragHelperProps = {
   date: Date | null;
 };
 
-export const GanttFeatureDragHelper = ({
+export const GanttFeatureDragHelper: FC<GanttFeatureDragHelperProps> = ({
   direction,
   featureId,
   date,
-}: GanttFeatureDragHelperProps) => {
-  const { setDragging } = useGantt();
+}) => {
+  const [, setDragging] = useGanttDragging();
   const { attributes, listeners, setNodeRef } = useDraggable({
     id: `feature-drag-helper-${featureId}`,
   });
@@ -801,11 +792,11 @@ export type GanttFeatureItemCardProps = Pick<GanttFeature, 'id'> & {
   children?: ReactNode;
 };
 
-export const GanttFeatureItemCard = ({
+export const GanttFeatureItemCard: FC<GanttFeatureItemCardProps> = ({
   id,
   children,
-}: GanttFeatureItemCardProps) => {
-  const { setDragging } = useGantt();
+}) => {
+  const [, setDragging] = useGanttDragging();
   const { attributes, listeners, setNodeRef } = useDraggable({ id });
   const isPressed = Boolean(attributes['aria-pressed']);
 
@@ -834,13 +825,13 @@ export type GanttFeatureItemProps = GanttFeature & {
   className?: string;
 };
 
-export const GanttFeatureItem = ({
+export const GanttFeatureItem: FC<GanttFeatureItemProps> = ({
   onMove,
   children,
   className,
   ...feature
-}: GanttFeatureItemProps) => {
-  const { scrollX } = useGantt();
+}) => {
+  const [scrollX] = useGanttScrollX();
   const gantt = useContext(GanttContext);
   const timelineStartDate = new Date(gantt.timelineData.at(0)?.year ?? 0, 0, 1);
   const [startAt, setStartAt] = useState<Date>(feature.startAt);
@@ -962,10 +953,10 @@ export type GanttFeatureListGroupProps = {
   className?: string;
 };
 
-export const GanttFeatureListGroup = ({
+export const GanttFeatureListGroup: FC<GanttFeatureListGroupProps> = ({
   children,
   className,
-}: GanttFeatureListGroupProps) => (
+}) => (
   <div className={className} style={{ paddingTop: 'var(--gantt-row-height)' }}>
     {children}
   </div>
@@ -976,10 +967,10 @@ export type GanttFeatureListProps = {
   children: ReactNode;
 };
 
-export const GanttFeatureList = ({
+export const GanttFeatureList: FC<GanttFeatureListProps> = ({
   className,
   children,
-}: GanttFeatureListProps) => (
+}) => (
   <div
     className={cn('absolute top-0 left-0 h-full w-max space-y-4', className)}
     style={{ marginTop: 'var(--gantt-header-height)' }}
@@ -988,16 +979,12 @@ export const GanttFeatureList = ({
   </div>
 );
 
-export const GanttMarker = ({
-  label,
-  date,
-  id,
-  onRemove,
-  className,
-}: GanttMarkerProps & {
-  onRemove?: (id: string) => void;
-  className?: string;
-}) => {
+export const GanttMarker: FC<
+  GanttMarkerProps & {
+    onRemove?: (id: string) => void;
+    className?: string;
+  }
+> = ({ label, date, id, onRemove, className }) => {
   const gantt = useContext(GanttContext);
   const differenceIn = getDifferenceIn(gantt.range);
   const timelineStartDate = new Date(gantt.timelineData.at(0)?.year ?? 0, 0, 1);
@@ -1056,18 +1043,18 @@ export type GanttProviderProps = {
   className?: string;
 };
 
-export const GanttProvider = ({
+export const GanttProvider: FC<GanttProviderProps> = ({
   zoom = 100,
   range = 'monthly',
   onAddItem,
   children,
   className,
-}: GanttProviderProps) => {
+}) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [timelineData, setTimelineData] = useState<TimelineData>(
     createInitialTimelineData(new Date())
   );
-  const { setScrollX } = useGantt();
+  const [, setScrollX] = useGanttScrollX();
   const sidebarElement = scrollRef.current?.querySelector(
     '[data-roadmap-ui="gantt-sidebar"]'
   );
@@ -1218,7 +1205,10 @@ export type GanttTimelineProps = {
   className?: string;
 };
 
-export const GanttTimeline = ({ children, className }: GanttTimelineProps) => (
+export const GanttTimeline: FC<GanttTimelineProps> = ({
+  children,
+  className,
+}) => (
   <div
     className={cn(
       'relative flex h-full w-max flex-none overflow-clip',
@@ -1233,7 +1223,7 @@ export type GanttTodayProps = {
   className?: string;
 };
 
-export const GanttToday = ({ className }: GanttTodayProps) => {
+export const GanttToday: FC<GanttTodayProps> = ({ className }) => {
   const label = 'Today';
   const date = new Date();
   const gantt = useContext(GanttContext);

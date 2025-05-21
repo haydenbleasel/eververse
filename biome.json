@@ -4,7 +4,6 @@
   "files": {
     "ignore": [
       "packages/design-system/components/ui/**",
-      "packages/design-system/components/roadmap-ui/**",
       "packages/design-system/lib/**",
       "packages/design-system/hooks/**",
       "apps/email/.react-email/**"

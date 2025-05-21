@@ -16,34 +16,32 @@ import {
 } from '@repo/design-system/components/ui/popover';
 import { cn } from '@repo/design-system/lib/utils';
 import { getDay, getDaysInMonth, isSameDay } from 'date-fns';
+import { atom, useAtom } from 'jotai';
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import { Check, ChevronsUpDown } from 'lucide-react';
 import { type ReactNode, createContext, useContext, useState } from 'react';
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
 
 export type CalendarState = {
   month: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
   year: number;
-  setMonth: (month: CalendarState['month']) => void;
-  setYear: (year: CalendarState['year']) => void;
 };
 
-export const useCalendar = create<CalendarState>()(
-  devtools((set) => ({
-    month: new Date().getMonth() as CalendarState['month'],
-    year: new Date().getFullYear(),
-    setMonth: (month: CalendarState['month']) => set(() => ({ month })),
-    setYear: (year: CalendarState['year']) => set(() => ({ year })),
-  }))
+const monthAtom = atom<CalendarState['month']>(
+  new Date().getMonth() as CalendarState['month']
 );
+const yearAtom = atom<CalendarState['year']>(new Date().getFullYear());
+
+export const useCalendarMonth = () => useAtom(monthAtom);
+export const useCalendarYear = () => useAtom(yearAtom);
 
 type CalendarContextProps = {
   locale: Intl.LocalesArgument;
+  startDay: number;
 };
 
 const CalendarContext = createContext<CalendarContextProps>({
   locale: 'en-US',
+  startDay: 0,
 });
 
 export type Status = {
@@ -83,13 +81,16 @@ export const monthsForLocale = (
     .format;
 
   return [...new Array(12).keys()].map((m) =>
-    format(new Date(Date.UTC(2021, (m + 1) % 12)))
+    format(new Date(Date.UTC(2021, m % 12)))
   );
 };
 
-export const daysForLocale = (locale: Intl.LocalesArgument) => {
+export const daysForLocale = (
+  locale: Intl.LocalesArgument,
+  startDay: number
+) => {
   const weekdays: string[] = [];
-  const baseDate = new Date(2024, 0, 7); // Starting with a Sunday
+  const baseDate = new Date(2024, 0, startDay);
 
   for (let i = 0; i < 7; i++) {
     weekdays.push(
@@ -116,7 +117,7 @@ const Combobox = ({
         <Button
           variant="outline"
           aria-expanded={open}
-          className={cn('w-40 justify-between', className)}
+          className={cn('w-40 justify-between capitalize', className)}
         >
           {value
             ? data.find((item) => item.value === value)?.label
@@ -144,6 +145,7 @@ const Combobox = ({
                     setValue(currentValue === value ? '' : currentValue);
                     setOpen(false);
                   }}
+                  className="capitalize"
                 >
                   <Check
                     className={cn(
@@ -180,9 +182,11 @@ export type CalendarBodyProps = {
 };
 
 export const CalendarBody = ({ features, children }: CalendarBodyProps) => {
-  const { month, year } = useCalendar();
+  const [month] = useCalendarMonth();
+  const [year] = useCalendarYear();
+  const { startDay } = useContext(CalendarContext);
   const daysInMonth = getDaysInMonth(new Date(year, month, 1));
-  const firstDay = getDay(new Date(year, month, 1));
+  const firstDay = (getDay(new Date(year, month, 1)) - startDay + 7) % 7;
   const days: ReactNode[] = [];
 
   const prevMonth = month === 0 ? 11 : month - 1;
@@ -279,7 +283,7 @@ export type CalendarMonthPickerProps = {
 export const CalendarMonthPicker = ({
   className,
 }: CalendarMonthPickerProps) => {
-  const { month, setMonth } = useCalendar();
+  const [month, setMonth] = useCalendarMonth();
   const { locale } = useContext(CalendarContext);
 
   return (
@@ -313,7 +317,7 @@ export const CalendarYearPicker = ({
   start,
   end,
 }: CalendarYearPickerProps) => {
-  const { year, setYear } = useCalendar();
+  const [year, setYear] = useCalendarYear();
 
   return (
     <Combobox
@@ -340,7 +344,8 @@ export type CalendarDatePaginationProps = {
 export const CalendarDatePagination = ({
   className,
 }: CalendarDatePaginationProps) => {
-  const { month, year, setMonth, setYear } = useCalendar();
+  const [month, setMonth] = useCalendarMonth();
+  const [year, setYear] = useCalendarYear();
 
   const handlePreviousMonth = () => {
     if (month === 0) {
@@ -385,11 +390,11 @@ export type CalendarHeaderProps = {
 };
 
 export const CalendarHeader = ({ className }: CalendarHeaderProps) => {
-  const { locale } = useContext(CalendarContext);
+  const { locale, startDay } = useContext(CalendarContext);
 
   return (
     <div className={cn('grid flex-grow grid-cols-7', className)}>
-      {daysForLocale(locale).map((day) => (
+      {daysForLocale(locale, startDay).map((day) => (
         <div key={day} className="p-3 text-right text-muted-foreground text-xs">
           {day}
         </div>
@@ -417,16 +422,18 @@ export const CalendarItem = ({ feature, className }: CalendarItemProps) => (
 
 export type CalendarProviderProps = {
   locale?: Intl.LocalesArgument;
+  startDay?: number;
   children: ReactNode;
   className?: string;
 };
 
 export const CalendarProvider = ({
-  locale,
+  locale = 'en-US',
+  startDay = 0,
   children,
   className,
 }: CalendarProviderProps) => (
-  <CalendarContext.Provider value={{ locale }}>
+  <CalendarContext.Provider value={{ locale, startDay }}>
     <div className={cn('relative flex flex-col', className)}>{children}</div>
   </CalendarContext.Provider>
 );
