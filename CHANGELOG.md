@@ -1,3 +1,15 @@
+# v1.2.0 (Thu May 22 2025)
+
+#### 🚀 Enhancement
+
+- Migrate to Tailwind 4, rebuild Productboard API, misc fixes [#26](https://github.com/haydenbleasel/eververse/pull/26) ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.1.1 (Wed May 21 2025)
 
 #### 🐛 Bug Fix
