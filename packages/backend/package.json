@@ -5,7 +5,7 @@
   "types": "./index.ts",
   "scripts": {
     "dev": "npm run build",
-    "build": "prisma generate --no-hints"
+    "build": "prisma generate --schema=./packages/backend/prisma/schema.prisma --no-hints"
   },
   "dependencies": {
     "@prisma/client": "6.8.2",
