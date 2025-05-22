@@ -1,3 +1,15 @@
+# v1.2.4 (Thu May 22 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Fix pageview lib ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.2.3 (Thu May 22 2025)
 
 #### ⚠️ Pushed to `main`
