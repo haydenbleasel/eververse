@@ -28,7 +28,7 @@ const unregisterWebhook = async (
   });
 
   try {
-    const response = await client.GET('/rest/api/3/webhook');
+    const response = await client.GET('/rest/api/2/webhook');
 
     if (response.error) {
       throw new Error(
@@ -40,7 +40,7 @@ const unregisterWebhook = async (
       return;
     }
 
-    const deleteResponse = await client.DELETE('/rest/api/3/webhook', {
+    const deleteResponse = await client.DELETE('/rest/api/2/webhook', {
       body: {
         webhookIds: response.data.values.map((webhook) => webhook.id),
       },
@@ -63,7 +63,7 @@ const registerWebhook = async (
   const response = await createOauth2Client({
     cloudId,
     accessToken,
-  }).POST('/rest/api/3/webhook', {
+  }).POST('/rest/api/2/webhook', {
     body: {
       // @ts-expect-error "Bad API Spec"
       name: 'Eververse',

@@ -51,7 +51,7 @@ export const deleteAtlassianInstallation = async (): Promise<{
           const response = await createOauth2Client({
             cloudId: resource.resourceId,
             accessToken: atlassianInstallation.accessToken,
-          }).DELETE('/rest/api/3/webhook', {
+          }).DELETE('/rest/api/2/webhook', {
             body: {
               webhookIds: resource.webhooks.map((webhook) => webhook.webhookId),
             },

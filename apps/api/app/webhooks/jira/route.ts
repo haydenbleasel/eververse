@@ -78,7 +78,7 @@ const handleIssueEvent = async (event: z.infer<typeof webhookEventSchema>) => {
     );
   }
 
-  const atlassian = await createOauth2Client({
+  const atlassian = createOauth2Client({
     accessToken: webhook.installation.accessToken,
     cloudId: webhook.resourceId,
   });
@@ -89,7 +89,7 @@ const handleIssueEvent = async (event: z.infer<typeof webhookEventSchema>) => {
     issueFields.push(field.externalId);
   }
 
-  const issue = await atlassian.GET('/rest/api/3/issue/{issueIdOrKey}', {
+  const issue = await atlassian.GET('/rest/api/2/issue/{issueIdOrKey}', {
     params: {
       path: {
         issueIdOrKey: event.issue.key,
@@ -104,7 +104,7 @@ const handleIssueEvent = async (event: z.infer<typeof webhookEventSchema>) => {
     throw new Error(`Failed to get issue: ${event.issue.key}`);
   }
 
-  if (!issue.data.fields) {
+  if (!issue.data?.fields) {
     throw new Error(
       `Issue response does not contain fields: ${event.issue.key}`
     );

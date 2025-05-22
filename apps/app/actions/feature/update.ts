@@ -71,10 +71,12 @@ const updateJira = async (
     return;
   }
 
-  const response = await createOauth2Client({
+  const atlassian = createOauth2Client({
     cloudId: resource.resourceId,
     accessToken: resource.installation.accessToken,
-  }).PUT('/rest/api/3/issue/{issueIdOrKey}', {
+  });
+
+  const response = await atlassian.PUT('/rest/api/2/issue/{issueIdOrKey}', {
     params: {
       path: {
         issueIdOrKey: connection.externalId,

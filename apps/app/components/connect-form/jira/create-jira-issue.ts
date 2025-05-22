@@ -65,10 +65,12 @@ export const createJiraIssue = async ({
 
     const body = content ?? textToContent('');
 
-    const response = await createOauth2Client({
+    const atlassian = createOauth2Client({
       accessToken: atlassianInstallation.accessToken,
       cloudId: resource.resourceId,
-    }).POST('/rest/api/3/issue', {
+    });
+
+    const response = await atlassian.POST('/rest/api/2/issue', {
       body: {
         fields: {
           description: {

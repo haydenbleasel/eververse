@@ -44,12 +44,15 @@ export const searchJiraIssues = async (
 
     const issues = await Promise.all(
       atlassianInstallation.resources.map(async (resource) => {
-        const response = await createOauth2Client({
+        const atlassian = createOauth2Client({
           accessToken: atlassianInstallation.accessToken,
           cloudId: resource.resourceId,
-        }).POST('/rest/api/3/search', {
+        });
+
+        const response = await atlassian.POST('/rest/api/2/search', {
           body: {
             jql: `(summary ~ "${query}" OR description ~ "${query}" OR text ~ "${query}")`,
+            maxResults: 100,
           },
         });
 
@@ -58,7 +61,7 @@ export const searchJiraIssues = async (
           throw new Error('Error searching Jira issues');
         }
 
-        if (!response.data.issues) {
+        if (!response.data?.issues) {
           return [];
         }
 

@@ -42,10 +42,12 @@ export const getJiraTypes = async (
 
     const types = await Promise.all(
       atlassianInstallation.resources.map(async (resource) => {
-        const response = await createOauth2Client({
+        const atlassian = createOauth2Client({
           accessToken: atlassianInstallation.accessToken,
           cloudId: resource.resourceId,
-        }).GET('/rest/api/3/issuetype/project', {
+        });
+
+        const response = await atlassian.GET('/rest/api/2/issuetype/project', {
           params: {
             query: {
               projectId: Number(projectId),
