@@ -1,8 +1,10 @@
-import { identify } from '@repo/analytics/posthog/client';
-import { currentUser } from '@repo/backend/auth/utils';
+'use client';
 
-export const Identify = async () => {
-  const user = await currentUser();
+import { identify } from '@repo/analytics/posthog/client';
+import { useUser } from '@repo/backend/hooks/use-user';
+
+export const Identify = () => {
+  const user = useUser();
 
   if (!user) {
     return null;
