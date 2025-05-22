@@ -1,6 +1,6 @@
 (() => {
   const id = window.EververseWidgetId;
-  const apiUrl = window.EververseApiUrl ?? 'https://widget.eververse.ai';
+  const apiUrl = window.EververseApiUrl ?? 'https://api.eververse.ai';
   const darkMode = window.EververseWidgetDarkMode ?? false;
 
   if (!id) {
