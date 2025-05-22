@@ -1,3 +1,16 @@
+# v1.2.6 (Thu May 22 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Cleanup deps ([@haydenbleasel](https://github.com/haydenbleasel))
+- Fix default widget url ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.2.5 (Thu May 22 2025)
 
 #### ⚠️ Pushed to `main`
