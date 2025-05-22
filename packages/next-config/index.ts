@@ -65,6 +65,9 @@ export const config: NextConfig = {
 
   // This is required to support PostHog trailing slash API requests
   skipTrailingSlashRedirect: true,
+
+  // This is required to support Sentry
+  transpilePackages: ['@sentry/nextjs'],
 };
 
 export const withAnalyzer = (sourceConfig: NextConfig): NextConfig =>

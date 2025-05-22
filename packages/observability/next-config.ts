@@ -47,16 +47,6 @@ export const sentryConfig: Parameters<typeof withSentryConfig>[1] = {
 
 export const withSentry = (sourceConfig: {
   transpilePackages?: string[];
-}): object => {
-  const configWithTranspile = {
-    ...sourceConfig,
-    transpilePackages: [
-      ...(sourceConfig.transpilePackages ?? []),
-      '@sentry/nextjs',
-    ],
-  };
-
-  return withSentryConfig(configWithTranspile, sentryConfig);
-};
+}): object => withSentryConfig(sourceConfig, sentryConfig);
 
 export { withLogtail } from '@logtail/next';

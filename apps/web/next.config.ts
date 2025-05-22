@@ -8,6 +8,8 @@ let nextConfig: NextConfig = withBackend(
   withLogtail({
     ...config,
 
+    transpilePackages: ['@sentry/nextjs'],
+
     images: {
       ...config.images,
       dangerouslyAllowSVG: true,
