@@ -120,7 +120,7 @@ const handleIssueRemove = async (event: DataChangeEvent) => {
   return new Response('OK');
 };
 
-const handleIssueEvent = async (event: DataChangeEvent) => {
+const handleIssueEvent = (event: DataChangeEvent) => {
   switch (event.action) {
     case 'update': {
       return handleIssueUpdate(event);

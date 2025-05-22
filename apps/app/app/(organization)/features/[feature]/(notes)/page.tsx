@@ -109,7 +109,6 @@ const FeaturePage = async (props: FeaturePageProperties) => {
             editable={
               user.user_metadata.organization_role !== EververseRole.Member
             }
-            subscribed={Boolean(organization.stripeSubscriptionId)}
           />
         ) : (
           <FeatureTemplateSelector

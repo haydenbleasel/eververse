@@ -143,7 +143,7 @@ const handleCreateFeedback = async (
   return new Response(null, { status: 200 });
 };
 
-const handleMessageAction = async (data: MessageActionProperties) => {
+const handleMessageAction = (data: MessageActionProperties) => {
   if (data.callback_id === 'create_feedback') {
     return handleCreateFeedback(data);
   }
@@ -151,6 +151,7 @@ const handleMessageAction = async (data: MessageActionProperties) => {
   log.error('🔗 Slack Error: Invalid Callback ID value', {
     callback_id: data.callback_id,
   });
+
   return new Response('Bad Request', { status: 400 });
 };
 

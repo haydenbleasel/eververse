@@ -11,7 +11,6 @@ type ChangelogEditorProperties = {
   readonly defaultValue: JSONContent;
   readonly changelogId: Changelog['id'];
   readonly editable: boolean;
-  readonly subscribed: boolean;
 };
 
 const Editor = dynamic(
@@ -32,7 +31,6 @@ export const ChangelogEditor = ({
   defaultValue,
   changelogId,
   editable,
-  subscribed,
 }: ChangelogEditorProperties) => {
   const handleDebouncedUpdate = async (editor?: EditorInstance | undefined) => {
     if (!editor) {

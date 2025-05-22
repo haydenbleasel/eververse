@@ -101,7 +101,6 @@ const ChangelogPage = async (props: ChangelogPageProperties) => {
               editable={
                 user.user_metadata.organization_role !== EververseRole.Member
               }
-              subscribed={Boolean(organization.stripeSubscriptionId)}
             />
           ) : (
             <UpdateEmptyState

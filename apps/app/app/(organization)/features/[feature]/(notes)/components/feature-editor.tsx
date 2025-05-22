@@ -11,7 +11,6 @@ type FeatureEditorProperties = {
   readonly defaultValue: JSONContent;
   readonly featureId: Feature['id'];
   readonly editable: boolean;
-  readonly subscribed: boolean;
   readonly className?: string;
 };
 
@@ -31,7 +30,6 @@ export const FeatureEditor = ({
   defaultValue,
   featureId,
   editable,
-  subscribed,
   className,
 }: FeatureEditorProperties) => {
   const handleDebouncedUpdate = async (editor?: EditorInstance | undefined) => {
@@ -54,6 +52,7 @@ export const FeatureEditor = ({
       defaultValue={defaultValue}
       onDebouncedUpdate={handleDebouncedUpdate}
       editable={editable}
+      className={className}
     />
   );
 };
