@@ -1,3 +1,17 @@
+# v1.2.7 (Thu May 22 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Ultracite fixes ([@haydenbleasel](https://github.com/haydenbleasel))
+- Update biome.json ([@haydenbleasel](https://github.com/haydenbleasel))
+- Merge gitignores ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.2.6 (Thu May 22 2025)
 
 #### ⚠️ Pushed to `main`
