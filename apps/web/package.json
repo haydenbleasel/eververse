@@ -22,7 +22,6 @@
     "@repo/observability": "workspace:*",
     "@repo/payments": "workspace:*",
     "@repo/seo": "workspace:*",
-    "@repo/widget": "workspace:*",
     "@sentry/nextjs": "^9.22.0",
     "@t3-oss/env-nextjs": "^0.13.4",
     "date-fns": "^4.1.0",
@@ -36,7 +35,6 @@
     "react-hook-form": "^7.56.4",
     "react-wrap-balancer": "^1.1.1",
     "require-in-the-middle": "^7.5.2",
-    "sonner": "^2.0.3",
     "zod": "^3.25.17"
   },
   "devDependencies": {
