@@ -2,6 +2,11 @@ import withBundleAnalyzer from '@next/bundle-analyzer';
 import type { NextConfig } from 'next';
 import { createSecureHeaders } from 'next-secure-headers';
 
+// @ts-expect-error "no types"
+import { PrismaPlugin } from '@prisma/nextjs-monorepo-workaround-plugin';
+
+const otelRegex = /@opentelemetry\/instrumentation/;
+
 export const config: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -61,6 +66,16 @@ export const config: NextConfig = {
         destination: 'https://us.i.posthog.com/decide',
       },
     ];
+  },
+
+  webpack(config, { isServer }) {
+    if (isServer) {
+      config.plugins = [...config.plugins, new PrismaPlugin()];
+    }
+
+    config.ignoreWarnings = [{ module: otelRegex }];
+
+    return config;
   },
 
   // This is required to support PostHog trailing slash API requests
