@@ -88,13 +88,12 @@ It also contains the following packages:
 
 ## Deploying
 
-Eververse is designed to be deployed on Vercel. To deploy Eververse on Vercel, you need to create 5 new projects:
+Eververse is designed to be deployed on Vercel. To deploy Eververse on Vercel, you need to create 4 new projects:
 
 - `app`
 - `api`
 - `web`
 - `portal`
-- `widget`
 
 After selecting your repository, change the Root Directory option to the app of choice e.g. `apps/app`. This should automatically detect the Next.js setup and as such, the build command and output directory.
 
