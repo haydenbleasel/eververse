@@ -1,24 +1,42 @@
 import { getMembers } from '@repo/backend/auth/utils';
 import { database } from '@repo/backend/database';
 import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
-import { Productboard } from '@repo/productboard';
+import { createClient } from '@repo/productboard';
+import type { paths } from '@repo/productboard/types';
 
 type ImportJobProperties = Pick<
   ProductboardImport,
   'creatorId' | 'organizationId' | 'token'
 >;
 
-type ProductboardComponent = Awaited<
-  ReturnType<Productboard['component']['list']>
->[number];
+type ProductboardComponent =
+  paths['/components']['get']['responses']['200']['content']['application/json']['data'][number];
 
 export const migrateComponents = async ({
   creatorId,
   token,
   organizationId,
 }: ImportJobProperties): Promise<number> => {
-  const productboard = new Productboard(token);
-  const components = await productboard.component.list();
+  const productboard = createClient({ accessToken: token });
+
+  const components = await productboard.GET('/components', {
+    params: {
+      header: {
+        'X-Version': 1,
+      },
+    },
+  });
+
+  if (components.error) {
+    throw new Error(
+      components.error.errors.map((error) => error.detail).join(', ')
+    );
+  }
+
+  if (!components.data) {
+    throw new Error('No components found');
+  }
+
   const members = await getMembers(organizationId);
   const databaseOrganization = await database.organization.findUnique({
     where: { id: organizationId },
@@ -37,7 +55,9 @@ export const migrateComponents = async ({
 
     if ('component' in component.parent) {
       const parentComponentId = component.parent.component.id;
-      const parent = components.find(({ id }) => id === parentComponentId);
+      const parent = components.data.data.find(
+        ({ id }) => id === parentComponentId
+      );
 
       if (!parent) {
         throw new Error(
@@ -51,7 +71,7 @@ export const migrateComponents = async ({
     return parentDepth + 1;
   };
 
-  const newComponents = components.filter((component) => {
+  const newComponents = components.data.data.filter((component) => {
     const existing = databaseOrganization.groups.find(
       ({ productboardId }) => productboardId === component.id
     );
@@ -89,7 +109,7 @@ export const migrateComponents = async ({
 
     const properties = data.map((component) => {
       const owner = members.find(
-        ({ email }) => email === component.owner.email
+        ({ email }) => email === component.owner?.email
       );
 
       let productId: string | undefined;

@@ -1,5 +1,6 @@
 'use client';
 
+import { cn } from '@repo/design-system/lib/utils';
 import type { ComponentProps, ReactNode } from 'react';
 import * as TooltipComponent from '../ui/tooltip';
 
@@ -33,7 +34,10 @@ export const Tooltip = ({
       collisionPadding={8}
       side={side}
       align={align}
-      className="max-w-md rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-foreground text-sm"
+      className={cn(
+        'max-w-md rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-foreground text-sm',
+        '[&_svg]:bg-background [&_svg]:fill-background'
+      )}
     >
       {content}
     </TooltipComponent.TooltipContent>

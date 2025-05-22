@@ -2,7 +2,7 @@ import { getMembers } from '@repo/backend/auth/utils';
 import { database } from '@repo/backend/database';
 import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
 import { log } from '@repo/observability/log';
-import { Productboard } from '@repo/productboard';
+import { createClient } from '@repo/productboard';
 
 type ImportJobProperties = Pick<
   ProductboardImport,
@@ -14,7 +14,7 @@ export const migrateProducts = async ({
   token,
   organizationId,
 }: ImportJobProperties): Promise<number> => {
-  const productboard = new Productboard(token);
+  const productboard = createClient({ accessToken: token });
 
   const [existingProducts, members] = await Promise.all([
     database.product.findMany({
@@ -24,12 +24,29 @@ export const migrateProducts = async ({
     getMembers(organizationId),
   ]);
 
-  const products = await productboard.product.list();
-  log.info('⏬ Successfully fetched products from Productboard', {
-    count: products.length,
+  const products = await productboard.GET('/products', {
+    params: {
+      header: {
+        'X-Version': 1,
+      },
+    },
   });
 
-  const promises: Prisma.ProductCreateManyInput[] = products
+  if (products.error) {
+    throw new Error(
+      products.error.errors.map((error) => error.detail).join(', ')
+    );
+  }
+
+  if (!products.data) {
+    throw new Error('No products found');
+  }
+
+  log.info('⏬ Successfully fetched products from Productboard', {
+    count: products.data.data.length,
+  });
+
+  const promises: Prisma.ProductCreateManyInput[] = products.data.data
     .filter((product) => {
       const existing = existingProducts.find(
         ({ productboardId }) => productboardId === product.id

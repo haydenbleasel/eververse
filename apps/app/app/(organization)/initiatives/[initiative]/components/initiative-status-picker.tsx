@@ -3,8 +3,8 @@
 import { updateInitiative } from '@/actions/initiative/update';
 import type { Initiative, initiative_state } from '@repo/backend/prisma/client';
 import { Select } from '@repo/design-system/components/precomposed/select';
+import { colors } from '@repo/design-system/lib/colors';
 import { handleError } from '@repo/design-system/lib/handle-error';
-import { tailwind } from '@repo/tailwind-config';
 import { useState } from 'react';
 
 type InitiativeStatusPickerProperties = {
@@ -21,22 +21,22 @@ const initiativeStates: {
   {
     value: 'PLANNED',
     label: 'Planned',
-    color: tailwind.theme.colors.gray[200],
+    color: colors.gray,
   },
   {
     value: 'ACTIVE',
     label: 'Active',
-    color: tailwind.theme.colors.amber[500],
+    color: colors.amber,
   },
   {
     value: 'COMPLETED',
     label: 'Completed',
-    color: tailwind.theme.colors.emerald[500],
+    color: colors.emerald,
   },
   {
     value: 'CANCELLED',
     label: 'Cancelled',
-    color: tailwind.theme.colors.rose[500],
+    color: colors.rose,
   },
 ];
 

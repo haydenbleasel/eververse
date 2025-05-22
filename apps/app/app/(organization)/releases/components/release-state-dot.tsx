@@ -1,20 +1,20 @@
 import type { Release } from '@repo/backend/prisma/client';
-import { tailwind } from '@repo/tailwind-config';
+import { colors } from '@repo/design-system/lib/colors';
 
 const getBackgroundColor = (state: Release['state']) => {
   if (state === 'COMPLETED') {
-    return tailwind.theme.colors.emerald[500];
+    return colors.emerald;
   }
 
   if (state === 'ACTIVE') {
-    return tailwind.theme.colors.amber[500];
+    return colors.amber;
   }
 
   if (state === 'CANCELLED') {
-    return tailwind.theme.colors.rose[500];
+    return colors.rose;
   }
 
-  return tailwind.theme.colors.gray[200];
+  return colors.gray;
 };
 
 type ReleaseStateDotProps = {

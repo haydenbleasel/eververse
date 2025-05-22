@@ -9,8 +9,8 @@
     "analyze": "ANALYZE=true pnpm build"
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.10.0",
-    "@react-hookz/web": "^25.0.1",
+    "@hookform/resolvers": "^5.0.1",
+    "@react-hookz/web": "^25.1.1",
     "@repo/analytics": "workspace:*",
     "@repo/backend": "workspace:*",
     "@repo/canvas": "workspace:*",
@@ -22,29 +22,29 @@
     "@repo/observability": "workspace:*",
     "@repo/payments": "workspace:*",
     "@repo/seo": "workspace:*",
-    "@repo/tailwind-config": "workspace:*",
     "@repo/widget": "workspace:*",
-    "@sentry/nextjs": "^8.48.0",
-    "@t3-oss/env-nextjs": "^0.11.1",
+    "@sentry/nextjs": "^9.22.0",
+    "@t3-oss/env-nextjs": "^0.13.4",
     "date-fns": "^4.1.0",
-    "import-in-the-middle": "^1.12.0",
-    "lucide-react": "^0.471.0",
-    "motion": "^11.17.0",
+    "import-in-the-middle": "^1.13.2",
+    "lucide-react": "^0.511.0",
+    "motion": "^12.12.1",
     "next": "15.3.2",
-    "next-themes": "^0.4.4",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "react-hook-form": "^7.54.2",
+    "next-themes": "^0.4.6",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-hook-form": "^7.56.4",
     "react-wrap-balancer": "^1.1.1",
-    "require-in-the-middle": "^7.4.0",
-    "sonner": "^1.7.1",
-    "zod": "^3.24.1"
+    "require-in-the-middle": "^7.5.2",
+    "sonner": "^2.0.3",
+    "zod": "^3.25.17"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "@types/node": "22.10.5",
-    "@types/react": "19.0.4",
-    "fumadocs-core": "^14.7.2",
-    "typescript": "^5.7.3"
+    "@types/node": "22.15.21",
+    "@types/react": "19.1.5",
+    "fumadocs-core": "^15.3.4",
+    "tailwindcss": "^4.1.7",
+    "typescript": "^5.8.3"
   }
 }

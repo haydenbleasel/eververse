@@ -2,7 +2,7 @@ import { getMembers } from '@repo/backend/auth/utils';
 import { database } from '@repo/backend/database';
 import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
 import { log } from '@repo/observability/log';
-import { Productboard } from '@repo/productboard';
+import { createClient } from '@repo/productboard';
 
 type ImportJobProperties = Pick<
   ProductboardImport,
@@ -32,13 +32,38 @@ export const migrateCustomFieldValues = async ({
   }
 
   const transactions: Prisma.PrismaPromise<unknown>[] = [];
-  const productboard = new Productboard(token);
+  const productboard = createClient({ accessToken: token });
 
-  const customFieldValuesRaw = await Promise.all(
-    databaseOrganization.featureCustomFields.map(async (customField) =>
-      productboard.customFieldValue.list(customField.productboardId ?? '')
-    )
-  );
+  const customFieldValuesPromises =
+    databaseOrganization.featureCustomFields.map(async (customField) => {
+      const response = await productboard.GET(
+        '/hierarchy-entities/custom-fields-values',
+        {
+          params: {
+            query: {
+              'customField.id': customField.productboardId ?? '',
+            },
+            header: {
+              'X-Version': 1,
+            },
+          },
+        }
+      );
+
+      if (response.error) {
+        throw new Error(
+          response.error.errors.map((error) => error.detail).join(', ')
+        );
+      }
+
+      if (!response.data) {
+        throw new Error('No data returned');
+      }
+
+      return response.data.data;
+    });
+
+  const customFieldValuesRaw = await Promise.all(customFieldValuesPromises);
   const customFieldValues = customFieldValuesRaw.flat();
 
   log.info(
@@ -95,7 +120,7 @@ export const migrateCustomFieldValues = async ({
       }
       case 'multi-dropdown': {
         parsedValue = customFieldValue.value
-          ? customFieldValue.value.map((option) => option.id).join(', ')
+          ? customFieldValue.value.map((option) => option?.id).join(', ')
           : null;
         break;
       }

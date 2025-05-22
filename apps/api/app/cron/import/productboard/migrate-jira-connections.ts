@@ -1,7 +1,7 @@
 import { database } from '@repo/backend/database';
 import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
 import { log } from '@repo/observability/log';
-import { Productboard } from '@repo/productboard';
+import { createClient } from '@repo/productboard';
 
 type ImportJobProperties = Pick<
   ProductboardImport,
@@ -12,13 +12,52 @@ export const migrateJiraConnections = async ({
   organizationId,
   token,
 }: ImportJobProperties): Promise<number> => {
-  const productboard = new Productboard(token);
-  const jiraIntegrations = await productboard.jiraIntegration.list();
-  const jiraLinksRaw = await Promise.all(
-    jiraIntegrations.map(async (integration) =>
-      productboard.jiraLink.list(integration.id)
-    )
+  const productboard = createClient({ accessToken: token });
+  const jiraIntegrations = await productboard.GET('/jira-integrations', {
+    params: {
+      header: {
+        'X-Version': 1,
+      },
+    },
+  });
+
+  if (jiraIntegrations.error) {
+    throw new Error(
+      jiraIntegrations.error.errors.map((error) => error.detail).join(', ')
+    );
+  }
+
+  if (!jiraIntegrations.data) {
+    throw new Error('No jira integrations found');
+  }
+
+  const jiraConnectionPromises = jiraIntegrations.data.data.map(
+    async (integration) => {
+      const response = await productboard.GET(
+        '/jira-integrations/{id}/connections',
+        {
+          params: {
+            path: {
+              id: integration.id,
+            },
+            header: {
+              'X-Version': 1,
+            },
+          },
+        }
+      );
+
+      if (response.error) {
+        throw new Error(
+          response.error.errors.map((error) => error.detail).join(', ')
+        );
+      }
+
+      return response.data.data;
+    }
   );
+
+  const jiraLinksRaw = await Promise.all(jiraConnectionPromises);
   const jiraLinks = jiraLinksRaw.flat();
 
   const databaseOrganization = await database.organization.findUnique({

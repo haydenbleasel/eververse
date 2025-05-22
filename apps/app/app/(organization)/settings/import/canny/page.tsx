@@ -25,12 +25,16 @@ const CannyImport = () => (
       className="m-0 h-8 w-8"
       alt=""
     />
-    <div>
+    <div className="grid gap-2">
       <h1 className="m-0 font-semibold text-4xl">{title}</h1>
-      <p className="mt-2 mb-0 text-muted-foreground">{description}</p>
+      <p className="mb-0 text-muted-foreground">{description}</p>
     </div>
 
-    <StackCard title="Start a new import" icon={ImportIcon}>
+    <StackCard
+      title="Start a new import"
+      icon={ImportIcon}
+      className="grid gap-2"
+    >
       <CannyImportForm />
       <p className="mb-0 text-muted-foreground text-sm">
         If you want Jira issues to be linked, make sure to integrate Eververse
@@ -49,7 +53,7 @@ const CannyImport = () => (
     >
       <div>
         <p className="font-medium">What gets imported:</p>
-        <ul className="mb-0">
+        <ul className="mb-0 list-disc space-y-1 pl-4">
           <li>Boards</li>
           <li>Categories</li>
           <li>Changelog Entries</li>
@@ -66,7 +70,7 @@ const CannyImport = () => (
       <div>
         <p className="font-medium">What doesn&apos;t get imported:</p>
 
-        <ul className="mb-0">
+        <ul className="mb-0 list-disc space-y-1 pl-4">
           <li>Opportunities</li>
           <li>Company Custom Fields</li>
           <li>Post Custom Fields</li>
@@ -75,7 +79,7 @@ const CannyImport = () => (
     </StackCard>
 
     <StackCard title="Mapping" icon={InfoIcon}>
-      <ul className="mb-0 text-sm">
+      <ul className="mb-0 list-disc space-y-1 pl-4 text-sm">
         <li>Boards are mapped to Products</li>
         <li>Categories are mapped to Groups</li>
         <li>Changelog Entries are imported as-is</li>

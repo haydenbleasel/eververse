@@ -24,9 +24,6 @@ export const sentryConfig: Parameters<typeof withSentryConfig>[1] = {
    */
   tunnelRoute: '/monitoring',
 
-  // Hides source maps from generated client bundles
-  hideSourceMaps: true,
-
   // Automatically tree-shake Sentry logger statements to reduce bundle size
   disableLogger: true,
 
@@ -37,15 +34,19 @@ export const sentryConfig: Parameters<typeof withSentryConfig>[1] = {
    * https://vercel.com/docs/cron-jobs
    */
   automaticVercelMonitors: true,
+
+  /*
+   * Enables automatic annotation of React components.
+   * See the following for more information:
+   * https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#step-7-capture-react-component-names-optional
+   */
+  reactComponentAnnotation: {
+    enabled: true,
+  },
 };
 
-export const withSentry = (sourceConfig: object): object => {
-  const configWithTranspile = {
-    ...sourceConfig,
-    transpilePackages: ['@sentry/nextjs'],
-  };
-
-  return withSentryConfig(configWithTranspile, sentryConfig);
-};
+export const withSentry = (sourceConfig: {
+  transpilePackages?: string[];
+}): object => withSentryConfig(sourceConfig, sentryConfig);
 
 export { withLogtail } from '@logtail/next';

@@ -2,7 +2,7 @@
   "name": "api",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3004",
+    "dev": "next dev --turbopack -p 3004",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -24,21 +24,21 @@
     "@repo/payments": "workspace:*",
     "@repo/productboard": "workspace:*",
     "@repo/slack": "workspace:*",
-    "@repo/tailwind-config": "workspace:*",
     "@repo/transcribe": "workspace:*",
     "@repo/widget": "workspace:*",
-    "@t3-oss/env-nextjs": "^0.11.1",
+    "@t3-oss/env-nextjs": "^0.13.4",
     "date-fns": "^4.1.0",
-    "email-providers": "^2.7.0",
+    "email-providers": "^2.11.0",
     "friendlier-words": "^1.1.3",
     "next": "15.3.2",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "zod": "^3.24.1"
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "zod": "^3.25.17"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "@types/react": "19.0.4",
-    "typescript": "^5.7.3"
+    "@types/react": "19.1.5",
+    "tailwindcss": "^4.1.7",
+    "typescript": "^5.8.3"
   }
 }

@@ -64,10 +64,12 @@ export const JiraStatusMappings = async () => {
     );
   }
 
-  const jiraStatuses = await createOauth2Client({
-    cloudId: atlassianInstallation.resources[0].resourceId,
+  const atlassian = createOauth2Client({
+    cloudId: resourceId,
     accessToken: atlassianInstallation.accessToken,
-  }).GET('/rest/api/3/status');
+  });
+
+  const jiraStatuses = await atlassian.GET('/rest/api/2/status');
 
   return (
     <StackCard title="Status Mappings" icon={LinkIcon} className="px-0 py-1.5">

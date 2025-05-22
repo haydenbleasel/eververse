@@ -23,7 +23,7 @@ export const FeatureStatusColumn = ({
   return (
     <div
       className={cn(
-        'flex min-h-40 flex-col gap-2 rounded-lg bg-card p-2 outline outline-2 transition-all',
+        'flex min-h-40 flex-col gap-2 rounded-lg bg-card p-2 outline-2 transition-all',
         isOver ? 'outline-violet-500' : 'outline-transparent'
       )}
     >

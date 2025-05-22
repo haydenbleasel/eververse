@@ -11,7 +11,6 @@ type InitiativePageEditorProperties = {
   readonly defaultValue: JSONContent;
   readonly pageId: InitiativePage['id'];
   readonly editable: boolean;
-  readonly subscribed: boolean;
 };
 
 const Editor = dynamic(
@@ -32,7 +31,6 @@ export const InitiativePageEditor = ({
   defaultValue,
   pageId,
   editable,
-  subscribed,
 }: InitiativePageEditorProperties) => {
   const handleDebouncedUpdate = async (editor?: EditorInstance | undefined) => {
     if (!editor) {

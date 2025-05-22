@@ -4,7 +4,7 @@ import {
   type RadarChartProperties,
 } from '@repo/design-system/components/charts/radar';
 import { StackCard } from '@repo/design-system/components/stack-card';
-import { tailwind } from '@repo/tailwind-config';
+import { colors } from '@repo/design-system/lib/colors';
 import { SmileIcon } from 'lucide-react';
 
 export const SentimentChart = async () => {
@@ -61,7 +61,7 @@ export const SentimentChart = async () => {
   const config: RadarChartProperties['config'] = {
     value: {
       label: 'Feedback',
-      color: tailwind.theme.colors.violet[500],
+      color: colors.violet,
     },
   };
 

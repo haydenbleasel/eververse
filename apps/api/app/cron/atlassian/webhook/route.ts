@@ -71,7 +71,7 @@ export const GET = async (): Promise<Response> => {
         .join(', ')}`
     );
 
-    const response = await atlassian.PUT('/rest/api/3/webhook/refresh', {
+    const response = await atlassian.PUT('/rest/api/2/webhook/refresh', {
       body: {
         webhookIds: installation.webhooks.map((webhook) => webhook.webhookId),
       },

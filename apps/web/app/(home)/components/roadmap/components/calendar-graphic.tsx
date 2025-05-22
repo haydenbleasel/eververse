@@ -1,7 +1,7 @@
 'use client';
 
-import * as Calendar from '@repo/design-system/components/roadmap-ui/calendar';
-import { tailwind } from '@repo/tailwind-config';
+import * as Calendar from '@repo/design-system/components/ui/kibo-ui/calendar';
+import { colors } from '@repo/design-system/lib/colors';
 import { addDays, addMonths, subDays, subMonths } from 'date-fns';
 
 const features: Calendar.CalendarItemProps['feature'][] = [
@@ -13,7 +13,7 @@ const features: Calendar.CalendarItemProps['feature'][] = [
     status: {
       id: '1',
       name: '',
-      color: tailwind.theme.colors.emerald[500],
+      color: colors.emerald,
     },
   },
   {
@@ -24,7 +24,7 @@ const features: Calendar.CalendarItemProps['feature'][] = [
     status: {
       id: '2',
       name: '',
-      color: tailwind.theme.colors.gray[500],
+      color: colors.gray,
     },
   },
   {
@@ -35,7 +35,7 @@ const features: Calendar.CalendarItemProps['feature'][] = [
     status: {
       id: '3',
       name: '',
-      color: tailwind.theme.colors.emerald[500],
+      color: colors.emerald,
     },
   },
   {
@@ -46,7 +46,7 @@ const features: Calendar.CalendarItemProps['feature'][] = [
     status: {
       id: '4',
       name: '',
-      color: tailwind.theme.colors.yellow[500],
+      color: colors.yellow,
     },
   },
   {
@@ -57,7 +57,7 @@ const features: Calendar.CalendarItemProps['feature'][] = [
     status: {
       id: '5',
       name: '',
-      color: tailwind.theme.colors.emerald[500],
+      color: colors.emerald,
     },
   },
 ];

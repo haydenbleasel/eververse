@@ -4,7 +4,7 @@ import {
   type RadialChartProperties,
 } from '@repo/design-system/components/charts/radial';
 import { StackCard } from '@repo/design-system/components/stack-card';
-import { tailwind } from '@repo/tailwind-config';
+import { colors } from '@repo/design-system/lib/colors';
 import { DatabaseIcon } from 'lucide-react';
 
 export const AiIndexingChart = async () => {
@@ -55,15 +55,15 @@ export const AiIndexingChart = async () => {
     },
     summarize: {
       label: 'AI Feedback Summarization',
-      color: tailwind.theme.colors.amber[500],
+      color: colors.amber,
     },
     sentiment: {
       label: 'AI Sentiment Analysis',
-      color: tailwind.theme.colors.emerald[500],
+      color: colors.emerald,
     },
     rice: {
       label: 'AI RICE Score Estimation',
-      color: tailwind.theme.colors.indigo[500],
+      color: colors.indigo,
     },
   };
 

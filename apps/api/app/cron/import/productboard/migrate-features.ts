@@ -2,7 +2,7 @@ import { getMembers } from '@repo/backend/auth/utils';
 import { database } from '@repo/backend/database';
 import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
 import { markdownToContent } from '@repo/editor/lib/tiptap';
-import { Productboard } from '@repo/productboard';
+import { createClient } from '@repo/productboard';
 
 type ImportJobProperties = Pick<
   ProductboardImport,
@@ -14,8 +14,25 @@ export const migrateFeatures = async ({
   token,
   organizationId,
 }: ImportJobProperties): Promise<number> => {
-  const productboard = new Productboard(token);
-  const features = await productboard.feature.list();
+  const productboard = createClient({ accessToken: token });
+  const features = await productboard.GET('/features', {
+    params: {
+      header: {
+        'X-Version': 1,
+      },
+    },
+  });
+
+  if (features.error) {
+    throw new Error(
+      features.error.errors.map((error) => error.detail).join(', ')
+    );
+  }
+
+  if (!features.data) {
+    throw new Error('No features found');
+  }
+
   const members = await getMembers(organizationId);
   const databaseOrganization = await database.organization.findUnique({
     where: { id: organizationId },
@@ -31,9 +48,9 @@ export const migrateFeatures = async ({
     throw new Error('Could not find organization');
   }
 
-  const rootFeatures: typeof features = [];
-  const subFeatures: typeof features = [];
-  const newFeatures = features
+  const rootFeatures: typeof features.data.data = [];
+  const subFeatures: typeof features.data.data = [];
+  const newFeatures = features.data.data
     .filter((feature) => {
       const existing = databaseOrganization.features.find(
         ({ productboardId }) => productboardId === feature.id

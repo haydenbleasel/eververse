@@ -1,12 +1,11 @@
+import { CompanyLogo } from '@/app/(organization)/components/company-logo';
 import { FeedbackItem } from '@/app/(organization)/feedback/components/feedback-item';
 import { database } from '@/lib/database';
 import { getJsonColumnFromTable } from '@repo/backend/database';
-import { Prose } from '@repo/design-system/components/prose';
 import { Separator } from '@repo/design-system/components/ui/separator';
 import { contentToText } from '@repo/editor/lib/tiptap';
 import { createMetadata } from '@repo/seo/metadata';
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 type FeedbackCompanyPageProperties = {
@@ -87,20 +86,15 @@ const FeedbackCompanyPage = async (props: FeedbackCompanyPageProperties) => {
 
   return (
     <div className="w-full px-6 py-16">
-      <Prose className="mx-auto grid w-full gap-6">
-        {company.domain ? (
-          <Image
-            src={`https://logo.clearbit.com/${company.domain}`}
-            alt={company.name}
-            width={96}
-            height={96}
-            className="m-0 rounded-full"
-          />
-        ) : (
-          <div className="h-24 w-24 rounded-full bg-card" />
-        )}
+      <div className="mx-auto grid w-full max-w-prose gap-6">
+        <CompanyLogo
+          src={company.domain}
+          size={96}
+          className="m-0 rounded-full"
+          fallback={company.name.slice(0, 2)}
+        />
 
-        <div>
+        <div className="grid gap-2">
           <h2 className="resize-none border-none bg-transparent p-0 font-semibold text-4xl text-foreground tracking-tight shadow-none outline-none">
             {company.name}
           </h2>
@@ -109,9 +103,9 @@ const FeedbackCompanyPage = async (props: FeedbackCompanyPageProperties) => {
 
         <Separator />
 
-        <div>
-          <h2>Feedback</h2>
-          <div className="not-prose space-y-1">
+        <div className="grid gap-2">
+          <h2 className="font-semibold text-lg">Feedback</h2>
+          <div className="grid gap-1">
             {modifiedFeedback.map((feedbackItem) => (
               <div
                 className="overflow-hidden rounded-md border bg-background"
@@ -122,7 +116,7 @@ const FeedbackCompanyPage = async (props: FeedbackCompanyPageProperties) => {
             ))}
           </div>
         </div>
-      </Prose>
+      </div>
     </div>
   );
 };

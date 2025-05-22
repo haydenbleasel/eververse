@@ -1,13 +1,15 @@
-import '@repo/design-system/styles/globals.css';
+import './styles.css';
 import { CallToAction } from '@/components/cta';
 import { Footer } from '@/components/footer';
+import { Identify } from '@/components/identify';
 import { Navbar } from '@/components/navbar';
+import { Pageview } from '@/components/pageview';
 import { env } from '@/env';
 import { AnalyticsProvider } from '@repo/analytics';
 import { DesignSystemProvider } from '@repo/design-system/components/provider';
 import { fonts } from '@repo/design-system/lib/fonts';
 import Script from 'next/script';
-import type { ReactNode } from 'react';
+import { type ReactNode, Suspense } from 'react';
 
 type RootLayoutProperties = {
   readonly children: ReactNode;
@@ -17,6 +19,10 @@ const RootLayout = ({ children }: RootLayoutProperties) => (
   <html lang="en" className={fonts} suppressHydrationWarning>
     <body className="min-h-screen bg-backdrop">
       <AnalyticsProvider>
+        <Suspense fallback={null}>
+          <Pageview />
+          <Identify />
+        </Suspense>
         <DesignSystemProvider>
           <Navbar />
           <main className="divide-y">

@@ -6,8 +6,8 @@ import { Input } from '@repo/design-system/components/precomposed/input';
 import { Switch } from '@repo/design-system/components/precomposed/switch';
 import { Button } from '@repo/design-system/components/ui/button';
 import { Label } from '@repo/design-system/components/ui/label';
+import { colors } from '@repo/design-system/lib/colors';
 import { handleError } from '@repo/design-system/lib/handle-error';
-import { tailwind } from '@repo/tailwind-config';
 import { useId, useState } from 'react';
 import { FeatureStatusColorPicker } from './feature-status-color-picker';
 
@@ -16,7 +16,7 @@ export const CreateStatusButton = () => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState('');
-  const [color, setColor] = useState<string>(tailwind.theme.colors.gray[500]);
+  const [color, setColor] = useState<string>(colors.gray);
   const [complete, setComplete] = useState(false);
 
   const handleSave = async () => {
@@ -32,7 +32,7 @@ export const CreateStatusButton = () => {
       }
 
       setName('');
-      setColor(tailwind.theme.colors.gray[500]);
+      setColor(colors.gray);
       setComplete(false);
       setOpen(false);
 

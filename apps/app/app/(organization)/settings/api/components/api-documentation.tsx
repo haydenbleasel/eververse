@@ -1,8 +1,7 @@
 import { MemoizedReactMarkdown } from '@/components/markdown';
+import { Prose } from '@repo/design-system/components/prose';
 
 const docs = `
-## Welcome
-
 Use the Eververse API to interact with your Eververse data programmatically. The Eververse API is organized around REST. Our API has predictable resource-oriented URLs, accepts JSON-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
 
 The Eververse API doesn’t support bulk updates. You can work on only one object per request.
@@ -91,5 +90,7 @@ curl --request POST \\
 `;
 
 export const APIDocumentation = () => (
-  <MemoizedReactMarkdown>{docs}</MemoizedReactMarkdown>
+  <Prose className="prose-sm">
+    <MemoizedReactMarkdown>{docs}</MemoizedReactMarkdown>
+  </Prose>
 );

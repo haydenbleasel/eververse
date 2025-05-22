@@ -1,11 +1,6 @@
 import withBundleAnalyzer from '@next/bundle-analyzer';
-
-// @ts-expect-error No declaration file
-import { PrismaPlugin } from '@prisma/nextjs-monorepo-workaround-plugin';
 import type { NextConfig } from 'next';
 import { createSecureHeaders } from 'next-secure-headers';
-
-const otelRegex = /@opentelemetry\/instrumentation/;
 
 export const config: NextConfig = {
   images: {
@@ -13,7 +8,7 @@ export const config: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'logo.clearbit.com',
+        hostname: 'img.logo.dev',
       },
       {
         protocol: 'https',
@@ -33,8 +28,6 @@ export const config: NextConfig = {
       bodySizeLimit: '10mb',
     },
   },
-
-  transpilePackages: ['tailwindcss'],
 
   // biome-ignore lint/suspicious/useAwait: "headers" is an async function
   async headers() {
@@ -70,18 +63,11 @@ export const config: NextConfig = {
     ];
   },
 
-  webpack(config, { isServer }) {
-    if (isServer) {
-      config.plugins = [...config.plugins, new PrismaPlugin()];
-    }
-
-    config.ignoreWarnings = [{ module: otelRegex }];
-
-    return config;
-  },
-
   // This is required to support PostHog trailing slash API requests
   skipTrailingSlashRedirect: true,
+
+  // This is required to support Sentry
+  transpilePackages: ['@sentry/nextjs'],
 };
 
 export const withAnalyzer = (sourceConfig: NextConfig): NextConfig =>

@@ -4,7 +4,7 @@ import {
   type PieChartProperties,
 } from '@repo/design-system/components/charts/pie';
 import { StackCard } from '@repo/design-system/components/stack-card';
-import { tailwind } from '@repo/tailwind-config';
+import { colors } from '@repo/design-system/lib/colors';
 import { EyeIcon } from 'lucide-react';
 
 export const ProcessedChart = async () => {
@@ -20,12 +20,12 @@ export const ProcessedChart = async () => {
     {
       status: 'Processed',
       count: 0,
-      fill: tailwind.theme.colors.emerald[500],
+      fill: colors.emerald,
     },
     {
       status: 'Unprocessed',
       count: 0,
-      fill: tailwind.theme.colors.gray[300],
+      fill: colors.gray,
     },
   ];
 

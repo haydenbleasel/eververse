@@ -1,4 +1,4 @@
-import '@repo/design-system/styles/globals.css';
+import './styles.css';
 import { fonts } from '@repo/design-system/lib/fonts';
 import { cn } from '@repo/design-system/lib/utils';
 import type { ReactNode } from 'react';

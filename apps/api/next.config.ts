@@ -8,13 +8,33 @@ let nextConfig: NextConfig = withBackend(
   withLogtail({
     ...config,
 
-    // biome-ignore lint/suspicious/useAwait: <explanation>
+    // biome-ignore lint/suspicious/useAwait: "redirects is async"
     async redirects() {
       return [
         {
           source: '/',
           destination: 'https://www.eververse.ai/',
           permanent: true,
+        },
+      ];
+    },
+
+    async headers() {
+      return [
+        ...(config.headers ? await config.headers() : []),
+        {
+          source: '/widget.js|/panel|/trigger',
+          headers: [
+            { key: 'Access-Control-Allow-Origin', value: '*' },
+            {
+              key: 'Access-Control-Allow-Methods',
+              value: 'GET, POST, PUT, DELETE, OPTIONS',
+            },
+            {
+              key: 'Access-Control-Allow-Headers',
+              value: 'Content-Type, Authorization',
+            },
+          ],
         },
       ];
     },

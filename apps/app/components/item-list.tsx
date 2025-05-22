@@ -2,7 +2,6 @@
 
 import { Link } from '@repo/design-system/components/link';
 import { LoadingCircle } from '@repo/design-system/components/loading-circle';
-import { Avatar } from '@repo/design-system/components/precomposed/avatar';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { cn } from '@repo/design-system/lib/utils';
 import type { FetchNextPageOptions } from '@tanstack/react-query';
@@ -17,10 +16,7 @@ type ItemListProps = {
     title: ReactNode;
     description?: string;
     caption?: string;
-    image?: {
-      src: string | undefined;
-      fallback: string | undefined;
-    };
+    image?: ReactNode;
   }[];
   hasNextPage: boolean;
   isFetching: boolean;
@@ -44,11 +40,7 @@ export const ListItem = ({
           'bg-primary/10 text-primary hover:bg-primary/10 hover:text-primary'
       )}
     >
-      {data.image ? (
-        <div className="relative">
-          <Avatar src={data.image.src} fallback={data.image.fallback} />
-        </div>
-      ) : null}
+      {data.image ? <div className="relative">{data.image}</div> : null}
       <div className="relative z-10 grid w-full gap-1">
         <div className="flex items-center justify-between gap-3 truncate">
           <p className="truncate font-medium text-sm transition-colors">

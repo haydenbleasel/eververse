@@ -1,6 +1,7 @@
 'use client';
 
 import { getFeedbackCompanies } from '@/actions/feedback-organization/list';
+import { CompanyLogo } from '@/app/(organization)/components/company-logo';
 import { ItemList } from '@/components/item-list';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { formatDate } from '@repo/lib/format';
@@ -42,10 +43,13 @@ export const FeedbackCompanyList = () => {
           title: item.name,
           description: item.domain ?? '',
           caption: formatDate(item.createdAt),
-          image: {
-            src: `https://logo.clearbit.com/${item.domain}`,
-            fallback: item.name,
-          },
+          image: (
+            <CompanyLogo
+              src={item.domain}
+              fallback={item.name.slice(0, 2)}
+              size={20}
+            />
+          ),
         })) ?? []
       }
       fetchNextPage={fetchNextPage}

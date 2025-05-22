@@ -13,10 +13,10 @@ import type {
 } from '@repo/backend/prisma/client';
 import { Dialog } from '@repo/design-system/components/precomposed/dialog';
 import { Select } from '@repo/design-system/components/precomposed/select';
-import * as Gantt from '@repo/design-system/components/roadmap-ui/gantt';
 import { StackCard } from '@repo/design-system/components/stack-card';
 import { Stepper } from '@repo/design-system/components/stepper';
 import { Button } from '@repo/design-system/components/ui/button';
+import * as Gantt from '@repo/design-system/components/ui/kibo-ui/gantt';
 import { GanttChartIcon, Maximize2Icon } from 'lucide-react';
 import { useCallback, useMemo, useState } from 'react';
 

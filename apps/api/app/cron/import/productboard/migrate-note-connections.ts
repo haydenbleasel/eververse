@@ -1,6 +1,6 @@
 import { database } from '@repo/backend/database';
 import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
-import { Productboard } from '@repo/productboard';
+import { createClient } from '@repo/productboard';
 
 type ImportJobProperties = Pick<
   ProductboardImport,
@@ -12,8 +12,23 @@ export const migrateNoteConnections = async ({
   organizationId,
   creatorId,
 }: ImportJobProperties): Promise<number> => {
-  const productboard = new Productboard(token);
-  const notes = await productboard.note.list();
+  const productboard = createClient({ accessToken: token });
+
+  const notes = await productboard.GET('/notes', {
+    params: {
+      header: {
+        'X-Version': 1,
+      },
+    },
+  });
+
+  if (notes.error) {
+    throw new Error(notes.error.errors?.source?.join(', ') ?? 'Unknown error');
+  }
+
+  if (!notes.data) {
+    throw new Error('No notes found');
+  }
 
   const databaseOrganization = await database.organization.findUnique({
     where: { id: organizationId },
@@ -44,15 +59,17 @@ export const migrateNoteConnections = async ({
   const transactions: Prisma.PrismaPromise<unknown>[] = [];
 
   for (const feedback of databaseOrganization.feedback) {
-    const originalNote = notes.find(({ id }) => id === feedback.productboardId);
+    const originalNote = notes.data.data.find(
+      ({ id }) => id === feedback.productboardId
+    );
 
     if (!originalNote) {
       continue;
     }
 
-    const noteLinkedFeatures = originalNote.features.map(({ id }) => id);
+    const noteLinkedFeatures = originalNote.features?.map(({ id }) => id);
 
-    if (!noteLinkedFeatures.length) {
+    if (!noteLinkedFeatures?.length) {
       continue;
     }
 

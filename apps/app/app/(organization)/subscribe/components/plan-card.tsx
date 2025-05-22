@@ -1,3 +1,4 @@
+import NumberFlow from '@number-flow/react';
 import { Link } from '@repo/design-system/components/link';
 import { Button } from '@repo/design-system/components/ui/button';
 import { CircleCheckBigIcon } from 'lucide-react';
@@ -54,9 +55,11 @@ export const PlanCard = ({
             </p>
           ) : (
             <div className="flex items-center gap-2 text-muted-foreground text-sm">
-              <p className="font-semibold text-3xl text-foreground">
-                ${interval === 'YEARLY' ? price.value / 12 : price.value}
-              </p>
+              <NumberFlow
+                value={interval === 'YEARLY' ? price.value / 12 : price.value}
+                prefix="$"
+                className="-my-1 font-semibold text-3xl text-foreground"
+              />
               <div className="text-xs">
                 <p>per user</p>
                 <p>per month</p>

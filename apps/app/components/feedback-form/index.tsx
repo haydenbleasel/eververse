@@ -312,7 +312,7 @@ export const FeedbackForm = ({
               organizationsData={organizations.map((org) => ({
                 value: org.id,
                 label: org.name,
-                image: `https://logo.clearbit.com/${org.domain}`,
+                image: org.domain,
               }))}
               value={feedbackOrganization}
               onChange={setFeedbackOrganization}

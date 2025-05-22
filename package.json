@@ -7,7 +7,7 @@
     "lint": "turbo lint",
     "analyze": "turbo analyze",
     "migrate": "cd packages/backend && npx prisma format && npx prisma generate && npx prisma db push",
-    "bump-deps": "npx npm-check-updates --deep -u -x react-day-picker,@tiptap/*,prosemirror-*,@tiptap-pro/*,@excalidraw/excalidraw && pnpm install",
+    "bump-deps": "npx npm-check-updates --deep -u -x react-day-picker,@tiptap/*,prosemirror-*,@tiptap-pro/*,@excalidraw/excalidraw,novel && pnpm install",
     "bump-ui": "npx shadcn@latest add --all --overwrite -c packages/design-system"
   },
   "devDependencies": {
@@ -17,8 +17,8 @@
     "@repo/typescript-config": "workspace:*",
     "concurrently": "^9.1.2",
     "turbo": "^2.5.3",
-    "typescript": "^5.7.3",
-    "ultracite": "4.1.14"
+    "typescript": "^5.8.3",
+    "ultracite": "4.2.5"
   },
   "engines": {
     "node": ">=20"
@@ -52,5 +52,5 @@
       "react-dom": "19.0.0"
     }
   },
-  "packageManager": "pnpm@9.15.3"
+  "packageManager": "pnpm@10.11.0"
 }

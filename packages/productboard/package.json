@@ -2,11 +2,18 @@
   "name": "@repo/productboard",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "dev": "npm run build",
+    "build": "npx -y openapi-typescript@latest https://developer.productboard.com/openapi/6567b3ef78f0050045fb41e3 -o ./types.d.ts"
+  },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "typescript": "^5.7.3"
+    "@types/node": "^22.15.21",
+    "typescript": "^5.8.3"
   },
   "dependencies": {
-    "ky": "^1.7.4"
+    "@t3-oss/env-nextjs": "^0.13.4",
+    "openapi-fetch": "^0.14.0",
+    "zod": "^3.25.17"
   }
 }

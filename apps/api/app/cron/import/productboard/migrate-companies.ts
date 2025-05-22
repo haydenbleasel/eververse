@@ -1,6 +1,6 @@
 import { database } from '@repo/backend/database';
 import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
-import { Productboard } from '@repo/productboard';
+import { createClient } from '@repo/productboard';
 
 type ImportJobProperties = Pick<
   ProductboardImport,
@@ -11,15 +11,30 @@ export const migrateCompanies = async ({
   organizationId,
   token,
 }: ImportJobProperties): Promise<number> => {
-  const productboard = new Productboard(token);
-  const companies = await productboard.company.list();
+  const productboard = createClient({ accessToken: token });
+
+  const companies = await productboard.GET('/companies', {
+    params: {
+      header: {
+        'X-Version': 1,
+      },
+    },
+  });
+
+  if (companies.error) {
+    throw new Error(companies.error.detail);
+  }
+
+  if (!companies.data) {
+    throw new Error('No companies found');
+  }
 
   const existingCompanies = await database.feedbackOrganization.findMany({
     where: { organizationId },
     select: { productboardId: true },
   });
 
-  const newCompanies = companies.filter((company) => {
+  const newCompanies = companies.data.data.filter((company) => {
     const existing = existingCompanies.find(
       ({ productboardId }) => productboardId === company.id
     );
@@ -29,7 +44,7 @@ export const migrateCompanies = async ({
 
   const data: Prisma.FeedbackOrganizationCreateManyInput[] = newCompanies.map(
     (company) => ({
-      name: company.name,
+      name: company.name ?? 'Unknown company',
       organizationId,
       productboardId: company.id,
       domain: company.domain,

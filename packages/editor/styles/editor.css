@@ -1,3 +1,5 @@
+@reference "@repo/design-system/styles/globals.css";
+
 /* stylelint-disable selector-class-pattern */
 
 .ProseMirror .is-editor-empty:first-child::before,

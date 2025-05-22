@@ -1,4 +1,5 @@
 import { Link } from '@repo/design-system/components/link';
+import { StackCard } from '@repo/design-system/components/stack-card';
 import { createMetadata } from '@repo/seo/metadata';
 import { ArrowRightIcon } from 'lucide-react';
 import type { Metadata } from 'next';
@@ -36,18 +37,18 @@ export const metadata: Metadata = createMetadata({
 
 const Import = () => (
   <div className="grid gap-6">
-    <div>
+    <div className="grid gap-2">
       <h1 className="m-0 font-semibold text-4xl">Import</h1>
       <p className="mt-2 mb-0 text-muted-foreground">
         Import your feedback, features, components and changelogs into Eververse
       </p>
     </div>
-    <div className="not-prose divide-y">
+    <StackCard className="divide-y p-0">
       {sources.map((source) => (
         <Link
           key={source.title}
           href={source.link}
-          className="flex items-center gap-4 py-6"
+          className="flex items-center gap-4 p-4"
         >
           <Image
             src={source.icon}
@@ -68,7 +69,7 @@ const Import = () => (
           />
         </Link>
       ))}
-    </div>
+    </StackCard>
   </div>
 );
 

@@ -6,7 +6,7 @@ import type {
 } from '@repo/backend/prisma/client';
 import { emailRegex } from '@repo/lib/email';
 import { getGravatarUrl } from '@repo/lib/gravatar';
-import { Productboard } from '@repo/productboard';
+import { createClient } from '@repo/productboard';
 import { friendlyWords } from 'friendlier-words';
 
 type ImportJobProperties = Pick<
@@ -18,8 +18,22 @@ export const migrateUsers = async ({
   organizationId,
   token,
 }: ImportJobProperties): Promise<number> => {
-  const productboard = new Productboard(token);
-  const users = await productboard.user.list();
+  const productboard = createClient({ accessToken: token });
+  const users = await productboard.GET('/users', {
+    params: {
+      header: {
+        'X-Version': 1,
+      },
+    },
+  });
+
+  if (users.error) {
+    throw new Error(users.error.errors.map((error) => error.detail).join(', '));
+  }
+
+  if (!users.data.data) {
+    throw new Error('No users found');
+  }
 
   const databaseOrganization = await database.organization.findUnique({
     where: { id: organizationId },
@@ -33,7 +47,7 @@ export const migrateUsers = async ({
     throw new Error('Could not find organization');
   }
 
-  const newUsers = users.filter((user) => {
+  const newUsers = users.data.data.filter((user) => {
     const existing = databaseOrganization.feedbackUsers.find(
       ({ productboardId }) => productboardId === user.id
     );

@@ -6,7 +6,14 @@ import { PrismaClient } from './prisma/client';
 const env = keys();
 const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
 
-export const database = new PrismaClient();
+const globalForPrisma = global as unknown as { prisma: PrismaClient };
+const client = globalForPrisma.prisma || new PrismaClient();
+
+if (process.env.NODE_ENV !== 'production') {
+  globalForPrisma.prisma = client;
+}
+
+export const database = client;
 
 /* Workaround for https://github.com/prisma/prisma/issues/11842 */
 export const getJsonColumnFromTable = async (

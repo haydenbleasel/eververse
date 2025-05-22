@@ -6,12 +6,14 @@ import {
   currentOrganizationId,
   currentUser,
 } from '@repo/backend/auth/utils';
-import { SidebarProvider } from '@repo/design-system/components/ui/sidebar';
+import {
+  SidebarInset,
+  SidebarProvider,
+} from '@repo/design-system/components/ui/sidebar';
 import { MAX_FREE_MEMBERS } from '@repo/lib/consts';
-import { stripe } from '@repo/payments';
 import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import { Forms } from './components/forms';
 import { Navbar } from './components/navbar';
 
@@ -43,18 +45,7 @@ const OrganizationLayout = async ({
     throw new Error('Organization not found');
   }
 
-  if (organization.stripeSubscriptionId) {
-    try {
-      await stripe.subscriptions.retrieve(organization.stripeSubscriptionId);
-    } catch (error) {
-      console.log(error);
-
-      await database.organization.update({
-        where: { id: organizationId },
-        data: { stripeSubscriptionId: null },
-      });
-    }
-  } else {
+  if (!organization.stripeSubscriptionId) {
     const members = await currentMembers();
 
     if (members.length > MAX_FREE_MEMBERS) {
@@ -65,16 +56,19 @@ const OrganizationLayout = async ({
   return (
     <IntercomProvider>
       <SidebarProvider
-        style={{
-          // @ts-expect-error --sidebar-width is a custom property
-          '--sidebar-width': '220px',
-        }}
+        style={
+          {
+            '--sidebar-width': '220px',
+          } as CSSProperties
+        }
       >
         <Sidebar user={user} organization={organization} />
-        <main className="flex min-h-screen flex-1 flex-col">
-          <Navbar />
-          {children}
-        </main>
+        <SidebarInset className="bg-transparent">
+          <div className="flex min-h-screen flex-1 flex-col">
+            <Navbar />
+            {children}
+          </div>
+        </SidebarInset>
         <Suspense fallback={null}>
           <Forms />
         </Suspense>

@@ -4,17 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "npm run build",
-    "build": ""
+    "build": "npx -y openapi-typescript@latest https://developer.atlassian.com/cloud/jira/platform/swagger.v3.json -o ./types.d.ts"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "@types/node": "^22.10.5",
-    "typescript": "^5.7.3"
+    "@types/node": "^22.15.21",
+    "typescript": "^5.8.3"
   },
   "dependencies": {
-    "@t3-oss/env-nextjs": "^0.11.1",
-    "ky": "^1.7.4",
-    "openapi-fetch": "^0.13.4",
-    "zod": "^3.24.1"
+    "@t3-oss/env-nextjs": "^0.13.4",
+    "openapi-fetch": "^0.14.0",
+    "zod": "^3.25.17"
   }
 }

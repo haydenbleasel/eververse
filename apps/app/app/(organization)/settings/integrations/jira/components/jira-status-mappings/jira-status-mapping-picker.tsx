@@ -14,9 +14,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@repo/design-system/components/ui/popover';
+import { colors } from '@repo/design-system/lib/colors';
 import { cn } from '@repo/design-system/lib/utils';
 import { createFuse } from '@repo/lib/fuse';
-import { tailwind } from '@repo/tailwind-config';
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
 import { useState } from 'react';
 
@@ -34,14 +34,14 @@ const getStateColor = (
   state: JiraStatusMappingPickerProps['options'][number]['state']
 ) => {
   if (state === 'done') {
-    return tailwind.theme.colors.emerald[500];
+    return colors.emerald;
   }
 
   if (state === 'indeterminate') {
-    return tailwind.theme.colors.blue[500];
+    return colors.blue;
   }
 
-  return tailwind.theme.colors.gray[500];
+  return colors.gray;
 };
 
 export const JiraStatusMappingPicker = ({

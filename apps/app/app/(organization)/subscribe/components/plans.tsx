@@ -143,7 +143,7 @@ export const Plans = ({ products, currentPlan, prices }: PlansProperties) => {
           onChange={(interval) => setInterval(interval as 'MONTHLY' | 'YEARLY')}
         />
         {interval === 'YEARLY' && (
-          <p className="-right-20 -rotate-6 absolute top-2 font-medium text-primary text-sm">
+          <p className="-right-20 -rotate-6 absolute top-2 font-medium text-sm text-violet-500">
             Save 20%!
           </p>
         )}

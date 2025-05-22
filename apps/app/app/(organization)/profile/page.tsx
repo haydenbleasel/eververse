@@ -24,7 +24,7 @@ const Profile = async () => {
       <div className="mx-auto grid w-full max-w-xl divide-y rounded-lg border bg-background shadow-sm">
         <div className="grid grid-cols-3 gap-8 p-8">
           <div>
-            <div className="relative aspect-square overflow-hidden overflow-hidden rounded-xl">
+            <div className="relative aspect-square overflow-hidden rounded-xl">
               <ProfilePhoto userId={user.id} />
               {user.user_metadata.image_url && (
                 <Image

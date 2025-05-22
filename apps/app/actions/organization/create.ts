@@ -4,9 +4,9 @@ import { EververseRole } from '@repo/backend/auth';
 import { createClient } from '@repo/backend/auth/server';
 import { currentUser } from '@repo/backend/auth/utils';
 import { database } from '@repo/backend/database';
+import { colors } from '@repo/design-system/lib/colors';
 import { parseError } from '@repo/lib/parse-error';
 import { slugify } from '@repo/lib/slugify';
-import { tailwind } from '@repo/tailwind-config';
 
 type CreateOrganizationProps = {
   name: string;
@@ -50,17 +50,17 @@ export const createOrganization = async ({
             data: [
               {
                 name: 'Backlog',
-                color: tailwind.theme.colors.rose[500],
+                color: colors.rose,
                 order: 0,
               },
               {
                 name: 'In Progress',
-                color: tailwind.theme.colors.yellow[500],
+                color: colors.yellow,
                 order: 1,
               },
               {
                 name: 'Completed',
-                color: tailwind.theme.colors.emerald[500],
+                color: colors.emerald,
                 order: 2,
                 complete: true,
               },

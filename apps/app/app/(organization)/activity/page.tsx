@@ -1,6 +1,5 @@
 import { getActivity } from '@/actions/activity/get';
 import { currentMembers } from '@repo/backend/auth/utils';
-import { Prose } from '@repo/design-system/components/prose';
 import { createMetadata } from '@repo/seo/metadata';
 import {
   HydrationBoundary,
@@ -41,15 +40,15 @@ const Activity = async () => {
   ]);
 
   return (
-    <Prose className="mx-auto flex w-full max-w-3xl flex-col gap-6 p-6 py-16">
-      <div className="space-y-2">
+    <div className="mx-auto grid w-full max-w-3xl gap-6 p-6 py-16">
+      <div className="grid gap-2">
         <h1 className="m-0 font-semibold text-4xl">{title}</h1>
         <p className="text-muted-foreground">{description}</p>
       </div>
       <HydrationBoundary state={dehydrate(queryClient)}>
         <ActivityFeed members={members} />
       </HydrationBoundary>
-    </Prose>
+    </div>
   );
 };
 

@@ -17,23 +17,23 @@
     "@repo/next-config": "workspace:*",
     "@repo/observability": "workspace:*",
     "@repo/seo": "workspace:*",
-    "@repo/tailwind-config": "workspace:*",
-    "@sentry/nextjs": "^8.48.0",
-    "@t3-oss/env-nextjs": "^0.11.1",
-    "import-in-the-middle": "^1.12.0",
-    "lucide-react": "^0.471.0",
+    "@sentry/nextjs": "^9.22.0",
+    "@t3-oss/env-nextjs": "^0.13.4",
+    "import-in-the-middle": "^1.13.2",
+    "lucide-react": "^0.511.0",
     "next": "15.3.2",
-    "next-themes": "^0.4.4",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "require-in-the-middle": "^7.4.0",
+    "next-themes": "^0.4.6",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "require-in-the-middle": "^7.5.2",
     "server-only": "^0.0.1",
-    "zod": "^3.24.1",
-    "zustand": "^5.0.3"
+    "zod": "^3.25.17",
+    "zustand": "^5.0.5"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "@types/react": "19.0.4",
-    "typescript": "^5.7.3"
+    "@types/react": "19.1.5",
+    "tailwindcss": "^4.1.7",
+    "typescript": "^5.8.3"
   }
 }

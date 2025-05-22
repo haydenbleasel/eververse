@@ -73,7 +73,6 @@ It also contains the following packages:
 | `canvas` | The Excalidraw canvas. |
 | `design-system` | The design system, powered by shadcn/ui. |
 | `editor` | The rich text editor, powered by Novel and TipTap. |
-| `eleven-labs` | The Eleven Labs API client for generating voice from text. |
 | `email` | The email provider and templates, powered by Resend and react-email. |
 | `github` | The GitHub API client (Octokit). |
 | `lib` | Various utility functions and types. |
@@ -84,7 +83,6 @@ It also contains the following packages:
 | `productboard` | The Productboard API client. |
 | `seo` | Utility functions for SEO. |
 | `slack` | The Slack API client. |
-| `tailwind-config` | The Tailwind configuration, which contains the shared Tailwind configuration for the app. |
 | `typescript-config` | The TypeScript configuration, which contains the shared TypeScript configuration for the app. |
 | `widget` | The core functionality for the embeddable Eververse widget. |
 
