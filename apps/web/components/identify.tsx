@@ -6,7 +6,7 @@ import { useUser } from '@repo/backend/hooks/use-user';
 export const Identify = () => {
   const user = useUser();
 
-  if (!user) {
+  if (!user || process.env.NODE_ENV === 'development') {
     return null;
   }
 
