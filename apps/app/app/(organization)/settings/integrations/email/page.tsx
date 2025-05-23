@@ -24,7 +24,7 @@ const EmailPage = async () => {
   }
 
   return (
-    <div className="grid gap-6">
+    <>
       <Image
         src="/email.svg"
         width={32}
@@ -46,7 +46,7 @@ const EmailPage = async () => {
           className="h-auto rounded-none border-none p-3 shadow-none"
         />
       </StackCard>
-    </div>
+    </>
   );
 };
 

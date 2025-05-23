@@ -44,7 +44,7 @@ const IntegrationsSettings = async () => {
       description: 'Two-way sync your Jira issues with Eververse features.',
       icon: '/jira.svg',
       installed: Boolean(jiraInstallation),
-      installLink: '/api/integrations/jira/start',
+      installLink: '/settings/integrations/jira',
       configureLink: '/settings/integrations/jira',
     },
 
@@ -70,15 +70,15 @@ const IntegrationsSettings = async () => {
       description: 'Sync with Linear issues',
       icon: '/linear.svg',
       installed: Boolean(linearInstallation),
-      installLink: '/api/integrations/linear/start',
+      installLink: '/settings/integrations/linear',
       configureLink: '/settings/integrations/linear',
     },
     {
       title: 'Slack',
-      description: 'Send data from Slack to Eververse.',
+      description: 'Send notifications to Slack.',
       icon: '/slack.svg',
       installed: Boolean(slackInstallation),
-      installLink: '/api/integrations/slack/start',
+      installLink: '/settings/integrations/slack',
       configureLink: '/settings/integrations/slack',
     },
     {
@@ -86,7 +86,7 @@ const IntegrationsSettings = async () => {
       description: 'Capture incoming feedback from Intercom.',
       icon: '/intercom.svg',
       installed: Boolean(intercomInstallation),
-      installLink: '/api/integrations/intercom/start',
+      installLink: '/settings/integrations/intercom',
       configureLink: '/settings/integrations/intercom',
     },
     {
@@ -126,10 +126,10 @@ const IntegrationsSettings = async () => {
               className="m-0 h-8 w-8 shrink-0 object-contain"
             />
             <div className="block flex-1">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 <div className="block font-medium">{integration.title}</div>
                 {integration.installed && (
-                  <Badge variant="outline">Installed</Badge>
+                  <Badge variant="secondary">Installed</Badge>
                 )}
               </div>
               <div className="block text-muted-foreground text-sm">

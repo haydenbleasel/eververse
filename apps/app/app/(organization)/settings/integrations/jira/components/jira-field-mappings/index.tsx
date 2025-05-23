@@ -1,11 +1,7 @@
 import { database } from '@/lib/database';
-import { createOauth2Client } from '@repo/atlassian';
+import { createClient } from '@repo/atlassian';
 import { StackCard } from '@repo/design-system/components/stack-card';
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from '@repo/design-system/components/ui/alert';
+import {} from '@repo/design-system/components/ui/alert';
 import {
   ArrowRightIcon,
   DotIcon,
@@ -39,20 +35,12 @@ const fixedFields = [
 ];
 
 export const JiraFieldMappings = async () => {
-  const atlassianInstallation = await database.atlassianInstallation.findFirst({
+  const installation = await database.atlassianInstallation.findFirst({
     select: {
       id: true,
       accessToken: true,
-      resources: {
-        select: {
-          resourceId: true,
-          webhooks: {
-            select: {
-              webhookId: true,
-            },
-          },
-        },
-      },
+      email: true,
+      siteUrl: true,
       fieldMappings: {
         select: {
           id: true,
@@ -63,29 +51,11 @@ export const JiraFieldMappings = async () => {
     },
   });
 
-  if (!atlassianInstallation) {
+  if (!installation) {
     return <div />;
   }
 
-  const resourceId = atlassianInstallation.resources.at(0)?.resourceId;
-
-  if (!resourceId) {
-    return (
-      <Alert>
-        <AlertTitle>No resources found</AlertTitle>
-        <AlertDescription>
-          You need to connect a Jira resource to your organization to use this
-          feature.
-        </AlertDescription>
-      </Alert>
-    );
-  }
-
-  const atlassian = createOauth2Client({
-    cloudId: resourceId,
-    accessToken: atlassianInstallation.accessToken,
-  });
-
+  const atlassian = createClient(installation);
   const jiraFields = await atlassian.GET('/rest/api/2/field');
 
   return (
@@ -115,7 +85,7 @@ export const JiraFieldMappings = async () => {
         ))}
       </div>
       <JiraFieldMappingTable
-        fieldMappings={atlassianInstallation.fieldMappings}
+        fieldMappings={installation.fieldMappings}
         jiraFields={
           jiraFields.data
             ?.filter((field) => field.schema?.type)
@@ -126,7 +96,7 @@ export const JiraFieldMappings = async () => {
               type: field.schema?.type ?? '',
             })) ?? []
         }
-        installationId={atlassianInstallation.id}
+        installationId={installation.id}
       />
     </StackCard>
   );

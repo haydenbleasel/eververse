@@ -250,7 +250,7 @@ const groups = [
       },
       {
         label: 'Slack',
-        description: 'Create Eververse feedback from Slack messages.',
+        description: 'Send feedback notifications to Slack.',
         plans: [true, true, true],
       },
       {

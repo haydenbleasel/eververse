@@ -88,7 +88,6 @@ export type RoadmapEditorProperties = {
   })[];
   readonly markers: Pick<RoadmapEvent, 'date' | 'id' | 'text'>[];
   readonly editable: boolean;
-  readonly subscribed: boolean;
   readonly members: User[];
 };
 
@@ -97,7 +96,6 @@ export const RoadmapEditor = ({
   allFeatures,
   markers,
   editable,
-  subscribed,
   members,
 }: RoadmapEditorProperties) => {
   const [search, setSearch] = useQueryState(
@@ -376,7 +374,6 @@ export const RoadmapEditor = ({
             : undefined
         }
         editable={editable}
-        subscribed={subscribed}
       />
       <RoadmapAddFeature
         features={allFeatures}

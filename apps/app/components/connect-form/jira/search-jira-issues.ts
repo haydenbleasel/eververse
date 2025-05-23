@@ -1,7 +1,7 @@
 'use server';
 
 import { database } from '@/lib/database';
-import { createOauth2Client } from '@repo/atlassian';
+import { createClient } from '@repo/atlassian';
 import { parseError } from '@repo/lib/parse-error';
 import { log } from '@repo/observability/log';
 import { revalidatePath } from 'next/cache';
@@ -25,62 +25,49 @@ export const searchJiraIssues = async (
     }
 > => {
   try {
-    const atlassianInstallation =
-      await database.atlassianInstallation.findFirst({
-        select: {
-          accessToken: true,
-          resources: {
-            select: {
-              resourceId: true,
-              url: true,
-            },
-          },
-        },
-      });
+    const installation = await database.atlassianInstallation.findFirst({
+      select: {
+        accessToken: true,
+        siteUrl: true,
+        email: true,
+      },
+    });
 
-    if (!atlassianInstallation) {
+    if (!installation) {
       throw new Error('Jira installation not found');
     }
 
-    const issues = await Promise.all(
-      atlassianInstallation.resources.map(async (resource) => {
-        const atlassian = createOauth2Client({
-          accessToken: atlassianInstallation.accessToken,
-          cloudId: resource.resourceId,
-        });
+    const atlassian = createClient(installation);
+    const response = await atlassian.POST('/rest/api/2/search', {
+      body: {
+        jql: `(summary ~ "${query}" OR description ~ "${query}" OR text ~ "${query}")`,
+        maxResults: 100,
+      },
+    });
 
-        const response = await atlassian.POST('/rest/api/2/search', {
-          body: {
-            jql: `(summary ~ "${query}" OR description ~ "${query}" OR text ~ "${query}")`,
-            maxResults: 100,
-          },
-        });
+    if (response.error) {
+      log.error(`Error searching Jira issues: ${JSON.stringify(response)}`);
+      throw new Error('Error searching Jira issues');
+    }
 
-        if (response.error) {
-          log.error(`Error searching Jira issues: ${JSON.stringify(response)}`);
-          throw new Error('Error searching Jira issues');
-        }
+    if (!response.data?.issues) {
+      return { issues: [] };
+    }
 
-        if (!response.data?.issues) {
-          return [];
-        }
-
-        return response.data.issues.flatMap((issue) => ({
-          id: issue.id ?? '',
-          image: new URL(
-            (issue.fields?.issuetype as { iconUrl?: string })?.iconUrl ?? '',
-            resource.url
-          ).toString(),
-          url: new URL(`/browse/${issue.key}`, resource.url).toString(),
-          title: (issue.fields?.summary as string) ?? '',
-          key: issue.key ?? '',
-        }));
-      })
-    );
+    const issues = response.data.issues.flatMap((issue) => ({
+      id: issue.id ?? '',
+      image: new URL(
+        (issue.fields?.issuetype as { iconUrl?: string })?.iconUrl ?? '',
+        installation.siteUrl
+      ).toString(),
+      url: new URL(`/browse/${issue.key}`, installation.siteUrl).toString(),
+      title: (issue.fields?.summary as string) ?? '',
+      key: issue.key ?? '',
+    }));
 
     revalidatePath('/features', 'page');
 
-    return { issues: issues.flat() };
+    return { issues };
   } catch (error) {
     const message = parseError(error);
 

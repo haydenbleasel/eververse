@@ -5,6 +5,7 @@ import { Button } from '@repo/design-system/components/ui/button';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 export const RemoveJiraButton = () => {
   const [loading, setLoading] = useState(false);
@@ -18,13 +19,17 @@ export const RemoveJiraButton = () => {
     setLoading(true);
 
     try {
-      const { error } = await deleteAtlassianInstallation();
+      const response = await deleteAtlassianInstallation();
 
-      if (error) {
-        throw new Error(error);
+      if ('error' in response) {
+        throw new Error(response.error);
       }
 
-      router.push('/settings/integrations');
+      toast.success('Jira integration removed');
+
+      setTimeout(() => {
+        router.refresh();
+      }, 1000);
     } catch (error) {
       handleError(error);
     } finally {

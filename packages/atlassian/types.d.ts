@@ -45253,7 +45253,7 @@ export interface operations {
             query?: {
                 /** @description The index of the first item to return in a page of results (page offset). */
                 startAt?: number;
-                /** @description The maximum number of items to return per page. */
+                /** @description The maximum number of items to return per page. Must be less than or equal to 100. If a value greater than 100 is provided, the `maxResults` parameter will default to 100. */
                 maxResults?: number;
                 /** @description [Order](#ordering) the results by a field.
                  *
@@ -55594,7 +55594,7 @@ export interface operations {
     updateWorkflows: {
         parameters: {
             query?: {
-                /** @description Use [expand](#expansion) to include additional information in the response. This parameter accepts a comma-separated list. Expand options include:
+                /** @description Deprecated. See the [deprecation notice](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2298) for details. Use [expand](#expansion) to include additional information in the response. This parameter accepts a comma-separated list. Expand options include:
                  *
                  *      *  `workflows.usages` Returns the project and issue types that each workflow is associated with.
                  *      *  `statuses.usages` Returns the project and issue types that each status is associated with. */

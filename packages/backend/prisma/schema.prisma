@@ -50,8 +50,6 @@ model Organization {
   slackInstallations         SlackInstallation[]
   intercomInstallations      IntercomInstallation[]
   atlassianInstallations     AtlassianInstallation[]
-  atlassianResources         AtlassianResource[]
-  atlassianWebhooks          AtlassianWebhook[]
   installationStatusMappings InstallationStatusMapping[]
   installationFieldMappings  InstallationFieldMapping[]
   installationStates         InstallationState[]
@@ -697,8 +695,6 @@ model LinearInstallation {
   organizationId     String                      @db.VarChar(191)
   creatorId          String                      @db.VarChar(191)
   accessToken        String                      @db.VarChar(191)
-  tokenType          String                      @db.VarChar(191)
-  expiresIn          Int
   organization       Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   statusMappings     InstallationStatusMapping[]
   featureConnections FeatureConnection[]
@@ -708,24 +704,13 @@ model LinearInstallation {
 }
 
 model SlackInstallation {
-  id                              String       @id(map: "idx_33301_PRIMARY") @default(cuid()) @db.VarChar(191)
-  createdAt                       DateTime     @default(now()) @db.Timestamptz(6)
-  updatedAt                       DateTime     @updatedAt @db.Timestamptz(6)
-  organizationId                  String       @db.VarChar(191)
-  creatorId                       String       @db.VarChar(191)
-  accessToken                     String       @db.VarChar(191)
-  tokenType                       String       @db.VarChar(191)
-  scope                           String       @db.VarChar(191)
-  botUserId                       String       @db.VarChar(191)
-  appId                           String       @db.VarChar(191)
-  teamName                        String       @db.VarChar(191)
-  teamId                          String       @db.VarChar(191)
-  authedUserId                    String       @db.VarChar(191)
-  incomingWebhookChannel          String       @db.VarChar(191)
-  incomingWebhookChannelId        String       @db.VarChar(191)
-  incomingWebhookConfigurationUrl String       @db.VarChar(191)
-  incomingWebhookUrl              String       @db.VarChar(191)
-  organization                    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  id             String       @id(map: "idx_33301_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  organizationId String       @db.VarChar(191)
+  creatorId      String       @db.VarChar(191)
+  webhookUrl     String       @db.VarChar(191)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
   @@index([organizationId], map: "idx_33301_slack_installation_organizationId_idx")
   @@map("slack_installation")
@@ -737,8 +722,6 @@ model IntercomInstallation {
   updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
   organizationId String       @db.VarChar(191)
   creatorId      String       @db.VarChar(191)
-  accessToken    String       @db.VarChar(191)
-  tokenType      String       @db.VarChar(191)
   appId          String       @db.VarChar(191)
   organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
@@ -753,60 +736,15 @@ model AtlassianInstallation {
   creatorId          String                      @db.VarChar(191)
   organizationId     String                      @db.VarChar(191)
   accessToken        String
-  scope              String
-  refreshToken       String
-  expiresAt          DateTime                    @db.Timestamptz(6)
+  email              String
+  siteUrl            String
   organization       Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  resources          AtlassianResource[]
-  webhooks           AtlassianWebhook[]
   statusMappings     InstallationStatusMapping[]
   featureConnections FeatureConnection[]
   fieldMappings      InstallationFieldMapping[]
 
   @@index([organizationId], map: "idx_32961_atlassian_installation_organizationId_idx")
   @@map("atlassian_installation")
-}
-
-model AtlassianResource {
-  id             String                @id(map: "idx_32967_PRIMARY") @default(cuid()) @db.VarChar(191)
-  createdAt      DateTime              @default(now()) @db.Timestamptz(6)
-  updatedAt      DateTime              @updatedAt @db.Timestamptz(6)
-  creatorId      String                @db.VarChar(191)
-  organizationId String                @db.VarChar(191)
-  installationId String                @db.VarChar(191)
-  resourceId     String                @db.VarChar(191)
-  name           String                @db.VarChar(191)
-  url            String                @db.VarChar(191)
-  avatarUrl      String                @db.VarChar(191)
-  scopes         String                @db.VarChar(191)
-  organization   Organization          @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  installation   AtlassianInstallation @relation(fields: [installationId], references: [id], onDelete: Cascade)
-  webhooks       AtlassianWebhook[]
-
-  @@index([installationId], map: "idx_32967_atlassian_resource_installationId_idx")
-  @@index([organizationId], map: "idx_32967_atlassian_resource_organizationId_idx")
-  @@map("atlassian_resource")
-}
-
-model AtlassianWebhook {
-  id             String                @id(map: "idx_32973_PRIMARY") @default(cuid()) @db.VarChar(191)
-  createdAt      DateTime              @default(now()) @db.Timestamptz(6)
-  updatedAt      DateTime              @updatedAt @db.Timestamptz(6)
-  creatorId      String                @db.VarChar(191)
-  organizationId String                @db.VarChar(191)
-  installationId String                @db.VarChar(191)
-  webhookId      Int                   @unique(map: "idx_32973_atlassian_webhook_webhookId_key")
-  lastExtendedAt DateTime              @default(now()) @db.Timestamptz(6)
-  url            String                @db.VarChar(191)
-  resourceId     String                @db.VarChar(191)
-  organization   Organization          @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  installation   AtlassianInstallation @relation(fields: [installationId], references: [id], onDelete: Cascade)
-  resource       AtlassianResource     @relation(fields: [resourceId], references: [id], onDelete: Cascade)
-
-  @@index([installationId], map: "idx_32973_atlassian_webhook_installationId_idx")
-  @@index([organizationId], map: "idx_32973_atlassian_webhook_organizationId_idx")
-  @@index([resourceId], map: "idx_32973_atlassian_webhook_resourceId_idx")
-  @@map("atlassian_webhook")
 }
 
 model InstallationStatusMapping {

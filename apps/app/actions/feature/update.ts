@@ -1,7 +1,7 @@
 'use server';
 
 import { database } from '@/lib/database';
-import { createOauth2Client } from '@repo/atlassian';
+import { createClient } from '@repo/atlassian';
 import { EververseRole } from '@repo/backend/auth';
 import { currentUser } from '@repo/backend/auth/utils';
 import { getJsonColumnFromTable } from '@repo/backend/database';
@@ -27,21 +27,20 @@ const updateJira = async (
     throw new Error('Atlassian installation not found');
   }
 
-  const resource = await database.atlassianResource.findFirst({
-    where: { installationId: connection.atlassianInstallationId },
+  const installation = await database.atlassianInstallation.findUnique({
+    where: {
+      id: connection.atlassianInstallationId,
+    },
     select: {
-      resourceId: true,
-      installation: {
-        select: {
-          accessToken: true,
-          fieldMappings: true,
-        },
-      },
+      fieldMappings: true,
+      accessToken: true,
+      email: true,
+      siteUrl: true,
     },
   });
 
-  if (!resource) {
-    throw new Error('Atlassian resource not found');
+  if (!installation) {
+    throw new Error('Atlassian installation not found');
   }
 
   const fields: Record<string, unknown> = {};
@@ -50,10 +49,10 @@ const updateJira = async (
     fields.summary = data.title;
   }
 
-  const startAtMapping = resource.installation.fieldMappings.find(
+  const startAtMapping = installation.fieldMappings.find(
     (mapping) => mapping.internalId === 'STARTAT'
   );
-  const endAtMapping = resource.installation.fieldMappings.find(
+  const endAtMapping = installation.fieldMappings.find(
     (mapping) => mapping.internalId === 'ENDAT'
   );
 
@@ -71,11 +70,7 @@ const updateJira = async (
     return;
   }
 
-  const atlassian = createOauth2Client({
-    cloudId: resource.resourceId,
-    accessToken: resource.installation.accessToken,
-  });
-
+  const atlassian = createClient(installation);
   const response = await atlassian.PUT('/rest/api/2/issue/{issueIdOrKey}', {
     params: {
       path: {
@@ -136,6 +131,15 @@ const updateLinear = async (
     throw new Error('Linear installation not found');
   }
 
+  const installation = await database.linearInstallation.findUnique({
+    where: { id: connection.linearInstallationId },
+    select: { accessToken: true },
+  });
+
+  if (!installation) {
+    throw new Error('Linear installation not found');
+  }
+
   const fields: {
     title?: Issue['title'];
     dueDate?: Issue['dueDate'];
@@ -154,7 +158,7 @@ const updateLinear = async (
   }
 
   const linear = new LinearClient({
-    accessToken: connection.linearInstallationId,
+    accessToken: installation.accessToken,
   });
   const response = await linear.updateIssue(connection.externalId, fields);
 

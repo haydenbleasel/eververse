@@ -8,12 +8,14 @@ import { Label } from '../ui/label';
 type InputProperties = Omit<ComponentProps<typeof InputComponent>, 'id'> & {
   readonly label?: string;
   readonly onChangeText?: (value: string) => void;
+  readonly caption?: string;
 };
 
 export const Input = ({
   label,
   onChangeText,
   onChange,
+  caption,
   ...properties
 }: InputProperties) => {
   const id = useId();
@@ -31,6 +33,9 @@ export const Input = ({
         onChange={handleChange}
         {...properties}
       />
+      {caption ? (
+        <p className="mt-0 mb-0 text-muted-foreground text-sm">{caption}</p>
+      ) : null}
     </div>
   );
 };

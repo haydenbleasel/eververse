@@ -45,35 +45,3 @@ export const signup = async (
     throw error;
   }
 };
-
-export const slackLogin = async () => {
-  const supabase = await createClient();
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'slack',
-    options: {
-      redirectTo: redirectUrl,
-    },
-  });
-
-  if (error) {
-    throw error;
-  }
-
-  return data.url;
-};
-
-export const microsoftLogin = async () => {
-  const supabase = await createClient();
-  const { error, data } = await supabase.auth.signInWithOAuth({
-    provider: 'azure',
-    options: {
-      redirectTo: redirectUrl,
-    },
-  });
-
-  if (error) {
-    throw error;
-  }
-
-  return data.url;
-};

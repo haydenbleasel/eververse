@@ -3,7 +3,6 @@ import type { Feedback } from '@repo/backend/prisma/client';
 import { contentToText } from '@repo/editor/lib/tiptap';
 import { baseUrl } from '@repo/lib/consts';
 import { parseError } from '@repo/lib/parse-error';
-import { WebClient as Slack } from '@repo/slack';
 
 export const maxDuration = 300;
 export const revalidate = 0;
@@ -19,17 +18,14 @@ type InsertPayload = {
 
 export const POST = async (request: Request): Promise<Response> => {
   const body = (await request.json()) as InsertPayload;
-  const slack = new Slack();
 
   const slackInstallations = await database.slackInstallation.findMany({
     where: {
       organizationId: body.record.organizationId,
-      accessToken: { not: undefined },
     },
     select: {
       id: true,
-      incomingWebhookChannelId: true,
-      accessToken: true,
+      webhookUrl: true,
     },
   });
 
@@ -46,48 +42,49 @@ export const POST = async (request: Request): Promise<Response> => {
       body.record.id
     );
 
-    const response = await slack.chat.postMessage({
-      channel: slackInstallation.incomingWebhookChannelId,
-      token: slackInstallation.accessToken,
-      text: `New feedback on Eververse: *${body.record.title}*`,
-      blocks: [
-        {
-          type: 'rich_text',
-          elements: [
-            {
-              type: 'rich_text_section',
-              elements: [
-                {
-                  type: 'text',
-                  style: { bold: true },
-                  text: `New feedback on Eververse: ${body.record.title}`,
-                },
-                {
-                  type: 'text',
-                  text: `\n${content ? contentToText(content) : 'No content provided.'}`,
-                },
-              ],
-            },
-          ],
-        },
-        {
-          type: 'actions',
-          elements: [
-            {
-              type: 'button',
-              text: {
-                type: 'plain_text',
-                text: 'View Feedback',
+    const response = await fetch(slackInstallation.webhookUrl, {
+      method: 'POST',
+      body: JSON.stringify({
+        text: `New feedback on Eververse: *${body.record.title}*`,
+        blocks: [
+          {
+            type: 'rich_text',
+            elements: [
+              {
+                type: 'rich_text_section',
+                elements: [
+                  {
+                    type: 'text',
+                    style: { bold: true },
+                    text: `New feedback on Eververse: ${body.record.title}`,
+                  },
+                  {
+                    type: 'text',
+                    text: `\n${content ? contentToText(content) : 'No content provided.'}`,
+                  },
+                ],
               },
-              url: new URL(`/feedback/${body.record.id}`, baseUrl).toString(),
-            },
-          ],
-        },
-      ],
+            ],
+          },
+          {
+            type: 'actions',
+            elements: [
+              {
+                type: 'button',
+                text: {
+                  type: 'plain_text',
+                  text: 'View Feedback',
+                },
+                url: new URL(`/feedback/${body.record.id}`, baseUrl).toString(),
+              },
+            ],
+          },
+        ],
+      }),
     });
 
     if (!response.ok) {
-      throw new Error(response.error);
+      throw new Error(response.statusText);
     }
 
     await database.feedback.update({
