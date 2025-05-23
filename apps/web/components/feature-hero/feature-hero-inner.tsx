@@ -26,7 +26,10 @@ export const FeatureHeroInner = ({
           transition={{ duration: 0.5 }}
           className="flex items-center justify-center"
         >
-          <Badge className="items-center gap-2 rounded-full bg-background px-4 py-1.5 text-foreground text-sm hover:bg-background">
+          <Badge
+            variant="outline"
+            className="items-center gap-2 rounded-full px-4 py-1.5 text-foreground text-sm"
+          >
             {children}
             {name}
           </Badge>
