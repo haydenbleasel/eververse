@@ -23,7 +23,7 @@ type ConnectFormProperties = {
   readonly githubAppInstallationId:
     | GitHubInstallation['installationId']
     | undefined;
-  readonly linearAccessToken: LinearInstallation['accessToken'] | undefined;
+  readonly linearApiKey: LinearInstallation['apiKey'] | undefined;
   readonly jiraAccessToken: AtlassianInstallation['accessToken'] | undefined;
 };
 
@@ -39,7 +39,7 @@ const platformOptions: {
 
 export const ConnectForm = ({
   githubAppInstallationId,
-  linearAccessToken,
+  linearApiKey,
   jiraAccessToken,
 }: ConnectFormProperties) => {
   const { isOpen, toggle } = useConnectForm();
@@ -82,7 +82,7 @@ export const ConnectForm = ({
           <GitHubSelector githubAppInstallationId={githubAppInstallationId} />
         ) : null}
         {platform === 'LINEAR' ? (
-          <LinearSelector linearAccessToken={linearAccessToken} />
+          <LinearSelector linearApiKey={linearApiKey} />
         ) : null}
         {platform === 'JIRA' ? (
           <JiraSelector jiraAccessToken={jiraAccessToken} />

@@ -64,7 +64,7 @@ export const Forms = async () => {
           take: 1,
         },
         linearInstallations: {
-          select: { accessToken: true },
+          select: { apiKey: true },
           take: 1,
         },
         atlassianInstallations: {
@@ -106,8 +106,8 @@ export const Forms = async () => {
             githubAppInstallationId={
               databaseOrganization.githubInstallations.at(0)?.installationId
             }
-            linearAccessToken={
-              databaseOrganization.linearInstallations.at(0)?.accessToken
+            linearApiKey={
+              databaseOrganization.linearInstallations.at(0)?.apiKey
             }
             jiraAccessToken={
               databaseOrganization.atlassianInstallations.at(0)?.accessToken

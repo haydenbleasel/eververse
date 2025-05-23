@@ -694,7 +694,7 @@ model LinearInstallation {
   updatedAt          DateTime                    @updatedAt @db.Timestamptz(6)
   organizationId     String                      @db.VarChar(191)
   creatorId          String                      @db.VarChar(191)
-  apiKey        String                      @db.VarChar(191)
+  apiKey             String                      @db.VarChar(191)
   organization       Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   statusMappings     InstallationStatusMapping[]
   featureConnections FeatureConnection[]

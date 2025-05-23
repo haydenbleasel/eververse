@@ -11,12 +11,10 @@ import { LinearIssueSelect } from './linear-issue-select';
 import { LinearTeamSelect } from './linear-team-select';
 
 type LinearSelectorProperties = {
-  readonly linearAccessToken: LinearInstallation['accessToken'] | undefined;
+  readonly linearApiKey: LinearInstallation['apiKey'] | undefined;
 };
 
-export const LinearSelector = ({
-  linearAccessToken,
-}: LinearSelectorProperties) => {
+export const LinearSelector = ({ linearApiKey }: LinearSelectorProperties) => {
   const { hide, featureId } = useConnectForm();
   const [loading, setLoading] = useState(false);
   const [linearTeams, setLinearTeams] = useState<Team[]>([]);
@@ -99,7 +97,7 @@ export const LinearSelector = ({
     }
   };
 
-  if (!linearAccessToken) {
+  if (!linearApiKey) {
     return (
       <Button asChild>
         <a
