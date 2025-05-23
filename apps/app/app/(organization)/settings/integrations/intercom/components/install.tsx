@@ -6,7 +6,7 @@ import { IntercomInstallationForm } from './install-form';
 const webhookUrl = new URL('/webhooks/intercom', env.EVERVERSE_API_URL);
 
 export const InstallIntercom = () => (
-  <div className="mx-auto grid w-full max-w-3xl gap-6">
+  <>
     <div className="grid gap-2">
       <h1 className="m-0 font-semibold text-4xl">Install Intercom</h1>
       <p className="mt-2 mb-0 text-muted-foreground">
@@ -71,5 +71,5 @@ export const InstallIntercom = () => (
         <IntercomInstallationForm />
       </Prose>
     </StackCard>
-  </div>
+  </>
 );

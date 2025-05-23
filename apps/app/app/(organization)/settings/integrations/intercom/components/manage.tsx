@@ -43,7 +43,7 @@ export const ManageIntercom = ({ id, appId }: ManageIntercomProps) => {
   };
 
   return (
-    <div className="mx-auto grid w-full max-w-3xl gap-6">
+    <>
       <div className="grid gap-2">
         <h1 className="m-0 font-semibold text-4xl">Intercom</h1>
         <p className="mb-0 text-muted-foreground">
@@ -72,6 +72,6 @@ export const ManageIntercom = ({ id, appId }: ManageIntercomProps) => {
           </Button>
         </form>
       </StackCard>
-    </div>
+    </>
   );
 };
