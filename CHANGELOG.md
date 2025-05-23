@@ -1,3 +1,15 @@
+# v1.4.0 (Fri May 23 2025)
+
+#### 🚀 Enhancement
+
+- Simplify connections [#29](https://github.com/haydenbleasel/eververse/pull/29) ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.3.3 (Fri May 23 2025)
 
 #### ⚠️ Pushed to `main`
