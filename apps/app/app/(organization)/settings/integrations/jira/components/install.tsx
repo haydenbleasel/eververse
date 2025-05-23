@@ -88,36 +88,12 @@ export const InstallJira = async () => {
             >
               API tokens page
             </a>{' '}
-            and click "Create a new API token with scopes". Give it a name, like
-            "Eververse", and select an expiration date.
-          </p>
-
-          <p>
-            Select the app you’d like the API token to access (in this case,
-            Jira).
+            and click "Create a new API token". Give it a name, like "Eververse"
+            and select an expiration date. Then, press "Create".
           </p>
         </Prose>
       </StackCard>
-      <StackCard title="3. Add the required permissions">
-        <Prose className="max-w-none">
-          <p>Add the following scopes:</p>
-          <ul>
-            {[
-              'read:jira-work',
-              'write:jira-work',
-              'manage:jira-data-provider',
-              'read:avatar:jira',
-              'read:project.avatar:jira',
-            ].map((permission) => (
-              <li key={permission}>
-                <code>{permission}</code>
-              </li>
-            ))}
-          </ul>
-          <p>Then press "Create token".</p>
-        </Prose>
-      </StackCard>
-      <StackCard title="4. Provide your app details">
+      <StackCard title="3. Provide your app details">
         <Prose className="max-w-none">
           <p>Copy and paste the provided API token below:</p>
 
