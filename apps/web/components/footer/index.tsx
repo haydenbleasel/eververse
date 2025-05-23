@@ -3,6 +3,7 @@ import { Link } from '@repo/design-system/components/link';
 import { Logo } from '@repo/design-system/components/logo';
 import { Status } from '@repo/observability/status';
 import { FooterLink } from './footer-link';
+import { ThemeToggle } from './theme-toggle';
 
 const links = [
   {
@@ -49,6 +50,7 @@ export const Footer = () => (
           &copy; Eververse {new Date().getFullYear()}. All rights reserved.
         </p>
         <Status />
+        <ThemeToggle />
       </div>
       <div className="col-start-3 flex flex-col gap-4">
         {links.map(({ href, name }) => (
