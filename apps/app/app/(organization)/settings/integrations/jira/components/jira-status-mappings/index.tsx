@@ -6,7 +6,7 @@ import { LinkIcon } from 'lucide-react';
 import { JiraStatusMappingTable } from './jira-status-mapping-table';
 
 export const JiraStatusMappings = async () => {
-  const [featureStatuses, installation] = await Promise.all([
+  const [featureStatuses, installation, statusMappings] = await Promise.all([
     database.featureStatus.findMany({
       orderBy: { order: 'asc' },
       select: {
@@ -21,16 +21,19 @@ export const JiraStatusMappings = async () => {
         accessToken: true,
         siteUrl: true,
         email: true,
-        statusMappings: {
-          orderBy: { eventType: 'asc' },
-          select: {
-            id: true,
-            eventType: true,
-            eventId: true,
-            featureStatusId: true,
-          },
-        },
       },
+    }),
+    database.installationStatusMapping.findMany({
+      where: {
+        type: 'JIRA',
+      },
+      select: {
+        id: true,
+        eventType: true,
+        eventId: true,
+        featureStatusId: true,
+      },
+      orderBy: { eventType: 'asc' },
     }),
   ]);
 
@@ -45,7 +48,7 @@ export const JiraStatusMappings = async () => {
     <StackCard title="Status Mappings" icon={LinkIcon} className="px-0 py-1.5">
       <JiraStatusMappingTable
         featureStatuses={featureStatuses}
-        statusMappings={installation.statusMappings}
+        statusMappings={statusMappings}
         jiraStatuses={
           jiraStatuses.data?.map((jiraStatus) => ({
             label: jiraStatus.name ?? '',

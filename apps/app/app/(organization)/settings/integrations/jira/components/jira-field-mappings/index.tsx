@@ -35,21 +35,26 @@ const fixedFields = [
 ];
 
 export const JiraFieldMappings = async () => {
-  const installation = await database.atlassianInstallation.findFirst({
-    select: {
-      id: true,
-      accessToken: true,
-      email: true,
-      siteUrl: true,
-      fieldMappings: {
-        select: {
-          id: true,
-          internalId: true,
-          externalId: true,
-        },
+  const [installation, fieldMappings] = await Promise.all([
+    database.atlassianInstallation.findFirst({
+      select: {
+        id: true,
+        accessToken: true,
+        email: true,
+        siteUrl: true,
       },
-    },
-  });
+    }),
+    database.installationFieldMapping.findMany({
+      where: {
+        type: 'JIRA',
+      },
+      select: {
+        id: true,
+        internalId: true,
+        externalId: true,
+      },
+    }),
+  ]);
 
   if (!installation) {
     return <div />;
@@ -85,7 +90,7 @@ export const JiraFieldMappings = async () => {
         ))}
       </div>
       <JiraFieldMappingTable
-        fieldMappings={installation.fieldMappings}
+        fieldMappings={fieldMappings}
         jiraFields={
           jiraFields.data
             ?.filter((field) => field.schema?.type)

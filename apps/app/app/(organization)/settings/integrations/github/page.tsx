@@ -20,29 +20,33 @@ export const metadata: Metadata = createMetadata({
 });
 
 const GitHubIntegrationSettings = async () => {
-  const [featureStatuses, gitHubInstallation] = await Promise.all([
-    database.featureStatus.findMany({
-      orderBy: { order: 'asc' },
-      select: {
-        id: true,
-        name: true,
-        color: true,
-      },
-    }),
-    database.gitHubInstallation.findFirst({
-      select: {
-        id: true,
-        statusMappings: {
-          orderBy: { eventType: 'asc' },
-          select: {
-            id: true,
-            eventType: true,
-            featureStatusId: true,
-          },
+  const [featureStatuses, gitHubInstallation, statusMappings] =
+    await Promise.all([
+      database.featureStatus.findMany({
+        orderBy: { order: 'asc' },
+        select: {
+          id: true,
+          name: true,
+          color: true,
         },
-      },
-    }),
-  ]);
+      }),
+      database.gitHubInstallation.findFirst({
+        select: {
+          id: true,
+        },
+      }),
+      database.installationStatusMapping.findMany({
+        where: {
+          type: 'GITHUB',
+        },
+        orderBy: { eventType: 'asc' },
+        select: {
+          id: true,
+          eventType: true,
+          featureStatusId: true,
+        },
+      }),
+    ]);
 
   if (!gitHubInstallation) {
     notFound();
@@ -53,7 +57,7 @@ const GitHubIntegrationSettings = async () => {
       <h1 className="font-semibold text-2xl">GitHub Integration</h1>
 
       <StackCard title="Status Mappings" className="p-0">
-        {gitHubInstallation.statusMappings.length > 0 ? (
+        {statusMappings.length > 0 ? (
           <Table className="mb-0">
             <TableHeader>
               <TableRow>
@@ -62,7 +66,7 @@ const GitHubIntegrationSettings = async () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {gitHubInstallation.statusMappings.map((mapping) => (
+              {statusMappings.map((mapping) => (
                 <TableRow key={mapping.id}>
                   <TableCell className="font-medium font-mono">
                     {mapping.eventType}
