@@ -1,54 +1,32 @@
 import { database } from '@/lib/database';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { Button } from '@repo/design-system/components/ui/button';
+import { currentOrganizationId } from '@repo/backend/auth/utils';
 import { createMetadata } from '@repo/seo/metadata';
 import type { Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
+import { InstallLinear } from './components/install';
+import { ManageLinear } from './components/manage';
 
 export const metadata: Metadata = createMetadata({
   title: 'Linear Integration',
   description: 'Configure your Linear integration settings.',
 });
 
-const LinearSettings = async () => {
-  const linearInstallation = await database.linearInstallation.findFirst({
-    select: { id: true },
-  });
+const LinearIntegrationSettings = async () => {
+  const organizationId = await currentOrganizationId();
 
-  if (!linearInstallation) {
-    notFound();
+  if (!organizationId) {
+    return notFound();
   }
 
-  const removeAction = async () => {
-    'use server';
+  const installation = await database.linearInstallation.findFirst({
+    where: { organizationId },
+  });
 
-    const installation = await database.linearInstallation.delete({
-      where: { id: linearInstallation.id },
-      select: {
-        organization: {
-          select: {
-            slug: true,
-          },
-        },
-      },
-    });
+  if (!installation) {
+    return <InstallLinear />;
+  }
 
-    return redirect(`/${installation.organization.slug}/settings/integrations`);
-  };
-
-  return (
-    <div>
-      <h1 className="font-semibold text-2xl">Linear Integration</h1>
-
-      <StackCard title="Danger Zone" className="p-4">
-        <form action={removeAction}>
-          <Button type="submit" variant="destructive">
-            Remove Linear Integration
-          </Button>
-        </form>
-      </StackCard>
-    </div>
-  );
+  return <ManageLinear id={installation.id} />;
 };
 
-export default LinearSettings;
+export default LinearIntegrationSettings;

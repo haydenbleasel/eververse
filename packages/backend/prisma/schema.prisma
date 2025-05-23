@@ -695,8 +695,6 @@ model LinearInstallation {
   organizationId     String                      @db.VarChar(191)
   creatorId          String                      @db.VarChar(191)
   accessToken        String                      @db.VarChar(191)
-  tokenType          String                      @db.VarChar(191)
-  expiresIn          Int
   organization       Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   statusMappings     InstallationStatusMapping[]
   featureConnections FeatureConnection[]

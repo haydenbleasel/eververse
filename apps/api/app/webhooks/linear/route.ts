@@ -1,11 +1,5 @@
-import { env } from '@/env';
 import { database } from '@repo/backend/database';
-import {
-  LINEAR_WEBHOOK_SIGNATURE_HEADER,
-  LINEAR_WEBHOOK_TS_FIELD,
-  LinearClient,
-  LinearWebhooks,
-} from '@repo/linear';
+import { LINEAR_WEBHOOK_SIGNATURE_HEADER, LinearClient } from '@repo/linear';
 
 export const maxDuration = 300;
 export const revalidate = 0;
@@ -38,7 +32,6 @@ type DataChangeEvent = {
   webhookId: string;
 };
 
-const webhook = new LinearWebhooks(env.LINEAR_WEBHOOK_SECRET);
 const linearIps = new Set(['35.231.147.226', '35.243.134.228']);
 
 const handleIssueUpdate = async (event: DataChangeEvent) => {
@@ -137,7 +130,6 @@ const handleIssueEvent = (event: DataChangeEvent) => {
 export const POST = async (request: Request): Promise<Response> => {
   const text = await request.text();
   const signature = request.headers.get(LINEAR_WEBHOOK_SIGNATURE_HEADER);
-  // const event = req.headers.get('Linear-Event') as LinearEvent | null;
   const ip = request.headers.get('x-forwarded-for');
   const body = JSON.parse(text) as DataChangeEvent;
 
@@ -149,13 +141,6 @@ export const POST = async (request: Request): Promise<Response> => {
   // Ensure signature is present
   if (!signature) {
     return new Response('Invalid request', { status: 400 });
-  }
-
-  // Verify signature
-  try {
-    webhook.verify(Buffer.from(text), signature, body[LINEAR_WEBHOOK_TS_FIELD]);
-  } catch {
-    return new Response('Invalid signature', { status: 400 });
   }
 
   if (body.type === 'Issue') {

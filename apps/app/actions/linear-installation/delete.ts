@@ -3,7 +3,7 @@
 import { database } from '@repo/backend/database';
 import { parseError } from '@repo/lib/src/parse-error';
 
-export const deleteIntercomInstallation = async (
+export const deleteLinearInstallation = async (
   id: string
 ): Promise<
   | {
@@ -14,16 +14,16 @@ export const deleteIntercomInstallation = async (
     }
 > => {
   try {
-    const installation = await database.intercomInstallation.findFirst({
+    const installation = await database.linearInstallation.findFirst({
       where: { id },
       select: { id: true },
     });
 
     if (!installation) {
-      throw new Error('Intercom installation not found');
+      throw new Error('Linear installation not found');
     }
 
-    await database.intercomInstallation.delete({
+    await database.linearInstallation.delete({
       where: { id },
       select: { id: true },
     });

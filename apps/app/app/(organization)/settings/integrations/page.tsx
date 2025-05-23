@@ -70,7 +70,7 @@ const IntegrationsSettings = async () => {
       description: 'Sync with Linear issues',
       icon: '/linear.svg',
       installed: Boolean(linearInstallation),
-      installLink: '/api/integrations/linear/start',
+      installLink: '/settings/integrations/linear',
       configureLink: '/settings/integrations/linear',
     },
     {
