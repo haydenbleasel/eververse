@@ -84,7 +84,7 @@ export const POST = async (request: Request): Promise<Response> => {
     });
 
     if (!response.ok) {
-      throw new Error(response.error);
+      throw new Error(response.statusText);
     }
 
     await database.feedback.update({

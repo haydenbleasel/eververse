@@ -37,7 +37,6 @@ type RoadmapPeekProps = {
         readonly initiatives: Pick<Initiative, 'id' | 'title'>[];
       })
     | undefined;
-  readonly subscribed: boolean;
   readonly owner?: User;
 };
 
@@ -47,7 +46,6 @@ export const RoadmapPeek = ({
   feature,
   owner,
   editable,
-  subscribed,
 }: RoadmapPeekProps) => {
   const name = owner ? getUserName(owner) : undefined;
 
@@ -103,7 +101,6 @@ export const RoadmapPeek = ({
             defaultValue={feature.content as object}
             featureId={feature.id}
             editable={editable}
-            subscribed={subscribed}
           />
         )}
       </SheetContent>

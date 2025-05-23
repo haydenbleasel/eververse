@@ -139,7 +139,6 @@ const Roadmap = async () => {
       markers={roadmapEvents}
       members={members}
       editable={user.user_metadata.organization_role !== EververseRole.Member}
-      subscribed={Boolean(organization.stripeSubscriptionId)}
     />
   );
 };
