@@ -44,7 +44,6 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useIntercom } from 'react-use-intercom';
 import * as navigation from '../../lib/navigation';
 import { SidebarItem } from './sidebar-item';
 
@@ -54,7 +53,6 @@ type SidebarProps = {
 };
 
 export const Sidebar = ({ user, organization }: SidebarProps) => {
-  const { show } = useIntercom();
   const router = useRouter();
   const sidebar = useSidebar();
 
@@ -233,9 +231,13 @@ export const Sidebar = ({ user, organization }: SidebarProps) => {
                   </DropdownMenuItem>
                   <DropdownMenuItem className="flex items-center gap-2">
                     <LifeBuoyIcon className="text-muted-foreground" size={16} />
-                    <button type="button" onClick={() => show()}>
+                    <a
+                      href="https://x.com/haydenbleasel"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       Support
-                    </button>
+                    </a>
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />

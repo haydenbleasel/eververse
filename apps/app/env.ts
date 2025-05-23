@@ -1,7 +1,6 @@
 import { keys as atlassian } from '@repo/atlassian/keys';
 import { keys as email } from '@repo/email/keys';
 import { keys as github } from '@repo/github/keys';
-import { keys as intercom } from '@repo/intercom/keys';
 import { keys as linear } from '@repo/linear/keys';
 import { keys as core } from '@repo/next-config/keys';
 import { keys as observability } from '@repo/observability/keys';
@@ -16,7 +15,6 @@ export const env = createEnv({
     observability(),
     atlassian(),
     email(),
-    intercom(),
     linear(),
     slack(),
     github(),

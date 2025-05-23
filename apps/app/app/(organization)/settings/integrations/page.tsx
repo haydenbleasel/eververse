@@ -86,7 +86,7 @@ const IntegrationsSettings = async () => {
       description: 'Capture incoming feedback from Intercom.',
       icon: '/intercom.svg',
       installed: Boolean(intercomInstallation),
-      installLink: '/api/integrations/intercom/start',
+      installLink: '/settings/integrations/intercom',
       configureLink: '/settings/integrations/intercom',
     },
     {

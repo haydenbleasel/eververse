@@ -1,6 +1,5 @@
 import { Sidebar } from '@/components/sidebar';
 import { database } from '@/lib/database';
-import { IntercomProvider } from '@/providers/intercom';
 import {
   currentMembers,
   currentOrganizationId,
@@ -54,26 +53,24 @@ const OrganizationLayout = async ({
   }
 
   return (
-    <IntercomProvider>
-      <SidebarProvider
-        style={
-          {
-            '--sidebar-width': '220px',
-          } as CSSProperties
-        }
-      >
-        <Sidebar user={user} organization={organization} />
-        <SidebarInset className="bg-transparent">
-          <div className="flex min-h-screen flex-1 flex-col">
-            <Navbar />
-            {children}
-          </div>
-        </SidebarInset>
-        <Suspense fallback={null}>
-          <Forms />
-        </Suspense>
-      </SidebarProvider>
-    </IntercomProvider>
+    <SidebarProvider
+      style={
+        {
+          '--sidebar-width': '220px',
+        } as CSSProperties
+      }
+    >
+      <Sidebar user={user} organization={organization} />
+      <SidebarInset className="bg-transparent">
+        <div className="flex min-h-screen flex-1 flex-col">
+          <Navbar />
+          {children}
+        </div>
+      </SidebarInset>
+      <Suspense fallback={null}>
+        <Forms />
+      </Suspense>
+    </SidebarProvider>
   );
 };
 

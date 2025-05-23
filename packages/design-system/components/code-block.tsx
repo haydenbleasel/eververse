@@ -94,7 +94,7 @@ export const CodeBlock = memo(
     };
 
     return (
-      <div className="dark">
+      <div className="dark not-prose">
         <div className="relative w-full divide-y bg-background">
           {showHeader ? (
             <div className="flex w-full items-center justify-between bg-background px-6 py-2 pr-4 text-foreground">

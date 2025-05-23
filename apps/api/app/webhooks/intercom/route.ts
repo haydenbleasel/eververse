@@ -1,6 +1,5 @@
 import { database } from '@repo/backend/database';
 import { htmlToContent } from '@repo/editor/lib/tiptap';
-import { createWebhookHash } from '@repo/intercom';
 import { MAX_FREE_FEEDBACK } from '@repo/lib/consts';
 import { getGravatarUrl } from '@repo/lib/gravatar';
 import { log } from '@repo/observability/log';
@@ -249,13 +248,6 @@ export const POST = async (request: Request): Promise<Response> => {
   if (!signature) {
     log.error('Intercom: Signature missing');
     return NextResponse.json({ message: 'Signature missing' }, { status: 200 });
-  }
-
-  const hmac = await createWebhookHash(text);
-
-  if (signature !== `sha1=${hmac}`) {
-    log.error('Intercom: Invalid signature');
-    return NextResponse.json({ message: 'Invalid signature' }, { status: 200 });
   }
 
   if (event.topic === 'conversation_part.tag.created') {

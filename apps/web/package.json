@@ -16,7 +16,6 @@
     "@repo/canvas": "workspace:*",
     "@repo/design-system": "workspace:*",
     "@repo/editor": "workspace:*",
-    "@repo/intercom": "workspace:*",
     "@repo/lib": "workspace:*",
     "@repo/next-config": "workspace:*",
     "@repo/observability": "workspace:*",

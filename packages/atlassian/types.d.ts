@@ -45253,7 +45253,7 @@ export interface operations {
             query?: {
                 /** @description The index of the first item to return in a page of results (page offset). */
                 startAt?: number;
-                /** @description The maximum number of items to return per page. */
+                /** @description The maximum number of items to return per page. Must be less than or equal to 100. If a value greater than 100 is provided, the `maxResults` parameter will default to 100. */
                 maxResults?: number;
                 /** @description [Order](#ordering) the results by a field.
                  *
