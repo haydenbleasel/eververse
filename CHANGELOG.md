@@ -1,3 +1,16 @@
+# v1.3.1 (Fri May 23 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Fix Linear client ([@haydenbleasel](https://github.com/haydenbleasel))
+- Update schema.prisma ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.3.0 (Fri May 23 2025)
 
 #### 🚀 Enhancement
