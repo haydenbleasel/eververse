@@ -1,6 +1,12 @@
 'use client';
 
 import { Container } from '@repo/design-system/components/container';
+import {
+  Marquee,
+  MarqueeContent,
+  MarqueeFade,
+  MarqueeItem,
+} from '@repo/design-system/components/ui/kibo-ui/marquee';
 import { cn } from '@repo/design-system/lib/utils';
 import { LazyMotion, domAnimation, m, useInView } from 'motion/react';
 import { useRef } from 'react';
@@ -30,7 +36,7 @@ export const Customers = ({
       {...properties}
     >
       <LazyMotion features={domAnimation}>
-        <Container className="relative flex flex-col items-center justify-between gap-8 border-x py-16">
+        <Container className="relative flex flex-col items-center justify-between gap-12 border-x py-16">
           <m.p
             className="text-muted-foreground"
             initial={{ opacity: 0 }}
@@ -39,22 +45,17 @@ export const Customers = ({
           >
             Join {closest}+ companies in building better products with Eververse
           </m.p>
-          <div className="grid grid-cols-3 gap-8 text-foreground sm:grid-cols-5">
-            {Object.entries(logos).map(([name, Logo], index) => (
-              <m.div
-                key={name}
-                className="flex items-center justify-center"
-                initial={{ opacity: 0, transform: 'translateY(1rem)' }}
-                animate={{
-                  opacity: inView ? 1 : 0,
-                  transform: inView ? 'translateY(0)' : 'translateY(1rem)',
-                }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-              >
-                <Logo className="h-10 w-auto" />
-              </m.div>
-            ))}
-          </div>
+          <Marquee>
+            <MarqueeFade side="left" className="from-backdrop" />
+            <MarqueeFade side="right" className="from-backdrop" />
+            <MarqueeContent pauseOnHover={false}>
+              {Object.entries(logos).map(([name, Logo]) => (
+                <MarqueeItem key={name} className="h-6 w-auto px-8">
+                  <Logo className="h-6 w-auto" />
+                </MarqueeItem>
+              ))}
+            </MarqueeContent>
+          </Marquee>
         </Container>
       </LazyMotion>
     </section>
