@@ -82,7 +82,6 @@ It also contains the following packages:
 | `payments` | The payments library, powered by Stripe. |
 | `productboard` | The Productboard API client. |
 | `seo` | Utility functions for SEO. |
-| `slack` | The Slack API client. |
 | `typescript-config` | The TypeScript configuration, which contains the shared TypeScript configuration for the app. |
 | `widget` | The core functionality for the embeddable Eververse widget. |
 
