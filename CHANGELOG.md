@@ -1,3 +1,15 @@
+# v1.3.0 (Fri May 23 2025)
+
+#### 🚀 Enhancement
+
+- Rebuild integrations [#28](https://github.com/haydenbleasel/eververse/pull/28) ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.2.7 (Thu May 22 2025)
 
 #### ⚠️ Pushed to `main`
