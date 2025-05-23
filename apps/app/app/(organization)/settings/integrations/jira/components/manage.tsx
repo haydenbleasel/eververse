@@ -23,8 +23,13 @@ export const ManageJira = async () => {
   }
 
   return (
-    <div className="space-y-4">
-      <h1 className="font-semibold text-2xl">Jira Integration</h1>
+    <div className="mx-auto grid w-full max-w-3xl gap-6">
+      <div className="grid gap-2">
+        <h1 className="m-0 font-semibold text-4xl">Jira</h1>
+        <p className="mb-0 text-muted-foreground">
+          Manage your Jira integration.
+        </p>
+      </div>
 
       <Suspense fallback={<Skeleton className="h-96 w-full" />}>
         <JiraStatusMappings />
