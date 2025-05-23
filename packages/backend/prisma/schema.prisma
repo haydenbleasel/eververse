@@ -698,8 +698,6 @@ model LinearInstallation {
   creatorId          String                      @db.VarChar(191)
   apiKey             String                      @db.VarChar(191)
   organization       Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  statusMappings     InstallationStatusMapping[]
-  featureConnections FeatureConnection[]
 
   @@index([organizationId], map: "idx_33213_linear_installation_organizationId_idx")
   @@map("linear_installation")
@@ -741,8 +739,6 @@ model AtlassianInstallation {
   email          String
   siteUrl        String
   organization   Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  statusMappings InstallationStatusMapping[]
-  fieldMappings  InstallationFieldMapping[]
 
   @@index([organizationId], map: "idx_32961_atlassian_installation_organizationId_idx")
   @@map("atlassian_installation")
