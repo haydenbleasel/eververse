@@ -1,4 +1,3 @@
-import { keys as atlassian } from '@repo/atlassian/keys';
 import { keys as email } from '@repo/email/keys';
 import { keys as github } from '@repo/github/keys';
 import { keys as linear } from '@repo/linear/keys';
@@ -13,7 +12,6 @@ export const env = createEnv({
   extends: [
     core(),
     observability(),
-    atlassian(),
     email(),
     linear(),
     slack(),

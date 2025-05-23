@@ -13,7 +13,7 @@ export const JiraSelector = ({ jiraAccessToken }: JiraSelectorProperties) => {
     return (
       <Button asChild>
         <a
-          href="/api/integrations/jira/start"
+          href="/settings/integrations/jira"
           target="_blank"
           rel="noopener noreferrer"
         >

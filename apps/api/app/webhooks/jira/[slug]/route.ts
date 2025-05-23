@@ -1,4 +1,4 @@
-import { createOauth2Client } from '@repo/atlassian';
+import { createClient } from '@repo/atlassian';
 import { database } from '@repo/backend/database';
 import type { release_state } from '@repo/backend/prisma/client';
 import { parseError } from '@repo/lib/parse-error';
@@ -40,55 +40,38 @@ const fieldsSchema = z
   })
   .catchall(z.unknown());
 
-const handleIssueEvent = async (event: z.infer<typeof webhookEventSchema>) => {
-  const webhooks = await database.atlassianWebhook.findMany({
+const handleIssueEvent = async (
+  event: z.infer<typeof webhookEventSchema>,
+  organizationId: string
+) => {
+  const installation = await database.atlassianInstallation.findFirst({
     where: {
-      webhookId: {
-        in: event.matchedWebhookIds,
-      },
+      organizationId,
     },
     select: {
-      id: true,
-      organizationId: true,
-      resourceId: true,
-      installation: {
+      accessToken: true,
+      email: true,
+      siteUrl: true,
+      fieldMappings: {
         select: {
-          accessToken: true,
-          fieldMappings: {
-            select: {
-              externalId: true,
-              internalId: true,
-            },
-          },
+          externalId: true,
+          internalId: true,
         },
       },
     },
   });
 
-  const webhook = webhooks.at(0);
-
-  if (!webhook) {
-    return NextResponse.json({ message: 'No webhooks found' }, { status: 404 });
+  if (!installation) {
+    throw new Error('Installation not found');
   }
-
-  if (!webhook.resourceId || !webhook.installation.accessToken) {
-    return NextResponse.json(
-      { message: 'No resourceId or accessToken found' },
-      { status: 404 }
-    );
-  }
-
-  const atlassian = createOauth2Client({
-    accessToken: webhook.installation.accessToken,
-    cloudId: webhook.resourceId,
-  });
 
   const issueFields = ['summary', 'status', 'fixVersions', 'description'];
 
-  for (const field of webhook.installation.fieldMappings) {
+  for (const field of installation.fieldMappings) {
     issueFields.push(field.externalId);
   }
 
+  const atlassian = createClient(installation);
   const issue = await atlassian.GET('/rest/api/2/issue/{issueIdOrKey}', {
     params: {
       path: {
@@ -125,7 +108,7 @@ const handleIssueEvent = async (event: z.infer<typeof webhookEventSchema>) => {
       atlassianInstallationId: {
         not: null,
       },
-      organizationId: webhook.organizationId,
+      organizationId,
     },
     select: {
       id: true,
@@ -238,7 +221,7 @@ const handleIssueEvent = async (event: z.infer<typeof webhookEventSchema>) => {
   );
 
   // Handle custom fields
-  for (const field of webhook.installation.fieldMappings) {
+  for (const field of installation.fieldMappings) {
     const fieldValue = validationResult.data[field.externalId];
 
     log.info(
@@ -288,9 +271,30 @@ const handleIssueEvent = async (event: z.infer<typeof webhookEventSchema>) => {
   );
 };
 
-export const POST = async (request: Request): Promise<Response> => {
+type JiraWebhookContext = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
+
+export const POST = async (
+  request: Request,
+  context: JiraWebhookContext
+): Promise<Response> => {
   try {
+    const { slug } = await context.params;
     const data = await request.json();
+
+    const organization = await database.organization.findFirst({
+      where: { slug },
+    });
+
+    if (!organization) {
+      return NextResponse.json(
+        { message: 'Organization not found' },
+        { status: 404 }
+      );
+    }
 
     const validationResult = webhookEventSchema.safeParse(data);
     if (!validationResult.success) {
@@ -308,7 +312,7 @@ export const POST = async (request: Request): Promise<Response> => {
     switch (validatedData.webhookEvent) {
       case 'jira:issue_created':
       case 'jira:issue_updated': {
-        return handleIssueEvent(data);
+        return handleIssueEvent(data, organization.id);
       }
       default: {
         log.info('🧑‍💻 Unhandled Atlassian Issue event');

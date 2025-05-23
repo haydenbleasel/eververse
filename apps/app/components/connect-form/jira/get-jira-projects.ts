@@ -1,7 +1,7 @@
 'use server';
 
 import { database } from '@/lib/database';
-import { createOauth2Client } from '@repo/atlassian';
+import { createClient } from '@repo/atlassian';
 import { parseError } from '@repo/lib/parse-error';
 import { revalidatePath } from 'next/cache';
 
@@ -21,52 +21,39 @@ export const getJiraProjects = async (): Promise<
     }
 > => {
   try {
-    const atlassianInstallation =
-      await database.atlassianInstallation.findFirst({
-        select: {
-          accessToken: true,
-          resources: {
-            select: {
-              resourceId: true,
-              url: true,
-            },
-          },
-        },
-      });
+    const installation = await database.atlassianInstallation.findFirst({
+      select: {
+        accessToken: true,
+        siteUrl: true,
+        email: true,
+      },
+    });
 
-    if (!atlassianInstallation) {
+    if (!installation) {
       throw new Error('Jira installation not found');
     }
 
-    const projects = await Promise.all(
-      atlassianInstallation.resources.map(async (resource) => {
-        const atlassian = createOauth2Client({
-          accessToken: atlassianInstallation.accessToken,
-          cloudId: resource.resourceId,
-        });
+    const atlassian = createClient(installation);
+    const response = await atlassian.GET('/rest/api/2/project/search');
 
-        const response = await atlassian.GET('/rest/api/2/project/search');
+    if (response.error) {
+      throw new Error('Failed to get Jira projects');
+    }
 
-        if (response.error) {
-          throw new Error('Failed to get Jira projects');
-        }
+    if (!response.data?.values) {
+      return { projects: [] };
+    }
 
-        if (!response.data?.values) {
-          return [];
-        }
-
-        return response.data.values?.map((project) => ({
-          id: Number(project.id ?? ''),
-          image: project.avatarUrls?.['48x48'] ?? '',
-          title: project.name ?? '',
-          key: project.key ?? '',
-        }));
-      })
-    );
+    const projects = response.data.values.map((project) => ({
+      id: Number(project.id ?? ''),
+      image: project.avatarUrls?.['48x48'] ?? '',
+      title: project.name ?? '',
+      key: project.key ?? '',
+    }));
 
     revalidatePath('/features', 'page');
 
-    return { projects: projects.flat() };
+    return { projects };
   } catch (error) {
     const message = parseError(error);
 

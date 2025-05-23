@@ -69,11 +69,8 @@ export const migrateJiraConnections = async ({
         take: 1,
         select: {
           id: true,
-          resources: {
-            select: {
-              url: true,
-            },
-          },
+          siteUrl: true,
+          email: true,
         },
       },
     },
@@ -84,9 +81,7 @@ export const migrateJiraConnections = async ({
   }
 
   const data: Prisma.FeatureConnectionCreateManyInput[] = [];
-  const baseUrl = databaseOrganization.atlassianInstallations
-    .at(0)
-    ?.resources.at(0)?.url;
+  const baseUrl = databaseOrganization.atlassianInstallations.at(0)?.siteUrl;
 
   if (!baseUrl) {
     log.error('No Atlassian installation found, skipping...');

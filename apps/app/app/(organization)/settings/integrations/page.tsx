@@ -44,7 +44,7 @@ const IntegrationsSettings = async () => {
       description: 'Two-way sync your Jira issues with Eververse features.',
       icon: '/jira.svg',
       installed: Boolean(jiraInstallation),
-      installLink: '/api/integrations/jira/start',
+      installLink: '/settings/integrations/jira',
       configureLink: '/settings/integrations/jira',
     },
 

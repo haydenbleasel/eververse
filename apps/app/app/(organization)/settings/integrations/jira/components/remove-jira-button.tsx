@@ -18,10 +18,10 @@ export const RemoveJiraButton = () => {
     setLoading(true);
 
     try {
-      const { error } = await deleteAtlassianInstallation();
+      const response = await deleteAtlassianInstallation();
 
-      if (error) {
-        throw new Error(error);
+      if ('error' in response) {
+        throw new Error(response.error);
       }
 
       router.push('/settings/integrations');

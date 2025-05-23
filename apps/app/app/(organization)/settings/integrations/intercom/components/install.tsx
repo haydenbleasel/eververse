@@ -3,7 +3,7 @@ import { Prose } from '@repo/design-system/components/prose';
 import { StackCard } from '@repo/design-system/components/stack-card';
 import { IntercomInstallationForm } from './install-form';
 
-const webhookUrl = new URL('/api/webhooks/intercom', env.EVERVERSE_API_URL);
+const webhookUrl = new URL('/webhooks/intercom', env.EVERVERSE_API_URL);
 
 export const InstallIntercom = () => (
   <div className="mx-auto grid w-full max-w-3xl gap-6">

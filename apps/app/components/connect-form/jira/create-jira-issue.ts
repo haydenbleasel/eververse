@@ -1,7 +1,7 @@
 'use server';
 
 import { database } from '@/lib/database';
-import { createOauth2Client } from '@repo/atlassian';
+import { createClient } from '@repo/atlassian';
 import { getJsonColumnFromTable } from '@repo/backend/database';
 import type { Feature } from '@repo/backend/prisma/client';
 import { convertToAdf } from '@repo/editor/lib/jira';
@@ -24,13 +24,12 @@ export const createJiraIssue = async ({
   error?: string;
 }> => {
   try {
-    const [atlassianInstallation, feature] = await Promise.all([
+    const [installation, feature] = await Promise.all([
       database.atlassianInstallation.findFirst({
         select: {
           accessToken: true,
-          resources: {
-            select: { resourceId: true, url: true },
-          },
+          siteUrl: true,
+          email: true,
         },
       }),
       database.feature.findUnique({
@@ -43,19 +42,13 @@ export const createJiraIssue = async ({
       }),
     ]);
 
-    if (!atlassianInstallation) {
+    if (!installation) {
       throw new Error('Installation not found');
     }
 
     if (!feature) {
       throw new Error('Feature not found');
     }
-
-    if (!atlassianInstallation.resources.length) {
-      throw new Error('No resources found');
-    }
-
-    const [resource] = atlassianInstallation.resources;
 
     const content = await getJsonColumnFromTable(
       'feature',
@@ -64,12 +57,7 @@ export const createJiraIssue = async ({
     );
 
     const body = content ?? textToContent('');
-
-    const atlassian = createOauth2Client({
-      accessToken: atlassianInstallation.accessToken,
-      cloudId: resource.resourceId,
-    });
-
+    const atlassian = createClient(installation);
     const response = await atlassian.POST('/rest/api/2/issue', {
       body: {
         fields: {
@@ -107,7 +95,10 @@ export const createJiraIssue = async ({
 
     return {
       id: response.data.id,
-      href: new URL(`/browse/${response.data.key}`, resource.url).toString(),
+      href: new URL(
+        `/browse/${response.data.key}`,
+        installation.siteUrl
+      ).toString(),
     };
   } catch (error) {
     const message = parseError(error);
