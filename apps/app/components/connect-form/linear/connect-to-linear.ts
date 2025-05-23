@@ -36,7 +36,7 @@ export const connectToLinear = async ({
         externalId,
         href,
         organizationId: linearInstallation.organizationId,
-        linearInstallationId: linearInstallation.id,
+        type: 'LINEAR',
       },
       select: { id: true },
     });

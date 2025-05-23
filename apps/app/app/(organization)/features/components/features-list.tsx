@@ -316,11 +316,11 @@ const createColumns = (
     cell: ({ row }) => {
       let featureConnectionSource = '';
 
-      if (row.original.connection?.githubInstallationId) {
+      if (row.original.connection?.type === 'GITHUB') {
         featureConnectionSource = '/github.svg';
-      } else if (row.original.connection?.atlassianInstallationId) {
+      } else if (row.original.connection?.type === 'JIRA') {
         featureConnectionSource = '/jira.svg';
-      } else if (row.original.connection?.linearInstallationId) {
+      } else if (row.original.connection?.type === 'LINEAR') {
         featureConnectionSource = '/linear.svg';
       }
 

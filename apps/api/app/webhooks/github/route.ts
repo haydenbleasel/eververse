@@ -41,16 +41,12 @@ const handleIssuesEvent = async (
   const featureConnection = await database.featureConnection.findFirst({
     where: {
       externalId: `${event.issue.id}`,
-      githubInstallationId: {
-        not: null,
-      },
-      // organizationId: installation.organizationId,
+      type: 'GITHUB',
     },
     select: {
       id: true,
       featureId: true,
       organizationId: true,
-      githubInstallationId: true,
     },
   });
 
@@ -67,7 +63,7 @@ const handleIssuesEvent = async (
       where: {
         organizationId: featureConnection.organizationId,
         eventType: event.action,
-        githubInstallationId: featureConnection.githubInstallationId,
+        type: 'GITHUB',
       },
       select: { featureStatusId: true },
     });

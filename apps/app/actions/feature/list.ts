@@ -23,13 +23,7 @@ export type GetFeaturesResponse = (Pick<
     AiFeatureRice,
     'confidence' | 'effort' | 'impact' | 'reach'
   > | null;
-  connection: Pick<
-    FeatureConnection,
-    | 'atlassianInstallationId'
-    | 'githubInstallationId'
-    | 'href'
-    | 'linearInstallationId'
-  > | null;
+  connection: Pick<FeatureConnection, 'type' | 'href'> | null;
   status: Pick<FeatureStatus, 'color' | 'complete' | 'id' | 'name' | 'order'>;
   product: Pick<Product, 'name'> | null;
   group: Pick<Group, 'name' | 'parentGroupId'> | null;
@@ -92,9 +86,7 @@ export const getFeatures = async (
           connection: {
             select: {
               href: true,
-              githubInstallationId: true,
-              atlassianInstallationId: true,
-              linearInstallationId: true,
+              type: true,
             },
           },
           status: {

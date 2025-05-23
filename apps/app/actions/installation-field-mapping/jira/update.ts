@@ -41,7 +41,8 @@ export const updateJiraFieldMappings = async (
     // 1. Delete existing mappings for the feature status
     await database.installationFieldMapping.deleteMany({
       where: {
-        atlassianInstallationId: installationId,
+        organizationId,
+        type: 'JIRA',
         internalId: internal.id,
       },
     });
@@ -57,7 +58,7 @@ export const updateJiraFieldMappings = async (
     const data: Prisma.InstallationFieldMappingCreateManyInput[] =
       externals.map((external) => ({
         organizationId,
-        atlassianInstallationId: installationId,
+        type: 'JIRA',
         internalId: internal.id,
         internalType: internal.type,
         externalId: external.id,

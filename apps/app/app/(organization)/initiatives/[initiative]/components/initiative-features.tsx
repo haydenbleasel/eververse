@@ -28,22 +28,17 @@ const InitiativeFeature = ({
 }: {
   feature: Pick<Feature, 'id' | 'title' | 'ownerId' | 'startAt' | 'endAt'> & {
     status: Pick<FeatureStatus, 'color'>;
-    connection: Pick<
-      FeatureConnection,
-      | 'atlassianInstallationId'
-      | 'linearInstallationId'
-      | 'githubInstallationId'
-    > | null;
+    connection: Pick<FeatureConnection, 'type'> | null;
   };
   readonly owner: User | undefined;
 }) => {
   let featureConnectionSource = null;
 
-  if (feature.connection?.githubInstallationId) {
+  if (feature.connection?.type === 'GITHUB') {
     featureConnectionSource = '/github.svg';
-  } else if (feature.connection?.atlassianInstallationId) {
+  } else if (feature.connection?.type === 'JIRA') {
     featureConnectionSource = '/jira.svg';
-  } else if (feature.connection?.linearInstallationId) {
+  } else if (feature.connection?.type === 'LINEAR') {
     featureConnectionSource = '/linear.svg';
   }
 
@@ -177,9 +172,7 @@ export const InitiativeFeatures = async ({
             },
             connection: {
               select: {
-                atlassianInstallationId: true,
-                linearInstallationId: true,
-                githubInstallationId: true,
+                type: true,
               },
             },
           },

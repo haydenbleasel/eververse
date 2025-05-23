@@ -37,7 +37,7 @@ export const connectToJira = async ({
         externalId,
         href,
         organizationId: atlassianInstallation.organizationId,
-        atlassianInstallationId: atlassianInstallation.id,
+        type: 'JIRA',
       },
       select: { id: true },
     });

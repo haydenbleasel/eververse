@@ -462,28 +462,26 @@ model FeatureStatus {
 }
 
 model FeatureConnection {
-  id                      String                 @id(map: "idx_33050_PRIMARY") @default(cuid()) @db.VarChar(191)
-  createdAt               DateTime               @default(now()) @db.Timestamptz(6)
-  updatedAt               DateTime               @updatedAt @db.Timestamptz(6)
-  organizationId          String                 @db.VarChar(191)
-  featureId               String                 @unique(map: "idx_33050_feature_connection_featureId_key") @db.VarChar(191)
-  externalId              String                 @db.VarChar(191)
-  href                    String                 @db.VarChar(191)
-  githubInstallationId    String?                @db.VarChar(191)
-  linearInstallationId    String?                @db.VarChar(191)
-  atlassianInstallationId String?                @db.VarChar(191)
-  organization            Organization           @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  feature                 Feature                @relation(fields: [featureId], references: [id], onDelete: Cascade)
-  githubInstallation      GitHubInstallation?    @relation(fields: [githubInstallationId], references: [id])
-  linearInstallation      LinearInstallation?    @relation(fields: [linearInstallationId], references: [id])
-  atlassianInstallation   AtlassianInstallation? @relation(fields: [atlassianInstallationId], references: [id])
+  id             String                      @id(map: "idx_33050_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime                    @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime                    @updatedAt @db.Timestamptz(6)
+  organizationId String                      @db.VarChar(191)
+  featureId      String                      @unique(map: "idx_33050_feature_connection_featureId_key") @db.VarChar(191)
+  externalId     String                      @db.VarChar(191)
+  href           String                      @db.VarChar(191)
+  organization   Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  feature        Feature                     @relation(fields: [featureId], references: [id], onDelete: Cascade)
+  type           feature_connection_platform
 
-  @@index([atlassianInstallationId], map: "idx_33050_feature_connection_atlassianInstallationId_idx")
   @@index([externalId], map: "idx_33050_feature_connection_externalId_idx")
-  @@index([githubInstallationId], map: "idx_33050_feature_connection_githubInstallationId_idx")
-  @@index([linearInstallationId], map: "idx_33050_feature_connection_linearInstallationId_idx")
   @@index([organizationId], map: "idx_33050_feature_connection_organizationId_idx")
   @@map("feature_connection")
+}
+
+enum feature_connection_platform {
+  JIRA
+  LINEAR
+  GITHUB
 }
 
 model FeatureRice {
@@ -674,30 +672,26 @@ model ApiKey {
 }
 
 model GitHubInstallation {
-  id                 String                      @id(map: "idx_33126_PRIMARY") @default(cuid()) @db.VarChar(191)
-  createdAt          DateTime                    @default(now()) @db.Timestamptz(6)
-  updatedAt          DateTime                    @updatedAt @db.Timestamptz(6)
-  creatorId          String                      @db.VarChar(191)
-  organizationId     String                      @db.VarChar(191)
-  installationId     String                      @unique(map: "idx_33126_github_installation_installationId_key") @db.VarChar(191)
-  organization       Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  statusMappings     InstallationStatusMapping[]
-  featureConnections FeatureConnection[]
+  id             String       @id(map: "idx_33126_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  creatorId      String       @db.VarChar(191)
+  organizationId String       @db.VarChar(191)
+  installationId String       @unique(map: "idx_33126_github_installation_installationId_key") @db.VarChar(191)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
   @@index([organizationId], map: "idx_33126_github_installation_organizationId_idx")
   @@map("github_installation")
 }
 
 model LinearInstallation {
-  id                 String                      @id(map: "idx_33213_PRIMARY") @default(cuid()) @db.VarChar(191)
-  createdAt          DateTime                    @default(now()) @db.Timestamptz(6)
-  updatedAt          DateTime                    @updatedAt @db.Timestamptz(6)
-  organizationId     String                      @db.VarChar(191)
-  creatorId          String                      @db.VarChar(191)
-  apiKey             String                      @db.VarChar(191)
-  organization       Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  statusMappings     InstallationStatusMapping[]
-  featureConnections FeatureConnection[]
+  id             String       @id(map: "idx_33213_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  organizationId String       @db.VarChar(191)
+  creatorId      String       @db.VarChar(191)
+  apiKey         String       @db.VarChar(191)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
   @@index([organizationId], map: "idx_33213_linear_installation_organizationId_idx")
   @@map("linear_installation")
@@ -730,65 +724,54 @@ model IntercomInstallation {
 }
 
 model AtlassianInstallation {
-  id                 String                      @id(map: "idx_32961_PRIMARY") @default(cuid()) @db.VarChar(191)
-  createdAt          DateTime                    @default(now()) @db.Timestamptz(6)
-  updatedAt          DateTime                    @updatedAt @db.Timestamptz(6)
-  creatorId          String                      @db.VarChar(191)
-  organizationId     String                      @db.VarChar(191)
-  accessToken        String
-  email              String
-  siteUrl            String
-  organization       Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  statusMappings     InstallationStatusMapping[]
-  featureConnections FeatureConnection[]
-  fieldMappings      InstallationFieldMapping[]
+  id             String       @id(map: "idx_32961_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime     @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
+  creatorId      String       @db.VarChar(191)
+  organizationId String       @db.VarChar(191)
+  accessToken    String
+  email          String
+  siteUrl        String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
   @@index([organizationId], map: "idx_32961_atlassian_installation_organizationId_idx")
   @@map("atlassian_installation")
 }
 
 model InstallationStatusMapping {
-  id                      String                 @id(map: "idx_33201_PRIMARY") @default(cuid()) @db.VarChar(191)
-  createdAt               DateTime               @default(now()) @db.Timestamptz(6)
-  updatedAt               DateTime               @updatedAt @db.Timestamptz(6)
-  creatorId               String                 @db.VarChar(191)
-  organizationId          String                 @db.VarChar(191)
-  featureStatusId         String                 @db.VarChar(191)
-  eventType               String                 @db.VarChar(191)
-  githubInstallationId    String?                @db.VarChar(191)
-  linearInstallationId    String?                @db.VarChar(191)
-  atlassianInstallationId String?                @db.VarChar(191)
-  eventId                 String?                @db.VarChar(191)
-  organization            Organization           @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  featureStatus           FeatureStatus          @relation(fields: [featureStatusId], references: [id], onDelete: Cascade)
-  githubInstallation      GitHubInstallation?    @relation(fields: [githubInstallationId], references: [id], onDelete: Cascade)
-  linearInstallation      LinearInstallation?    @relation(fields: [linearInstallationId], references: [id], onDelete: Cascade)
-  atlassianInstallation   AtlassianInstallation? @relation(fields: [atlassianInstallationId], references: [id], onDelete: Cascade)
+  id              String        @id(map: "idx_33201_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt       DateTime      @default(now()) @db.Timestamptz(6)
+  updatedAt       DateTime      @updatedAt @db.Timestamptz(6)
+  creatorId       String        @db.VarChar(191)
+  organizationId  String        @db.VarChar(191)
+  featureStatusId String        @db.VarChar(191)
+  eventType       String        @db.VarChar(191)
+  eventId         String?       @db.VarChar(191)
+  organization    Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  featureStatus   FeatureStatus @relation(fields: [featureStatusId], references: [id], onDelete: Cascade)
+
+  type feature_connection_platform
 
   @@unique([organizationId, featureStatusId, eventType, eventId], map: "idx_33201_installation_status_mapping_organizationId_featureSta")
-  @@index([atlassianInstallationId], map: "idx_33201_installation_status_mapping_atlassianInstallationId_i")
   @@index([featureStatusId], map: "idx_33201_installation_status_mapping_featureStatusId_idx")
-  @@index([githubInstallationId], map: "idx_33201_installation_status_mapping_githubInstallationId_idx")
-  @@index([linearInstallationId], map: "idx_33201_installation_status_mapping_linearInstallationId_idx")
   @@map("installation_status_mapping")
 }
 
 model InstallationFieldMapping {
-  id                      String                                  @id(map: "idx_33189_PRIMARY") @default(cuid()) @db.VarChar(191)
-  createdAt               DateTime                                @default(now()) @db.Timestamptz(6)
-  updatedAt               DateTime                                @updatedAt @db.Timestamptz(6)
-  creatorId               String                                  @db.VarChar(191)
-  organizationId          String                                  @db.VarChar(191)
-  externalId              String                                  @db.VarChar(191)
-  internalId              installation_field_mapping_internalId
-  atlassianInstallationId String?                                 @db.VarChar(191)
-  externalType            String                                  @db.VarChar(191)
-  internalType            installation_field_mapping_internalType
-  organization            Organization                            @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  atlassianInstallation   AtlassianInstallation?                  @relation(fields: [atlassianInstallationId], references: [id], onDelete: Cascade)
+  id             String                                  @id(map: "idx_33189_PRIMARY") @default(cuid()) @db.VarChar(191)
+  createdAt      DateTime                                @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime                                @updatedAt @db.Timestamptz(6)
+  creatorId      String                                  @db.VarChar(191)
+  organizationId String                                  @db.VarChar(191)
+  externalId     String                                  @db.VarChar(191)
+  internalId     installation_field_mapping_internalId
+  externalType   String                                  @db.VarChar(191)
+  internalType   installation_field_mapping_internalType
+  organization   Organization                            @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  type feature_connection_platform
 
   @@unique([organizationId, externalId], map: "idx_33189_installation_field_mapping_organizationId_externalId_")
-  @@index([atlassianInstallationId], map: "idx_33189_installation_field_mapping_atlassianInstallationId_id")
   @@map("installation_field_mapping")
 }
 

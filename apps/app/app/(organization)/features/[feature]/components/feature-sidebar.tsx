@@ -112,9 +112,7 @@ export const FeatureSidebar = async ({
             select: {
               id: true,
               href: true,
-              githubInstallationId: true,
-              atlassianInstallationId: true,
-              linearInstallationId: true,
+              type: true,
             },
           },
           feedback: {
@@ -209,11 +207,11 @@ export const FeatureSidebar = async ({
 
   let featureConnectionSource = '';
 
-  if (feature.connection?.githubInstallationId) {
+  if (feature.connection?.type === 'GITHUB') {
     featureConnectionSource = '/github.svg';
-  } else if (feature.connection?.atlassianInstallationId) {
+  } else if (feature.connection?.type === 'JIRA') {
     featureConnectionSource = '/jira.svg';
-  } else if (feature.connection?.linearInstallationId) {
+  } else if (feature.connection?.type === 'LINEAR') {
     featureConnectionSource = '/linear.svg';
   }
 
@@ -365,15 +363,7 @@ export const FeatureSidebar = async ({
                 <span>View connected feature</span>
               </a>
             </Button>
-            {!feature.connection.githubInstallationId &&
-            !feature.connection.atlassianInstallationId &&
-            !feature.connection.linearInstallationId ? (
-              <p className="mt-1 text-center text-muted-foreground text-sm">
-                Syncing disabled
-              </p>
-            ) : (
-              <DisconnectButton connectionId={feature.connection.id} />
-            )}
+            <DisconnectButton connectionId={feature.connection.id} />
           </>
         ) : (
           <div className="flex flex-col">
