@@ -1,3 +1,15 @@
+# v1.3.2 (Fri May 23 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Misc fixes ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.3.1 (Fri May 23 2025)
 
 #### ⚠️ Pushed to `main`
