@@ -22,7 +22,6 @@
     "@repo/observability": "workspace:*",
     "@repo/payments": "workspace:*",
     "@repo/productboard": "workspace:*",
-    "@repo/slack": "workspace:*",
     "@repo/transcribe": "workspace:*",
     "@repo/widget": "workspace:*",
     "@t3-oss/env-nextjs": "^0.13.4",

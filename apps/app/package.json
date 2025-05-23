@@ -31,7 +31,6 @@
     "@repo/payments": "workspace:*",
     "@repo/productboard": "workspace:*",
     "@repo/seo": "workspace:*",
-    "@repo/slack": "workspace:*",
     "@repo/widget": "workspace:*",
     "@t3-oss/env-nextjs": "^0.13.4",
     "@tanstack/react-query": "^5.76.1",

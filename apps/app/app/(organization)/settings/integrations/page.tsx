@@ -75,10 +75,10 @@ const IntegrationsSettings = async () => {
     },
     {
       title: 'Slack',
-      description: 'Send data from Slack to Eververse.',
+      description: 'Send notifications to Slack.',
       icon: '/slack.svg',
       installed: Boolean(slackInstallation),
-      installLink: '/api/integrations/slack/start',
+      installLink: '/settings/integrations/slack',
       configureLink: '/settings/integrations/slack',
     },
     {

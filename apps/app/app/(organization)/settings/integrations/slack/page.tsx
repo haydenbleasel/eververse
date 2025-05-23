@@ -1,54 +1,32 @@
 import { database } from '@/lib/database';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { Button } from '@repo/design-system/components/ui/button';
+import { currentOrganizationId } from '@repo/backend/auth/utils';
 import { createMetadata } from '@repo/seo/metadata';
 import type { Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
+import { InstallSlack } from './components/install';
+import { ManageSlack } from './components/manage';
 
 export const metadata: Metadata = createMetadata({
   title: 'Slack Integration',
   description: 'Configure your Slack integration settings.',
 });
 
-const SlackSettings = async () => {
-  const slackInstallation = await database.slackInstallation.findFirst({
-    select: { id: true },
-  });
+const SlackIntegrationSettings = async () => {
+  const organizationId = await currentOrganizationId();
 
-  if (!slackInstallation) {
-    notFound();
+  if (!organizationId) {
+    return notFound();
   }
 
-  const removeAction = async () => {
-    'use server';
+  const installation = await database.slackInstallation.findFirst({
+    where: { organizationId },
+  });
 
-    const installation = await database.slackInstallation.delete({
-      where: { id: slackInstallation.id },
-      select: {
-        organization: {
-          select: {
-            slug: true,
-          },
-        },
-      },
-    });
+  if (!installation) {
+    return <InstallSlack />;
+  }
 
-    return redirect(`/${installation.organization.slug}/settings/integrations`);
-  };
-
-  return (
-    <div>
-      <h1 className="font-semibold text-2xl">Slack Integration</h1>
-
-      <StackCard title="Danger Zone" className="p-4">
-        <form action={removeAction}>
-          <Button type="submit" variant="destructive">
-            Remove Slack Integration
-          </Button>
-        </form>
-      </StackCard>
-    </div>
-  );
+  return <ManageSlack id={installation.id} />;
 };
 
-export default SlackSettings;
+export default SlackIntegrationSettings;
