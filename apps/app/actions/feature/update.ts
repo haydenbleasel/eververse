@@ -131,6 +131,15 @@ const updateLinear = async (
     throw new Error('Linear installation not found');
   }
 
+  const installation = await database.linearInstallation.findUnique({
+    where: { id: connection.linearInstallationId },
+    select: { accessToken: true },
+  });
+
+  if (!installation) {
+    throw new Error('Linear installation not found');
+  }
+
   const fields: {
     title?: Issue['title'];
     dueDate?: Issue['dueDate'];
@@ -149,7 +158,7 @@ const updateLinear = async (
   }
 
   const linear = new LinearClient({
-    accessToken: connection.linearInstallationId,
+    accessToken: installation.accessToken,
   });
   const response = await linear.updateIssue(connection.externalId, fields);
 
