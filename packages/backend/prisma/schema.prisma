@@ -472,10 +472,6 @@ model FeatureConnection {
   organization         Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   feature              Feature                     @relation(fields: [featureId], references: [id], onDelete: Cascade)
   type                 feature_connection_platform
-  GitHubInstallation   GitHubInstallation?         @relation(fields: [gitHubInstallationId], references: [id])
-  gitHubInstallationId String?                     @db.VarChar(191)
-  LinearInstallation   LinearInstallation?         @relation(fields: [linearInstallationId], references: [id])
-  linearInstallationId String?                     @db.VarChar(191)
 
   @@index([externalId], map: "idx_33050_feature_connection_externalId_idx")
   @@index([organizationId], map: "idx_33050_feature_connection_organizationId_idx")
