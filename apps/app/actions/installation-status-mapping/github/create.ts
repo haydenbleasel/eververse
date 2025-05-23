@@ -54,7 +54,7 @@ export const createGitHubStatusMappings = async (): Promise<{
         featureStatusId: defaultFeatureStatus.id,
         creatorId: user.id,
         eventType: action,
-        githubInstallationId: gitHubInstallation.id,
+        type: 'GITHUB',
       }));
 
     await database.installationStatusMapping.createMany({

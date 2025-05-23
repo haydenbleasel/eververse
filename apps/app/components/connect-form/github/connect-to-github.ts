@@ -51,7 +51,7 @@ export const connectToGitHub = async ({
         externalId,
         href,
         organizationId,
-        githubInstallationId: githubInstallation.id,
+        type: 'GITHUB',
       },
       select: { id: true },
     });

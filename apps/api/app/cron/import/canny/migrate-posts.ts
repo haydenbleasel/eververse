@@ -35,7 +35,7 @@ const determineConnection = (
     create: {
       externalId: linkedIssue.id,
       href: linkedIssue.url,
-      atlassianInstallationId: installation.id,
+      type: 'JIRA',
       organizationId: installation.organizationId,
     },
   };

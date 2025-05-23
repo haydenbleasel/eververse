@@ -3,7 +3,7 @@
 import { database } from '@/lib/database';
 import { createClient } from '@repo/atlassian';
 import { EververseRole } from '@repo/backend/auth';
-import { currentUser } from '@repo/backend/auth/utils';
+import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
 import { getJsonColumnFromTable } from '@repo/backend/database';
 import type {
   Feature,
@@ -23,21 +23,25 @@ const updateJira = async (
   connection: FeatureConnection,
   data: Partial<Feature>
 ) => {
-  if (!connection.atlassianInstallationId) {
-    throw new Error('Atlassian installation not found');
+  const organizationId = await currentOrganizationId();
+
+  if (!organizationId) {
+    throw new Error('Organization not found');
   }
 
-  const installation = await database.atlassianInstallation.findUnique({
-    where: {
-      id: connection.atlassianInstallationId,
-    },
-    select: {
-      fieldMappings: true,
-      accessToken: true,
-      email: true,
-      siteUrl: true,
-    },
-  });
+  const [installation, fieldMappings] = await Promise.all([
+    database.atlassianInstallation.findFirst({
+      where: {
+        organizationId,
+      },
+    }),
+    database.installationFieldMapping.findMany({
+      where: {
+        organizationId,
+        type: 'JIRA',
+      },
+    }),
+  ]);
 
   if (!installation) {
     throw new Error('Atlassian installation not found');
@@ -49,10 +53,10 @@ const updateJira = async (
     fields.summary = data.title;
   }
 
-  const startAtMapping = installation.fieldMappings.find(
+  const startAtMapping = fieldMappings.find(
     (mapping) => mapping.internalId === 'STARTAT'
   );
-  const endAtMapping = installation.fieldMappings.find(
+  const endAtMapping = fieldMappings.find(
     (mapping) => mapping.internalId === 'ENDAT'
   );
 
@@ -95,11 +99,23 @@ const updateGitHub = async (
     return;
   }
 
-  if (!connection.githubInstallationId) {
+  const organizationId = await currentOrganizationId();
+
+  if (!organizationId) {
+    throw new Error('Organization not found');
+  }
+
+  const githubInstallation = await database.gitHubInstallation.findFirst({
+    where: {
+      organizationId,
+    },
+  });
+
+  if (!githubInstallation) {
     throw new Error('GitHub installation not found');
   }
 
-  const octokit = createOctokit(connection.githubInstallationId);
+  const octokit = createOctokit(githubInstallation.installationId);
 
   // Parse repo and owner from https://github.com/[owner]/[repo]/issues/[issue_number]
   const segments = connection.href.split('/');
@@ -127,16 +143,19 @@ const updateLinear = async (
   connection: FeatureConnection,
   data: Partial<Feature>
 ) => {
-  if (!connection.linearInstallationId) {
-    throw new Error('Linear installation not found');
+  const organizationId = await currentOrganizationId();
+
+  if (!organizationId) {
+    throw new Error('Organization not found');
   }
 
-  const installation = await database.linearInstallation.findUnique({
-    where: { id: connection.linearInstallationId },
-    select: { apiKey: true },
+  const linearInstallation = await database.linearInstallation.findFirst({
+    where: {
+      organizationId,
+    },
   });
 
-  if (!installation) {
+  if (!linearInstallation) {
     throw new Error('Linear installation not found');
   }
 
@@ -158,7 +177,7 @@ const updateLinear = async (
   }
 
   const linear = new LinearClient({
-    apiKey: installation.apiKey,
+    apiKey: linearInstallation.apiKey,
   });
   const response = await linear.updateIssue(connection.externalId, fields);
 
@@ -208,15 +227,15 @@ export const updateFeature = async (
       },
     });
 
-    if (feature.connection?.linearInstallationId) {
+    if (feature.connection?.type === 'LINEAR') {
       await updateLinear(feature.connection, data);
     }
 
-    if (feature.connection?.githubInstallationId) {
+    if (feature.connection?.type === 'GITHUB') {
       await updateGitHub(feature.connection, data);
     }
 
-    if (feature.connection?.atlassianInstallationId) {
+    if (feature.connection?.type === 'JIRA') {
       await updateJira(feature.connection, data);
     }
 

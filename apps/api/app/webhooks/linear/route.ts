@@ -38,28 +38,38 @@ const handleIssueUpdate = async (event: DataChangeEvent) => {
   const featureConnection = await database.featureConnection.findFirst({
     where: {
       externalId: event.data.id,
-      linearInstallationId: {
-        not: null,
-      },
+      type: 'LINEAR',
     },
     select: {
       id: true,
       featureId: true,
       organizationId: true,
-      linearInstallation: {
+      organization: {
         select: {
-          apiKey: true,
+          id: true,
+          linearInstallations: {
+            select: {
+              apiKey: true,
+            },
+          },
         },
       },
     },
   });
 
-  if (!featureConnection?.linearInstallation) {
+  if (!featureConnection) {
+    return new Response('OK');
+  }
+
+  const linearInstallation =
+    featureConnection.organization.linearInstallations.at(0);
+
+  if (!linearInstallation) {
     return new Response('OK');
   }
 
   const linear = new LinearClient({
-    apiKey: featureConnection.linearInstallation.apiKey,
+    apiKey: linearInstallation.apiKey,
   });
   const linearIssue = await linear.issue(event.data.issueId);
 
@@ -75,15 +85,12 @@ const handleIssueRemove = async (event: DataChangeEvent) => {
   const featureConnection = await database.featureConnection.findFirst({
     where: {
       externalId: event.data.id,
-      linearInstallationId: {
-        not: null,
-      },
+      type: 'LINEAR',
     },
     select: {
       id: true,
       featureId: true,
       organizationId: true,
-      githubInstallationId: true,
     },
   });
 

@@ -38,7 +38,8 @@ export const updateJiraStatusMappings = async (
     // 1. Delete existing mappings for the feature status
     await database.installationStatusMapping.deleteMany({
       where: {
-        atlassianInstallationId: installationId,
+        type: 'JIRA',
+        organizationId,
         featureStatusId: featureStatusId,
       },
     });
@@ -54,7 +55,7 @@ export const updateJiraStatusMappings = async (
     const data: Prisma.InstallationStatusMappingCreateManyInput[] =
       jiraStatuses.map((jiraStatus) => ({
         organizationId,
-        atlassianInstallationId: installationId,
+        type: 'JIRA',
         featureStatusId: featureStatusId,
         eventId: jiraStatus.value,
         eventType: jiraStatus.label,

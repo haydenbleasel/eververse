@@ -110,8 +110,7 @@ export const migrateJiraConnections = async ({
       externalId: link.connection.issueId,
       featureId: feature.id,
       href: new URL(`/browse/${link.connection.issueKey}`, baseUrl).toString(),
-      atlassianInstallationId:
-        databaseOrganization.atlassianInstallations.at(0)?.id,
+      type: 'JIRA',
     });
   }
 

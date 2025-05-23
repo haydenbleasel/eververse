@@ -44,22 +44,24 @@ const handleIssueEvent = async (
   event: z.infer<typeof webhookEventSchema>,
   organizationId: string
 ) => {
-  const installation = await database.atlassianInstallation.findFirst({
-    where: {
-      organizationId,
-    },
-    select: {
-      accessToken: true,
-      email: true,
-      siteUrl: true,
-      fieldMappings: {
-        select: {
-          externalId: true,
-          internalId: true,
-        },
+  const [installation, fieldMappings] = await Promise.all([
+    database.atlassianInstallation.findFirst({
+      where: {
+        organizationId,
       },
-    },
-  });
+      select: {
+        accessToken: true,
+        email: true,
+        siteUrl: true,
+      },
+    }),
+    database.installationFieldMapping.findMany({
+      where: {
+        organizationId,
+        type: 'JIRA',
+      },
+    }),
+  ]);
 
   if (!installation) {
     throw new Error('Installation not found');
@@ -67,7 +69,7 @@ const handleIssueEvent = async (
 
   const issueFields = ['summary', 'status', 'fixVersions', 'description'];
 
-  for (const field of installation.fieldMappings) {
+  for (const field of fieldMappings) {
     issueFields.push(field.externalId);
   }
 
@@ -105,16 +107,13 @@ const handleIssueEvent = async (
   const featureConnection = await database.featureConnection.findFirst({
     where: {
       externalId: event.issue.id,
-      atlassianInstallationId: {
-        not: null,
-      },
+      type: 'JIRA',
       organizationId,
     },
     select: {
       id: true,
       featureId: true,
       organizationId: true,
-      atlassianInstallationId: true,
     },
   });
 
@@ -203,7 +202,7 @@ const handleIssueEvent = async (
       where: {
         organizationId: featureConnection.organizationId,
         eventId: validationResult.data.status.id,
-        atlassianInstallationId: featureConnection.atlassianInstallationId,
+        type: 'JIRA',
       },
       select: { featureStatusId: true },
     });
@@ -221,7 +220,7 @@ const handleIssueEvent = async (
   );
 
   // Handle custom fields
-  for (const field of installation.fieldMappings) {
+  for (const field of fieldMappings) {
     const fieldValue = validationResult.data[field.externalId];
 
     log.info(
