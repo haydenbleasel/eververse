@@ -10,21 +10,21 @@ import { type FormEventHandler, useState } from 'react';
 import { toast } from 'sonner';
 
 export const LinearInstallationForm = () => {
-  const [accessToken, setAccessToken] = useState('');
+  const [apiKey, setApiKey] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
 
-    if (!accessToken || loading) {
+    if (!apiKey || loading) {
       return;
     }
 
     try {
       setLoading(true);
 
-      const response = await createLinearInstallation(accessToken);
+      const response = await createLinearInstallation(apiKey);
 
       if ('error' in response) {
         throw new Error(response.error);
@@ -45,9 +45,9 @@ export const LinearInstallationForm = () => {
   return (
     <form onSubmit={handleSubmit} className="flex gap-2">
       <Input
-        value={accessToken}
-        onChange={({ target }) => setAccessToken(target.value)}
-        placeholder="Enter your Linear access token"
+        value={apiKey}
+        onChange={({ target }) => setApiKey(target.value)}
+        placeholder="Enter your Linear API key"
       />
       <Button type="submit" disabled={loading}>
         {loading ? <Loader2Icon className="animate-spin" /> : 'Install'}

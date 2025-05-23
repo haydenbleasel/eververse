@@ -5,7 +5,7 @@ import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
 import { parseError } from '@repo/lib/src/parse-error';
 
 export const createLinearInstallation = async (
-  accessToken: string
+  apiKey: string
 ): Promise<
   | {
       error: string;
@@ -28,7 +28,7 @@ export const createLinearInstallation = async (
       data: {
         organizationId,
         creatorId: user.id,
-        accessToken,
+        apiKey,
       },
       select: {
         organization: {
