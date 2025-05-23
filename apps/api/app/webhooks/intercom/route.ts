@@ -200,9 +200,15 @@ const handleConversationPartTagCreated = async (
 
   const conversationHtml: string[] = [];
 
-  for (const part of event.data.item.conversation.conversation_parts
-    .conversation_parts) {
-    conversationHtml.push(part.body);
+  if (
+    event.data.item.conversation.conversation_parts.conversation_parts.length
+  ) {
+    for (const part of event.data.item.conversation.conversation_parts
+      .conversation_parts) {
+      conversationHtml.push(part.body);
+    }
+  } else {
+    conversationHtml.push(event.data.item.conversation.source.body);
   }
 
   const content = htmlToContent(conversationHtml.join('<br />'));
