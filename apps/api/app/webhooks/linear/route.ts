@@ -48,7 +48,7 @@ const handleIssueUpdate = async (event: DataChangeEvent) => {
       organizationId: true,
       linearInstallation: {
         select: {
-          accessToken: true,
+          apiKey: true,
         },
       },
     },
@@ -59,7 +59,7 @@ const handleIssueUpdate = async (event: DataChangeEvent) => {
   }
 
   const linear = new LinearClient({
-    accessToken: featureConnection.linearInstallation.accessToken,
+    apiKey: featureConnection.linearInstallation.apiKey,
   });
   const linearIssue = await linear.issue(event.data.issueId);
 

@@ -14,7 +14,7 @@ export const getLinearIssues = async (
 }> => {
   try {
     const linearInstallation = await database.linearInstallation.findFirst({
-      select: { accessToken: true },
+      select: { apiKey: true },
     });
 
     if (!linearInstallation) {
@@ -22,7 +22,7 @@ export const getLinearIssues = async (
     }
 
     const linear = new LinearClient({
-      accessToken: linearInstallation.accessToken,
+      apiKey: linearInstallation.apiKey,
       next: {
         revalidate: 0,
       },

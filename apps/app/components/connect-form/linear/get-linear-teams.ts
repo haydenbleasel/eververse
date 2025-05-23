@@ -12,7 +12,7 @@ export const getLinearTeams = async (): Promise<{
 }> => {
   try {
     const linearInstallation = await database.linearInstallation.findFirst({
-      select: { accessToken: true },
+      select: { apiKey: true },
     });
 
     if (!linearInstallation) {
@@ -20,7 +20,7 @@ export const getLinearTeams = async (): Promise<{
     }
 
     const linear = new LinearClient({
-      accessToken: linearInstallation.accessToken,
+      apiKey: linearInstallation.apiKey,
       next: {
         revalidate: 0,
       },

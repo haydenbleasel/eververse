@@ -133,7 +133,7 @@ const updateLinear = async (
 
   const installation = await database.linearInstallation.findUnique({
     where: { id: connection.linearInstallationId },
-    select: { accessToken: true },
+    select: { apiKey: true },
   });
 
   if (!installation) {
@@ -158,7 +158,7 @@ const updateLinear = async (
   }
 
   const linear = new LinearClient({
-    accessToken: installation.accessToken,
+    apiKey: installation.apiKey,
   });
   const response = await linear.updateIssue(connection.externalId, fields);
 

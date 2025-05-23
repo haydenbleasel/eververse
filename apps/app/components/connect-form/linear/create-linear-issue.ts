@@ -23,7 +23,7 @@ export const createLinearIssue = async ({
   try {
     const [linearInstallation, feature] = await Promise.all([
       database.linearInstallation.findFirst({
-        select: { accessToken: true },
+        select: { apiKey: true },
       }),
       database.feature.findUnique({
         where: { id: featureId },
@@ -51,7 +51,7 @@ export const createLinearIssue = async ({
     const description = content ? await contentToMarkdown(content) : '';
 
     const linear = new LinearClient({
-      accessToken: linearInstallation.accessToken,
+      apiKey: linearInstallation.apiKey,
     });
     const response = await linear.createIssue({
       teamId,
