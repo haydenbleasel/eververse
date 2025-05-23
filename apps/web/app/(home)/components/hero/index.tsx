@@ -3,8 +3,12 @@
 import { Container } from '@repo/design-system/components/container';
 import { Link } from '@repo/design-system/components/link';
 import { Prose } from '@repo/design-system/components/prose';
-import { Badge } from '@repo/design-system/components/ui/badge';
 import { Button } from '@repo/design-system/components/ui/button';
+import {
+  Announcement,
+  AnnouncementTag,
+  AnnouncementTitle,
+} from '@repo/design-system/components/ui/kibo-ui/announcement';
 import { cn } from '@repo/design-system/lib/utils';
 import { ArrowUpRightIcon } from 'lucide-react';
 import { LazyMotion, domAnimation, m } from 'motion/react';
@@ -39,26 +43,16 @@ export const Hero = ({
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Badge
-                    variant="outline"
-                    className="max-w-full gap-2 rounded-full py-0.5 pr-3 pl-0.5 font-medium"
-                  >
-                    <span
-                      className="shrink-0 truncate rounded-full bg-foreground/5 px-2.5 py-1 text-muted-foreground text-xs"
-                      style={{
-                        boxShadow: 'inset 0 1px 0 0 hsla(0,0%,100%,.08)',
-                      }}
-                    >
-                      Latest update
-                    </span>
-                    <span className="flex items-center gap-1 truncate">
-                      <span className="w-full truncate">{latestUpdate}</span>
+                  <Announcement>
+                    <AnnouncementTag>Latest update</AnnouncementTag>
+                    <AnnouncementTitle>
+                      {latestUpdate}
                       <ArrowUpRightIcon
                         size={16}
                         className="shrink-0 text-muted-foreground"
                       />
-                    </span>
-                  </Badge>
+                    </AnnouncementTitle>
+                  </Announcement>
                 </a>
               </m.div>
             ) : null}
