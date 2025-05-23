@@ -126,10 +126,10 @@ const IntegrationsSettings = async () => {
               className="m-0 h-8 w-8 shrink-0 object-contain"
             />
             <div className="block flex-1">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 <div className="block font-medium">{integration.title}</div>
                 {integration.installed && (
-                  <Badge variant="outline">Installed</Badge>
+                  <Badge variant="secondary">Installed</Badge>
                 )}
               </div>
               <div className="block text-muted-foreground text-sm">
