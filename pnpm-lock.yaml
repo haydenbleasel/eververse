@@ -946,6 +946,9 @@ importers:
       react-day-picker:
         specifier: ^8.10.1
         version: 8.10.1(date-fns@4.1.0)(react@19.0.0)
+      react-dom:
+        specifier: 19.0.0
+        version: 19.0.0(react@19.0.0)
       react-dropzone:
         specifier: ^14.3.8
         version: 14.3.8(react@19.0.0)
@@ -1010,6 +1013,9 @@ importers:
       '@types/react':
         specifier: ^19.1.5
         version: 19.1.5
+      '@types/react-dom':
+        specifier: ^19.1.5
+        version: 19.1.5(@types/react@19.1.5)
       '@types/react-syntax-highlighter':
         specifier: ^15.5.13
         version: 15.5.13

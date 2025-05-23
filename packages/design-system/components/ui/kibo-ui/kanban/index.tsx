@@ -1,7 +1,7 @@
 'use client';
 
-import { Card } from '@repo/components/ui/card';
-import { ScrollArea, ScrollBar } from '@repo/components/ui/scroll-area';
+import { Card } from '@repo/design-system/components/ui/card';
+import { ScrollArea, ScrollBar } from '@repo/design-system/components/ui/scroll-area';
 import { cn } from '@repo/design-system/lib/utils';
 import {
   DndContext,

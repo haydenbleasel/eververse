@@ -1,13 +1,13 @@
 'use client';
 
-import { Button } from '@repo/components/ui/button';
+import { Button } from '@repo/design-system/components/ui/button';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@repo/components/ui/select';
+} from '@repo/design-system/components/ui/select';
 import { cn } from '@repo/design-system/lib/utils';
 import {
   type IconType,
