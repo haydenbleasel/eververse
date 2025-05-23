@@ -1,6 +1,7 @@
 'use client';
+
 import { zodResolver } from '@hookform/resolvers/zod';
-import { login, microsoftLogin, slackLogin } from '@repo/backend/auth/actions';
+import { login } from '@repo/backend/auth/actions';
 import { Input } from '@repo/design-system/components/precomposed/input';
 import { Prose } from '@repo/design-system/components/prose';
 import { Button } from '@repo/design-system/components/ui/button';
@@ -46,26 +47,6 @@ export const LoginForm = () => {
     }
   };
 
-  const handleMicrosoftLogin = async () => {
-    try {
-      const url = await microsoftLogin();
-
-      window.location.href = url;
-    } catch (error) {
-      handleError(error);
-    }
-  };
-
-  const handleSlackLogin = async () => {
-    try {
-      const url = await slackLogin();
-
-      window.location.href = url;
-    } catch (error) {
-      handleError(error);
-    }
-  };
-
   return (
     <div className="grid w-full gap-4 rounded-lg border bg-background p-8 shadow-sm">
       <Prose className="prose-sm text-center">
@@ -75,29 +56,6 @@ export const LoginForm = () => {
         </p>
       </Prose>
       <div className="grid gap-2">
-        {/* <div className="grid grid-cols-2 gap-4">
-          <Button variant="outline" onClick={handleMicrosoftLogin}>
-            <Image
-              src="/microsoft.svg"
-              alt=""
-              width={16}
-              height={16}
-              className="w-4 h-4"
-            />
-            Microsoft
-          </Button>
-          <Button variant="outline" onClick={handleSlackLogin}>
-            <Image
-              src="/slack.svg"
-              alt=""
-              width={16}
-              height={16}
-              className="w-4 h-4"
-            />
-            Slack
-          </Button>
-        </div>
-        <OrDivider /> */}
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
             <FormField
