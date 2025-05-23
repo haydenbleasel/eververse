@@ -12,8 +12,6 @@ export const createClient = ({
 }) => {
   const Authorization = `Basic ${Buffer.from(`${email}:${accessToken}`).toString('base64')}`;
 
-  console.log(Authorization, siteUrl);
-
   return createFetchClient<paths>({
     baseUrl: siteUrl,
     headers: {
