@@ -76,7 +76,7 @@ export const InstallJira = async () => {
           <p>Then click "Create".</p>
         </Prose>
       </StackCard>
-      <StackCard title="2. Create a new Atlassian app">
+      <StackCard title="2. Create a new API token">
         <Prose className="max-w-none">
           <p>
             Head to the{' '}
