@@ -1,3 +1,16 @@
+# v1.4.1 (Fri May 23 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Update install.tsx ([@haydenbleasel](https://github.com/haydenbleasel))
+- Fix Jira API token ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.4.0 (Fri May 23 2025)
 
 #### 🚀 Enhancement
