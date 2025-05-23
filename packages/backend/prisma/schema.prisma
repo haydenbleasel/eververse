@@ -737,8 +737,6 @@ model IntercomInstallation {
   updatedAt      DateTime     @updatedAt @db.Timestamptz(6)
   organizationId String       @db.VarChar(191)
   creatorId      String       @db.VarChar(191)
-  accessToken    String       @db.VarChar(191)
-  tokenType      String       @db.VarChar(191)
   appId          String       @db.VarChar(191)
   organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 

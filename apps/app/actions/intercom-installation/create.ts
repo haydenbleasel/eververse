@@ -27,8 +27,6 @@ export const createIntercomInstallation = async (
     await database.intercomInstallation.create({
       data: {
         organizationId,
-        accessToken: '',
-        tokenType: '',
         creatorId: user.id,
         appId,
       },
