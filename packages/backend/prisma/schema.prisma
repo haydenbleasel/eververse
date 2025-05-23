@@ -15,15 +15,15 @@ datasource db {
 
 model Organization {
   id                   String    @id(map: "idx_33219_PRIMARY") @default(cuid()) @db.VarChar(191)
-  name                 String    @db.VarChar(191)
-  logoUrl              String?   @db.VarChar(191)
+  name                 String    @db.Text
+  logoUrl              String?   @db.Text
   createdAt            DateTime  @default(now()) @db.Timestamptz(6)
   updatedAt            DateTime  @updatedAt @db.Timestamptz(6)
   productDescription   String?
   stripeCustomerId     String?   @db.VarChar(191)
   stripeSubscriptionId String?   @db.VarChar(191)
   onboardedAt          DateTime? @db.Timestamptz(6)
-  slug                 String    @db.VarChar(191)
+  slug                 String    @db.Text
 
   onboardingType             organization_onboardingType?
   feedback                   Feedback[]
