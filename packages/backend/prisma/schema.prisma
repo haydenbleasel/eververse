@@ -683,8 +683,6 @@ model GitHubInstallation {
   organizationId     String                      @db.VarChar(191)
   installationId     String                      @unique(map: "idx_33126_github_installation_installationId_key") @db.VarChar(191)
   organization       Organization                @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  statusMappings     InstallationStatusMapping[]
-  featureConnections FeatureConnection[]
 
   @@index([organizationId], map: "idx_33126_github_installation_organizationId_idx")
   @@map("github_installation")
@@ -776,8 +774,6 @@ model InstallationFieldMapping {
   organization   Organization                            @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
   type                    feature_connection_platform
-  AtlassianInstallation   AtlassianInstallation?      @relation(fields: [atlassianInstallationId], references: [id])
-  atlassianInstallationId String?                     @db.VarChar(191)
 
   @@unique([organizationId, externalId], map: "idx_33189_installation_field_mapping_organizationId_externalId_")
   @@map("installation_field_mapping")
