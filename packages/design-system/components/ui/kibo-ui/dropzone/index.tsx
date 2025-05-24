@@ -142,7 +142,7 @@ export const DropzoneContent = ({
             )} and ${src.length - maxLabelItems} more`
           : new Intl.ListFormat('en').format(src.map((file) => file.name))}
       </p>
-      <p className="w-full text-muted-foreground text-xs">
+      <p className="w-full text-wrap text-muted-foreground text-xs">
         Drag and drop or click to replace
       </p>
     </div>
