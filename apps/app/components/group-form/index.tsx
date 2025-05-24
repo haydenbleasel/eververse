@@ -78,7 +78,7 @@ export const GroupForm = ({ products, groups }: GroupFormProperties) => {
       open={isOpen}
       onOpenChange={toggle}
       modal={false}
-      className="max-w-2xl"
+      className="sm:max-w-2xl"
       title={
         <p className="font-medium text-muted-foreground text-sm tracking-tight">
           Create a group

@@ -54,7 +54,7 @@ export const ProductForm = () => {
           Create a product
         </p>
       }
-      className="max-w-2xl"
+      className="sm:max-w-2xl"
       cta="Create product"
       onClick={handleCreate}
       disabled={disabled}

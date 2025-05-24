@@ -88,7 +88,7 @@ export const ReleaseForm = () => {
       cta="Create release"
       onClick={handleCreate}
       disabled={disabled}
-      className="max-w-xl"
+      className="sm:max-w-xl"
       modal={false}
       footer={
         <Popover>

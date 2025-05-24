@@ -73,7 +73,7 @@ export const ChangelogForm = () => {
       cta="Create product update"
       onClick={handleCreate}
       disabled={disabled}
-      className="max-w-2xl"
+      className="sm:max-w-2xl"
       modal={false}
     >
       <Input

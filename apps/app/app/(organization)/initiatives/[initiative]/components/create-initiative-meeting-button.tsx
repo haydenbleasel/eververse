@@ -98,7 +98,7 @@ export const CreateInitiativeMeetingButton = ({
       onClick={onClick}
       cta="Create meeting"
       disabled={disabled}
-      className="max-w-2xl"
+      className="sm:max-w-2xl"
       trigger={
         <div>
           <Tooltip content="Create a new meeting">

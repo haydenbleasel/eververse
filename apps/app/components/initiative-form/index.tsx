@@ -81,7 +81,7 @@ export const InitiativeForm = ({
       cta="Create initiative"
       onClick={handleCreate}
       disabled={disabled}
-      className="max-w-2xl"
+      className="sm:max-w-2xl"
       footer={
         <FeatureAssigneePicker
           data={members}

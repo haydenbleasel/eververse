@@ -298,7 +298,7 @@ export const FeedbackForm = ({
       cta="Create feedback"
       onClick={handleCreate}
       disabled={disabled}
-      className="max-w-2xl"
+      className="sm:max-w-2xl"
       footer={
         <div className="flex items-center gap-2">
           <FeedbackUserPicker
