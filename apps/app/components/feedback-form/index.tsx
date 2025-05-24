@@ -18,7 +18,11 @@ import type {
   FeedbackOrganization,
   FeedbackUser,
 } from '@repo/backend/prisma/client';
-import { Dropzone } from '@repo/design-system/components/dropzone';
+import {
+  Dropzone,
+  DropzoneContent,
+  DropzoneEmptyState,
+} from '@repo/design-system/components/ui/kibo-ui/dropzone';
 import type { EditorInstance } from '@repo/editor';
 import {
   AudioLinesIcon,
@@ -370,9 +374,31 @@ export const FeedbackForm = ({
           </div>
         )}
 
-        {type === 'audio' && <Dropzone accept="audio/*" onChange={setAudio} />}
+        {type === 'audio' && (
+          <Dropzone
+            maxFiles={1}
+            accept={{ 'audio/*': [] }}
+            onDrop={setAudio}
+            src={[]}
+            onError={console.error}
+          >
+            <DropzoneEmptyState />
+            <DropzoneContent />
+          </Dropzone>
+        )}
 
-        {type === 'video' && <Dropzone accept="video/*" onChange={setVideo} />}
+        {type === 'video' && (
+          <Dropzone
+            maxFiles={1}
+            accept={{ 'video/*': [] }}
+            onDrop={setVideo}
+            src={[]}
+            onError={console.error}
+          >
+            <DropzoneEmptyState />
+            <DropzoneContent />
+          </Dropzone>
+        )}
 
         {type === 'text' && (
           <div
