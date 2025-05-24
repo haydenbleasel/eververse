@@ -16,5 +16,8 @@
       "path": "/cron/import",
       "schedule": "*/10 * * * *"
     }
-  ]
+  ],
+  "build": {
+    "ignoreCommand": "node scripts/skip-ci.js"
+  }
 }
