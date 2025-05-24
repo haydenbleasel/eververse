@@ -19,11 +19,11 @@ let nextConfig: NextConfig = withBackend(
       ];
     },
 
+    // biome-ignore lint/suspicious/useAwait: "headers is async"
     async headers() {
       return [
-        ...(config.headers ? await config.headers() : []),
         {
-          source: '/widget.js|/panel|/trigger',
+          source: '/(.*)',
           headers: [
             { key: 'Access-Control-Allow-Origin', value: '*' },
             {
