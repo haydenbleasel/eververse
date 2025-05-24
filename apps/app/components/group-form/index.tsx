@@ -108,7 +108,7 @@ export const GroupForm = ({ products, groups }: GroupFormProperties) => {
         placeholder="Admin Dashboard"
         value={name}
         onChangeText={setName}
-        className="border-none p-0 font-medium text-lg shadow-none focus-visible:ring-0"
+        className="border-none p-0 font-medium shadow-none focus-visible:ring-0 md:text-lg"
         maxLength={191}
         autoComplete="off"
       />

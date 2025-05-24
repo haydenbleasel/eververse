@@ -138,7 +138,7 @@ export const FeedbackForm = ({
       throw new Error('Audio file is missing.');
     }
 
-    const supabase = await createClient();
+    const supabase = createClient();
 
     const id = nanoid(36);
     const { data, error } = await supabase.storage
@@ -151,7 +151,7 @@ export const FeedbackForm = ({
 
     const {
       data: { publicUrl },
-    } = await supabase.storage.from('files').getPublicUrl(data.path);
+    } = supabase.storage.from('files').getPublicUrl(data.path);
 
     const response = await createFeedback({
       title,
@@ -342,7 +342,7 @@ export const FeedbackForm = ({
           placeholder="Add ability to customize dashboard"
           value={title}
           onChangeText={setTitle}
-          className="border-none p-0 font-medium text-lg shadow-none focus-visible:ring-0"
+          className="border-none p-0 font-medium shadow-none focus-visible:ring-0 md:text-lg"
           autoComplete="off"
           onKeyDown={handleKeyDown}
         />
