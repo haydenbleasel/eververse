@@ -148,7 +148,7 @@ export const WidgetForm = ({
           checked={enableChangelog}
           onCheckedChange={async (newValue) => {
             setEnableChangelog(newValue);
-            return handleUpdateWidget({ enableChangelog: newValue });
+            return await handleUpdateWidget({ enableChangelog: newValue });
           }}
           description="Enable Changelog"
         />
@@ -157,7 +157,7 @@ export const WidgetForm = ({
           checked={enablePortal}
           onCheckedChange={async (newValue) => {
             setEnablePortal(newValue);
-            return handleUpdateWidget({ enablePortal: newValue });
+            return await handleUpdateWidget({ enablePortal: newValue });
           }}
           description="Enable Portal"
         />
@@ -165,7 +165,7 @@ export const WidgetForm = ({
           checked={enableFeedback}
           onCheckedChange={async (newValue) => {
             setEnableFeedback(newValue);
-            return handleUpdateWidget({ enableFeedback: newValue });
+            return await handleUpdateWidget({ enableFeedback: newValue });
           }}
           description="Enable Feedback"
         />
