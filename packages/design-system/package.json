@@ -5,7 +5,6 @@
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
     "@tailwindcss/postcss": "^4.1.7",
-    "@tailwindcss/typography": "^0.5.16",
     "@types/lodash.throttle": "^4.1.9",
     "@types/node": "22.15.21",
     "@types/react": "^19.1.5",
@@ -84,6 +83,7 @@
     "react-resizable-panels": "^3.0.2",
     "react-virtuoso": "^4.12.7",
     "recharts": "^2.15.3",
+    "shadcn-prose": "^1.0.7",
     "shiki": "^3.4.2",
     "sonner": "^2.0.3",
     "tailwind-merge": "^3.3.0",

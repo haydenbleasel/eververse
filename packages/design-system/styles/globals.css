@@ -1,8 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@source "../**/*.{ts,tsx}";
+@import 'shadcn-prose';
 
-@plugin '@tailwindcss/typography';
+@source "../**/*.{ts,tsx}";
 
 @custom-variant dark (&:is(.dark *));
 
