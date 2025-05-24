@@ -1,3 +1,15 @@
+# v1.4.3 (Sat May 24 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Update next.config.ts ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.4.2 (Fri May 23 2025)
 
 #### ⚠️ Pushed to `main`
