@@ -100,12 +100,16 @@ const SignInPage = async () => {
       </div>
       <div className="hidden h-full w-full items-start justify-center overflow-y-auto bg-background px-24 py-24 lg:flex">
         <div className="flex w-full flex-col gap-8">
-          <p className="font-medium text-muted-foreground text-sm">
-            Latest update
-          </p>
           {latestUpdate ? (
-            <Prose key={latestUpdate.id} className="prose-img:rounded-lg">
-              <h1 className="mt-0">{latestUpdate.title}</h1>
+            <Prose
+              key={latestUpdate.id}
+              className="mx-auto prose-img:rounded-lg"
+            >
+              <p className="font-medium text-muted-foreground text-sm">
+                Latest update
+              </p>
+
+              <h1 className="mt-6">{latestUpdate.title}</h1>
 
               <div className="mt-4 mb-12 flex items-center gap-2">
                 <span className="text-sm">by</span>

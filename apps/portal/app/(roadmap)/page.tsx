@@ -106,7 +106,7 @@ const Roadmap = async () => {
                 )
                 .map((item) => (
                   <div
-                    className="flex items-stretch gap-2 rounded-lg border-b bg-background px-4 py-3 shadow-sm transition-all hover:shadow"
+                    className="flex items-center gap-2 rounded-lg border-b bg-background px-4 py-3 shadow-sm transition-all hover:shadow"
                     key={item.id}
                   >
                     {data.organization.stripeSubscriptionId ? (

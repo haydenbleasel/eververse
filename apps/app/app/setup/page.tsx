@@ -1,7 +1,5 @@
 import { createClient } from '@repo/backend/auth/server';
 import { currentOrganizationId } from '@repo/backend/auth/utils';
-import { Logo } from '@repo/design-system/components/logo';
-import { Prose } from '@repo/design-system/components/prose';
 import { Button } from '@repo/design-system/components/ui/button';
 import { createMetadata } from '@repo/seo/metadata';
 import type { Metadata } from 'next';
@@ -39,14 +37,11 @@ const SetupPage = async () => {
         </form>
       </div>
       <div className="w-full max-w-[400px] space-y-8">
-        <Logo className="mx-auto h-12 w-12" />
         <CreateOrganizationForm />
-        <Prose className="prose-sm text-center">
-          <p className="text-muted-foreground">
-            Is your organization already using Eververse? Ask your organization
-            owner to invite you to join.
-          </p>
-        </Prose>
+        <p className="text-center text-muted-foreground text-sm">
+          Is your organization already using Eververse? Ask your organization
+          owner to invite you to join.
+        </p>
       </div>
     </div>
   );
