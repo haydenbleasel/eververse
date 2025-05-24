@@ -4,7 +4,6 @@ import { StackCard } from '@repo/design-system/components/stack-card';
 import { createMetadata } from '@repo/seo/metadata';
 import { BookIcon, BuildingIcon } from 'lucide-react';
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { OrganizationDetailsForm } from './components/organization-details-form';
 import { OrganizationLogoForm } from './components/organization-logo-form';
@@ -59,18 +58,10 @@ const GeneralSettings = async () => {
             defaultSlug={organization.slug}
           />
           <div>
-            <div className="relative aspect-square overflow-hidden rounded-xl">
-              <OrganizationLogoForm organizationId={organizationId} />
-              {organization.logoUrl && (
-                <Image
-                  src={organization.logoUrl}
-                  alt="Organization Logo"
-                  width={100}
-                  height={100}
-                  className="pointer-events-none absolute inset-0 m-0 h-full w-full object-cover"
-                />
-              )}
-            </div>
+            <OrganizationLogoForm
+              organizationId={organizationId}
+              logoUrl={organization.logoUrl}
+            />
             {organization.logoUrl && (
               <p className="mt-1 text-center text-muted-foreground text-xs">
                 Click or drag-and-drop to change
