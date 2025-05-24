@@ -2,12 +2,18 @@
 
 import { updateWidget } from '@/actions/widget/update';
 import type { Widget, WidgetItem } from '@repo/backend/prisma/client';
-import { CodeBlock } from '@repo/design-system/components/code-block';
 import { Link } from '@repo/design-system/components/link';
 import { Switch } from '@repo/design-system/components/precomposed/switch';
 import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
 import { StackCard } from '@repo/design-system/components/stack-card';
 import { Button } from '@repo/design-system/components/ui/button';
+import {
+  type BundledLanguage,
+  CodeBlock,
+  CodeBlockBody,
+  CodeBlockContent,
+  CodeBlockItem,
+} from '@repo/design-system/components/ui/kibo-ui/code-block';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { toast } from '@repo/design-system/lib/toast';
 import { DynamicIcon } from '@repo/widget/components/dynamic-icon';
@@ -41,7 +47,11 @@ export const WidgetForm = ({
   const [enableChangelog, setEnableChangelog] = useState(data.enableChangelog);
   const [darkMode, setDarkMode] = useState(false);
 
-  const embedCode = `<script>
+  const code = [
+    {
+      language: 'javascript',
+      filename: 'widget.js',
+      code: `<script>
   (function() {
     window.EververseWidgetId = '${data.id}';
     window.EververseWidgetDarkMode = ${darkMode ? 'true' : 'false'};
@@ -52,7 +62,9 @@ export const WidgetForm = ({
     var x = document.getElementsByTagName('script')[0];
     x.parentNode.insertBefore(s, x);
   })();
-</script>`;
+</script>`,
+    },
+  ];
 
   const handleUpdateWidget = async (properties: Partial<Widget>) => {
     try {
@@ -165,7 +177,31 @@ export const WidgetForm = ({
       </StackCard>
 
       <StackCard title="Embed Code" className="p-0">
-        <CodeBlock language="html" code={embedCode} />
+        <CodeBlock
+          data={code}
+          defaultValue={code[0].language}
+          className="dark rounded-none border-none"
+        >
+          <CodeBlockBody>
+            {(item) => (
+              <CodeBlockItem
+                key={item.language}
+                value={item.language}
+                className="[&_.shiki]:!bg-transparent dark:[&_.shiki]:!bg-transparent [&_.shiki_code]:!text-sm"
+              >
+                <CodeBlockContent
+                  language={item.language as BundledLanguage}
+                  themes={{
+                    light: 'nord',
+                    dark: 'nord',
+                  }}
+                >
+                  {item.code}
+                </CodeBlockContent>
+              </CodeBlockItem>
+            )}
+          </CodeBlockBody>
+        </CodeBlock>
       </StackCard>
     </div>
   );
