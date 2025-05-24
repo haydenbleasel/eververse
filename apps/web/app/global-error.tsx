@@ -1,6 +1,6 @@
 'use client';
 
-import { Prose } from '@repo/design-system/components/prose';
+import { Container } from '@repo/design-system/components/container';
 import { Button } from '@repo/design-system/components/ui/button';
 import * as Sentry from '@sentry/nextjs';
 import type NextError from 'next/error';
@@ -22,11 +22,19 @@ const GlobalError = ({ error, reset }: GlobalErrorProperties) => {
       className="touch-manipulation scroll-smooth font-sans antialiased"
     >
       <body className="flex h-screen w-screen items-center justify-center">
-        <Prose className="text-center">
-          <h1>Oops, something went wrong</h1>
-          <p>Sorry, we couldn&apos;t load this page.</p>
-          <Button onClick={() => reset()}>Try again</Button>
-        </Prose>
+        <Container className="border-x p-16">
+          <div className="mx-auto flex flex-col items-center justify-center text-center text-foreground">
+            <h1 className="mt-0 mb-4 font-semibold text-3xl tracking-tighter sm:text-5xl">
+              Oops, something went wrong
+            </h1>
+            <p className="m-0 text-muted-foreground">
+              Sorry, we couldn&apos;t load this page.
+            </p>
+            <Button className="mt-4" variant="outline" onClick={() => reset()}>
+              Try again
+            </Button>
+          </div>
+        </Container>
       </body>
     </html>
   );

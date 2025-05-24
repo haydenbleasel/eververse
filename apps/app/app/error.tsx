@@ -2,7 +2,6 @@
 
 import { EmptyState } from '@/components/empty-state';
 import { Link } from '@repo/design-system/components/link';
-import { Prose } from '@repo/design-system/components/prose';
 import { Button } from '@repo/design-system/components/ui/button';
 import { parseError } from '@repo/lib/parse-error';
 import { BugIcon } from 'lucide-react';
@@ -38,9 +37,9 @@ const ErrorPage = ({ error, reset }: ErrorProperties) => {
           </div>
         </EmptyState>
       </div>
-      <Prose className="h-full w-full max-w-none">
+      <div className="h-full w-full max-w-none">
         <pre className="h-full w-full rounded-none border-none">{message}</pre>
-      </Prose>
+      </div>
     </main>
   );
 };

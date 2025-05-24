@@ -2,7 +2,6 @@
 
 import { Container } from '@repo/design-system/components/container';
 import { Link } from '@repo/design-system/components/link';
-import { Prose } from '@repo/design-system/components/prose';
 import { Button } from '@repo/design-system/components/ui/button';
 import {
   Announcement,
@@ -56,14 +55,14 @@ export const Hero = ({
                 </a>
               </m.div>
             ) : null}
-            <Prose className="mt-8 max-w-6xl">
+            <div className="mt-8 max-w-6xl">
               <m.h1
                 initial={{ opacity: 0, translateY: 16 }}
                 animate={{ opacity: 1, translateY: 0 }}
                 transition={{ duration: 1, ease: 'easeInOut', delay: 0.5 }}
                 className={cn(
-                  'mb-4 font-semibold tracking-tighter',
-                  'text-[2.125rem] sm:text-5xl md:text-6xl lg:text-7xl'
+                  'mb-6 font-semibold tracking-tighter',
+                  'text-[2.125rem] sm:text-5xl md:text-6xl'
                 )}
               >
                 The open source product management platform
@@ -81,7 +80,7 @@ export const Hero = ({
                   plan roadmaps with the help of AI.
                 </Balancer>
               </m.p>
-            </Prose>
+            </div>
             <m.div
               className="mt-8 flex max-w-lg flex-col items-center gap-4 sm:flex-row"
               initial={{ opacity: 0, translateY: 16 }}
