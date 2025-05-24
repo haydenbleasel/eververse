@@ -66,7 +66,7 @@
     panel.style.pointerEvents = isVisible ? 'none' : 'all';
     panel.style.userSelect = isVisible ? 'none' : 'all';
     panel.style.width = isVisible ? '0%' : '90%';
-    panel.style.height = isVisible ? '0' : '100%';
+    panel.style.height = isVisible ? '0' : 'auto';
   });
 
   document.body.append(trigger);

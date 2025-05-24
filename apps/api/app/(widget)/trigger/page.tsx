@@ -13,8 +13,8 @@ const WidgetTrigger = async (props: WidgetTriggerProperties) => {
 
   return (
     <div className={cn('h-full w-full', darkMode ? 'dark' : '')}>
-      <div className="flex h-full w-full items-center justify-center rounded-full border border-border-50 bg-background">
-        <Logomark className="h-[60%] w-[60%]" />
+      <div className="flex h-full w-full items-center justify-center rounded-full border border-black/10 bg-primary">
+        <Logomark className="h-[60%] w-[60%] text-white" />
       </div>
     </div>
   );
