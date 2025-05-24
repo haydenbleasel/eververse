@@ -68,16 +68,23 @@ export const cannyImport = async (
       },
     });
 
-    await database.organization.update({
+    const organization = await database.organization.findUnique({
       where: { id: organizationId },
-      data: {
-        onboardingType: 'IMPORT',
-        onboardedAt: new Date(),
-      },
-      select: {
-        id: true,
-      },
+      select: { onboardingType: true },
     });
+
+    if (!organization?.onboardingType) {
+      await database.organization.update({
+        where: { id: organizationId },
+        data: {
+          onboardingType: 'IMPORT',
+          onboardedAt: new Date(),
+        },
+        select: {
+          id: true,
+        },
+      });
+    }
 
     const portals = await database.portal.findMany({
       select: { id: true },
