@@ -83,7 +83,7 @@
     "react-resizable-panels": "^3.0.2",
     "react-virtuoso": "^4.12.7",
     "recharts": "^2.15.3",
-    "shadcn-prose": "^1.0.7",
+    "shadcn-prose": "^1.0.8",
     "shiki": "^3.4.2",
     "sonner": "^2.0.3",
     "tailwind-merge": "^3.3.0",

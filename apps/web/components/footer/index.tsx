@@ -22,11 +22,7 @@ const links = [
   },
   {
     name: 'Contact',
-    href: '/contact',
-  },
-  {
-    name: 'Legal',
-    href: '/legal',
+    href: 'https://x.com/haydenbleasel',
   },
 ];
 
@@ -49,7 +45,7 @@ export const Footer = async () => {
   const status = await getStatus();
 
   return (
-    <section className="relative overflow-hidden border-t">
+    <section className="relative overflow-hidden">
       <Container className="grid grid-cols-4 items-start border-x px-4 py-8">
         <div className="flex flex-col gap-4">
           <Link href="/">

@@ -489,6 +489,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^5.0.1
         version: 5.0.1(react-hook-form@7.56.4(react@19.0.0))
+      '@number-flow/react':
+        specifier: ^0.5.9
+        version: 0.5.9(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@react-hookz/web':
         specifier: ^25.1.1
         version: 25.1.1(js-cookie@3.0.5)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -974,8 +977,8 @@ importers:
         specifier: ^2.15.3
         version: 2.15.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       shadcn-prose:
-        specifier: ^1.0.7
-        version: 1.0.7
+        specifier: ^1.0.8
+        version: 1.0.8
       shiki:
         specifier: ^3.4.2
         version: 3.4.2
@@ -8107,8 +8110,8 @@ packages:
   setprototypeof@1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}
 
-  shadcn-prose@1.0.7:
-    resolution: {integrity: sha512-bdWXXzJB83qCvTDx903eOIshAk0skYhWAoZnUdHLPRmgB5y/AcMoJt7vi7nnQWFcXkLOC01oOTR5j9JCo5ml5g==}
+  shadcn-prose@1.0.8:
+    resolution: {integrity: sha512-Llpz/dC+ZTqLzh8qrIZM5p5ggbHQ4MKP90NkfXvV1CF5Hdg8uFO+IAiF1P5mSqMHqnPW0XT9ZkqqgXR7fNSVig==}
 
   sharp@0.33.5:
     resolution: {integrity: sha512-haPVm1EkS9pgvHrQ/F3Xy+hgcuMV0Wm9vfIBSiwZ05k+xgb0PkBQpGsAA/oWdDobNaZTH5ppvHtzCFbnSEwHVw==}
@@ -16520,7 +16523,7 @@ snapshots:
 
   setprototypeof@1.2.0: {}
 
-  shadcn-prose@1.0.7: {}
+  shadcn-prose@1.0.8: {}
 
   sharp@0.33.5:
     dependencies:
