@@ -23,7 +23,7 @@ const Templates = async () => {
     <div className="grid gap-6">
       <div className="flex items-start justify-between gap-4">
         <div className="grid gap-2">
-          <h1 className="m-0 font-semibold text-4xl">{title}</h1>
+          <h1 className="m-0 font-semibold text-4xl tracking-tight">{title}</h1>
           <p className="mb-0 text-muted-foreground">{description}</p>
         </div>
         <CreateTemplateButton />

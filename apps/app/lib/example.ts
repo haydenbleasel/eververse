@@ -134,7 +134,8 @@ export const createExampleFeatures = async (
   organizationId: string,
   userId: string,
   statusIds: string[],
-  productIds: string[]
+  productIds: string[],
+  releaseIds: string[]
 ): Promise<string[]> => {
   const ids = Array.from(
     { length: 20 },
@@ -157,6 +158,7 @@ export const createExampleFeatures = async (
         id,
         productId: faker.helpers.arrayElement(productIds),
         example: true,
+        releaseId: faker.helpers.arrayElement(releaseIds),
         rice: {
           create: {
             reach: faker.number.int({ min: 20, max: 100 }),

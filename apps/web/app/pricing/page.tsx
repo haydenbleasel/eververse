@@ -1,7 +1,6 @@
 import { env } from '@/env';
 import Climate from '@repo/design-system/components/climate';
 import { Container } from '@repo/design-system/components/container';
-import { Prose } from '@repo/design-system/components/prose';
 import { stripe } from '@repo/payments';
 import type { Metadata } from 'next';
 import { PricingTable } from './components/pricing-table';
@@ -33,14 +32,14 @@ const Pricing = async () => {
 
   return (
     <Container className="border-x p-4 pt-16 text-center">
-      <Prose className="max-w-none">
-        <header className="flex flex-col items-center">
-          <h1 className="mb-0 pr-1 text-center font-semibold text-[2.125rem] tracking-tighter sm:text-5xl">
-            {title}
-          </h1>
-          <p className="text-center text-lg">{description}</p>
-        </header>
-      </Prose>
+      <header className="flex flex-col items-center gap-4">
+        <h1 className="mb-0 pr-1 text-center font-semibold text-[2.125rem] tracking-tighter sm:text-5xl">
+          {title}
+        </h1>
+        <p className="text-center text-lg text-muted-foreground">
+          {description}
+        </p>
+      </header>
       <PricingTable
         monthlyPrice={monthlyPrice / 100}
         annualPrice={annualPrice / 100 / 12}

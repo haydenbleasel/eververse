@@ -88,7 +88,7 @@ export const ReleaseForm = () => {
       cta="Create release"
       onClick={handleCreate}
       disabled={disabled}
-      className="max-w-xl"
+      className="sm:max-w-xl"
       modal={false}
       footer={
         <Popover>
@@ -137,7 +137,7 @@ export const ReleaseForm = () => {
         placeholder="Release 1.1"
         value={name}
         onChangeText={setName}
-        className="border-none p-0 font-medium text-lg shadow-none focus-visible:ring-0"
+        className="border-none p-0 font-medium shadow-none focus-visible:ring-0 md:text-lg"
         maxLength={191}
         autoComplete="off"
         onKeyDown={handleKeyDown}

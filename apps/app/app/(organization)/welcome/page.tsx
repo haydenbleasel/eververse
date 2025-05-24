@@ -3,7 +3,6 @@ import { emptyStates } from '@/lib/empty-states';
 import { EververseRole } from '@repo/backend/auth';
 import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
 import { Link } from '@repo/design-system/components/link';
-import { Prose } from '@repo/design-system/components/prose';
 import { StackCard } from '@repo/design-system/components/stack-card';
 import { Button } from '@repo/design-system/components/ui/button';
 import { Video } from '@repo/design-system/components/video';
@@ -16,10 +15,11 @@ import { AddFeatureButton } from './components/add-feature-button';
 import { AddFeedbackButton } from './components/add-feedback-button';
 import { OnboardingOptions } from './components/onboarding-options';
 
-export const metadata: Metadata = createMetadata({
-  title: 'Welcome',
-  description: 'Welcome to Eververse!',
-});
+const title = 'Welcome';
+const description =
+  "Welcome to Eververse! Let's get you set up so you can start collecting feedback, creating features and building your roadmap.";
+
+export const metadata: Metadata = createMetadata({ title, description });
 
 const Welcome = async () => {
   const [user, organizationId] = await Promise.all([
@@ -309,15 +309,14 @@ const Welcome = async () => {
   );
 
   return (
-    <div className="w-full px-6 py-16">
-      <Prose className="mx-auto grid w-full gap-6">
+    <div className="px-6 py-16">
+      <div className="mx-auto grid w-full max-w-3xl gap-6">
         <div className="flex flex-col-reverse items-start justify-between gap-8 sm:flex-row">
-          <div>
-            <h1 className="mb-0">Welcome</h1>
-            <p className="mt-2 max-w-lg text-muted-foreground">
-              Welcome to Eververse! Let&apos;s get you set up so you can start
-              collecting feedback, creating features and building your roadmap.
-            </p>
+          <div className="grid gap-2">
+            <h1 className="m-0 font-semibold text-4xl tracking-tight">
+              {title}
+            </h1>
+            <p className="text-balance text-muted-foreground">{description}</p>
           </div>
           <div className="relative aspect-square w-20">
             <div className="absolute inset-0">
@@ -342,7 +341,7 @@ const Welcome = async () => {
           </div>
         </div>
 
-        <div className="not-prose flex flex-col space-y-4">
+        <div className="flex flex-col space-y-4">
           <StackCard title="Introduction video" className="p-0">
             <Video
               url="https://youtu.be/IuEwJD9fgKM"
@@ -378,7 +377,7 @@ const Welcome = async () => {
               </div>
             ))}
         </div>
-      </Prose>
+      </div>
     </div>
   );
 };

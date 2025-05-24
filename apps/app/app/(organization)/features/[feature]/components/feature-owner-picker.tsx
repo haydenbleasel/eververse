@@ -4,9 +4,9 @@ import { updateFeature } from '@/actions/feature/update';
 import type { User } from '@repo/backend/auth';
 import { getUserName } from '@repo/backend/auth/format';
 import type { Feature } from '@repo/backend/prisma/client';
+import { Avatar } from '@repo/design-system/components/precomposed/avatar';
 import { Select } from '@repo/design-system/components/precomposed/select';
 import { handleError } from '@repo/design-system/lib/handle-error';
-import Image from 'next/image';
 import { useState } from 'react';
 
 type FeatureOwnerPickerProperties = {
@@ -56,12 +56,9 @@ export const FeatureOwnerPicker = ({
 
         return (
           <div className="flex items-center gap-2">
-            <Image
+            <Avatar
               src={user.user_metadata.image_url}
-              alt={item.label}
-              width={24}
-              height={24}
-              className="h-6 w-6 shrink-0 rounded-full object-cover"
+              fallback={item.label.slice(0, 2)}
             />
             <span className="flex-1 truncate">{item.label}</span>
           </div>

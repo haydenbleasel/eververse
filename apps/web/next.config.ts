@@ -19,6 +19,11 @@ let nextConfig: NextConfig = withBackend(
     async redirects() {
       return [
         {
+          source: '/legal',
+          destination: '/legal/privacy',
+          permanent: true,
+        },
+        {
           source: '/acceptable-use',
           destination: '/legal/acceptable-use',
           permanent: true,

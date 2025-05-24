@@ -1,6 +1,5 @@
 import { Container } from '@repo/design-system/components/container';
 import { Link } from '@repo/design-system/components/link';
-import { Prose } from '@repo/design-system/components/prose';
 import Image from 'next/image';
 import type { StaticImageData } from 'next/image';
 import type { HTMLAttributes } from 'react';
@@ -142,9 +141,7 @@ export const Reviews = (properties: ReviewsProperties) => (
                 </div>
               </div>
             </div>
-            <Prose>
-              <p className="text-foreground">{text}</p>
-            </Prose>
+            <p>{text}</p>
           </div>
         ))}
       </div>

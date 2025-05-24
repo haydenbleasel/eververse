@@ -42,7 +42,7 @@ const Activity = async () => {
   return (
     <div className="mx-auto grid w-full max-w-3xl gap-6 p-6 py-16">
       <div className="grid gap-2">
-        <h1 className="m-0 font-semibold text-4xl">{title}</h1>
+        <h1 className="m-0 font-semibold text-4xl tracking-tight">{title}</h1>
         <p className="text-muted-foreground">{description}</p>
       </div>
       <HydrationBoundary state={dehydrate(queryClient)}>

@@ -4,6 +4,18 @@ import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
 import { getJsonColumnFromTable } from '@repo/backend/database';
 import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
 import { StackCard } from '@repo/design-system/components/stack-card';
+import {
+  VideoPlayer,
+  VideoPlayerContent,
+  VideoPlayerControlBar,
+  VideoPlayerMuteButton,
+  VideoPlayerPlayButton,
+  VideoPlayerSeekBackwardButton,
+  VideoPlayerSeekForwardButton,
+  VideoPlayerTimeDisplay,
+  VideoPlayerTimeRange,
+  VideoPlayerVolumeRange,
+} from '@repo/design-system/components/ui/kibo-ui/video-player';
 import { cn } from '@repo/design-system/lib/utils';
 import { contentToText } from '@repo/editor/lib/tiptap';
 import { createMetadata } from '@repo/seo/metadata';
@@ -151,9 +163,24 @@ const FeedbackPage = async (props: FeedbackPageProperties) => {
         ) : null}
         {feedback.videoUrl ? (
           <StackCard title="Feedback Video" className="p-0">
-            <video controls src={feedback.videoUrl} aria-label="Feedback video">
-              <track kind="captions" src="" label="English" />
-            </video>
+            <VideoPlayer className="flex flex-col">
+              <VideoPlayerContent
+                slot="media"
+                src={feedback.videoUrl}
+                preload="auto"
+                muted
+                crossOrigin=""
+              />
+              <VideoPlayerControlBar>
+                <VideoPlayerPlayButton />
+                <VideoPlayerSeekBackwardButton />
+                <VideoPlayerSeekForwardButton />
+                <VideoPlayerTimeRange />
+                <VideoPlayerTimeDisplay showDuration />
+                <VideoPlayerMuteButton />
+                <VideoPlayerVolumeRange />
+              </VideoPlayerControlBar>
+            </VideoPlayer>
           </StackCard>
         ) : null}
         {processingMedia ? (

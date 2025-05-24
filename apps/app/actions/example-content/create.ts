@@ -40,14 +40,15 @@ export const createExampleContent = async (): Promise<{
     );
     await createExampleFeedbacks(organizationId, feedbackUsers);
     const products = await createExampleProducts(organizationId, user.id);
+    const releases = await createExampleReleases(organizationId, user.id);
     const features = await createExampleFeatures(
       organizationId,
       user.id,
       featureStatuses.map((status) => status.id),
-      products
+      products,
+      releases
     );
     await createExampleChangelogs(organizationId, user.id);
-    await createExampleReleases(organizationId, user.id);
     await createExampleInitiatives(organizationId, user.id, features, products);
 
     await database.organization.update({

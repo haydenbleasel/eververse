@@ -18,7 +18,11 @@ import type {
   FeedbackOrganization,
   FeedbackUser,
 } from '@repo/backend/prisma/client';
-import { Dropzone } from '@repo/design-system/components/dropzone';
+import {
+  Dropzone,
+  DropzoneContent,
+  DropzoneEmptyState,
+} from '@repo/design-system/components/ui/kibo-ui/dropzone';
 import type { EditorInstance } from '@repo/editor';
 import {
   AudioLinesIcon,
@@ -134,7 +138,7 @@ export const FeedbackForm = ({
       throw new Error('Audio file is missing.');
     }
 
-    const supabase = await createClient();
+    const supabase = createClient();
 
     const id = nanoid(36);
     const { data, error } = await supabase.storage
@@ -147,7 +151,7 @@ export const FeedbackForm = ({
 
     const {
       data: { publicUrl },
-    } = await supabase.storage.from('files').getPublicUrl(data.path);
+    } = supabase.storage.from('files').getPublicUrl(data.path);
 
     const response = await createFeedback({
       title,
@@ -167,7 +171,7 @@ export const FeedbackForm = ({
       throw new Error('Video file is missing.');
     }
 
-    const supabase = await createClient();
+    const supabase = createClient();
 
     const id = nanoid(36);
     const { data, error } = await supabase.storage
@@ -180,7 +184,7 @@ export const FeedbackForm = ({
 
     const {
       data: { publicUrl },
-    } = await supabase.storage.from('files').getPublicUrl(data.path);
+    } = supabase.storage.from('files').getPublicUrl(data.path);
 
     const response = await createFeedback({
       title,
@@ -294,7 +298,7 @@ export const FeedbackForm = ({
       cta="Create feedback"
       onClick={handleCreate}
       disabled={disabled}
-      className="max-w-2xl"
+      className="sm:max-w-2xl"
       footer={
         <div className="flex items-center gap-2">
           <FeedbackUserPicker
@@ -338,7 +342,7 @@ export const FeedbackForm = ({
           placeholder="Add ability to customize dashboard"
           value={title}
           onChangeText={setTitle}
-          className="border-none p-0 font-medium text-lg shadow-none focus-visible:ring-0"
+          className="border-none p-0 font-medium shadow-none focus-visible:ring-0 md:text-lg"
           autoComplete="off"
           onKeyDown={handleKeyDown}
         />
@@ -370,9 +374,31 @@ export const FeedbackForm = ({
           </div>
         )}
 
-        {type === 'audio' && <Dropzone accept="audio/*" onChange={setAudio} />}
+        {type === 'audio' && (
+          <Dropzone
+            maxFiles={1}
+            accept={{ 'audio/*': [] }}
+            onDrop={([file]) => setAudio(file)}
+            src={audio ? [audio] : undefined}
+            onError={console.error}
+          >
+            <DropzoneEmptyState />
+            <DropzoneContent />
+          </Dropzone>
+        )}
 
-        {type === 'video' && <Dropzone accept="video/*" onChange={setVideo} />}
+        {type === 'video' && (
+          <Dropzone
+            maxFiles={1}
+            accept={{ 'video/*': [] }}
+            onDrop={([file]) => setVideo(file)}
+            src={video ? [video] : undefined}
+            onError={console.error}
+          >
+            <DropzoneEmptyState />
+            <DropzoneContent />
+          </Dropzone>
+        )}
 
         {type === 'text' && (
           <div

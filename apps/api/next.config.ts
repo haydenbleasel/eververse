@@ -19,6 +19,8 @@ let nextConfig: NextConfig = withBackend(
       ];
     },
 
+    devIndicators: false,
+
     // biome-ignore lint/suspicious/useAwait: "headers is async"
     async headers() {
       return [

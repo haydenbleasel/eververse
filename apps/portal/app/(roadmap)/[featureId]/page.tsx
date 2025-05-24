@@ -1,6 +1,7 @@
 import { getSlug } from '@/lib/slug';
 import { database, getJsonColumnFromTable } from '@repo/backend/database';
 import { Prose } from '@repo/design-system/components/prose';
+import { Badge } from '@repo/design-system/components/ui/badge';
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { notFound } from 'next/navigation';
@@ -26,7 +27,8 @@ const Editor = dynamic(async () => {
   return component.Editor;
 });
 
-const Roadmap = async (props: FeatureProperties) => {
+const FeaturePage = async (props: FeatureProperties) => {
+  console.log('Feature ID page');
   const params = await props.params;
   const slug = await getSlug();
   const { featureId } = params;
@@ -83,15 +85,17 @@ const Roadmap = async (props: FeatureProperties) => {
   return (
     <div className="grid gap-8 md:grid-cols-12">
       <div className="md:col-span-7">
+        <h1 className="m-0 font-semibold text-4xl tracking-tight">
+          {feature.title}
+        </h1>
+        <Badge variant="secondary" className="my-6 text-sm">
+          <div
+            className="h-2 w-2 rounded-full"
+            style={{ backgroundColor: portalStatus?.color }}
+          />
+          <p className="m-0">{portalStatus?.name}</p>
+        </Badge>
         <Prose>
-          <h1>{feature.title}</h1>
-          <div className="flex items-center gap-2">
-            <div
-              className="h-2 w-2 rounded-full"
-              style={{ backgroundColor: portalStatus?.color }}
-            />
-            <p className="m-0">{portalStatus?.name}</p>
-          </div>
           {content ? (
             <div className="mt-8">
               <Editor defaultValue={content} editable={false} />
@@ -106,4 +110,4 @@ const Roadmap = async (props: FeatureProperties) => {
   );
 };
 
-export default Roadmap;
+export default FeaturePage;

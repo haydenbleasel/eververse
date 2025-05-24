@@ -30,7 +30,7 @@ export const ProfileForm = ({
 
   const updateProfile = async () => {
     try {
-      const supabase = await createClient();
+      const supabase = createClient();
       const data: Record<string, string> = {};
 
       if (disabled) {

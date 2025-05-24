@@ -1,5 +1,4 @@
 import { AvatarTooltip } from '@/components/avatar-tooltip';
-import { Prose } from '@repo/design-system/components/prose';
 import { intlFormatDistance } from 'date-fns';
 import type { BlocksIcon } from 'lucide-react';
 import Image from 'next/image';
@@ -18,7 +17,7 @@ type ActivityItemProperties = {
 };
 
 export const ActivityItem = ({ data }: ActivityItemProperties) => (
-  <Prose key={data.id} className="flex items-center justify-between gap-3">
+  <div key={data.id} className="flex items-center justify-between gap-3">
     {typeof data.icon === 'string' ? (
       <Image
         src={data.icon}
@@ -28,15 +27,15 @@ export const ActivityItem = ({ data }: ActivityItemProperties) => (
         className="mt-0 mb-0"
       />
     ) : (
-      <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-card text-muted-foreground">
+      <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-secondary text-muted-foreground">
         <data.icon size={12} />
       </div>
     )}
-    <p className="mt-0 mb-0 flex-1 truncate font-medium">{data.children}</p>
+    <p className="mt-0 mb-0 flex-1 truncate text-sm">{data.children}</p>
     <p className="mt-0 mb-0 shrink-0 whitespace-nowrap text-muted-foreground text-sm">
       {intlFormatDistance(data.createdAt, new Date(), { style: 'narrow' })}
     </p>
-    <div className="not-prose shrink-0">
+    <div className="shrink-0">
       <AvatarTooltip
         src={data.userImage}
         fallback={data.userName?.slice(0, 2) ?? '??'}
@@ -44,5 +43,5 @@ export const ActivityItem = ({ data }: ActivityItemProperties) => (
         subtitle={data.userIdentifier ?? ''}
       />
     </div>
-  </Prose>
+  </div>
 );

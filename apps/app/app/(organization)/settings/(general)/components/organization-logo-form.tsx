@@ -3,20 +3,34 @@
 import { updateOrganization } from '@/actions/organization/update';
 import { createClient } from '@repo/backend/auth/client';
 import type { Organization } from '@repo/backend/prisma/client';
-import { Dropzone } from '@repo/design-system/components/dropzone';
+import {
+  Dropzone,
+  DropzoneContent,
+  DropzoneEmptyState,
+} from '@repo/design-system/components/ui/kibo-ui/dropzone';
 import { handleError } from '@repo/design-system/lib/handle-error';
+import Image from 'next/image';
+import { useState } from 'react';
 import { toast } from 'sonner';
 
 type OrganizationLogoFormProperties = {
   readonly organizationId: Organization['id'];
+  readonly logoUrl: string | null;
 };
 
 export const OrganizationLogoForm = ({
   organizationId,
+  logoUrl,
 }: OrganizationLogoFormProperties) => {
-  const handleUpload = async (file: File) => {
+  const [tempFile, setTempFile] = useState<File | null>(null);
+
+  const handleDrop = async (files: File[]) => {
+    const [file] = files;
+
+    setTempFile(file);
+
     try {
-      const supabase = await createClient();
+      const supabase = createClient();
 
       const response = await supabase.storage
         .from('organizations')
@@ -48,10 +62,40 @@ export const OrganizationLogoForm = ({
 
   return (
     <Dropzone
-      accept="image/*"
-      multiple={false}
-      onChange={handleUpload}
-      className="h-full w-full"
-    />
+      maxFiles={1}
+      accept={{ 'image/*': [] }}
+      onDrop={handleDrop}
+      onError={console.error}
+      className="aspect-square"
+    >
+      <DropzoneEmptyState>
+        {logoUrl ? (
+          <div className="relative size-full">
+            <Image
+              src={logoUrl}
+              alt="Preview"
+              className="absolute top-0 left-0 h-full w-full object-cover"
+              unoptimized
+              width={102}
+              height={102}
+            />
+          </div>
+        ) : undefined}
+      </DropzoneEmptyState>
+      <DropzoneContent>
+        {tempFile && (
+          <div className="relative size-full">
+            <Image
+              src={URL.createObjectURL(tempFile)}
+              alt="Preview"
+              className="absolute top-0 left-0 h-full w-full object-cover"
+              unoptimized
+              width={102}
+              height={102}
+            />
+          </div>
+        )}
+      </DropzoneContent>
+    </Dropzone>
   );
 };

@@ -2,9 +2,13 @@
 
 import { importMarkdown } from '@/actions/markdown/import';
 import { parseMarkdown } from '@/actions/markdown/parse';
-import { Dropzone } from '@repo/design-system/components/dropzone';
 import { Dialog } from '@repo/design-system/components/precomposed/dialog';
 import { Select } from '@repo/design-system/components/precomposed/select';
+import {
+  Dropzone,
+  DropzoneContent,
+  DropzoneEmptyState,
+} from '@repo/design-system/components/ui/kibo-ui/dropzone';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { toast } from '@repo/design-system/lib/toast';
 import { useState } from 'react';
@@ -178,11 +182,15 @@ export const MarkdownImportForm = () => {
   return (
     <>
       <Dropzone
-        accept="text/markdown"
-        onChange={handleDrop}
-        className="w-full rounded-none border-none"
-        multiple
-      />
+        accept={{ 'text/markdown': [] }}
+        onDrop={handleDrop}
+        onError={console.error}
+        maxFiles={100}
+        className="rounded-none border-none"
+      >
+        <DropzoneEmptyState />
+        <DropzoneContent />
+      </Dropzone>
 
       <Dialog
         open={results.length > 0}

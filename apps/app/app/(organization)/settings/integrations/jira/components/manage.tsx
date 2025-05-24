@@ -25,7 +25,7 @@ export const ManageJira = async () => {
   return (
     <>
       <div className="grid gap-2">
-        <h1 className="m-0 font-semibold text-4xl">Jira</h1>
+        <h1 className="m-0 font-semibold text-4xl tracking-tight">Jira</h1>
         <p className="mb-0 text-muted-foreground">
           Manage your Jira integration.
         </p>

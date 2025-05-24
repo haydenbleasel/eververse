@@ -45,7 +45,7 @@ export const ManageIntercom = ({ id, appId }: ManageIntercomProps) => {
   return (
     <>
       <div className="grid gap-2">
-        <h1 className="m-0 font-semibold text-4xl">Intercom</h1>
+        <h1 className="m-0 font-semibold text-4xl tracking-tight">Intercom</h1>
         <p className="mb-0 text-muted-foreground">
           Manage your Intercom integration.
         </p>

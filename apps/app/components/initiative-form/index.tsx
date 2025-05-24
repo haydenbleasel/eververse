@@ -81,7 +81,7 @@ export const InitiativeForm = ({
       cta="Create initiative"
       onClick={handleCreate}
       disabled={disabled}
-      className="max-w-2xl"
+      className="sm:max-w-2xl"
       footer={
         <FeatureAssigneePicker
           data={members}
@@ -102,7 +102,7 @@ export const InitiativeForm = ({
           placeholder="Improve the onboarding experience"
           value={name}
           onChangeText={setName}
-          className="border-none p-0 font-medium text-lg shadow-none focus-visible:ring-0"
+          className="border-none p-0 font-medium shadow-none focus-visible:ring-0 md:text-lg"
           maxLength={191}
           autoComplete="off"
           onKeyDown={handleKeyDown}

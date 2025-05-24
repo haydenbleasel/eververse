@@ -36,7 +36,9 @@ const AiSettings = async () => {
     <div className="px-6 py-16">
       <div className="mx-auto grid w-full max-w-3xl gap-6">
         <div className="grid gap-2">
-          <h1 className="m-0 font-semibold text-4xl">AI Settings</h1>
+          <h1 className="m-0 font-semibold text-4xl tracking-tight">
+            AI Settings
+          </h1>
           <p className="mt-2 mb-0 text-muted-foreground">
             Manage your organization&apos;s AI settings.
           </p>

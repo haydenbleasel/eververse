@@ -7,6 +7,7 @@ import { Input } from '@repo/design-system/components/precomposed/input';
 import { Prose } from '@repo/design-system/components/prose';
 import { StackCard } from '@repo/design-system/components/stack-card';
 import { Button } from '@repo/design-system/components/ui/button';
+import { handleError } from '@repo/design-system/lib/handle-error';
 import { cn } from '@repo/design-system/lib/utils';
 import { SparklesIcon, XIcon } from 'lucide-react';
 import { type KeyboardEventHandler, useState } from 'react';
@@ -22,12 +23,12 @@ export const InitiativeQuestionCard = ({
 }: InitiativeQuestionCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const { messages, input, handleInputChange, handleSubmit } = useChat({
-    keepLastMessageOnError: true,
     api: '/api/initiatives/chat',
     body: {
       initiativeId,
       organizationId,
     },
+    onError: handleError,
   });
 
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (event) => {

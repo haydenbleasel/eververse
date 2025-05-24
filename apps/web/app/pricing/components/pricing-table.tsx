@@ -1,9 +1,11 @@
 'use client';
 
+import NumberFlow from '@number-flow/react';
 import { Link } from '@repo/design-system/components/link';
 import { Select } from '@repo/design-system/components/precomposed/select';
 import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
 import { Button } from '@repo/design-system/components/ui/button';
+import { Switch } from '@repo/design-system/components/ui/switch';
 import { cn } from '@repo/design-system/lib/utils';
 import {
   MAX_FREE_CHANGELOGS,
@@ -384,11 +386,15 @@ export const PricingTable = ({
   monthlyPrice: number;
   annualPrice: number;
 }) => {
+  const [yearly, setYearly] = useState(false);
   const plans = [
     {
       name: 'Hobby',
       description: 'For getting started',
-      price: 'Free forever',
+      prices: {
+        monthly: 'Free forever',
+        yearly: 'Free forever',
+      },
       cta: 'Get started for free',
       link: 'https://app.eververse.ai/',
       caption: 'No credit card required.',
@@ -396,17 +402,23 @@ export const PricingTable = ({
     {
       name: 'Pro',
       description: 'For small teams',
-      price: annualPrice,
+      prices: {
+        monthly: monthlyPrice,
+        yearly: annualPrice,
+      },
       cta: 'Start your free trial',
       link: 'https://app.eververse.ai/',
-      caption: `Billed annually, or $${monthlyPrice} billed monthly.`,
+      caption: `Billed ${yearly ? 'annually' : 'monthly'}.`,
     },
     {
       name: 'Enterprise',
       description: 'For large teams',
-      price: 'Custom',
+      prices: {
+        monthly: 'Custom',
+        yearly: 'Custom',
+      },
       cta: 'Get in touch',
-      link: '/contact',
+      link: 'https://x.com/haydenbleasel',
       caption: "Let's chat.",
     },
   ];
@@ -414,7 +426,30 @@ export const PricingTable = ({
   const [mobilePlan, setMobilePlan] = useState(plans[0]?.name);
 
   return (
-    <section className="flex flex-col gap-8 py-16 sm:px-8">
+    <section className="flex flex-col gap-8 pt-8 pb-16 sm:px-8">
+      {/* Pricing Toggle */}
+      <div className="mb-8 flex flex-col items-center">
+        <div className="flex items-center space-x-2">
+          <span
+            className={`text-sm ${yearly ? 'text-muted-foreground' : 'font-medium text-primary'}`}
+          >
+            Monthly
+          </span>
+          <Switch
+            checked={yearly}
+            onCheckedChange={setYearly}
+            className="data-[state=checked]:bg-primary"
+          />
+          <span
+            className={`text-sm ${yearly ? 'font-medium text-primary' : 'text-muted-foreground'}`}
+          >
+            Yearly{' '}
+            <span className="ml-1 rounded-full bg-primary/10 px-2 py-0.5 text-primary text-xs">
+              Save 20%
+            </span>
+          </span>
+        </div>
+      </div>
       <div className="block md:hidden">
         <Select
           label="Choose a plan"
@@ -433,7 +468,9 @@ export const PricingTable = ({
             <div className="h-[220px]" />
             {groups.map((group) => (
               <div key={group.name} className="space-y-4 py-8">
-                <p className="text-left font-medium">{group.name}</p>
+                <p className="text-left font-medium text-muted-foreground text-sm">
+                  {group.name}
+                </p>
                 <div className="grid divide-y">
                   {group.features.map((feature) => (
                     <div
@@ -474,18 +511,22 @@ export const PricingTable = ({
                 <p className="truncate text-muted-foreground text-sm">
                   {plan.description}
                 </p>
-                <div className="my-4">
-                  {typeof plan.price === 'number' ? (
+                <div className="my-4 h-7">
+                  {typeof plan.prices.monthly === 'number' &&
+                  typeof plan.prices.yearly === 'number' ? (
                     <div className="inline-flex items-center gap-1 truncate text-muted-foreground text-sm">
-                      <sup>US</sup>
-                      <p className="font-semibold text-foreground text-xl">
-                        ${plan.price}
-                      </p>
+                      <NumberFlow
+                        className="font-semibold text-foreground text-xl"
+                        value={
+                          plan.prices[yearly ? 'yearly' : 'monthly'] as number
+                        }
+                        prefix="$"
+                      />
                       <p>per user/month</p>
                     </div>
                   ) : (
                     <p className="truncate font-semibold text-foreground text-xl">
-                      {plan.price}
+                      {plan.prices.monthly}
                     </p>
                   )}
                 </div>
@@ -500,7 +541,7 @@ export const PricingTable = ({
               </div>
               {groups.map((group) => (
                 <div key={group.name} className="space-y-4 py-8">
-                  <div className="h-6" />
+                  <div className="h-5" />
                   <div className="grid divide-y">
                     {group.features.map((feature, featureIndex) => (
                       <div

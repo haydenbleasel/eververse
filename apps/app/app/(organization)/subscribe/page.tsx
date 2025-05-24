@@ -56,7 +56,9 @@ const Subscribe = async () => {
         <div className="flex flex-col items-center text-center">
           <CircleArrowUpIcon size={48} className="text-primary" />
           <div className="grid gap-2">
-            <h1 className="mt-4 mb-2 text-3xl">Upgrade your team</h1>
+            <h1 className="mt-4 mb-2 font-semibold text-3xl tracking-tight">
+              Upgrade your team
+            </h1>
             <p>
               Choose a plan that works for you. All plans include a{' '}
               <span className="font-semibold text-primary">

@@ -1,6 +1,5 @@
 import { Container } from '@repo/design-system/components/container';
 import { Link } from '@repo/design-system/components/link';
-import { Prose } from '@repo/design-system/components/prose';
 import { Button } from '@repo/design-system/components/ui/button';
 import type { Metadata } from 'next';
 
@@ -10,7 +9,7 @@ export const metadata: Metadata = {
 
 const NotFound = () => (
   <Container className="border-x p-16">
-    <Prose className="mx-auto flex flex-col items-center justify-center text-center text-foreground">
+    <div className="mx-auto flex flex-col items-center justify-center text-center text-foreground">
       <h1 className="mt-0 mb-4 font-semibold text-3xl tracking-tighter sm:text-5xl">
         404 — Page Not Found
       </h1>
@@ -22,7 +21,7 @@ const NotFound = () => (
           Return Home
         </Link>
       </Button>
-    </Prose>
+    </div>
   </Container>
 );
 

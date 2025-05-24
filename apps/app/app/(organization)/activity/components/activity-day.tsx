@@ -79,7 +79,12 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
           {item.feedbackUser?.name ?? 'Someone'} from{' '}
           {item.feedbackUser?.feedbackOrganization?.name ?? 'an organization'}{' '}
           submitted feedback:{' '}
-          <Link href={`/feedback/${item.id}`}>{item.title}</Link>
+          <Link
+            className="text-primary underline"
+            href={`/feedback/${item.id}`}
+          >
+            {item.title}
+          </Link>
         </span>
       ),
       createdAt: item.createdAt,
@@ -93,7 +98,12 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       children: (
         <span>
           {getMemberName(item.creatorId)} created a new initiative:{' '}
-          <Link href={`/initiatives/${item.id}`}>{item.title}</Link>
+          <Link
+            className="text-primary underline"
+            href={`/initiatives/${item.id}`}
+          >
+            {item.title}
+          </Link>
         </span>
       ),
       createdAt: item.createdAt,
@@ -111,7 +121,10 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
             ? 'themselves'
             : getMemberName(item.userId)}{' '}
           to initiative{' '}
-          <Link href={`/initiatives/${item.initiative.id}`}>
+          <Link
+            className="text-primary underline"
+            href={`/initiatives/${item.initiative.id}`}
+          >
             {item.initiative.title}
           </Link>
         </span>
@@ -127,11 +140,17 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       children: (
         <span>
           {getMemberName(item.creatorId)} created{' '}
-          <Link href={`/initiatives/${item.initiative.id}/pages/${item.id}`}>
+          <Link
+            className="text-primary underline"
+            href={`/initiatives/${item.initiative.id}/pages/${item.id}`}
+          >
             {item.title}
           </Link>{' '}
           in{' '}
-          <Link href={`/initiatives/${item.initiative.id}`}>
+          <Link
+            className="text-primary underline"
+            href={`/initiatives/${item.initiative.id}`}
+          >
             {item.initiative.title}
           </Link>
           .
@@ -148,11 +167,17 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       children: (
         <span>
           {getMemberName(item.creatorId)} created{' '}
-          <Link href={`/initiatives/${item.initiative.id}/canvases/${item.id}`}>
+          <Link
+            className="text-primary underline"
+            href={`/initiatives/${item.initiative.id}/canvases/${item.id}`}
+          >
             {item.title}
           </Link>{' '}
           in{' '}
-          <Link href={`/initiatives/${item.initiative.id}`}>
+          <Link
+            className="text-primary underline"
+            href={`/initiatives/${item.initiative.id}`}
+          >
             {item.initiative.title}
           </Link>
           .
@@ -169,8 +194,14 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       children: (
         <span>
           {getMemberName(item.creatorId)} added{' '}
-          <Link href={item.href}>{item.title}</Link> to{' '}
-          <Link href={`/initiatives/${item.initiative.id}`}>
+          <Link className="text-primary underline" href={item.href}>
+            {item.title}
+          </Link>{' '}
+          to{' '}
+          <Link
+            className="text-primary underline"
+            href={`/initiatives/${item.initiative.id}`}
+          >
             {item.initiative.title}
           </Link>
           .
@@ -187,7 +218,12 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       children: (
         <span>
           {getMemberName(item.creatorId)} created a new product:{' '}
-          <Link href={`/features/products/${item.id}`}>{item.name}</Link>
+          <Link
+            className="text-primary underline"
+            href={`/features/products/${item.id}`}
+          >
+            {item.name}
+          </Link>
         </span>
       ),
       createdAt: item.createdAt,
@@ -201,7 +237,12 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       children: (
         <span>
           {getMemberName(item.creatorId)} created a new group:{' '}
-          <Link href={`/features/groups/${item.id}`}>{item.name}</Link>
+          <Link
+            className="text-primary underline"
+            href={`/features/groups/${item.id}`}
+          >
+            {item.name}
+          </Link>
         </span>
       ),
       createdAt: item.createdAt,
@@ -215,7 +256,12 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       children: (
         <span>
           {getMemberName(item.creatorId)} created a new feature:{' '}
-          <Link href={`/features/${item.id}`}>{item.title}</Link>
+          <Link
+            className="text-primary underline"
+            href={`/features/${item.id}`}
+          >
+            {item.title}
+          </Link>
         </span>
       ),
       createdAt: item.createdAt,
@@ -229,7 +275,12 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       children: (
         <span>
           {getMemberName(item.creatorId)} created a new product update:{' '}
-          <Link href={`/changelog/${item.id}`}>{item.title}</Link>
+          <Link
+            className="text-primary underline"
+            href={`/changelog/${item.id}`}
+          >
+            {item.title}
+          </Link>
         </span>
       ),
       createdAt: item.createdAt,
@@ -257,21 +308,33 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       children: item.creatorId ? (
         <span>
           {getMemberName(item.creatorId)} linked feedback{' '}
-          <Link href={`/feedback/${item.feedback.id}`}>
+          <Link
+            className="text-primary underline"
+            href={`/feedback/${item.feedback.id}`}
+          >
             {item.feedback.title}
           </Link>{' '}
           to feature{' '}
-          <Link href={`/features/${item.feature.id}`}>
+          <Link
+            className="text-primary underline"
+            href={`/features/${item.feature.id}`}
+          >
             {item.feature.title}
           </Link>
         </span>
       ) : (
         <span>
-          <Link href={`/feedback/${item.feedback.id}`}>
+          <Link
+            className="text-primary underline"
+            href={`/feedback/${item.feedback.id}`}
+          >
             {item.feedback.title}
           </Link>{' '}
           was linked to feature{' '}
-          <Link href={`/features/${item.feature.id}`}>
+          <Link
+            className="text-primary underline"
+            href={`/features/${item.feature.id}`}
+          >
             {item.feature.title}
           </Link>
         </span>
@@ -291,7 +354,10 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       children: (
         <span>
           {getMemberName(item.creatorId)} pushed a feature to the portal:{' '}
-          <Link href={`/features/${item.feature.id}`}>
+          <Link
+            className="text-primary underline"
+            href={`/features/${item.feature.id}`}
+          >
             {item.feature.title}
           </Link>{' '}
         </span>
@@ -307,7 +373,9 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       children: (
         <span>
           {getMemberName(item.creatorId)} added a new Widget link:{' '}
-          <Link href={item.link}>{item.name}</Link>
+          <Link className="text-primary underline" href={item.link}>
+            {item.name}
+          </Link>
         </span>
       ),
       createdAt: item.createdAt,
@@ -321,12 +389,22 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       children: item.creatorId ? (
         <span>
           {getMemberName(item.creatorId)} created a new release:{' '}
-          <Link href={`/releases/${item.id}`}>{item.title}</Link>
+          <Link
+            className="text-primary underline"
+            href={`/releases/${item.id}`}
+          >
+            {item.title}
+          </Link>
         </span>
       ) : (
         <span>
           A release was created:{' '}
-          <Link href={`/releases/${item.id}`}>{item.title}</Link>
+          <Link
+            className="text-primary underline"
+            href={`/releases/${item.id}`}
+          >
+            {item.title}
+          </Link>
         </span>
       ),
       createdAt: item.createdAt,

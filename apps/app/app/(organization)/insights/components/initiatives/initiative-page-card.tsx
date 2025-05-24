@@ -31,7 +31,10 @@ export const InitiativePageCard = ({
       <Icon />
       <p className="flex-1 truncate font-medium">{title}</p>
       <p className="shrink-0 text-muted-foreground">{formatDate(date)}</p>
-      <Avatar src={owner?.user_metadata.image_url} fallback={name} />
+      <Avatar
+        src={owner?.user_metadata.image_url}
+        fallback={name?.slice(0, 2)}
+      />
     </Link>
   );
 };

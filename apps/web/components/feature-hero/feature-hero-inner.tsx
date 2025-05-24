@@ -26,7 +26,10 @@ export const FeatureHeroInner = ({
           transition={{ duration: 0.5 }}
           className="flex items-center justify-center"
         >
-          <Badge className="items-center gap-2 rounded-full bg-background px-4 py-1.5 text-foreground text-sm hover:bg-background">
+          <Badge
+            variant="outline"
+            className="items-center gap-2 rounded-full px-4 py-1.5 text-foreground text-sm"
+          >
             {children}
             {name}
           </Badge>
@@ -35,7 +38,7 @@ export const FeatureHeroInner = ({
           <p className="m-0 mx-auto text-center font-semibold text-2xl tracking-tighter sm:text-3xl md:text-5xl">
             <Balancer>
               <m.span
-                className="text-muted-foreground line-through"
+                className="text-border line-through"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.5 }}
@@ -44,7 +47,7 @@ export const FeatureHeroInner = ({
               </m.span>
             </Balancer>
           </p>
-          <h1 className="m-0 mx-auto text-center font-semibold text-2xl tracking-tighter sm:text-3xl md:text-5xl">
+          <h1 className="m-0 mx-auto text-center font-semibold text-2xl text-primary tracking-tighter sm:text-3xl md:text-5xl">
             <Balancer>
               <m.span
                 initial={{ opacity: 0 }}

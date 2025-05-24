@@ -6,7 +6,9 @@ import { SlackInstallationForm } from './install-form';
 export const InstallSlack = () => (
   <>
     <div className="grid gap-2">
-      <h1 className="m-0 font-semibold text-4xl">Install Slack</h1>
+      <h1 className="m-0 font-semibold text-4xl tracking-tight">
+        Install Slack
+      </h1>
       <p className="mt-2 mb-0 text-muted-foreground">
         Follow the steps below to integrate Slack with Eververse. This assumes
         you already have a Slack account. If you don&apos;t, head to the{' '}

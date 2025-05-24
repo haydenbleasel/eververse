@@ -73,14 +73,14 @@ export const ChangelogForm = () => {
       cta="Create product update"
       onClick={handleCreate}
       disabled={disabled}
-      className="max-w-2xl"
+      className="sm:max-w-2xl"
       modal={false}
     >
       <Input
         placeholder="Product update 1.1"
         value={name}
         onChangeText={setName}
-        className="border-none p-0 font-medium text-lg shadow-none focus-visible:ring-0"
+        className="border-none p-0 font-medium shadow-none focus-visible:ring-0 md:text-lg"
         maxLength={191}
         autoComplete="off"
         onKeyDown={handleKeyDown}

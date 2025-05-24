@@ -6,7 +6,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { createClient } from '@repo/backend/auth/client';
 import { Input } from '@repo/design-system/components/precomposed/input';
 import { Textarea } from '@repo/design-system/components/precomposed/textarea';
-import { Prose } from '@repo/design-system/components/prose';
 import { Button } from '@repo/design-system/components/ui/button';
 import {
   Form,
@@ -80,13 +79,13 @@ export const CreateOrganizationForm = () => {
 
   return (
     <div className="grid w-full gap-4 rounded-lg border bg-background p-8 shadow-sm">
-      <Prose className="prose-sm text-center">
+      <div className="grid gap-1 text-center text-sm">
         <h1 className="m-0 font-semibold text-lg">Create your organization</h1>
         <p className="m-0 text-muted-foreground">
           Welcome to Eververse! Please fill in the details below to create your
           organization.
         </p>
-      </Prose>
+      </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
           <FormField

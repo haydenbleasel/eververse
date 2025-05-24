@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const Privacy = () => (
   <>
     <h1>{title}</h1>
-    <p>{description}</p>
+    <p className="lead">{description}</p>
     <hr />
     <p>
       It’s designed to protect us, our customers, and the general Internet

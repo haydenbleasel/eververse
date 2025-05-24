@@ -4,7 +4,6 @@ import { StackCard } from '@repo/design-system/components/stack-card';
 import { createMetadata } from '@repo/seo/metadata';
 import { BookIcon, BuildingIcon } from 'lucide-react';
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { OrganizationDetailsForm } from './components/organization-details-form';
 import { OrganizationLogoForm } from './components/organization-logo-form';
@@ -42,7 +41,9 @@ const GeneralSettings = async () => {
     <div className="px-6 py-16">
       <div className="mx-auto grid w-full max-w-3xl gap-6">
         <div className="grid gap-2">
-          <h1 className="m-0 font-semibold text-4xl">Settings</h1>
+          <h1 className="m-0 font-semibold text-4xl tracking-tight">
+            Settings
+          </h1>
           <p className="mt-2 mb-0 text-muted-foreground">
             Manage your organization&apos;s settings.
           </p>
@@ -57,18 +58,10 @@ const GeneralSettings = async () => {
             defaultSlug={organization.slug}
           />
           <div>
-            <div className="relative aspect-square overflow-hidden rounded-xl">
-              <OrganizationLogoForm organizationId={organizationId} />
-              {organization.logoUrl && (
-                <Image
-                  src={organization.logoUrl}
-                  alt="Organization Logo"
-                  width={100}
-                  height={100}
-                  className="pointer-events-none absolute inset-0 m-0 h-full w-full object-cover"
-                />
-              )}
-            </div>
+            <OrganizationLogoForm
+              organizationId={organizationId}
+              logoUrl={organization.logoUrl}
+            />
             {organization.logoUrl && (
               <p className="mt-1 text-center text-muted-foreground text-xs">
                 Click or drag-and-drop to change

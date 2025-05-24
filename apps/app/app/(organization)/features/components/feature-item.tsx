@@ -48,7 +48,7 @@ export const FeatureItem = ({ feature }: FeatureItemProperties) => {
         {feature.owner ? (
           <AvatarTooltip
             src={feature.owner.imageUrl}
-            fallback={feature.owner.name?.slice(2) ?? '??'}
+            fallback={feature.owner.name?.slice(0, 2) ?? '??'}
             title={feature.owner.name ?? 'Unknown'}
             subtitle={feature.owner.email ?? 'Unknown'}
           />

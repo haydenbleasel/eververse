@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 
 const title = 'Privacy Policy';
 const description =
@@ -13,7 +12,7 @@ export const metadata: Metadata = {
 const Privacy = () => (
   <>
     <h1>{title}</h1>
-    <p>{description}</p>
+    <p className="lead">{description}</p>
     <hr />
     <p>
       Personal information is any information about you which can be used to
@@ -260,19 +259,7 @@ const Privacy = () => (
           <td>USA</td>
         </tr>
         <tr>
-          <td>Liveblocks</td>
-          <td>Real-time collaboration</td>
-          <td>Global</td>
-          <td>USA</td>
-        </tr>
-        <tr>
-          <td>Segment</td>
-          <td>Customer data management</td>
-          <td>Global</td>
-          <td>USA</td>
-        </tr>
-        <tr>
-          <td>Clerk</td>
+          <td>Supabase</td>
           <td>Authentication</td>
           <td>Global</td>
           <td>USA</td>
@@ -635,7 +622,14 @@ const Privacy = () => (
     <h2>Contact Us</h2>
     <p>
       For any questions or concerns regarding your privacy, you may{' '}
-      <Link href="/contact">contact us</Link> at any time.
+      <a
+        href="https://x.com/haydenbleasel"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        contact us
+      </a>{' '}
+      at any time.
     </p>
   </>
 );

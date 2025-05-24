@@ -1,8 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@source "../**/*.{ts,tsx}";
+@import 'shadcn-prose';
 
-@plugin '@tailwindcss/typography';
+@source "../**/*.{ts,tsx}";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -13,8 +13,10 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
+  /* --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0); */
+  --primary: oklch(0.61 0.22 293);
+  --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
@@ -23,7 +25,7 @@
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
-  --success: oklch(50.8% 0.118 165.612);
+  --success: oklch(0.70 0.15 162);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
@@ -44,7 +46,7 @@
 
   --font-weight-bold: 700;
   --backdrop: oklch(0.97 0 0);
-  --color-success: oklch(69.6% 0.17 162.48);
+  --warning: oklch(0.86 0.17 92);
 }
 
 .dark {
@@ -54,8 +56,10 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.145 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  /* --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0); */
+  --primary: oklch(0.61 0.22 293);
+  --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
@@ -64,7 +68,7 @@
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --success: oklch(50.8% 0.118 165.612);
+  --success: oklch(0.70 0.15 162);
   --border: oklch(0.269 0 0);
   --input: oklch(0.269 0 0);
   --ring: oklch(0.439 0 0);
@@ -84,6 +88,7 @@
 
   --backdrop: oklch(0.145 0 0);
   --success: oklch(69.6% 0.17 162.48);
+  --warning: oklch(0.86 0.17 92);
 }
 
 @theme inline {
@@ -129,6 +134,7 @@
   --animate-accordion-up: accordion-up 0.2s ease-out;
 
   --color-backdrop: var(--backdrop);
+  --color-warning: var(--warning);
 
   @keyframes accordion-down {
     from {
@@ -356,13 +362,4 @@ nav[aria-label="Main"][data-orientation="horizontal"][dir="ltr"]
 
 .cl-userProfile-root .cl-navbar > div:first-child > div:first-child {
   @apply hidden;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply tracking-tight font-semibold;
 }

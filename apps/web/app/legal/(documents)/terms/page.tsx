@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const Terms = () => (
   <>
     <h1>{title}</h1>
-    <p>{description}</p>
+    <p className="lead">{description}</p>
     <hr />
     <p>
       If you do not agree with these Terms of Service, you are prohibited from

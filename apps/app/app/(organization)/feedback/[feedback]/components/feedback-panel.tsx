@@ -173,7 +173,7 @@ export const FeedbackPanel = async ({ feedbackId }: FeedbackPanelProps) => {
                 </Accordion.AccordionTrigger>
                 <Accordion.AccordionContent className="mt-2 p-0">
                   {tab.value ? (
-                    <Prose className="max-w-none text-sm">
+                    <Prose className="!max-w-none !text-sm">
                       <Markdown>{tab.value}</Markdown>
                     </Prose>
                   ) : (

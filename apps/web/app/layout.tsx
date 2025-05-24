@@ -34,7 +34,8 @@ const RootLayout = ({ children }: RootLayoutProperties) => (
       </AnalyticsProvider>
       <Script id="widget">{`
       (function() {
-        window.EververseWidgetId = 'clypdre7w0001kguhztlazqik';
+        window.EververseWidgetId = '${env.EVERVERSE_ADMIN_WIDGET_ID}';
+        window.EververseApiUrl = '${env.EVERVERSE_API_URL}';
         var s = document.createElement('script');
         s.type = 'text/javascript';
         s.async = true;

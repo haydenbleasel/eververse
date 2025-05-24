@@ -73,7 +73,7 @@ const CannyImportInstance = async (props: CannyImportInstanceProps) => {
         alt=""
       />
       <div>
-        <h1 className="m-0 font-semibold text-4xl">
+        <h1 className="m-0 font-semibold text-4xl tracking-tight">
           Import on {formatDate(cannyImport.createdAt)}
         </h1>
         <p className="mt-2 mb-0 text-muted-foreground">
