@@ -71,7 +71,7 @@ export const ManageSlack = ({ id }: ManageSlackProps) => {
   return (
     <>
       <div className="grid gap-2">
-        <h1 className="m-0 font-semibold text-4xl">Slack</h1>
+        <h1 className="m-0 font-semibold text-4xl tracking-tight">Slack</h1>
         <p className="mb-0 text-muted-foreground">
           Manage your Slack integration.
         </p>

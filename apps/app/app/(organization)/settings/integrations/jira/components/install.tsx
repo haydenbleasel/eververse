@@ -28,7 +28,9 @@ export const InstallJira = async () => {
   return (
     <>
       <div className="grid gap-2">
-        <h1 className="m-0 font-semibold text-4xl">Install Jira</h1>
+        <h1 className="m-0 font-semibold text-4xl tracking-tight">
+          Install Jira
+        </h1>
         <p className="mt-2 mb-0 text-muted-foreground">
           Follow the steps below to integrate Jira with Eververse. This assumes
           you already have a Atlassian account. If you don&apos;t, head to the{' '}

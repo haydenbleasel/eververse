@@ -6,7 +6,6 @@ import {
   currentUser,
 } from '@repo/backend/auth/utils';
 import { Link } from '@repo/design-system/components/link';
-import { Prose } from '@repo/design-system/components/prose';
 import { StackCard } from '@repo/design-system/components/stack-card';
 import { Button } from '@repo/design-system/components/ui/button';
 import { createMetadata } from '@repo/seo/metadata';
@@ -77,7 +76,7 @@ const ReleasePage = async (props: ReleasePageProps) => {
 
   return (
     <div className="px-6 py-16">
-      <Prose className="mx-auto grid w-full max-w-3xl gap-6">
+      <div className="mx-auto grid w-full max-w-3xl gap-6">
         <div className="flex items-start justify-between gap-3">
           <ReleaseTitle
             defaultTitle={release.title}
@@ -140,7 +139,7 @@ const ReleasePage = async (props: ReleasePageProps) => {
             )}
           </>
         )}
-      </Prose>
+      </div>
     </div>
   );
 };

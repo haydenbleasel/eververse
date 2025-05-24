@@ -8,7 +8,9 @@ const webhookUrl = new URL('/webhooks/linear', env.EVERVERSE_API_URL);
 export const InstallLinear = () => (
   <>
     <div className="grid gap-2">
-      <h1 className="m-0 font-semibold text-4xl">Install Linear</h1>
+      <h1 className="m-0 font-semibold text-4xl tracking-tight">
+        Install Linear
+      </h1>
       <p className="mt-2 mb-0 text-muted-foreground">
         Follow the steps below to integrate Linear with Eververse. This assumes
         you already have an Linear account. If you don&apos;t, head to the{' '}

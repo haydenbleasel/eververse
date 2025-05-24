@@ -23,7 +23,7 @@ const MarkdownImport = () => (
       alt=""
     />
     <div className="grid gap-2">
-      <h1 className="m-0 font-semibold text-4xl">{title}</h1>
+      <h1 className="m-0 font-semibold text-4xl tracking-tight">{title}</h1>
       <p className="mt-2 mb-0 text-muted-foreground">{description}</p>
     </div>
     <StackCard title="Start a new import" icon={ImportIcon} className="p-0">

@@ -19,5 +19,7 @@ export const Greeting = ({ firstName }: GreetingProps) => {
 
   const greeting = firstName ? `Good ${noun}, ${firstName}` : `Good ${noun}`;
 
-  return <h1 className="m-0 font-semibold text-4xl">{greeting}</h1>;
+  return (
+    <h1 className="m-0 font-semibold text-4xl tracking-tight">{greeting}</h1>
+  );
 };

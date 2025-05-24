@@ -84,7 +84,9 @@ const Initiatives = async () => {
       <div className="mx-auto w-full max-w-3xl">
         <div className="flex items-start justify-between gap-3">
           <div className="grid gap-2">
-            <h1 className="m-0 font-semibold text-4xl">{title}</h1>
+            <h1 className="m-0 font-semibold text-4xl tracking-tight">
+              {title}
+            </h1>
             <p className="text-muted-foreground">{description}</p>
           </div>
           {user.user_metadata.organization_role !== EververseRole.Member && (

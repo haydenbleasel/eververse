@@ -8,7 +8,9 @@ const webhookUrl = new URL('/webhooks/intercom', env.EVERVERSE_API_URL);
 export const InstallIntercom = () => (
   <>
     <div className="grid gap-2">
-      <h1 className="m-0 font-semibold text-4xl">Install Intercom</h1>
+      <h1 className="m-0 font-semibold text-4xl tracking-tight">
+        Install Intercom
+      </h1>
       <p className="mt-2 mb-0 text-muted-foreground">
         Follow the steps below to integrate Intercom with Eververse. This
         assumes you already have an Intercom account. If you don&apos;t, head to

@@ -3,7 +3,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { login } from '@repo/backend/auth/actions';
 import { Input } from '@repo/design-system/components/precomposed/input';
-import { Prose } from '@repo/design-system/components/prose';
 import { Button } from '@repo/design-system/components/ui/button';
 import {
   Form,
@@ -48,13 +47,15 @@ export const LoginForm = () => {
   };
 
   return (
-    <div className="grid w-full gap-4 rounded-lg border bg-background p-8 shadow-sm">
-      <Prose className="prose-sm text-center">
-        <h1 className="m-0 font-semibold text-lg">Sign in to Eververse</h1>
-        <p className="m-0 text-muted-foreground">
+    <div className="grid w-full gap-8 rounded-lg border bg-background p-8 shadow-sm">
+      <div className="grid gap-1 text-center">
+        <h1 className="font-semibold text-lg tracking-tight">
+          Sign in to Eververse
+        </h1>
+        <p className="text-muted-foreground text-sm">
           Welcome back! Please sign in to continue.
         </p>
-      </Prose>
+      </div>
       <div className="grid gap-2">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
@@ -85,11 +86,12 @@ export const LoginForm = () => {
           </form>
         </Form>
       </div>
-      <Prose className="prose-sm text-center">
-        <p className="text-muted-foreground">
-          Don't have an account? <Link href="/sign-up">Sign up</Link>
-        </p>
-      </Prose>
+      <p className="text-center text-muted-foreground text-sm">
+        Don't have an account?{' '}
+        <Link className="font-medium text-primary underline" href="/sign-up">
+          Sign up
+        </Link>
+      </p>
     </div>
   );
 };

@@ -4,9 +4,9 @@ import { updateInitiative } from '@/actions/initiative/update';
 import type { User } from '@repo/backend/auth';
 import { getUserName } from '@repo/backend/auth/format';
 import type { Initiative } from '@repo/backend/prisma/client';
+import { Avatar } from '@repo/design-system/components/precomposed/avatar';
 import { Select } from '@repo/design-system/components/precomposed/select';
 import { handleError } from '@repo/design-system/lib/handle-error';
-import Image from 'next/image';
 import { useState } from 'react';
 
 type InitiativeOwnerPickerProperties = {
@@ -58,13 +58,7 @@ export const InitiativeOwnerPicker = ({
 
         return (
           <div className="flex items-center gap-2">
-            <Image
-              src={assignee.user_metadata.image_url}
-              alt={item.label}
-              width={24}
-              height={24}
-              className="shrink-0 rounded-full"
-            />
+            <Avatar src={assignee.user_metadata.image_url} />
             <span className="flex-1 truncate">{item.label}</span>
           </div>
         );

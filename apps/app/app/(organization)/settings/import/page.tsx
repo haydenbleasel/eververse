@@ -38,7 +38,7 @@ export const metadata: Metadata = createMetadata({
 const Import = () => (
   <div className="grid gap-6">
     <div className="grid gap-2">
-      <h1 className="m-0 font-semibold text-4xl">Import</h1>
+      <h1 className="m-0 font-semibold text-4xl tracking-tight">Import</h1>
       <p className="mt-2 mb-0 text-muted-foreground">
         Import your feedback, features, components and changelogs into Eververse
       </p>
