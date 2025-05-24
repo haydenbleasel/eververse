@@ -171,7 +171,7 @@ export const FeedbackForm = ({
       throw new Error('Video file is missing.');
     }
 
-    const supabase = await createClient();
+    const supabase = createClient();
 
     const id = nanoid(36);
     const { data, error } = await supabase.storage
@@ -184,7 +184,7 @@ export const FeedbackForm = ({
 
     const {
       data: { publicUrl },
-    } = await supabase.storage.from('files').getPublicUrl(data.path);
+    } = supabase.storage.from('files').getPublicUrl(data.path);
 
     const response = await createFeedback({
       title,
@@ -378,8 +378,8 @@ export const FeedbackForm = ({
           <Dropzone
             maxFiles={1}
             accept={{ 'audio/*': [] }}
-            onDrop={setAudio}
-            src={[]}
+            onDrop={([file]) => setAudio(file)}
+            src={audio ? [audio] : undefined}
             onError={console.error}
           >
             <DropzoneEmptyState />
@@ -391,8 +391,8 @@ export const FeedbackForm = ({
           <Dropzone
             maxFiles={1}
             accept={{ 'video/*': [] }}
-            onDrop={setVideo}
-            src={[]}
+            onDrop={([file]) => setVideo(file)}
+            src={video ? [video] : undefined}
             onError={console.error}
           >
             <DropzoneEmptyState />

@@ -69,6 +69,7 @@
     "jotai": "^2.12.4",
     "lodash.throttle": "^4.1.1",
     "lucide-react": "^0.511.0",
+    "media-chrome": "^4.10.0",
     "mime": "^4.0.7",
     "motion": "^12.12.1",
     "next-nprogress-bar": "^2.4.7",
