@@ -1,6 +1,18 @@
-import { CodeBlock } from '@repo/design-system/components/code-block';
+'use client';
 
-const codeString = `const payload = {
+import {
+  type BundledLanguage,
+  CodeBlock,
+  CodeBlockBody,
+  CodeBlockContent,
+  CodeBlockItem,
+} from '@repo/design-system/components/ui/kibo-ui/code-block';
+
+const code = [
+  {
+    language: 'javascript',
+    filename: 'api.js',
+    code: `const payload = {
   title: 'Make the logo bigger',                          // String, required
   text: 'The logo is too small, please make it bigger',   // String, required
   user: {                                                 // Object, optional 
@@ -24,10 +36,34 @@ const response = await fetch('https://app.eververse.ai/••••••••'
 
 if (!response.ok) {
   throw new Error(response.statusText);
-}`;
+}`,
+  },
+];
 
 export const APIGraphic = () => (
-  <div className="not-prose h-full w-full">
-    <CodeBlock language="javascript" code={codeString} />
-  </div>
+  <CodeBlock
+    data={code}
+    defaultValue={code[0].language}
+    className="dark border-none"
+  >
+    <CodeBlockBody>
+      {(item) => (
+        <CodeBlockItem
+          key={item.language}
+          value={item.language}
+          className="[&_.shiki]:!bg-transparent dark:[&_.shiki]:!bg-transparent [&_.shiki_code]:!text-base"
+        >
+          <CodeBlockContent
+            language={item.language as BundledLanguage}
+            themes={{
+              light: 'nord',
+              dark: 'nord',
+            }}
+          >
+            {item.code}
+          </CodeBlockContent>
+        </CodeBlockItem>
+      )}
+    </CodeBlockBody>
+  </CodeBlock>
 );
