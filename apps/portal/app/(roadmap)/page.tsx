@@ -1,7 +1,6 @@
 import { getSlug } from '@/lib/slug';
 import { database, getJsonColumnFromTable } from '@repo/backend/database';
 import { Link } from '@repo/design-system/components/link';
-import { Prose } from '@repo/design-system/components/prose';
 import { contentToText } from '@repo/editor/lib/tiptap';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -80,7 +79,7 @@ const Roadmap = async () => {
   }
 
   return (
-    <Prose className="grid max-w-none gap-4 md:h-[calc(100dvh-105px-52px-64px)] md:grid-cols-3">
+    <div className="grid gap-4 md:h-[calc(100dvh-105px-52px-64px)] md:grid-cols-3">
       {data.statuses
         .sort((statusA, statusB) => statusA.order - statusB.order)
         .map((status) => (
@@ -133,7 +132,7 @@ const Roadmap = async () => {
             </div>
           </div>
         ))}
-    </Prose>
+    </div>
   );
 };
 

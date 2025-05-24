@@ -12,7 +12,6 @@ import { cn } from '@repo/design-system/lib/utils';
 import { ArrowUpRightIcon } from 'lucide-react';
 import { LazyMotion, domAnimation, m } from 'motion/react';
 import type { ComponentProps } from 'react';
-import Balancer from 'react-wrap-balancer';
 import { CTAButton } from '../cta-button';
 
 type HeroProperties = ComponentProps<'section'> & {
@@ -61,24 +60,22 @@ export const Hero = ({
                 animate={{ opacity: 1, translateY: 0 }}
                 transition={{ duration: 1, ease: 'easeInOut', delay: 0.5 }}
                 className={cn(
-                  'mb-6 font-semibold tracking-tighter',
+                  'mb-6 text-balance font-semibold tracking-tighter',
                   'text-[2.125rem] sm:text-5xl md:text-6xl'
                 )}
               >
                 The open source product management platform
               </m.h1>
               <m.p
-                className="mx-auto mt-0 max-w-3xl text-muted-foreground sm:text-lg"
+                className="mx-auto mt-0 max-w-3xl text-balance text-muted-foreground sm:text-lg"
                 initial={{ opacity: 0, translateY: 16 }}
                 animate={{ opacity: 1, translateY: 0 }}
                 transition={{ duration: 1, ease: 'easeInOut', delay: 1 }}
               >
-                <Balancer>
-                  Eververse is a simple, open source alternative to tools like
-                  Productboard and Cycle. Bring your product team together to
-                  explore problems, ideate solutions, prioritize features and
-                  plan roadmaps with the help of AI.
-                </Balancer>
+                Eververse is a simple, open source alternative to tools like
+                Productboard and Cycle. Bring your product team together to
+                explore problems, ideate solutions, prioritize features and plan
+                roadmaps with the help of AI.
               </m.p>
             </div>
             <m.div
