@@ -1,3 +1,15 @@
+# v1.5.4 (Mon May 26 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Update actions.ts ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.5.3 (Mon May 26 2025)
 
 #### ⚠️ Pushed to `main`
