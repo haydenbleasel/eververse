@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "email dev --port 3003",
+    "dev": "email dev --port 3003 --dir ../../packages/email/templates",
     "export": "email export"
   },
   "dependencies": {
