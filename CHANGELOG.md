@@ -1,3 +1,17 @@
+# v1.5.6 (Mon May 26 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/haydenbleasel/eververse ([@haydenbleasel](https://github.com/haydenbleasel))
+- Update index.tsx ([@haydenbleasel](https://github.com/haydenbleasel))
+- Fix turbo args ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.5.5 (Mon May 26 2025)
 
 #### ⚠️ Pushed to `main`
