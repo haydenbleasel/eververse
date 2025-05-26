@@ -213,6 +213,11 @@ max_frequency = "5s"
 # enabled = true
 # uri = "pg-functions://<database>/<schema>/<hook_name>"
 
+[auth.hook.send_email]
+enabled = true
+uri = "http://localhost:3004/webhooks/resend"
+secrets = "env(SUPABASE_AUTH_HOOK_SECRET)"
+
 # Configure one of the supported SMS providers: `twilio`, `twilio_verify`, `messagebird`, `textlocal`, `vonage`.
 [auth.sms.twilio]
 enabled = false
