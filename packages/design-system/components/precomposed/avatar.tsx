@@ -23,7 +23,7 @@ export const Avatar = ({ size = 24, src, fallback }: AvatarProps) => (
     />
     <AvatarComponent.AvatarFallback
       style={{ fontSize: size / 2 }}
-      className="border bg-background"
+      className="border bg-primary text-primary-foreground"
     >
       {fallback ?? '??'}
     </AvatarComponent.AvatarFallback>
