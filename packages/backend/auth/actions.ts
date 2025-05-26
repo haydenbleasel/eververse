@@ -8,7 +8,16 @@ const redirectUrl = new URL(
   `${protocol}://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}`
 ).toString();
 
-export const login = async (email: string) => {
+export const login = async (
+  email: string
+): Promise<
+  | {
+      error: string;
+    }
+  | {
+      success: true;
+    }
+> => {
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithOtp({
     email,
@@ -19,15 +28,24 @@ export const login = async (email: string) => {
   });
 
   if (error) {
-    throw error;
+    return { error: error.message };
   }
+
+  return { success: true };
 };
 
 export const signup = async (
   email: string,
   firstName: string | undefined,
   lastName: string | undefined
-) => {
+): Promise<
+  | {
+      error: string;
+    }
+  | {
+      success: true;
+    }
+> => {
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithOtp({
     email,
@@ -42,6 +60,8 @@ export const signup = async (
   });
 
   if (error) {
-    throw error;
+    return { error: error.message };
   }
+
+  return { success: true };
 };
