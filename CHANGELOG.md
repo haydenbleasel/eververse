@@ -1,3 +1,15 @@
+# v1.5.2 (Mon May 26 2025)
+
+#### 🐛 Bug Fix
+
+- Improve emails, handle auth hooks [#31](https://github.com/haydenbleasel/eververse/pull/31) ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.5.1 (Sat May 24 2025)
 
 #### ⚠️ Pushed to `main`
