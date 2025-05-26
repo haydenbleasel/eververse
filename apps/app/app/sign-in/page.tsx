@@ -109,7 +109,9 @@ const SignInPage = async () => {
                 Latest update
               </p>
 
-              <h1 className="mt-6">{latestUpdate.title}</h1>
+              <h1 className="mt-6 font-semibold! text-4xl!">
+                {latestUpdate.title}
+              </h1>
 
               <div className="mt-4 mb-12 flex items-center gap-2">
                 <span className="text-sm">by</span>
