@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
-    "dev": "concurrently -n \"Turbo,Stripe,Supabase\" \"turbo dev\" \"stripe listen --forward-to http://localhost:3004/webhooks/stripe \" \"npx supabase start\"",
+    "dev": "concurrently -n \"Turbo,Stripe,Supabase\" \"turbo dev --\" \"stripe listen --forward-to http://localhost:3004/webhooks/stripe \" \"npx supabase start\"",
     "lint": "turbo lint",
     "analyze": "turbo analyze",
     "migrate": "cd packages/backend && npx prisma format && npx prisma generate && npx prisma db push",
