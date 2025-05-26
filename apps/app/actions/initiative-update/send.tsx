@@ -108,6 +108,7 @@ export const sendInitiativeUpdate = async (
           title={update.title}
           name={getUserName(owner)}
           html={html}
+          siteUrl={env.EVERVERSE_WEB_URL}
         />
       ),
       text,
