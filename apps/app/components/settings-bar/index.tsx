@@ -11,7 +11,7 @@ type SettingsBarProperties = {
 };
 
 const Root = ({ children }: SettingsBarProperties) => (
-  <div className="sticky top-0 flex h-screen w-full max-w-[280px] shrink-0 flex-col gap-6 overflow-y-auto border-l p-3 pb-6">
+  <div className="sticky top-0 flex h-screen w-full max-w-[280px] shrink-0 flex-col gap-6 overflow-y-auto p-3 pb-6">
     {children}
   </div>
 );
