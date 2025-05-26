@@ -1,5 +1,4 @@
 import { Head, Hr, Preview, Text } from '@react-email/components';
-
 import { Html } from '@react-email/components';
 import { EmailLayout } from './layout';
 

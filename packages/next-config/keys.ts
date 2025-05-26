@@ -12,6 +12,7 @@ export const keys = () =>
       NEXT_RUNTIME: z.enum(['nodejs', 'edge']).optional(),
 
       // URLs
+      EVERVERSE_WEB_URL: z.string().url().min(1),
       EVERVERSE_API_URL: z.string().url().min(1),
       EVERVERSE_PORTAL_URL: z.string().url().min(1),
       EVERVERSE_ADMIN_ORGANIZATION_ID: z.string().min(1),
@@ -23,6 +24,7 @@ export const keys = () =>
     runtimeEnv: {
       ANALYZE: process.env.ANALYZE,
       NEXT_RUNTIME: process.env.NEXT_RUNTIME,
+      EVERVERSE_WEB_URL: process.env.EVERVERSE_WEB_URL,
       EVERVERSE_ADMIN_ORGANIZATION_ID:
         process.env.EVERVERSE_ADMIN_ORGANIZATION_ID,
       EVERVERSE_API_URL: process.env.EVERVERSE_API_URL,

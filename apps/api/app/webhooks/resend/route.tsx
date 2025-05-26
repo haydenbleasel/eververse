@@ -68,31 +68,34 @@ export const POST = async (req: Request) => {
         <SignupEmailTemplate
           magicLink={magicLink.toString()}
           email={user.email}
+          siteUrl={env.EVERVERSE_WEB_URL}
         />
       );
-      subject = 'Confirm your email address for Tersa';
+      subject = 'Confirm your email address for Eververse';
     } else if (email_action_type === 'magiclink') {
       react = (
         <LoginEmailTemplate
           magicLink={magicLink.toString()}
           email={user.email}
+          siteUrl={env.EVERVERSE_WEB_URL}
         />
       );
-      subject = 'Your magic link to login to Tersa';
+      subject = 'Your magic link to login to Eververse';
     } else if (email_action_type === 'recovery') {
       react = (
         <ForgotPasswordEmailTemplate
           magicLink={magicLink.toString()}
           email={user.email}
+          siteUrl={env.EVERVERSE_WEB_URL}
         />
       );
-      subject = 'Reset your password for Tersa';
+      subject = 'Reset your password for Eververse';
     } else {
       throw new Error('Invalid email action type');
     }
 
     const { error } = await resend.emails.send({
-      from: env.RESEND_EMAIL,
+      from: env.RESEND_FROM,
       to: [user.email],
       subject,
       react,
