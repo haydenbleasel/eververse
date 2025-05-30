@@ -25,7 +25,7 @@ export interface paths {
          * Create a note
          * @description Creates a new note in Productboard
          *
-         *     Whenever the email field is mentioned in the descriptions of this endpoint, it is referring to the field `user.email` or `customer_email` (deprecated)
+         *     Whenever the email field is mentioned in the descriptions of this endpoint, it is referring to the field `user.email` or `customer_email`
          *
          */
         post: operations["create_note"];
@@ -1632,7 +1632,7 @@ export interface components {
          * @enum {string}
          */
         State: "unprocessed" | "processed" | "archived";
-        /** @description For entities that originated in external systems and entered Productboard via the API or integrations, the source keeps track of the original source entity in that origin system(s) */
+        /** @description For entities that originated in external systems and entered Productboard via the API or integrations, the source keeps track of the original source entity in that origin system(s). Once this is set, it cannot be updated by design. It’s a reference to an external system, and if that reference changes to another external resource, we consider it as different Note. The recommended way is to create a new note that will refer to different origins. */
         Source: {
             /**
              * @description A unique string identifying the external system from which the data came
@@ -1749,7 +1749,6 @@ export interface components {
             id?: string;
             /**
              * Format: domain
-             * @deprecated
              * @description Domain of a company the note (and possibly a user) should be linked to.
              *
              *     This attribute cannot be combined with the `id` attribute.
@@ -1768,7 +1767,6 @@ export interface components {
              */
             domain?: string;
             /**
-             * @deprecated
              * @description This attribute signifies a source record ID for a Company object in PB.
              *
              *     The ID is imported from external tools such as Salesforce, and uniquely identifies the company within the system.
