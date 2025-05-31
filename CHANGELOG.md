@@ -1,3 +1,15 @@
+# v1.5.9 (Sat May 31 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Update types.d.ts ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.5.8 (Fri May 30 2025)
 
 #### ⚠️ Pushed to `main`
