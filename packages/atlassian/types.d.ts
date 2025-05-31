@@ -8487,6 +8487,54 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/rest/api/2/redact": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Redact
+         * @description Submit a job to redact issue field data. This will trigger the redaction of the data in the specified fields asynchronously.
+         *
+         *     The redaction status can be polled using the job id.
+         */
+        post: operations["redact"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/rest/api/2/redact/status/{jobId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get redaction status
+         * @description Retrieves the current status of a redaction job ID.
+         *
+         *     The jobStatus will be one of the following:
+         *
+         *      *  IN\_PROGRESS - The redaction job is currently in progress
+         *      *  COMPLETED - The redaction job has completed successfully.
+         *      *  PENDING - The redaction job has not started yet
+         */
+        get: operations["getRedactionStatus"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/rest/api/2/resolution": {
         parameters: {
             query?: never;
@@ -10815,7 +10863,9 @@ export interface paths {
         /**
          * Get all workflows
          * @deprecated
-         * @description Returns all workflows in Jira or a workflow. Deprecated, use [Get workflows paginated](#api-rest-api-2-workflow-search-get).
+         * @description This will be removed on [February 1, 2026](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2567); use [Search workflows](#api-rest-api-2-workflows-search-get) instead.
+         *
+         *     Returns all workflows in Jira or a workflow.
          *
          *     If the `workflowName` parameter is specified, the workflow is returned as an object (not in an array). Otherwise, an array of workflow objects is returned.
          *
@@ -10826,7 +10876,9 @@ export interface paths {
         /**
          * Create workflow
          * @deprecated
-         * @description Creates a workflow. You can define transition rules using the shapes detailed in the following sections. If no transitional rules are specified the default system transition rules are used. Note: This only applies to company-managed scoped workflows. Use [bulk create workflows](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-workflows/#api-rest-api-3-workflows-create-post) to create both team and company-managed scoped workflows.
+         * @description This will be removed on [February 1, 2026](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2568); use [Bulk create workflows](#api-rest-api-2-workflows-create-post) to create both team and company-managed scoped workflows.
+         *
+         *     Creates a workflow. You can define transition rules using the shapes detailed in the following sections. If no transitional rules are specified the default system transition rules are used. Note: This only applies to company-managed scoped workflows.
          *
          *     #### Conditions ####
          *
@@ -11650,7 +11702,10 @@ export interface paths {
         };
         /**
          * Get workflows paginated
-         * @description Returns a [paginated](#pagination) list of published classic workflows. When workflow names are specified, details of those workflows are returned. Otherwise, all published classic workflows are returned.
+         * @deprecated
+         * @description This will be removed on [June 1, 2026](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2569); use [Search workflows](#api-rest-api-2-workflows-search-get) instead.
+         *
+         *     Returns a [paginated](#pagination) list of published classic workflows. When workflow names are specified, details of those workflows are returned. Otherwise, all published classic workflows are returned.
          *
          *     This operation does not return next-gen workflows.
          *
@@ -11674,28 +11729,40 @@ export interface paths {
         };
         /**
          * Get workflow transition properties
-         * @description Returns the properties on a workflow transition. Transition properties are used to change the behavior of a transition. For more information, see [Transition properties](https://confluence.atlassian.com/x/zIhKLg#Advancedworkflowconfiguration-transitionproperties) and [Workflow properties](https://confluence.atlassian.com/x/JYlKLg).
+         * @deprecated
+         * @description This will be removed on [June 1, 2026](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2570); fetch transition properties from [Bulk get workflows](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-workflows/#api-rest-api-3-workflows-post) instead.
+         *
+         *     Returns the properties on a workflow transition. Transition properties are used to change the behavior of a transition. For more information, see [Transition properties](https://confluence.atlassian.com/x/zIhKLg#Advancedworkflowconfiguration-transitionproperties) and [Workflow properties](https://confluence.atlassian.com/x/JYlKLg).
          *
          *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
         get: operations["getWorkflowTransitionProperties"];
         /**
          * Update workflow transition property
-         * @description Updates a workflow transition by changing the property value. Trying to update a property that does not exist results in a new property being added to the transition. Transition properties are used to change the behavior of a transition. For more information, see [Transition properties](https://confluence.atlassian.com/x/zIhKLg#Advancedworkflowconfiguration-transitionproperties) and [Workflow properties](https://confluence.atlassian.com/x/JYlKLg).
+         * @deprecated
+         * @description This will be removed on [June 1, 2026](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2570); update transition properties using [Bulk update workflows](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-workflows/#api-rest-api-3-workflows-update-post) instead.
+         *
+         *     Updates a workflow transition by changing the property value. Trying to update a property that does not exist results in a new property being added to the transition. Transition properties are used to change the behavior of a transition. For more information, see [Transition properties](https://confluence.atlassian.com/x/zIhKLg#Advancedworkflowconfiguration-transitionproperties) and [Workflow properties](https://confluence.atlassian.com/x/JYlKLg).
          *
          *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
         put: operations["updateWorkflowTransitionProperty"];
         /**
          * Create workflow transition property
-         * @description Adds a property to a workflow transition. Transition properties are used to change the behavior of a transition. For more information, see [Transition properties](https://confluence.atlassian.com/x/zIhKLg#Advancedworkflowconfiguration-transitionproperties) and [Workflow properties](https://confluence.atlassian.com/x/JYlKLg).
+         * @deprecated
+         * @description This will be removed on [June 1, 2026](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2570); add transition properties using [Bulk update workflows](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-workflows/#api-rest-api-3-workflows-update-post) instead.
+         *
+         *     Adds a property to a workflow transition. Transition properties are used to change the behavior of a transition. For more information, see [Transition properties](https://confluence.atlassian.com/x/zIhKLg#Advancedworkflowconfiguration-transitionproperties) and [Workflow properties](https://confluence.atlassian.com/x/JYlKLg).
          *
          *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
         post: operations["createWorkflowTransitionProperty"];
         /**
          * Delete workflow transition property
-         * @description Deletes a property from a workflow transition. Transition properties are used to change the behavior of a transition. For more information, see [Transition properties](https://confluence.atlassian.com/x/zIhKLg#Advancedworkflowconfiguration-transitionproperties) and [Workflow properties](https://confluence.atlassian.com/x/JYlKLg).
+         * @deprecated
+         * @description This will be removed on [June 1, 2026](https://developer.atlassian.com/cloud/jira/platform/changelog/#CHANGE-2570); delete transition properties using [Bulk update workflows](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-workflows/#api-rest-api-3-workflows-update-post) instead.
+         *
+         *     Deletes a property from a workflow transition. Transition properties are used to change the behavior of a transition. For more information, see [Transition properties](https://confluence.atlassian.com/x/zIhKLg#Advancedworkflowconfiguration-transitionproperties) and [Workflow properties](https://confluence.atlassian.com/x/JYlKLg).
          *
          *     **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
          */
@@ -14134,6 +14201,13 @@ export interface components {
             /** @description List of project IDs. */
             projects?: number[];
         };
+        BulkRedactionRequest: {
+            redactions?: components["schemas"]["SingleRedactionRequest"][];
+        };
+        BulkRedactionResponse: {
+            /** @description Result for requested redactions */
+            results: components["schemas"]["SingleRedactionResponse"][];
+        };
         /** @description Card layout configuration. */
         CardLayout: {
             /**
@@ -14565,6 +14639,24 @@ export interface components {
         ContainerOfWorkflowSchemeAssociations: {
             /** @description A list of workflow schemes together with projects they are associated with. */
             values: components["schemas"]["WorkflowSchemeAssociations"][];
+        };
+        /** @description Represents the content to redact */
+        ContentItem: {
+            /**
+             * @description The ID of the content entity. For redacting a issue field, this will be field id. e.g. summary, customfield\_10000.
+             * @example summary
+             */
+            entityId: string;
+            /**
+             * @description The type of the entity to redact
+             * @enum {string}
+             */
+            entityType: "issuefieldvalue";
+            /**
+             * @description This would be the issue ID
+             * @example 10000
+             */
+            id: string;
         };
         /** @description A context. */
         Context: {
@@ -21827,6 +21919,36 @@ export interface components {
             /** @description The name of the quick filter */
             name?: string;
         };
+        RedactionJobStatusResponse: {
+            bulkRedactionResponse?: components["schemas"]["BulkRedactionResponse"];
+            /** @enum {string} */
+            jobStatus?: "PENDING" | "IN_PROGRESS" | "COMPLETED";
+        };
+        /** @description Represents the position of the redaction */
+        RedactionPosition: {
+            /**
+             * @description The ADF pointer indicating the position of the text to be redacted. This is only required when redacting from rich text(ADF) fields. For plain text fields, this field can be omitted.
+             * @example /content/0/content/0/text
+             */
+            adfPointer?: string;
+            /**
+             * @description The text which will be redacted, encoded using SHA256 hash and Base64 digest
+             * @example ODFiNjM3ZDhmY2QyYzZkYTYzNTllNjk2MzExM2ExMTcwZGU3OTVlNGI3MjViODRkMWUwYjRjZmQ5ZWM1OGNlOQ==
+             */
+            expectedText: string;
+            /**
+             * Format: int32
+             * @description The start index(inclusive) for the redaction in specified content
+             * @example 14
+             */
+            from: number;
+            /**
+             * Format: int32
+             * @description The ending index(exclusive) for the redaction in specified content
+             * @example 20
+             */
+            to: number;
+        };
         /** @description ID of a registered webhook or error messages explaining why a webhook wasn't registered. */
         RegisteredWebhook: {
             /**
@@ -22832,6 +22954,31 @@ export interface components {
              * @description The ID of the project configuration. This property is deprecated, see [Change oticen: Removing hierarchy level IDs from next-gen APIs](https://developer.atlassian.com/cloud/jira/platform/change-notice-removing-hierarchy-level-ids-from-next-gen-apis/).
              */
             projectConfigurationId?: number;
+        };
+        SingleRedactionRequest: {
+            contentItem: components["schemas"]["ContentItem"];
+            /**
+             * Format: uuid
+             * @description Unique id for the redaction request; ID format should be of UUID
+             * @example 51101de6-d001-429d-a095-b2b96dd57fcb
+             */
+            externalId: string;
+            /**
+             * @description The reason why the content is being redacted
+             * @example PII data
+             */
+            reason: string;
+            redactionPosition: components["schemas"]["RedactionPosition"];
+        };
+        /** @description Result for requested redactions */
+        SingleRedactionResponse: {
+            /**
+             * Format: uuid
+             * @description An unique id for the redaction request
+             */
+            externalId: string;
+            /** @description Indicates if redaction was success/failure */
+            successful: boolean;
         };
         SoftwareNavigationInfo: {
             /** Format: int64 */
@@ -24019,6 +24166,15 @@ export interface components {
         UserPickerUser: {
             /** @description The account ID of the user, which uniquely identifies the user across all Atlassian products. For example, *5b10ac8d82e05b22cc7d4ef5*. */
             accountId?: string;
+            /**
+             * @description The user account type. Can take the following values:
+             *
+             *      *  `atlassian` regular Atlassian user account
+             *      *  `app` system account used for Connect applications and OAuth to represent external systems
+             *      *  `customer` Jira Service Desk account representing an external service desk
+             * @enum {string}
+             */
+            accountType?: "atlassian" | "app" | "customer" | "unknown";
             /**
              * Format: uri
              * @description The avatar URL of the user.
@@ -47731,6 +47887,97 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    redact: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List of redaction requests */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["BulkRedactionRequest"];
+            };
+        };
+        responses: {
+            /** @description Returned if the job submission is successful. The response contains the job id. */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": string;
+                };
+            };
+            /** @description Returned if the redaction request is invalid. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorCollection"];
+                };
+            };
+            /** @description Returned if the user / app is not authorised to redact data */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Returned if the AGP subscription is not present. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorCollection"];
+                };
+            };
+        };
+    };
+    getRedactionStatus: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Redaction job id */
+                jobId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Returned if the job status is successfully retrieved. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RedactionJobStatusResponse"];
+                };
+            };
+            /** @description Returned if the AGP subscription is not present. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorCollection"];
+                };
+            };
+            /** @description Returned if the job id is not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorCollection"];
+                };
             };
         };
     };
