@@ -32,6 +32,10 @@ export const config: NextConfig = {
     serverActions: {
       bodySizeLimit: '10mb',
     },
+    // Enable turboPack for better build performance and consistency
+    turbo: {},
+    // Enable webpack build worker for better stability
+    webpackBuildWorker: true,
   },
 
   // biome-ignore lint/suspicious/useAwait: "headers" is an async function
