@@ -2,9 +2,10 @@ import { currentOrganizationId } from '@repo/backend/auth/utils';
 import { database } from '@repo/backend/database';
 import { StackCard } from '@repo/design-system/components/stack-card';
 import { createMetadata } from '@repo/seo/metadata';
-import { BookIcon, BuildingIcon } from 'lucide-react';
+import { BookIcon, BuildingIcon, TrashIcon } from 'lucide-react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { DeleteOrganizationForm } from './components/delete-organization-form';
 import { OrganizationDetailsForm } from './components/organization-details-form';
 import { OrganizationLogoForm } from './components/organization-logo-form';
 import { ProductDescriptionForm } from './components/product-description-form';
@@ -81,6 +82,13 @@ const GeneralSettings = async () => {
           <ProductDescriptionForm
             defaultValue={organization.productDescription ?? ''}
           />
+        </StackCard>
+        <StackCard
+          title="Danger Zone"
+          icon={TrashIcon}
+          className="grid gap-2"
+        >
+          <DeleteOrganizationForm organizationName={organization.name} />
         </StackCard>
       </div>
     </div>

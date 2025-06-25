@@ -2,6 +2,7 @@ import { currentUser } from '@repo/backend/auth/utils';
 import { createMetadata } from '@repo/seo/metadata';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { DeleteAccountForm } from './components/delete-account-form';
 import { ModeToggle } from './components/mode-toggle';
 import { ProfileForm } from './components/profile-form';
 import { ProfilePhoto } from './components/profile-photo';
@@ -43,6 +44,9 @@ const Profile = async () => {
         </div>
         <div className="p-8">
           <ModeToggle />
+        </div>
+        <div className="p-8">
+          <DeleteAccountForm />
         </div>
       </div>
     </div>
