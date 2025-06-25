@@ -1,6 +1,7 @@
 import 'server-only';
 import { generateEmbedding } from '@repo/ai';
-import { database } from './database';
+import { database, getJsonColumnFromTable } from './database';
+import { contentToText } from '@repo/editor/lib/tiptap';
 
 export interface VectorSearchResult {
   id: string;
@@ -9,10 +10,28 @@ export interface VectorSearchResult {
   type: 'feedback' | 'feature' | 'changelog' | 'release';
   content?: string;
   description?: string;
+  snippet?: string;
+  createdAt?: Date;
 }
 
 /**
- * Search across all vectorized content using semantic similarity
+ * Create a snippet from text content
+ */
+const createSnippet = (text: string, maxLength: number = 200): string => {
+  if (text.length <= maxLength) return text;
+  
+  const truncated = text.substring(0, maxLength);
+  const lastSpace = truncated.lastIndexOf(' ');
+  
+  if (lastSpace > maxLength * 0.8) {
+    return truncated.substring(0, lastSpace) + '...';
+  }
+  
+  return truncated + '...';
+};
+
+/**
+ * Search across all vectorized content using semantic similarity with enhanced results
  */
 export const vectorSearch = async (
   query: string,
@@ -29,10 +48,12 @@ export const vectorSearch = async (
     id: string;
     title: string;
     similarity: number;
+    created_at: Date;
   }>>`
     SELECT 
       id,
       title,
+      "createdAt" as created_at,
       (1 - (vector <=> ${queryVector}::vector)) as similarity
     FROM feedback 
     WHERE 
@@ -47,10 +68,12 @@ export const vectorSearch = async (
     id: string;
     title: string;
     similarity: number;
+    created_at: Date;
   }>>`
     SELECT 
       id,
       title,
+      "createdAt" as created_at,
       (1 - (vector <=> ${queryVector}::vector)) as similarity
     FROM feature 
     WHERE 
@@ -65,10 +88,12 @@ export const vectorSearch = async (
     id: string;
     title: string;
     similarity: number;
+    created_at: Date;
   }>>`
     SELECT 
       id,
       title,
+      "createdAt" as created_at,
       (1 - (vector <=> ${queryVector}::vector)) as similarity
     FROM changelog 
     WHERE 
@@ -84,11 +109,13 @@ export const vectorSearch = async (
     title: string;
     similarity: number;
     description: string;
+    created_at: Date;
   }>>`
     SELECT 
       id,
       title,
       description,
+      "createdAt" as created_at,
       (1 - (vector <=> ${queryVector}::vector)) as similarity
     FROM release 
     WHERE 
@@ -99,27 +126,86 @@ export const vectorSearch = async (
     LIMIT ${limit}
   `;
 
-  // Combine and sort all results by similarity
-  const allResults: VectorSearchResult[] = [
-    ...feedbackResults.map(result => ({
-      ...result,
-      type: 'feedback' as const,
-    })),
-    ...featureResults.map(result => ({
-      ...result,
-      type: 'feature' as const,
-    })),
-    ...changelogResults.map(result => ({
-      ...result,
-      type: 'changelog' as const,
-    })),
-    ...releaseResults.map(result => ({
-      ...result,
-      type: 'release' as const,
-    })),
-  ];
+  // Enhance results with content snippets
+  const enhancedResults: VectorSearchResult[] = [];
 
-  return allResults
+  // Process feedback results
+  for (const result of feedbackResults) {
+    try {
+      const content = await getJsonColumnFromTable('feedback', 'content', result.id);
+      const text = content ? contentToText(content) : '';
+      
+      enhancedResults.push({
+        ...result,
+        type: 'feedback',
+        snippet: createSnippet(text),
+        createdAt: result.created_at,
+      });
+    } catch (error) {
+      // Fallback without content
+      enhancedResults.push({
+        ...result,
+        type: 'feedback',
+        createdAt: result.created_at,
+      });
+    }
+  }
+
+  // Process feature results
+  for (const result of featureResults) {
+    try {
+      const content = await getJsonColumnFromTable('feature', 'content', result.id);
+      const text = content ? contentToText(content) : '';
+      
+      enhancedResults.push({
+        ...result,
+        type: 'feature',
+        snippet: createSnippet(text),
+        createdAt: result.created_at,
+      });
+    } catch (error) {
+      // Fallback without content
+      enhancedResults.push({
+        ...result,
+        type: 'feature',
+        createdAt: result.created_at,
+      });
+    }
+  }
+
+  // Process changelog results
+  for (const result of changelogResults) {
+    try {
+      const content = await getJsonColumnFromTable('changelog', 'content', result.id);
+      const text = content ? contentToText(content) : '';
+      
+      enhancedResults.push({
+        ...result,
+        type: 'changelog',
+        snippet: createSnippet(text),
+        createdAt: result.created_at,
+      });
+    } catch (error) {
+      // Fallback without content
+      enhancedResults.push({
+        ...result,
+        type: 'changelog',
+        createdAt: result.created_at,
+      });
+    }
+  }
+
+  // Process release results (simpler since they don't use JSON content)
+  for (const result of releaseResults) {
+    enhancedResults.push({
+      ...result,
+      type: 'release',
+      snippet: createSnippet(result.description || ''),
+      createdAt: result.created_at,
+    });
+  }
+
+  return enhancedResults
     .sort((a, b) => b.similarity - a.similarity)
     .slice(0, limit);
 };
@@ -143,10 +229,12 @@ export const vectorSearchByType = async <T extends 'feedback' | 'feature' | 'cha
         id: string;
         title: string;
         similarity: number;
+        created_at: Date;
       }>>`
         SELECT 
           id,
           title,
+          "createdAt" as created_at,
           (1 - (vector <=> ${queryVector}::vector)) as similarity
         FROM feedback 
         WHERE 
@@ -156,17 +244,40 @@ export const vectorSearchByType = async <T extends 'feedback' | 'feature' | 'cha
         ORDER BY vector <=> ${queryVector}::vector
         LIMIT ${limit}
       `;
-      return results.map(result => ({ ...result, type: 'feedback' as const }));
+      
+      const enhanced = [];
+      for (const result of results) {
+        try {
+          const content = await getJsonColumnFromTable('feedback', 'content', result.id);
+          const text = content ? contentToText(content) : '';
+          
+          enhanced.push({
+            ...result,
+            type: 'feedback' as const,
+            snippet: createSnippet(text),
+            createdAt: result.created_at,
+          });
+        } catch (error) {
+          enhanced.push({
+            ...result,
+            type: 'feedback' as const,
+            createdAt: result.created_at,
+          });
+        }
+      }
+      return enhanced;
     }
     case 'feature': {
       const results = await database.$queryRaw<Array<{
         id: string;
         title: string;
         similarity: number;
+        created_at: Date;
       }>>`
         SELECT 
           id,
           title,
+          "createdAt" as created_at,
           (1 - (vector <=> ${queryVector}::vector)) as similarity
         FROM feature 
         WHERE 
@@ -176,17 +287,40 @@ export const vectorSearchByType = async <T extends 'feedback' | 'feature' | 'cha
         ORDER BY vector <=> ${queryVector}::vector
         LIMIT ${limit}
       `;
-      return results.map(result => ({ ...result, type: 'feature' as const }));
+      
+      const enhanced = [];
+      for (const result of results) {
+        try {
+          const content = await getJsonColumnFromTable('feature', 'content', result.id);
+          const text = content ? contentToText(content) : '';
+          
+          enhanced.push({
+            ...result,
+            type: 'feature' as const,
+            snippet: createSnippet(text),
+            createdAt: result.created_at,
+          });
+        } catch (error) {
+          enhanced.push({
+            ...result,
+            type: 'feature' as const,
+            createdAt: result.created_at,
+          });
+        }
+      }
+      return enhanced;
     }
     case 'changelog': {
       const results = await database.$queryRaw<Array<{
         id: string;
         title: string;
         similarity: number;
+        created_at: Date;
       }>>`
         SELECT 
           id,
           title,
+          "createdAt" as created_at,
           (1 - (vector <=> ${queryVector}::vector)) as similarity
         FROM changelog 
         WHERE 
@@ -196,7 +330,28 @@ export const vectorSearchByType = async <T extends 'feedback' | 'feature' | 'cha
         ORDER BY vector <=> ${queryVector}::vector
         LIMIT ${limit}
       `;
-      return results.map(result => ({ ...result, type: 'changelog' as const }));
+      
+      const enhanced = [];
+      for (const result of results) {
+        try {
+          const content = await getJsonColumnFromTable('changelog', 'content', result.id);
+          const text = content ? contentToText(content) : '';
+          
+          enhanced.push({
+            ...result,
+            type: 'changelog' as const,
+            snippet: createSnippet(text),
+            createdAt: result.created_at,
+          });
+        } catch (error) {
+          enhanced.push({
+            ...result,
+            type: 'changelog' as const,
+            createdAt: result.created_at,
+          });
+        }
+      }
+      return enhanced;
     }
     case 'release': {
       const results = await database.$queryRaw<Array<{
@@ -204,11 +359,13 @@ export const vectorSearchByType = async <T extends 'feedback' | 'feature' | 'cha
         title: string;
         similarity: number;
         description: string;
+        created_at: Date;
       }>>`
         SELECT 
           id,
           title,
           description,
+          "createdAt" as created_at,
           (1 - (vector <=> ${queryVector}::vector)) as similarity
         FROM release 
         WHERE 
@@ -218,7 +375,13 @@ export const vectorSearchByType = async <T extends 'feedback' | 'feature' | 'cha
         ORDER BY vector <=> ${queryVector}::vector
         LIMIT ${limit}
       `;
-      return results.map(result => ({ ...result, type: 'release' as const }));
+      
+      return results.map(result => ({
+        ...result,
+        type: 'release' as const,
+        snippet: createSnippet(result.description || ''),
+        createdAt: result.created_at,
+      }));
     }
     default:
       throw new Error(`Unsupported search type: ${type}`);
