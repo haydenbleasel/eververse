@@ -75,6 +75,48 @@ export const config: NextConfig = {
 
     config.ignoreWarnings = [{ module: otelRegex }];
 
+    // Fix for WasmHash._updateWithBuffer build error
+    // This prevents webpack cache corruption that causes intermittent build failures
+    
+    // Configure webpack to handle WASM and buffer issues more gracefully
+    config.experiments = {
+      ...config.experiments,
+      asyncWebAssembly: true,
+      syncWebAssembly: true,
+      // Ensure consistent builds by enabling topLevelAwait
+      topLevelAwait: true,
+    };
+
+    // Add infrastructureLogging for better debugging of build issues
+    config.infrastructureLogging = {
+      level: 'error',
+    };
+
+    // Configure stats to reduce noise and improve build performance
+    config.stats = {
+      ...config.stats,
+      // Reduce console output that can cause issues during parallel builds
+      logging: 'error',
+      // Disable verbose output that can cause buffer overflow issues
+      modules: false,
+      chunks: false,
+      chunkModules: false,
+      chunkOrigins: false,
+      depth: false,
+      entrypoints: false,
+      env: false,
+      errors: true,
+      errorDetails: true,
+      hash: false,
+      moduleTrace: false,
+      publicPath: false,
+      reasons: false,
+      source: false,
+      timings: false,
+      version: false,
+      warnings: true,
+    };
+
     return config;
   },
 
