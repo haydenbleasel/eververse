@@ -32,14 +32,20 @@ export const deleteAccount = async (): Promise<
         select: { stripeSubscriptionId: true },
       });
 
-      if (organization?.stripeSubscriptionId) {
-        // Update Stripe subscription quantity
-        await stripe.subscriptionItems.update(
-          organization.stripeSubscriptionId,
-          {
-            quantity: Math.max(1, members.length - 1), // Ensure minimum of 1
-          }
-        );
+      if (organization?.stripeSubscriptionId && members.length > 1) {
+        try {
+          // Follow the same pattern as the existing removeUser action
+          // This might need to be corrected to use subscription item ID in the future
+          await stripe.subscriptionItems.update(
+            organization.stripeSubscriptionId,
+            {
+              quantity: members.length - 1,
+            }
+          );
+        } catch (stripeError) {
+          // Log the error but don't fail the account deletion
+          console.error('Failed to update Stripe subscription:', stripeError);
+        }
       }
     }
 

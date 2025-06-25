@@ -1,4 +1,4 @@
-import { currentOrganizationId } from '@repo/backend/auth/utils';
+import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
 import { database } from '@repo/backend/database';
 import { StackCard } from '@repo/design-system/components/stack-card';
 import { createMetadata } from '@repo/seo/metadata';
@@ -16,9 +16,12 @@ export const metadata: Metadata = createMetadata({
 });
 
 const GeneralSettings = async () => {
-  const organizationId = await currentOrganizationId();
+  const [organizationId, user] = await Promise.all([
+    currentOrganizationId(),
+    currentUser(),
+  ]);
 
-  if (!organizationId) {
+  if (!organizationId || !user) {
     notFound();
   }
 
@@ -88,7 +91,10 @@ const GeneralSettings = async () => {
           icon={TrashIcon}
           className="grid gap-2"
         >
-          <DeleteOrganizationForm organizationName={organization.name} />
+          <DeleteOrganizationForm 
+            organizationName={organization.name} 
+            userRole={user.user_metadata.organization_role}
+          />
         </StackCard>
       </div>
     </div>

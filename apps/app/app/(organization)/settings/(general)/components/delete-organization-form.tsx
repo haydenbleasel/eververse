@@ -1,6 +1,7 @@
 'use client';
 
 import { deleteOrganization } from '@/actions/organization/delete';
+import { EververseRole } from '@repo/backend/auth';
 import { AlertDialog } from '@repo/design-system/components/precomposed/alert-dialog';
 import { Button } from '@repo/design-system/components/ui/button';
 import { handleError } from '@repo/design-system/lib/handle-error';
@@ -10,13 +11,20 @@ import { toast } from 'sonner';
 
 type DeleteOrganizationFormProps = {
   organizationName: string;
+  userRole: string;
 };
 
 export const DeleteOrganizationForm = ({
   organizationName,
+  userRole,
 }: DeleteOrganizationFormProps) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  // Only show delete option to admins
+  if (userRole !== EververseRole.Admin) {
+    return null;
+  }
 
   const handleDeleteOrganization = async () => {
     try {
