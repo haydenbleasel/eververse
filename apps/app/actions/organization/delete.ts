@@ -9,6 +9,7 @@ import {
 } from '@repo/backend/auth/utils';
 import { database } from '@repo/backend/database';
 import { parseError } from '@repo/lib/parse-error';
+import { revalidatePath } from 'next/cache';
 
 export const deleteOrganization = async (): Promise<
   { error: string } | { success: true }
@@ -26,7 +27,7 @@ export const deleteOrganization = async (): Promise<
     }
 
     if (user.user_metadata.organization_role !== EververseRole.Admin) {
-      throw new Error('You are not authorized to delete this organization');
+      throw new Error('You do not have permission to delete this organization');
     }
 
     if (!organizationId) {
@@ -59,6 +60,9 @@ export const deleteOrganization = async (): Promise<
     await database.organization.delete({
       where: { id: organizationId },
     });
+
+    // Revalidate the app layout since organization context has changed
+    revalidatePath('/', 'layout');
 
     return { success: true };
   } catch (error) {
