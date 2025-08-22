@@ -176,7 +176,7 @@ export const generateInitiativeUpdateContent = async (
           ].join('\n'),
         });
 
-        content = await markdownToContent(markdown.text);
+        content = await markdownToContent(markdown.text.text);
       }
     }
 

@@ -79,7 +79,7 @@ export const POST = async (request: Request): Promise<Response> => {
       throw new Error('Invalid option');
   }
 
-  const response = await streamText({
+  const response = streamText({
     model: 'openai/gpt-4o-mini',
     temperature: 0.7,
     topP: 1,
@@ -89,5 +89,5 @@ export const POST = async (request: Request): Promise<Response> => {
     prompt,
   });
 
-  return response.toDataStreamResponse();
+  return response.toUIMessageStreamResponse();
 };

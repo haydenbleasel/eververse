@@ -3,7 +3,7 @@ import { getUserName } from '@repo/backend/auth/format';
 import { currentMembers } from '@repo/backend/auth/utils';
 import { contentToText } from '@repo/editor/lib/tiptap';
 import { log } from '@repo/observability/log';
-import { convertToCoreMessages, streamText } from 'ai';
+import { convertToModelMessages, streamText } from 'ai';
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
@@ -171,8 +171,8 @@ export const POST = async (req: Request) => {
   const result = streamText({
     model: 'openai/gpt-4o-mini',
     system: prompt,
-    messages: convertToCoreMessages(messages),
+    messages: convertToModelMessages(messages),
   });
 
-  return result.toDataStreamResponse();
+  return result.toUIMessageStreamResponse();
 };
