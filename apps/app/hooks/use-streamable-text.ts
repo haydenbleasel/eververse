@@ -1,5 +1,5 @@
-import { readStreamableValue } from '@repo/ai/rsc';
-import type { StreamableValue } from '@repo/ai/rsc';
+import { readStreamableValue } from '@ai-sdk/rsc';
+import type { StreamableValue } from '@ai-sdk/rsc';
 import { useEffect, useState } from 'react';
 
 export const useStreamableText = (

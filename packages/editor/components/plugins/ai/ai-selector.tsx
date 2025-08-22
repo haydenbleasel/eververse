@@ -1,4 +1,4 @@
-import { useCompletion } from '@repo/ai/lib/react';
+import { useCompletion } from '@ai-sdk/react';
 import { LoadingCircle } from '@repo/design-system/components/loading-circle';
 import { Prose } from '@repo/design-system/components/prose';
 import { Button } from '@repo/design-system/components/ui/button';

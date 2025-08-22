@@ -9,6 +9,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "@ai-sdk/react": "^1.2.12",
     "@radix-ui/react-popover": "^1.1.14",
     "@react-hookz/web": "^25.1.1",
     "@repo/backend": "workspace:*",

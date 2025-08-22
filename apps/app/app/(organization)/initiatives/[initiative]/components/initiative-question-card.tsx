@@ -1,7 +1,7 @@
 'use client';
 
 import { MemoizedReactMarkdown } from '@/components/markdown';
-import { useChat } from '@repo/ai/lib/react';
+import { useChat } from '@ai-sdk/react';
 import type { Initiative, Organization } from '@repo/backend/prisma/client';
 import { Input } from '@repo/design-system/components/precomposed/input';
 import { Prose } from '@repo/design-system/components/prose';

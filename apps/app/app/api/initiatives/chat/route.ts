@@ -1,10 +1,9 @@
 import { database } from '@/lib/database';
-import { convertToCoreMessages, streamText } from '@repo/ai';
-import { textModel } from '@repo/ai/lib/models';
 import { getUserName } from '@repo/backend/auth/format';
 import { currentMembers } from '@repo/backend/auth/utils';
 import { contentToText } from '@repo/editor/lib/tiptap';
 import { log } from '@repo/observability/log';
+import { convertToCoreMessages, streamText } from 'ai';
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
@@ -170,7 +169,7 @@ export const POST = async (req: Request) => {
 
   log.info('🤖 Successfully created prompt. Starting stream...');
   const result = streamText({
-    model: textModel,
+    model: 'openai/gpt-4o-mini',
     system: prompt,
     messages: convertToCoreMessages(messages),
   });
