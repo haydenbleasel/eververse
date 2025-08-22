@@ -1,8 +1,7 @@
-import { generateObject } from '@repo/ai';
-import { objectModel } from '@repo/ai/lib/models';
 import { database, getJsonColumnFromTable } from '@repo/backend/database';
 import type { Feedback } from '@repo/backend/prisma/client';
 import { contentToText } from '@repo/editor/lib/tiptap';
+import { generateObject } from 'ai';
 import { z } from 'zod';
 
 export const revalidate = 0;
@@ -37,7 +36,7 @@ export const POST = async (request: Request): Promise<Response> => {
   }
 
   const { object } = await generateObject({
-    model: objectModel,
+    model: 'openai/gpt-4o-mini',
     system: [
       'You are an AI that detect the sentiment of user feedback.',
       'You are given a user feedback message and a prompt to perform sentiment analysis on it.',

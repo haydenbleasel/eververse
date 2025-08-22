@@ -1,11 +1,10 @@
 'use server';
 
 import { database } from '@/lib/database';
-import { generateObject } from '@repo/ai';
-import { objectModel } from '@repo/ai/lib/models';
 import { EververseRole } from '@repo/backend/auth';
 import { currentUser } from '@repo/backend/auth/utils';
 import { parseError } from '@repo/lib/parse-error';
+import { generateObject } from 'ai';
 import { z } from 'zod';
 
 export const getFeatureRecommendations = async (
@@ -49,7 +48,7 @@ export const getFeatureRecommendations = async (
     }
 
     const { object } = await generateObject({
-      model: objectModel,
+      model: 'openai/gpt-4o-mini',
       system: [
         'You are an AI that recommends at most 5 related features based a snippet of user feedback provided.',
         'You return an array of IDs of the features you recommend.',

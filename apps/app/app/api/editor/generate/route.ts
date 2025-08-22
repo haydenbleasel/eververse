@@ -1,7 +1,6 @@
 import { database } from '@/lib/database';
-import { streamText } from '@repo/ai';
-import { textModel } from '@repo/ai/lib/models';
 import { currentOrganizationId } from '@repo/backend/auth/utils';
+import { streamText } from 'ai';
 
 export const POST = async (request: Request): Promise<Response> => {
   const { prompt, option, command } = (await request.json()) as {
@@ -81,7 +80,7 @@ export const POST = async (request: Request): Promise<Response> => {
   }
 
   const response = await streamText({
-    model: textModel,
+    model: 'openai/gpt-4o-mini',
     temperature: 0.7,
     topP: 1,
     frequencyPenalty: 0,
