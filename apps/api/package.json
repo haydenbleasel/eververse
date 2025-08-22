@@ -9,7 +9,6 @@
     "analyze": "ANALYZE=true pnpm build"
   },
   "dependencies": {
-    "@repo/ai": "workspace:*",
     "@repo/atlassian": "workspace:*",
     "@repo/backend": "workspace:*",
     "@repo/canny": "workspace:*",

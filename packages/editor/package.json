@@ -11,7 +11,6 @@
   "dependencies": {
     "@radix-ui/react-popover": "^1.1.14",
     "@react-hookz/web": "^25.1.1",
-    "@repo/ai": "workspace:*",
     "@repo/backend": "workspace:*",
     "@repo/design-system": "workspace:*",
     "@repo/lib": "workspace:*",

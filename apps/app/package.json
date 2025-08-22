@@ -14,7 +14,6 @@
     "@hookform/resolvers": "^5.0.1",
     "@number-flow/react": "^0.5.9",
     "@react-hookz/web": "^25.1.1",
-    "@repo/ai": "workspace:*",
     "@repo/analytics": "workspace:*",
     "@repo/atlassian": "workspace:*",
     "@repo/backend": "workspace:*",
