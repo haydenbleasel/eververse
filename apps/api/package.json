@@ -24,6 +24,7 @@
     "@repo/transcribe": "workspace:*",
     "@repo/widget": "workspace:*",
     "@t3-oss/env-nextjs": "^0.13.4",
+    "ai": "^5.0.21",
     "date-fns": "^4.1.0",
     "email-providers": "^2.11.0",
     "friendlier-words": "^1.1.3",

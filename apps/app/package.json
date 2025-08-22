@@ -34,6 +34,7 @@
     "@t3-oss/env-nextjs": "^0.13.4",
     "@tanstack/react-query": "^5.76.1",
     "@tanstack/react-table": "^8.21.3",
+    "ai": "^5.0.21",
     "date-fns": "^4.1.0",
     "emoji-mart": "^5.6.0",
     "friendlier-words": "^1.1.3",

@@ -44,6 +44,7 @@
     "@tiptap/react": "^2.10.3",
     "@tiptap/starter-kit": "^2.10.3",
     "@tiptap/suggestion": "^2.10.3",
+    "ai": "^5.0.21",
     "deep-equal": "^2.2.3",
     "happy-dom": "^17.4.7",
     "highlight.js": "^11.11.1",
