@@ -23,7 +23,7 @@ import dynamicIconImports from 'lucide-react/dynamicIconImports';
 import { useState } from 'react';
 import type { ReactNode } from 'react';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
+import { z } from 'zod/v3';
 
 const formSchema = z.object({
   name: z.string().min(1).max(255),

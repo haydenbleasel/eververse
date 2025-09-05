@@ -17,7 +17,7 @@ import { parseError } from '@repo/lib/parse-error';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
-import { z } from 'zod';
+import { z } from 'zod/v3';
 
 const formSchema = z.object({
   email: z.string().email(),

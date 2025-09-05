@@ -3,7 +3,7 @@ import { htmlToContent } from '@repo/editor/lib/tiptap';
 import { MAX_FREE_FEEDBACK } from '@repo/lib/consts';
 import { getGravatarUrl } from '@repo/lib/gravatar';
 import { log } from '@repo/observability/log';
-import { z } from 'zod';
+import { z } from 'zod/v3';
 
 const messageSchema = z.object({
   From: z.string(),

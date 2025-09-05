@@ -2,7 +2,7 @@ import { database } from '@repo/backend/database';
 import { textToContent } from '@repo/editor/lib/tiptap';
 import { MAX_FREE_FEATURES } from '@repo/lib/consts';
 import { NextResponse } from 'next/server';
-import { z } from 'zod';
+import { z } from 'zod/v3';
 
 const FeatureProperties = z.object({
   title: z.string(),

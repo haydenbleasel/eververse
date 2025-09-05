@@ -5,7 +5,7 @@ import { EververseRole } from '@repo/backend/auth';
 import { currentUser } from '@repo/backend/auth/utils';
 import { parseError } from '@repo/lib/parse-error';
 import { generateObject } from 'ai';
-import { z } from 'zod';
+import { z } from 'zod/v3';
 
 export const getFeatureRecommendations = async (
   text: string

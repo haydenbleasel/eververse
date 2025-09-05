@@ -5,7 +5,7 @@ import { Button } from '@repo/design-system/components/ui/button';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { toast } from '@repo/design-system/lib/toast';
 import { useState } from 'react';
-import { z } from 'zod';
+import { z } from 'zod/v3';
 
 const nameSchema = z.string().min(1);
 const emailSchema = z.string().email();

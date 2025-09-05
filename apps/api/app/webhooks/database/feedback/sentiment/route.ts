@@ -2,7 +2,7 @@ import { database, getJsonColumnFromTable } from '@repo/backend/database';
 import type { Feedback } from '@repo/backend/prisma/client';
 import { contentToText } from '@repo/editor/lib/tiptap';
 import { generateObject } from 'ai';
-import { z } from 'zod';
+import { z } from 'zod/v3';
 
 export const revalidate = 0;
 export const dynamic = 'force-dynamic';

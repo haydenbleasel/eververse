@@ -8,7 +8,7 @@ import { MAX_FREE_FEEDBACK } from '@repo/lib/consts';
 import { getGravatarUrl } from '@repo/lib/gravatar';
 import { friendlyWords } from 'friendlier-words';
 import { NextResponse } from 'next/server';
-import { z } from 'zod';
+import { z } from 'zod/v3';
 
 const FeedbackProperties = z.object({
   title: z.string(),
