@@ -110,7 +110,7 @@ export const generateChangelog = async (
           ].join('\n'),
         });
 
-        content = await markdownToContent(markdown.text.text);
+        content = await markdownToContent(markdown.text);
       }
     }
 
