@@ -9,12 +9,13 @@
     "analyze": "ANALYZE=true pnpm build"
   },
   "dependencies": {
+    "@ai-sdk/react": "^2.0.21",
+    "@ai-sdk/rsc": "^1.0.21",
     "@dnd-kit/core": "^6.3.1",
     "@emoji-mart/data": "^1.2.1",
     "@hookform/resolvers": "^5.0.1",
     "@number-flow/react": "^0.5.9",
     "@react-hookz/web": "^25.1.1",
-    "@repo/ai": "workspace:*",
     "@repo/analytics": "workspace:*",
     "@repo/atlassian": "workspace:*",
     "@repo/backend": "workspace:*",
@@ -35,6 +36,7 @@
     "@t3-oss/env-nextjs": "^0.13.4",
     "@tanstack/react-query": "^5.76.1",
     "@tanstack/react-table": "^8.21.3",
+    "ai": "^5.0.21",
     "date-fns": "^4.1.0",
     "emoji-mart": "^5.6.0",
     "friendlier-words": "^1.1.3",

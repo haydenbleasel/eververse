@@ -113,9 +113,6 @@ importers:
 
   apps/api:
     dependencies:
-      '@repo/ai':
-        specifier: workspace:*
-        version: link:../../packages/ai
       '@repo/atlassian':
         specifier: workspace:*
         version: link:../../packages/atlassian
@@ -161,6 +158,9 @@ importers:
       '@t3-oss/env-nextjs':
         specifier: ^0.13.4
         version: 0.13.4(arktype@2.1.20)(typescript@5.8.3)(zod@3.25.17)
+      ai:
+        specifier: ^5.0.21
+        version: 5.0.21(zod@3.25.17)
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
@@ -201,6 +201,12 @@ importers:
 
   apps/app:
     dependencies:
+      '@ai-sdk/react':
+        specifier: ^2.0.21
+        version: 2.0.21(react@19.0.0)(zod@3.25.17)
+      '@ai-sdk/rsc':
+        specifier: ^1.0.21
+        version: 1.0.21(react@19.0.0)(zod@3.25.17)
       '@dnd-kit/core':
         specifier: ^6.3.1
         version: 6.3.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -216,9 +222,6 @@ importers:
       '@react-hookz/web':
         specifier: ^25.1.1
         version: 25.1.1(js-cookie@3.0.5)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@repo/ai':
-        specifier: workspace:*
-        version: link:../../packages/ai
       '@repo/analytics':
         specifier: workspace:*
         version: link:../../packages/analytics
@@ -279,6 +282,9 @@ importers:
       '@tanstack/react-table':
         specifier: ^8.21.3
         version: 8.21.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      ai:
+        specifier: ^5.0.21
+        version: 5.0.21(zod@3.25.17)
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
@@ -314,7 +320,7 @@ importers:
         version: 1.20.0(next@15.3.2(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       novel:
         specifier: ^0.5.0
-        version: 0.5.0(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))(@tiptap/pm@2.10.3))(@types/react@19.1.5)(highlight.js@11.11.1)(immer@10.1.1)(lowlight@3.3.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 0.5.0(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6))(@types/react@19.1.5)(highlight.js@11.11.1)(immer@10.1.1)(lowlight@3.3.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       pluralize:
         specifier: ^8.0.0
         version: 8.0.0
@@ -589,40 +595,6 @@ importers:
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
-
-  packages/ai:
-    dependencies:
-      '@ai-sdk/openai':
-        specifier: ^1.3.22
-        version: 1.3.22(zod@3.25.17)
-      '@ai-sdk/react':
-        specifier: ^1.2.12
-        version: 1.2.12(react@19.0.0)(zod@3.25.17)
-      '@t3-oss/env-nextjs':
-        specifier: ^0.13.4
-        version: 0.13.4(arktype@2.1.20)(typescript@5.8.3)(zod@3.25.17)
-      ai:
-        specifier: ^4.3.16
-        version: 4.3.16(react@19.0.0)(zod@3.25.17)
-      react-markdown:
-        specifier: ^10.1.0
-        version: 10.1.0(@types/react@19.1.5)(react@19.0.0)
-      tailwind-merge:
-        specifier: ^3.3.0
-        version: 3.3.0
-      zod:
-        specifier: ^3.25.17
-        version: 3.25.17
-    devDependencies:
-      '@ai-sdk/provider':
-        specifier: ^1.1.3
-        version: 1.1.3
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-      '@types/node':
-        specifier: ^22.15.21
-        version: 22.15.21
 
   packages/analytics:
     dependencies:
@@ -1040,15 +1012,15 @@ importers:
 
   packages/editor:
     dependencies:
+      '@ai-sdk/react':
+        specifier: ^2.0.21
+        version: 2.0.21(react@19.0.0)(zod@3.25.17)
       '@radix-ui/react-popover':
         specifier: ^1.1.14
         version: 1.1.14(@types/react-dom@19.1.5(@types/react@19.1.5))(@types/react@19.1.5)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@react-hookz/web':
         specifier: ^25.1.1
         version: 25.1.1(js-cookie@3.0.5)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@repo/ai':
-        specifier: workspace:*
-        version: link:../ai
       '@repo/backend':
         specifier: workspace:*
         version: link:../backend
@@ -1148,6 +1120,9 @@ importers:
       '@tiptap/suggestion':
         specifier: ^2.10.3
         version: 2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))(@tiptap/pm@2.10.3)
+      ai:
+        specifier: ^5.0.21
+        version: 5.0.21(zod@3.25.17)
       deep-equal:
         specifier: ^2.2.3
         version: 2.2.3
@@ -1174,7 +1149,7 @@ importers:
         version: 1.3.0
       novel:
         specifier: ^0.5.0
-        version: 0.5.0(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))(@tiptap/pm@2.10.3))(@types/react@19.1.5)(highlight.js@11.11.1)(immer@10.1.1)(lowlight@3.3.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 0.5.0(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))(@tiptap/pm@2.10.3))(@types/react@19.1.5)(highlight.js@11.11.1)(lowlight@3.3.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react:
         specifier: 19.0.0
         version: 19.0.0
@@ -1394,7 +1369,7 @@ importers:
     dependencies:
       '@stripe/agent-toolkit':
         specifier: ^0.7.8
-        version: 0.7.8(@langchain/core@0.3.27(openai@4.102.0(encoding@0.1.13)(ws@8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.4))(zod@3.25.17)))(@modelcontextprotocol/sdk@1.11.5)(agents@0.0.84(@cloudflare/workers-types@4.20250521.0)(react@19.0.0))(ai@4.3.16(react@19.0.0)(zod@3.25.17))(openai@4.102.0(encoding@0.1.13)(ws@8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.4))(zod@3.25.17))
+        version: 0.7.8(@langchain/core@0.3.27(openai@4.102.0(encoding@0.1.13)(ws@8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.4))(zod@3.25.17)))(@modelcontextprotocol/sdk@1.11.5)(agents@0.0.84(@cloudflare/workers-types@4.20250521.0)(react@19.0.0))(ai@5.0.21(zod@3.25.17))(openai@4.102.0(encoding@0.1.13)(ws@8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.4))(zod@3.25.17))
       '@t3-oss/env-nextjs':
         specifier: ^0.13.4
         version: 0.13.4(arktype@2.1.20)(typescript@5.8.3)(zod@3.25.17)
@@ -1513,11 +1488,11 @@ importers:
 
 packages:
 
-  '@ai-sdk/openai@1.3.22':
-    resolution: {integrity: sha512-QwA+2EkG0QyjVR+7h6FE7iOu2ivNqAVMm9UJZkVxxTk5OIq5fFJDTEI/zICEMuHImTTXR2JjsL6EirJ28Jc4cw==}
+  '@ai-sdk/gateway@1.0.10':
+    resolution: {integrity: sha512-JKagBcP5JZ3gVLcXGWTiNf7nqIeCD0L4SmwnX66/ZpkLnrH3e0mj1l2BxDaDSbP2wr3XxnrOyBkVOHWgeCtBAw==}
     engines: {node: '>=18'}
     peerDependencies:
-      zod: ^3.0.0
+      zod: ^3.25.76 || ^4
 
   '@ai-sdk/provider-utils@2.2.8':
     resolution: {integrity: sha512-fqhG+4sCVv8x7nFzYnFo19ryhAa3w096Kmc3hWxMQfW/TubPOmt3A6tYZhl4mUfQWWQMsuSkLrtjlWuXBVSGQA==}
@@ -1525,8 +1500,18 @@ packages:
     peerDependencies:
       zod: ^3.23.8
 
+  '@ai-sdk/provider-utils@3.0.5':
+    resolution: {integrity: sha512-HliwB/yzufw3iwczbFVE2Fiwf1XqROB/I6ng8EKUsPM5+2wnIa8f4VbljZcDx+grhFrPV+PnRZH7zBqi8WZM7Q==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.25.76 || ^4
+
   '@ai-sdk/provider@1.1.3':
     resolution: {integrity: sha512-qZMxYJ0qqX/RfnuIaab+zp8UAeJn/ygXXAffR5I4N0n1IrvA6qBsjc8hXLmBiMV2zoXlifkacF7sEFnYnjBcqg==}
+    engines: {node: '>=18'}
+
+  '@ai-sdk/provider@2.0.0':
+    resolution: {integrity: sha512-6o7Y2SeO9vFKB8lArHXehNuusnpddKPk7xqL7T2/b+OvXMRIXUO1rR4wcv1hAFUAT9avGZshty3Wlua/XA7TvA==}
     engines: {node: '>=18'}
 
   '@ai-sdk/react@1.2.12':
@@ -1535,6 +1520,26 @@ packages:
     peerDependencies:
       react: 19.0.0
       zod: ^3.23.8
+    peerDependenciesMeta:
+      zod:
+        optional: true
+
+  '@ai-sdk/react@2.0.21':
+    resolution: {integrity: sha512-g+TW2/frUjaaogy/6freMhcDAE9tkA3z15xa+x0EYPzkelu9k2h1b5/abBMcdgWl/Y99WIf2m8jhnK5BrhDt3w==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      react: 19.0.0
+      zod: ^3.25.76 || ^4
+    peerDependenciesMeta:
+      zod:
+        optional: true
+
+  '@ai-sdk/rsc@1.0.21':
+    resolution: {integrity: sha512-5/gCxG/CnEIhh2dNyuNpFIJ+XMF18eVD4FiewYxJ2BxWa4CigbO41ryj9TAbbAMS2VGvoVaaIIJJAMsa407Qyw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      react: 19.0.0
+      zod: ^3.25.76 || ^4
     peerDependenciesMeta:
       zod:
         optional: true
@@ -4018,6 +4023,9 @@ packages:
   '@stablelib/base64@1.0.1':
     resolution: {integrity: sha512-1bnPQqSxSuc3Ii6MhBysoWCg58j97aUjuCSZrGSmDxNqtytIi0k8utUenAwTZN4V5mXXYGsVUI9zeBqy+jBOSQ==}
 
+  '@standard-schema/spec@1.0.0':
+    resolution: {integrity: sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==}
+
   '@standard-schema/utils@0.3.0':
     resolution: {integrity: sha512-e7Mew686owMaPJVNNLs55PUvgz371nKgwsc4vxE49zsODpJEnxgxRo2y/OKrqueavXgZNMDVj3DdHFlaSAeU8g==}
 
@@ -4208,23 +4216,27 @@ packages:
 
   '@tiptap-pro/extension-details-content@2.16.3':
     resolution: {integrity: sha512-vW1C3Ob7YZDn+ODGc6tNKmenWGzdM2O5KhXkD3s7wcXXgVwOXoKOHCP5mTFvTi1BVwDkChFVVhJM8gmsVMf46g==}
+    deprecated: '"@tiptap-pro/extension-details-content" was made open source and can now be installed from "@tiptap/extension-details-content" instead.'
     peerDependencies:
       '@tiptap/core': ^2.0.0
       '@tiptap/pm': ^2.0.0
 
   '@tiptap-pro/extension-details-summary@2.16.3':
     resolution: {integrity: sha512-AkafYNY8la4G9Qf9B5jrpexghxg4ES/rJHe3JK3tvTkztRFq8Eaiq7pC9gwF/9JJvo435CIXUEh0CGfL8n5kCg==}
+    deprecated: '"@tiptap-pro/extension-details-summary" was made open source and can now be installed from "@tiptap/extension-details-summary" instead.'
     peerDependencies:
       '@tiptap/core': ^2.0.0
 
   '@tiptap-pro/extension-details@2.16.3':
     resolution: {integrity: sha512-6Z7wtnUsb+1oL9qhxva0HuvGG0qE/TPULguSAhIy3i3S3yZ6xlZOI3lhNqUILuIGTeOjvJTu8ntfdoquE64rRA==}
+    deprecated: '"@tiptap-pro/extension-details" was made open source and can now be installed from "@tiptap/extension-details" instead.'
     peerDependencies:
       '@tiptap/core': ^2.0.0
       '@tiptap/pm': ^2.0.0
 
   '@tiptap-pro/extension-emoji@2.16.3':
     resolution: {integrity: sha512-CDHtXzQSUHMMBZl4D0L+Ot1Qs9swVJCLT5Ck+zTvvvOPsZwlew/RiWYz8fX/ifVd7clnXBjd8SuG2xhb9zY6Kw==}
+    deprecated: '"@tiptap-pro/extension-emoji" was made open source and can now be installed from "@tiptap/extension-emoji" instead.'
     peerDependencies:
       '@tiptap/core': ^2.0.0
       '@tiptap/pm': ^2.0.0
@@ -4232,12 +4244,14 @@ packages:
 
   '@tiptap-pro/extension-file-handler@2.16.3':
     resolution: {integrity: sha512-oOHIoVSux69AnFrnxtf7yvz6/UJGN5b8QLqCoqcTTekVZScfbh9w7xT3tiY48w1ggF5qqIRZwjns7zhtDEZGeA==}
+    deprecated: '"@tiptap-pro/extension-file-handler" was made open source and can now be installed from "@tiptap/extension-file-handler" instead.'
     peerDependencies:
       '@tiptap/core': ^2.0.0
       '@tiptap/pm': ^2.0.0
 
   '@tiptap-pro/extension-unique-id@2.16.3':
     resolution: {integrity: sha512-iYV4VkJLezZIlX4l62m7n1nNBCvgPSxLj3cdlJddSx/BymCn19q/lllyxmILpr1QLriQOdSV+yZOmpPbH7yeHA==}
+    deprecated: '"@tiptap-pro/extension-unique-id" was made open source and can now be installed from "@tiptap/extension-unique-id" instead.'
     peerDependencies:
       '@tiptap/core': ^2.0.0
       '@tiptap/pm': ^2.0.0
@@ -4944,6 +4958,12 @@ packages:
     peerDependenciesMeta:
       react:
         optional: true
+
+  ai@5.0.21:
+    resolution: {integrity: sha512-EbeSvzVhqADEwVqcSq/PUt5ohvO1JiOGmgJyktCYgtTrMRslpnNtoXEKuqgryaejTc5jCeUvZq+QStyBcN6VQQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.25.76 || ^4
 
   ajv-draft-04@1.0.0:
     resolution: {integrity: sha512-mv00Te6nmYbRp5DCwclxtt7yV/joXJPGS7nM+97GdxvuttCOfgI3K4U25zboyeX0O+myI8ERluxQe5wljMmVIw==}
@@ -5792,9 +5812,9 @@ packages:
     resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
     engines: {node: '>=0.8.x'}
 
-  eventsource-parser@3.0.2:
-    resolution: {integrity: sha512-6RxOBZ/cYgd8usLwsEl+EC09Au/9BcmCKYF2/xbml6DNczf7nv0MQb+7BA2F+li6//I+28VNlQR37XfQtcAJuA==}
-    engines: {node: '>=18.0.0'}
+  eventsource-parser@3.0.5:
+    resolution: {integrity: sha512-bSRG85ZrMdmWtm7qkF9He9TNRzc/Bm99gEJMaQoHJ9E6Kv9QBbsldh2oMj7iXmYNEAVvNgvv5vPorG6W+XtBhQ==}
+    engines: {node: '>=20.0.0'}
 
   eventsource@3.0.7:
     resolution: {integrity: sha512-CRT1WTyuQoD771GW56XEZFQ/ZoSfWid1alKGDYMmkt2yl8UXrVR4pspqWNEcqKvVIzg6PAltWjxcSSPrboA4iA==}
@@ -7236,6 +7256,7 @@ packages:
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
+    deprecated: Use your platform's native DOMException instead
 
   node-fetch@2.6.7:
     resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
@@ -9053,10 +9074,10 @@ packages:
 
 snapshots:
 
-  '@ai-sdk/openai@1.3.22(zod@3.25.17)':
+  '@ai-sdk/gateway@1.0.10(zod@3.25.17)':
     dependencies:
-      '@ai-sdk/provider': 1.1.3
-      '@ai-sdk/provider-utils': 2.2.8(zod@3.25.17)
+      '@ai-sdk/provider': 2.0.0
+      '@ai-sdk/provider-utils': 3.0.5(zod@3.25.17)
       zod: 3.25.17
 
   '@ai-sdk/provider-utils@2.2.8(zod@3.25.17)':
@@ -9066,7 +9087,19 @@ snapshots:
       secure-json-parse: 2.7.0
       zod: 3.25.17
 
+  '@ai-sdk/provider-utils@3.0.5(zod@3.25.17)':
+    dependencies:
+      '@ai-sdk/provider': 2.0.0
+      '@standard-schema/spec': 1.0.0
+      eventsource-parser: 3.0.5
+      zod: 3.25.17
+      zod-to-json-schema: 3.24.5(zod@3.25.17)
+
   '@ai-sdk/provider@1.1.3':
+    dependencies:
+      json-schema: 0.4.0
+
+  '@ai-sdk/provider@2.0.0':
     dependencies:
       json-schema: 0.4.0
 
@@ -9077,6 +9110,26 @@ snapshots:
       react: 19.0.0
       swr: 2.2.5(react@19.0.0)
       throttleit: 2.1.0
+    optionalDependencies:
+      zod: 3.25.17
+
+  '@ai-sdk/react@2.0.21(react@19.0.0)(zod@3.25.17)':
+    dependencies:
+      '@ai-sdk/provider-utils': 3.0.5(zod@3.25.17)
+      ai: 5.0.21(zod@3.25.17)
+      react: 19.0.0
+      swr: 2.2.5(react@19.0.0)
+      throttleit: 2.1.0
+    optionalDependencies:
+      zod: 3.25.17
+
+  '@ai-sdk/rsc@1.0.21(react@19.0.0)(zod@3.25.17)':
+    dependencies:
+      '@ai-sdk/provider': 2.0.0
+      '@ai-sdk/provider-utils': 3.0.5(zod@3.25.17)
+      ai: 5.0.21(zod@3.25.17)
+      jsondiffpatch: 0.6.0
+      react: 19.0.0
     optionalDependencies:
       zod: 3.25.17
 
@@ -11798,6 +11851,8 @@ snapshots:
 
   '@stablelib/base64@1.0.1': {}
 
+  '@standard-schema/spec@1.0.0': {}
+
   '@standard-schema/utils@0.3.0': {}
 
   '@statsig/client-core@3.17.1': {}
@@ -11806,12 +11861,12 @@ snapshots:
     dependencies:
       '@statsig/client-core': 3.17.1
 
-  '@stripe/agent-toolkit@0.7.8(@langchain/core@0.3.27(openai@4.102.0(encoding@0.1.13)(ws@8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.4))(zod@3.25.17)))(@modelcontextprotocol/sdk@1.11.5)(agents@0.0.84(@cloudflare/workers-types@4.20250521.0)(react@19.0.0))(ai@4.3.16(react@19.0.0)(zod@3.25.17))(openai@4.102.0(encoding@0.1.13)(ws@8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.4))(zod@3.25.17))':
+  '@stripe/agent-toolkit@0.7.8(@langchain/core@0.3.27(openai@4.102.0(encoding@0.1.13)(ws@8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.4))(zod@3.25.17)))(@modelcontextprotocol/sdk@1.11.5)(agents@0.0.84(@cloudflare/workers-types@4.20250521.0)(react@19.0.0))(ai@5.0.21(zod@3.25.17))(openai@4.102.0(encoding@0.1.13)(ws@8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.4))(zod@3.25.17))':
     dependencies:
       '@langchain/core': 0.3.27(openai@4.102.0(encoding@0.1.13)(ws@8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.4))(zod@3.25.17))
       '@modelcontextprotocol/sdk': 1.11.5
       agents: 0.0.84(@cloudflare/workers-types@4.20250521.0)(react@19.0.0)
-      ai: 4.3.16(react@19.0.0)(zod@3.25.17)
+      ai: 5.0.21(zod@3.25.17)
       openai: 4.102.0(encoding@0.1.13)(ws@8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.4))(zod@3.25.17)
       stripe: 17.5.0
       zod: 3.25.17
@@ -12062,10 +12117,23 @@ snapshots:
       highlight.js: 11.11.1
       lowlight: 3.3.0
 
+  '@tiptap/extension-code-block-lowlight@2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)(highlight.js@11.11.1)(lowlight@3.3.0)':
+    dependencies:
+      '@tiptap/core': 2.9.1(@tiptap/pm@2.6.6)
+      '@tiptap/extension-code-block': 2.10.3(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
+      '@tiptap/pm': 2.6.6
+      highlight.js: 11.11.1
+      lowlight: 3.3.0
+
   '@tiptap/extension-code-block@2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))(@tiptap/pm@2.10.3)':
     dependencies:
       '@tiptap/core': 2.10.3(@tiptap/pm@2.10.3)
       '@tiptap/pm': 2.10.3
+
+  '@tiptap/extension-code-block@2.10.3(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)':
+    dependencies:
+      '@tiptap/core': 2.9.1(@tiptap/pm@2.6.6)
+      '@tiptap/pm': 2.6.6
 
   '@tiptap/extension-code@2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))':
     dependencies:
@@ -12774,6 +12842,14 @@ snapshots:
       zod: 3.25.17
     optionalDependencies:
       react: 19.0.0
+
+  ai@5.0.21(zod@3.25.17):
+    dependencies:
+      '@ai-sdk/gateway': 1.0.10(zod@3.25.17)
+      '@ai-sdk/provider': 2.0.0
+      '@ai-sdk/provider-utils': 3.0.5(zod@3.25.17)
+      '@opentelemetry/api': 1.9.0
+      zod: 3.25.17
 
   ajv-draft-04@1.0.0(ajv@8.17.1):
     optionalDependencies:
@@ -13690,11 +13766,11 @@ snapshots:
 
   events@3.3.0: {}
 
-  eventsource-parser@3.0.2: {}
+  eventsource-parser@3.0.5: {}
 
   eventsource@3.0.7:
     dependencies:
-      eventsource-parser: 3.0.2
+      eventsource-parser: 3.0.5
 
   execa@5.1.1:
     dependencies:
@@ -15449,12 +15525,54 @@ snapshots:
 
   normalize-path@3.0.0: {}
 
-  novel@0.5.0(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))(@tiptap/pm@2.10.3))(@types/react@19.1.5)(highlight.js@11.11.1)(immer@10.1.1)(lowlight@3.3.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  novel@0.5.0(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))(@tiptap/pm@2.10.3))(@types/react@19.1.5)(highlight.js@11.11.1)(lowlight@3.3.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@radix-ui/react-slot': 1.1.0(@types/react@19.1.5)(react@19.0.0)
       '@tiptap/core': 2.9.1(@tiptap/pm@2.6.6)
       '@tiptap/extension-character-count': 2.5.8(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
       '@tiptap/extension-code-block-lowlight': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))(@tiptap/pm@2.10.3))(@tiptap/pm@2.6.6)(highlight.js@11.11.1)(lowlight@3.3.0)
+      '@tiptap/extension-color': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/extension-text-style@2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6)))
+      '@tiptap/extension-highlight': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))
+      '@tiptap/extension-horizontal-rule': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
+      '@tiptap/extension-image': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))
+      '@tiptap/extension-link': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
+      '@tiptap/extension-placeholder': 2.0.3(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
+      '@tiptap/extension-task-item': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
+      '@tiptap/extension-task-list': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))
+      '@tiptap/extension-text-style': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))
+      '@tiptap/extension-underline': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))
+      '@tiptap/extension-youtube': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))
+      '@tiptap/pm': 2.6.6
+      '@tiptap/react': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@tiptap/starter-kit': 2.10.3
+      '@tiptap/suggestion': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
+      '@types/node': 18.15.3
+      cmdk: 0.2.1(@types/react@19.1.5)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      jotai: 2.9.1(@types/react@19.1.5)(react@19.0.0)
+      katex: 0.16.11
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      react-markdown: 8.0.7(@types/react@19.1.5)(react@19.0.0)
+      react-moveable: 0.56.0
+      react-tweet: 3.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      tippy.js: 6.3.7
+      tiptap-extension-global-drag-handle: 0.1.10
+      tiptap-markdown: 0.8.10(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))
+      tunnel-rat: 0.1.2(@types/react@19.1.5)(immer@10.1.1)(react@19.0.0)
+    transitivePeerDependencies:
+      - '@tiptap/extension-code-block'
+      - '@types/react'
+      - highlight.js
+      - immer
+      - lowlight
+      - supports-color
+
+  novel@0.5.0(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6))(@types/react@19.1.5)(highlight.js@11.11.1)(immer@10.1.1)(lowlight@3.3.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    dependencies:
+      '@radix-ui/react-slot': 1.1.0(@types/react@19.1.5)(react@19.0.0)
+      '@tiptap/core': 2.9.1(@tiptap/pm@2.6.6)
+      '@tiptap/extension-character-count': 2.5.8(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
+      '@tiptap/extension-code-block-lowlight': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)(highlight.js@11.11.1)(lowlight@3.3.0)
       '@tiptap/extension-color': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/extension-text-style@2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6)))
       '@tiptap/extension-highlight': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))
       '@tiptap/extension-horizontal-rule': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)

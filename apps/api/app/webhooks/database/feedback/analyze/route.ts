@@ -1,9 +1,8 @@
-import { generateObject } from '@repo/ai';
-import { textModel } from '@repo/ai/lib/models';
 import { database, getJsonColumnFromTable } from '@repo/backend/database';
 import type { Feedback } from '@repo/backend/prisma/client';
 import { contentToText } from '@repo/editor/lib/tiptap';
-import { z } from 'zod';
+import { generateObject } from 'ai';
+import { z } from 'zod/v3';
 
 export const maxDuration = 300;
 export const revalidate = 0;
@@ -31,7 +30,7 @@ export const POST = async (request: Request): Promise<Response> => {
   }
 
   const { object } = await generateObject({
-    model: textModel,
+    model: 'openai/gpt-4o-mini',
     system: [
       'You are an AI that analyzes user feedback.',
       'You are given a user feedback message by a user.',

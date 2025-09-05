@@ -1,8 +1,7 @@
-import { generateText } from '@repo/ai';
-import { textModel } from '@repo/ai/lib/models';
 import { database } from '@repo/backend/database';
 import type { Prisma } from '@repo/backend/prisma/client';
 import { log } from '@repo/observability/log';
+import { generateText } from 'ai';
 import { subDays } from 'date-fns';
 import { NextResponse } from 'next/server';
 
@@ -154,7 +153,7 @@ export const GET = async (): Promise<Response> => {
 
     const [text, summary] = await Promise.all([
       generateText({
-        model: textModel,
+        model: 'openai/gpt-4o-mini',
         system: [
           'You are an AI that creates a digest of the most important things that happened in the last 24 hours.',
           'Be as comprehensive as possible.',
@@ -163,7 +162,7 @@ export const GET = async (): Promise<Response> => {
         prompt,
       }),
       generateText({
-        model: textModel,
+        model: 'openai/gpt-4o-mini',
         system: [
           'You are an AI that creates a digest of the most important things that happened in the last 24 hours.',
           'You have maximum 2000 characters to describe the digest.',

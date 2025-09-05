@@ -1,7 +1,7 @@
 'use client';
 
 import { MemoizedReactMarkdown } from '@/components/markdown';
-import { useChat } from '@repo/ai/lib/react';
+import { useChat } from '@ai-sdk/react';
 import type { Initiative, Organization } from '@repo/backend/prisma/client';
 import { Input } from '@repo/design-system/components/precomposed/input';
 import { Prose } from '@repo/design-system/components/prose';
@@ -9,6 +9,7 @@ import { StackCard } from '@repo/design-system/components/stack-card';
 import { Button } from '@repo/design-system/components/ui/button';
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { cn } from '@repo/design-system/lib/utils';
+import { DefaultChatTransport } from 'ai';
 import { SparklesIcon, XIcon } from 'lucide-react';
 import { type KeyboardEventHandler, useState } from 'react';
 
@@ -22,19 +23,22 @@ export const InitiativeQuestionCard = ({
   organizationId,
 }: InitiativeQuestionCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
-    api: '/api/initiatives/chat',
-    body: {
-      initiativeId,
-      organizationId,
-    },
+  const [input, setInput] = useState('');
+  const { messages, sendMessage } = useChat({
+    transport: new DefaultChatTransport({
+      api: '/api/initiatives/chat',
+      body: {
+        initiativeId,
+        organizationId,
+      },
+    }),
     onError: handleError,
   });
 
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
-      handleSubmit(event);
+      sendMessage({ text: input });
       setIsOpen(true);
     }
   };
@@ -50,7 +54,7 @@ export const InitiativeQuestionCard = ({
         <Input
           placeholder="What would you like to know?"
           value={input}
-          onChange={handleInputChange}
+          onChangeText={setInput}
           className="h-auto rounded-none border-none p-3 text-primary shadow-none placeholder:text-primary/50"
           onKeyDown={handleKeyDown}
         />
@@ -82,7 +86,10 @@ export const InitiativeQuestionCard = ({
                   )}
                 >
                   <MemoizedReactMarkdown>
-                    {message.content}
+                    {message.parts
+                      .filter((part) => part.type === 'text')
+                      .map((part) => part.text)
+                      .join('')}
                   </MemoizedReactMarkdown>
                 </div>
               ))}

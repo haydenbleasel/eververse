@@ -18,7 +18,7 @@ import {
 import { handleError } from '@repo/design-system/lib/handle-error';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
+import { z } from 'zod/v3';
 
 const formSchema = z.object({
   name: z.string().min(1),

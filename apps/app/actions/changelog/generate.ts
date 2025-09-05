@@ -1,8 +1,6 @@
 'use server';
 
 import { database } from '@/lib/database';
-import { generateText } from '@repo/ai';
-import { textModel } from '@repo/ai/lib/models';
 import { EververseRole } from '@repo/backend/auth';
 import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
 import { getJsonColumnFromTable } from '@repo/backend/database';
@@ -13,6 +11,7 @@ import {
   textToContent,
 } from '@repo/editor/lib/tiptap';
 import { parseError } from '@repo/lib/parse-error';
+import { generateText } from 'ai';
 import { revalidatePath } from 'next/cache';
 
 export const generateChangelog = async (
@@ -95,7 +94,7 @@ export const generateChangelog = async (
         const features = await Promise.all(promises);
 
         const markdown = await generateText({
-          model: textModel,
+          model: 'openai/gpt-4o-mini',
           system: [
             'You are an AI that takes a list of features that have been completed since the last update and potentially a product description.',
             "Your job is to generate a public-facing product update for a changelog that will be shared with the organization's customers.",

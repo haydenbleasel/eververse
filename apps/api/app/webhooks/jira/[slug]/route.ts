@@ -4,7 +4,7 @@ import type { release_state } from '@repo/backend/prisma/client';
 import { parseError } from '@repo/lib/parse-error';
 import { log } from '@repo/observability/log';
 import { NextResponse } from 'next/server';
-import { z } from 'zod';
+import { z } from 'zod/v3';
 
 export const maxDuration = 300;
 export const revalidate = 0;

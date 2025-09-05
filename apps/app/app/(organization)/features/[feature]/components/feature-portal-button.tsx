@@ -20,7 +20,7 @@ import { toast } from '@repo/design-system/lib/toast';
 import dynamic from 'next/dynamic';
 import { type ComponentProps, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
+import { z } from 'zod/v3';
 
 const Editor = dynamic(
   async () => {

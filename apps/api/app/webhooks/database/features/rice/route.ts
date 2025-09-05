@@ -1,9 +1,8 @@
-import { generateObject } from '@repo/ai';
-import { objectModel } from '@repo/ai/lib/models';
 import { database, getJsonColumnFromTable } from '@repo/backend/database';
 import type { Feature } from '@repo/backend/prisma/client';
 import { contentToText } from '@repo/editor/lib/tiptap';
-import { z } from 'zod';
+import { generateObject } from 'ai';
+import { z } from 'zod/v3';
 
 export const maxDuration = 300;
 export const revalidate = 0;
@@ -42,7 +41,7 @@ export const POST = async (request: Request): Promise<Response> => {
   }
 
   const { object } = await generateObject({
-    model: objectModel,
+    model: 'openai/gpt-4o-mini',
     system: [
       'You are an AI that determines the RICE score of a new product feature, where:',
       '- Reach is the number of people who will be affected by the feature. This can be between 0 and 100.',

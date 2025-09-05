@@ -4,7 +4,7 @@ import { log } from '@repo/observability/log';
 import { stripe } from '@repo/payments';
 import type { Stripe } from '@repo/payments';
 import { NextResponse } from 'next/server';
-import { z } from 'zod';
+import { z } from 'zod/v3';
 
 export const maxDuration = 300;
 export const revalidate = 0;

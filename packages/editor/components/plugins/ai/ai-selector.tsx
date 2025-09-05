@@ -1,4 +1,4 @@
-import { useCompletion } from '@repo/ai/lib/react';
+import { useCompletion } from '@ai-sdk/react';
 import { LoadingCircle } from '@repo/design-system/components/loading-circle';
 import { Prose } from '@repo/design-system/components/prose';
 import { Button } from '@repo/design-system/components/ui/button';
@@ -27,11 +27,6 @@ export const AISelector = ({ onOpenChange }: AiSelectorProperties) => {
 
   const { completion, complete, isLoading } = useCompletion({
     api: '/api/editor/generate',
-    onResponse: (response) => {
-      if (response.status === 429) {
-        handleError('You have reached your request limit for the day.');
-      }
-    },
     onError: handleError,
   });
 

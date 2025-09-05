@@ -1,8 +1,6 @@
 'use server';
 
 import { database } from '@/lib/database';
-import { generateText } from '@repo/ai';
-import { textModel } from '@repo/ai/lib/models';
 import { EververseRole } from '@repo/backend/auth';
 import { getUserName } from '@repo/backend/auth/format';
 import {
@@ -17,6 +15,7 @@ import type {
 } from '@repo/backend/prisma/client';
 import { markdownToContent, textToContent } from '@repo/editor/lib/tiptap';
 import { parseError } from '@repo/lib/parse-error';
+import { generateText } from 'ai';
 import { revalidatePath } from 'next/cache';
 
 export const generateInitiativeUpdateContent = async (
@@ -130,7 +129,7 @@ export const generateInitiativeUpdateContent = async (
 
       if (newContent) {
         const markdown = await generateText({
-          model: textModel,
+          model: 'openai/gpt-4o-mini',
           system: [
             'You are an AI that generates a update for an initiative that will be shared with the initiative stakeholders.',
             'You will be given a list of content that has been created for that have been completed since the last update',
