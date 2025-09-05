@@ -27,11 +27,6 @@ export const AISelector = ({ onOpenChange }: AiSelectorProperties) => {
 
   const { completion, complete, isLoading } = useCompletion({
     api: '/api/editor/generate',
-    onResponse: (response) => {
-      if (response.status === 429) {
-        handleError('You have reached your request limit for the day.');
-      }
-    },
     onError: handleError,
   });
 
