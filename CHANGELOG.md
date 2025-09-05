@@ -1,3 +1,15 @@
+# v1.5.10 (Fri Sep 05 2025)
+
+#### 🐛 Bug Fix
+
+- Gateway [#35](https://github.com/haydenbleasel/eververse/pull/35) ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.5.9 (Sat May 31 2025)
 
 #### ⚠️ Pushed to `main`
