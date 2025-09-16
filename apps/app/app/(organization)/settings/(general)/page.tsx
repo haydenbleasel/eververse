@@ -1,10 +1,11 @@
-import { currentOrganizationId } from '@repo/backend/auth/utils';
+import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
 import { database } from '@repo/backend/database';
 import { StackCard } from '@repo/design-system/components/stack-card';
 import { createMetadata } from '@repo/seo/metadata';
-import { BookIcon, BuildingIcon } from 'lucide-react';
+import { BookIcon, BuildingIcon, TrashIcon } from 'lucide-react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { DeleteOrganizationForm } from './components/delete-organization-form';
 import { OrganizationDetailsForm } from './components/organization-details-form';
 import { OrganizationLogoForm } from './components/organization-logo-form';
 import { ProductDescriptionForm } from './components/product-description-form';
@@ -15,9 +16,12 @@ export const metadata: Metadata = createMetadata({
 });
 
 const GeneralSettings = async () => {
-  const organizationId = await currentOrganizationId();
+  const [organizationId, user] = await Promise.all([
+    currentOrganizationId(),
+    currentUser(),
+  ]);
 
-  if (!organizationId) {
+  if (!organizationId || !user) {
     notFound();
   }
 
@@ -80,6 +84,16 @@ const GeneralSettings = async () => {
           </p>
           <ProductDescriptionForm
             defaultValue={organization.productDescription ?? ''}
+          />
+        </StackCard>
+        <StackCard
+          title="Danger Zone"
+          icon={TrashIcon}
+          className="grid gap-2"
+        >
+          <DeleteOrganizationForm 
+            organizationName={organization.name} 
+            userRole={user.user_metadata.organization_role}
           />
         </StackCard>
       </div>
