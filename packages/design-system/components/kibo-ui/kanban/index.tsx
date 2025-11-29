@@ -1,41 +1,41 @@
-'use client';
+"use client";
 
-import { Card } from '@repo/design-system/components/ui/card';
-import { ScrollArea, ScrollBar } from '@repo/design-system/components/ui/scroll-area';
-import { cn } from '@repo/design-system/lib/utils';
-import {
-  DndContext,
-  DragOverlay,
-  KeyboardSensor,
-  MouseSensor,
-  TouchSensor,
-  closestCenter,
-  useDroppable,
-  useSensor,
-  useSensors,
-} from '@dnd-kit/core';
 import type {
   Announcements,
   DndContextProps,
   DragEndEvent,
   DragOverEvent,
   DragStartEvent,
-} from '@dnd-kit/core';
-import { SortableContext, arrayMove, useSortable } from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
+} from "@dnd-kit/core";
 import {
+  closestCenter,
+  DndContext,
+  DragOverlay,
+  KeyboardSensor,
+  MouseSensor,
+  TouchSensor,
+  useDroppable,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
+import { arrayMove, SortableContext, useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import {
+  createContext,
   type HTMLAttributes,
   type ReactNode,
-  createContext,
   useContext,
   useState,
-} from 'react';
-import { createPortal } from 'react-dom';
-import tunnel from 'tunnel-rat';
+} from "react";
+import { createPortal } from "react-dom";
+import tunnel from "tunnel-rat";
+import { Card } from "@repo/components/ui/card";
+import { ScrollArea, ScrollBar } from "@repo/components/ui/scroll-area";
+import { cn } from "@repo/design-system/lib/utils";
 
 const t = tunnel();
 
-export type { DragEndEvent } from '@dnd-kit/core';
+export type { DragEndEvent } from "@dnd-kit/core";
 
 type KanbanItemProps = {
   id: string;
@@ -77,8 +77,8 @@ export const KanbanBoard = ({ id, children, className }: KanbanBoardProps) => {
   return (
     <div
       className={cn(
-        'flex size-full min-h-40 flex-col divide-y overflow-hidden rounded-md border bg-secondary text-xs shadow-sm ring-2 transition-all',
-        isOver ? 'ring-primary' : 'ring-transparent',
+        "flex size-full min-h-40 flex-col divide-y overflow-hidden rounded-md border bg-secondary text-xs shadow-sm ring-2 transition-all",
+        isOver ? "ring-primary" : "ring-transparent",
         className
       )}
       ref={setNodeRef}
@@ -121,8 +121,8 @@ export const KanbanCard = <T extends KanbanItemProps = KanbanItemProps>({
       <div style={style} {...listeners} {...attributes} ref={setNodeRef}>
         <Card
           className={cn(
-            'cursor-grab gap-4 rounded-md p-3 shadow-sm',
-            isDragging && 'pointer-events-none cursor-grabbing opacity-30',
+            "cursor-grab gap-4 rounded-md p-3 shadow-sm",
+            isDragging && "pointer-events-none cursor-grabbing opacity-30",
             className
           )}
         >
@@ -133,8 +133,8 @@ export const KanbanCard = <T extends KanbanItemProps = KanbanItemProps>({
         <t.In>
           <Card
             className={cn(
-              'cursor-grab gap-4 rounded-md p-3 shadow-sm ring-2 ring-primary',
-              isDragging && 'cursor-grabbing',
+              "cursor-grab gap-4 rounded-md p-3 shadow-sm ring-2 ring-primary",
+              isDragging && "cursor-grabbing",
               className
             )}
           >
@@ -147,7 +147,7 @@ export const KanbanCard = <T extends KanbanItemProps = KanbanItemProps>({
 };
 
 export type KanbanCardsProps<T extends KanbanItemProps = KanbanItemProps> =
-  Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'id'> & {
+  Omit<HTMLAttributes<HTMLDivElement>, "children" | "id"> & {
     children: (item: T) => ReactNode;
     id: string;
   };
@@ -165,7 +165,7 @@ export const KanbanCards = <T extends KanbanItemProps = KanbanItemProps>({
     <ScrollArea className="overflow-hidden">
       <SortableContext items={items}>
         <div
-          className={cn('flex flex-grow flex-col gap-2 p-2', className)}
+          className={cn("flex flex-grow flex-col gap-2 p-2", className)}
           {...props}
         >
           {filteredData.map(children)}
@@ -179,13 +179,13 @@ export const KanbanCards = <T extends KanbanItemProps = KanbanItemProps>({
 export type KanbanHeaderProps = HTMLAttributes<HTMLDivElement>;
 
 export const KanbanHeader = ({ className, ...props }: KanbanHeaderProps) => (
-  <div className={cn('m-0 p-2 font-semibold text-sm', className)} {...props} />
+  <div className={cn("m-0 p-2 font-semibold text-sm", className)} {...props} />
 );
 
 export type KanbanProviderProps<
   T extends KanbanItemProps = KanbanItemProps,
   C extends KanbanColumnProps = KanbanColumnProps,
-> = Omit<DndContextProps, 'children'> & {
+> = Omit<DndContextProps, "children"> & {
   children: (column: C) => ReactNode;
   className?: string;
   columns: C[];
@@ -236,12 +236,15 @@ export const KanbanProvider = <
     const activeItem = data.find((item) => item.id === active.id);
     const overItem = data.find((item) => item.id === over.id);
 
-    if (!activeItem || !overItem) {
+    if (!activeItem) {
       return;
     }
 
     const activeColumn = activeItem.column;
-    const overColumn = overItem.column;
+    const overColumn =
+      overItem?.column ||
+      columns.find((col) => col.id === over.id)?.id ||
+      columns[0]?.id;
 
     if (activeColumn !== overColumn) {
       let newData = [...data];
@@ -306,23 +309,23 @@ export const KanbanProvider = <
   return (
     <KanbanContext.Provider value={{ columns, data, activeCardId }}>
       <DndContext
-        sensors={sensors}
+        accessibility={{ announcements }}
         collisionDetection={closestCenter}
         onDragEnd={handleDragEnd}
-        onDragStart={handleDragStart}
         onDragOver={handleDragOver}
-        accessibility={{ announcements }}
+        onDragStart={handleDragStart}
+        sensors={sensors}
         {...props}
       >
         <div
           className={cn(
-            'grid size-full auto-cols-fr grid-flow-col gap-4',
+            "grid size-full auto-cols-fr grid-flow-col gap-4",
             className
           )}
         >
           {columns.map((column) => children(column))}
         </div>
-        {typeof window !== 'undefined' &&
+        {typeof window !== "undefined" &&
           createPortal(
             <DragOverlay>
               <t.Out />
