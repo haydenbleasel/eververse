@@ -1,6 +1,6 @@
 "use client";
 
-import * as RoadmapUiCalendar from "@repo/design-system/components/ui/kibo-ui/calendar";
+import * as RoadmapUiCalendar from "@repo/design-system/components/kibo-ui/calendar";
 import type { ComponentProps } from "react";
 
 type CalendarProperties = {

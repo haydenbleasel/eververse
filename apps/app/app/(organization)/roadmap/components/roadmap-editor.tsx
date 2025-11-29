@@ -18,7 +18,7 @@ import {
   ContextMenuItem,
   ContextMenuTrigger,
 } from "@repo/design-system/components/ui/context-menu";
-import * as Gantt from "@repo/design-system/components/ui/kibo-ui/gantt";
+import * as Gantt from "@repo/design-system/components/kibo-ui/gantt";
 import { useCopyToClipboard } from "@repo/design-system/hooks/use-copy-to-clipboard";
 import { handleError } from "@repo/design-system/lib/handle-error";
 import { toast } from "@repo/design-system/lib/toast";

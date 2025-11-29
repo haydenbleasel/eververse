@@ -14,7 +14,7 @@ import {
   VideoPlayerTimeDisplay,
   VideoPlayerTimeRange,
   VideoPlayerVolumeRange,
-} from "@repo/design-system/components/ui/kibo-ui/video-player";
+} from "@repo/design-system/components/kibo-ui/video-player";
 import { cn } from "@repo/design-system/lib/utils";
 import { contentToText } from "@repo/editor/lib/tiptap";
 import { createMetadata } from "@repo/seo/metadata";

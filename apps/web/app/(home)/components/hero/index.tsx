@@ -7,7 +7,7 @@ import {
   Announcement,
   AnnouncementTag,
   AnnouncementTitle,
-} from "@repo/design-system/components/ui/kibo-ui/announcement";
+} from "@repo/design-system/components/kibo-ui/announcement";
 import { cn } from "@repo/design-system/lib/utils";
 import { ArrowUpRightIcon } from "lucide-react";
 import { domAnimation, LazyMotion, m } from "motion/react";

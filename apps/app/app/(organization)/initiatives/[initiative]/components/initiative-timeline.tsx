@@ -14,7 +14,7 @@ import { Select } from "@repo/design-system/components/precomposed/select";
 import { StackCard } from "@repo/design-system/components/stack-card";
 import { Stepper } from "@repo/design-system/components/stepper";
 import { Button } from "@repo/design-system/components/ui/button";
-import * as Gantt from "@repo/design-system/components/ui/kibo-ui/gantt";
+import * as Gantt from "@repo/design-system/components/kibo-ui/gantt";
 import { GanttChartIcon, Maximize2Icon } from "lucide-react";
 import { useCallback, useMemo, useState } from "react";
 import { FeatureItemInner } from "@/components/roadmap-item";

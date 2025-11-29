@@ -6,7 +6,7 @@ import {
   MarqueeContent,
   MarqueeFade,
   MarqueeItem,
-} from "@repo/design-system/components/ui/kibo-ui/marquee";
+} from "@repo/design-system/components/kibo-ui/marquee";
 import { cn } from "@repo/design-system/lib/utils";
 import { domAnimation, LazyMotion, m, useInView } from "motion/react";
 import type { ComponentProps } from "react";

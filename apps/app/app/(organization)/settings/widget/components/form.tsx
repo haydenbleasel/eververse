@@ -12,7 +12,7 @@ import {
   CodeBlockBody,
   CodeBlockContent,
   CodeBlockItem,
-} from "@repo/design-system/components/ui/kibo-ui/code-block";
+} from "@repo/design-system/components/kibo-ui/code-block";
 import { handleError } from "@repo/design-system/lib/handle-error";
 import { toast } from "@repo/design-system/lib/toast";
 import { DynamicIcon } from "@repo/widget/components/dynamic-icon";

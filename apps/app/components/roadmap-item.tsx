@@ -1,6 +1,6 @@
 import type { User } from "@repo/backend/auth";
 import { getUserName } from "@repo/backend/auth/format";
-import type { GanttFeature } from "@repo/design-system/components/ui/kibo-ui/gantt";
+import type { GanttFeature } from "@repo/design-system/components/kibo-ui/gantt";
 import { memo } from "react";
 import { AvatarTooltip } from "./avatar-tooltip";
 

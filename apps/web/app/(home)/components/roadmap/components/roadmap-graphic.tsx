@@ -1,6 +1,6 @@
 "use client";
 
-import * as Gantt from "@repo/design-system/components/ui/kibo-ui/gantt";
+import * as Gantt from "@repo/design-system/components/kibo-ui/gantt";
 import { colors } from "@repo/design-system/lib/colors";
 import { addDays, addMonths, subDays, subMonths } from "date-fns";
 import Image from "next/image";

@@ -1,6 +1,6 @@
 import { currentMembers } from "@repo/backend/auth/utils";
 import { StackCard } from "@repo/design-system/components/stack-card";
-import type { GanttFeature } from "@repo/design-system/components/ui/kibo-ui/gantt";
+import type { GanttFeature } from "@repo/design-system/components/kibo-ui/gantt";
 import { endOfQuarter, startOfQuarter } from "date-fns";
 import { database } from "@/lib/database";
 import { QuarterlyRoadmapGantt } from "./gantt";

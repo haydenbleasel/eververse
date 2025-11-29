@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeSwitcher } from "@repo/design-system/components/ui/kibo-ui/theme-switcher";
+import { ThemeSwitcher } from "@repo/design-system/components/kibo-ui/theme-switcher";
 import { useTheme } from "next-themes";
 
 export const ThemeToggle = () => {

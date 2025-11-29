@@ -6,7 +6,7 @@ import {
   CodeBlockBody,
   CodeBlockContent,
   CodeBlockItem,
-} from "@repo/design-system/components/ui/kibo-ui/code-block";
+} from "@repo/design-system/components/kibo-ui/code-block";
 
 const code = [
   {

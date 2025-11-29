@@ -6,7 +6,7 @@ import {
   Dropzone,
   DropzoneContent,
   DropzoneEmptyState,
-} from "@repo/design-system/components/ui/kibo-ui/dropzone";
+} from "@repo/design-system/components/kibo-ui/dropzone";
 import { handleError } from "@repo/design-system/lib/handle-error";
 import Image from "next/image";
 import { useState } from "react";

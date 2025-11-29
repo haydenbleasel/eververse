@@ -5,7 +5,7 @@ import {
   Status,
   StatusIndicator,
   StatusLabel,
-} from "@repo/design-system/components/ui/kibo-ui/status";
+} from "@repo/design-system/components/kibo-ui/status";
 import { getStatus } from "@repo/observability/status";
 import { env } from "@/env";
 import { FooterLink } from "./footer-link";

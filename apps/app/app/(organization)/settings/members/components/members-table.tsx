@@ -13,7 +13,7 @@ import {
   TableHeaderGroup,
   TableProvider,
   TableRow,
-} from "@repo/design-system/components/ui/kibo-ui/table";
+} from "@repo/design-system/components/kibo-ui/table";
 import { handleError } from "@repo/design-system/lib/handle-error";
 import { capitalize } from "@repo/lib/format";
 import type { ColumnDef } from "@tanstack/react-table";

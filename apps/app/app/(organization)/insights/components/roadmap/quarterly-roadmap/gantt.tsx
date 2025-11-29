@@ -1,7 +1,7 @@
 "use client";
 
 import type { User } from "@repo/backend/auth";
-import * as Gantt from "@repo/design-system/components/ui/kibo-ui/gantt";
+import * as Gantt from "@repo/design-system/components/kibo-ui/gantt";
 import { useRouter } from "next/navigation";
 import { FeatureItemInner } from "@/components/roadmap-item";
 
