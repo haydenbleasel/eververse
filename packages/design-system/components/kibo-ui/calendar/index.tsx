@@ -17,7 +17,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { Button } from "@repo/components/ui/button";
+import { Button } from "@repo/design-system/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -25,12 +25,12 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@repo/components/ui/command";
+} from "@repo/design-system/components/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@repo/components/ui/popover";
+} from "@repo/design-system/components/ui/popover";
 import { cn } from "@repo/design-system/lib/utils";
 
 export type CalendarState = {

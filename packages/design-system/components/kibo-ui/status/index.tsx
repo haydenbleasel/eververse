@@ -1,5 +1,5 @@
 import type { ComponentProps, HTMLAttributes } from "react";
-import { Badge } from "@repo/components/ui/badge";
+import { Badge } from "@repo/design-system/components/ui/badge";
 import { cn } from "@repo/design-system/lib/utils";
 
 export type StatusProps = ComponentProps<typeof Badge> & {

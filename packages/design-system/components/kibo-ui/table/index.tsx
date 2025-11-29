@@ -18,13 +18,13 @@ import { atom, useAtom } from "jotai";
 import { ArrowDownIcon, ArrowUpIcon, ChevronsUpDownIcon } from "lucide-react";
 import type { HTMLAttributes, ReactNode } from "react";
 import { createContext, memo, useCallback, useContext } from "react";
-import { Button } from "@repo/components/ui/button";
+import { Button } from "@repo/design-system/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@repo/components/ui/dropdown-menu";
+} from "@repo/design-system/components/ui/dropdown-menu";
 import {
   TableBody as TableBodyRaw,
   TableCell as TableCellRaw,
@@ -32,7 +32,7 @@ import {
   TableHead as TableHeadRaw,
   Table as TableRaw,
   TableRow as TableRowRaw,
-} from "@repo/components/ui/table";
+} from "@repo/design-system/components/ui/table";
 import { cn } from "@repo/design-system/lib/utils";
 
 export type { ColumnDef } from "@tanstack/react-table";
