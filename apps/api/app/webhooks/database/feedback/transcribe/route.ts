@@ -1,7 +1,8 @@
 import { database } from "@repo/backend/database";
 import type { Feedback } from "@repo/backend/prisma/client";
 import { textToContent } from "@repo/editor/lib/tiptap";
-import { createTranscript } from "@repo/transcribe";
+import { experimental_transcribe as transcribe } from 'ai';
+import { openai } from '@ai-sdk/openai';
 
 export const maxDuration = 300;
 export const revalidate = 0;
@@ -22,14 +23,15 @@ export const POST = async (request: Request): Promise<Response> => {
     return new Response("No video or audio to transcribe", { status: 401 });
   }
 
-  const transcript = await createTranscript(
-    body.record.videoUrl ?? (body.record.audioUrl as string)
-  );
+  const transcript = await transcribe({
+    model: openai.transcription('whisper-1'),
+    audio: new URL(body.record.videoUrl ?? body.record.audioUrl as string),
+  });
 
   await database.feedback.update({
     where: { id: body.record.id },
     data: {
-      transcript,
+      transcript: transcript.text,
       content: textToContent(transcript.text ?? ""),
       transcribedAt: new Date(),
     },
