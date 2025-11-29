@@ -2,11 +2,7 @@ import { database } from "@repo/backend/database";
 import type { Prisma, ProductboardImport } from "@repo/backend/prisma/client";
 import { emailRegex } from "@repo/lib/email";
 import { createClient } from "@repo/productboard";
-import commonProviders from "email-providers/all.json";
-assert;
-{
-  type: "json";
-}
+import commonProviders from "email-providers/all.json" assert { type: "json" };
 
 type ImportJobProperties = Pick<
   ProductboardImport,
