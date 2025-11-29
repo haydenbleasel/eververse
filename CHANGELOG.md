@@ -1,3 +1,15 @@
+# v1.6.0 (Sat Nov 29 2025)
+
+#### 🚀 Enhancement
+
+- Update shadcn/ui, Ultracite and transcription [#36](https://github.com/haydenbleasel/eververse/pull/36) ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.5.10 (Fri Sep 05 2025)
 
 #### 🐛 Bug Fix
