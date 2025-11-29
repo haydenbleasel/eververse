@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["ultracite/core", "ultracite/react", "ultracite/next"],
+  "files": {
+    "includes": [
+      "!packages/design-system/components/ui",
+      "!packages/design-system/components/kibo-ui",
+      "!packages/design-system/lib",
+      "!packages/design-system/hooks",
+      "!apps/email/.react-email",
+      "!packages/atlassian/types.d.ts",
+      "!packages/productboard/types.d.ts"
+    ]
+  }
+}
