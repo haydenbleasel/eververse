@@ -320,7 +320,7 @@ importers:
         version: 1.20.0(next@15.3.2(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       novel:
         specifier: ^0.5.0
-        version: 0.5.0(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))(@tiptap/pm@2.10.3))(@types/react@19.1.5)(highlight.js@11.11.1)(immer@10.1.1)(lowlight@3.3.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 0.5.0(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6))(@types/react@19.1.5)(highlight.js@11.11.1)(immer@10.1.1)(lowlight@3.3.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       pluralize:
         specifier: ^8.0.0
         version: 8.0.0
@@ -445,7 +445,7 @@ importers:
         version: link:../../packages/seo
       '@sentry/nextjs':
         specifier: ^9.22.0
-        version: 9.22.0(@opentelemetry/context-async-hooks@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.57.2(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(encoding@0.1.13)(next@15.3.2(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(webpack@5.93.0)
+        version: 9.22.0(@opentelemetry/context-async-hooks@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.57.2(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(encoding@0.1.13)(next@15.3.2(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(webpack@5.93.0)
       '@t3-oss/env-nextjs':
         specifier: ^0.13.4
         version: 0.13.4(arktype@2.1.20)(typescript@5.8.3)(zod@3.25.17)
@@ -536,7 +536,7 @@ importers:
         version: link:../../packages/seo
       '@sentry/nextjs':
         specifier: ^9.22.0
-        version: 9.22.0(@opentelemetry/context-async-hooks@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.57.2(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(encoding@0.1.13)(next@15.3.2(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(webpack@5.93.0)
+        version: 9.22.0(@opentelemetry/context-async-hooks@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.57.2(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(encoding@0.1.13)(next@15.3.2(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(webpack@5.93.0)
       '@t3-oss/env-nextjs':
         specifier: ^0.13.4
         version: 0.13.4(arktype@2.1.20)(typescript@5.8.3)(zod@3.25.17)
@@ -588,7 +588,7 @@ importers:
         version: 19.1.5
       fumadocs-core:
         specifier: ^15.3.4
-        version: 15.3.4(@types/react@19.1.5)(next@15.3.2(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 15.3.4(@types/react@19.1.5)(next@15.3.2(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       tailwindcss:
         specifier: ^4.1.7
         version: 4.1.7
@@ -765,12 +765,6 @@ importers:
       '@hookform/resolvers':
         specifier: ^5.0.1
         version: 5.0.1(react-hook-form@7.56.4(react@19.0.0))
-      '@radix-ui/react-icons':
-        specifier: ^1.3.2
-        version: 1.3.2(react@19.0.0)
-      '@radix-ui/react-toast':
-        specifier: ^1.2.14
-        version: 1.2.15(@types/react-dom@19.1.5(@types/react@19.1.5))(@types/react@19.1.5)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@radix-ui/react-use-controllable-state':
         specifier: ^1.2.2
         version: 1.2.2(@types/react@19.1.5)(react@19.0.0)
@@ -1071,7 +1065,7 @@ importers:
         version: 1.3.0
       novel:
         specifier: ^0.5.0
-        version: 0.5.0(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))(@tiptap/pm@2.10.3))(@types/react@19.1.5)(highlight.js@11.11.1)(immer@10.1.1)(lowlight@3.3.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 0.5.0(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))(@tiptap/pm@2.10.3))(@types/react@19.1.5)(highlight.js@11.11.1)(lowlight@3.3.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       radix-ui:
         specifier: ^1.4.3
         version: 1.4.3(@types/react-dom@19.1.5(@types/react@19.1.5))(@types/react@19.1.5)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -1257,10 +1251,10 @@ importers:
     dependencies:
       '@logtail/next':
         specifier: ^0.2.0
-        version: 0.2.0(next@15.3.2(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+        version: 0.2.0(next@15.3.2(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@sentry/nextjs':
         specifier: ^9.22.0
-        version: 9.22.0(@opentelemetry/context-async-hooks@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.57.2(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(encoding@0.1.13)(next@15.3.2(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(webpack@5.93.0)
+        version: 9.22.0(@opentelemetry/context-async-hooks@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.57.2(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(encoding@0.1.13)(next@15.3.2(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(webpack@5.93.0)
       '@t3-oss/env-nextjs':
         specifier: ^0.13.4
         version: 0.13.4(arktype@2.1.20)(typescript@5.8.3)(zod@3.25.17)
@@ -3116,11 +3110,6 @@ packages:
         optional: true
       '@types/react-dom':
         optional: true
-
-  '@radix-ui/react-icons@1.3.2':
-    resolution: {integrity: sha512-fyQIhGDhzfc9pK2kH6Pl9c4BDJGfMkPqkyIgYDthyNYoNg3wVhoJMMh19WS4Up/1KMPFVpNsT2q3WmXn2N1m6g==}
-    peerDependencies:
-      react: 19.0.0
 
   '@radix-ui/react-id@1.0.0':
     resolution: {integrity: sha512-Q6iAB/U7Tq3NTolBBQbHTgclPmGWE3OlktGGqrClPozSw4vkQ1DfQAOtzgRPecKsMdJINE05iaoDUG8tRzCBjw==}
@@ -10093,7 +10082,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@logtail/next@0.2.0(next@15.3.2(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
+  '@logtail/next@0.2.0(next@15.3.2(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
     dependencies:
       next: 15.3.2(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
@@ -11100,10 +11089,6 @@ snapshots:
       '@types/react': 19.1.5
       '@types/react-dom': 19.1.5(@types/react@19.1.5)
 
-  '@radix-ui/react-icons@1.3.2(react@19.0.0)':
-    dependencies:
-      react: 19.0.0
-
   '@radix-ui/react-id@1.0.0(react@19.0.0)':
     dependencies:
       '@babel/runtime': 7.25.0
@@ -12024,7 +12009,7 @@ snapshots:
       - supports-color
       - webpack
 
-  '@sentry/nextjs@9.22.0(@opentelemetry/context-async-hooks@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.57.2(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(encoding@0.1.13)(next@15.3.2(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(webpack@5.93.0)':
+  '@sentry/nextjs@9.22.0(@opentelemetry/context-async-hooks@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.57.2(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(encoding@0.1.13)(next@15.3.2(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(webpack@5.93.0)':
     dependencies:
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/semantic-conventions': 1.33.1
@@ -12439,10 +12424,23 @@ snapshots:
       highlight.js: 11.11.1
       lowlight: 3.3.0
 
+  '@tiptap/extension-code-block-lowlight@2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)(highlight.js@11.11.1)(lowlight@3.3.0)':
+    dependencies:
+      '@tiptap/core': 2.9.1(@tiptap/pm@2.6.6)
+      '@tiptap/extension-code-block': 2.10.3(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
+      '@tiptap/pm': 2.6.6
+      highlight.js: 11.11.1
+      lowlight: 3.3.0
+
   '@tiptap/extension-code-block@2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))(@tiptap/pm@2.10.3)':
     dependencies:
       '@tiptap/core': 2.10.3(@tiptap/pm@2.10.3)
       '@tiptap/pm': 2.10.3
+
+  '@tiptap/extension-code-block@2.10.3(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)':
+    dependencies:
+      '@tiptap/core': 2.9.1(@tiptap/pm@2.6.6)
+      '@tiptap/pm': 2.6.6
 
   '@tiptap/extension-code@2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))':
     dependencies:
@@ -14275,7 +14273,7 @@ snapshots:
   fsevents@2.3.3:
     optional: true
 
-  fumadocs-core@15.3.4(@types/react@19.1.5)(next@15.3.2(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  fumadocs-core@15.3.4(@types/react@19.1.5)(next@15.3.2(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@formatjs/intl-localematcher': 0.6.1
       '@orama/orama': 3.1.7
@@ -15865,12 +15863,54 @@ snapshots:
 
   normalize-path@3.0.0: {}
 
-  novel@0.5.0(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))(@tiptap/pm@2.10.3))(@types/react@19.1.5)(highlight.js@11.11.1)(immer@10.1.1)(lowlight@3.3.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  novel@0.5.0(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))(@tiptap/pm@2.10.3))(@types/react@19.1.5)(highlight.js@11.11.1)(lowlight@3.3.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@radix-ui/react-slot': 1.1.0(@types/react@19.1.5)(react@19.0.0)
       '@tiptap/core': 2.9.1(@tiptap/pm@2.6.6)
       '@tiptap/extension-character-count': 2.5.8(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
       '@tiptap/extension-code-block-lowlight': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))(@tiptap/pm@2.10.3))(@tiptap/pm@2.6.6)(highlight.js@11.11.1)(lowlight@3.3.0)
+      '@tiptap/extension-color': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/extension-text-style@2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6)))
+      '@tiptap/extension-highlight': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))
+      '@tiptap/extension-horizontal-rule': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
+      '@tiptap/extension-image': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))
+      '@tiptap/extension-link': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
+      '@tiptap/extension-placeholder': 2.0.3(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
+      '@tiptap/extension-task-item': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
+      '@tiptap/extension-task-list': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))
+      '@tiptap/extension-text-style': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))
+      '@tiptap/extension-underline': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))
+      '@tiptap/extension-youtube': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))
+      '@tiptap/pm': 2.6.6
+      '@tiptap/react': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@tiptap/starter-kit': 2.10.3
+      '@tiptap/suggestion': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
+      '@types/node': 18.15.3
+      cmdk: 0.2.1(@types/react@19.1.5)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      jotai: 2.9.1(@types/react@19.1.5)(react@19.0.0)
+      katex: 0.16.11
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      react-markdown: 8.0.7(@types/react@19.1.5)(react@19.0.0)
+      react-moveable: 0.56.0
+      react-tweet: 3.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      tippy.js: 6.3.7
+      tiptap-extension-global-drag-handle: 0.1.10
+      tiptap-markdown: 0.8.10(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))
+      tunnel-rat: 0.1.2(@types/react@19.1.5)(immer@10.1.1)(react@19.0.0)
+    transitivePeerDependencies:
+      - '@tiptap/extension-code-block'
+      - '@types/react'
+      - highlight.js
+      - immer
+      - lowlight
+      - supports-color
+
+  novel@0.5.0(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6))(@types/react@19.1.5)(highlight.js@11.11.1)(immer@10.1.1)(lowlight@3.3.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    dependencies:
+      '@radix-ui/react-slot': 1.1.0(@types/react@19.1.5)(react@19.0.0)
+      '@tiptap/core': 2.9.1(@tiptap/pm@2.6.6)
+      '@tiptap/extension-character-count': 2.5.8(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
+      '@tiptap/extension-code-block-lowlight': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/extension-code-block@2.10.3(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)(highlight.js@11.11.1)(lowlight@3.3.0)
       '@tiptap/extension-color': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/extension-text-style@2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6)))
       '@tiptap/extension-highlight': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))
       '@tiptap/extension-horizontal-rule': 2.6.6(@tiptap/core@2.9.1(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
