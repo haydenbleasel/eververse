@@ -1,4 +1,3 @@
-import { Popover } from "@radix-ui/react-popover";
 import { Button } from "@repo/design-system/components/ui/button";
 import {
   PopoverContent,
@@ -18,6 +17,7 @@ import {
   TextQuote,
 } from "lucide-react";
 import { EditorBubbleItem, type EditorInstance, useEditor } from "novel";
+import { Popover } from "radix-ui";
 
 export type SelectorItem = {
   name: string;
@@ -137,7 +137,7 @@ export const NodeSelector = ({
   };
 
   return (
-    <Popover modal onOpenChange={onOpenChange} open={open}>
+    <Popover.Root modal onOpenChange={onOpenChange} open={open}>
       <PopoverTrigger asChild>
         <Button className="gap-2 rounded-none border-none" variant="ghost">
           <span className="whitespace-nowrap text-sm">{activeItem.name}</span>
@@ -164,6 +164,6 @@ export const NodeSelector = ({
           </EditorBubbleItem>
         ))}
       </PopoverContent>
-    </Popover>
+    </Popover.Root>
   );
 };

@@ -1,9 +1,9 @@
-import { Popover, PopoverTrigger } from "@radix-ui/react-popover";
 import { Button } from "@repo/design-system/components/ui/button";
 import { PopoverContent } from "@repo/design-system/components/ui/popover";
 import { cn } from "@repo/design-system/lib/utils";
 import { Check, ExternalLinkIcon, Trash } from "lucide-react";
 import { useEditor } from "novel";
+import { Popover } from "radix-ui";
 import type { FormEventHandler } from "react";
 import { useEffect, useRef, useState } from "react";
 
@@ -66,8 +66,8 @@ export const LinkSelector = ({
   const defaultValue = (editor.getAttributes("link") as { href?: string }).href;
 
   return (
-    <Popover modal onOpenChange={onOpenChange} open={open}>
-      <PopoverTrigger asChild>
+    <Popover.Root modal onOpenChange={onOpenChange} open={open}>
+      <Popover.Trigger asChild>
         <Button className="gap-2 rounded-none border-none" variant="ghost">
           <ExternalLinkIcon className="h-4 w-4" />
           <p
@@ -81,7 +81,7 @@ export const LinkSelector = ({
             Link
           </p>
         </Button>
-      </PopoverTrigger>
+      </Popover.Trigger>
       <PopoverContent align="start" className="w-60 p-0" sideOffset={10}>
         <form className="flex p-1" onSubmit={handleSubmit}>
           <input
@@ -114,6 +114,6 @@ export const LinkSelector = ({
           )}
         </form>
       </PopoverContent>
-    </Popover>
+    </Popover.Root>
   );
 };
