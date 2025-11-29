@@ -1,4 +1,4 @@
-import createSlug from 'slugify';
+import createSlug from "slugify";
 
 export const slugify = (text: string): string =>
   createSlug(text, { lower: true, strict: true });

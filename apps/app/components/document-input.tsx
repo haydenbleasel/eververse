@@ -1,7 +1,7 @@
-import { cn } from '@repo/design-system/lib/utils';
-import { type ChangeEventHandler, useState } from 'react';
-import ReactTextareaAutosize from 'react-textarea-autosize';
-import { useDebouncedCallback } from 'use-debounce';
+import { cn } from "@repo/design-system/lib/utils";
+import { type ChangeEventHandler, useState } from "react";
+import ReactTextareaAutosize from "react-textarea-autosize";
+import { useDebouncedCallback } from "use-debounce";
 
 type DocumentInputProperties = {
   readonly defaultValue: string;
@@ -25,7 +25,7 @@ export const DocumentInput = ({
   );
 
   const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
-    const newTitle = event.target.value.replaceAll('\n', '');
+    const newTitle = event.target.value.replaceAll("\n", "");
 
     onUpdate?.(newTitle);
     debouncedUpdates(newTitle);
@@ -34,15 +34,15 @@ export const DocumentInput = ({
 
   return (
     <ReactTextareaAutosize
-      placeholder="Enter a title..."
       className={cn(
-        'w-full resize-none border-none bg-transparent p-0 font-semibold text-4xl tracking-tight shadow-none outline-none',
-        'text-foreground',
+        "w-full resize-none border-none bg-transparent p-0 font-semibold text-4xl tracking-tight shadow-none outline-none",
+        "text-foreground",
         className
       )}
-      value={value}
-      onChange={handleChange}
       disabled={disabled}
+      onChange={handleChange}
+      placeholder="Enter a title..."
+      value={value}
     />
   );
 };

@@ -1,4 +1,4 @@
-import { Tooltip } from './precomposed/tooltip';
+import { Tooltip } from "./precomposed/tooltip";
 
 type SentimentEmojiProperties = {
   readonly value: string;
@@ -11,22 +11,22 @@ export const SentimentEmoji = ({
   description,
   className,
 }: SentimentEmojiProperties) => {
-  let emoji = '😐';
+  let emoji = "😐";
 
-  if (value === 'NEGATIVE') {
-    emoji = '😔';
+  if (value === "NEGATIVE") {
+    emoji = "😔";
   }
 
-  if (value === 'ANGRY') {
-    emoji = '😡';
+  if (value === "ANGRY") {
+    emoji = "😡";
   }
 
-  if (value === 'CONFUSED') {
-    emoji = '🤔';
+  if (value === "CONFUSED") {
+    emoji = "🤔";
   }
 
-  if (value === 'INFORMATIVE') {
-    emoji = '🧠';
+  if (value === "INFORMATIVE") {
+    emoji = "🧠";
   }
 
   if (description) {

@@ -1,9 +1,9 @@
-import { database } from '@/lib/database';
-import { currentOrganizationId } from '@repo/backend/auth/utils';
-import { baseUrl } from '@repo/lib/consts';
-import { parseError } from '@repo/lib/parse-error';
-import { stripe } from '@repo/payments';
-import { NextResponse } from 'next/server';
+import { currentOrganizationId } from "@repo/backend/auth/utils";
+import { baseUrl } from "@repo/lib/consts";
+import { parseError } from "@repo/lib/parse-error";
+import { stripe } from "@repo/payments";
+import { NextResponse } from "next/server";
+import { database } from "@/lib/database";
 
 export const GET = async (): Promise<Response> => {
   const organizationId = await currentOrganizationId();

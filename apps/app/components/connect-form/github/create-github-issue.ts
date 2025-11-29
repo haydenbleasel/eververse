@@ -1,16 +1,16 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import type { Feature } from '@repo/backend/prisma/client';
-import { contentToMarkdown } from '@repo/editor/lib/tiptap';
-import { createOctokit } from '@repo/github';
-import { parseError } from '@repo/lib/parse-error';
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import type { Feature } from "@repo/backend/prisma/client";
+import { contentToMarkdown } from "@repo/editor/lib/tiptap";
+import { createOctokit } from "@repo/github";
+import { parseError } from "@repo/lib/parse-error";
+import { database } from "@/lib/database";
 
 type CreateGitHubIssueProperties = {
   readonly owner: string;
   readonly repo: string;
-  readonly featureId: Feature['id'];
+  readonly featureId: Feature["id"];
 };
 
 export const createGitHubIssue = async ({
@@ -38,28 +38,28 @@ export const createGitHubIssue = async ({
     ]);
 
     if (!installation) {
-      throw new Error('Installation not found');
+      throw new Error("Installation not found");
     }
 
     if (!feature) {
-      throw new Error('Feature not found');
+      throw new Error("Feature not found");
     }
 
     const octokit = createOctokit(installation.installationId);
 
     const content = await getJsonColumnFromTable(
-      'feature',
-      'content',
+      "feature",
+      "content",
       feature.id
     );
-    const body = content ? await contentToMarkdown(content) : '';
+    const body = content ? await contentToMarkdown(content) : "";
 
     const issue = await octokit.issues.create({
       owner,
       repo,
       title: feature.title,
       body,
-      labels: ['eververse'],
+      labels: ["eververse"],
     });
 
     return {

@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { getActivity } from '@/actions/activity/get';
-import { InfiniteLoader } from '@/components/infinite-loader';
-import type { User } from '@repo/backend/auth';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useInfiniteQuery } from '@tanstack/react-query';
-import { useEffect } from 'react';
-import { ActivityDay } from './activity-day';
+import type { User } from "@repo/backend/auth";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+import { getActivity } from "@/actions/activity/get";
+import { InfiniteLoader } from "@/components/infinite-loader";
+import { ActivityDay } from "./activity-day";
 
 type ActivityFeedProperties = {
   readonly members: User[];
@@ -15,11 +15,11 @@ type ActivityFeedProperties = {
 export const ActivityFeed = ({ members }: ActivityFeedProperties) => {
   const { data, error, fetchNextPage, isFetching, hasNextPage } =
     useInfiniteQuery({
-      queryKey: ['activity'],
+      queryKey: ["activity"],
       queryFn: async ({ pageParam }) => {
         const response = await getActivity(pageParam);
 
-        if ('error' in response) {
+        if ("error" in response) {
           throw response.error;
         }
 
@@ -41,7 +41,7 @@ export const ActivityFeed = ({ members }: ActivityFeedProperties) => {
   return (
     <>
       {data?.pages.map((activity, index) => (
-        <ActivityDay members={members} key={index} data={activity} />
+        <ActivityDay data={activity} key={index} members={members} />
       ))}
       {hasNextPage ? (
         <InfiniteLoader loading={isFetching} onView={fetchNextPage} />

@@ -1,14 +1,14 @@
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import type { JSONContent } from '@repo/editor';
-import { contentToText, textToContent } from '@repo/editor/lib/tiptap';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { TemplateEditor } from './components/template-editor';
-import { TemplateTitle } from './components/template-title';
+import { EververseRole } from "@repo/backend/auth";
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import type { JSONContent } from "@repo/editor";
+import { contentToText, textToContent } from "@repo/editor/lib/tiptap";
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { database } from "@/lib/database";
+import { TemplateEditor } from "./components/template-editor";
+import { TemplateTitle } from "./components/template-title";
 
 type TemplatePageProperties = {
   readonly params: Promise<{
@@ -16,7 +16,7 @@ type TemplatePageProperties = {
   }>;
 };
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export const generateMetadata = async (
   props: TemplatePageProperties
@@ -35,11 +35,11 @@ export const generateMetadata = async (
   }
 
   const content = await getJsonColumnFromTable(
-    'template',
-    'content',
+    "template",
+    "content",
     template.id
   );
-  const text = content ? contentToText(content) : '';
+  const text = content ? contentToText(content) : "";
 
   return createMetadata({
     title: template.title,
@@ -54,7 +54,7 @@ const TemplatePage = async (props: TemplatePageProperties) => {
     currentOrganizationId(),
   ]);
 
-  if (!user || !organizationId) {
+  if (!(user && organizationId)) {
     notFound();
   }
 
@@ -76,13 +76,13 @@ const TemplatePage = async (props: TemplatePageProperties) => {
   }
 
   let content = await getJsonColumnFromTable(
-    'template',
-    'content',
+    "template",
+    "content",
     template.id
   );
 
   if (!content) {
-    const newContent = textToContent('');
+    const newContent = textToContent("");
 
     await database.template.update({
       where: { id: params.templateId },
@@ -97,14 +97,14 @@ const TemplatePage = async (props: TemplatePageProperties) => {
     <>
       <TemplateTitle
         defaultTitle={template.title}
-        templateId={params.templateId}
         editable={user.user_metadata.organization_role !== EververseRole.Member}
+        templateId={params.templateId}
       />
       <TemplateEditor
-        templateId={params.templateId}
         defaultValue={content as JSONContent}
         editable={user.user_metadata.organization_role !== EververseRole.Member}
         subscribed={Boolean(template.organization.stripeSubscriptionId)}
+        templateId={params.templateId}
       />
     </>
   );

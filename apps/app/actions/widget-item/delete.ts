@@ -1,12 +1,12 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import type { WidgetItem } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import type { WidgetItem } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const deleteWidgetItem = async (
-  id: WidgetItem['id']
+  id: WidgetItem["id"]
 ): Promise<{
   error?: string;
 }> => {
@@ -15,7 +15,7 @@ export const deleteWidgetItem = async (
       where: { id },
     });
 
-    revalidatePath('/settings/widget');
+    revalidatePath("/settings/widget");
 
     return {};
   } catch (error) {

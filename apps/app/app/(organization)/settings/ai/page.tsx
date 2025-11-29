@@ -1,15 +1,15 @@
-import { currentOrganizationId } from '@repo/backend/auth/utils';
-import { database } from '@repo/backend/database';
-import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
-import { AiIndexingChart } from './components/ai-indexing-chart';
+import { currentOrganizationId } from "@repo/backend/auth/utils";
+import { database } from "@repo/backend/database";
+import { Skeleton } from "@repo/design-system/components/precomposed/skeleton";
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
+import { AiIndexingChart } from "./components/ai-indexing-chart";
 
 export const metadata: Metadata = createMetadata({
-  title: 'AI Settings',
-  description: 'AI settings for your organization.',
+  title: "AI Settings",
+  description: "AI settings for your organization.",
 });
 
 const AiSettings = async () => {

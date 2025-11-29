@@ -1,7 +1,7 @@
-'use server';
+"use server";
 
-import { parseError } from '@repo/lib/parse-error';
-import matter from 'gray-matter';
+import { parseError } from "@repo/lib/parse-error";
+import matter from "gray-matter";
 
 export const parseMarkdown = async (
   files: {

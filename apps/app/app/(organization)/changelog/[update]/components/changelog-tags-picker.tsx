@@ -1,19 +1,18 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-
-import { addChangelogTag } from '@/actions/changelog-tag/connect';
-import { createChangelogTag } from '@/actions/changelog-tag/create';
-import { removeChangelogTag } from '@/actions/changelog-tag/disconnect';
-import type { Changelog, ChangelogTag } from '@repo/backend/prisma/client';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { PlusIcon } from 'lucide-react';
+import type { Changelog, ChangelogTag } from "@repo/backend/prisma/client";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { Tooltip } from "@repo/design-system/components/precomposed/tooltip";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { PlusIcon } from "lucide-react";
+import { useState } from "react";
+import { addChangelogTag } from "@/actions/changelog-tag/connect";
+import { createChangelogTag } from "@/actions/changelog-tag/create";
+import { removeChangelogTag } from "@/actions/changelog-tag/disconnect";
 
 type ChangelogTagsPickerProperties = {
-  readonly changelogId: Changelog['id'];
+  readonly changelogId: Changelog["id"];
   readonly storedTags: ChangelogTag[];
   readonly defaultTags: string[];
 };
@@ -35,7 +34,7 @@ export const ChangelogTagsPicker = ({
         name,
       });
 
-      if ('error' in response) {
+      if ("error" in response) {
         throw new Error(response.error);
       }
 
@@ -95,26 +94,26 @@ export const ChangelogTagsPicker = ({
 
   return (
     <Select
-      value={tags}
-      onChange={handleSelect}
       data={storedTags.map((tag) => ({
         label: tag.name,
         value: tag.id,
       }))}
       disabled={loading}
-      type="tag"
-      onCreate={handleCreateTag}
       exactSearch
+      onChange={handleSelect}
+      onCreate={handleCreateTag}
       trigger={
         <div>
           <Tooltip content="Add a new tag">
-            <Button size="icon" variant="ghost" className="-m-1.5 h-6 w-6">
+            <Button className="-m-1.5 h-6 w-6" size="icon" variant="ghost">
               <PlusIcon size={16} />
               <span className="sr-only">Add a new tag</span>
             </Button>
           </Tooltip>
         </div>
       }
+      type="tag"
+      value={tags}
     />
   );
 };

@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { createInitiativeUpdate } from '@/actions/initiative-update/create';
-import type { Initiative } from '@repo/backend/prisma/client';
-import { Dialog } from '@repo/design-system/components/precomposed/dialog';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { SendIcon } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import type { Initiative } from "@repo/backend/prisma/client";
+import { Dialog } from "@repo/design-system/components/precomposed/dialog";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { SendIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { createInitiativeUpdate } from "@/actions/initiative-update/create";
 
 type CreateInitiativeUpdateButtonProps = {
-  initiativeId: Initiative['id'];
-  initiativeTitle: Initiative['title'];
+  initiativeId: Initiative["id"];
+  initiativeTitle: Initiative["title"];
 };
 
 export const CreateInitiativeUpdateButton = ({
@@ -21,9 +21,9 @@ export const CreateInitiativeUpdateButton = ({
 }: CreateInitiativeUpdateButtonProps) => {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState(
-    `${initiativeTitle} - Update ${new Intl.DateTimeFormat('en-US', {
-      month: 'long',
-      day: 'numeric',
+    `${initiativeTitle} - Update ${new Intl.DateTimeFormat("en-US", {
+      month: "long",
+      day: "numeric",
     }).format(new Date())}`
   );
   const router = useRouter();
@@ -55,24 +55,24 @@ export const CreateInitiativeUpdateButton = ({
 
   return (
     <Dialog
-      open={open}
-      onOpenChange={setOpen}
-      title="Create new update"
-      description="Create a new update for this initiative"
       cta="Create update"
+      description="Create a new update for this initiative"
       disabled={disabled}
       onClick={handleSubmit}
+      onOpenChange={setOpen}
+      open={open}
+      title="Create new update"
       trigger={
-        <Button variant="outline" className="flex items-center gap-2">
+        <Button className="flex items-center gap-2" variant="outline">
           <SendIcon size={16} />
           Send update
         </Button>
       }
     >
       <Input
-        value={title}
         onChangeText={setTitle}
         placeholder={`Update ${date.toLocaleDateString()}`}
+        value={title}
       />
     </Dialog>
   );

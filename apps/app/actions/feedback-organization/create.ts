@@ -1,18 +1,18 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
 import type {
   FeedbackOrganization,
   FeedbackUser,
-} from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+} from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 type CreateFeedbackOrganizationProperties = {
-  name: FeedbackOrganization['name'];
-  domain: FeedbackOrganization['domain'];
-  feedbackUser: FeedbackUser['id'];
+  name: FeedbackOrganization["name"];
+  domain: FeedbackOrganization["domain"];
+  feedbackUser: FeedbackUser["id"];
 };
 
 export const createFeedbackOrganization = async ({
@@ -20,7 +20,7 @@ export const createFeedbackOrganization = async ({
   domain,
   feedbackUser,
 }: CreateFeedbackOrganizationProperties): Promise<{
-  id?: FeedbackOrganization['id'];
+  id?: FeedbackOrganization["id"];
   error?: string;
 }> => {
   try {
@@ -29,8 +29,8 @@ export const createFeedbackOrganization = async ({
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('Not logged in');
+    if (!(user && organizationId)) {
+      throw new Error("Not logged in");
     }
 
     const existingOrganization = await database.feedbackOrganization.findFirst({
@@ -58,7 +58,7 @@ export const createFeedbackOrganization = async ({
       },
     });
 
-    revalidatePath('/', 'layout');
+    revalidatePath("/", "layout");
 
     return { id };
   } catch (error) {

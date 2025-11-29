@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { updateInitiativeUpdate } from '@/actions/initiative-update/update';
-import { staticify } from '@/lib/staticify';
-import type { InitiativeUpdate } from '@repo/backend/prisma/client';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import type { EditorInstance, JSONContent } from '@repo/editor';
-import dynamic from 'next/dynamic';
+import type { InitiativeUpdate } from "@repo/backend/prisma/client";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import type { EditorInstance, JSONContent } from "@repo/editor";
+import dynamic from "next/dynamic";
+import { updateInitiativeUpdate } from "@/actions/initiative-update/update";
+import { staticify } from "@/lib/staticify";
 
 type InitiativeUpdateEditorProperties = {
   readonly defaultValue: JSONContent;
-  readonly initiativeUpdateId: InitiativeUpdate['id'];
+  readonly initiativeUpdateId: InitiativeUpdate["id"];
   readonly editable: boolean;
   readonly subscribed: boolean;
 };
@@ -18,7 +18,7 @@ const Editor = dynamic(
   async () => {
     const Module = await import(
       /* webpackChunkName: "editor" */
-      '@/components/editor'
+      "@/components/editor"
     );
     return Module.Editor;
   },
@@ -51,8 +51,8 @@ export const InitiativeUpdateEditor = ({
   return (
     <Editor
       defaultValue={defaultValue}
-      onDebouncedUpdate={handleDebouncedUpdate}
       editable={editable}
+      onDebouncedUpdate={handleDebouncedUpdate}
     />
   );
 };

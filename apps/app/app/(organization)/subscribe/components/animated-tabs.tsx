@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { cn } from '@repo/design-system/lib/utils';
-import { motion } from 'motion/react';
+import { cn } from "@repo/design-system/lib/utils";
+import { motion } from "motion/react";
 
 type AnimatedTabsProps = {
   value: string;
@@ -22,21 +22,21 @@ export const AnimatedTabs = ({
       <motion.div
         className="absolute h-full rounded-full bg-primary"
         layout
-        transition={{ type: 'spring', stiffness: 600, damping: 30 }}
         style={{
           width: `${100 / options.length}%`,
           left: `${(options.findIndex((option) => option.id === value) * 100) / options.length}%`,
         }}
+        transition={{ type: "spring", stiffness: 600, damping: 30 }}
       />
       {options.map((option) => (
         <button
+          className={cn(
+            "relative z-10 flex-1 rounded-full px-6 py-2 font-medium text-sm transition-colors duration-200",
+            value === option.id ? "text-white" : "text-muted-foreground"
+          )}
           key={option.id}
           onClick={() => onChange?.(option.id)}
           type="button"
-          className={cn(
-            'relative z-10 flex-1 rounded-full px-6 py-2 font-medium text-sm transition-colors duration-200',
-            value === option.id ? 'text-white' : 'text-muted-foreground'
-          )}
         >
           {option.label}
         </button>

@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
 type ChangelogFormState = {
   isOpen: boolean;
@@ -17,7 +17,7 @@ export const useChangelogForm = create<ChangelogFormState>()(
       toggle: () => set((state) => ({ isOpen: !state.isOpen })),
     }),
     {
-      name: 'eververse:changelog-form',
+      name: "eververse:changelog-form",
     }
   )
 );

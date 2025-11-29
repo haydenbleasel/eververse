@@ -1,19 +1,19 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
 import type {
   AtlassianInstallation,
   FeatureStatus,
   Prisma,
-} from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { log } from '@repo/observability/log';
-import { revalidatePath } from 'next/cache';
+} from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { log } from "@repo/observability/log";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const updateJiraStatusMappings = async (
-  installationId: AtlassianInstallation['id'],
-  featureStatusId: FeatureStatus['id'],
+  installationId: AtlassianInstallation["id"],
+  featureStatusId: FeatureStatus["id"],
   jiraStatuses: {
     value: string;
     label: string;
@@ -27,8 +27,8 @@ export const updateJiraStatusMappings = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('Not logged in');
+    if (!(user && organizationId)) {
+      throw new Error("Not logged in");
     }
 
     log.info(
@@ -38,9 +38,9 @@ export const updateJiraStatusMappings = async (
     // 1. Delete existing mappings for the feature status
     await database.installationStatusMapping.deleteMany({
       where: {
-        type: 'JIRA',
+        type: "JIRA",
         organizationId,
-        featureStatusId: featureStatusId,
+        featureStatusId,
       },
     });
 
@@ -55,8 +55,8 @@ export const updateJiraStatusMappings = async (
     const data: Prisma.InstallationStatusMappingCreateManyInput[] =
       jiraStatuses.map((jiraStatus) => ({
         organizationId,
-        type: 'JIRA',
-        featureStatusId: featureStatusId,
+        type: "JIRA",
+        featureStatusId,
         eventId: jiraStatus.value,
         eventType: jiraStatus.label,
         creatorId: user.id,
@@ -68,7 +68,7 @@ export const updateJiraStatusMappings = async (
       skipDuplicates: true,
     });
 
-    revalidatePath('/settings/integrations/jira');
+    revalidatePath("/settings/integrations/jira");
 
     return {};
   } catch (error) {

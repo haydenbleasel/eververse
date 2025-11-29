@@ -1,12 +1,12 @@
-import { database } from '@/lib/database';
-import { getUserName } from '@repo/backend/auth/format';
-import { currentMembers } from '@repo/backend/auth/utils';
-import { BarChart } from '@repo/design-system/components/charts/bar';
-import type { BarChartProperties } from '@repo/design-system/components/charts/bar';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { colors } from '@repo/design-system/lib/colors';
-import { slugify } from '@repo/lib/slugify';
-import { UserCircleIcon } from 'lucide-react';
+import { getUserName } from "@repo/backend/auth/format";
+import { currentMembers } from "@repo/backend/auth/utils";
+import type { BarChartProperties } from "@repo/design-system/components/charts/bar";
+import { BarChart } from "@repo/design-system/components/charts/bar";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { colors } from "@repo/design-system/lib/colors";
+import { slugify } from "@repo/lib/slugify";
+import { UserCircleIcon } from "lucide-react";
+import { database } from "@/lib/database";
 
 export const OwnersChart = async () => {
   const [features, members] = await Promise.all([
@@ -30,7 +30,7 @@ export const OwnersChart = async () => {
 
     if (owner) {
       const name = getUserName(owner);
-      const slug = slugify(name ?? 'Unknown');
+      const slug = slugify(name ?? "Unknown");
       const existing = data.find((item) => item.id === slug);
 
       if (existing) {
@@ -45,7 +45,7 @@ export const OwnersChart = async () => {
     }
   }
 
-  const config: BarChartProperties['config'] = {};
+  const config: BarChartProperties["config"] = {};
 
   for (const [_index, item] of data.entries()) {
     config[item.id] = {
@@ -55,12 +55,12 @@ export const OwnersChart = async () => {
   }
 
   return (
-    <StackCard title="Feature Owners" icon={UserCircleIcon} className="p-8">
+    <StackCard className="p-8" icon={UserCircleIcon} title="Feature Owners">
       <BarChart
-        data={data}
-        config={config}
         className="mx-auto h-80"
         color={colors.violet}
+        config={config}
+        data={data}
         xAxisKey="count"
         yAxisKey="name"
       />

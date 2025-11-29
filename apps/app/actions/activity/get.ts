@@ -1,11 +1,10 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { getUserName } from '@repo/backend/auth/format';
+import { getUserName } from "@repo/backend/auth/format";
 import {
   currentMembers,
   currentOrganizationId,
-} from '@repo/backend/auth/utils';
+} from "@repo/backend/auth/utils";
 import type {
   ApiKey,
   Changelog,
@@ -24,61 +23,62 @@ import type {
   Product,
   Release,
   WidgetItem,
-} from '@repo/backend/prisma/client';
-import { subDays } from 'date-fns';
+} from "@repo/backend/prisma/client";
+import { subDays } from "date-fns";
+import { database } from "@/lib/database";
 
 export type GetActivityResponse = {
-  initiatives: Pick<Initiative, 'createdAt' | 'creatorId' | 'id' | 'title'>[];
+  initiatives: Pick<Initiative, "createdAt" | "creatorId" | "id" | "title">[];
   initiativeMembers: (Pick<
     InitiativeMember,
-    'createdAt' | 'creatorId' | 'id' | 'userId'
+    "createdAt" | "creatorId" | "id" | "userId"
   > & {
-    initiative: Pick<Initiative, 'id' | 'title'>;
+    initiative: Pick<Initiative, "id" | "title">;
   })[];
   initiativePages: (Pick<
     InitiativePage,
-    'createdAt' | 'creatorId' | 'id' | 'title'
+    "createdAt" | "creatorId" | "id" | "title"
   > & {
-    initiative: Pick<Initiative, 'id' | 'title'>;
+    initiative: Pick<Initiative, "id" | "title">;
   })[];
   initiativeCanvases: (Pick<
     InitiativeCanvas,
-    'createdAt' | 'creatorId' | 'id' | 'title'
+    "createdAt" | "creatorId" | "id" | "title"
   > & {
-    initiative: Pick<Initiative, 'id' | 'title'>;
+    initiative: Pick<Initiative, "id" | "title">;
   })[];
   initiativeExternalLinks: (Pick<
     InitiativeExternalLink,
-    'createdAt' | 'creatorId' | 'href' | 'id' | 'title'
+    "createdAt" | "creatorId" | "href" | "id" | "title"
   > & {
-    initiative: Pick<Initiative, 'id' | 'title'>;
+    initiative: Pick<Initiative, "id" | "title">;
   })[];
-  feedback: (Pick<Feedback, 'createdAt' | 'id' | 'source' | 'title'> & {
+  feedback: (Pick<Feedback, "createdAt" | "id" | "source" | "title"> & {
     feedbackUser:
-      | (Pick<FeedbackUser, 'imageUrl' | 'name'> & {
-          feedbackOrganization: Pick<FeedbackOrganization, 'name'> | null;
+      | (Pick<FeedbackUser, "imageUrl" | "name"> & {
+          feedbackOrganization: Pick<FeedbackOrganization, "name"> | null;
         })
       | null;
   })[];
-  products: Pick<Product, 'createdAt' | 'creatorId' | 'id' | 'name'>[];
-  groups: Pick<Group, 'createdAt' | 'creatorId' | 'id' | 'name'>[];
+  products: Pick<Product, "createdAt" | "creatorId" | "id" | "name">[];
+  groups: Pick<Group, "createdAt" | "creatorId" | "id" | "name">[];
   features: Pick<
     Feature,
-    'createdAt' | 'creatorId' | 'id' | 'source' | 'title'
+    "createdAt" | "creatorId" | "id" | "source" | "title"
   >[];
-  changelog: Pick<Changelog, 'createdAt' | 'creatorId' | 'id' | 'title'>[];
-  apiKeys: Pick<ApiKey, 'createdAt' | 'creatorId' | 'id' | 'name'>[];
+  changelog: Pick<Changelog, "createdAt" | "creatorId" | "id" | "title">[];
+  apiKeys: Pick<ApiKey, "createdAt" | "creatorId" | "id" | "name">[];
   feedbackFeatureLinks: (Pick<
     FeedbackFeatureLink,
-    'createdAt' | 'creatorId' | 'id'
+    "createdAt" | "creatorId" | "id"
   > & {
-    feedback: Pick<Feedback, 'id' | 'title'>;
-    feature: Pick<Feature, 'id' | 'title'>;
+    feedback: Pick<Feedback, "id" | "title">;
+    feature: Pick<Feature, "id" | "title">;
   })[];
-  portalFeatures: (Pick<PortalFeature, 'createdAt' | 'creatorId' | 'id'> & {
-    feature: Pick<Feature, 'id' | 'title'>;
+  portalFeatures: (Pick<PortalFeature, "createdAt" | "creatorId" | "id"> & {
+    feature: Pick<Feature, "id" | "title">;
   })[];
-  releases: Pick<Release, 'createdAt' | 'creatorId' | 'id' | 'title'>[];
+  releases: Pick<Release, "createdAt" | "creatorId" | "id" | "title">[];
   members: {
     id: string;
     createdAt: Date;
@@ -87,7 +87,7 @@ export type GetActivityResponse = {
   }[];
   widgetItems: Pick<
     WidgetItem,
-    'id' | 'name' | 'link' | 'creatorId' | 'createdAt'
+    "id" | "name" | "link" | "creatorId" | "createdAt"
   >[];
   date: Date;
 };
@@ -109,7 +109,7 @@ export const getActivity = async (
     const endOfDay = new Date(date.setHours(23, 59, 59, 999));
 
     if (!organizationId) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     const [members, databaseOrganization] = await Promise.all([
@@ -403,7 +403,7 @@ export const getActivity = async (
     ]);
 
     if (!databaseOrganization) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     const data = {

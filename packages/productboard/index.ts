@@ -1,16 +1,12 @@
-import createFetchClient from 'openapi-fetch';
-import type { paths } from './types';
+import createFetchClient from "openapi-fetch";
+import type { paths } from "./types";
 
-export const createClient = ({
-  accessToken,
-}: {
-  accessToken: string;
-}) =>
+export const createClient = ({ accessToken }: { accessToken: string }) =>
   createFetchClient<paths>({
-    baseUrl: 'https://api.productboard.com',
+    baseUrl: "https://api.productboard.com",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       Authorization: `Bearer ${accessToken}`,
     },
-    fetch: fetch,
+    fetch,
   });

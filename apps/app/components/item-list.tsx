@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { Link } from '@repo/design-system/components/link';
-import { LoadingCircle } from '@repo/design-system/components/loading-circle';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { cn } from '@repo/design-system/lib/utils';
-import type { FetchNextPageOptions } from '@tanstack/react-query';
-import { useInView } from 'motion/react';
-import { usePathname } from 'next/navigation';
-import { type ReactNode, useEffect, useRef, useState } from 'react';
+import { Link } from "@repo/design-system/components/link";
+import { LoadingCircle } from "@repo/design-system/components/loading-circle";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { cn } from "@repo/design-system/lib/utils";
+import type { FetchNextPageOptions } from "@tanstack/react-query";
+import { useInView } from "motion/react";
+import { usePathname } from "next/navigation";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 
 type ItemListProps = {
   data: {
@@ -23,22 +23,18 @@ type ItemListProps = {
   fetchNextPage: (options?: FetchNextPageOptions) => Promise<unknown>;
 };
 
-export const ListItem = ({
-  data,
-}: {
-  data: ItemListProps['data'][number];
-}) => {
+export const ListItem = ({ data }: { data: ItemListProps["data"][number] }) => {
   const pathname = usePathname();
   const active = pathname === data.href;
 
   return (
     <Link
-      href={data.href}
       className={cn(
-        'group relative flex gap-4 bg-transparent p-3 transition-colors hover:bg-card',
+        "group relative flex gap-4 bg-transparent p-3 transition-colors hover:bg-card",
         active &&
-          'bg-primary/10 text-primary hover:bg-primary/10 hover:text-primary'
+          "bg-primary/10 text-primary hover:bg-primary/10 hover:text-primary"
       )}
+      href={data.href}
     >
       {data.image ? <div className="relative">{data.image}</div> : null}
       <div className="relative z-10 grid w-full gap-1">
@@ -49,8 +45,8 @@ export const ListItem = ({
           {data.caption ? (
             <p
               className={cn(
-                'shrink-0 font-medium text-muted-foreground text-sm transition-colors',
-                active && 'text-primary'
+                "shrink-0 font-medium text-muted-foreground text-sm transition-colors",
+                active && "text-primary"
               )}
             >
               {data.caption}
@@ -59,8 +55,8 @@ export const ListItem = ({
         </div>
         <p
           className={cn(
-            'line-clamp-2 text-muted-foreground text-sm transition-colors',
-            active && 'text-primary'
+            "line-clamp-2 text-muted-foreground text-sm transition-colors",
+            active && "text-primary"
           )}
         >
           {data.description}
@@ -97,12 +93,12 @@ export const ItemList = ({
   return (
     <div className="divide-y">
       {data.map((data) => (
-        <ListItem key={data.id} data={data} />
+        <ListItem data={data} key={data.id} />
       ))}
       {hasNextPage ? (
         <div
-          ref={listReference}
           className="flex w-full items-center justify-center p-3"
+          ref={listReference}
         >
           <LoadingCircle />
         </div>

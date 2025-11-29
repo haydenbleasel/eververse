@@ -1,7 +1,7 @@
-import { Avatar } from '@repo/design-system/components/precomposed/avatar';
-import { CommandItem } from '@repo/design-system/components/ui/command';
-import { cn } from '@repo/design-system/lib/utils';
-import { CheckIcon } from 'lucide-react';
+import { Avatar } from "@repo/design-system/components/precomposed/avatar";
+import { CommandItem } from "@repo/design-system/components/ui/command";
+import { cn } from "@repo/design-system/lib/utils";
+import { CheckIcon } from "lucide-react";
 
 type UserCommandItemProperties = {
   readonly user: {
@@ -20,19 +20,19 @@ export const UserCommandItem = ({
   onSelect,
 }: UserCommandItemProperties) => (
   <CommandItem
-    key={user.value}
-    value={user.value}
-    onSelect={() => onSelect(user.value)}
     className="flex items-center gap-2"
+    key={user.value}
+    onSelect={() => onSelect(user.value)}
+    value={user.value}
   >
     <CheckIcon
       className={cn(
-        'h-4 w-4',
-        value === user.value ? 'opacity-100' : 'opacity-0'
+        "h-4 w-4",
+        value === user.value ? "opacity-100" : "opacity-0"
       )}
     />
     {user.image ? (
-      <Avatar size={16} src={user.image} fallback={user.label.slice(0, 2)} />
+      <Avatar fallback={user.label.slice(0, 2)} size={16} src={user.image} />
     ) : (
       <div className="h-4 w-4 rounded-full bg-muted-foreground" />
     )}

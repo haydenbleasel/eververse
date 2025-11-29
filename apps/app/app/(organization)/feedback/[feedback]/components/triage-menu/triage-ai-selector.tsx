@@ -1,17 +1,17 @@
-import { useDebouncedEffect } from '@react-hookz/web';
-import type { Feature, FeatureStatus } from '@repo/backend/prisma/client';
-import { LoadingCircle } from '@repo/design-system/components/loading-circle';
-import { Button } from '@repo/design-system/components/ui/button';
-import { Label } from '@repo/design-system/components/ui/label';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { SparklesIcon } from 'lucide-react';
-import { useEditor } from 'novel';
-import { useState } from 'react';
-import { getFeatureRecommendations } from '../../actions/get-feature-recommendations';
+import { useDebouncedEffect } from "@react-hookz/web";
+import type { Feature, FeatureStatus } from "@repo/backend/prisma/client";
+import { LoadingCircle } from "@repo/design-system/components/loading-circle";
+import { Button } from "@repo/design-system/components/ui/button";
+import { Label } from "@repo/design-system/components/ui/label";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { SparklesIcon } from "lucide-react";
+import { useEditor } from "novel";
+import { useState } from "react";
+import { getFeatureRecommendations } from "../../actions/get-feature-recommendations";
 
 type TriageAiSelectorProperties = {
-  readonly features: (Pick<Feature, 'id' | 'title'> & {
-    readonly status: Pick<FeatureStatus, 'color'>;
+  readonly features: (Pick<Feature, "id" | "title"> & {
+    readonly status: Pick<FeatureStatus, "color">;
   })[];
   readonly onSelect: (id: string) => void;
   readonly value: string[];
@@ -28,7 +28,7 @@ export const TriageAISelector = ({
   const recommendedFeatures = features.filter(({ id }) =>
     recommended.includes(id)
   );
-  const [previousText, setPreviousText] = useState<string>('');
+  const [previousText, setPreviousText] = useState<string>("");
 
   useDebouncedEffect(
     async () => {
@@ -39,7 +39,7 @@ export const TriageAISelector = ({
       const selectedText = editor.state.doc.textBetween(
         editor.state.selection.from,
         editor.state.selection.to,
-        ' '
+        " "
       );
 
       if (selectedText === previousText) {
@@ -52,7 +52,7 @@ export const TriageAISelector = ({
       try {
         const response = await getFeatureRecommendations(selectedText);
 
-        if ('error' in response) {
+        if ("error" in response) {
           throw new Error(response.error);
         }
 
@@ -70,8 +70,8 @@ export const TriageAISelector = ({
   return (
     <div className="space-y-1.5 p-3">
       <Label
-        htmlFor="triage-menu"
         className="flex items-center gap-2 text-violet-500 dark:text-violet-400"
+        htmlFor="triage-menu"
       >
         <SparklesIcon size={16} /> Suggested features
       </Label>
@@ -81,10 +81,10 @@ export const TriageAISelector = ({
         <div>
           {recommendedFeatures.map((feature) => (
             <Button
-              key={feature.id}
-              variant="ghost"
               className="flex h-auto w-full items-center gap-2 px-2 py-1.5 text-left font-normal text-sm"
+              key={feature.id}
               onClick={() => onSelect(feature.id)}
+              variant="ghost"
             >
               <span
                 className="h-1.5 w-1.5 rounded-full"

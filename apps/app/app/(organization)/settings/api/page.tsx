@@ -1,9 +1,8 @@
-import { EmptyState } from '@/components/empty-state';
-import { currentOrganizationId } from '@repo/backend/auth/utils';
-import { database } from '@repo/backend/database';
-import { Link } from '@repo/design-system/components/link';
-import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
-import { Button } from '@repo/design-system/components/ui/button';
+import { currentOrganizationId } from "@repo/backend/auth/utils";
+import { database } from "@repo/backend/database";
+import { Link } from "@repo/design-system/components/link";
+import { Skeleton } from "@repo/design-system/components/precomposed/skeleton";
+import { Button } from "@repo/design-system/components/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -11,18 +10,19 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@repo/design-system/components/ui/sheet';
-import { createMetadata } from '@repo/seo/metadata';
-import { BookIcon, SparkleIcon } from 'lucide-react';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
-import { APIDocumentation } from './components/api-documentation';
-import { ApiKeysTable } from './components/api-keys-table';
+} from "@repo/design-system/components/ui/sheet";
+import { createMetadata } from "@repo/seo/metadata";
+import { BookIcon, SparkleIcon } from "lucide-react";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
+import { EmptyState } from "@/components/empty-state";
+import { APIDocumentation } from "./components/api-documentation";
+import { ApiKeysTable } from "./components/api-keys-table";
 
 export const metadata: Metadata = createMetadata({
-  title: 'API Keys',
-  description: 'Manage your API keys',
+  title: "API Keys",
+  description: "Manage your API keys",
 });
 
 const APIPage = async () => {
@@ -50,9 +50,9 @@ const APIPage = async () => {
     return (
       <div className="flex h-full items-center justify-center">
         <EmptyState
-          title="Upgrade your account"
           description="You need to subscribe to a paid plan to use the API."
           icon={SparkleIcon}
+          title="Upgrade your account"
         >
           <Button asChild>
             <Link href="/subscribe">Subscribe</Link>
@@ -72,8 +72,8 @@ const APIPage = async () => {
           </div>
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="outline" className="flex items-center gap-2">
-                <BookIcon size={16} className="text-muted-foreground" />
+              <Button className="flex items-center gap-2" variant="outline">
+                <BookIcon className="text-muted-foreground" size={16} />
                 <span>API documentation</span>
               </Button>
             </SheetTrigger>

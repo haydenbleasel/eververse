@@ -1,5 +1,5 @@
-import { database } from '@/lib/database';
-import { createClient } from '@repo/backend/auth/server';
+import { createClient } from "@repo/backend/auth/server";
+import { database } from "@/lib/database";
 
 export const InitiativesTrend = async () => {
   const initiatives = await database.initiative.findMany({
@@ -27,9 +27,10 @@ export const InitiativesTrend = async () => {
     }
   }
 
-  const highestCountInitiative = statusCount.reduce((prev, current) => {
-    return prev.count > current.count ? prev : current;
-  }, statusCount[0]);
+  const highestCountInitiative = statusCount.reduce(
+    (prev, current) => (prev.count > current.count ? prev : current),
+    statusCount[0]
+  );
 
   const client = await createClient();
   const highestCountOwner = await client.auth.admin.getUserById(
@@ -38,7 +39,7 @@ export const InitiativesTrend = async () => {
 
   return (
     <p className="text-muted-foreground text-sm">
-      Most of your initiatives are owned by{' '}
+      Most of your initiatives are owned by{" "}
       {highestCountOwner.data.user?.user_metadata.first_name}.
     </p>
   );

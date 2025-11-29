@@ -1,10 +1,10 @@
-import { database } from '@repo/backend/database';
-import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
-import { createClient } from '@repo/productboard';
+import { database } from "@repo/backend/database";
+import type { Prisma, ProductboardImport } from "@repo/backend/prisma/client";
+import { createClient } from "@repo/productboard";
 
 type ImportJobProperties = Pick<
   ProductboardImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateCustomFields = async ({
@@ -13,21 +13,21 @@ export const migrateCustomFields = async ({
 }: ImportJobProperties): Promise<number> => {
   const productboard = createClient({ accessToken: token });
   const customFields = await productboard.GET(
-    '/hierarchy-entities/custom-fields',
+    "/hierarchy-entities/custom-fields",
     {
       params: {
         query: {
           type: [
-            'text',
-            'dropdown',
-            'multi-dropdown',
-            'custom-description',
-            'member',
-            'number',
+            "text",
+            "dropdown",
+            "multi-dropdown",
+            "custom-description",
+            "member",
+            "number",
           ],
         },
         header: {
-          'X-Version': 1,
+          "X-Version": 1,
         },
       },
     }
@@ -35,12 +35,12 @@ export const migrateCustomFields = async ({
 
   if (customFields.error) {
     throw new Error(
-      customFields.error.errors.map((error) => error.detail).join(', ')
+      customFields.error.errors.map((error) => error.detail).join(", ")
     );
   }
 
   if (!customFields.data) {
-    throw new Error('No custom fields found');
+    throw new Error("No custom fields found");
   }
 
   const existingCustomFields = await database.featureCustomField.findMany({

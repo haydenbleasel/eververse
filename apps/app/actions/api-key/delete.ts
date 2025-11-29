@@ -1,14 +1,14 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentUser } from '@repo/backend/auth/utils';
-import type { ApiKey } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { EververseRole } from "@repo/backend/auth";
+import { currentUser } from "@repo/backend/auth/utils";
+import type { ApiKey } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const deleteAPIKey = async (
-  id: ApiKey['id']
+  id: ApiKey["id"]
 ): Promise<{
   error?: string;
 }> => {
@@ -16,11 +16,11 @@ export const deleteAPIKey = async (
     const user = await currentUser();
 
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
-      throw new Error('You do not have permission to delete API keys');
+      throw new Error("You do not have permission to delete API keys");
     }
 
     await database.apiKey.delete({
@@ -28,7 +28,7 @@ export const deleteAPIKey = async (
       select: { id: true },
     });
 
-    revalidatePath('/settings/api');
+    revalidatePath("/settings/api");
 
     return {};
   } catch (error) {

@@ -1,32 +1,32 @@
-import { database } from '@repo/backend/database';
-import type { CannyImport, Prisma } from '@repo/backend/prisma/client';
-import { Canny } from '@repo/canny';
-import { colors } from '@repo/design-system/lib/colors';
-import { log } from '@repo/observability/log';
+import { database } from "@repo/backend/database";
+import type { CannyImport, Prisma } from "@repo/backend/prisma/client";
+import { Canny } from "@repo/canny";
+import { colors } from "@repo/design-system/lib/colors";
+import { log } from "@repo/observability/log";
 
 type ImportJobProperties = Pick<
   CannyImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 const getColorForStatus = (status: string): string => {
   switch (status) {
-    case 'open': {
+    case "open": {
       return colors.gray;
     }
-    case 'under review': {
+    case "under review": {
       return colors.teal;
     }
-    case 'planned': {
+    case "planned": {
       return colors.blue;
     }
-    case 'in progress': {
+    case "in progress": {
       return colors.violet;
     }
-    case 'complete': {
+    case "complete": {
       return colors.emerald;
     }
-    case 'closed': {
+    case "closed": {
       return colors.rose;
     }
     default: {
@@ -51,11 +51,11 @@ export const migrateStatuses = async ({
   });
 
   if (!databaseOrganization) {
-    throw new Error('Organization not found');
+    throw new Error("Organization not found");
   }
 
   if (databaseOrganization.portals.length === 0) {
-    throw new Error('Organization has no portal');
+    throw new Error("Organization has no portal");
   }
 
   const statuses = new Set<string>();
@@ -73,7 +73,7 @@ export const migrateStatuses = async ({
     return 0;
   }
 
-  log.info(`Migrating statuses: ${[...statuses].join(', ')}`);
+  log.info(`Migrating statuses: ${[...statuses].join(", ")}`);
 
   await database.featureStatus.createMany({
     data: [...statuses].map((status, index) => {
@@ -83,7 +83,7 @@ export const migrateStatuses = async ({
         color: getColorForStatus(status),
         organizationId,
         fromCanny: true,
-        complete: status === 'complete' || status === 'closed',
+        complete: status === "complete" || status === "closed",
       };
 
       return input;
@@ -123,7 +123,7 @@ export const migrateStatuses = async ({
       );
 
       if (!portalStatus) {
-        throw new Error('Portal status not found');
+        throw new Error("Portal status not found");
       }
 
       const input: Prisma.PortalStatusMappingCreateManyInput = {

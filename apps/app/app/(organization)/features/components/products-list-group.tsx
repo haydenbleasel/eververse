@@ -1,14 +1,14 @@
-import { deleteGroup } from '@/actions/group/delete';
-import { updateGroup } from '@/actions/group/update';
-import type { GroupWithSubgroups } from '@/lib/group';
-import type { Product } from '@repo/backend/prisma/client';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useParams, useRouter } from 'next/navigation';
-import { ProductsListItem } from './products-list-item';
+import type { Product } from "@repo/backend/prisma/client";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useParams, useRouter } from "next/navigation";
+import { deleteGroup } from "@/actions/group/delete";
+import { updateGroup } from "@/actions/group/update";
+import type { GroupWithSubgroups } from "@/lib/group";
+import { ProductsListItem } from "./products-list-item";
 
 type ProductsListGroupProperties = {
   readonly data: GroupWithSubgroups;
-  readonly productId: Product['id'];
+  readonly productId: Product["id"];
   readonly level?: number;
   readonly role?: string;
 };
@@ -50,31 +50,31 @@ export const ProductsListGroup = ({
     }
 
     if (parameters.group === data.id) {
-      router.push('/features');
+      router.push("/features");
     }
   };
 
   return (
-    <div key={data.id} className="pl-6">
+    <div className="pl-6" key={data.id}>
       <ProductsListItem
-        id={data.id}
-        name={data.name}
-        href={`/features/groups/${data.id}`}
         active={parameters.group === data.id}
-        emoji={data.emoji}
-        onEmojiSelect={handleEmojiSelect}
-        onRename={handleRename}
-        onDelete={handleDelete}
         className="rounded-l"
         createProps={{ productId, groupId: data.id }}
+        emoji={data.emoji}
         hasChildren={data.subgroups.length > 0}
+        href={`/features/groups/${data.id}`}
+        id={data.id}
+        name={data.name}
+        onDelete={handleDelete}
+        onEmojiSelect={handleEmojiSelect}
+        onRename={handleRename}
         role={role}
       >
         <div>
           {data.subgroups.map((group) => (
             <ProductsListGroup
-              key={group.id}
               data={group}
+              key={group.id}
               level={level + 1}
               productId={productId}
               role={role}

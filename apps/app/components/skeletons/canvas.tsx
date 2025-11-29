@@ -1,4 +1,4 @@
-import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
+import { Skeleton } from "@repo/design-system/components/precomposed/skeleton";
 
 export const CanvasSkeleton = () => (
   <div className="relative flex flex-1 items-center justify-center">

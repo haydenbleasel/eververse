@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { addInitiativeMember } from '@/actions/initiative-member/create';
-import { deleteInitiativeMember } from '@/actions/initiative-member/delete';
-import type { User } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
-import type { Initiative } from '@repo/backend/prisma/client';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { PlusIcon } from 'lucide-react';
-import Image from 'next/image';
-import { useState } from 'react';
+import type { User } from "@repo/backend/auth";
+import { getUserName } from "@repo/backend/auth/format";
+import type { Initiative } from "@repo/backend/prisma/client";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { Tooltip } from "@repo/design-system/components/precomposed/tooltip";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { PlusIcon } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+import { addInitiativeMember } from "@/actions/initiative-member/create";
+import { deleteInitiativeMember } from "@/actions/initiative-member/delete";
 
 type InitiativeMemberPickerProperties = {
-  readonly initiativeId: Initiative['id'];
+  readonly initiativeId: Initiative["id"];
   readonly users: User[];
   readonly defaultMembers: string[];
 };
@@ -81,13 +81,12 @@ export const InitiativeMemberPicker = ({
 
   return (
     <Select
-      value={members}
-      onChange={handleSelect}
       data={users.map((user) => ({
         label: getUserName(user),
         value: user.id,
       }))}
       disabled={loading}
+      onChange={handleSelect}
       renderItem={(item) => {
         const user = users.find((user) => user.id === item.value);
 
@@ -99,11 +98,11 @@ export const InitiativeMemberPicker = ({
           <div className="flex items-center gap-2">
             {user.user_metadata.image_url ? (
               <Image
-                src={user.user_metadata.image_url}
                 alt={item.label}
-                width={24}
-                height={24}
                 className="h-6 w-6 shrink-0 rounded-full object-cover"
+                height={24}
+                src={user.user_metadata.image_url}
+                width={24}
               />
             ) : (
               <div className="h-6 w-6 rounded-full bg-card" />
@@ -112,17 +111,18 @@ export const InitiativeMemberPicker = ({
           </div>
         );
       }}
-      type="user"
       trigger={
         <div>
           <Tooltip content="Add a new member">
-            <Button size="icon" variant="ghost" className="-m-1.5 h-6 w-6">
+            <Button className="-m-1.5 h-6 w-6" size="icon" variant="ghost">
               <PlusIcon size={16} />
               <span className="sr-only">Add a new member</span>
             </Button>
           </Tooltip>
         </div>
       }
+      type="user"
+      value={members}
     />
   );
 };

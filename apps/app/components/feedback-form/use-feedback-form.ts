@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
 type FeedbackFormState = {
   isOpen: boolean;
@@ -17,7 +17,7 @@ export const useFeedbackForm = create<FeedbackFormState>()(
       toggle: () => set((state) => ({ isOpen: !state.isOpen })),
     }),
     {
-      name: 'eververse:feedback-form',
+      name: "eververse:feedback-form",
     }
   )
 );

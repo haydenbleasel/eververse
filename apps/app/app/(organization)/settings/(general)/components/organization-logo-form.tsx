@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { updateOrganization } from '@/actions/organization/update';
-import { createClient } from '@repo/backend/auth/client';
-import type { Organization } from '@repo/backend/prisma/client';
+import { createClient } from "@repo/backend/auth/client";
+import type { Organization } from "@repo/backend/prisma/client";
 import {
   Dropzone,
   DropzoneContent,
   DropzoneEmptyState,
-} from '@repo/design-system/components/ui/kibo-ui/dropzone';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import Image from 'next/image';
-import { useState } from 'react';
-import { toast } from 'sonner';
+} from "@repo/design-system/components/ui/kibo-ui/dropzone";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import Image from "next/image";
+import { useState } from "react";
+import { toast } from "sonner";
+import { updateOrganization } from "@/actions/organization/update";
 
 type OrganizationLogoFormProperties = {
-  readonly organizationId: Organization['id'];
+  readonly organizationId: Organization["id"];
   readonly logoUrl: string | null;
 };
 
@@ -33,7 +33,7 @@ export const OrganizationLogoForm = ({
       const supabase = createClient();
 
       const response = await supabase.storage
-        .from('organizations')
+        .from("organizations")
         .upload(organizationId, file, {
           upsert: true,
         });
@@ -43,7 +43,7 @@ export const OrganizationLogoForm = ({
       }
 
       const { data: publicUrl } = supabase.storage
-        .from('organizations')
+        .from("organizations")
         .getPublicUrl(organizationId);
 
       const { error } = await updateOrganization({
@@ -54,7 +54,7 @@ export const OrganizationLogoForm = ({
         throw error;
       }
 
-      toast.success('Logo updated');
+      toast.success("Logo updated");
     } catch (error) {
       handleError(error);
     }
@@ -62,22 +62,22 @@ export const OrganizationLogoForm = ({
 
   return (
     <Dropzone
+      accept={{ "image/*": [] }}
+      className="aspect-square"
       maxFiles={1}
-      accept={{ 'image/*': [] }}
       onDrop={handleDrop}
       onError={console.error}
-      className="aspect-square"
     >
       <DropzoneEmptyState>
         {logoUrl ? (
           <div className="relative size-full">
             <Image
-              src={logoUrl}
               alt="Preview"
               className="absolute top-0 left-0 h-full w-full object-cover"
+              height={102}
+              src={logoUrl}
               unoptimized
               width={102}
-              height={102}
             />
           </div>
         ) : undefined}
@@ -86,12 +86,12 @@ export const OrganizationLogoForm = ({
         {tempFile && (
           <div className="relative size-full">
             <Image
-              src={URL.createObjectURL(tempFile)}
               alt="Preview"
               className="absolute top-0 left-0 h-full w-full object-cover"
+              height={102}
+              src={URL.createObjectURL(tempFile)}
               unoptimized
               width={102}
-              height={102}
             />
           </div>
         )}

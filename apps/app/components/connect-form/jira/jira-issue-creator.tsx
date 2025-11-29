@@ -1,23 +1,23 @@
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import { useConnectForm } from '../use-connect-form';
-import { connectToJira } from './connect-to-jira';
-import { createJiraIssue } from './create-jira-issue';
-import { getJiraProjects } from './get-jira-projects';
-import type { GetJiraProjectsResponse } from './get-jira-projects';
-import { getJiraTypes } from './get-jira-types';
-import type { GetJiraTypesResponse } from './get-jira-types';
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { useConnectForm } from "../use-connect-form";
+import { connectToJira } from "./connect-to-jira";
+import { createJiraIssue } from "./create-jira-issue";
+import type { GetJiraProjectsResponse } from "./get-jira-projects";
+import { getJiraProjects } from "./get-jira-projects";
+import type { GetJiraTypesResponse } from "./get-jira-types";
+import { getJiraTypes } from "./get-jira-types";
 
 export const JiraIssueCreator = () => {
   const { hide, featureId } = useConnectForm();
   const [loading, setLoading] = useState(false);
-  const [projects, setProjects] = useState<GetJiraProjectsResponse['projects']>(
+  const [projects, setProjects] = useState<GetJiraProjectsResponse["projects"]>(
     []
   );
-  const [types, setTypes] = useState<GetJiraTypesResponse['types']>([]);
+  const [types, setTypes] = useState<GetJiraTypesResponse["types"]>([]);
   const [project, setProject] = useState<string | undefined>();
   const [type, setType] = useState<string | undefined>();
   const [projectsFetched, setProjectsFetched] = useState(false);
@@ -32,7 +32,7 @@ export const JiraIssueCreator = () => {
 
     getJiraProjects()
       .then((response) => {
-        if ('error' in response) {
+        if ("error" in response) {
           throw new Error(response.error);
         }
 
@@ -56,7 +56,7 @@ export const JiraIssueCreator = () => {
 
     getJiraTypes(project)
       .then((response) => {
-        if ('error' in response) {
+        if ("error" in response) {
           throw new Error(response.error);
         }
 
@@ -88,8 +88,8 @@ export const JiraIssueCreator = () => {
         throw new Error(issueResponse.error);
       }
 
-      if (!issueResponse.id || !issueResponse.href) {
-        throw new Error('Issue not found');
+      if (!(issueResponse.id && issueResponse.href)) {
+        throw new Error("Issue not found");
       }
 
       const { error } = await connectToJira({
@@ -104,7 +104,7 @@ export const JiraIssueCreator = () => {
 
       hide();
 
-      window.open(issueResponse.href, '_blank');
+      window.open(issueResponse.href, "_blank");
     } catch (error) {
       handleError(error);
     } finally {
@@ -115,14 +115,13 @@ export const JiraIssueCreator = () => {
   return (
     <div className="space-y-4">
       <Select
-        label="Select a project"
-        value={project}
-        onChange={setProject}
-        disabled={projects.length === 0}
         data={projects.map((projectItem) => ({
           value: `${projectItem.id}`,
           label: projectItem.title,
         }))}
+        disabled={projects.length === 0}
+        label="Select a project"
+        onChange={setProject}
         renderItem={(item) => {
           const projectItem = projects.find(
             ({ id }) => id === Number(item.value)
@@ -135,12 +134,12 @@ export const JiraIssueCreator = () => {
           return (
             <div className="flex items-center gap-2">
               <Image
-                src={projectItem.image}
                 alt=""
-                width={16}
-                height={16}
                 className="h-4 w-4 object-fit"
+                height={16}
+                src={projectItem.image}
                 unoptimized
+                width={16}
               />
               <span>{item.label}</span>
               <span className="text-muted-foreground text-xs">
@@ -150,16 +149,16 @@ export const JiraIssueCreator = () => {
           );
         }}
         type="project"
+        value={project}
       />
       <Select
-        label="Select a type"
-        value={type}
-        onChange={setType}
-        disabled={!project || types.length === 0}
         data={types.map((typeItem) => ({
           value: typeItem.id,
           label: typeItem.title,
         }))}
+        disabled={!project || types.length === 0}
+        label="Select a type"
+        onChange={setType}
         renderItem={(item) => {
           const typeItem = types.find(({ id }) => id === item.value);
 
@@ -170,24 +169,25 @@ export const JiraIssueCreator = () => {
           return (
             <div className="flex items-center gap-2">
               <Image
-                src={typeItem.image}
                 alt=""
-                width={16}
-                height={16}
                 className="h-4 w-4 object-fit"
+                height={16}
+                src={typeItem.image}
                 unoptimized
+                width={16}
               />
               <span>{item.label}</span>
             </div>
           );
         }}
         type="type"
+        value={type}
       />
       <Button
-        variant="secondary"
-        onClick={handleCreateJiraIssue}
-        disabled={loading}
         className="shrink-0"
+        disabled={loading}
+        onClick={handleCreateJiraIssue}
+        variant="secondary"
       >
         Create new issue
       </Button>

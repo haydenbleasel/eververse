@@ -1,11 +1,11 @@
-import { database } from '@repo/backend/database';
-import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
-import { colors } from '@repo/design-system/lib/colors';
-import { createClient } from '@repo/productboard';
+import { database } from "@repo/backend/database";
+import type { Prisma, ProductboardImport } from "@repo/backend/prisma/client";
+import { colors } from "@repo/design-system/lib/colors";
+import { createClient } from "@repo/productboard";
 
 type ImportJobProperties = Pick<
   ProductboardImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateFeatureStatuses = async ({
@@ -13,22 +13,22 @@ export const migrateFeatureStatuses = async ({
   token,
 }: ImportJobProperties): Promise<number> => {
   const productboard = createClient({ accessToken: token });
-  const featureStatuses = await productboard.GET('/feature-statuses', {
+  const featureStatuses = await productboard.GET("/feature-statuses", {
     params: {
       header: {
-        'X-Version': 1,
+        "X-Version": 1,
       },
     },
   });
 
   if (featureStatuses.error) {
     throw new Error(
-      featureStatuses.error.errors.map((error) => error.detail).join(', ')
+      featureStatuses.error.errors.map((error) => error.detail).join(", ")
     );
   }
 
   if (!featureStatuses.data) {
-    throw new Error('No feature statuses found');
+    throw new Error("No feature statuses found");
   }
 
   const existingFeatureStatuses = await database.featureStatus.findMany({

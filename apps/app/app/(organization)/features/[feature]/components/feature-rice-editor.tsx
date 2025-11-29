@@ -1,58 +1,58 @@
-'use client';
+"use client";
 
-import { updateRice } from '@/actions/feature-rice/update';
-import { impactNumberMatrix } from '@/lib/rice';
 import type {
   AiFeatureRice,
   Feature,
   FeatureRice,
-} from '@repo/backend/prisma/client';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { Slider } from '@repo/design-system/components/ui/slider';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useState } from 'react';
-import { FeatureRiceInput } from './feature-rice-input';
-import { FeatureRicePopover } from './feature-rice-popover';
+} from "@repo/backend/prisma/client";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { Slider } from "@repo/design-system/components/ui/slider";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useState } from "react";
+import { updateRice } from "@/actions/feature-rice/update";
+import { impactNumberMatrix } from "@/lib/rice";
+import { FeatureRiceInput } from "./feature-rice-input";
+import { FeatureRicePopover } from "./feature-rice-popover";
 
 type FeatureRiceEditorProperties = {
-  readonly featureId: Feature['id'];
+  readonly featureId: Feature["id"];
   readonly rice: Pick<
     FeatureRice,
-    'confidence' | 'effort' | 'impact' | 'reach'
+    "confidence" | "effort" | "impact" | "reach"
   > | null;
   readonly aiRice: Pick<
     AiFeatureRice,
-    | 'confidence'
-    | 'confidenceReason'
-    | 'effort'
-    | 'effortReason'
-    | 'impact'
-    | 'impactReason'
-    | 'reach'
-    | 'reachReason'
+    | "confidence"
+    | "confidenceReason"
+    | "effort"
+    | "effortReason"
+    | "impact"
+    | "impactReason"
+    | "reach"
+    | "reachReason"
   > | null;
   readonly disabled: boolean;
 };
 
 const impacts = [
   {
-    label: 'Minimal',
+    label: "Minimal",
     value: 1,
   },
   {
-    label: 'Low',
+    label: "Low",
     value: 2,
   },
   {
-    label: 'Medium',
+    label: "Medium",
     value: 3,
   },
   {
-    label: 'High',
+    label: "High",
     value: 4,
   },
   {
-    label: 'Massive',
+    label: "Massive",
     value: 5,
   },
 ];
@@ -63,16 +63,16 @@ export const FeatureRiceEditor = ({
   aiRice,
   disabled,
 }: FeatureRiceEditorProperties) => {
-  const [reach, setReach] = useState<FeatureRice['reach']>(
+  const [reach, setReach] = useState<FeatureRice["reach"]>(
     rice?.reach ?? aiRice?.reach ?? 1
   );
-  const [impact, setImpact] = useState<FeatureRice['impact']>(
+  const [impact, setImpact] = useState<FeatureRice["impact"]>(
     rice?.impact ?? aiRice?.impact ?? 1
   );
-  const [confidence, setConfidence] = useState<FeatureRice['confidence']>(
+  const [confidence, setConfidence] = useState<FeatureRice["confidence"]>(
     rice?.confidence ?? aiRice?.confidence ?? 0
   );
-  const [effort, setEffort] = useState<FeatureRice['effort']>(
+  const [effort, setEffort] = useState<FeatureRice["effort"]>(
     rice?.effort ?? aiRice?.effort ?? 1
   );
 
@@ -112,25 +112,24 @@ export const FeatureRiceEditor = ({
 
   const inputs = [
     {
-      label: 'Reach',
-      description: 'The number of users impacted by this feature.',
+      label: "Reach",
+      description: "The number of users impacted by this feature.",
       value: reach,
       reason: aiRice?.reachReason,
-      children: <FeatureRiceInput value={reach} onChange={handleSetReach} />,
+      children: <FeatureRiceInput onChange={handleSetReach} value={reach} />,
     },
     {
-      label: 'Impact',
-      description: 'The relative impact this feature will have on users.',
+      label: "Impact",
+      description: "The relative impact this feature will have on users.",
       value: impactNumberMatrix[impact as keyof typeof impactNumberMatrix],
       reason: aiRice?.impactReason,
       children: (
         <Select
-          value={`${impact}`}
-          onChange={handleSetImpact}
           data={impacts.map((item) => ({
             value: `${item.value}`,
             label: item.label,
           }))}
+          onChange={handleSetImpact}
           renderItem={(item) => (
             <div className="flex items-center gap-2">
               <p className="block text-foreground">{item.label}</p>
@@ -145,12 +144,13 @@ export const FeatureRiceEditor = ({
             </div>
           )}
           type="impact"
+          value={`${impact}`}
         />
       ),
     },
     {
-      label: 'Confidence',
-      description: 'The level of confidence in the RICE score.',
+      label: "Confidence",
+      description: "The level of confidence in the RICE score.",
       value: `${confidence}%`,
       reason: aiRice?.confidenceReason,
       children: (
@@ -161,12 +161,12 @@ export const FeatureRiceEditor = ({
       ),
     },
     {
-      label: 'Effort',
+      label: "Effort",
       description:
-        'The amount of work required to complete this feature, usually in person-months.',
+        "The amount of work required to complete this feature, usually in person-months.",
       value: effort,
       reason: aiRice?.effortReason,
-      children: <FeatureRiceInput value={effort} onChange={handleSetEffort} />,
+      children: <FeatureRiceInput onChange={handleSetEffort} value={effort} />,
     },
   ];
 
@@ -174,11 +174,11 @@ export const FeatureRiceEditor = ({
     <div className="flex">
       {inputs.map((item, index) => (
         <FeatureRicePopover
-          key={item.label}
-          item={item}
-          index={index}
+          className={aiRice && !rice ? "text-primary" : ""}
           disabled={disabled}
-          className={aiRice && !rice ? 'text-primary' : ''}
+          index={index}
+          item={item}
+          key={item.label}
         />
       ))}
     </div>

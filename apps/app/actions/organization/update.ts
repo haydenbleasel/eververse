@@ -1,10 +1,10 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId } from '@repo/backend/auth/utils';
-import type { Organization } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId } from "@repo/backend/auth/utils";
+import type { Organization } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const updateOrganization = async (
   data: Partial<Organization>
@@ -15,7 +15,7 @@ export const updateOrganization = async (
     const organizationId = await currentOrganizationId();
 
     if (!organizationId) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     await database.organization.update({
@@ -24,7 +24,7 @@ export const updateOrganization = async (
       select: { id: true },
     });
 
-    revalidatePath('/', 'layout');
+    revalidatePath("/", "layout");
 
     return {};
   } catch (error) {

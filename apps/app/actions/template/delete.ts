@@ -1,12 +1,12 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import type { Template } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import type { Template } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const deleteTemplate = async (
-  id: Template['id']
+  id: Template["id"]
 ): Promise<{
   error?: string;
 }> => {
@@ -15,7 +15,7 @@ export const deleteTemplate = async (
       where: { id },
     });
 
-    revalidatePath('/settings/templates');
+    revalidatePath("/settings/templates");
 
     return {};
   } catch (error) {

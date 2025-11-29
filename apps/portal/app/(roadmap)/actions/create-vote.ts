@@ -1,8 +1,8 @@
-'use server';
+"use server";
 
-import { database } from '@repo/backend/database';
-import { getGravatarUrl } from '@repo/lib/gravatar';
-import { parseError } from '@repo/lib/parse-error';
+import { database } from "@repo/backend/database";
+import { getGravatarUrl } from "@repo/lib/gravatar";
+import { parseError } from "@repo/lib/parse-error";
 
 type CreateVote = {
   readonly email: string;
@@ -23,7 +23,7 @@ export const createVote = async (
     });
 
     if (!portal) {
-      throw new Error('Invalid request');
+      throw new Error("Invalid request");
     }
 
     let feedbackUser = await database.feedbackUser.findFirst({
@@ -53,7 +53,7 @@ export const createVote = async (
     });
 
     if (existingVote) {
-      return { error: 'You already voted for this feature!' };
+      return { error: "You already voted for this feature!" };
     }
 
     await database.portalFeatureVote.create({

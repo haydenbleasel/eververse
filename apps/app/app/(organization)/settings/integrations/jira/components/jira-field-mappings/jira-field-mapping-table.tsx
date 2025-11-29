@@ -1,48 +1,48 @@
-'use client';
+"use client";
 
-import { updateJiraFieldMappings } from '@/actions/installation-field-mapping/jira/update';
 import type {
   AtlassianInstallation,
   InstallationFieldMapping,
-} from '@repo/backend/prisma/client';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { ArrowRightIcon, CalendarIcon } from 'lucide-react';
-import { useState } from 'react';
-import { JiraFieldMappingPicker } from './jira-field-mapping-picker';
+} from "@repo/backend/prisma/client";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { ArrowRightIcon, CalendarIcon } from "lucide-react";
+import { useState } from "react";
+import { updateJiraFieldMappings } from "@/actions/installation-field-mapping/jira/update";
+import { JiraFieldMappingPicker } from "./jira-field-mapping-picker";
 
 type JiraFieldMappingTableProps = {
   fieldMappings: Pick<
     InstallationFieldMapping,
-    'id' | 'internalId' | 'externalId'
+    "id" | "internalId" | "externalId"
   >[];
   jiraFields: {
     label: string;
     value: string;
     type: string;
   }[];
-  installationId: AtlassianInstallation['id'];
+  installationId: AtlassianInstallation["id"];
 };
 
 const fields: {
-  value: InstallationFieldMapping['internalId'];
+  value: InstallationFieldMapping["internalId"];
   label: string;
-  internalType: InstallationFieldMapping['internalType'];
+  internalType: InstallationFieldMapping["internalType"];
   icon: typeof CalendarIcon;
   acceptedTypes: string[];
 }[] = [
   {
-    value: 'STARTAT',
-    label: 'Start Date',
-    internalType: 'DATE',
+    value: "STARTAT",
+    label: "Start Date",
+    internalType: "DATE",
     icon: CalendarIcon,
-    acceptedTypes: ['datetime', 'date'],
+    acceptedTypes: ["datetime", "date"],
   },
   {
-    value: 'ENDAT',
-    label: 'End Date',
-    internalType: 'DATE',
+    value: "ENDAT",
+    label: "End Date",
+    internalType: "DATE",
     icon: CalendarIcon,
-    acceptedTypes: ['datetime', 'date'],
+    acceptedTypes: ["datetime", "date"],
   },
   // { value: 'OWNERID', label: 'Owner', type: 'USER' },
 ];
@@ -57,7 +57,7 @@ export const JiraFieldMappingTable = ({
   for (const field of fields) {
     defaultMap[field.value] = fieldMappings
       .filter((mapping) => mapping.internalId === field.value)
-      .map((mapping) => mapping.externalId ?? '')
+      .map((mapping) => mapping.externalId ?? "")
       .filter(Boolean);
   }
 
@@ -103,32 +103,32 @@ export const JiraFieldMappingTable = ({
     <div>
       {fields.map((field) => (
         <div
-          key={field.value}
           className="flex items-center justify-between gap-3 px-3 py-1.5"
+          key={field.value}
         >
           <div className="flex-1">
             <JiraFieldMappingPicker
               acceptedTypes={field.acceptedTypes}
+              defaultValue={fieldMappings
+                .filter((mapping) => mapping.internalId === field.value)
+                .map((mapping) => mapping.externalId ?? "")
+                .filter(Boolean)}
+              onChange={(jiraExternalIds) =>
+                handleChange(jiraExternalIds, field)
+              }
               options={jiraFields.filter(
                 (jiraField) =>
                   map[field.value].includes(jiraField.value) ||
                   !Object.values(map).flat().includes(jiraField.value)
               )}
-              defaultValue={fieldMappings
-                .filter((mapping) => mapping.internalId === field.value)
-                .map((mapping) => mapping.externalId ?? '')
-                .filter(Boolean)}
-              onChange={(jiraExternalIds) =>
-                handleChange(jiraExternalIds, field)
-              }
             />
           </div>
           <div className="flex h-9 shrink-0 items-center justify-center">
-            <ArrowRightIcon size={16} className="text-muted-foreground" />
+            <ArrowRightIcon className="text-muted-foreground" size={16} />
           </div>
           <div className="flex-1">
             <div className="flex h-9 w-full items-center gap-2 rounded-md border p-3 text-sm shadow-sm">
-              <field.icon size={16} className="text-muted-foreground" />
+              <field.icon className="text-muted-foreground" size={16} />
               {field.label}
             </div>
           </div>

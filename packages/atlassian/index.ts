@@ -1,5 +1,5 @@
-import createFetchClient from 'openapi-fetch';
-import type { paths } from './types';
+import createFetchClient from "openapi-fetch";
+import type { paths } from "./types";
 
 export const createClient = ({
   siteUrl,
@@ -10,14 +10,14 @@ export const createClient = ({
   email: string;
   accessToken: string;
 }) => {
-  const Authorization = `Basic ${Buffer.from(`${email}:${accessToken}`).toString('base64')}`;
+  const Authorization = `Basic ${Buffer.from(`${email}:${accessToken}`).toString("base64")}`;
 
   return createFetchClient<paths>({
     baseUrl: siteUrl,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       Authorization,
     },
-    fetch: fetch,
+    fetch,
   });
 };

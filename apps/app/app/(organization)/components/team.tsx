@@ -1,28 +1,28 @@
-'use client';
+"use client";
 
-import type { User } from '@repo/backend/auth';
-import { createClient } from '@repo/backend/auth/client';
-import { getUserName } from '@repo/backend/auth/format';
-import { Avatar } from '@repo/design-system/components/precomposed/avatar';
+import type { User } from "@repo/backend/auth";
+import { createClient } from "@repo/backend/auth/client";
+import { getUserName } from "@repo/backend/auth/format";
+import { Avatar } from "@repo/design-system/components/precomposed/avatar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@repo/design-system/components/ui/popover';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { cn } from '@repo/design-system/lib/utils';
-import { useEffect, useState } from 'react';
+} from "@repo/design-system/components/ui/popover";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { cn } from "@repo/design-system/lib/utils";
+import { useEffect, useState } from "react";
 
 const ActivityAvatar = ({ user, online }: { user: User; online: boolean }) => (
   <div className="relative">
     <Avatar
-      src={user.user_metadata.image_url}
       fallback={getUserName(user).slice(0, 2)}
+      src={user.user_metadata.image_url}
     />
     <div
       className={cn(
-        'absolute right-0 bottom-0 h-2 w-2 rounded-full ring-2 ring-background',
-        online ? 'bg-success' : 'bg-muted-foreground'
+        "absolute right-0 bottom-0 h-2 w-2 rounded-full ring-2 ring-background",
+        online ? "bg-success" : "bg-muted-foreground"
       )}
     />
   </div>
@@ -51,7 +51,7 @@ export const Team = ({
       });
 
       room
-        .on('presence', { event: 'sync' }, () => {
+        .on("presence", { event: "sync" }, () => {
           const newState = room.presenceState();
           const online = Object.keys(newState);
 
@@ -86,10 +86,10 @@ export const Team = ({
       <PopoverTrigger asChild>
         <div className="-space-x-1 flex cursor-pointer items-center justify-end">
           {onlineMembersToShow.map((onlineUser) => (
-            <ActivityAvatar key={onlineUser.id} user={onlineUser} online />
+            <ActivityAvatar key={onlineUser.id} online user={onlineUser} />
           ))}
           {offlineMembersToShow.map((member) => (
-            <ActivityAvatar key={member.id} user={member} online={false} />
+            <ActivityAvatar key={member.id} online={false} user={member} />
           ))}
           {members.length > 5 && (
             <div className="flex h-6 w-6 items-center justify-center rounded-full border border-border/50 bg-background font-medium text-[10px] text-muted-foreground">
@@ -99,14 +99,14 @@ export const Team = ({
         </div>
       </PopoverTrigger>
       <PopoverContent
-        sideOffset={8}
-        collisionPadding={8}
         className="flex max-h-[220px] flex-col gap-1.5 overflow-y-auto"
+        collisionPadding={8}
+        sideOffset={8}
       >
         <p className="font-medium text-muted-foreground text-sm">Online</p>
         {onlineMembers.map((member) => (
           <div className="flex items-center gap-2" key={member.id}>
-            <ActivityAvatar user={member} online />
+            <ActivityAvatar online user={member} />
             <p className="text-sm">{getUserName(member)}</p>
           </div>
         ))}
@@ -117,7 +117,7 @@ export const Team = ({
             </p>
             {offlineMembers.map((member) => (
               <div className="flex items-center gap-2" key={member.id}>
-                <ActivityAvatar user={member} online={false} />
+                <ActivityAvatar online={false} user={member} />
                 <p className="text-sm">{getUserName(member)}</p>
               </div>
             ))}

@@ -1,31 +1,30 @@
-import { AvatarTooltip } from '@/components/avatar-tooltip';
-import * as SettingsBar from '@/components/settings-bar';
-
-import { database } from '@/lib/database';
-import { staticify } from '@/lib/staticify';
-import { EververseRole } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
-import { currentMembers, currentUser } from '@repo/backend/auth/utils';
-import type { Initiative } from '@repo/backend/prisma/client';
-import { Emoji } from '@repo/design-system/components/emoji';
-import { Link } from '@repo/design-system/components/link';
-import { formatDate } from '@repo/lib/format';
-import { FileIcon, FilePenIcon, FrameIcon } from 'lucide-react';
-import { notFound } from 'next/navigation';
-import { CreateInitiativeFileButton } from './create-initiative-file-button';
-import { CreateInitiativeLinkButton } from './create-initiative-link-button';
-import { CreateInitiativePageButton } from './create-initiative-page-button';
-import { DeleteExternalInitiativeLinkButton } from './delete-external-initiative-link-button';
-import { DeleteInitiativeFileButton } from './delete-initiative-file-button';
-import { InitiativeExternalLinkButton } from './initiative-external-link-button';
-import { InitiativeLinkDialog } from './initiative-link-dialog';
-import { InitiativeMemberPicker } from './initiative-member-picker';
-import { InitiativeOwnerPicker } from './initiative-owner-picker';
-import { InitiativeSettingsDropdown } from './initiative-settings-dropdown';
-import { InitiativeStatusPicker } from './initiative-status-picker';
+import { EververseRole } from "@repo/backend/auth";
+import { getUserName } from "@repo/backend/auth/format";
+import { currentMembers, currentUser } from "@repo/backend/auth/utils";
+import type { Initiative } from "@repo/backend/prisma/client";
+import { Emoji } from "@repo/design-system/components/emoji";
+import { Link } from "@repo/design-system/components/link";
+import { formatDate } from "@repo/lib/format";
+import { FileIcon, FilePenIcon, FrameIcon } from "lucide-react";
+import { notFound } from "next/navigation";
+import { AvatarTooltip } from "@/components/avatar-tooltip";
+import * as SettingsBar from "@/components/settings-bar";
+import { database } from "@/lib/database";
+import { staticify } from "@/lib/staticify";
+import { CreateInitiativeFileButton } from "./create-initiative-file-button";
+import { CreateInitiativeLinkButton } from "./create-initiative-link-button";
+import { CreateInitiativePageButton } from "./create-initiative-page-button";
+import { DeleteExternalInitiativeLinkButton } from "./delete-external-initiative-link-button";
+import { DeleteInitiativeFileButton } from "./delete-initiative-file-button";
+import { InitiativeExternalLinkButton } from "./initiative-external-link-button";
+import { InitiativeLinkDialog } from "./initiative-link-dialog";
+import { InitiativeMemberPicker } from "./initiative-member-picker";
+import { InitiativeOwnerPicker } from "./initiative-owner-picker";
+import { InitiativeSettingsDropdown } from "./initiative-settings-dropdown";
+import { InitiativeStatusPicker } from "./initiative-status-picker";
 
 type InitiativeSidebarProperties = {
-  readonly initiativeId: Initiative['id'];
+  readonly initiativeId: Initiative["id"];
 };
 
 export const InitiativeSidebar = async ({
@@ -125,27 +124,26 @@ export const InitiativeSidebar = async ({
 
       <SettingsBar.Item title="Owner">
         <InitiativeOwnerPicker
+          data={members}
           defaultValue={initiative.ownerId}
-          initiativeId={initiativeId}
           disabled={
             user.user_metadata.organization_role === EververseRole.Member
           }
-          data={members}
+          initiativeId={initiativeId}
         />
       </SettingsBar.Item>
 
       <SettingsBar.Item title="Status">
         <InitiativeStatusPicker
           defaultValue={initiative.state}
-          initiativeId={initiativeId}
           disabled={
             user.user_metadata.organization_role === EververseRole.Member
           }
+          initiativeId={initiativeId}
         />
       </SettingsBar.Item>
 
       <SettingsBar.Item
-        title="Team"
         action={
           user.user_metadata.organization_role !== EververseRole.Member && (
             <InitiativeMemberPicker
@@ -155,6 +153,7 @@ export const InitiativeSidebar = async ({
             />
           )
         }
+        title="Team"
       >
         <div className="flex flex-wrap items-center gap-1">
           {initiative.team.map((member) => {
@@ -166,11 +165,11 @@ export const InitiativeSidebar = async ({
 
             return (
               <AvatarTooltip
-                key={member.userId}
                 fallback={getUserName(user).slice(0, 2)}
-                subtitle={user.email ?? ''}
-                title={getUserName(user)}
+                key={member.userId}
                 src={user.user_metadata.image_url}
+                subtitle={user.email ?? ""}
+                title={getUserName(user)}
               />
             );
           })}
@@ -178,12 +177,12 @@ export const InitiativeSidebar = async ({
       </SettingsBar.Item>
 
       <SettingsBar.Item
-        title="Links"
         action={
           user.user_metadata.organization_role !== EververseRole.Member && (
             <CreateInitiativeLinkButton initiativeId={initiativeId} />
           )
         }
+        title="Links"
       >
         <div className="flex flex-col gap-2">
           {initiative.externalLinks.map((link) => (
@@ -202,21 +201,21 @@ export const InitiativeSidebar = async ({
       </SettingsBar.Item>
 
       <SettingsBar.Item
-        title="Pages"
         action={
           user.user_metadata.organization_role !== EververseRole.Member && (
             <CreateInitiativePageButton initiativeId={initiativeId} />
           )
         }
+        title="Pages"
       >
         <div className="flex flex-col gap-2">
           {initiative.pages
             .filter((page) => !page.default)
             .map((page) => (
               <Link
-                key={page.id}
-                href={`/initiatives/${initiativeId}/${page.id}`}
                 className="group flex items-center gap-1.5 font-medium text-xs"
+                href={`/initiatives/${initiativeId}/${page.id}`}
+                key={page.id}
               >
                 <FilePenIcon size={16} />
                 <span className="w-full truncate group-hover:underline">
@@ -226,9 +225,9 @@ export const InitiativeSidebar = async ({
             ))}
           {initiative.canvases.map((page) => (
             <Link
-              key={page.id}
-              href={`/initiatives/${initiativeId}/${page.id}`}
               className="group flex items-center gap-1.5 font-medium text-xs"
+              href={`/initiatives/${initiativeId}/${page.id}`}
+              key={page.id}
             >
               <FrameIcon size={16} />
               <span className="w-full truncate group-hover:underline">
@@ -240,12 +239,12 @@ export const InitiativeSidebar = async ({
       </SettingsBar.Item>
 
       <SettingsBar.Item
-        title="Files"
         action={
           user.user_metadata.organization_role !== EververseRole.Member && (
             <CreateInitiativeFileButton initiativeId={initiativeId} />
           )
         }
+        title="Files"
       >
         <div className="flex flex-col gap-2">
           {initiative.files.map((file) => (
@@ -254,9 +253,9 @@ export const InitiativeSidebar = async ({
               key={file.id}
             >
               <Link
-                key={file.id}
-                href={file.url}
                 className="group flex items-center gap-1.5 font-medium text-xs"
+                href={file.url}
+                key={file.id}
               >
                 <FileIcon size={16} />
                 <span className="w-full truncate group-hover:underline">
@@ -273,11 +272,9 @@ export const InitiativeSidebar = async ({
       </SettingsBar.Item>
 
       <SettingsBar.Item
-        title="Connections"
         action={
           user.user_metadata.organization_role !== EververseRole.Member && (
             <InitiativeLinkDialog
-              initiativeId={initiativeId}
               features={features.filter(
                 (feature) =>
                   !feature.initiatives.some(
@@ -290,6 +287,7 @@ export const InitiativeSidebar = async ({
                     (initiative) => initiative.id === initiativeId
                   )
               )}
+              initiativeId={initiativeId}
               products={products.filter(
                 (product) =>
                   !product.initiatives.some(
@@ -299,6 +297,7 @@ export const InitiativeSidebar = async ({
             />
           )
         }
+        title="Connections"
       >
         <div className="flex flex-col gap-2">
           {features
@@ -309,9 +308,9 @@ export const InitiativeSidebar = async ({
             )
             .map((feature) => (
               <Link
+                className="group flex items-center gap-1.5 font-medium text-xs"
                 href={`/features/${feature.id}`}
                 key={feature.id}
-                className="group flex items-center gap-1.5 font-medium text-xs"
               >
                 <span className="flex h-4 w-4 shrink-0 items-center justify-center">
                   <span
@@ -332,9 +331,9 @@ export const InitiativeSidebar = async ({
             )
             .map((group) => (
               <Link
+                className="group flex items-center gap-1.5 font-medium text-xs"
                 href={`/features/groups/${group.id}`}
                 key={group.id}
-                className="group flex items-center gap-1.5 font-medium text-xs"
               >
                 <div className="flex h-4 w-4 items-center justify-center">
                   <Emoji id={group.emoji} size="0.825rem" />
@@ -352,9 +351,9 @@ export const InitiativeSidebar = async ({
             )
             .map((product) => (
               <Link
+                className="group flex items-center gap-1.5 font-medium text-xs"
                 href={`/features/products/${product.id}`}
                 key={product.id}
-                className="group flex items-center gap-1.5 font-medium text-xs"
               >
                 <div className="flex h-4 w-4 items-center justify-center">
                   <Emoji id={product.emoji} size="0.825rem" />

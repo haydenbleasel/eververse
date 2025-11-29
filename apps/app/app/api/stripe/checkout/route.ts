@@ -1,23 +1,23 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
 import {
   currentMembers,
   currentOrganizationId,
   currentUser,
-} from '@repo/backend/auth/utils';
-import { baseUrl } from '@repo/lib/consts';
-import { parseError } from '@repo/lib/parse-error';
-import { stripe } from '@repo/payments';
-import { NextResponse } from 'next/server';
+} from "@repo/backend/auth/utils";
+import { baseUrl } from "@repo/lib/consts";
+import { parseError } from "@repo/lib/parse-error";
+import { stripe } from "@repo/payments";
+import { NextResponse } from "next/server";
+import { database } from "@/lib/database";
 
 export const GET = async (request: Request): Promise<Response> => {
   const { searchParams } = new URL(request.url);
-  const priceId = searchParams.get('priceId');
+  const priceId = searchParams.get("priceId");
 
   try {
     if (!priceId) {
-      throw new Error('Price ID not found');
+      throw new Error("Price ID not found");
     }
 
     const [user, organizationId] = await Promise.all([
@@ -25,8 +25,8 @@ export const GET = async (request: Request): Promise<Response> => {
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('User or organization not found');
+    if (!(user && organizationId)) {
+      throw new Error("User or organization not found");
     }
 
     const [databaseOrganization, members] = await Promise.all([
@@ -37,11 +37,11 @@ export const GET = async (request: Request): Promise<Response> => {
     ]);
 
     if (!databaseOrganization) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     if (!user.email) {
-      throw new Error('Email address not found');
+      throw new Error("Email address not found");
     }
 
     let { stripeCustomerId } = databaseOrganization;
@@ -63,7 +63,7 @@ export const GET = async (request: Request): Promise<Response> => {
       allow_promotion_codes: true,
       customer: stripeCustomerId,
       customer_update: {
-        address: 'auto',
+        address: "auto",
       },
       line_items: [
         {
@@ -71,7 +71,7 @@ export const GET = async (request: Request): Promise<Response> => {
           quantity: members.length,
         },
       ],
-      mode: 'subscription',
+      mode: "subscription",
       metadata: {
         userId: user.id,
         organizationId,
@@ -89,7 +89,7 @@ export const GET = async (request: Request): Promise<Response> => {
     });
 
     if (!session.url) {
-      throw new Error('Session URL not found');
+      throw new Error("Session URL not found");
     }
 
     return NextResponse.redirect(session.url);

@@ -1,7 +1,7 @@
-import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
-import { common, createLowlight } from 'lowlight';
+import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
+import { common, createLowlight } from "lowlight";
 
-import 'highlight.js/styles/nord.css';
+import "highlight.js/styles/nord.css";
 
 const lowlight = createLowlight(common);
 
@@ -9,11 +9,11 @@ export const codeBlock = CodeBlockLowlight.extend({
   addKeyboardShortcuts() {
     return {
       Tab: () => {
-        if (this.editor.isActive('codeBlock')) {
+        if (this.editor.isActive("codeBlock")) {
           this.editor
             .chain()
             .command(({ tr }) => {
-              tr.insertText('\t');
+              tr.insertText("\t");
               return true;
             })
             .run();

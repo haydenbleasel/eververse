@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { LaptopMinimalIcon, MoonIcon, SunIcon } from 'lucide-react';
-import { useTheme } from 'next-themes';
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { LaptopMinimalIcon, MoonIcon, SunIcon } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const themes = [
-  { label: 'Light', value: 'light', icon: SunIcon },
-  { label: 'Dark', value: 'dark', icon: MoonIcon },
-  { label: 'System', value: 'system', icon: LaptopMinimalIcon },
+  { label: "Light", value: "light", icon: SunIcon },
+  { label: "Dark", value: "dark", icon: MoonIcon },
+  { label: "System", value: "system", icon: LaptopMinimalIcon },
 ];
 
 export const ModeToggle = () => {
@@ -16,11 +16,9 @@ export const ModeToggle = () => {
   return (
     <div className="max-w-[15rem]">
       <Select
-        label="Theme"
-        type="theme"
-        value={theme}
-        onChange={setTheme}
         data={themes}
+        label="Theme"
+        onChange={setTheme}
         renderItem={({ label, value }) => {
           const theme = themes.find((theme) => theme.value === value);
 
@@ -30,11 +28,13 @@ export const ModeToggle = () => {
 
           return (
             <div className="flex items-center gap-2">
-              <theme.icon size={16} className="text-muted-foreground" />
+              <theme.icon className="text-muted-foreground" size={16} />
               <span>{label}</span>
             </div>
           );
         }}
+        type="theme"
+        value={theme}
       />
     </div>
   );

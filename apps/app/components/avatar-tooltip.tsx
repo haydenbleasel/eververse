@@ -1,6 +1,6 @@
-import { Avatar } from '@repo/design-system/components/precomposed/avatar';
-import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
-import type { TooltipProperties } from '@repo/design-system/components/precomposed/tooltip';
+import { Avatar } from "@repo/design-system/components/precomposed/avatar";
+import type { TooltipProperties } from "@repo/design-system/components/precomposed/tooltip";
+import { Tooltip } from "@repo/design-system/components/precomposed/tooltip";
 
 type AvatarTooltipProperties = {
   readonly src?: string | undefined;
@@ -8,8 +8,8 @@ type AvatarTooltipProperties = {
   readonly title: string;
   readonly subtitle: string;
   readonly size?: number;
-  readonly align?: TooltipProperties['align'];
-  readonly side?: TooltipProperties['side'];
+  readonly align?: TooltipProperties["align"];
+  readonly side?: TooltipProperties["side"];
 };
 
 export const AvatarTooltip = ({
@@ -23,14 +23,14 @@ export const AvatarTooltip = ({
 }: AvatarTooltipProperties) => (
   <Tooltip
     align={align}
-    side={side}
     content={
       <div>
         <p className="font-medium">{title}</p>
         <p className="text-muted-foreground">{subtitle}</p>
       </div>
     }
+    side={side}
   >
-    <Avatar size={size} src={src} fallback={fallback} />
+    <Avatar fallback={fallback} size={size} src={src} />
   </Tooltip>
 );

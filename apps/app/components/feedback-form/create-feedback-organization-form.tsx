@@ -1,15 +1,15 @@
-import { createFeedbackOrganization } from '@/actions/feedback-organization/create';
-import type { User } from '@repo/backend/auth';
-import type { FeedbackUser } from '@repo/backend/prisma/client';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useId, useState } from 'react';
-import type { FormEventHandler } from 'react';
+import type { User } from "@repo/backend/auth";
+import type { FeedbackUser } from "@repo/backend/prisma/client";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import type { FormEventHandler } from "react";
+import { useId, useState } from "react";
+import { createFeedbackOrganization } from "@/actions/feedback-organization/create";
 
 type CreateFeedbackOrganizationFormProperties = {
-  readonly onChange: (userId: User['id']) => void;
-  readonly feedbackUser: FeedbackUser['id'];
+  readonly onChange: (userId: User["id"]) => void;
+  readonly feedbackUser: FeedbackUser["id"];
 };
 
 export const CreateFeedbackOrganizationForm = ({
@@ -18,10 +18,10 @@ export const CreateFeedbackOrganizationForm = ({
 }: CreateFeedbackOrganizationFormProperties) => {
   const _nameId = useId();
   const _domainId = useId();
-  const [name, setName] = useState('');
-  const [domain, setDomain] = useState('');
+  const [name, setName] = useState("");
+  const [domain, setDomain] = useState("");
   const [loading, setLoading] = useState(false);
-  const disabled = !name.trim() || !domain.trim() || loading;
+  const disabled = !(name.trim() && domain.trim()) || loading;
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
@@ -44,7 +44,7 @@ export const CreateFeedbackOrganizationForm = ({
       }
 
       if (!id) {
-        throw new Error('Something went wrong');
+        throw new Error("Something went wrong");
       }
 
       onChange(id);
@@ -56,22 +56,22 @@ export const CreateFeedbackOrganizationForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <Input
         label="Name"
+        maxLength={191}
+        onChangeText={setName}
         placeholder="Acme, Inc."
         value={name}
-        onChangeText={setName}
-        maxLength={191}
       />
       <Input
         label="Domain"
+        maxLength={191}
+        onChangeText={setDomain}
         placeholder="acme.com"
         value={domain}
-        onChangeText={setDomain}
-        maxLength={191}
       />
-      <Button type="submit" disabled={disabled}>
+      <Button disabled={disabled} type="submit">
         Create company
       </Button>
     </form>

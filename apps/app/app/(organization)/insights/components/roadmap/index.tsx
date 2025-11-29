@@ -1,10 +1,10 @@
-import { database } from '@/lib/database';
-import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
-import { endOfQuarter, startOfQuarter } from 'date-fns';
-import { Suspense } from 'react';
-import { RoadmapEmptyState } from './empty-state';
-import { QuarterlyRoadmap } from './quarterly-roadmap';
-import { RoadmapTrend } from './trend';
+import { Skeleton } from "@repo/design-system/components/precomposed/skeleton";
+import { endOfQuarter, startOfQuarter } from "date-fns";
+import { Suspense } from "react";
+import { database } from "@/lib/database";
+import { RoadmapEmptyState } from "./empty-state";
+import { QuarterlyRoadmap } from "./quarterly-roadmap";
+import { RoadmapTrend } from "./trend";
 
 export const RoadmapSection = async () => {
   const today = new Date();

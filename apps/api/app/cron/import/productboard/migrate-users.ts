@@ -1,17 +1,17 @@
-import { database } from '@repo/backend/database';
+import { database } from "@repo/backend/database";
 import type {
   FeedbackOrganization,
   Prisma,
   ProductboardImport,
-} from '@repo/backend/prisma/client';
-import { emailRegex } from '@repo/lib/email';
-import { getGravatarUrl } from '@repo/lib/gravatar';
-import { createClient } from '@repo/productboard';
-import { friendlyWords } from 'friendlier-words';
+} from "@repo/backend/prisma/client";
+import { emailRegex } from "@repo/lib/email";
+import { getGravatarUrl } from "@repo/lib/gravatar";
+import { createClient } from "@repo/productboard";
+import { friendlyWords } from "friendlier-words";
 
 type ImportJobProperties = Pick<
   ProductboardImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateUsers = async ({
@@ -19,20 +19,20 @@ export const migrateUsers = async ({
   token,
 }: ImportJobProperties): Promise<number> => {
   const productboard = createClient({ accessToken: token });
-  const users = await productboard.GET('/users', {
+  const users = await productboard.GET("/users", {
     params: {
       header: {
-        'X-Version': 1,
+        "X-Version": 1,
       },
     },
   });
 
   if (users.error) {
-    throw new Error(users.error.errors.map((error) => error.detail).join(', '));
+    throw new Error(users.error.errors.map((error) => error.detail).join(", "));
   }
 
   if (!users.data.data) {
-    throw new Error('No users found');
+    throw new Error("No users found");
   }
 
   const databaseOrganization = await database.organization.findUnique({
@@ -44,7 +44,7 @@ export const migrateUsers = async ({
   });
 
   if (!databaseOrganization) {
-    throw new Error('Could not find organization');
+    throw new Error("Could not find organization");
   }
 
   const newUsers = users.data.data.filter((user) => {
@@ -57,13 +57,13 @@ export const migrateUsers = async ({
 
   const promises = newUsers.map(async (user) => {
     let feedbackOrganization: {
-      id: FeedbackOrganization['id'];
-      domain: FeedbackOrganization['domain'];
+      id: FeedbackOrganization["id"];
+      domain: FeedbackOrganization["domain"];
     } | null = null;
     const email = user.email as unknown as string;
 
     if (emailRegex.test(email)) {
-      const [, domain] = email.split('@');
+      const [, domain] = email.split("@");
       const matchingCompany = databaseOrganization.feedbackOrganizations.find(
         (existingCompany) => existingCompany.domain === domain
       );
@@ -76,7 +76,7 @@ export const migrateUsers = async ({
     const data: Prisma.FeedbackUserCreateManyInput = {
       email,
       organizationId,
-      name: user.name ?? friendlyWords(2, ' '),
+      name: user.name ?? friendlyWords(2, " "),
       productboardId: user.id,
       imageUrl: await getGravatarUrl(email),
       feedbackOrganizationId: feedbackOrganization?.id ?? null,

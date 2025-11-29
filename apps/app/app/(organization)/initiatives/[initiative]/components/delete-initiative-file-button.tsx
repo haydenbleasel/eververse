@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { deleteInitiativeFile } from '@/actions/initiative-file/delete';
-import type { InitiativeFile } from '@repo/backend/prisma/client';
-import { LoadingCircle } from '@repo/design-system/components/loading-circle';
-import { AlertDialog } from '@repo/design-system/components/precomposed/alert-dialog';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { toast } from '@repo/design-system/lib/toast';
-import { XIcon } from 'lucide-react';
-import { useState } from 'react';
+import type { InitiativeFile } from "@repo/backend/prisma/client";
+import { LoadingCircle } from "@repo/design-system/components/loading-circle";
+import { AlertDialog } from "@repo/design-system/components/precomposed/alert-dialog";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { toast } from "@repo/design-system/lib/toast";
+import { XIcon } from "lucide-react";
+import { useState } from "react";
+import { deleteInitiativeFile } from "@/actions/initiative-file/delete";
 
 type DeleteInitiativeFileButtonProperties = {
-  readonly id: InitiativeFile['id'];
+  readonly id: InitiativeFile["id"];
 };
 
 export const DeleteInitiativeFileButton = ({
@@ -32,7 +32,7 @@ export const DeleteInitiativeFileButton = ({
         throw new Error(error);
       }
 
-      toast.success('File deleted');
+      toast.success("File deleted");
     } catch (error) {
       handleError(error);
     } finally {
@@ -42,17 +42,17 @@ export const DeleteInitiativeFileButton = ({
 
   return (
     <AlertDialog
-      title="Are you sure?"
       description="This action cannot be undone. The file will be permanently deleted."
-      onClick={handleClick}
       disabled={loading}
+      onClick={handleClick}
+      title="Are you sure?"
       trigger={
         loading ? (
           <LoadingCircle dimensions="h-3 w-3" />
         ) : (
           <div className="h-3 w-3 shrink-0">
-            <button type="button" className="block" disabled={loading}>
-              <XIcon size={12} className="text-muted-foreground" />
+            <button className="block" disabled={loading} type="button">
+              <XIcon className="text-muted-foreground" size={12} />
             </button>
           </div>
         )

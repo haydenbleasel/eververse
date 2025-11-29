@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import { deleteStatus } from '@/actions/feature-status/delete';
-import { updateStatus } from '@/actions/feature-status/update';
-import type { Feature, FeatureStatus } from '@repo/backend/prisma/client';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { Switch } from '@repo/design-system/components/precomposed/switch';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { toast } from '@repo/design-system/lib/toast';
-import { GripVerticalIcon } from 'lucide-react';
-import { useState } from 'react';
-import { FeatureStatusColorPicker } from './feature-status-color-picker';
-import { FeatureStatusDropdown } from './feature-status-dropdown';
+import type { Feature, FeatureStatus } from "@repo/backend/prisma/client";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { Switch } from "@repo/design-system/components/precomposed/switch";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { toast } from "@repo/design-system/lib/toast";
+import { GripVerticalIcon } from "lucide-react";
+import { useState } from "react";
+import { deleteStatus } from "@/actions/feature-status/delete";
+import { updateStatus } from "@/actions/feature-status/update";
+import { FeatureStatusColorPicker } from "./feature-status-color-picker";
+import { FeatureStatusDropdown } from "./feature-status-dropdown";
 
 type FeatureStatusItemProperties = {
-  readonly data: Pick<FeatureStatus, 'color' | 'complete' | 'id' | 'name'> & {
-    readonly features: Pick<Feature, 'id'>[];
+  readonly data: Pick<FeatureStatus, "color" | "complete" | "id" | "name"> & {
+    readonly features: Pick<Feature, "id">[];
   };
-  readonly statuses: Pick<FeatureStatus, 'color' | 'id' | 'name'>[];
+  readonly statuses: Pick<FeatureStatus, "color" | "id" | "name">[];
 };
 
 export const FeatureStatusItem = ({
@@ -27,7 +27,7 @@ export const FeatureStatusItem = ({
   const [name, setName] = useState(data.name);
   const [activeColor, setActiveColor] = useState(data.color);
 
-  const handleColorChange = async (newColor: FeatureStatus['color']) => {
+  const handleColorChange = async (newColor: FeatureStatus["color"]) => {
     setActiveColor(newColor);
     const oldColor = data.color;
 
@@ -71,7 +71,7 @@ export const FeatureStatusItem = ({
     }
   };
 
-  const handleDelete = async (mergeDestinationId: FeatureStatus['id']) => {
+  const handleDelete = async (mergeDestinationId: FeatureStatus["id"]) => {
     try {
       const { error } = await deleteStatus(data.id, mergeDestinationId);
 
@@ -80,7 +80,7 @@ export const FeatureStatusItem = ({
       }
 
       toast.success(
-        'Status deleted successfully. The relevant features have been migrated to the new status.'
+        "Status deleted successfully. The relevant features have been migrated to the new status."
       );
 
       window.location.reload();
@@ -91,24 +91,24 @@ export const FeatureStatusItem = ({
 
   return (
     <div
-      key={data.id}
       className="grid grid-cols-12 items-center gap-8 bg-background px-4 py-3"
+      key={data.id}
     >
       <div className="col-span-4 flex items-center gap-3">
-        <GripVerticalIcon size={16} className="text-muted-foreground" />
+        <GripVerticalIcon className="text-muted-foreground" size={16} />
         <Input
-          defaultValue={name}
-          onChangeText={setName}
-          onBlur={handleUpdateName}
-          className="bg-background"
-          maxLength={191}
           autoComplete="off"
+          className="bg-background"
+          defaultValue={name}
+          maxLength={191}
+          onBlur={handleUpdateName}
+          onChangeText={setName}
         />
       </div>
       <div className="col-span-3">
         <FeatureStatusColorPicker
-          value={activeColor}
           onChange={handleColorChange}
+          value={activeColor}
         />
       </div>
       <div className="col-span-2">
@@ -119,9 +119,9 @@ export const FeatureStatusItem = ({
       </div>
       <div className="text-right">
         <FeatureStatusDropdown
+          onDelete={handleDelete}
           status={data}
           statuses={statuses}
-          onDelete={handleDelete}
         />
       </div>
     </div>

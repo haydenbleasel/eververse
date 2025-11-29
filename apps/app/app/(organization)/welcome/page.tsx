@@ -1,21 +1,21 @@
-import { database } from '@/lib/database';
-import { emptyStates } from '@/lib/empty-states';
-import { EververseRole } from '@repo/backend/auth';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import { Link } from '@repo/design-system/components/link';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { Button } from '@repo/design-system/components/ui/button';
-import { Video } from '@repo/design-system/components/video';
-import { cn } from '@repo/design-system/lib/utils';
-import { createMetadata } from '@repo/seo/metadata';
-import { CheckCircleIcon } from 'lucide-react';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { AddFeatureButton } from './components/add-feature-button';
-import { AddFeedbackButton } from './components/add-feedback-button';
-import { OnboardingOptions } from './components/onboarding-options';
+import { EververseRole } from "@repo/backend/auth";
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import { Link } from "@repo/design-system/components/link";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { Button } from "@repo/design-system/components/ui/button";
+import { Video } from "@repo/design-system/components/video";
+import { cn } from "@repo/design-system/lib/utils";
+import { createMetadata } from "@repo/seo/metadata";
+import { CheckCircleIcon } from "lucide-react";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { database } from "@/lib/database";
+import { emptyStates } from "@/lib/empty-states";
+import { AddFeatureButton } from "./components/add-feature-button";
+import { AddFeedbackButton } from "./components/add-feedback-button";
+import { OnboardingOptions } from "./components/onboarding-options";
 
-const title = 'Welcome';
+const title = "Welcome";
 const description =
   "Welcome to Eververse! Let's get you set up so you can start collecting feedback, creating features and building your roadmap.";
 
@@ -27,7 +27,7 @@ const Welcome = async () => {
     currentOrganizationId(),
   ]);
 
-  if (!user || !organizationId) {
+  if (!(user && organizationId)) {
     notFound();
   }
 
@@ -56,7 +56,7 @@ const Welcome = async () => {
     database.feedback.count({
       where: {
         organizationId,
-        source: 'API',
+        source: "API",
       },
     }),
     database.feature.count({
@@ -75,7 +75,7 @@ const Welcome = async () => {
     database.feedback.count({
       where: {
         organizationId,
-        source: 'ZAPIER',
+        source: "ZAPIER",
       },
     }),
     database.changelog.count({
@@ -106,17 +106,17 @@ const Welcome = async () => {
   }
 
   const startStep = {
-    title: 'Start adding your own content',
-    description: 'How would you like to get started?',
+    title: "Start adding your own content",
+    description: "How would you like to get started?",
     complete: organization.onboardedAt,
     children: <OnboardingOptions type={organization.onboardingType} />,
     disabled: user.user_metadata.organization_role !== EververseRole.Admin,
   };
 
   const portalStep = {
-    title: 'Create a portal',
+    title: "Create a portal",
     description:
-      'Create a portal to share your changelog and roadmap with your users and customers.',
+      "Create a portal to share your changelog and roadmap with your users and customers.",
     complete: portalCount > 0,
     children: (
       <Button asChild>
@@ -127,9 +127,9 @@ const Welcome = async () => {
   };
 
   const featurePortalStep = {
-    title: 'Add a feature to your portal',
+    title: "Add a feature to your portal",
     description:
-      'Add a feature to your portal to collect feedback from your users and customers.',
+      "Add a feature to your portal to collect feedback from your users and customers.",
     complete: portalFeatureCount > 0,
     children: (
       <Button asChild>
@@ -158,9 +158,9 @@ const Welcome = async () => {
   };
 
   const featureRoadmapStep = {
-    title: 'Add a feature to your roadmap',
+    title: "Add a feature to your roadmap",
     description:
-      'Assigning a start and end date to a feature will automatically add it to your roadmap.',
+      "Assigning a start and end date to a feature will automatically add it to your roadmap.",
     complete: roadmapFeatureCount > 0,
     children: (
       <Button asChild>
@@ -171,9 +171,9 @@ const Welcome = async () => {
   };
 
   const triageStep = {
-    title: 'Triage your feedback',
+    title: "Triage your feedback",
     description:
-      'Highlight some text in a piece of feedback to triage it, connecting it to a feature.',
+      "Highlight some text in a piece of feedback to triage it, connecting it to a feature.",
     complete: triageCount > 0,
     children: (
       <Button asChild>
@@ -186,9 +186,9 @@ const Welcome = async () => {
   };
 
   const apiKeyStep = {
-    title: 'Generate an API key',
+    title: "Generate an API key",
     description:
-      'You can use the Eververse API to send feedback from your app or website directly into Eververse.',
+      "You can use the Eververse API to send feedback from your app or website directly into Eververse.",
     complete: keysCount > 0,
     children: (
       <Button asChild>
@@ -199,17 +199,17 @@ const Welcome = async () => {
   };
 
   const integrationStep = {
-    title: 'Send user feedback into Eververse',
+    title: "Send user feedback into Eververse",
     description:
-      'You can send feedback from your app or website directly into Eververse using Zapier or the Eververse API.',
+      "You can send feedback from your app or website directly into Eververse using Zapier or the Eververse API.",
     complete: feedbackApiCount > 0 || zapierFeedbackCount > 0,
     children: (
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
         <Button asChild>
           <a
             href="https://zapier.com/apps/eververse/integrations"
-            target="_blank"
             rel="noreferrer noopener"
+            target="_blank"
           >
             Connect with Zapier
           </a>
@@ -217,8 +217,8 @@ const Welcome = async () => {
         <Button asChild variant="secondary">
           <a
             href="https://docs.eververse.ai/api-reference/introduction"
-            target="_blank"
             rel="noreferrer noopener"
+            target="_blank"
           >
             Read the API documentation
           </a>
@@ -229,9 +229,9 @@ const Welcome = async () => {
   };
 
   const changelogStep = {
-    title: 'Publish a changlog',
+    title: "Publish a changlog",
     description:
-      'You can publish a changelog to keep your users informed about new features and bug fixes.',
+      "You can publish a changelog to keep your users informed about new features and bug fixes.",
     complete: changelogCount > 0,
     children: (
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -247,8 +247,8 @@ const Welcome = async () => {
   };
 
   const widgetStep = {
-    title: 'Create a widget',
-    description: 'Create a widget to embed in your website.',
+    title: "Create a widget",
+    description: "Create a widget to embed in your website.",
     complete: widgetCount > 0,
     children: (
       <Button asChild>
@@ -259,9 +259,9 @@ const Welcome = async () => {
   };
 
   const widgetItemStep = {
-    title: 'Add custom links to your widget',
+    title: "Add custom links to your widget",
     description:
-      'Link out to a Slack channel, documentation or other resources.',
+      "Link out to a Slack channel, documentation or other resources.",
     complete: widgetItemCount > 0,
     children: (
       <Button asChild>
@@ -272,9 +272,9 @@ const Welcome = async () => {
   };
 
   const releaseStep = {
-    title: 'Create a release',
+    title: "Create a release",
     description:
-      'Create a release to communicate with your team about changes.',
+      "Create a release to communicate with your team about changes.",
     complete: releasesCount > 0,
     children: (
       <Button asChild>
@@ -323,17 +323,17 @@ const Welcome = async () => {
               <div
                 className="radial-progress shrink-0 text-border"
                 /* @ts-expect-error "CSS variable" */
-                style={{ '--value': 100 }}
+                style={{ "--value": 100 }}
               />
             </div>
             <div className="absolute inset-0">
               <div
                 className={cn(
-                  'radial-progress shrink-0',
-                  progress === 100 ? 'text-success' : 'text-primary'
+                  "radial-progress shrink-0",
+                  progress === 100 ? "text-success" : "text-primary"
                 )}
                 /* @ts-expect-error "CSS variable" */
-                style={{ '--value': progress }}
+                style={{ "--value": progress }}
               >
                 {progress}%
               </div>
@@ -342,11 +342,11 @@ const Welcome = async () => {
         </div>
 
         <div className="flex flex-col space-y-4">
-          <StackCard title="Introduction video" className="p-0">
+          <StackCard className="p-0" title="Introduction video">
             <Video
-              url="https://youtu.be/IuEwJD9fgKM"
               className="aspect-[861/540] overflow-hidden rounded-none"
               controls
+              url="https://youtu.be/IuEwJD9fgKM"
             />
           </StackCard>
 
@@ -354,7 +354,7 @@ const Welcome = async () => {
             .filter((step) => !step.disabled)
             .map((step) => (
               <div key={step.title}>
-                <StackCard title={step.title} className="p-4">
+                <StackCard className="p-4" title={step.title}>
                   <div className="flex flex-col-reverse items-start gap-8 sm:flex-row">
                     <div className="flex flex-1 flex-col gap-1">
                       <p className="text-muted-foreground text-sm">
@@ -363,8 +363,8 @@ const Welcome = async () => {
                     </div>
                     {step.complete ? (
                       <CheckCircleIcon
-                        size={20}
                         className="shrink-0 text-success"
+                        size={20}
                       />
                     ) : (
                       <div className="hidden shrink-0 sm:block" />

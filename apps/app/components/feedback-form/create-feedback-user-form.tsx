@@ -1,24 +1,24 @@
-import { createFeedbackUser } from '@/actions/feedback-user/create';
-import type { User } from '@repo/backend/auth';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { emailRegex } from '@repo/lib/email';
-import { useState } from 'react';
-import type { FormEventHandler } from 'react';
+import type { User } from "@repo/backend/auth";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { emailRegex } from "@repo/lib/email";
+import type { FormEventHandler } from "react";
+import { useState } from "react";
+import { createFeedbackUser } from "@/actions/feedback-user/create";
 
 type CreateFeedbackUserFormProperties = {
-  readonly onChange: (userId: User['id']) => void;
+  readonly onChange: (userId: User["id"]) => void;
 };
 
 export const CreateFeedbackUserForm = ({
   onChange,
 }: CreateFeedbackUserFormProperties) => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const disabled = !name.trim() || !email.trim() || loading;
+  const disabled = !(name.trim() && email.trim()) || loading;
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
@@ -40,7 +40,7 @@ export const CreateFeedbackUserForm = ({
       }
 
       if (!id) {
-        throw new Error('Something went wrong');
+        throw new Error("Something went wrong");
       }
 
       onChange(id);
@@ -52,24 +52,24 @@ export const CreateFeedbackUserForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <Input
         label="Name"
+        maxLength={191}
+        onChangeText={setName}
         placeholder="Jane Smith"
         value={name}
-        onChangeText={setName}
-        maxLength={191}
       />
       <Input
         label="Email"
+        maxLength={191}
+        onChangeText={setEmail}
+        pattern={emailRegex.source}
         placeholder="jane@acme.com"
         type="email"
-        pattern={emailRegex.source}
         value={email}
-        onChangeText={setEmail}
-        maxLength={191}
       />
-      <Button type="submit" disabled={disabled}>
+      <Button disabled={disabled} type="submit">
         Create user
       </Button>
     </form>

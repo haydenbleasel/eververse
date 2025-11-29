@@ -1,15 +1,15 @@
-import { env } from '@/env';
-import { currentOrganizationId } from '@repo/backend/auth/utils';
-import { database } from '@repo/backend/database';
-import { Prose } from '@repo/design-system/components/prose';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { JiraInstallationForm } from './install-form';
+import { currentOrganizationId } from "@repo/backend/auth/utils";
+import { database } from "@repo/backend/database";
+import { Prose } from "@repo/design-system/components/prose";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { env } from "@/env";
+import { JiraInstallationForm } from "./install-form";
 
 export const InstallJira = async () => {
   const organizationId = await currentOrganizationId();
 
   if (!organizationId) {
-    throw new Error('Organization not found');
+    throw new Error("Organization not found");
   }
 
   const databaseOrganization = await database.organization.findFirst({
@@ -17,7 +17,7 @@ export const InstallJira = async () => {
   });
 
   if (!databaseOrganization) {
-    throw new Error('Organization not found');
+    throw new Error("Organization not found");
   }
 
   const webhookUrl = new URL(
@@ -33,12 +33,12 @@ export const InstallJira = async () => {
         </h1>
         <p className="mt-2 mb-0 text-muted-foreground">
           Follow the steps below to integrate Jira with Eververse. This assumes
-          you already have a Atlassian account. If you don&apos;t, head to the{' '}
+          you already have a Atlassian account. If you don&apos;t, head to the{" "}
           <a
-            href="https://www.atlassian.com/try/cloud/signup"
-            target="_blank"
-            rel="noreferrer"
             className="text-primary underline"
+            href="https://www.atlassian.com/try/cloud/signup"
+            rel="noreferrer"
+            target="_blank"
           >
             Atlassian signup page
           </a>
@@ -81,15 +81,15 @@ export const InstallJira = async () => {
       <StackCard title="2. Create a new API token">
         <Prose className="max-w-none">
           <p>
-            Head to the{' '}
+            Head to the{" "}
             <a
-              href="https://id.atlassian.com/manage-profile/security/api-tokens"
-              target="_blank"
-              rel="noreferrer"
               className="text-primary underline"
+              href="https://id.atlassian.com/manage-profile/security/api-tokens"
+              rel="noreferrer"
+              target="_blank"
             >
               API tokens page
-            </a>{' '}
+            </a>{" "}
             and click "Create a new API token". Give it a name, like "Eververse"
             and select an expiration date. Then, press "Create".
           </p>

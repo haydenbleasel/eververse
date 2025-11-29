@@ -1,7 +1,7 @@
-import 'server-only';
-import { createServerClient } from '@supabase/ssr';
-import { cookies } from 'next/headers';
-import { keys } from '../keys';
+import "server-only";
+import { createServerClient } from "@supabase/ssr";
+import { cookies } from "next/headers";
+import { keys } from "../keys";
 
 const env = keys();
 
@@ -28,4 +28,4 @@ export async function createClient() {
   });
 }
 
-export type { EmailOtpType } from '@supabase/supabase-js';
+export type { EmailOtpType } from "@supabase/supabase-js";

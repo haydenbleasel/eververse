@@ -1,9 +1,9 @@
 // @ts-nocheck
 
-import { ReactRenderer } from '@tiptap/react';
-import type { SuggestionOptions } from '@tiptap/suggestion';
-import tippy from 'tippy.js';
-import { EmojiList } from './emoji-list';
+import { ReactRenderer } from "@tiptap/react";
+import type { SuggestionOptions } from "@tiptap/suggestion";
+import tippy from "tippy.js";
+import { EmojiList } from "./emoji-list";
 
 export const emojiSuggestion: Partial<SuggestionOptions> = {
   items: ({ editor, query }) =>
@@ -29,14 +29,14 @@ export const emojiSuggestion: Partial<SuggestionOptions> = {
           editor: props.editor,
         });
 
-        popup = tippy('body', {
+        popup = tippy("body", {
           getReferenceClientRect: props.clientRect,
           appendTo: () => document.body,
           content: component.element,
           showOnCreate: true,
           interactive: true,
-          trigger: 'manual',
-          placement: 'bottom-start',
+          trigger: "manual",
+          placement: "bottom-start",
         });
       },
 
@@ -49,7 +49,7 @@ export const emojiSuggestion: Partial<SuggestionOptions> = {
       },
 
       onKeyDown(props) {
-        if (props.event.key === 'Escape') {
+        if (props.event.key === "Escape") {
           popup[0].hide();
           component.destroy();
 

@@ -1,8 +1,8 @@
-'use client';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { signup } from '@repo/backend/auth/actions';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { Button } from '@repo/design-system/components/ui/button';
+"use client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signup } from "@repo/backend/auth/actions";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { Button } from "@repo/design-system/components/ui/button";
 import {
   Form,
   FormControl,
@@ -10,12 +10,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@repo/design-system/components/ui/form';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import Link from 'next/link';
-import { useForm } from 'react-hook-form';
-import { toast } from 'sonner';
-import { z } from 'zod/v3';
+} from "@repo/design-system/components/ui/form";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod/v3";
 
 const formSchema = z.object({
   firstName: z.string().min(1).optional(),
@@ -27,14 +27,14 @@ export const SignupForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: '',
+      email: "",
     },
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await signup(values.email, values.firstName, values.lastName);
-      toast.success('Check your email for a signup link.');
+      toast.success("Check your email for a signup link.");
     } catch (error) {
       handleError(error);
     }
@@ -52,7 +52,7 @@ export const SignupForm = () => {
       </div>
       <div className="grid gap-2">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
+          <form className="grid gap-4" onSubmit={form.handleSubmit(onSubmit)}>
             <div className="grid grid-cols-2 gap-4">
               <FormField
                 control={form.control}
@@ -101,13 +101,13 @@ export const SignupForm = () => {
               )}
             />
             <Button
-              type="submit"
               disabled={
                 form.formState.disabled ||
                 !form.formState.isValid ||
                 form.formState.isSubmitted ||
                 form.formState.isSubmitting
               }
+              type="submit"
             >
               Continue
             </Button>
@@ -115,7 +115,7 @@ export const SignupForm = () => {
         </Form>
       </div>
       <p className="text-center text-muted-foreground text-sm">
-        Already have an account?{' '}
+        Already have an account?{" "}
         <Link className="font-medium text-primary underline" href="/sign-in">
           Sign in
         </Link>

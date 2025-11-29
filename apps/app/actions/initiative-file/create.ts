@@ -1,13 +1,13 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import type { Initiative, InitiativeFile } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import type { Initiative, InitiativeFile } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 type CreateInitiativeFileProperties = {
-  initiativeId: Initiative['id'];
+  initiativeId: Initiative["id"];
   data: {
     name: string;
     url: string;
@@ -18,7 +18,7 @@ export const createInitiativeFile = async ({
   initiativeId,
   data,
 }: CreateInitiativeFileProperties): Promise<{
-  id?: InitiativeFile['id'];
+  id?: InitiativeFile["id"];
   error?: string;
 }> => {
   try {
@@ -27,8 +27,8 @@ export const createInitiativeFile = async ({
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('You must be logged in to create a file.');
+    if (!(user && organizationId)) {
+      throw new Error("You must be logged in to create a file.");
     }
 
     const { id } = await database.initiativeFile.create({

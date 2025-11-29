@@ -1,13 +1,13 @@
-import emojiData from '@emoji-mart/data';
-import type { Product } from '@repo/backend/prisma/client';
-import { Emoji } from '@repo/design-system/components/emoji';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { init } from 'emoji-mart';
+import emojiData from "@emoji-mart/data";
+import type { Product } from "@repo/backend/prisma/client";
+import { Emoji } from "@repo/design-system/components/emoji";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { init } from "emoji-mart";
 
 init({ data: emojiData });
 
 type FeatureProductPickerProperties = {
-  readonly data: Pick<Product, 'emoji' | 'id' | 'name'>[];
+  readonly data: Pick<Product, "emoji" | "id" | "name">[];
   readonly value: string | undefined;
   readonly onChange: (value: string) => void;
 };
@@ -18,14 +18,12 @@ export const FeatureProductPicker = ({
   onChange,
 }: FeatureProductPickerProperties) => (
   <Select
-    onChange={onChange}
-    value={value}
     data={data.map((product) => ({
       value: product.id,
       label: product.name,
     }))}
     disabled={data.length === 0}
-    type="product"
+    onChange={onChange}
     renderItem={(item) => {
       const product = data.find(({ id }) => id === item.value);
 
@@ -40,5 +38,7 @@ export const FeatureProductPicker = ({
         </div>
       );
     }}
+    type="product"
+    value={value}
   />
 );

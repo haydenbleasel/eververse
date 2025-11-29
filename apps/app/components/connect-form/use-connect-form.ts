@@ -1,9 +1,9 @@
-import type { Feature } from '@repo/backend/prisma/client';
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
+import type { Feature } from "@repo/backend/prisma/client";
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
 type ShowProperties = {
-  featureId: Feature['id'] | null;
+  featureId: Feature["id"] | null;
 };
 
 type ConnectFormState = {
@@ -11,7 +11,7 @@ type ConnectFormState = {
   show: (properties?: ShowProperties) => void;
   hide: () => void;
   toggle: () => void;
-  featureId: Feature['id'] | null;
+  featureId: Feature["id"] | null;
 };
 
 export const useConnectForm = create<ConnectFormState>()(
@@ -32,7 +32,7 @@ export const useConnectForm = create<ConnectFormState>()(
       toggle: () => set((state) => ({ isOpen: !state.isOpen })),
     }),
     {
-      name: 'eververse:connect-form',
+      name: "eververse:connect-form",
     }
   )
 );

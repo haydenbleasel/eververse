@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { updateFeature } from '@/actions/feature/update';
-import type { Feature, Product } from '@repo/backend/prisma/client';
-import { Emoji } from '@repo/design-system/components/emoji';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { toast } from '@repo/design-system/lib/toast';
-import { useState } from 'react';
+import type { Feature, Product } from "@repo/backend/prisma/client";
+import { Emoji } from "@repo/design-system/components/emoji";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { toast } from "@repo/design-system/lib/toast";
+import { useState } from "react";
+import { updateFeature } from "@/actions/feature/update";
 
 type FeatureProductPickerProperties = {
-  readonly featureId: Feature['id'];
+  readonly featureId: Feature["id"];
   readonly defaultValue: string | undefined;
   readonly disabled: boolean;
-  readonly data: Pick<Product, 'id' | 'name' | 'emoji'>[];
+  readonly data: Pick<Product, "id" | "name" | "emoji">[];
 };
 
 export const FeatureProductPicker = ({
@@ -39,7 +39,7 @@ export const FeatureProductPicker = ({
         throw new Error(error);
       }
 
-      toast.success('Product updated');
+      toast.success("Product updated");
     } catch (error) {
       handleError(error);
     } finally {
@@ -49,13 +49,12 @@ export const FeatureProductPicker = ({
 
   return (
     <Select
-      value={value}
-      onChange={handleSelect}
       data={data.map((group) => ({
         label: group.name,
         value: group.id,
       }))}
       disabled={disabled || loading}
+      onChange={handleSelect}
       renderItem={(item) => {
         const product = data.find((product) => product.id === item.value);
 
@@ -71,6 +70,7 @@ export const FeatureProductPicker = ({
         );
       }}
       type="product"
+      value={value}
     />
   );
 };

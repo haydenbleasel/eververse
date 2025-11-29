@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useFeedbackForm } from '@/hooks/use-feedback-form';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { ChevronUpIcon } from 'lucide-react';
-import { useState } from 'react';
-import { createVote } from '../actions/create-vote';
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { ChevronUpIcon } from "lucide-react";
+import { useState } from "react";
+import { useFeedbackForm } from "@/hooks/use-feedback-form";
+import { createVote } from "../actions/create-vote";
 
 type VoteButtonProperties = {
   readonly portalFeatureId: string;
@@ -57,14 +57,14 @@ export const VoteButton = ({
 
   return (
     <Button
-      type="button"
-      variant="outline"
       className="flex h-full w-8 shrink-0 flex-col gap-0 p-1"
       onClick={handleVote}
+      type="button"
+      variant="outline"
     >
       <ChevronUpIcon
-        size={12}
         className="group-hover:-translate-y-0.5 transition-transform"
+        size={12}
       />
       <span className="block">{votes}</span>
     </Button>

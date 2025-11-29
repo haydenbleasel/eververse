@@ -1,12 +1,12 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import type { Group } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import type { Group } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const deleteGroup = async (
-  id: Group['id']
+  id: Group["id"]
 ): Promise<{
   error?: string;
 }> => {
@@ -16,7 +16,7 @@ export const deleteGroup = async (
       select: { id: true },
     });
 
-    revalidatePath('/features');
+    revalidatePath("/features");
 
     return {};
   } catch (error) {

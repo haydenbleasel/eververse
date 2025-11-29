@@ -1,15 +1,15 @@
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import { contentToText } from '@repo/editor/lib/tiptap';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { ChangelogEditor } from './components/changelog-editor';
-import { ChangelogSidebar } from './components/changelog-sidebar';
-import { ChangelogTitle } from './components/changelog-title';
-import { UpdateEmptyState } from './components/update-empty-state';
+import { EververseRole } from "@repo/backend/auth";
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import { contentToText } from "@repo/editor/lib/tiptap";
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { database } from "@/lib/database";
+import { ChangelogEditor } from "./components/changelog-editor";
+import { ChangelogSidebar } from "./components/changelog-sidebar";
+import { ChangelogTitle } from "./components/changelog-title";
+import { UpdateEmptyState } from "./components/update-empty-state";
 
 type ChangelogPageProperties = {
   readonly params: Promise<{
@@ -17,7 +17,7 @@ type ChangelogPageProperties = {
   }>;
 };
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export const generateMetadata = async (
   props: ChangelogPageProperties
@@ -36,11 +36,11 @@ export const generateMetadata = async (
   }
 
   const content = await getJsonColumnFromTable(
-    'changelog',
-    'content',
+    "changelog",
+    "content",
     changelog.id
   );
-  const text = content ? contentToText(content) : 'No content yet.';
+  const text = content ? contentToText(content) : "No content yet.";
 
   return createMetadata({
     title: changelog.title,
@@ -55,7 +55,7 @@ const ChangelogPage = async (props: ChangelogPageProperties) => {
     currentOrganizationId(),
   ]);
 
-  if (!user || !organizationId) {
+  if (!(user && organizationId)) {
     notFound();
   }
 
@@ -73,13 +73,13 @@ const ChangelogPage = async (props: ChangelogPageProperties) => {
     }),
   ]);
 
-  if (!changelog || !organization) {
+  if (!(changelog && organization)) {
     notFound();
   }
 
   const content = await getJsonColumnFromTable(
-    'changelog',
-    'content',
+    "changelog",
+    "content",
     changelog.id
   );
 

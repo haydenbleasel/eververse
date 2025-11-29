@@ -1,37 +1,37 @@
-'use client';
+"use client";
 
-import { useDebouncedCallback } from '@react-hookz/web';
-import { Prose } from '@repo/design-system/components/prose';
-import type { Extensions } from '@tiptap/core';
-import deepEqual from 'deep-equal';
-import { EditorContent, EditorRoot } from 'novel';
-import type { EditorContentProps, EditorInstance, JSONContent } from 'novel';
-import { handleCommandNavigation } from 'novel/extensions';
-import { type ReactNode, useRef } from 'react';
-import { BubbleMenu } from './components/menus/bubble-menu';
-import { CommandMenu } from './components/menus/command-menu';
-import { TableMenu } from './components/menus/table-menu';
-import { slashCommand } from './components/slash-command';
-import { defaultExtensions } from './lib/extensions/client';
+import { useDebouncedCallback } from "@react-hookz/web";
+import { Prose } from "@repo/design-system/components/prose";
+import type { Extensions } from "@tiptap/core";
+import deepEqual from "deep-equal";
+import type { EditorContentProps, EditorInstance, JSONContent } from "novel";
+import { EditorContent, EditorRoot } from "novel";
+import { handleCommandNavigation } from "novel/extensions";
+import { type ReactNode, useRef } from "react";
+import { BubbleMenu } from "./components/menus/bubble-menu";
+import { CommandMenu } from "./components/menus/command-menu";
+import { TableMenu } from "./components/menus/table-menu";
+import { slashCommand } from "./components/slash-command";
+import { defaultExtensions } from "./lib/extensions/client";
 
-import './styles/editor.css';
+import "./styles/editor.css";
 
 export type {
-  JSONContent,
   Extensions,
-} from '@tiptap/core';
-export type { EditorInstance } from 'novel';
-export { Node, mergeAttributes, nodePasteRule } from '@tiptap/core';
+  JSONContent,
+} from "@tiptap/core";
+export { mergeAttributes, Node, nodePasteRule } from "@tiptap/core";
 export {
   NodeViewWrapper,
   ReactNodeViewRenderer as reactNodeViewRenderer,
-} from '@tiptap/react';
-export { useEditor, EditorBubbleItem } from 'novel';
+} from "@tiptap/react";
+export type { EditorInstance } from "novel";
+export { EditorBubbleItem, useEditor } from "novel";
 
 export type EditorProperties = {
   readonly children?: ReactNode;
   readonly defaultValue?: JSONContent;
-  readonly editorProps?: EditorContentProps['editorProps'];
+  readonly editorProps?: EditorContentProps["editorProps"];
   readonly onUpdate?: (editor?: EditorInstance) => Promise<void> | void;
   readonly onDebouncedUpdate?: (
     editor?: EditorInstance
@@ -76,6 +76,17 @@ export const Editor = ({
       <Prose className={className}>
         <EditorRoot>
           <EditorContent
+            className="relative min-h-[5rem] w-full"
+            editable={editable}
+            editorProps={{
+              ...editorProps,
+              handleDOMEvents: {
+                keydown: (_view, event) => handleCommandNavigation(event),
+              },
+              attributes: {
+                class: "focus:outline-none",
+              },
+            }}
             extensions={
               [
                 ...defaultExtensions,
@@ -85,17 +96,6 @@ export const Editor = ({
             }
             immediatelyRender={false}
             initialContent={defaultValue}
-            className="relative min-h-[5rem] w-full"
-            editorProps={{
-              ...editorProps,
-              handleDOMEvents: {
-                keydown: (_view, event) => handleCommandNavigation(event),
-              },
-              attributes: {
-                class: 'focus:outline-none',
-              },
-            }}
-            editable={editable}
             onUpdate={handleUpdate}
             slotAfter={slotAfter}
           >

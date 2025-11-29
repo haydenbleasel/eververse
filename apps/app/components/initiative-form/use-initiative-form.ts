@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
 type InitiativeFormState = {
   isOpen: boolean;
@@ -17,7 +17,7 @@ export const useInitiativeForm = create<InitiativeFormState>()(
       toggle: () => set((state) => ({ isOpen: !state.isOpen })),
     }),
     {
-      name: 'eververse:initiative-form',
+      name: "eververse:initiative-form",
     }
   )
 );

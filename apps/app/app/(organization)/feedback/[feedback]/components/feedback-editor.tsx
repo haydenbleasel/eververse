@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { updateFeedback } from '@/actions/feedback/update';
-import { staticify } from '@/lib/staticify';
-import type { Feedback } from '@repo/backend/prisma/client';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import type { EditorInstance, JSONContent } from '@repo/editor';
-import dynamic from 'next/dynamic';
-import type { ReactNode } from 'react';
+import type { Feedback } from "@repo/backend/prisma/client";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import type { EditorInstance, JSONContent } from "@repo/editor";
+import dynamic from "next/dynamic";
+import type { ReactNode } from "react";
+import { updateFeedback } from "@/actions/feedback/update";
+import { staticify } from "@/lib/staticify";
 
 type FeedbackEditorProperties = {
   readonly defaultValue: JSONContent | undefined;
-  readonly feedbackId: Feedback['id'];
+  readonly feedbackId: Feedback["id"];
   readonly children?: ReactNode;
   readonly editable: boolean;
   readonly subscribed: boolean;
@@ -20,7 +20,7 @@ const Editor = dynamic(
   async () => {
     const Module = await import(
       /* webpackChunkName: "editor" */
-      '@/components/editor'
+      "@/components/editor"
     );
 
     return Module.Editor;
@@ -57,8 +57,8 @@ export const FeedbackEditor = ({
   return (
     <Editor
       defaultValue={defaultValue}
-      onDebouncedUpdate={handleDebouncedUpdate}
       editable={editable}
+      onDebouncedUpdate={handleDebouncedUpdate}
     />
   );
 };

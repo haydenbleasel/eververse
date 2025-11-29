@@ -1,11 +1,11 @@
-import { Popover, PopoverTrigger } from '@radix-ui/react-popover';
-import { Button } from '@repo/design-system/components/ui/button';
-import { PopoverContent } from '@repo/design-system/components/ui/popover';
-import { cn } from '@repo/design-system/lib/utils';
-import { Check, ExternalLinkIcon, Trash } from 'lucide-react';
-import { useEditor } from 'novel';
-import { useEffect, useRef, useState } from 'react';
-import type { FormEventHandler } from 'react';
+import { Popover, PopoverTrigger } from "@radix-ui/react-popover";
+import { Button } from "@repo/design-system/components/ui/button";
+import { PopoverContent } from "@repo/design-system/components/ui/popover";
+import { cn } from "@repo/design-system/lib/utils";
+import { Check, ExternalLinkIcon, Trash } from "lucide-react";
+import { useEditor } from "novel";
+import type { FormEventHandler } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const isValidUrl = (url: string): boolean => {
   try {
@@ -21,7 +21,7 @@ export const getUrlFromString = (text: string): string | null => {
     return text;
   }
   try {
-    if (text.includes('.') && !text.includes(' ')) {
+    if (text.includes(".") && !text.includes(" ")) {
       return new URL(`https://${text}`).toString();
     }
 
@@ -40,7 +40,7 @@ export const LinkSelector = ({
   open,
   onOpenChange,
 }: LinkSelectorProperties) => {
-  const [url, setUrl] = useState<string>('');
+  const [url, setUrl] = useState<string>("");
   const inputReference = useRef<HTMLInputElement>(null);
   const { editor } = useEditor();
 
@@ -63,18 +63,18 @@ export const LinkSelector = ({
     }
   };
 
-  const defaultValue = (editor.getAttributes('link') as { href?: string }).href;
+  const defaultValue = (editor.getAttributes("link") as { href?: string }).href;
 
   return (
-    <Popover modal open={open} onOpenChange={onOpenChange}>
+    <Popover modal onOpenChange={onOpenChange} open={open}>
       <PopoverTrigger asChild>
-        <Button variant="ghost" className="gap-2 rounded-none border-none">
+        <Button className="gap-2 rounded-none border-none" variant="ghost">
           <ExternalLinkIcon className="h-4 w-4" />
           <p
             className={cn(
-              'underline decoration-text-muted underline-offset-4',
+              "underline decoration-text-muted underline-offset-4",
               {
-                'text-primary': editor.isActive('link'),
+                "text-primary": editor.isActive("link"),
               }
             )}
           >
@@ -83,32 +83,32 @@ export const LinkSelector = ({
         </Button>
       </PopoverTrigger>
       <PopoverContent align="start" className="w-60 p-0" sideOffset={10}>
-        <form onSubmit={handleSubmit} className="flex p-1">
+        <form className="flex p-1" onSubmit={handleSubmit}>
           <input
             aria-label="Link URL"
+            className="flex-1 bg-background p-1 text-sm outline-none"
+            defaultValue={defaultValue ?? ""}
+            onChange={(event) => setUrl(event.target.value)}
+            placeholder="Paste a link"
             ref={inputReference}
             type="text"
-            placeholder="Paste a link"
-            className="flex-1 bg-background p-1 text-sm outline-none"
-            defaultValue={defaultValue ?? ''}
             value={url}
-            onChange={(event) => setUrl(event.target.value)}
           />
-          {editor.getAttributes('link').href ? (
+          {editor.getAttributes("link").href ? (
             <Button
-              size="icon"
-              variant="outline"
-              type="button"
               className="flex h-8 items-center rounded-sm p-1 text-destructive transition-all hover:bg-destructive-foreground dark:hover:bg-destructive"
               onClick={() => {
                 editor.chain().focus().unsetLink().run();
                 onOpenChange(false);
               }}
+              size="icon"
+              type="button"
+              variant="outline"
             >
               <Trash className="h-4 w-4" />
             </Button>
           ) : (
-            <Button size="icon" variant="secondary" className="h-8">
+            <Button className="h-8" size="icon" variant="secondary">
               <Check className="h-4 w-4" />
             </Button>
           )}

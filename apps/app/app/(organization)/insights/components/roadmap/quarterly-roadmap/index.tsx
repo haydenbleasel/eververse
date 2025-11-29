@@ -1,9 +1,9 @@
-import { database } from '@/lib/database';
-import { currentMembers } from '@repo/backend/auth/utils';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import type { GanttFeature } from '@repo/design-system/components/ui/kibo-ui/gantt';
-import { endOfQuarter, startOfQuarter } from 'date-fns';
-import { QuarterlyRoadmapGantt } from './gantt';
+import { currentMembers } from "@repo/backend/auth/utils";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import type { GanttFeature } from "@repo/design-system/components/ui/kibo-ui/gantt";
+import { endOfQuarter, startOfQuarter } from "date-fns";
+import { database } from "@/lib/database";
+import { QuarterlyRoadmapGantt } from "./gantt";
 
 export const QuarterlyRoadmap = async () => {
   const today = new Date();
@@ -57,7 +57,7 @@ export const QuarterlyRoadmap = async () => {
       {};
 
     for (const feature of features) {
-      const groupKey = feature.product?.name ?? 'No Product';
+      const groupKey = feature.product?.name ?? "No Product";
 
       if (!groupedData[groupKey]) {
         groupedData[groupKey] = [];
@@ -87,7 +87,7 @@ export const QuarterlyRoadmap = async () => {
   const groups = createGroupedFeatures();
 
   return (
-    <StackCard title="Quarterly Roadmap" className="p-0">
+    <StackCard className="p-0" title="Quarterly Roadmap">
       <QuarterlyRoadmapGantt groups={groups} members={members} />
     </StackCard>
   );

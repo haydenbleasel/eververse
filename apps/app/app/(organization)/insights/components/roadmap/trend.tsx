@@ -1,5 +1,5 @@
-import { database } from '@/lib/database';
-import { endOfQuarter, startOfQuarter } from 'date-fns';
+import { endOfQuarter, startOfQuarter } from "date-fns";
+import { database } from "@/lib/database";
 
 export const RoadmapTrend = async () => {
   const today = new Date();

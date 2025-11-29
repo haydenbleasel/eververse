@@ -1,1 +1,1 @@
-export * from '@octokit/webhooks';
+export * from "@octokit/webhooks";

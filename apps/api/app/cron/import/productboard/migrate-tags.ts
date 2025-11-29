@@ -1,11 +1,11 @@
-import { database } from '@repo/backend/database';
-import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
-import { slugify } from '@repo/lib/slugify';
-import { createClient } from '@repo/productboard';
+import { database } from "@repo/backend/database";
+import type { Prisma, ProductboardImport } from "@repo/backend/prisma/client";
+import { slugify } from "@repo/lib/slugify";
+import { createClient } from "@repo/productboard";
 
 type ImportJobProperties = Pick<
   ProductboardImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateTags = async ({
@@ -14,20 +14,20 @@ export const migrateTags = async ({
   creatorId,
 }: ImportJobProperties): Promise<number> => {
   const productboard = createClient({ accessToken: token });
-  const notes = await productboard.GET('/notes', {
+  const notes = await productboard.GET("/notes", {
     params: {
       header: {
-        'X-Version': 1,
+        "X-Version": 1,
       },
     },
   });
 
   if (notes.error) {
-    throw new Error(notes.error.errors?.source?.join(', ') ?? 'Unknown error');
+    throw new Error(notes.error.errors?.source?.join(", ") ?? "Unknown error");
   }
 
   if (!notes.data) {
-    throw new Error('No notes found');
+    throw new Error("No notes found");
   }
 
   const existingTags = await database.tag.findMany({
@@ -38,7 +38,7 @@ export const migrateTags = async ({
   const tags = new Set<string>();
 
   for (const note of notes.data.data) {
-    const noteTags = note.tags?.split(',');
+    const noteTags = note.tags?.split(",");
 
     if (!noteTags) {
       continue;

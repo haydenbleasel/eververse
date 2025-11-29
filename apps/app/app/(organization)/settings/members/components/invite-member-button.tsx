@@ -1,12 +1,11 @@
-'use client';
+"use client";
 
-import { inviteMember } from '@/actions/users/invite';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { EververseRole } from '@repo/backend/auth';
-import { Dialog } from '@repo/design-system/components/precomposed/dialog';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { Button } from '@repo/design-system/components/ui/button';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { EververseRole } from "@repo/backend/auth";
+import { Dialog } from "@repo/design-system/components/precomposed/dialog";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { Button } from "@repo/design-system/components/ui/button";
 import {
   Form,
   FormControl,
@@ -14,13 +13,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@repo/design-system/components/ui/form';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { capitalize } from '@repo/lib/format';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { toast } from 'sonner';
-import { z } from 'zod/v3';
+} from "@repo/design-system/components/ui/form";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { capitalize } from "@repo/lib/format";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod/v3";
+import { inviteMember } from "@/actions/users/invite";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -32,7 +32,7 @@ export const InviteMemberButton = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: '',
+      email: "",
     },
   });
 
@@ -42,11 +42,11 @@ export const InviteMemberButton = () => {
     try {
       const response = await inviteMember(values.email, values.role);
 
-      if ('error' in response) {
+      if ("error" in response) {
         throw new Error(response.error);
       }
 
-      toast.success('Member invited successfully');
+      toast.success("Member invited successfully");
       setOpen(false);
       form.reset();
     } catch (error) {
@@ -56,22 +56,22 @@ export const InviteMemberButton = () => {
 
   return (
     <Dialog
-      open={open}
+      description="Invite a member to your organization."
       onOpenChange={setOpen}
+      open={open}
+      title="Invite Member"
       trigger={
         <Button
-          variant="outline"
-          onClick={() => setOpen(true)}
           className="w-full"
+          onClick={() => setOpen(true)}
+          variant="outline"
         >
           Invite Member
         </Button>
       }
-      title="Invite Member"
-      description="Invite a member to your organization."
     >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
             control={form.control}
             name="email"
@@ -104,7 +104,7 @@ export const InviteMemberButton = () => {
               </FormItem>
             )}
           />
-          <Button type="submit" disabled={disabled}>
+          <Button disabled={disabled} type="submit">
             Invite
           </Button>
         </form>

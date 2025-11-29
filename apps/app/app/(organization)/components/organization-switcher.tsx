@@ -1,3 +1,1 @@
-export const OrganizationSwitcher = () => {
-  return <div>OrganizationSwitcher</div>;
-};
+export const OrganizationSwitcher = () => <div>OrganizationSwitcher</div>;

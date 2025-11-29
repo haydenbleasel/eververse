@@ -1,14 +1,14 @@
-import { database } from '@/lib/database';
-import { Link } from '@repo/design-system/components/link';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { Badge } from '@repo/design-system/components/ui/badge';
-import { formatDate } from '@repo/lib/format';
-import { HistoryIcon } from 'lucide-react';
+import { Link } from "@repo/design-system/components/link";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { Badge } from "@repo/design-system/components/ui/badge";
+import { formatDate } from "@repo/lib/format";
+import { HistoryIcon } from "lucide-react";
+import { database } from "@/lib/database";
 
 export const ProductboardImportsCard = async () => {
   const productboardImports = await database.productboardImport.findMany({
     orderBy: {
-      createdAt: 'desc',
+      createdAt: "desc",
     },
     include: {
       jobs: {
@@ -25,24 +25,24 @@ export const ProductboardImportsCard = async () => {
 
   return (
     <StackCard
-      title="Previous imports"
-      icon={HistoryIcon}
       className="divide-y p-0 text-sm"
+      icon={HistoryIcon}
+      title="Previous imports"
     >
       {productboardImports.map((importItem) => (
         <div
-          key={importItem.id}
           className="flex items-center justify-between gap-4 p-3"
+          key={importItem.id}
         >
           <Link
-            key={importItem.id}
-            href={`/settings/import/productboard/${importItem.id}`}
             className="no-underline"
+            href={`/settings/import/productboard/${importItem.id}`}
+            key={importItem.id}
           >
             Import on {formatDate(importItem.createdAt)}
           </Link>
 
-          {importItem.jobs.some((job) => job.status !== 'SUCCESS') ? (
+          {importItem.jobs.some((job) => job.status !== "SUCCESS") ? (
             <Badge variant="outline">In progress</Badge>
           ) : (
             <Badge>Success</Badge>

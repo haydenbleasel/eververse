@@ -1,4 +1,4 @@
-import type { User } from '@supabase/supabase-js';
+import type { User } from "@supabase/supabase-js";
 
 export const getUserName = (user: User): string => {
   let name = user.id;

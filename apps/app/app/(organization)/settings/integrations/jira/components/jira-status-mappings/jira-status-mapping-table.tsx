@@ -1,28 +1,28 @@
-'use client';
+"use client";
 
-import { updateJiraStatusMappings } from '@/actions/installation-status-mapping/jira/update';
 import type {
   AtlassianInstallation,
+  FeatureStatus,
   InstallationStatusMapping,
-} from '@repo/backend/prisma/client';
-import type { FeatureStatus } from '@repo/backend/prisma/client';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { ArrowRightIcon } from 'lucide-react';
-import { useState } from 'react';
-import { JiraStatusMappingPicker } from './jira-status-mapping-picker';
+} from "@repo/backend/prisma/client";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { ArrowRightIcon } from "lucide-react";
+import { useState } from "react";
+import { updateJiraStatusMappings } from "@/actions/installation-status-mapping/jira/update";
+import { JiraStatusMappingPicker } from "./jira-status-mapping-picker";
 
 type JiraStatusMappingTableProps = {
-  featureStatuses: Pick<FeatureStatus, 'id' | 'name' | 'color'>[];
+  featureStatuses: Pick<FeatureStatus, "id" | "name" | "color">[];
   statusMappings: Pick<
     InstallationStatusMapping,
-    'id' | 'eventType' | 'featureStatusId' | 'eventId'
+    "id" | "eventType" | "featureStatusId" | "eventId"
   >[];
   jiraStatuses: {
     state: string | undefined;
     label: string;
     value: string;
   }[];
-  installationId: AtlassianInstallation['id'];
+  installationId: AtlassianInstallation["id"];
 };
 
 export const JiraStatusMappingTable = ({
@@ -36,7 +36,7 @@ export const JiraStatusMappingTable = ({
   for (const status of featureStatuses) {
     defaultMap[status.id] = statusMappings
       .filter((mapping) => mapping.featureStatusId === status.id)
-      .map((mapping) => mapping.eventId ?? '')
+      .map((mapping) => mapping.eventId ?? "")
       .filter(Boolean);
   }
 
@@ -74,25 +74,25 @@ export const JiraStatusMappingTable = ({
     <div>
       {featureStatuses.map((status) => (
         <div
-          key={status.id}
           className="flex items-center justify-between gap-3 px-3 py-1.5"
+          key={status.id}
         >
           <div className="flex-1">
             <JiraStatusMappingPicker
+              defaultValue={statusMappings
+                .filter((mapping) => mapping.featureStatusId === status.id)
+                .map((mapping) => mapping.eventId ?? "")
+                .filter(Boolean)}
+              onChange={(eventTypes) => handleChange(eventTypes, status.id)}
               options={jiraStatuses.filter(
                 (jiraStatus) =>
                   map[status.id].includes(jiraStatus.value) ||
                   !Object.values(map).flat().includes(jiraStatus.value)
               )}
-              defaultValue={statusMappings
-                .filter((mapping) => mapping.featureStatusId === status.id)
-                .map((mapping) => mapping.eventId ?? '')
-                .filter(Boolean)}
-              onChange={(eventTypes) => handleChange(eventTypes, status.id)}
             />
           </div>
           <div className="flex h-9 shrink-0 items-center justify-center">
-            <ArrowRightIcon size={16} className="text-muted-foreground" />
+            <ArrowRightIcon className="text-muted-foreground" size={16} />
           </div>
           <div className="flex-1">
             <div className="flex h-9 w-full items-center gap-2 rounded-md border p-3 text-sm shadow-sm">

@@ -1,10 +1,21 @@
-'use client';
+"use client";
 
-import { DataTableColumnHeader } from '@repo/design-system/components/data-table-column-header';
-import { Link } from '@repo/design-system/components/link';
-import { Checkbox } from '@repo/design-system/components/precomposed/checkbox';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { Button } from '@repo/design-system/components/ui/button';
+import type { User } from "@repo/backend/auth";
+import { EververseRole } from "@repo/backend/auth";
+import { getUserName } from "@repo/backend/auth/format";
+import type {
+  FeatureStatus,
+  Group,
+  Prisma,
+  Product,
+  Release,
+} from "@repo/backend/prisma/client";
+import { DataTableColumnHeader } from "@repo/design-system/components/data-table-column-header";
+import { Link } from "@repo/design-system/components/link";
+import { Checkbox } from "@repo/design-system/components/precomposed/checkbox";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { Tooltip } from "@repo/design-system/components/precomposed/tooltip";
+import { Button } from "@repo/design-system/components/ui/button";
 import {
   Table,
   TableBody,
@@ -12,9 +23,15 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@repo/design-system/components/ui/table';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useInfiniteQuery } from '@tanstack/react-query';
+} from "@repo/design-system/components/ui/table";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import type {
+  ColumnDef,
+  ColumnFiltersState,
+  SortingState,
+  VisibilityState,
+} from "@tanstack/react-table";
 import {
   flexRender,
   getCoreRowModel,
@@ -23,59 +40,41 @@ import {
   getFilteredRowModel,
   getSortedRowModel,
   useReactTable,
-} from '@tanstack/react-table';
+} from "@tanstack/react-table";
 import {
   FilterIcon,
   LinkIcon,
   SparkleIcon,
   UserCircleIcon,
   ZapIcon,
-} from 'lucide-react';
-import Image from 'next/image';
-import { useParams, useRouter, useSearchParams } from 'next/navigation';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-
-import { getFeatures } from '@/actions/feature/list';
-import type { GetFeaturesResponse } from '@/actions/feature/list';
-import { AvatarTooltip } from '@/components/avatar-tooltip';
-import { EmptyState } from '@/components/empty-state';
-import { useFeatureForm } from '@/components/feature-form/use-feature-form';
-import { Header } from '@/components/header';
-import { calculateRice } from '@/lib/rice';
-import type { User } from '@repo/backend/auth';
-import { EververseRole } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
-import type {
-  FeatureStatus,
-  Group,
-  Prisma,
-  Product,
-  Release,
-} from '@repo/backend/prisma/client';
-import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
-import type {
-  ColumnDef,
-  ColumnFiltersState,
-  SortingState,
-  VisibilityState,
-} from '@tanstack/react-table';
-import type { ComponentProps, FormEventHandler } from 'react';
-import { FeatureRiceScore } from '../[feature]/components/feature-rice-score';
-import { FeaturesListFilter } from './features-list-filter';
-import { FeaturesToolbar } from './features-toolbar';
+} from "lucide-react";
+import Image from "next/image";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
+import type { ComponentProps, FormEventHandler } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import type { GetFeaturesResponse } from "@/actions/feature/list";
+import { getFeatures } from "@/actions/feature/list";
+import { AvatarTooltip } from "@/components/avatar-tooltip";
+import { EmptyState } from "@/components/empty-state";
+import { useFeatureForm } from "@/components/feature-form/use-feature-form";
+import { Header } from "@/components/header";
+import { calculateRice } from "@/lib/rice";
+import { FeatureRiceScore } from "../[feature]/components/feature-rice-score";
+import { FeaturesListFilter } from "./features-list-filter";
+import { FeaturesToolbar } from "./features-toolbar";
 
 type FeaturesListProperties = {
   readonly title?: string;
   readonly editable?: boolean;
-  readonly breadcrumbs?: ComponentProps<typeof Header>['breadcrumbs'];
-  readonly statuses: Pick<FeatureStatus, 'color' | 'id' | 'name' | 'order'>[];
+  readonly breadcrumbs?: ComponentProps<typeof Header>["breadcrumbs"];
+  readonly statuses: Pick<FeatureStatus, "color" | "id" | "name" | "order">[];
   readonly query: Partial<Prisma.FeatureWhereInput>;
   readonly count: number;
-  readonly products: Pick<Product, 'emoji' | 'id' | 'name'>[];
-  readonly releases: Pick<Release, 'id' | 'title'>[];
+  readonly products: Pick<Product, "emoji" | "id" | "name">[];
+  readonly releases: Pick<Release, "id" | "title">[];
   readonly groups: Pick<
     Group,
-    'emoji' | 'id' | 'name' | 'parentGroupId' | 'productId'
+    "emoji" | "id" | "name" | "parentGroupId" | "productId"
   >[];
   readonly members: User[];
   readonly role?: string;
@@ -86,35 +85,35 @@ const createColumns = (
   editable: boolean
 ): ColumnDef<GetFeaturesResponse[number]>[] => [
   {
-    id: 'select',
+    id: "select",
     enableSorting: false,
     header: ({ table }) =>
       editable ? (
         <Checkbox
+          aria-label="Select all"
           checked={
             table.getIsAllPageRowsSelected() ||
-            (table.getIsSomePageRowsSelected() && 'indeterminate')
+            (table.getIsSomePageRowsSelected() && "indeterminate")
           }
           onCheckedChange={(value) =>
             table.toggleAllPageRowsSelected(Boolean(value))
           }
-          aria-label="Select all"
         />
       ) : null,
     cell: ({ row }) =>
       editable ? (
         <Checkbox
+          aria-label="Select row"
           checked={row.getIsSelected()}
           onCheckedChange={(value) => row.toggleSelected(Boolean(value))}
-          aria-label="Select row"
         />
       ) : null,
   },
   {
-    accessorKey: 'title',
+    accessorKey: "title",
     sortingFn: (rowA, rowB) =>
       rowA.original.title.localeCompare(rowB.original.title, undefined, {
-        sensitivity: 'base',
+        sensitivity: "base",
       }),
     enableSorting: true,
     header: ({ column }) => (
@@ -128,7 +127,7 @@ const createColumns = (
       }
 
       if (row.original.group?.parentGroupId) {
-        breadcrumbs.push('...');
+        breadcrumbs.push("...");
       }
 
       if (row.original.group) {
@@ -137,20 +136,20 @@ const createColumns = (
 
       return (
         <Link
-          href={`/features/${row.original.id}`}
           className="block max-w-[300px] overflow-hidden"
+          href={`/features/${row.original.id}`}
         >
           <span className="block truncate">{row.original.title}</span>
           <span className="block truncate text-muted-foreground text-xs">
-            {breadcrumbs.join(' / ')}
+            {breadcrumbs.join(" / ")}
           </span>
         </Link>
       );
     },
   },
   {
-    id: 'status',
-    accessorKey: 'status',
+    id: "status",
+    accessorKey: "status",
     sortingFn: (rowA, rowB) =>
       rowA.original.status.order - rowB.original.status.order,
     filterFn: (row, _id, value: string[]) =>
@@ -171,8 +170,8 @@ const createColumns = (
     ),
   },
   {
-    id: 'owner',
-    accessorKey: 'ownerId',
+    id: "owner",
+    accessorKey: "ownerId",
     sortingFn: (rowA, rowB) => {
       const memberA = members.find(
         (member) => member.id === rowA.original.ownerId
@@ -181,10 +180,10 @@ const createColumns = (
         (member) => member.id === rowB.original.ownerId
       );
 
-      const memberAName = memberA ? getUserName(memberA) : '';
-      const memberBName = memberB ? getUserName(memberB) : '';
+      const memberAName = memberA ? getUserName(memberA) : "";
+      const memberBName = memberB ? getUserName(memberB) : "";
 
-      if (!memberAName && !memberBName) {
+      if (!(memberAName || memberBName)) {
         return 0;
       }
 
@@ -197,7 +196,7 @@ const createColumns = (
       }
 
       return memberAName.localeCompare(memberBName, undefined, {
-        sensitivity: 'base',
+        sensitivity: "base",
       });
     },
     filterFn: (row, _id, value: string[]) =>
@@ -208,25 +207,25 @@ const createColumns = (
     ),
     cell: ({ row }) => {
       const member = members.find(({ id }) => id === row.original.ownerId);
-      const name = member ? getUserName(member) : '';
+      const name = member ? getUserName(member) : "";
 
-      if (!member || !name) {
+      if (!(member && name)) {
         return <p className="text-muted-foreground">None</p>;
       }
 
       return (
         <AvatarTooltip
           fallback={name.slice(0, 2).toUpperCase()}
-          title={name}
-          subtitle={member.id}
           src={member.user_metadata.image_url}
+          subtitle={member.id}
+          title={name}
         />
       );
     },
   },
   {
     accessorFn: (row) => row.rice ?? row.aiRice,
-    id: 'rice',
+    id: "rice",
     sortingFn: (rowA, rowB) => {
       const riceA = rowA.original.rice ?? rowA.original.aiRice;
       const riceB = rowB.original.rice ?? rowB.original.aiRice;
@@ -251,15 +250,15 @@ const createColumns = (
             <FeatureRiceScore rice={row.original.aiRice} />
           </div>
         ) : null}
-        {!row.original.rice && !row.original.aiRice ? (
+        {row.original.rice || row.original.aiRice ? null : (
           <p className="text-muted-foreground">None</p>
-        ) : null}
+        )}
       </>
     ),
   },
   {
-    id: 'feedback',
-    accessorKey: '_count.feedback',
+    id: "feedback",
+    accessorKey: "_count.feedback",
     sortingFn: (rowA, rowB) =>
       rowA.original._count.feedback - rowB.original._count.feedback,
     enableSorting: true,
@@ -268,19 +267,19 @@ const createColumns = (
     ),
     cell: ({ row }) => (
       <div className="flex items-center gap-2">
-        <LinkIcon size={16} className="text-muted-foreground" />
+        <LinkIcon className="text-muted-foreground" size={16} />
         {row.original._count.feedback}
       </div>
     ),
   },
   {
-    id: 'portal',
-    accessorKey: 'portalFeature.portalId',
+    id: "portal",
+    accessorKey: "portalFeature.portalId",
     sortingFn: (rowA, rowB) => {
-      const portalA = rowA.original.portalFeature?.portalId ?? '';
-      const portalB = rowB.original.portalFeature?.portalId ?? '';
+      const portalA = rowA.original.portalFeature?.portalId ?? "";
+      const portalB = rowB.original.portalFeature?.portalId ?? "";
 
-      return portalA.localeCompare(portalB, undefined, { sensitivity: 'base' });
+      return portalA.localeCompare(portalB, undefined, { sensitivity: "base" });
     },
     enableSorting: true,
     header: ({ column }) => (
@@ -288,12 +287,12 @@ const createColumns = (
     ),
     cell: ({ row }) =>
       row.original.portalFeature?.portalId ? (
-        <Button size="icon" variant="link" asChild>
+        <Button asChild size="icon" variant="link">
           <a
-            href={`/api/portal?feature=${row.original.id}`}
-            target="_blank"
-            rel="noreferrer"
             aria-label="Portal"
+            href={`/api/portal?feature=${row.original.id}`}
+            rel="noreferrer"
+            target="_blank"
           >
             <ZapIcon size={16} />
           </a>
@@ -301,42 +300,42 @@ const createColumns = (
       ) : null,
   },
   {
-    id: 'connection',
-    accessorKey: 'connection.href',
+    id: "connection",
+    accessorKey: "connection.href",
     sortingFn: (rowA, rowB) => {
-      const portalA = rowA.original.connection?.href ?? '';
-      const portalB = rowB.original.connection?.href ?? '';
+      const portalA = rowA.original.connection?.href ?? "";
+      const portalB = rowB.original.connection?.href ?? "";
 
-      return portalA.localeCompare(portalB, undefined, { sensitivity: 'base' });
+      return portalA.localeCompare(portalB, undefined, { sensitivity: "base" });
     },
     enableSorting: true,
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Link" />
     ),
     cell: ({ row }) => {
-      let featureConnectionSource = '';
+      let featureConnectionSource = "";
 
-      if (row.original.connection?.type === 'GITHUB') {
-        featureConnectionSource = '/github.svg';
-      } else if (row.original.connection?.type === 'JIRA') {
-        featureConnectionSource = '/jira.svg';
-      } else if (row.original.connection?.type === 'LINEAR') {
-        featureConnectionSource = '/linear.svg';
+      if (row.original.connection?.type === "GITHUB") {
+        featureConnectionSource = "/github.svg";
+      } else if (row.original.connection?.type === "JIRA") {
+        featureConnectionSource = "/jira.svg";
+      } else if (row.original.connection?.type === "LINEAR") {
+        featureConnectionSource = "/linear.svg";
       }
 
       return row.original.connection ? (
         <Button asChild size="icon" variant="link">
           <a
-            href={row.original.connection.href}
-            target="_blank"
-            rel="noreferrer"
             aria-label="Connection"
+            href={row.original.connection.href}
+            rel="noreferrer"
+            target="_blank"
           >
             <Image
+              alt=""
+              height={16}
               src={featureConnectionSource}
               width={16}
-              height={16}
-              alt=""
             />
           </a>
         </Button>
@@ -344,17 +343,17 @@ const createColumns = (
     },
   },
   {
-    accessorKey: 'createdAt',
+    accessorKey: "createdAt",
     enableSorting: true,
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Created" />
     ),
     cell: ({ row }) => (
       <p className="whitespace-nowrap text-muted-foreground">
-        {new Date(row.original.createdAt).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric',
+        {new Date(row.original.createdAt).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
         })}
       </p>
     ),
@@ -362,7 +361,7 @@ const createColumns = (
 ];
 
 export const FeaturesList = ({
-  title = 'Features',
+  title = "Features",
   breadcrumbs,
   statuses,
   query,
@@ -378,11 +377,11 @@ export const FeaturesList = ({
   const { show } = useFeatureForm();
   const parameters = useParams();
   const { data, error, fetchNextPage, isFetching } = useInfiniteQuery({
-    queryKey: ['features', query],
+    queryKey: ["features", query],
     queryFn: async ({ pageParam }) => {
       const response = await getFeatures(pageParam, query);
 
-      if ('error' in response) {
+      if ("error" in response) {
         throw response.error;
       }
 
@@ -395,15 +394,15 @@ export const FeaturesList = ({
       firstPageParameter <= 1 ? undefined : firstPageParameter - 1,
   });
   const [sorting, setSorting] = useState<SortingState>([
-    { id: 'createdAt', desc: true },
+    { id: "createdAt", desc: true },
   ]);
   const searchParams = useSearchParams();
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
     searchParams.size
       ? [
           {
-            id: searchParams.get('id') as string,
-            value: JSON.parse(searchParams.get('value') as string),
+            id: searchParams.get("id") as string,
+            value: JSON.parse(searchParams.get("value") as string),
           },
         ]
       : []
@@ -464,18 +463,18 @@ export const FeaturesList = ({
   }, [fetchNextPage, isFetching, totalFetched, totalDbRowCount]);
 
   useEffect(() => {
-    window.addEventListener('scroll', fetchMoreOnBottomReached);
+    window.addEventListener("scroll", fetchMoreOnBottomReached);
 
     return () => {
-      window.removeEventListener('scroll', fetchMoreOnBottomReached);
+      window.removeEventListener("scroll", fetchMoreOnBottomReached);
     };
   }, [fetchMoreOnBottomReached]);
 
   const handleShow = () => {
     const groupId =
-      typeof parameters.group === 'string' ? parameters.group : undefined;
+      typeof parameters.group === "string" ? parameters.group : undefined;
     let productId =
-      typeof parameters.product === 'string' ? parameters.product : undefined;
+      typeof parameters.product === "string" ? parameters.product : undefined;
 
     if (parameters.group) {
       productId =
@@ -503,16 +502,16 @@ export const FeaturesList = ({
   const handleSearch: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const search = formData.get('search') as string;
+    const search = formData.get("search") as string;
 
-    if (search === '-') {
+    if (search === "-") {
       return;
     }
 
     if (search) {
       router.push(`/features/search?query=${encodeURIComponent(search)}`);
     } else {
-      router.push('/features');
+      router.push("/features");
     }
   };
 
@@ -522,13 +521,12 @@ export const FeaturesList = ({
 
   return (
     <>
-      <Header title={title} badge={count} breadcrumbs={breadcrumbs}>
+      <Header badge={count} breadcrumbs={breadcrumbs} title={title}>
         <div className="-m-2 flex flex-1 items-center justify-end gap-2">
           <FeaturesListFilter
+            column={table.getColumn("status")}
             icon={FilterIcon}
-            title="Status"
             options={uniqueStatuses}
-            column={table.getColumn('status')}
             renderItem={(item) => {
               const source = uniqueStatuses.find(
                 (status) => status.value === item.value
@@ -548,18 +546,18 @@ export const FeaturesList = ({
                 </div>
               );
             }}
+            title="Status"
           />
           <FeaturesListFilter
+            column={table.getColumn("owner")}
             icon={UserCircleIcon}
-            title="Owner"
             options={
               members.map((member) => ({
                 label: getUserName(member),
-                value: member.id ?? '',
-                color: '',
+                value: member.id ?? "",
+                color: "",
               })) ?? []
             }
-            column={table.getColumn('owner')}
             renderItem={(item) => {
               const member = members.find(({ id }) => id === item.value);
 
@@ -570,26 +568,27 @@ export const FeaturesList = ({
               return (
                 <div className="flex items-center gap-2">
                   <Image
-                    src={member.user_metadata.image_url}
                     alt=""
-                    width={20}
-                    height={20}
                     className="h-5 w-5 rounded-full object-cover"
+                    height={20}
+                    src={member.user_metadata.image_url}
+                    width={20}
                   />
                   {item.label}
                 </div>
               );
             }}
+            title="Owner"
           />
           <form onSubmit={handleSearch}>
             <Input
+              className="h-8 w-48 bg-background text-xs"
               name="search"
               placeholder="Search"
-              className="h-8 w-48 bg-background text-xs"
             />
           </form>
           {role === EververseRole.Member ? null : (
-            <Button onClick={handleShow} size="sm" className="shrink-0">
+            <Button className="shrink-0" onClick={handleShow} size="sm">
               Create
             </Button>
           )}
@@ -617,9 +616,9 @@ export const FeaturesList = ({
           {table.getRowModel().rows.length > 0 ? (
             table.getRowModel().rows.map((row) => (
               <TableRow
-                key={row.id}
-                data-state={row.getIsSelected() && 'selected'}
                 className="h-[53px]"
+                data-state={row.getIsSelected() && "selected"}
+                key={row.id}
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
@@ -631,12 +630,12 @@ export const FeaturesList = ({
           ) : (
             <TableRow>
               <TableCell
-                colSpan={columns.length}
                 className="h-24 py-16 text-center"
+                colSpan={columns.length}
               >
                 <EmptyState
-                  title="No features found."
                   description="Try adjusting your filters or search query."
+                  title="No features found."
                 />
               </TableCell>
             </TableRow>
@@ -647,12 +646,12 @@ export const FeaturesList = ({
       {table.getFilteredSelectedRowModel().rows.length > 0 && editable ? (
         <FeaturesToolbar
           groups={groups}
+          members={members}
+          onClose={handleToolbarClose}
           products={products}
           releases={releases}
           selected={selectedRows}
           statuses={statuses}
-          onClose={handleToolbarClose}
-          members={members}
         />
       ) : null}
     </>

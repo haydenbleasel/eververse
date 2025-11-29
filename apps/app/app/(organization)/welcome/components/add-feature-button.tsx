@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useFeatureForm } from '@/components/feature-form/use-feature-form';
-import { Button } from '@repo/design-system/components/ui/button';
+import { Button } from "@repo/design-system/components/ui/button";
+import { useFeatureForm } from "@/components/feature-form/use-feature-form";
 
 export const AddFeatureButton = () => {
   const { show } = useFeatureForm();
   const handleShow = () => show();
 
   return (
-    <Button onClick={handleShow} className="w-fit">
+    <Button className="w-fit" onClick={handleShow}>
       Add feature
     </Button>
   );

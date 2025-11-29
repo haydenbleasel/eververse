@@ -1,18 +1,21 @@
-import { cn } from '@repo/design-system/lib/utils';
-import Details from '@tiptap-pro/extension-details';
-import DetailsContent from '@tiptap-pro/extension-details-content';
-import DetailsSummary from '@tiptap-pro/extension-details-summary';
-import Emoji from '@tiptap-pro/extension-emoji';
-import FileHandler from '@tiptap-pro/extension-file-handler';
-import UniqueId from '@tiptap-pro/extension-unique-id';
-import Color from '@tiptap/extension-color';
-import Subscript from '@tiptap/extension-subscript';
-import Superscript from '@tiptap/extension-superscript';
-import Table from '@tiptap/extension-table';
-import TableCell from '@tiptap/extension-table-cell';
-import TableHeader from '@tiptap/extension-table-header';
-import TableRow from '@tiptap/extension-table-row';
-import { Underline } from '@tiptap/extension-underline';
+import { cn } from "@repo/design-system/lib/utils";
+import type { Extension } from "@tiptap/core";
+import Color from "@tiptap/extension-color";
+import Subscript from "@tiptap/extension-subscript";
+import Superscript from "@tiptap/extension-superscript";
+import Table from "@tiptap/extension-table";
+import TableCell from "@tiptap/extension-table-cell";
+import TableHeader from "@tiptap/extension-table-header";
+import TableRow from "@tiptap/extension-table-row";
+import { Underline } from "@tiptap/extension-underline";
+// Not used, but required for older content / migrations
+import Youtube from "@tiptap/extension-youtube";
+import Details from "@tiptap-pro/extension-details";
+import DetailsContent from "@tiptap-pro/extension-details-content";
+import DetailsSummary from "@tiptap-pro/extension-details-summary";
+import Emoji from "@tiptap-pro/extension-emoji";
+import FileHandler from "@tiptap-pro/extension-file-handler";
+import UniqueId from "@tiptap-pro/extension-unique-id";
 import {
   HorizontalRule,
   MarkdownExtension,
@@ -23,29 +26,25 @@ import {
   TiptapImage,
   TiptapLink,
   UpdatedImage,
-} from 'novel/extensions';
-import { Figma } from 'tiptap-extension-figma';
-import { Iframely } from 'tiptap-extension-iframely';
-import { Jira } from 'tiptap-extension-jira';
-import { codeBlock } from '../../components/plugins/code-block';
-import { colorHighlighter } from '../../components/plugins/color-highlighter';
-import { emojiSuggestion } from '../../components/plugins/emoji';
-import { feedbackFeatureMark } from '../../components/plugins/feedback-feature-mark';
-import { fileNode } from '../../components/plugins/file';
-import { startImageUpload, uploadImagesPlugin } from '../../lib/upload-file';
-
-import type { Extension } from '@tiptap/core';
-// Not used, but required for older content / migrations
-import Youtube from '@tiptap/extension-youtube';
+} from "novel/extensions";
+import { Figma } from "tiptap-extension-figma";
+import { Iframely } from "tiptap-extension-iframely";
+import { Jira } from "tiptap-extension-jira";
+import { codeBlock } from "../../components/plugins/code-block";
+import { colorHighlighter } from "../../components/plugins/color-highlighter";
+import { emojiSuggestion } from "../../components/plugins/emoji";
+import { feedbackFeatureMark } from "../../components/plugins/feedback-feature-mark";
+import { fileNode } from "../../components/plugins/file";
+import { startImageUpload, uploadImagesPlugin } from "../../lib/upload-file";
 
 const placeholder = Placeholder;
 
 const tiptapLink = TiptapLink.configure({
   HTMLAttributes: {
     class: cn(
-      'cursor-pointer text-muted-foreground underline underline-offset-[3px] transition-colors',
-      'hover:text-violet-500',
-      'dark:hover:text-violet-400'
+      "cursor-pointer text-muted-foreground underline underline-offset-[3px] transition-colors",
+      "hover:text-violet-500",
+      "dark:hover:text-violet-400"
     ),
   },
 });
@@ -57,39 +56,39 @@ const tiptapImage = TiptapImage.extend({
 }).configure({
   allowBase64: true,
   HTMLAttributes: {
-    class: 'rounded-lg border',
+    class: "rounded-lg border",
   },
 });
 
 const updatedImage = UpdatedImage.configure({
   HTMLAttributes: {
-    class: 'rounded-lg border',
+    class: "rounded-lg border",
   },
 });
 
 const taskList = TaskList.configure({
   HTMLAttributes: {
-    class: 'not-prose pl-2',
+    class: "not-prose pl-2",
   },
 });
 
 const taskItem = TaskItem.configure({
   HTMLAttributes: {
-    class: 'flex items-start my-2',
+    class: "flex items-start my-2",
   },
   nested: true,
 });
 
 const horizontalRule = HorizontalRule.configure({
   HTMLAttributes: {
-    class: 'mt-4 mb-6 border-t',
+    class: "mt-4 mb-6 border-t",
   },
 });
 
 const table = Table.configure({
   HTMLAttributes: {
     class:
-      'table-fixed m-0 overflow-hidden mx-auto my-3 border-collapse rounded-none',
+      "table-fixed m-0 overflow-hidden mx-auto my-3 border-collapse rounded-none",
   },
   allowTableNodeSelection: true,
 });
@@ -97,21 +96,21 @@ const table = Table.configure({
 const tableRow = TableRow.configure({
   HTMLAttributes: {
     class:
-      'border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1',
+      "border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1",
   },
 });
 
 const tableCell = TableCell.configure({
   HTMLAttributes: {
     class:
-      'border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1',
+      "border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1",
   },
 });
 
 const tableHeader = TableHeader.configure({
   HTMLAttributes: {
     class:
-      'bg-background font-semibold border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1',
+      "bg-background font-semibold border box-border min-w-[1em] py-2 px-1 relative align-top text-start !py-1",
   },
 });
 
@@ -120,7 +119,7 @@ const youtube = Youtube.configure({
 });
 
 const uniqueId = UniqueId.configure({
-  attributeName: 'uid',
+  attributeName: "uid",
 });
 
 const emoji = Emoji.configure({
@@ -160,34 +159,34 @@ const fileHandler = FileHandler.configure({
 const starterKit = StarterKit.configure({
   bulletList: {
     HTMLAttributes: {
-      class: 'list-disc list-outside leading-3',
+      class: "list-disc list-outside leading-3",
     },
   },
   orderedList: {
     HTMLAttributes: {
-      class: 'list-decimal list-outside leading-3',
+      class: "list-decimal list-outside leading-3",
     },
   },
   listItem: {
     HTMLAttributes: {
-      class: 'leading-normal -mb-2',
+      class: "leading-normal -mb-2",
     },
   },
   blockquote: {
     HTMLAttributes: {
-      class: 'border-l-4 border-primary',
+      class: "border-l-4 border-primary",
     },
   },
   codeBlock: false,
   code: {
     HTMLAttributes: {
-      class: 'rounded-md px-1.5 py-1 font-mono font-medium bg-background',
-      spellcheck: 'false',
+      class: "rounded-md px-1.5 py-1 font-mono font-medium bg-background",
+      spellcheck: "false",
     },
   },
   horizontalRule: false,
   dropcursor: {
-    color: '#DBEAFE',
+    color: "#DBEAFE",
     width: 4,
   },
   history: false,

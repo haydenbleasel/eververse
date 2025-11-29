@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useId } from 'react';
-import type { ChangeEventHandler, ComponentProps } from 'react';
-import { Input as InputComponent } from '../ui/input';
-import { Label } from '../ui/label';
+import type { ChangeEventHandler, ComponentProps } from "react";
+import { useId } from "react";
+import { Input as InputComponent } from "../ui/input";
+import { Label } from "../ui/label";
 
-type InputProperties = Omit<ComponentProps<typeof InputComponent>, 'id'> & {
+type InputProperties = Omit<ComponentProps<typeof InputComponent>, "id"> & {
   readonly label?: string;
   readonly onChangeText?: (value: string) => void;
   readonly caption?: string;

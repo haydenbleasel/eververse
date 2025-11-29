@@ -1,11 +1,11 @@
-import { OrDivider } from '@/components/or-divider';
-import type { AtlassianInstallation } from '@repo/backend/prisma/client';
-import { Button } from '@repo/design-system/components/ui/button';
-import { JiraIssueCreator } from './jira-issue-creator';
-import { JiraIssuePicker } from './jira-issue-picker';
+import type { AtlassianInstallation } from "@repo/backend/prisma/client";
+import { Button } from "@repo/design-system/components/ui/button";
+import { OrDivider } from "@/components/or-divider";
+import { JiraIssueCreator } from "./jira-issue-creator";
+import { JiraIssuePicker } from "./jira-issue-picker";
 
 type JiraSelectorProperties = {
-  readonly jiraAccessToken: AtlassianInstallation['accessToken'] | undefined;
+  readonly jiraAccessToken: AtlassianInstallation["accessToken"] | undefined;
 };
 
 export const JiraSelector = ({ jiraAccessToken }: JiraSelectorProperties) => {
@@ -14,8 +14,8 @@ export const JiraSelector = ({ jiraAccessToken }: JiraSelectorProperties) => {
       <Button asChild>
         <a
           href="/settings/integrations/jira"
-          target="_blank"
           rel="noopener noreferrer"
+          target="_blank"
         >
           Install Jira app
         </a>

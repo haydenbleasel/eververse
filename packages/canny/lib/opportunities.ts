@@ -1,4 +1,4 @@
-import ky from 'ky';
+import ky from "ky";
 
 export type CannyOpportunity = {
   id: string;
@@ -16,7 +16,7 @@ export const fetchCannyOpportunities = async (
   limit = 10_000
 ): Promise<CannyOpportunity[]> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/opportunities/list', {
+    .post("https://canny.io/api/v1/opportunities/list", {
       json: {
         apiKey,
         limit,
@@ -33,7 +33,7 @@ export const fetchCannyOpportunities = async (
         }
     >();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 

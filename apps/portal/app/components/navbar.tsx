@@ -1,12 +1,12 @@
-import { ModeToggle } from '@/app/components/mode-toggle';
-import { getSlug } from '@/lib/slug';
-import { database } from '@repo/backend/database';
-import { Container } from '@repo/design-system/components/container';
-import { Link } from '@repo/design-system/components/link';
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
-import { CreateIdeaForm } from './create-idea-form';
-import { Tabs } from './tabs';
+import { database } from "@repo/backend/database";
+import { Container } from "@repo/design-system/components/container";
+import { Link } from "@repo/design-system/components/link";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { ModeToggle } from "@/app/components/mode-toggle";
+import { getSlug } from "@/lib/slug";
+import { CreateIdeaForm } from "./create-idea-form";
+import { Tabs } from "./tabs";
 
 export const Navbar = async () => {
   const slug = await getSlug();
@@ -39,11 +39,11 @@ export const Navbar = async () => {
           <Link className="flex items-center gap-3" href="/">
             {portal.organization.logoUrl ? (
               <Image
-                src={portal.organization.logoUrl}
                 alt=""
-                width={32}
-                height={32}
                 className="h-8 w-8 overflow-hidden rounded object-cover"
+                height={32}
+                src={portal.organization.logoUrl}
+                width={32}
               />
             ) : (
               <div className="h-8 w-8 rounded bg-muted" />
@@ -53,7 +53,7 @@ export const Navbar = async () => {
           <div className="flex items-center gap-2">
             <ModeToggle />
             {portal.organization.stripeSubscriptionId ? (
-              <CreateIdeaForm slug={slug} orgName={portal.name} />
+              <CreateIdeaForm orgName={portal.name} slug={slug} />
             ) : null}
           </div>
         </nav>

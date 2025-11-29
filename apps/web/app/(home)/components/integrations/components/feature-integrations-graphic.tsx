@@ -1,20 +1,19 @@
-'use client';
+"use client";
 
+import { cn } from "@repo/design-system/lib/utils";
 import {
-  LazyMotion,
   domMax,
+  LazyMotion,
   m,
   useDragControls,
   useInView,
-} from 'motion/react';
-import Image from 'next/image';
-import { useRef, useState } from 'react';
+} from "motion/react";
+import Image from "next/image";
+import { useRef, useState } from "react";
 
-import { cn } from '@repo/design-system/lib/utils';
-
-const github = '/github.svg';
-const linear = '/linear.svg';
-const jira = '/jira.svg';
+const github = "/github.svg";
+const linear = "/linear.svg";
+const jira = "/jira.svg";
 
 const items: {
   name: string;
@@ -24,60 +23,60 @@ const items: {
   top: string;
 }[] = [
   {
-    name: 'Optimize for mobile',
-    issue: '#105',
+    name: "Optimize for mobile",
+    issue: "#105",
     image: github,
-    left: '60%',
-    top: '-5%',
+    left: "60%",
+    top: "-5%",
   },
   {
-    name: 'Add dark mode',
-    issue: 'EVE-15',
+    name: "Add dark mode",
+    issue: "EVE-15",
     image: linear,
-    left: '10%',
-    top: '10%',
+    left: "10%",
+    top: "10%",
   },
   {
-    name: 'Redesign checkout flow',
-    issue: 'KAN-12',
+    name: "Redesign checkout flow",
+    issue: "KAN-12",
     image: jira,
-    left: '50%',
-    top: '20%',
+    left: "50%",
+    top: "20%",
   },
   {
-    name: 'New pricing plans',
-    issue: '#514',
+    name: "New pricing plans",
+    issue: "#514",
     image: github,
-    left: '20%',
-    top: '35%',
+    left: "20%",
+    top: "35%",
   },
   {
-    name: 'New dashboard',
-    issue: 'EVE-21',
+    name: "New dashboard",
+    issue: "EVE-21",
     image: linear,
-    left: '70%',
-    top: '50%',
+    left: "70%",
+    top: "50%",
   },
   {
-    name: 'Revise onboarding flow',
-    issue: 'KAN-145',
+    name: "Revise onboarding flow",
+    issue: "KAN-145",
     image: jira,
-    left: '-2%',
-    top: '60%',
+    left: "-2%",
+    top: "60%",
   },
   {
-    name: 'Refactor backend code',
-    issue: '#22',
+    name: "Refactor backend code",
+    issue: "#22",
     image: github,
-    left: '50%',
-    top: '70%',
+    left: "50%",
+    top: "70%",
   },
   {
-    name: 'Improve SEO',
-    issue: 'EVE-91',
+    name: "Improve SEO",
+    issue: "EVE-91",
     image: linear,
-    left: '10%',
-    top: '85%',
+    left: "10%",
+    top: "85%",
   },
 ];
 
@@ -96,26 +95,26 @@ const Draggable = ({
 
   return (
     <m.div
-      className={cn(
-        'absolute flex shrink-0 items-center gap-3 whitespace-nowrap rounded-full border bg-card p-3 pr-5 font-medium',
-        dragging ? 'cursor-grabbing' : 'cursor-grab'
-      )}
-      style={{ left, top }}
-      initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: index * 0.25, bounce: 0.5, type: 'spring' }}
+      className={cn(
+        "absolute flex shrink-0 items-center gap-3 whitespace-nowrap rounded-full border bg-card p-3 pr-5 font-medium",
+        dragging ? "cursor-grabbing" : "cursor-grab"
+      )}
       drag
-      onDragStart={() => setDragging(true)}
-      onDragEnd={() => setDragging(false)}
-      dragControls={controls}
       dragConstraints={{
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
       }}
+      dragControls={controls}
+      initial={{ opacity: 0, scale: 0.5 }}
+      onDragEnd={() => setDragging(false)}
+      onDragStart={() => setDragging(true)}
+      style={{ left, top }}
+      transition={{ delay: index * 0.25, bounce: 0.5, type: "spring" }}
     >
-      <Image src={image} alt="" width={24} height={24} className="shrink-0" />
+      <Image alt="" className="shrink-0" height={24} src={image} width={24} />
       <div className="flex items-center gap-2 truncate">
         <p className="text-muted-foreground text-sm">{issue}</p>
         <p className="text-sm">{name}</p>
@@ -126,7 +125,7 @@ const Draggable = ({
 
 export const FeatureIntegrationsGraphic = () => {
   const reference = useRef<HTMLDivElement>(null);
-  const inView = useInView(reference, { once: true, amount: 'all' });
+  const inView = useInView(reference, { once: true, amount: "all" });
 
   if (!inView) {
     return <div ref={reference} />;

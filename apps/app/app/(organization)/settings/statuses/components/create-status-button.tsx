@@ -1,21 +1,21 @@
-'use client';
+"use client";
 
-import { createStatus } from '@/actions/feature-status/create';
-import { Dialog } from '@repo/design-system/components/precomposed/dialog';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { Switch } from '@repo/design-system/components/precomposed/switch';
-import { Button } from '@repo/design-system/components/ui/button';
-import { Label } from '@repo/design-system/components/ui/label';
-import { colors } from '@repo/design-system/lib/colors';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useId, useState } from 'react';
-import { FeatureStatusColorPicker } from './feature-status-color-picker';
+import { Dialog } from "@repo/design-system/components/precomposed/dialog";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { Switch } from "@repo/design-system/components/precomposed/switch";
+import { Button } from "@repo/design-system/components/ui/button";
+import { Label } from "@repo/design-system/components/ui/label";
+import { colors } from "@repo/design-system/lib/colors";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useId, useState } from "react";
+import { createStatus } from "@/actions/feature-status/create";
+import { FeatureStatusColorPicker } from "./feature-status-color-picker";
 
 export const CreateStatusButton = () => {
   const _id = useId();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [color, setColor] = useState<string>(colors.gray);
   const [complete, setComplete] = useState(false);
 
@@ -31,7 +31,7 @@ export const CreateStatusButton = () => {
         throw new Error(error);
       }
 
-      setName('');
+      setName("");
       setColor(colors.gray);
       setComplete(false);
       setOpen(false);
@@ -46,36 +46,36 @@ export const CreateStatusButton = () => {
 
   return (
     <Dialog
-      open={open}
-      onOpenChange={setOpen}
-      title="Create a new status"
-      description="A status is a way to categorize your features. For example, you can use statuses to indicate whether a feature is in development, in review, or launched."
       cta="Create status"
-      onClick={handleSave}
+      description="A status is a way to categorize your features. For example, you can use statuses to indicate whether a feature is in development, in review, or launched."
       disabled={loading}
+      onClick={handleSave}
+      onOpenChange={setOpen}
+      open={open}
+      title="Create a new status"
       trigger={<Button variant="outline">Create status</Button>}
     >
       <div className="my-4 space-y-2">
         <Input
+          autoComplete="off"
           label="Name"
+          maxLength={191}
+          onChangeText={setName}
+          placeholder="In development"
           required
           value={name}
-          placeholder="In development"
-          onChangeText={setName}
-          maxLength={191}
-          autoComplete="off"
         />
         <div className="space-y-1.5">
           <Label htmlFor="color">Color</Label>
           <div>
-            <FeatureStatusColorPicker value={color} onChange={setColor} />
+            <FeatureStatusColorPicker onChange={setColor} value={color} />
           </div>
         </div>
         <Switch
           checked={complete}
-          onCheckedChange={setComplete}
-          label="Complete"
           description="Features with this status are considered complete"
+          label="Complete"
+          onCheckedChange={setComplete}
         />
       </div>
     </Dialog>

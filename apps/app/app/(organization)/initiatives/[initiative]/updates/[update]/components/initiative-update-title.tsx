@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { updateInitiativeUpdate } from '@/actions/initiative-update/update';
-import { DocumentInput } from '@/components/document-input';
-import type { InitiativeUpdate } from '@repo/backend/prisma/client';
-import { handleError } from '@repo/design-system/lib/handle-error';
+import type { InitiativeUpdate } from "@repo/backend/prisma/client";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { updateInitiativeUpdate } from "@/actions/initiative-update/update";
+import { DocumentInput } from "@/components/document-input";
 
 type InitiativeUpdateTitleProperties = {
-  readonly initiativeUpdateId: InitiativeUpdate['id'];
-  readonly defaultTitle: InitiativeUpdate['title'];
+  readonly initiativeUpdateId: InitiativeUpdate["id"];
+  readonly defaultTitle: InitiativeUpdate["title"];
   readonly editable: boolean;
 };
 
@@ -30,10 +30,10 @@ export const InitiativeUpdateTitle = ({
 
   return (
     <DocumentInput
-      defaultValue={defaultTitle}
-      onDebouncedUpdate={handleDebouncedUpdate}
-      disabled={!editable}
       className="text-3xl"
+      defaultValue={defaultTitle}
+      disabled={!editable}
+      onDebouncedUpdate={handleDebouncedUpdate}
     />
   );
 };

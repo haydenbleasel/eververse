@@ -1,18 +1,18 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import type { Feature, FeatureRice } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { EververseRole } from "@repo/backend/auth";
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import type { Feature, FeatureRice } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 type UpdateRiceProperties = {
-  featureId: Feature['id'];
-  reach: FeatureRice['reach'] | undefined;
-  impact: FeatureRice['impact'] | undefined;
-  confidence: FeatureRice['confidence'] | undefined;
-  effort: FeatureRice['effort'] | undefined;
+  featureId: Feature["id"];
+  reach: FeatureRice["reach"] | undefined;
+  impact: FeatureRice["impact"] | undefined;
+  confidence: FeatureRice["confidence"] | undefined;
+  effort: FeatureRice["effort"] | undefined;
 };
 
 export const updateRice = async ({
@@ -30,8 +30,8 @@ export const updateRice = async ({
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('Not logged in');
+    if (!(user && organizationId)) {
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
@@ -59,7 +59,7 @@ export const updateRice = async ({
       },
     });
 
-    revalidatePath('/features');
+    revalidatePath("/features");
     revalidatePath(`/features/${featureId}`);
 
     return {};

@@ -1,14 +1,14 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId } from '@repo/backend/auth/utils';
-import type { FeatureStatus, PortalStatus } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId } from "@repo/backend/auth/utils";
+import type { FeatureStatus, PortalStatus } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const updatePortalStatusMapping = async (
-  featureStatusId: FeatureStatus['id'],
-  portalStatusId: PortalStatus['id']
+  featureStatusId: FeatureStatus["id"],
+  portalStatusId: PortalStatus["id"]
 ): Promise<{
   error?: string;
 }> => {
@@ -16,7 +16,7 @@ export const updatePortalStatusMapping = async (
     const organizationId = await currentOrganizationId();
 
     if (!organizationId) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     const portal = await database.portal.findFirst({
@@ -26,14 +26,14 @@ export const updatePortalStatusMapping = async (
     });
 
     if (!portal) {
-      throw new Error('Portal not found');
+      throw new Error("Portal not found");
     }
 
     const existingMapping = await database.portalStatusMapping.findFirst({
       where: { featureStatusId },
     });
 
-    if (portalStatusId === 'unmapped' && existingMapping) {
+    if (portalStatusId === "unmapped" && existingMapping) {
       await database.portalStatusMapping.delete({
         where: { id: existingMapping.id },
       });
@@ -53,7 +53,7 @@ export const updatePortalStatusMapping = async (
       });
     }
 
-    revalidatePath('/settings/portal');
+    revalidatePath("/settings/portal");
 
     return {};
   } catch (error) {

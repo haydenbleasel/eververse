@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
 const Canvas = dynamic(
   async () => {
     const component = await import(
       /* webpackChunkName: "canvas" */
-      '@repo/canvas'
+      "@repo/canvas"
     );
 
     return component.Canvas;
@@ -15,5 +15,5 @@ const Canvas = dynamic(
 );
 
 export const CanvasGraphic = () => (
-  <Canvas autoFocus={false} theme="dark" editable />
+  <Canvas autoFocus={false} editable theme="dark" />
 );

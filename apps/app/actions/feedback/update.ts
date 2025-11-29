@@ -1,15 +1,15 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentUser } from '@repo/backend/auth/utils';
-import type { Feedback } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { EververseRole } from "@repo/backend/auth";
+import { currentUser } from "@repo/backend/auth/utils";
+import type { Feedback } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const updateFeedback = async (
-  feedbackId: Feedback['id'],
-  data: Omit<Partial<Feedback>, 'content' | 'transcript'> & {
+  feedbackId: Feedback["id"],
+  data: Omit<Partial<Feedback>, "content" | "transcript"> & {
     content?: object;
   }
 ): Promise<
@@ -17,14 +17,14 @@ export const updateFeedback = async (
       error: string;
     }
   | {
-      id: Feedback['id'] | undefined;
+      id: Feedback["id"] | undefined;
     }
 > => {
   try {
     const user = await currentUser();
 
     if (!user) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
@@ -32,7 +32,7 @@ export const updateFeedback = async (
     }
 
     // If we're updating the content, we need to reset the feedback analysis data
-    if ('content' in data) {
+    if ("content" in data) {
       data.processed = false;
       data.aiSentiment = null;
       data.aiSentimentReason = null;
@@ -52,7 +52,7 @@ export const updateFeedback = async (
 
     const nextFeedback = await database.feedback.findFirst({
       where: { processed: false },
-      orderBy: { createdAt: 'desc' },
+      orderBy: { createdAt: "desc" },
       select: { id: true },
     });
     return { id: nextFeedback?.id };

@@ -2,7 +2,7 @@ const applyModifier = (
   node: unknown,
   modifier: (n: unknown) => unknown
 ): unknown => {
-  if (typeof node !== 'object' || node === null) {
+  if (typeof node !== "object" || node === null) {
     return node;
   }
 
@@ -12,7 +12,7 @@ const applyModifier = (
 
   const modifiedNode = modifier(node);
 
-  if (typeof modifiedNode === 'object' && modifiedNode !== null) {
+  if (typeof modifiedNode === "object" && modifiedNode !== null) {
     return Object.fromEntries(
       Object.entries(modifiedNode)
         .map(([key, value]) => [key, applyModifier(value, modifier)])
@@ -24,21 +24,21 @@ const applyModifier = (
 };
 
 const isNodeOfType = (node: unknown, types: string[]): boolean =>
-  typeof node === 'object' &&
+  typeof node === "object" &&
   node !== null &&
-  'type' in node &&
-  typeof node.type === 'string' &&
+  "type" in node &&
+  typeof node.type === "string" &&
   types.includes(node.type);
 
 const hasAttrs = (node: unknown): node is { attrs: Record<string, unknown> } =>
-  typeof node === 'object' &&
+  typeof node === "object" &&
   node !== null &&
-  'attrs' in node &&
-  typeof node.attrs === 'object' &&
+  "attrs" in node &&
+  typeof node.attrs === "object" &&
   node.attrs !== null;
 
 const removeBulletListAttrs = (node: unknown): unknown => {
-  if (isNodeOfType(node, ['bulletList'])) {
+  if (isNodeOfType(node, ["bulletList"])) {
     const { attrs, ...rest } = node as {
       attrs?: unknown;
       [key: string]: unknown;
@@ -49,7 +49,7 @@ const removeBulletListAttrs = (node: unknown): unknown => {
 };
 
 const replaceOrderedListAttrs = (node: unknown): unknown => {
-  if (isNodeOfType(node, ['orderedList']) && hasAttrs(node)) {
+  if (isNodeOfType(node, ["orderedList"]) && hasAttrs(node)) {
     const { start, tight, ...restAttrs } = node.attrs;
     return { ...node, attrs: { ...restAttrs, order: start } };
   }
@@ -58,31 +58,31 @@ const replaceOrderedListAttrs = (node: unknown): unknown => {
 
 const replaceMarkAttributes = (node: unknown): unknown => {
   if (
-    isNodeOfType(node, ['text']) &&
-    typeof node === 'object' &&
+    isNodeOfType(node, ["text"]) &&
+    typeof node === "object" &&
     node !== null &&
-    'marks' in node &&
+    "marks" in node &&
     Array.isArray(node.marks)
   ) {
     const updatedMarks = node.marks
       .map((mark: unknown) => {
-        if (typeof mark === 'object' && mark !== null && 'type' in mark) {
+        if (typeof mark === "object" && mark !== null && "type" in mark) {
           if (
-            mark.type === 'textColor' &&
-            'attrs' in mark &&
+            mark.type === "textColor" &&
+            "attrs" in mark &&
             Object.keys(mark.attrs as object).length === 0
           ) {
             return null;
           }
           switch (mark.type) {
-            case 'bold':
-              return { ...mark, type: 'strong' };
-            case 'italic':
-              return { ...mark, type: 'em' };
-            case 'superscript':
-              return { ...mark, type: 'subsup', attrs: { type: 'sup' } };
-            case 'subscript':
-              return { ...mark, type: 'subsup', attrs: { type: 'sub' } };
+            case "bold":
+              return { ...mark, type: "strong" };
+            case "italic":
+              return { ...mark, type: "em" };
+            case "superscript":
+              return { ...mark, type: "subsup", attrs: { type: "sup" } };
+            case "subscript":
+              return { ...mark, type: "subsup", attrs: { type: "sub" } };
             default:
               return mark;
           }
@@ -103,21 +103,21 @@ const replaceMarkAttributes = (node: unknown): unknown => {
 
 const setDefaultCodeBlockLanguage = (node: unknown): unknown => {
   if (
-    isNodeOfType(node, ['codeBlock']) &&
+    isNodeOfType(node, ["codeBlock"]) &&
     hasAttrs(node) &&
-    'language' in node.attrs &&
+    "language" in node.attrs &&
     node.attrs.language === null
   ) {
     return {
       ...node,
-      attrs: { ...node.attrs, language: 'javascript' },
+      attrs: { ...node.attrs, language: "javascript" },
     };
   }
   return node;
 };
 
 const removeIncompatibleNodes = (node: unknown): unknown => {
-  if (isNodeOfType(node, ['image', 'file', 'youtube', 'iframely', 'figma'])) {
+  if (isNodeOfType(node, ["image", "file", "youtube", "iframely", "figma"])) {
     return null;
   }
   return node;
@@ -125,9 +125,9 @@ const removeIncompatibleNodes = (node: unknown): unknown => {
 
 const setEmptyColwidth = (node: unknown): unknown => {
   if (
-    isNodeOfType(node, ['tableHeader', 'tableCell']) &&
+    isNodeOfType(node, ["tableHeader", "tableCell"]) &&
     hasAttrs(node) &&
-    'colwidth' in node.attrs &&
+    "colwidth" in node.attrs &&
     node.attrs.colwidth === null
   ) {
     return {
@@ -139,15 +139,15 @@ const setEmptyColwidth = (node: unknown): unknown => {
 };
 
 const replaceHorizontalRule = (node: unknown): unknown => {
-  if (isNodeOfType(node, ['horizontalRule'])) {
-    return { type: 'rule' };
+  if (isNodeOfType(node, ["horizontalRule"])) {
+    return { type: "rule" };
   }
   return node;
 };
 
 const removeEmptyParagraphs = (node: unknown): unknown => {
   if (
-    isNodeOfType(node, ['paragraph']) &&
+    isNodeOfType(node, ["paragraph"]) &&
     Object.keys(node as object).length === 1
   ) {
     return null;
@@ -157,20 +157,20 @@ const removeEmptyParagraphs = (node: unknown): unknown => {
 
 const removeLinkAttributes = (node: unknown): unknown => {
   if (
-    isNodeOfType(node, ['text']) &&
-    typeof node === 'object' &&
+    isNodeOfType(node, ["text"]) &&
+    typeof node === "object" &&
     node !== null &&
-    'marks' in node &&
+    "marks" in node &&
     Array.isArray(node.marks)
   ) {
     const updatedMarks = node.marks.map((mark: unknown) => {
       if (
-        typeof mark === 'object' &&
+        typeof mark === "object" &&
         mark !== null &&
-        'type' in mark &&
-        mark.type === 'link' &&
-        'attrs' in mark &&
-        typeof mark.attrs === 'object' &&
+        "type" in mark &&
+        mark.type === "link" &&
+        "attrs" in mark &&
+        typeof mark.attrs === "object" &&
         mark.attrs !== null
       ) {
         const {
@@ -196,10 +196,10 @@ const removeLinkAttributes = (node: unknown): unknown => {
 
 const convertEmojiAttributes = (node: unknown): unknown => {
   if (
-    isNodeOfType(node, ['emoji']) &&
+    isNodeOfType(node, ["emoji"]) &&
     hasAttrs(node) &&
-    'name' in node.attrs &&
-    typeof node.attrs.name === 'string'
+    "name" in node.attrs &&
+    typeof node.attrs.name === "string"
   ) {
     const { name, ...restAttrs } = node.attrs;
     return {

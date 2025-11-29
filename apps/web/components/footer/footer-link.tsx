@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { Link } from '@repo/design-system/components/link';
-import { cn } from '@repo/design-system/lib/utils';
-import { usePathname } from 'next/navigation';
+import { Link } from "@repo/design-system/components/link";
+import { cn } from "@repo/design-system/lib/utils";
+import { usePathname } from "next/navigation";
 
 type FooterLinkProperties = {
   readonly href: string;
@@ -15,11 +15,11 @@ export const FooterLink = ({ href, name }: FooterLinkProperties) => {
 
   return (
     <Link
-      href={href}
       className={cn(
-        'text-foreground text-sm hover:underline',
-        active && 'underline'
+        "text-foreground text-sm hover:underline",
+        active && "underline"
       )}
+      href={href}
     >
       {name}
     </Link>

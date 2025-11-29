@@ -1,8 +1,8 @@
-import { database } from '@/lib/database';
-import data from '@emoji-mart/data';
-import { faker } from '@faker-js/faker';
-import type { Prisma } from '@repo/backend/prisma/client';
-import { textToContent } from '@repo/editor/lib/tiptap';
+import data from "@emoji-mart/data";
+import { faker } from "@faker-js/faker";
+import type { Prisma } from "@repo/backend/prisma/client";
+import { textToContent } from "@repo/editor/lib/tiptap";
+import { database } from "@/lib/database";
 
 const castedData = data as { emojis: Record<string, string> };
 const emojis = Object.keys(castedData.emojis);
@@ -238,10 +238,10 @@ export const createExampleReleases = async (
       endAt: faker.date.soon({ days: 60 }),
       startAt: faker.date.recent({ days: 30 }),
       state: faker.helpers.arrayElement([
-        'PLANNED',
-        'ACTIVE',
-        'COMPLETED',
-        'CANCELLED',
+        "PLANNED",
+        "ACTIVE",
+        "COMPLETED",
+        "CANCELLED",
       ]),
     })),
     skipDuplicates: true,
@@ -276,10 +276,10 @@ export const createExampleInitiatives = async (
         ownerId: userId,
         emoji: faker.helpers.arrayElement(emojis),
         state: faker.helpers.arrayElement([
-          'PLANNED',
-          'ACTIVE',
-          'COMPLETED',
-          'CANCELLED',
+          "PLANNED",
+          "ACTIVE",
+          "COMPLETED",
+          "CANCELLED",
         ]),
         products: {
           connect: productIds.map((id) => ({ id })),

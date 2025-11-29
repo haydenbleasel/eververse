@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import { updateFeature } from '@/actions/feature/update';
-import { CanvasSkeleton } from '@/components/skeletons/canvas';
-import type { CanvasState } from '@repo/canvas';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useTheme } from 'next-themes';
-import dynamic from 'next/dynamic';
+import type { CanvasState } from "@repo/canvas";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import dynamic from "next/dynamic";
+import { useTheme } from "next-themes";
+import { updateFeature } from "@/actions/feature/update";
+import { CanvasSkeleton } from "@/components/skeletons/canvas";
 
 const Canvas = dynamic(
   async () => {
     const component = await import(
       /* webpackChunkName: "canvas" */
-      '@repo/canvas'
+      "@repo/canvas"
     );
 
     return component.Canvas;
@@ -44,10 +44,10 @@ export const FeatureCanvasLoader = ({
 
   return (
     <Canvas
-      theme={theme as 'dark' | 'light' | undefined}
-      onSave={handleSave}
       defaultValue={defaultValue}
       editable={editable}
+      onSave={handleSave}
+      theme={theme as "dark" | "light" | undefined}
     />
   );
 };

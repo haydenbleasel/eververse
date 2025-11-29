@@ -1,5 +1,5 @@
-import { Badge } from '@repo/design-system/components/ui/badge';
-import { Button } from '@repo/design-system/components/ui/button';
+import { Badge } from "@repo/design-system/components/ui/badge";
+import { Button } from "@repo/design-system/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -8,17 +8,17 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from '@repo/design-system/components/ui/command';
+} from "@repo/design-system/components/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@repo/design-system/components/ui/popover';
-import { Separator } from '@repo/design-system/components/ui/separator';
-import { cn } from '@repo/design-system/lib/utils';
-import type { Column } from '@tanstack/react-table';
-import { CheckIcon } from 'lucide-react';
-import type { ReactNode } from 'react';
+} from "@repo/design-system/components/ui/popover";
+import { Separator } from "@repo/design-system/components/ui/separator";
+import { cn } from "@repo/design-system/lib/utils";
+import type { Column } from "@tanstack/react-table";
+import { CheckIcon } from "lucide-react";
+import type { ReactNode } from "react";
 
 type Option = {
   label: string;
@@ -47,26 +47,26 @@ export const FeaturesListFilter = <TData, TValue>({
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant="outline"
-          size="sm"
           className="flex h-8 shrink-0 items-center gap-2 border-dashed"
+          size="sm"
+          variant="outline"
         >
-          <Icon size={16} className="shrink-0" />
+          <Icon className="shrink-0" size={16} />
           {title}
           {selectedValues.size > 0 && (
             <>
-              <Separator orientation="vertical" className="h-4" />
+              <Separator className="h-4" orientation="vertical" />
               <Badge
-                variant="secondary"
                 className="rounded-sm px-1 font-normal lg:hidden"
+                variant="secondary"
               >
                 {selectedValues.size}
               </Badge>
               <div className="hidden space-x-1 lg:flex">
                 {selectedValues.size > 2 ? (
                   <Badge
-                    variant="secondary"
                     className="rounded-sm px-1 font-normal"
+                    variant="secondary"
                   >
                     {selectedValues.size} selected
                   </Badge>
@@ -75,9 +75,9 @@ export const FeaturesListFilter = <TData, TValue>({
                     .filter((option) => selectedValues.has(option.value))
                     .map((option) => (
                       <Badge
-                        variant="secondary"
-                        key={option.value}
                         className="flex items-center gap-1.5 rounded-sm px-1 font-normal"
+                        key={option.value}
+                        variant="secondary"
                       >
                         {renderItem ? renderItem(option) : option.label}
                       </Badge>
@@ -88,7 +88,7 @@ export const FeaturesListFilter = <TData, TValue>({
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[300px] p-0" align="start">
+      <PopoverContent align="start" className="w-[300px] p-0">
         <Command>
           <CommandInput placeholder={title} />
           <CommandList>
@@ -113,13 +113,13 @@ export const FeaturesListFilter = <TData, TValue>({
                   >
                     <div
                       className={cn(
-                        'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-foreground',
+                        "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-foreground",
                         isSelected
-                          ? 'border-primary bg-primary text-primary-foreground'
-                          : 'opacity-50 [&_svg]:invisible'
+                          ? "border-primary bg-primary text-primary-foreground"
+                          : "opacity-50 [&_svg]:invisible"
                       )}
                     >
-                      <CheckIcon className={cn('h-4 w-4')} />
+                      <CheckIcon className={cn("h-4 w-4")} />
                     </div>
                     {renderItem ? renderItem(option) : option.label}
                     {facets?.get(option.value) ? (
@@ -136,8 +136,8 @@ export const FeaturesListFilter = <TData, TValue>({
                 <CommandSeparator />
                 <CommandGroup>
                   <CommandItem
-                    onSelect={() => column?.setFilterValue(undefined)}
                     className="justify-center text-center"
+                    onSelect={() => column?.setFilterValue(undefined)}
                   >
                     Clear filters
                   </CommandItem>

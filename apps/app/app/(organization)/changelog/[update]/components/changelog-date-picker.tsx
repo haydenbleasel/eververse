@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
-import { updateChangelog } from '@/actions/changelog/update';
-import type { Changelog } from '@repo/backend/prisma/client';
-import { Calendar } from '@repo/design-system/components/precomposed/calendar';
-import type { SelectSingleEventHandler } from '@repo/design-system/components/precomposed/calendar';
-import { Button } from '@repo/design-system/components/ui/button';
+import type { Changelog } from "@repo/backend/prisma/client";
+import type { SelectSingleEventHandler } from "@repo/design-system/components/precomposed/calendar";
+import { Calendar } from "@repo/design-system/components/precomposed/calendar";
+import { Button } from "@repo/design-system/components/ui/button";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@repo/design-system/components/ui/popover';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { format } from 'date-fns';
-import { CalendarIcon } from 'lucide-react';
-import { useState } from 'react';
+} from "@repo/design-system/components/ui/popover";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
+import { useState } from "react";
+import { updateChangelog } from "@/actions/changelog/update";
 
 type ChangelogDatePickerProperties = {
-  readonly changelogId: Changelog['id'];
-  readonly defaultPublishAt: Changelog['publishAt'];
+  readonly changelogId: Changelog["id"];
+  readonly defaultPublishAt: Changelog["publishAt"];
   readonly disabled: boolean;
 };
 
@@ -53,27 +53,27 @@ export const ChangelogDatePicker = ({
       <Popover>
         <PopoverTrigger asChild>
           <Button
-            id="date"
-            variant="outline"
             className="justify-start text-left font-normal"
             disabled={disabled}
+            id="date"
+            variant="outline"
           >
-            <CalendarIcon size={16} className="mr-2" />
-            {format(date, 'LLL dd, y')}
+            <CalendarIcon className="mr-2" size={16} />
+            {format(date, "LLL dd, y")}
           </Button>
         </PopoverTrigger>
         <PopoverContent
           align="start"
-          collisionPadding={12}
           className="w-auto p-0"
+          collisionPadding={12}
         >
           <Calendar
+            defaultMonth={date}
             initialFocus
             mode="single"
-            defaultMonth={date}
-            selected={date}
-            onSelect={handleDateChange}
             numberOfMonths={1}
+            onSelect={handleDateChange}
+            selected={date}
           />
         </PopoverContent>
       </Popover>

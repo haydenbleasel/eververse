@@ -1,13 +1,13 @@
-import { FeaturesEmptyState } from '@/app/(organization)/features/components/features-empty-state';
-import { database } from '@/lib/database';
-import { currentUser } from '@repo/backend/auth/utils';
-import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
-import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
-import { AssignedFeatures } from './assigned-features';
-import { OwnersChart } from './owners-chart';
-import { StatusesChart } from './statuses-chart';
-import { FeaturesTrend } from './trend';
+import { currentUser } from "@repo/backend/auth/utils";
+import { Skeleton } from "@repo/design-system/components/precomposed/skeleton";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
+import { FeaturesEmptyState } from "@/app/(organization)/features/components/features-empty-state";
+import { database } from "@/lib/database";
+import { AssignedFeatures } from "./assigned-features";
+import { OwnersChart } from "./owners-chart";
+import { StatusesChart } from "./statuses-chart";
+import { FeaturesTrend } from "./trend";
 
 export const FeaturesSection = async () => {
   const [user, featuresCount] = await Promise.all([

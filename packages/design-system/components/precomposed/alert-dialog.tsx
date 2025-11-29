@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
-import type { ComponentProps, ReactNode } from 'react';
-import * as AlertDialogComponent from '../ui/alert-dialog';
-import { Button } from '../ui/button';
+import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
+import type { ComponentProps, ReactNode } from "react";
+import * as AlertDialogComponent from "../ui/alert-dialog";
+import { Button } from "../ui/button";
 
 export type AlertDialogProperties = ComponentProps<
   typeof AlertDialogComponent.AlertDialog
@@ -22,7 +22,7 @@ export const AlertDialog = ({
   onClick,
   disabled,
   trigger,
-  cta = 'Delete',
+  cta = "Delete",
   children,
   ...properties
 }: AlertDialogProperties) => (
@@ -47,7 +47,7 @@ export const AlertDialog = ({
           Cancel
         </AlertDialogComponent.AlertDialogCancel>
         <AlertDialogPrimitive.Action asChild>
-          <Button onClick={onClick} variant="destructive" disabled={disabled}>
+          <Button disabled={disabled} onClick={onClick} variant="destructive">
             {cta}
           </Button>
         </AlertDialogPrimitive.Action>

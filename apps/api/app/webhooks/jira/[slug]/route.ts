@@ -1,14 +1,14 @@
-import { createClient } from '@repo/atlassian';
-import { database } from '@repo/backend/database';
-import type { release_state } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { log } from '@repo/observability/log';
-import { NextResponse } from 'next/server';
-import { z } from 'zod/v3';
+import { createClient } from "@repo/atlassian";
+import { database } from "@repo/backend/database";
+import type { release_state } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { log } from "@repo/observability/log";
+import { NextResponse } from "next/server";
+import { z } from "zod/v3";
 
 export const maxDuration = 300;
 export const revalidate = 0;
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 const webhookEventSchema = z.object({
   matchedWebhookIds: z.array(z.number()),
@@ -16,7 +16,7 @@ const webhookEventSchema = z.object({
     id: z.string(),
     key: z.string(),
   }),
-  webhookEvent: z.enum(['jira:issue_created', 'jira:issue_updated']),
+  webhookEvent: z.enum(["jira:issue_created", "jira:issue_updated"]),
 });
 
 const fieldsSchema = z
@@ -58,23 +58,23 @@ const handleIssueEvent = async (
     database.installationFieldMapping.findMany({
       where: {
         organizationId,
-        type: 'JIRA',
+        type: "JIRA",
       },
     }),
   ]);
 
   if (!installation) {
-    throw new Error('Installation not found');
+    throw new Error("Installation not found");
   }
 
-  const issueFields = ['summary', 'status', 'fixVersions', 'description'];
+  const issueFields = ["summary", "status", "fixVersions", "description"];
 
   for (const field of fieldMappings) {
     issueFields.push(field.externalId);
   }
 
   const atlassian = createClient(installation);
-  const issue = await atlassian.GET('/rest/api/2/issue/{issueIdOrKey}', {
+  const issue = await atlassian.GET("/rest/api/2/issue/{issueIdOrKey}", {
     params: {
       path: {
         issueIdOrKey: event.issue.key,
@@ -98,7 +98,7 @@ const handleIssueEvent = async (
   const validationResult = fieldsSchema.safeParse(issue.data.fields);
 
   if (!validationResult.success) {
-    log.error('Invalid issue fields', {
+    log.error("Invalid issue fields", {
       errors: validationResult.error.errors,
     });
     throw new Error(`Invalid issue fields for issue: ${event.issue.key}`);
@@ -107,7 +107,7 @@ const handleIssueEvent = async (
   const featureConnection = await database.featureConnection.findFirst({
     where: {
       externalId: event.issue.id,
-      type: 'JIRA',
+      type: "JIRA",
       organizationId,
     },
     select: {
@@ -118,9 +118,9 @@ const handleIssueEvent = async (
   });
 
   if (!featureConnection) {
-    log.info('🧑‍💻 FeatureConnection not found');
+    log.info("🧑‍💻 FeatureConnection not found");
     return NextResponse.json(
-      { message: 'FeatureConnection not found' },
+      { message: "FeatureConnection not found" },
       { status: 200 }
     );
   }
@@ -152,9 +152,9 @@ const handleIssueEvent = async (
     let state: release_state | undefined;
 
     if (fixVersion.released) {
-      state = 'COMPLETED';
+      state = "COMPLETED";
     } else if (fixVersion.archived) {
-      state = 'CANCELLED';
+      state = "CANCELLED";
     }
 
     if (existingRelease) {
@@ -202,7 +202,7 @@ const handleIssueEvent = async (
       where: {
         organizationId: featureConnection.organizationId,
         eventId: validationResult.data.status.id,
-        type: 'JIRA',
+        type: "JIRA",
       },
       select: { featureStatusId: true },
     });
@@ -232,17 +232,17 @@ const handleIssueEvent = async (
     }
 
     if (
-      field.internalId === 'STARTAT' &&
-      typeof fieldValue === 'string' &&
-      new Date(fieldValue).toString() !== 'Invalid Date'
+      field.internalId === "STARTAT" &&
+      typeof fieldValue === "string" &&
+      new Date(fieldValue).toString() !== "Invalid Date"
     ) {
       startAt = new Date(fieldValue);
     }
 
     if (
-      field.internalId === 'ENDAT' &&
-      typeof fieldValue === 'string' &&
-      new Date(fieldValue).toString() !== 'Invalid Date'
+      field.internalId === "ENDAT" &&
+      typeof fieldValue === "string" &&
+      new Date(fieldValue).toString() !== "Invalid Date"
     ) {
       endAt = new Date(fieldValue);
     }
@@ -258,14 +258,14 @@ const handleIssueEvent = async (
       endAt,
       content:
         validationResult.data.description &&
-        typeof validationResult.data.description === 'object'
+        typeof validationResult.data.description === "object"
           ? (validationResult.data.description as object)
           : undefined,
     },
   });
 
   return NextResponse.json(
-    { message: '🧑‍💻 Issue event handled' },
+    { message: "🧑‍💻 Issue event handled" },
     { status: 200 }
   );
 };
@@ -290,18 +290,18 @@ export const POST = async (
 
     if (!organization) {
       return NextResponse.json(
-        { message: 'Organization not found' },
+        { message: "Organization not found" },
         { status: 404 }
       );
     }
 
     const validationResult = webhookEventSchema.safeParse(data);
     if (!validationResult.success) {
-      log.error('Invalid webhook event data', {
+      log.error("Invalid webhook event data", {
         errors: validationResult.error.errors,
       });
       return NextResponse.json(
-        { message: 'Invalid webhook event data' },
+        { message: "Invalid webhook event data" },
         { status: 400 }
       );
     }
@@ -309,14 +309,14 @@ export const POST = async (
     const validatedData = validationResult.data;
 
     switch (validatedData.webhookEvent) {
-      case 'jira:issue_created':
-      case 'jira:issue_updated': {
+      case "jira:issue_created":
+      case "jira:issue_updated": {
         return handleIssueEvent(data, organization.id);
       }
       default: {
-        log.info('🧑‍💻 Unhandled Atlassian Issue event');
+        log.info("🧑‍💻 Unhandled Atlassian Issue event");
         return NextResponse.json(
-          { message: '🧑‍💻 Unhandled Atlassian Issue event' },
+          { message: "🧑‍💻 Unhandled Atlassian Issue event" },
           { status: 200 }
         );
       }

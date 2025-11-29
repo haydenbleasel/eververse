@@ -1,9 +1,9 @@
-import { Extension } from '@tiptap/core';
-import type { Node } from '@tiptap/pm/model';
-import { Plugin } from '@tiptap/pm/state';
-import { Decoration, DecorationSet } from '@tiptap/pm/view';
+import { Extension } from "@tiptap/core";
+import type { Node } from "@tiptap/pm/model";
+import { Plugin } from "@tiptap/pm/state";
+import { Decoration, DecorationSet } from "@tiptap/pm/view";
 
-import './color-highlighter.css';
+import "./color-highlighter.css";
 
 const findColors = (mainNode: Node): DecorationSet => {
   const hexColor = /(?<hex>#[0-9a-f]{3,6})\b/giu;
@@ -20,7 +20,7 @@ const findColors = (mainNode: Node): DecorationSet => {
       const from = position + index;
       const to = from + color.length;
       const decoration = Decoration.inline(from, to, {
-        'data-type': 'color',
+        "data-type": "color",
         style: `--color: ${color}`,
       });
 
@@ -32,7 +32,7 @@ const findColors = (mainNode: Node): DecorationSet => {
 };
 
 export const colorHighlighter = Extension.create({
-  name: 'colorHighlighter',
+  name: "colorHighlighter",
 
   addProseMirrorPlugins() {
     return [

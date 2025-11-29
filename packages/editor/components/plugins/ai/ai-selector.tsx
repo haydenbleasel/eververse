@@ -1,21 +1,21 @@
-import { useCompletion } from '@ai-sdk/react';
-import { LoadingCircle } from '@repo/design-system/components/loading-circle';
-import { Prose } from '@repo/design-system/components/prose';
-import { Button } from '@repo/design-system/components/ui/button';
+import { useCompletion } from "@ai-sdk/react";
+import { LoadingCircle } from "@repo/design-system/components/loading-circle";
+import { Prose } from "@repo/design-system/components/prose";
+import { Button } from "@repo/design-system/components/ui/button";
 import {
   Command,
   CommandInput,
   CommandList,
-} from '@repo/design-system/components/ui/command';
-import { ScrollArea } from '@repo/design-system/components/ui/scroll-area';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { ArrowUp } from 'lucide-react';
-import { useEditor } from 'novel';
-import { getPrevText } from 'novel/utils';
-import { useState } from 'react';
-import Markdown from 'react-markdown';
-import { AICompletionCommands } from './completion-commands';
-import { AISelectorCommands } from './selector-commands';
+} from "@repo/design-system/components/ui/command";
+import { ScrollArea } from "@repo/design-system/components/ui/scroll-area";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { ArrowUp } from "lucide-react";
+import { useEditor } from "novel";
+import { getPrevText } from "novel/utils";
+import { useState } from "react";
+import Markdown from "react-markdown";
+import { AICompletionCommands } from "./completion-commands";
+import { AISelectorCommands } from "./selector-commands";
 
 type AiSelectorProperties = {
   readonly onOpenChange: (open: boolean) => void;
@@ -23,10 +23,10 @@ type AiSelectorProperties = {
 
 export const AISelector = ({ onOpenChange }: AiSelectorProperties) => {
   const { editor } = useEditor();
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   const { completion, complete, isLoading } = useCompletion({
-    api: '/api/editor/generate',
+    api: "/api/editor/generate",
     onError: handleError,
   });
 
@@ -43,18 +43,18 @@ export const AISelector = ({ onOpenChange }: AiSelectorProperties) => {
     const text = editor.storage.markdown.serializer.serialize(
       slice.content
     ) as string;
-    const selection = completion === '' ? text : completion;
+    const selection = completion === "" ? text : completion;
 
     await complete(
       [
         `Here is the selected text: ${selection}`,
         `Here are the last 5000 characters for context: ${context}`,
-      ].join('\n'),
+      ].join("\n"),
       {
-        body: { option: 'zap', command: inputValue },
+        body: { option: "zap", command: inputValue },
       }
     );
-    setInputValue('');
+    setInputValue("");
   };
 
   return (
@@ -77,22 +77,22 @@ export const AISelector = ({ onOpenChange }: AiSelectorProperties) => {
         <>
           <div className="relative">
             <CommandInput
-              value={inputValue}
-              onValueChange={setInputValue}
               autoFocus
+              onFocus={() => {
+                editor.chain().setHighlight({ color: "#c1ecf970" }).run();
+              }}
+              onValueChange={setInputValue}
               placeholder={
                 hasCompletion
-                  ? 'Tell AI what to do next'
-                  : 'Ask AI to edit or generate...'
+                  ? "Tell AI what to do next"
+                  : "Ask AI to edit or generate..."
               }
-              onFocus={() => {
-                editor.chain().setHighlight({ color: '#c1ecf970' }).run();
-              }}
+              value={inputValue}
             />
             <Button
-              size="icon"
               className="-translate-y-1/2 absolute top-1/2 right-2 h-6 w-6 bg-violet-500 dark:bg-violet-400"
               onClick={handleAppend}
+              size="icon"
             >
               <ArrowUp className="h-3 w-3" />
             </Button>
@@ -100,10 +100,10 @@ export const AISelector = ({ onOpenChange }: AiSelectorProperties) => {
           <CommandList>
             {hasCompletion ? (
               <AICompletionCommands
+                completion={completion}
                 onDiscard={() => {
                   onOpenChange(false);
                 }}
-                completion={completion}
               />
             ) : (
               <AISelectorCommands

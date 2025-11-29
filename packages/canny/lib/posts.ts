@@ -1,4 +1,4 @@
-import ky from 'ky';
+import ky from "ky";
 
 export type CannyPost = {
   id: string;
@@ -102,7 +102,7 @@ export const getCannyPost = async (
   }
 ): Promise<CannyPost> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/posts/retrieve', {
+    .post("https://canny.io/api/v1/posts/retrieve", {
       json: {
         apiKey,
         ...props,
@@ -110,7 +110,7 @@ export const getCannyPost = async (
     })
     .json<CannyPost | { error: string }>();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 
@@ -133,24 +133,24 @@ export const createCannyPost = async (
     imageURLs?: string[];
     createdAt?: Date;
   }
-): Promise<{ id: CannyPost['id'] }> => {
+): Promise<{ id: CannyPost["id"] }> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/posts/create', {
+    .post("https://canny.io/api/v1/posts/create", {
       json: {
         apiKey,
         ...props,
         eta: props.eta
-          ? props.eta.toLocaleDateString('en-US', {
-              month: '2-digit',
-              year: 'numeric',
+          ? props.eta.toLocaleDateString("en-US", {
+              month: "2-digit",
+              year: "numeric",
             })
           : undefined,
         createdAt: props.createdAt?.toISOString(),
       },
     })
-    .json<{ id: CannyPost['id'] } | { error: string }>();
+    .json<{ id: CannyPost["id"] } | { error: string }>();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 
@@ -165,7 +165,7 @@ export const changeCannyPostCategory = async (
   }
 ): Promise<CannyPost> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/posts/change_category', {
+    .post("https://canny.io/api/v1/posts/change_category", {
       json: {
         apiKey,
         ...props,
@@ -173,7 +173,7 @@ export const changeCannyPostCategory = async (
     })
     .json<CannyPost | { error: string }>();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 
@@ -192,18 +192,18 @@ export const changeCannyPostStatus = async (
   }
 ): Promise<CannyPost> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/posts/change_status', {
+    .post("https://canny.io/api/v1/posts/change_status", {
       json: {
         apiKey,
         ...props,
 
         // If the comment includes line breaks, use " " instead of directly inputting the line breaks.
-        commentValue: props.commentValue.replace(/\n/g, ' '),
+        commentValue: props.commentValue.replace(/\n/g, " "),
       },
     })
     .json<CannyPost | { error: string }>();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 
@@ -218,7 +218,7 @@ export const addTagToCannyPost = async (
   }
 ): Promise<CannyPost> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/posts/add_tag', {
+    .post("https://canny.io/api/v1/posts/add_tag", {
       json: {
         apiKey,
         ...props,
@@ -226,7 +226,7 @@ export const addTagToCannyPost = async (
     })
     .json<CannyPost | { error: string }>();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 
@@ -241,7 +241,7 @@ export const removeTagFromCannyPost = async (
   }
 ): Promise<CannyPost> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/posts/remove_tag', {
+    .post("https://canny.io/api/v1/posts/remove_tag", {
       json: {
         apiKey,
         ...props,
@@ -249,7 +249,7 @@ export const removeTagFromCannyPost = async (
     })
     .json<CannyPost | { error: string }>();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 
@@ -269,22 +269,22 @@ export const updateCannyPost = async (
   }
 ): Promise<void> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/posts/update', {
+    .post("https://canny.io/api/v1/posts/update", {
       json: {
         apiKey,
         ...props,
         eta: props.eta
-          ? props.eta.toLocaleDateString('en-US', {
-              month: '2-digit',
-              year: 'numeric',
+          ? props.eta.toLocaleDateString("en-US", {
+              month: "2-digit",
+              year: "numeric",
             })
           : undefined,
       },
     })
-    .json<'success' | { error: string }>();
-  if (payload !== 'success') {
+    .json<"success" | { error: string }>();
+  if (payload !== "success") {
     throw new Error(
-      'error' in payload ? payload.error : 'Unknown error occurred'
+      "error" in payload ? payload.error : "Unknown error occurred"
     );
   }
 };
@@ -295,7 +295,7 @@ export const fetchCannyPosts = async (
   limit = 10_000
 ): Promise<CannyPost[]> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/posts/list', {
+    .post("https://canny.io/api/v1/posts/list", {
       json: {
         apiKey,
         limit,
@@ -312,7 +312,7 @@ export const fetchCannyPosts = async (
         }
     >();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 

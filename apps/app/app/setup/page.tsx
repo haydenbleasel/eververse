@@ -1,13 +1,13 @@
-import { createClient } from '@repo/backend/auth/server';
-import { currentOrganizationId } from '@repo/backend/auth/utils';
-import { Button } from '@repo/design-system/components/ui/button';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { redirect } from 'next/navigation';
-import { CreateOrganizationForm } from './components/form';
+import { createClient } from "@repo/backend/auth/server";
+import { currentOrganizationId } from "@repo/backend/auth/utils";
+import { Button } from "@repo/design-system/components/ui/button";
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { redirect } from "next/navigation";
+import { CreateOrganizationForm } from "./components/form";
 
-const title = 'Create Organization';
-const description = 'Create an organization to get started.';
+const title = "Create Organization";
+const description = "Create an organization to get started.";
 
 export const metadata: Metadata = createMetadata({ title, description });
 
@@ -15,16 +15,16 @@ const SetupPage = async () => {
   const organizationId = await currentOrganizationId();
 
   if (organizationId) {
-    redirect('/');
+    redirect("/");
   }
 
   const handleSignOut = async () => {
-    'use server';
+    "use server";
 
     const auth = await createClient();
 
     await auth.auth.signOut();
-    redirect('/sign-in');
+    redirect("/sign-in");
   };
 
   return (

@@ -1,12 +1,12 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import type { Feature } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import type { Feature } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 type ConnectToJiraProperties = {
-  readonly featureId: Feature['id'];
+  readonly featureId: Feature["id"];
   readonly externalId: string;
   readonly href: string;
 };
@@ -28,7 +28,7 @@ export const connectToJira = async ({
       });
 
     if (!atlassianInstallation) {
-      throw new Error('Jira installation not found');
+      throw new Error("Jira installation not found");
     }
 
     await database.featureConnection.create({
@@ -37,12 +37,12 @@ export const connectToJira = async ({
         externalId,
         href,
         organizationId: atlassianInstallation.organizationId,
-        type: 'JIRA',
+        type: "JIRA",
       },
       select: { id: true },
     });
 
-    revalidatePath('/features', 'page');
+    revalidatePath("/features", "page");
 
     return {};
   } catch (error) {

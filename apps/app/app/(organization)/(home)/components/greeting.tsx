@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 type GreetingProps = {
   firstName: string | null;
@@ -7,14 +7,14 @@ type GreetingProps = {
 export const Greeting = ({ firstName }: GreetingProps) => {
   const date = new Date();
   const hours = date.getHours();
-  let noun = 'day';
+  let noun = "day";
 
   if (hours < 12) {
-    noun = 'morning';
+    noun = "morning";
   } else if (hours < 18) {
-    noun = 'afternoon';
+    noun = "afternoon";
   } else {
-    noun = 'evening';
+    noun = "evening";
   }
 
   const greeting = firstName ? `Good ${noun}, ${firstName}` : `Good ${noun}`;

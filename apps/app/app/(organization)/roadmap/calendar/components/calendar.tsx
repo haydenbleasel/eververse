@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import * as RoadmapUiCalendar from '@repo/design-system/components/ui/kibo-ui/calendar';
-import type { ComponentProps } from 'react';
+import * as RoadmapUiCalendar from "@repo/design-system/components/ui/kibo-ui/calendar";
+import type { ComponentProps } from "react";
 
 type CalendarProperties = {
   readonly features: ComponentProps<
     typeof RoadmapUiCalendar.CalendarBody
-  >['features'];
+  >["features"];
 };
 
 export const Calendar = ({ features }: CalendarProperties) => {
@@ -30,8 +30,8 @@ export const Calendar = ({ features }: CalendarProperties) => {
         <RoadmapUiCalendar.CalendarDatePicker>
           <RoadmapUiCalendar.CalendarMonthPicker />
           <RoadmapUiCalendar.CalendarYearPicker
-            start={earliestYear}
             end={latestYear}
+            start={earliestYear}
           />
         </RoadmapUiCalendar.CalendarDatePicker>
         <RoadmapUiCalendar.CalendarDatePagination />
@@ -39,7 +39,7 @@ export const Calendar = ({ features }: CalendarProperties) => {
       <RoadmapUiCalendar.CalendarHeader />
       <RoadmapUiCalendar.CalendarBody features={features}>
         {({ feature }) => (
-          <RoadmapUiCalendar.CalendarItem key={feature.id} feature={feature} />
+          <RoadmapUiCalendar.CalendarItem feature={feature} key={feature.id} />
         )}
       </RoadmapUiCalendar.CalendarBody>
     </RoadmapUiCalendar.CalendarProvider>

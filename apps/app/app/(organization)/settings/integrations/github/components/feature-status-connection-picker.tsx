@@ -1,25 +1,25 @@
-'use client';
+"use client";
 
-import { updateInstallationStatusMapping } from '@/actions/installation-status-mapping/update';
 import type {
   FeatureConnection,
   FeatureStatus,
-} from '@repo/backend/prisma/client';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useState } from 'react';
+} from "@repo/backend/prisma/client";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useState } from "react";
+import { updateInstallationStatusMapping } from "@/actions/installation-status-mapping/update";
 
 export const FeatureStatusConnectionPicker = ({
   connectionId,
   defaultValue,
   statuses,
 }: {
-  readonly connectionId: FeatureConnection['id'];
-  readonly defaultValue?: FeatureStatus['id'];
+  readonly connectionId: FeatureConnection["id"];
+  readonly defaultValue?: FeatureStatus["id"];
   readonly statuses: {
-    readonly id: FeatureStatus['id'];
-    readonly name: FeatureStatus['name'];
-    readonly color: FeatureStatus['color'];
+    readonly id: FeatureStatus["id"];
+    readonly name: FeatureStatus["name"];
+    readonly color: FeatureStatus["color"];
   }[];
 }) => {
   const [value, setValue] = useState(defaultValue);
@@ -42,12 +42,11 @@ export const FeatureStatusConnectionPicker = ({
 
   return (
     <Select
-      value={value}
-      onChange={handleSelect}
       data={statuses.map((status) => ({
         label: status.name,
         value: status.id,
       }))}
+      onChange={handleSelect}
       renderItem={(item) => {
         const status = statuses.find(({ id }) => id === item.value);
 
@@ -66,6 +65,7 @@ export const FeatureStatusConnectionPicker = ({
         );
       }}
       type="status"
+      value={value}
     />
   );
 };

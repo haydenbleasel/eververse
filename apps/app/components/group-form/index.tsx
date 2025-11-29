@@ -1,27 +1,27 @@
-'use client';
+"use client";
 
-import { createGroup } from '@/actions/group/create';
-import { nestGroups } from '@/lib/group';
-import type { Group, Product } from '@repo/backend/prisma/client';
-import { Dialog } from '@repo/design-system/components/precomposed/dialog';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { GroupProductPicker } from './group-product-picker';
-import { ParentGroupPicker } from './parent-group-picker';
-import { useGroupForm } from './use-group-form';
+import type { Group, Product } from "@repo/backend/prisma/client";
+import { Dialog } from "@repo/design-system/components/precomposed/dialog";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { createGroup } from "@/actions/group/create";
+import { nestGroups } from "@/lib/group";
+import { GroupProductPicker } from "./group-product-picker";
+import { ParentGroupPicker } from "./parent-group-picker";
+import { useGroupForm } from "./use-group-form";
 
 type GroupFormProperties = {
-  readonly products: Pick<Product, 'emoji' | 'id' | 'name'>[];
+  readonly products: Pick<Product, "emoji" | "id" | "name">[];
   readonly groups: Pick<
     Group,
-    'emoji' | 'id' | 'name' | 'parentGroupId' | 'productId'
+    "emoji" | "id" | "name" | "parentGroupId" | "productId"
   >[];
 };
 
 export const GroupForm = ({ products, groups }: GroupFormProperties) => {
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [productId, setProductId] = useState<string | undefined>();
   const [parentGroupId, setParentGroupId] = useState<string | undefined>();
   const [loading, setLoading] = useState(false);
@@ -48,10 +48,10 @@ export const GroupForm = ({ products, groups }: GroupFormProperties) => {
       }
 
       if (!id) {
-        throw new Error('Something went wrong');
+        throw new Error("Something went wrong");
       }
 
-      setName('');
+      setName("");
       setProductId(undefined);
       setParentGroupId(undefined);
 
@@ -75,42 +75,42 @@ export const GroupForm = ({ products, groups }: GroupFormProperties) => {
 
   return (
     <Dialog
-      open={isOpen}
-      onOpenChange={toggle}
-      modal={false}
       className="sm:max-w-2xl"
-      title={
-        <p className="font-medium text-muted-foreground text-sm tracking-tight">
-          Create a group
-        </p>
-      }
       cta="Create group"
-      onClick={handleCreate}
       disabled={disabled}
       footer={
         <div className="flex items-center gap-3">
           <GroupProductPicker
             data={products}
-            value={productId}
             onChange={handleProductChange}
+            value={productId}
           />
           {productId && relevantGroups.length > 0 ? (
             <ParentGroupPicker
               data={nestGroups(relevantGroups)}
-              value={parentGroupId}
               onChange={setParentGroupId}
+              value={parentGroupId}
             />
           ) : null}
         </div>
       }
+      modal={false}
+      onClick={handleCreate}
+      onOpenChange={toggle}
+      open={isOpen}
+      title={
+        <p className="font-medium text-muted-foreground text-sm tracking-tight">
+          Create a group
+        </p>
+      }
     >
       <Input
-        placeholder="Admin Dashboard"
-        value={name}
-        onChangeText={setName}
+        autoComplete="off"
         className="border-none p-0 font-medium shadow-none focus-visible:ring-0 md:text-lg"
         maxLength={191}
-        autoComplete="off"
+        onChangeText={setName}
+        placeholder="Admin Dashboard"
+        value={name}
       />
     </Dialog>
   );

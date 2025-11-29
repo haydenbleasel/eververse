@@ -1,11 +1,11 @@
-import { database } from '@repo/backend/database';
-import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
-import { markdownToContent } from '@repo/editor/lib/tiptap';
-import { createClient } from '@repo/productboard';
+import { database } from "@repo/backend/database";
+import type { Prisma, ProductboardImport } from "@repo/backend/prisma/client";
+import { markdownToContent } from "@repo/editor/lib/tiptap";
+import { createClient } from "@repo/productboard";
 
 type ImportJobProperties = Pick<
   ProductboardImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateNotes = async ({
@@ -13,20 +13,20 @@ export const migrateNotes = async ({
   organizationId,
 }: ImportJobProperties): Promise<number> => {
   const productboard = createClient({ accessToken: token });
-  const notes = await productboard.GET('/notes', {
+  const notes = await productboard.GET("/notes", {
     params: {
       header: {
-        'X-Version': 1,
+        "X-Version": 1,
       },
     },
   });
 
   if (notes.error) {
-    throw new Error(notes.error.errors?.source?.join(', ') ?? 'Unknown error');
+    throw new Error(notes.error.errors?.source?.join(", ") ?? "Unknown error");
   }
 
   if (!notes.data) {
-    throw new Error('No notes found');
+    throw new Error("No notes found");
   }
 
   const databaseOrganization = await database.organization.findUnique({
@@ -38,12 +38,12 @@ export const migrateNotes = async ({
   });
 
   if (!databaseOrganization) {
-    throw new Error('Could not find organization');
+    throw new Error("Could not find organization");
   }
 
   const transactions: Prisma.PrismaPromise<unknown>[] = [];
 
-  const promises: Promise<Prisma.FeedbackCreateArgs['data']>[] = notes.data.data
+  const promises: Promise<Prisma.FeedbackCreateArgs["data"]>[] = notes.data.data
     .filter((note) => {
       const existing = databaseOrganization.feedback.find(
         (feedback) => feedback.productboardId === note.id
@@ -56,14 +56,14 @@ export const migrateNotes = async ({
         (feedbackUser) => feedbackUser.productboardId === note.user?.id
       )?.id;
 
-      const input: Prisma.FeedbackCreateArgs['data'] = {
+      const input: Prisma.FeedbackCreateArgs["data"] = {
         content: note.content ? await markdownToContent(note.content) : {},
         organizationId,
         title: note.title,
         createdAt: note.createdAt ? new Date(note.createdAt) : undefined,
         productboardId: note.id,
         feedbackUserId,
-        processed: note.state === 'processed',
+        processed: note.state === "processed",
       };
 
       return input;

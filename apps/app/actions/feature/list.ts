@@ -1,6 +1,5 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
 import type {
   AiFeatureRice,
   Feature,
@@ -11,23 +10,24 @@ import type {
   PortalFeature,
   Prisma,
   Product,
-} from '@repo/backend/prisma/client';
-import { FEEDBACK_PAGE_SIZE } from '@repo/lib/consts';
+} from "@repo/backend/prisma/client";
+import { FEEDBACK_PAGE_SIZE } from "@repo/lib/consts";
+import { database } from "@/lib/database";
 
 export type GetFeaturesResponse = (Pick<
   Feature,
-  'createdAt' | 'id' | 'title' | 'ownerId'
+  "createdAt" | "id" | "title" | "ownerId"
 > & {
-  rice: Pick<FeatureRice, 'confidence' | 'effort' | 'impact' | 'reach'> | null;
+  rice: Pick<FeatureRice, "confidence" | "effort" | "impact" | "reach"> | null;
   aiRice: Pick<
     AiFeatureRice,
-    'confidence' | 'effort' | 'impact' | 'reach'
+    "confidence" | "effort" | "impact" | "reach"
   > | null;
-  connection: Pick<FeatureConnection, 'type' | 'href'> | null;
-  status: Pick<FeatureStatus, 'color' | 'complete' | 'id' | 'name' | 'order'>;
-  product: Pick<Product, 'name'> | null;
-  group: Pick<Group, 'name' | 'parentGroupId'> | null;
-  portalFeature: Pick<PortalFeature, 'portalId'> | null;
+  connection: Pick<FeatureConnection, "type" | "href"> | null;
+  status: Pick<FeatureStatus, "color" | "complete" | "id" | "name" | "order">;
+  product: Pick<Product, "name"> | null;
+  group: Pick<Group, "name" | "parentGroupId"> | null;
+  portalFeature: Pick<PortalFeature, "portalId"> | null;
   _count: {
     feedback: number;
   };
@@ -54,7 +54,7 @@ export const getFeatures = async (
       }),
       database.feature.findMany({
         where: query,
-        orderBy: { createdAt: 'desc' },
+        orderBy: { createdAt: "desc" },
         skip: page * FEEDBACK_PAGE_SIZE,
         take: FEEDBACK_PAGE_SIZE,
         select: {

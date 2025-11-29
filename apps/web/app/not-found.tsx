@@ -1,10 +1,10 @@
-import { Container } from '@repo/design-system/components/container';
-import { Link } from '@repo/design-system/components/link';
-import { Button } from '@repo/design-system/components/ui/button';
-import type { Metadata } from 'next';
+import { Container } from "@repo/design-system/components/container";
+import { Link } from "@repo/design-system/components/link";
+import { Button } from "@repo/design-system/components/ui/button";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: '404 — Page Not Found',
+  title: "404 — Page Not Found",
 };
 
 const NotFound = () => (
@@ -17,7 +17,7 @@ const NotFound = () => (
         Sorry, we couldn&apos;t find the page you&apos;re looking for.
       </p>
       <Button asChild className="mt-4" variant="outline">
-        <Link href="/" className="not-prose">
+        <Link className="not-prose" href="/">
           Return Home
         </Link>
       </Button>

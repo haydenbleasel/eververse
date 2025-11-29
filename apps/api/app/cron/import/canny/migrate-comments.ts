@@ -1,11 +1,11 @@
-import { database } from '@repo/backend/database';
-import type { CannyImport, Prisma } from '@repo/backend/prisma/client';
-import { Canny } from '@repo/canny';
-import { textToContent } from '@repo/editor/lib/tiptap';
+import { database } from "@repo/backend/database";
+import type { CannyImport, Prisma } from "@repo/backend/prisma/client";
+import { Canny } from "@repo/canny";
+import { textToContent } from "@repo/editor/lib/tiptap";
 
 type ImportJobProperties = Pick<
   CannyImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateComments = async ({
@@ -27,7 +27,7 @@ export const migrateComments = async ({
   });
 
   if (!databaseOrganization) {
-    throw new Error('Could not find organization');
+    throw new Error("Could not find organization");
   }
 
   const transactions: Prisma.PrismaPromise<unknown>[] = [];
@@ -40,7 +40,7 @@ export const migrateComments = async ({
       (statusChange) => statusChange.changeComment.value === comment.value
     );
 
-    return !existing && !isStatusChangeComment;
+    return !(existing || isStatusChangeComment);
   });
 
   for (const comment of newComments) {

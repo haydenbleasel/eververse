@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { updateChangelog } from '@/actions/changelog/update';
-import { staticify } from '@/lib/staticify';
-import type { Changelog } from '@repo/backend/prisma/client';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import type { EditorInstance, JSONContent } from '@repo/editor';
-import dynamic from 'next/dynamic';
+import type { Changelog } from "@repo/backend/prisma/client";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import type { EditorInstance, JSONContent } from "@repo/editor";
+import dynamic from "next/dynamic";
+import { updateChangelog } from "@/actions/changelog/update";
+import { staticify } from "@/lib/staticify";
 
 type ChangelogEditorProperties = {
   readonly defaultValue: JSONContent;
-  readonly changelogId: Changelog['id'];
+  readonly changelogId: Changelog["id"];
   readonly editable: boolean;
 };
 
@@ -17,7 +17,7 @@ const Editor = dynamic(
   async () => {
     const Module = await import(
       /* webpackChunkName: "editor" */
-      '@/components/editor'
+      "@/components/editor"
     );
 
     return Module.Editor;
@@ -52,8 +52,8 @@ export const ChangelogEditor = ({
   return (
     <Editor
       defaultValue={defaultValue}
-      onDebouncedUpdate={handleDebouncedUpdate}
       editable={editable}
+      onDebouncedUpdate={handleDebouncedUpdate}
     />
   );
 };

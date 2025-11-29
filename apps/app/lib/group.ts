@@ -1,19 +1,19 @@
-import type { Group } from '@repo/backend/prisma/client';
+import type { Group } from "@repo/backend/prisma/client";
 
 export type GroupWithSubgroups = {
-  readonly id: Group['id'];
-  readonly name: Group['name'];
-  readonly emoji: Group['emoji'];
-  readonly parentGroupId: Group['parentGroupId'];
+  readonly id: Group["id"];
+  readonly name: Group["name"];
+  readonly emoji: Group["emoji"];
+  readonly parentGroupId: Group["parentGroupId"];
   readonly subgroups: GroupWithSubgroups[];
 };
 
 export const nestGroups = (
   groups: {
-    readonly id: Group['id'];
-    readonly name: Group['name'];
-    readonly emoji: Group['emoji'];
-    readonly parentGroupId: Group['parentGroupId'];
+    readonly id: Group["id"];
+    readonly name: Group["name"];
+    readonly emoji: Group["emoji"];
+    readonly parentGroupId: Group["parentGroupId"];
   }[]
 ): GroupWithSubgroups[] => {
   const groupsMap = new Map<string, GroupWithSubgroups>();

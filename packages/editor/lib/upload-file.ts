@@ -1,12 +1,12 @@
-import { createClient } from '@repo/backend/auth/client';
-import { toast } from '@repo/design-system/lib/toast';
-import { Plugin, PluginKey } from '@tiptap/pm/state';
-import type { EditorState } from '@tiptap/pm/state';
-import { Decoration, DecorationSet } from '@tiptap/pm/view';
-import type { EditorView } from '@tiptap/pm/view';
-import { nanoid } from 'nanoid';
+import { createClient } from "@repo/backend/auth/client";
+import { toast } from "@repo/design-system/lib/toast";
+import type { EditorState } from "@tiptap/pm/state";
+import { Plugin, PluginKey } from "@tiptap/pm/state";
+import type { EditorView } from "@tiptap/pm/view";
+import { Decoration, DecorationSet } from "@tiptap/pm/view";
+import { nanoid } from "nanoid";
 
-const uploadKey = new PluginKey('upload-image');
+const uploadKey = new PluginKey("upload-image");
 
 export const uploadImagesPlugin = (): Plugin =>
   new Plugin({
@@ -23,12 +23,12 @@ export const uploadImagesPlugin = (): Plugin =>
         if (action?.add) {
           const { id, pos, src } = action.add;
 
-          const placeholder = document.createElement('div');
-          placeholder.setAttribute('class', 'img-placeholder');
+          const placeholder = document.createElement("div");
+          placeholder.setAttribute("class", "img-placeholder");
 
-          if (typeof src === 'string' && src.startsWith('data:image/')) {
-            const image = document.createElement('img');
-            image.setAttribute('class', 'opacity-40 rounded-lg border');
+          if (typeof src === "string" && src.startsWith("data:image/")) {
+            const image = document.createElement("img");
+            image.setAttribute("class", "opacity-40 rounded-lg border");
             image.src = src;
             placeholder.append(image);
           }
@@ -78,10 +78,10 @@ export const startImageUpload = async (
   pos: number
 ): Promise<void> => {
   // check if the file is an image
-  const isImage = file.type.startsWith('image/');
+  const isImage = file.type.startsWith("image/");
 
   if (file.size / 1024 / 1024 > 20) {
-    toast.error('File size too big (max 20MB).');
+    toast.error("File size too big (max 20MB).");
     return;
   }
 
@@ -97,7 +97,7 @@ export const startImageUpload = async (
 
   const reader = new FileReader();
   reader.readAsDataURL(file);
-  reader.addEventListener('load', () => {
+  reader.addEventListener("load", () => {
     tr.setMeta(uploadKey, {
       add: {
         id,
@@ -111,7 +111,7 @@ export const startImageUpload = async (
   const supabase = await createClient();
   const filename = nanoid(36);
 
-  const { error } = await supabase.storage.from('files').upload(filename, file);
+  const { error } = await supabase.storage.from("files").upload(filename, file);
 
   if (error) {
     throw error;
@@ -119,19 +119,19 @@ export const startImageUpload = async (
 
   const {
     data: { publicUrl },
-  } = supabase.storage.from('files').getPublicUrl(filename);
+  } = supabase.storage.from("files").getPublicUrl(filename);
 
-  if (file.type.startsWith('image/')) {
+  if (file.type.startsWith("image/")) {
     const image = new Image();
     image.src = publicUrl;
 
     await new Promise((resolve, reject) => {
-      image.addEventListener('load', () => resolve(publicUrl));
+      image.addEventListener("load", () => resolve(publicUrl));
       image.onerror = (error) => {
         const message =
-          typeof error === 'string'
+          typeof error === "string"
             ? error
-            : 'Error uploading image. Please try again.';
+            : "Error uploading image. Please try again.";
 
         reject(new Error(message));
       };

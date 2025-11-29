@@ -1,10 +1,10 @@
-import { InitiativesEmptyState } from '@/app/(organization)/initiatives/components/initiatives-empty-state';
-import { database } from '@/lib/database';
-import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
-import { Suspense } from 'react';
-import { NewInitiativePages } from './new-initiative-pages';
-import { NewInitiatives } from './new-initiatives';
-import { InitiativesTrend } from './trend';
+import { Skeleton } from "@repo/design-system/components/precomposed/skeleton";
+import { Suspense } from "react";
+import { InitiativesEmptyState } from "@/app/(organization)/initiatives/components/initiatives-empty-state";
+import { database } from "@/lib/database";
+import { NewInitiativePages } from "./new-initiative-pages";
+import { NewInitiatives } from "./new-initiatives";
+import { InitiativesTrend } from "./trend";
 
 export const InitiativesSection = async () => {
   const initiativeCount = await database.initiative.count();

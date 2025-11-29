@@ -1,15 +1,15 @@
-import { env } from '@/env';
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { WidgetForm } from './components/form';
-import { WidgetPreview } from './components/preview';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { env } from "@/env";
+import { database } from "@/lib/database";
+import { WidgetForm } from "./components/form";
+import { WidgetPreview } from "./components/preview";
 
 export const metadata: Metadata = createMetadata({
-  title: 'Widget',
-  description: 'Create a widget for websites and apps.',
+  title: "Widget",
+  description: "Create a widget for websites and apps.",
 });
 
 const Widget = async () => {
@@ -18,7 +18,7 @@ const Widget = async () => {
     currentOrganizationId(),
   ]);
 
-  if (!user || !organizationId) {
+  if (!(user && organizationId)) {
     notFound();
   }
 
@@ -59,10 +59,10 @@ const Widget = async () => {
     <div className="grid grid-cols-2 items-start divide-x">
       <WidgetForm
         data={widget}
-        widgetUrl={env.EVERVERSE_API_URL}
-        isSubscribed={Boolean(widget.organization.stripeSubscriptionId)}
         hasPortal={portals > 0}
+        isSubscribed={Boolean(widget.organization.stripeSubscriptionId)}
         slug={widget.organization.slug}
+        widgetUrl={env.EVERVERSE_API_URL}
       />
       <div className="sticky top-0 flex h-screen items-center justify-center bg-backdrop/50">
         <WidgetPreview data={widget} />

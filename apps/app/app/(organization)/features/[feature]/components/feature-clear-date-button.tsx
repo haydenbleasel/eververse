@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { updateFeature } from '@/actions/feature/update';
-import type { Feature } from '@repo/backend/prisma/client';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { toast } from '@repo/design-system/lib/toast';
-import { useState } from 'react';
+import type { Feature } from "@repo/backend/prisma/client";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { toast } from "@repo/design-system/lib/toast";
+import { useState } from "react";
+import { updateFeature } from "@/actions/feature/update";
 
 type FeatureClearDateButtonProps = {
-  featureId: Feature['id'];
+  featureId: Feature["id"];
 };
 
 export const FeatureClearDateButton = ({
@@ -33,7 +33,7 @@ export const FeatureClearDateButton = ({
         throw new Error(response.error);
       }
 
-      toast.success('Date cleared');
+      toast.success("Date cleared");
     } catch (error) {
       handleError(error);
     } finally {
@@ -44,9 +44,9 @@ export const FeatureClearDateButton = ({
   return (
     <Button
       className="h-auto p-0 text-destructive"
-      variant="ghost"
-      size="sm"
       onClick={handleClear}
+      size="sm"
+      variant="ghost"
     >
       Clear
     </Button>

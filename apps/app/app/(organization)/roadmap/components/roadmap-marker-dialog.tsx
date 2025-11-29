@@ -1,9 +1,9 @@
-import { createMarker } from '@/actions/roadmap-event/create';
-import { Dialog } from '@repo/design-system/components/precomposed/dialog';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { formatDate } from '@repo/lib/format';
-import { useState } from 'react';
+import { Dialog } from "@repo/design-system/components/precomposed/dialog";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { formatDate } from "@repo/lib/format";
+import { useState } from "react";
+import { createMarker } from "@/actions/roadmap-event/create";
 
 type RoadmapMarkerDialogProperties = {
   readonly open: boolean;
@@ -16,7 +16,7 @@ export const RoadmapMarkerDialog = ({
   setOpen,
   date,
 }: RoadmapMarkerDialogProperties) => {
-  const [markerName, setMarkerName] = useState('');
+  const [markerName, setMarkerName] = useState("");
   const [loading, setLoading] = useState(false);
   const disabled = loading || !markerName.trim();
 
@@ -31,7 +31,7 @@ export const RoadmapMarkerDialog = ({
       await createMarker(markerName, date);
 
       setOpen(false);
-      setMarkerName('');
+      setMarkerName("");
     } catch (error) {
       handleError(error);
     } finally {
@@ -41,21 +41,21 @@ export const RoadmapMarkerDialog = ({
 
   return (
     <Dialog
-      open={open}
-      onOpenChange={setOpen}
-      title={
-        date ? `Create a marker on ${formatDate(date)}` : 'Create a marker'
-      }
-      description="Markers are a way to highlight important points in your timeline."
       cta="Create marker"
-      onClick={onClick}
+      description="Markers are a way to highlight important points in your timeline."
       disabled={disabled}
+      onClick={onClick}
+      onOpenChange={setOpen}
+      open={open}
+      title={
+        date ? `Create a marker on ${formatDate(date)}` : "Create a marker"
+      }
     >
       <Input
-        placeholder="Product beta launch"
-        value={markerName}
         onChangeText={setMarkerName}
+        placeholder="Product beta launch"
         required
+        value={markerName}
       />
     </Dialog>
   );

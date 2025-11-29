@@ -1,10 +1,10 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import { MAX_FREE_CHANGELOGS } from '@repo/lib/consts';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import { MAX_FREE_CHANGELOGS } from "@repo/lib/consts";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const createChangelog = async (
   title: string
@@ -18,8 +18,8 @@ export const createChangelog = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('Not logged in');
+    if (!(user && organizationId)) {
+      throw new Error("Not logged in");
     }
 
     const databaseOrganization = await database.organization.findFirst({
@@ -33,7 +33,7 @@ export const createChangelog = async (
     });
 
     if (!databaseOrganization) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     if (
@@ -41,7 +41,7 @@ export const createChangelog = async (
       databaseOrganization._count.changelog >= MAX_FREE_CHANGELOGS
     ) {
       throw new Error(
-        'You have reached the maximum number of changelog entries for your plan. Please upgrade to post more changelogs.'
+        "You have reached the maximum number of changelog entries for your plan. Please upgrade to post more changelogs."
       );
     }
 
@@ -60,7 +60,7 @@ export const createChangelog = async (
       select: { id: true },
     });
 
-    revalidatePath('/changelog', 'layout');
+    revalidatePath("/changelog", "layout");
 
     return { id: update.id };
   } catch (error) {

@@ -1,30 +1,30 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId } from '@repo/backend/auth/utils';
-import type { FeedbackUser } from '@repo/backend/prisma/client';
-import { getGravatarUrl } from '@repo/lib/gravatar';
-import { parseError } from '@repo/lib/parse-error';
-import { friendlyWords } from 'friendlier-words';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId } from "@repo/backend/auth/utils";
+import type { FeedbackUser } from "@repo/backend/prisma/client";
+import { getGravatarUrl } from "@repo/lib/gravatar";
+import { parseError } from "@repo/lib/parse-error";
+import { friendlyWords } from "friendlier-words";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 type CreateFeedbackUserProperties = {
-  name?: FeedbackUser['name'];
-  email: FeedbackUser['email'];
+  name?: FeedbackUser["name"];
+  email: FeedbackUser["email"];
 };
 
 export const createFeedbackUser = async ({
-  name = friendlyWords(2, ' '),
+  name = friendlyWords(2, " "),
   email,
 }: CreateFeedbackUserProperties): Promise<{
-  id?: FeedbackUser['id'];
+  id?: FeedbackUser["id"];
   error?: string;
 }> => {
   try {
     const organizationId = await currentOrganizationId();
 
     if (!organizationId) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     const existingUser = await database.feedbackUser.findFirst({
@@ -48,7 +48,7 @@ export const createFeedbackUser = async ({
       },
     });
 
-    revalidatePath('/', 'layout');
+    revalidatePath("/", "layout");
 
     return { id };
   } catch (error) {

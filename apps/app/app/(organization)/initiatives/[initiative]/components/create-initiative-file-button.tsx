@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { createInitiativeFile } from '@/actions/initiative-file/create';
-import { createClient } from '@repo/backend/auth/client';
-import type { Initiative } from '@repo/backend/prisma/client';
-import { LoadingCircle } from '@repo/design-system/components/loading-circle';
-import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
-import { Button } from '@repo/design-system/components/ui/button';
-import { PlusIcon } from 'lucide-react';
-import { nanoid } from 'nanoid';
-import { useRef, useState } from 'react';
-import type { ChangeEvent } from 'react';
+import { createClient } from "@repo/backend/auth/client";
+import type { Initiative } from "@repo/backend/prisma/client";
+import { LoadingCircle } from "@repo/design-system/components/loading-circle";
+import { Tooltip } from "@repo/design-system/components/precomposed/tooltip";
+import { Button } from "@repo/design-system/components/ui/button";
+import { PlusIcon } from "lucide-react";
+import { nanoid } from "nanoid";
+import type { ChangeEvent } from "react";
+import { useRef, useState } from "react";
+import { createInitiativeFile } from "@/actions/initiative-file/create";
 
 type CreateInitiativeFileButtonProperties = {
-  readonly initiativeId: Initiative['id'];
+  readonly initiativeId: Initiative["id"];
 };
 
 export const CreateInitiativeFileButton = ({
@@ -38,7 +38,7 @@ export const CreateInitiativeFileButton = ({
 
     const id = nanoid(36);
     const { data, error } = await supabase.storage
-      .from('files')
+      .from("files")
       .upload(id, selectedFile);
 
     if (error) {
@@ -47,7 +47,7 @@ export const CreateInitiativeFileButton = ({
 
     const {
       data: { publicUrl },
-    } = await supabase.storage.from('files').getPublicUrl(data.path);
+    } = await supabase.storage.from("files").getPublicUrl(data.path);
 
     await createInitiativeFile({
       initiativeId,
@@ -67,11 +67,11 @@ export const CreateInitiativeFileButton = ({
       ) : (
         <Tooltip content="Upload a new file">
           <Button
+            className="-m-1.5 h-6 w-6"
+            disabled={loading}
+            onClick={() => inputRef.current?.click()}
             size="icon"
             variant="ghost"
-            className="-m-1.5 h-6 w-6"
-            onClick={() => inputRef.current?.click()}
-            disabled={loading}
           >
             <PlusIcon size={16} />
             <span className="sr-only">Upload file</span>
@@ -79,11 +79,11 @@ export const CreateInitiativeFileButton = ({
         </Tooltip>
       )}
       <input
+        className="sr-only hidden"
+        disabled={loading}
+        onChange={handleFileChange}
         ref={inputRef}
         type="file"
-        className="sr-only hidden"
-        onChange={handleFileChange}
-        disabled={loading}
       />
     </>
   );

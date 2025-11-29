@@ -1,7 +1,7 @@
-'use server';
+"use server";
 
-import { database } from '@repo/backend/database';
-import { parseError } from '@repo/lib/src/parse-error';
+import { database } from "@repo/backend/database";
+import { parseError } from "@repo/lib/src/parse-error";
 
 export const deleteLinearInstallation = async (
   id: string
@@ -20,7 +20,7 @@ export const deleteLinearInstallation = async (
     });
 
     if (!installation) {
-      throw new Error('Linear installation not found');
+      throw new Error("Linear installation not found");
     }
 
     await database.linearInstallation.delete({

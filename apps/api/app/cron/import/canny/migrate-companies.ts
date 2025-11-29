@@ -1,11 +1,11 @@
-import { database } from '@repo/backend/database';
-import type { CannyImport } from '@repo/backend/prisma/client';
-import { Canny } from '@repo/canny';
-import { friendlyWords } from 'friendlier-words';
+import { database } from "@repo/backend/database";
+import type { CannyImport } from "@repo/backend/prisma/client";
+import { Canny } from "@repo/canny";
+import { friendlyWords } from "friendlier-words";
 
 type ImportJobProperties = Pick<
   CannyImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateCompanies = async ({
@@ -30,7 +30,7 @@ export const migrateCompanies = async ({
 
   await database.feedbackOrganization.createMany({
     data: newCompanies.map((company) => ({
-      name: company.name ?? friendlyWords(2, ' '),
+      name: company.name ?? friendlyWords(2, " "),
       organizationId,
       cannyId: company.id,
       domain: company.domain,

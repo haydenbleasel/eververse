@@ -1,6 +1,6 @@
-import { CommandItem } from '@repo/design-system/components/ui/command';
-import type { PiIcon } from 'lucide-react';
-import { useCommandBar } from './use-command-bar';
+import { CommandItem } from "@repo/design-system/components/ui/command";
+import type { PiIcon } from "lucide-react";
+import { useCommandBar } from "./use-command-bar";
 
 type CommandBarItemProperties = {
   readonly label: string;
@@ -22,10 +22,10 @@ export const CommandBarItem = ({
 
   return (
     <CommandItem
-      onSelect={handleSelect}
       className="flex cursor-pointer items-center gap-3 rounded"
+      onSelect={handleSelect}
     >
-      <Icon size={16} className="text-muted-foreground" />
+      <Icon className="text-muted-foreground" size={16} />
       <span>{label}</span>
     </CommandItem>
   );

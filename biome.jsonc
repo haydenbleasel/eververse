@@ -9,7 +9,8 @@
       "!packages/design-system/hooks",
       "!apps/email/.react-email",
       "!packages/atlassian/types.d.ts",
-      "!packages/productboard/types.d.ts"
+      "!packages/productboard/types.d.ts",
+      "!supabase/templates"
     ]
   }
 }

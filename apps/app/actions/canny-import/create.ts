@@ -1,25 +1,25 @@
-'use server';
+"use server";
 
-import { createPortal } from '@/actions/portal/create';
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import type { canny_import_job_type } from '@repo/backend/prisma/client';
-import { Canny } from '@repo/canny';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import type { canny_import_job_type } from "@repo/backend/prisma/client";
+import { Canny } from "@repo/canny";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { createPortal } from "@/actions/portal/create";
+import { database } from "@/lib/database";
 
 const types: canny_import_job_type[] = [
-  'STATUSES',
-  'BOARDS',
-  'CATEGORIES',
-  'TAGS',
-  'COMPANIES',
-  'USERS',
-  'POSTS',
-  'CHANGELOGS',
-  'VOTES',
-  'COMMENTS',
-  'STATUS_CHANGES',
+  "STATUSES",
+  "BOARDS",
+  "CATEGORIES",
+  "TAGS",
+  "COMPANIES",
+  "USERS",
+  "POSTS",
+  "CHANGELOGS",
+  "VOTES",
+  "COMMENTS",
+  "STATUS_CHANGES",
 ];
 
 export const cannyImport = async (
@@ -38,8 +38,8 @@ export const cannyImport = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('Not logged in');
+    if (!(user && organizationId)) {
+      throw new Error("Not logged in");
     }
 
     try {
@@ -47,7 +47,7 @@ export const cannyImport = async (
 
       await canny.post.list();
     } catch {
-      throw new Error('Please provide a valid Canny token.');
+      throw new Error("Please provide a valid Canny token.");
     }
 
     const { id } = await database.cannyImport.create({
@@ -77,7 +77,7 @@ export const cannyImport = async (
       await database.organization.update({
         where: { id: organizationId },
         data: {
-          onboardingType: 'IMPORT',
+          onboardingType: "IMPORT",
           onboardedAt: new Date(),
         },
         select: {
@@ -98,7 +98,7 @@ export const cannyImport = async (
       }
     }
 
-    revalidatePath('/settings/import/canny');
+    revalidatePath("/settings/import/canny");
 
     return { id };
   } catch (error) {

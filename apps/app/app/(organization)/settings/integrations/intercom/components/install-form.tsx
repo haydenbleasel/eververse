@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { createIntercomInstallation } from '@/actions/intercom-installation/create';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { Loader2Icon } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { type FormEventHandler, useState } from 'react';
-import { toast } from 'sonner';
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { Loader2Icon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { type FormEventHandler, useState } from "react";
+import { toast } from "sonner";
+import { createIntercomInstallation } from "@/actions/intercom-installation/create";
 
 export const IntercomInstallationForm = () => {
-  const [appId, setAppId] = useState('');
+  const [appId, setAppId] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -26,11 +26,11 @@ export const IntercomInstallationForm = () => {
 
       const response = await createIntercomInstallation(appId);
 
-      if ('error' in response) {
+      if ("error" in response) {
         throw new Error(response.error);
       }
 
-      toast.success('Intercom installation created');
+      toast.success("Intercom installation created");
 
       setTimeout(() => {
         router.refresh();
@@ -43,14 +43,14 @@ export const IntercomInstallationForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2">
+    <form className="flex gap-2" onSubmit={handleSubmit}>
       <Input
-        value={appId}
         onChange={({ target }) => setAppId(target.value)}
         placeholder="Enter your Intercom app ID"
+        value={appId}
       />
-      <Button type="submit" disabled={loading}>
-        {loading ? <Loader2Icon className="animate-spin" /> : 'Install'}
+      <Button disabled={loading} type="submit">
+        {loading ? <Loader2Icon className="animate-spin" /> : "Install"}
       </Button>
     </form>
   );

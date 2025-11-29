@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { disconnectFeature } from '@/actions/feature-connection/delete';
-import type { FeatureConnection } from '@repo/backend/prisma/client';
-import { AlertDialog } from '@repo/design-system/components/precomposed/alert-dialog';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { toast } from '@repo/design-system/lib/toast';
-import { useState } from 'react';
+import type { FeatureConnection } from "@repo/backend/prisma/client";
+import { AlertDialog } from "@repo/design-system/components/precomposed/alert-dialog";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { toast } from "@repo/design-system/lib/toast";
+import { useState } from "react";
+import { disconnectFeature } from "@/actions/feature-connection/delete";
 
 type DisconnectButtonProperties = {
-  readonly connectionId: FeatureConnection['id'];
+  readonly connectionId: FeatureConnection["id"];
 };
 
 export const DisconnectButton = ({
@@ -32,7 +32,7 @@ export const DisconnectButton = ({
         throw new Error(error);
       }
 
-      toast.success('Feature disconnected.');
+      toast.success("Feature disconnected.");
     } catch (error) {
       handleError(error);
     } finally {
@@ -43,15 +43,15 @@ export const DisconnectButton = ({
 
   return (
     <AlertDialog
-      open={open}
-      onOpenChange={setOpen}
-      title="Are you sure?"
-      description="This will disconnect the feature from the connected service."
       cta="Disconnect"
-      onClick={handleDisconnect}
+      description="This will disconnect the feature from the connected service."
       disabled={loading}
+      onClick={handleDisconnect}
+      onOpenChange={setOpen}
+      open={open}
+      title="Are you sure?"
       trigger={
-        <Button variant="link" className="w-full">
+        <Button className="w-full" variant="link">
           Disconnect
         </Button>
       }

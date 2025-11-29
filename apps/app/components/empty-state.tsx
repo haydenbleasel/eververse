@@ -1,6 +1,6 @@
-import { LoadingCircle } from '@repo/design-system/components/loading-circle';
-import type { PenIcon } from 'lucide-react';
-import type { ReactNode } from 'react';
+import { LoadingCircle } from "@repo/design-system/components/loading-circle";
+import type { PenIcon } from "lucide-react";
+import type { ReactNode } from "react";
 
 type EmptyStateProperties = {
   readonly icon?: typeof PenIcon;
@@ -22,7 +22,7 @@ export const EmptyState = ({
       <div className="flex flex-col items-center text-center">
         {loader ? <LoadingCircle dimensions="w-6 mb-4 aspect-square" /> : null}
         {Icon ? (
-          <Icon size={24} className="mb-4 text-muted-foreground" />
+          <Icon className="mb-4 text-muted-foreground" size={24} />
         ) : null}
         <p className="mb-2 font-medium text-foreground">{title}</p>
         <p className="mb-4 text-muted-foreground text-sm">{description}</p>

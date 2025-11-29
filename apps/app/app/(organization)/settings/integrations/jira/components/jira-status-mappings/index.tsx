@@ -1,14 +1,13 @@
-import { database } from '@/lib/database';
-import { createClient } from '@repo/atlassian';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import {} from '@repo/design-system/components/ui/alert';
-import { LinkIcon } from 'lucide-react';
-import { JiraStatusMappingTable } from './jira-status-mapping-table';
+import { createClient } from "@repo/atlassian";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { LinkIcon } from "lucide-react";
+import { database } from "@/lib/database";
+import { JiraStatusMappingTable } from "./jira-status-mapping-table";
 
 export const JiraStatusMappings = async () => {
   const [featureStatuses, installation, statusMappings] = await Promise.all([
     database.featureStatus.findMany({
-      orderBy: { order: 'asc' },
+      orderBy: { order: "asc" },
       select: {
         id: true,
         name: true,
@@ -25,7 +24,7 @@ export const JiraStatusMappings = async () => {
     }),
     database.installationStatusMapping.findMany({
       where: {
-        type: 'JIRA',
+        type: "JIRA",
       },
       select: {
         id: true,
@@ -33,7 +32,7 @@ export const JiraStatusMappings = async () => {
         eventId: true,
         featureStatusId: true,
       },
-      orderBy: { eventType: 'asc' },
+      orderBy: { eventType: "asc" },
     }),
   ]);
 
@@ -42,21 +41,21 @@ export const JiraStatusMappings = async () => {
   }
 
   const atlassian = createClient(installation);
-  const jiraStatuses = await atlassian.GET('/rest/api/2/status');
+  const jiraStatuses = await atlassian.GET("/rest/api/2/status");
 
   return (
-    <StackCard title="Status Mappings" icon={LinkIcon} className="px-0 py-1.5">
+    <StackCard className="px-0 py-1.5" icon={LinkIcon} title="Status Mappings">
       <JiraStatusMappingTable
         featureStatuses={featureStatuses}
-        statusMappings={statusMappings}
+        installationId={installation.id}
         jiraStatuses={
           jiraStatuses.data?.map((jiraStatus) => ({
-            label: jiraStatus.name ?? '',
-            value: jiraStatus.id ?? '',
+            label: jiraStatus.name ?? "",
+            value: jiraStatus.id ?? "",
             state: jiraStatus.statusCategory?.key,
           })) ?? []
         }
-        installationId={installation.id}
+        statusMappings={statusMappings}
       />
     </StackCard>
   );

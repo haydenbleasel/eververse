@@ -1,6 +1,6 @@
-export * from '../ui/calendar';
 export type {
-  SelectSingleEventHandler,
   DateRange,
   SelectRangeEventHandler,
-} from 'react-day-picker';
+  SelectSingleEventHandler,
+} from "react-day-picker";
+export * from "../ui/calendar";

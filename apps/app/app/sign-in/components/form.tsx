@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { login } from '@repo/backend/auth/actions';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { Button } from '@repo/design-system/components/ui/button';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { login } from "@repo/backend/auth/actions";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { Button } from "@repo/design-system/components/ui/button";
 import {
   Form,
   FormControl,
@@ -11,13 +11,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@repo/design-system/components/ui/form';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { parseError } from '@repo/lib/parse-error';
-import Link from 'next/link';
-import { useForm } from 'react-hook-form';
-import { toast } from 'sonner';
-import { z } from 'zod/v3';
+} from "@repo/design-system/components/ui/form";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { parseError } from "@repo/lib/parse-error";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod/v3";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -27,18 +27,18 @@ export const LoginForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: '',
+      email: "",
     },
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await login(values.email);
-      toast.success('Check your email for a login link.');
+      toast.success("Check your email for a login link.");
     } catch (error) {
       const message = parseError(error);
 
-      if (message.includes('Signups not allowed for otp')) {
+      if (message.includes("Signups not allowed for otp")) {
         handleError("You don't have an account yet. Please sign up.");
       } else {
         handleError(error);
@@ -58,7 +58,7 @@ export const LoginForm = () => {
       </div>
       <div className="grid gap-2">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
+          <form className="grid gap-4" onSubmit={form.handleSubmit(onSubmit)}>
             <FormField
               control={form.control}
               name="email"
@@ -73,13 +73,13 @@ export const LoginForm = () => {
               )}
             />
             <Button
-              type="submit"
               disabled={
                 form.formState.disabled ||
                 !form.formState.isValid ||
                 form.formState.isSubmitted ||
                 form.formState.isSubmitting
               }
+              type="submit"
             >
               Continue
             </Button>
@@ -87,7 +87,7 @@ export const LoginForm = () => {
         </Form>
       </div>
       <p className="text-center text-muted-foreground text-sm">
-        Don't have an account?{' '}
+        Don't have an account?{" "}
         <Link className="font-medium text-primary underline" href="/sign-up">
           Sign up
         </Link>

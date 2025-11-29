@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import { importMarkdown } from '@/actions/markdown/import';
-import { parseMarkdown } from '@/actions/markdown/parse';
-import { Dialog } from '@repo/design-system/components/precomposed/dialog';
-import { Select } from '@repo/design-system/components/precomposed/select';
+import { Dialog } from "@repo/design-system/components/precomposed/dialog";
+import { Select } from "@repo/design-system/components/precomposed/select";
 import {
   Dropzone,
   DropzoneContent,
   DropzoneEmptyState,
-} from '@repo/design-system/components/ui/kibo-ui/dropzone';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { toast } from '@repo/design-system/lib/toast';
-import { useState } from 'react';
+} from "@repo/design-system/components/ui/kibo-ui/dropzone";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { toast } from "@repo/design-system/lib/toast";
+import { useState } from "react";
+import { importMarkdown } from "@/actions/markdown/import";
+import { parseMarkdown } from "@/actions/markdown/parse";
 
 export const MarkdownImportForm = () => {
   const [results, setResults] = useState<
@@ -49,7 +49,7 @@ export const MarkdownImportForm = () => {
                 const fileContent = event.target.result as string;
                 resolve({
                   fileContent,
-                  filename: file.name.split('.').slice(0, -1).join('.'),
+                  filename: file.name.split(".").slice(0, -1).join("."),
                 });
               }
             };
@@ -64,7 +64,7 @@ export const MarkdownImportForm = () => {
 
       const response = await parseMarkdown(raw);
 
-      if ('error' in response) {
+      if ("error" in response) {
         throw new Error(response.error);
       }
 
@@ -81,21 +81,21 @@ export const MarkdownImportForm = () => {
     result: (typeof results)[number]
   ) => {
     if (!field) {
-      return undefined;
+      return;
     }
 
-    if (field === 'filename') {
+    if (field === "filename") {
       return result.filename;
     }
 
     const fieldContent = result.data[field];
 
     if (!fieldContent) {
-      return undefined;
+      return;
     }
 
     if (Array.isArray(fieldContent)) {
-      return fieldContent.join(', ');
+      return fieldContent.join(", ");
     }
 
     return `${fieldContent}`;
@@ -113,7 +113,7 @@ export const MarkdownImportForm = () => {
       content: result.content,
       createdAt: getFieldContent(createdAtField, result),
       slug: getFieldContent(slugField, result),
-      tags: getFieldContent(tagsField, result)?.split(', '),
+      tags: getFieldContent(tagsField, result)?.split(", "),
     }));
 
     try {
@@ -135,14 +135,14 @@ export const MarkdownImportForm = () => {
   const getCaption = (field: string | undefined) => {
     const examples = results.slice(0, 3);
 
-    if (!field || !examples.length) {
-      return undefined;
+    if (!(field && examples.length)) {
+      return;
     }
 
     return examples
       .map((example) => getFieldContent(field, example))
       .filter(Boolean)
-      .join(', ');
+      .join(", ");
   };
 
   const fields = new Set<string>();
@@ -158,84 +158,84 @@ export const MarkdownImportForm = () => {
       label: field,
     })),
     {
-      value: '[none]',
-      label: 'None',
+      value: "[none]",
+      label: "None",
     },
     {
-      value: 'filename',
-      label: 'Filename',
+      value: "filename",
+      label: "Filename",
     },
   ];
 
   const handleTitleFieldChange = (value: string) =>
-    setTitleField(value === '[none]' ? undefined : value);
+    setTitleField(value === "[none]" ? undefined : value);
 
   const handleCreatedAtFieldChange = (value: string) =>
-    setCreatedAtField(value === '[none]' ? undefined : value);
+    setCreatedAtField(value === "[none]" ? undefined : value);
 
   const handleSlugFieldChange = (value: string) =>
-    setSlugField(value === '[none]' ? undefined : value);
+    setSlugField(value === "[none]" ? undefined : value);
 
   const handleTagsFieldChange = (value: string) =>
-    setTagsField(value === '[none]' ? undefined : value);
+    setTagsField(value === "[none]" ? undefined : value);
 
   return (
     <>
       <Dropzone
-        accept={{ 'text/markdown': [] }}
+        accept={{ "text/markdown": [] }}
+        className="rounded-none border-none"
+        maxFiles={100}
         onDrop={handleDrop}
         onError={console.error}
-        maxFiles={100}
-        className="rounded-none border-none"
       >
         <DropzoneEmptyState />
         <DropzoneContent />
       </Dropzone>
 
       <Dialog
-        open={results.length > 0}
-        onOpenChange={() => setResults([])}
         cta="Import"
+        description="Let's import your Markdown files"
         disabled={disabled}
         modal={false}
-        title={`Import ${results.length} files`}
-        description="Let's import your Markdown files"
         onClick={handleImport}
+        onOpenChange={() => setResults([])}
+        open={results.length > 0}
+        title={`Import ${results.length} files`}
       >
         <Select
-          label="Choose a Title field"
+          caption={getCaption(titleField)}
           data={data}
-          value={titleField}
+          label="Choose a Title field"
           onChange={handleTitleFieldChange}
           type="field"
-          caption={getCaption(titleField)}
+          value={titleField}
         />
 
         <Select
-          label="Choose a Created At field (optional)"
+          caption={getCaption(createdAtField)}
           data={data}
-          value={createdAtField}
+          label="Choose a Created At field (optional)"
           onChange={handleCreatedAtFieldChange}
           type="field"
-          caption={getCaption(createdAtField)}
+          value={createdAtField}
         />
 
         <Select
-          label="Choose a Slug field (optional)"
+          caption={getCaption(slugField)}
           data={data}
-          value={slugField}
+          label="Choose a Slug field (optional)"
           onChange={handleSlugFieldChange}
           type="field"
-          caption={getCaption(slugField)}
+          value={slugField}
         />
 
         <Select
-          label="Choose a Tags field (optional)"
+          caption={getCaption(tagsField)}
           data={data}
-          value={tagsField}
+          label="Choose a Tags field (optional)"
           onChange={handleTagsFieldChange}
           type="field"
-          caption={getCaption(tagsField)}
+          value={tagsField}
         />
       </Dialog>
     </>

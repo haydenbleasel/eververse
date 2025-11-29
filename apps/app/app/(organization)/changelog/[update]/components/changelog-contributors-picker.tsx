@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { addChangelogContributor } from '@/actions/changelog-contributor/create';
-import { deleteChangelogContributor } from '@/actions/changelog-contributor/delete';
-import type { User } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
-import type { Changelog } from '@repo/backend/prisma/client';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { PlusIcon } from 'lucide-react';
-import Image from 'next/image';
-import { useState } from 'react';
+import type { User } from "@repo/backend/auth";
+import { getUserName } from "@repo/backend/auth/format";
+import type { Changelog } from "@repo/backend/prisma/client";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { Tooltip } from "@repo/design-system/components/precomposed/tooltip";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { PlusIcon } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+import { addChangelogContributor } from "@/actions/changelog-contributor/create";
+import { deleteChangelogContributor } from "@/actions/changelog-contributor/delete";
 
 type ChangelogContributorsPickerProperties = {
-  readonly changelogId: Changelog['id'];
+  readonly changelogId: Changelog["id"];
   readonly users: User[];
   readonly defaultContributors: string[];
 };
@@ -82,13 +82,12 @@ export const ChangelogContributorsPicker = ({
 
   return (
     <Select
-      value={contributors}
-      onChange={handleSelect}
       data={users.map((user) => ({
         label: getUserName(user),
         value: user.id,
       }))}
       disabled={loading}
+      onChange={handleSelect}
       renderItem={(item) => {
         const user = users.find((user) => user.id === item.value);
 
@@ -100,11 +99,11 @@ export const ChangelogContributorsPicker = ({
           <div className="flex items-center gap-2">
             {user.user_metadata?.image_url ? (
               <Image
-                src={user.user_metadata.image_url}
                 alt=""
-                width={24}
-                height={24}
                 className="h-6 w-6 shrink-0 rounded-full object-cover"
+                height={24}
+                src={user.user_metadata.image_url}
+                width={24}
               />
             ) : (
               <div className="h-6 w-6 rounded-full bg-card" />
@@ -113,17 +112,18 @@ export const ChangelogContributorsPicker = ({
           </div>
         );
       }}
-      type="user"
       trigger={
         <div>
           <Tooltip content="Add a new contributor">
-            <Button size="icon" variant="ghost" className="-m-1.5 h-6 w-6">
+            <Button className="-m-1.5 h-6 w-6" size="icon" variant="ghost">
               <PlusIcon size={16} />
               <span className="sr-only">Add a new contributor</span>
             </Button>
           </Tooltip>
         </div>
       }
+      type="user"
+      value={contributors}
     />
   );
 };

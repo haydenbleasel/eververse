@@ -1,5 +1,5 @@
-import { MemoizedReactMarkdown } from '@/components/markdown';
-import { Prose } from '@repo/design-system/components/prose';
+import { Prose } from "@repo/design-system/components/prose";
+import { MemoizedReactMarkdown } from "@/components/markdown";
 
 const docs = `
 Use the Eververse API to interact with your Eververse data programmatically. The Eververse API is organized around REST. Our API has predictable resource-oriented URLs, accepts JSON-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.

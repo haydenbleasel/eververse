@@ -1,8 +1,9 @@
-import { DropdownMenu } from '@repo/design-system/components/precomposed/dropdown-menu';
-import { Button } from '@repo/design-system/components/ui/button';
-import { cn } from '@repo/design-system/lib/utils';
-import { parseError } from '@repo/lib/parse-error';
-import { log } from '@repo/observability/log';
+import { DropdownMenu } from "@repo/design-system/components/precomposed/dropdown-menu";
+import { Button } from "@repo/design-system/components/ui/button";
+import { cn } from "@repo/design-system/lib/utils";
+import { parseError } from "@repo/lib/parse-error";
+import { log } from "@repo/observability/log";
+import type { Rows } from "lucide-react";
 import {
   ArrowDownIcon,
   ArrowLeftIcon,
@@ -13,10 +14,9 @@ import {
   EllipsisVerticalIcon,
   RowsIcon,
   TrashIcon,
-} from 'lucide-react';
-import type { Rows } from 'lucide-react';
-import { useEditor } from 'novel';
-import { useEffect, useState } from 'react';
+} from "lucide-react";
+import { useEditor } from "novel";
+import { useEffect, useState } from "react";
 
 type TableMenuItem = {
   name: string;
@@ -39,83 +39,83 @@ export const TableMenu = () => {
 
   const columnMenuItems: TableMenuItem[] = [
     {
-      name: 'Add column before',
+      name: "Add column before",
       // @ts-expect-error Need to replace Novel with real extensions
       command: () => editor?.chain().focus().addColumnBefore().run(),
       icon: ArrowLeftIcon,
     },
     {
-      name: 'Add column after',
+      name: "Add column after",
       // @ts-expect-error Need to replace Novel with real extensions
       command: () => editor?.chain().focus().addColumnAfter().run(),
       icon: ArrowRightIcon,
     },
     {
-      name: 'Delete column',
+      name: "Delete column",
       command: () => {
         // @ts-expect-error Need to replace Novel with real extensions
         editor?.chain().focus().deleteColumn().run();
       },
       icon: TrashIcon,
-      className: 'text-destructive',
+      className: "text-destructive",
     },
   ];
 
   const rowMenuItems: TableMenuItem[] = [
     {
-      name: 'Add row before',
+      name: "Add row before",
       // @ts-expect-error Need to replace Novel with real extensions
       command: () => editor?.chain().focus().addRowBefore().run(),
       icon: ArrowUpIcon,
     },
     {
-      name: 'Add row after',
+      name: "Add row after",
       // @ts-expect-error Need to replace Novel with real extensions
       command: () => editor?.chain().focus().addRowAfter().run(),
       icon: ArrowDownIcon,
     },
     {
-      name: 'Delete row',
+      name: "Delete row",
       // @ts-expect-error Need to replace Novel with real extensions
       command: () => editor?.chain().focus().deleteRow().run(),
       icon: TrashIcon,
-      className: 'text-destructive',
+      className: "text-destructive",
     },
   ];
 
   const globalMenuItems: TableMenuItem[] = [
     {
-      name: 'Toggle header column',
+      name: "Toggle header column",
       // @ts-expect-error Need to replace Novel with real extensions
       command: () => editor?.chain().focus().toggleHeaderColumn().run(),
       icon: ColumnsIcon,
     },
     {
-      name: 'Toggle header row',
+      name: "Toggle header row",
       // @ts-expect-error Need to replace Novel with real extensions
       command: () => editor?.chain().focus().toggleHeaderRow().run(),
       icon: RowsIcon,
     },
     {
-      name: 'Delete table',
+      name: "Delete table",
       // @ts-expect-error Need to replace Novel with real extensions
       command: () => editor?.chain().focus().deleteTable().run(),
       icon: TrashIcon,
-      className: 'text-destructive',
+      className: "text-destructive",
     },
   ];
 
   const groups = [
     {
-      name: 'Columns',
+      name: "Columns",
       items: columnMenuItems,
     },
     {
-      name: 'Rows',
+      name: "Rows",
       items: rowMenuItems,
     },
     {
-      name: 'Global',
+      name: "Global",
       items: globalMenuItems,
     },
   ];
@@ -125,10 +125,10 @@ export const TableMenu = () => {
       return;
     }
 
-    editor.on('selectionUpdate', () => {
+    editor.on("selectionUpdate", () => {
       const selection = window.getSelection();
 
-      if (!selection || !editor.isActive('table')) {
+      if (!(selection && editor.isActive("table"))) {
         return;
       }
 
@@ -140,7 +140,7 @@ export const TableMenu = () => {
           startContainer = range.startContainer.parentElement as HTMLElement;
         }
 
-        const tableNode = startContainer.closest('table');
+        const tableNode = startContainer.closest("table");
 
         if (!tableNode) {
           return;
@@ -149,7 +149,7 @@ export const TableMenu = () => {
         setTableLocation(tableNode.offsetTop);
 
         // Get the closest table cell (td or th)
-        const tableCell = startContainer.closest('td, th');
+        const tableCell = startContainer.closest("td, th");
 
         if (tableCell) {
           const cellRect = tableCell.getBoundingClientRect();
@@ -161,7 +161,7 @@ export const TableMenu = () => {
           });
         }
 
-        const tableRow = startContainer.closest('tr');
+        const tableRow = startContainer.closest("tr");
 
         if (tableRow) {
           const rowRect = tableRow.getBoundingClientRect();
@@ -180,11 +180,11 @@ export const TableMenu = () => {
     });
 
     return () => {
-      editor.off('selectionUpdate');
+      editor.off("selectionUpdate");
     };
   }, [editor]);
 
-  if (!editor?.isActive('table')) {
+  if (!editor?.isActive("table")) {
     return null;
   }
 
@@ -203,7 +203,7 @@ export const TableMenu = () => {
             children: (
               <div
                 className={cn(
-                  'flex cursor-pointer items-center gap-2',
+                  "flex cursor-pointer items-center gap-2",
                   item.className
                 )}
               >
@@ -213,8 +213,8 @@ export const TableMenu = () => {
             ),
           }))}
         >
-          <Button variant="ghost" size="icon" className="flex h-5 rounded-sm">
-            <EllipsisIcon size={16} className="text-muted-foreground" />
+          <Button className="flex h-5 rounded-sm" size="icon" variant="ghost">
+            <EllipsisIcon className="text-muted-foreground" size={16} />
           </Button>
         </DropdownMenu>
       </div>
@@ -232,7 +232,7 @@ export const TableMenu = () => {
             children: (
               <div
                 className={cn(
-                  'flex cursor-pointer items-center gap-2',
+                  "flex cursor-pointer items-center gap-2",
                   item.className
                 )}
               >
@@ -243,11 +243,11 @@ export const TableMenu = () => {
           }))}
         >
           <Button
-            variant="ghost"
-            size="icon"
             className="flex h-9 w-5 rounded-sm"
+            size="icon"
+            variant="ghost"
           >
-            <EllipsisVerticalIcon size={16} className="text-muted-foreground" />
+            <EllipsisVerticalIcon className="text-muted-foreground" size={16} />
           </Button>
         </DropdownMenu>
       </div>
@@ -260,11 +260,11 @@ export const TableMenu = () => {
       >
         {globalMenuItems.map((item) => (
           <Button
+            className={cn("flex items-center gap-2", item.className)}
             key={item.name}
-            variant="ghost"
-            size="sm"
             onClick={item.command}
-            className={cn('flex items-center gap-2', item.className)}
+            size="sm"
+            variant="ghost"
           >
             <item.icon size={16} />
             <span>{item.name}</span>

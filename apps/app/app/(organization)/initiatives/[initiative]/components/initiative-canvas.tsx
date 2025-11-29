@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { updateInitiativeCanvas } from '@/actions/initiative-canvas/update';
-import { CanvasSkeleton } from '@/components/skeletons/canvas';
-import type { InitiativeCanvas } from '@repo/backend/prisma/client';
-import type { CanvasState } from '@repo/canvas';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useTheme } from 'next-themes';
-import dynamic from 'next/dynamic';
+import type { InitiativeCanvas } from "@repo/backend/prisma/client";
+import type { CanvasState } from "@repo/canvas";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import dynamic from "next/dynamic";
+import { useTheme } from "next-themes";
+import { updateInitiativeCanvas } from "@/actions/initiative-canvas/update";
+import { CanvasSkeleton } from "@/components/skeletons/canvas";
 
 type InitiativeCanvasLoaderProperties = {
-  readonly initiativeCanvasId: InitiativeCanvas['id'];
+  readonly initiativeCanvasId: InitiativeCanvas["id"];
   readonly defaultValue: CanvasState | undefined;
   readonly editable?: boolean;
 };
@@ -18,7 +18,7 @@ const Canvas = dynamic(
   async () => {
     const component = await import(
       /* webpackChunkName: "canvas" */
-      '@repo/canvas'
+      "@repo/canvas"
     );
 
     return component.Canvas;
@@ -48,10 +48,10 @@ export const InitiativeCanvasLoader = ({
 
   return (
     <Canvas
-      theme={theme as 'dark' | 'light' | undefined}
-      onSave={handleSave}
       defaultValue={defaultValue}
       editable={editable}
+      onSave={handleSave}
+      theme={theme as "dark" | "light" | undefined}
     />
   );
 };

@@ -1,17 +1,17 @@
-import type { FeatureStatus } from '@repo/backend/prisma/client';
-import { Dialog } from '@repo/design-system/components/precomposed/dialog';
-import { DropdownMenu } from '@repo/design-system/components/precomposed/dropdown-menu';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { Button } from '@repo/design-system/components/ui/button';
-import { Label } from '@repo/design-system/components/ui/label';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { ArrowRightIcon, MoreHorizontalIcon } from 'lucide-react';
-import { useState } from 'react';
+import type { FeatureStatus } from "@repo/backend/prisma/client";
+import { Dialog } from "@repo/design-system/components/precomposed/dialog";
+import { DropdownMenu } from "@repo/design-system/components/precomposed/dropdown-menu";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { Button } from "@repo/design-system/components/ui/button";
+import { Label } from "@repo/design-system/components/ui/label";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { ArrowRightIcon, MoreHorizontalIcon } from "lucide-react";
+import { useState } from "react";
 
 type FeatureStatusDropdownProperties = {
-  readonly status: Pick<FeatureStatus, 'color' | 'id' | 'name'>;
-  readonly statuses: Pick<FeatureStatus, 'color' | 'id' | 'name'>[];
-  readonly onDelete: (mergeDestinationId: FeatureStatus['id']) => void;
+  readonly status: Pick<FeatureStatus, "color" | "id" | "name">;
+  readonly statuses: Pick<FeatureStatus, "color" | "id" | "name">[];
+  readonly onDelete: (mergeDestinationId: FeatureStatus["id"]) => void;
 };
 
 export const FeatureStatusDropdown = ({
@@ -26,7 +26,7 @@ export const FeatureStatusDropdown = ({
 
   const handleStartDelete = () => {
     if (statuses.length === 1) {
-      handleError('You cannot delete the last status.');
+      handleError("You cannot delete the last status.");
       return;
     }
 
@@ -35,7 +35,7 @@ export const FeatureStatusDropdown = ({
 
   const handleContinue = () => {
     if (!mergeDestinationId) {
-      handleError('Please choose a status to migrate features to.');
+      handleError("Please choose a status to migrate features to.");
       return;
     }
 
@@ -47,29 +47,29 @@ export const FeatureStatusDropdown = ({
 
   return (
     <>
-      <DropdownMenu data={[{ onClick: handleStartDelete, children: 'Delete' }]}>
-        <Button variant="ghost" size="icon">
-          <MoreHorizontalIcon size={16} className="text-muted-foreground" />
+      <DropdownMenu data={[{ onClick: handleStartDelete, children: "Delete" }]}>
+        <Button size="icon" variant="ghost">
+          <MoreHorizontalIcon className="text-muted-foreground" size={16} />
         </Button>
       </DropdownMenu>
       <Dialog
-        open={deleteDialogOpen}
-        onOpenChange={setDeleteDialogOpen}
-        title="Are you absolutely sure?"
+        cta="Merge feature"
         description="If so, please choose a status to migrate relevant features to."
-        onClick={handleContinue}
         disabled={!selected}
         modal={false}
-        cta="Merge feature"
+        onClick={handleContinue}
+        onOpenChange={setDeleteDialogOpen}
+        open={deleteDialogOpen}
+        title="Are you absolutely sure?"
       >
         <div className="flex items-end">
           <div className="flex-1 space-y-1">
             <Label htmlFor="source">Merge this feature...</Label>
             <div>
               <Button
-                variant="outline"
-                disabled
                 className="w-full justify-start gap-2"
+                disabled
+                variant="outline"
               >
                 <div
                   className="h-2 w-2 rounded-full"
@@ -80,19 +80,18 @@ export const FeatureStatusDropdown = ({
             </div>
           </div>
           <div className="flex aspect-square h-9 shrink-0 items-center justify-center">
-            <ArrowRightIcon size={16} className="text-muted-foreground" />
+            <ArrowRightIcon className="text-muted-foreground" size={16} />
           </div>
           <div className="flex-1">
             <Select
-              label="Into this feature..."
-              value={mergeDestinationId}
-              onChange={setMergeDestinationId}
               data={statuses
                 .filter((item) => item.id !== status.id)
                 .map((item) => ({
                   value: item.id,
                   label: item.name,
                 }))}
+              label="Into this feature..."
+              onChange={setMergeDestinationId}
               renderItem={(item) => {
                 const current = statuses.find(({ id }) => id === item.value);
 
@@ -110,6 +109,7 @@ export const FeatureStatusDropdown = ({
                   </div>
                 );
               }}
+              value={mergeDestinationId}
             />
           </div>
         </div>

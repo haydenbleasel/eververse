@@ -1,24 +1,24 @@
-import NextLink from 'next/link';
-import { forwardRef } from 'react';
-import type { ComponentProps } from 'react';
+import NextLink from "next/link";
+import type { ComponentProps } from "react";
+import { forwardRef } from "react";
 
 type LinkProperties = {
   readonly href: string;
-  readonly children: ComponentProps<'a'>['children'];
+  readonly children: ComponentProps<"a">["children"];
   readonly className?: string;
   readonly external?: boolean;
 };
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProperties>(
   ({ href, external, ...properties }, reference) => {
-    const isExternal = href.startsWith('http');
+    const isExternal = href.startsWith("http");
 
     if (isExternal) {
       return (
         <a
           href={href}
-          target="_blank"
           rel="noopener noreferrer"
+          target="_blank"
           {...properties}
           ref={reference}
         />
@@ -27,8 +27,8 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProperties>(
 
     return (
       <NextLink
-        target={external ? '_blank' : undefined}
         href={href}
+        target={external ? "_blank" : undefined}
         {...properties}
         ref={reference}
       />

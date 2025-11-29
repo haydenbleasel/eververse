@@ -1,9 +1,9 @@
-import type { Product } from '@repo/backend/prisma/client';
-import { Emoji } from '@repo/design-system/components/emoji';
-import { Select } from '@repo/design-system/components/precomposed/select';
+import type { Product } from "@repo/backend/prisma/client";
+import { Emoji } from "@repo/design-system/components/emoji";
+import { Select } from "@repo/design-system/components/precomposed/select";
 
 type GroupProductPickerProperties = {
-  readonly data: Pick<Product, 'emoji' | 'id' | 'name'>[];
+  readonly data: Pick<Product, "emoji" | "id" | "name">[];
   readonly value: string | undefined;
   readonly onChange: (value: string) => void;
 };
@@ -14,13 +14,11 @@ export const GroupProductPicker = ({
   onChange,
 }: GroupProductPickerProperties) => (
   <Select
-    value={value}
-    onChange={onChange}
     data={data.map((item) => ({
       label: item.name,
       value: item.id,
     }))}
-    type="product"
+    onChange={onChange}
     renderItem={(item) => {
       const product = data.find(({ id }) => id === item.value);
 
@@ -35,5 +33,7 @@ export const GroupProductPicker = ({
         </div>
       );
     }}
+    type="product"
+    value={value}
   />
 );

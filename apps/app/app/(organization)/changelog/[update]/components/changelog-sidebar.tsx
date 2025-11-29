@@ -1,23 +1,23 @@
-import { AvatarTooltip } from '@/components/avatar-tooltip';
-import * as SettingsBar from '@/components/settings-bar';
-import { database } from '@/lib/database';
-import { staticify } from '@/lib/staticify';
-import { EververseRole } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
-import { currentMembers, currentUser } from '@repo/backend/auth/utils';
-import type { Changelog } from '@repo/backend/prisma/client';
-import { Badge } from '@repo/design-system/components/ui/badge';
-import { formatDate } from '@repo/lib/format';
-import { notFound } from 'next/navigation';
-import { ChangelogContributorsPicker } from './changelog-contributors-picker';
-import { ChangelogDatePicker } from './changelog-date-picker';
-import { ChangelogSettingsDropdown } from './changelog-settings-dropdown';
-import { ChangelogSlugInput } from './changelog-slug-input';
-import { ChangelogStatusPicker } from './changelog-status-picker';
-import { ChangelogTagsPicker } from './changelog-tags-picker';
+import { EververseRole } from "@repo/backend/auth";
+import { getUserName } from "@repo/backend/auth/format";
+import { currentMembers, currentUser } from "@repo/backend/auth/utils";
+import type { Changelog } from "@repo/backend/prisma/client";
+import { Badge } from "@repo/design-system/components/ui/badge";
+import { formatDate } from "@repo/lib/format";
+import { notFound } from "next/navigation";
+import { AvatarTooltip } from "@/components/avatar-tooltip";
+import * as SettingsBar from "@/components/settings-bar";
+import { database } from "@/lib/database";
+import { staticify } from "@/lib/staticify";
+import { ChangelogContributorsPicker } from "./changelog-contributors-picker";
+import { ChangelogDatePicker } from "./changelog-date-picker";
+import { ChangelogSettingsDropdown } from "./changelog-settings-dropdown";
+import { ChangelogSlugInput } from "./changelog-slug-input";
+import { ChangelogStatusPicker } from "./changelog-status-picker";
+import { ChangelogTagsPicker } from "./changelog-tags-picker";
 
 type ChangelogSidebarProperties = {
-  readonly changelogId: Changelog['id'];
+  readonly changelogId: Changelog["id"];
 };
 
 export const ChangelogSidebar = async ({
@@ -48,7 +48,7 @@ export const ChangelogSidebar = async ({
     database.changelogTag.findMany(),
   ]);
 
-  if (!user || !changelog) {
+  if (!(user && changelog)) {
     notFound();
   }
 
@@ -73,18 +73,18 @@ export const ChangelogSidebar = async ({
       </SettingsBar.Item>
 
       <SettingsBar.Item
-        title="Contributors"
         action={
           user.user_metadata.organization_role !== EververseRole.Member && (
             <ChangelogContributorsPicker
               changelogId={changelog.id}
-              users={staticify(members)}
               defaultContributors={changelog.contributors.map(
                 ({ userId }) => userId
               )}
+              users={staticify(members)}
             />
           )
         }
+        title="Contributors"
       >
         <div className="flex flex-wrap items-center gap-1">
           {changelog.contributors.map((contributor) => {
@@ -96,11 +96,11 @@ export const ChangelogSidebar = async ({
 
             return (
               <AvatarTooltip
-                key={contributor.userId}
                 fallback={getUserName(user).slice(0, 2)}
-                subtitle={user.email ?? ''}
-                title={getUserName(user)}
+                key={contributor.userId}
                 src={user.user_metadata?.image_url}
+                subtitle={user.email ?? ""}
+                title={getUserName(user)}
               />
             );
           })}
@@ -128,7 +128,6 @@ export const ChangelogSidebar = async ({
       </SettingsBar.Item>
 
       <SettingsBar.Item
-        title="Tags"
         action={
           user.user_metadata.organization_role !== EververseRole.Member && (
             <ChangelogTagsPicker
@@ -138,10 +137,11 @@ export const ChangelogSidebar = async ({
             />
           )
         }
+        title="Tags"
       >
         <div className="flex flex-wrap items-center gap-1">
           {changelog.tags.map((tag) => (
-            <Badge variant="outline" key={tag.id}>
+            <Badge key={tag.id} variant="outline">
               {tag.name}
             </Badge>
           ))}

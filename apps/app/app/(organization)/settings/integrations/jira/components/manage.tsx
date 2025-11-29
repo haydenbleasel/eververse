@@ -1,17 +1,17 @@
-import { database } from '@/lib/database';
-import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
-import { JiraFieldMappings } from './jira-field-mappings';
-import { JiraStatusMappings } from './jira-status-mappings';
-import { RemoveJiraButton } from './remove-jira-button';
+import { Skeleton } from "@repo/design-system/components/precomposed/skeleton";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
+import { database } from "@/lib/database";
+import { JiraFieldMappings } from "./jira-field-mappings";
+import { JiraStatusMappings } from "./jira-status-mappings";
+import { RemoveJiraButton } from "./remove-jira-button";
 
 export const metadata: Metadata = createMetadata({
-  title: 'Jira Integration',
-  description: 'Configure your Jira integration settings.',
+  title: "Jira Integration",
+  description: "Configure your Jira integration settings.",
 });
 
 export const ManageJira = async () => {
@@ -39,7 +39,7 @@ export const ManageJira = async () => {
         <JiraFieldMappings />
       </Suspense>
 
-      <StackCard title="Danger Zone" className="flex items-center gap-4">
+      <StackCard className="flex items-center gap-4" title="Danger Zone">
         <RemoveJiraButton />
       </StackCard>
     </>

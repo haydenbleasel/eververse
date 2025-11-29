@@ -1,32 +1,32 @@
-'use client';
+"use client";
 
 import type {
   Feature,
   FeatureStatus,
   Group,
   Product,
-} from '@repo/backend/prisma/client';
-import { Emoji } from '@repo/design-system/components/emoji';
-import { Dialog } from '@repo/design-system/components/precomposed/dialog';
-import { DropdownMenu } from '@repo/design-system/components/precomposed/dropdown-menu';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { toast } from '@repo/design-system/lib/toast';
-import { PlusIcon } from 'lucide-react';
-import { useState } from 'react';
-import { linkInitiativeFeature } from '../actions/link-initiative-feature';
-import { linkInitiativeGroup } from '../actions/link-initiative-group';
-import { linkInitiativeProduct } from '../actions/link-initiative-product';
+} from "@repo/backend/prisma/client";
+import { Emoji } from "@repo/design-system/components/emoji";
+import { Dialog } from "@repo/design-system/components/precomposed/dialog";
+import { DropdownMenu } from "@repo/design-system/components/precomposed/dropdown-menu";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { Tooltip } from "@repo/design-system/components/precomposed/tooltip";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { toast } from "@repo/design-system/lib/toast";
+import { PlusIcon } from "lucide-react";
+import { useState } from "react";
+import { linkInitiativeFeature } from "../actions/link-initiative-feature";
+import { linkInitiativeGroup } from "../actions/link-initiative-group";
+import { linkInitiativeProduct } from "../actions/link-initiative-product";
 
 type InitiativeLinkDialogProps = {
   initiativeId: string;
-  features: (Pick<Feature, 'id' | 'title'> & {
-    status: Pick<FeatureStatus, 'color'>;
+  features: (Pick<Feature, "id" | "title"> & {
+    status: Pick<FeatureStatus, "color">;
   })[];
-  groups: Pick<Group, 'id' | 'name' | 'emoji'>[];
-  products: Pick<Product, 'id' | 'name' | 'emoji'>[];
+  groups: Pick<Group, "id" | "name" | "emoji">[];
+  products: Pick<Product, "id" | "name" | "emoji">[];
 };
 
 export const InitiativeLinkDialog = ({
@@ -68,7 +68,7 @@ export const InitiativeLinkDialog = ({
         throw new Error(response.error);
       }
 
-      toast.success('Feature linked successfully');
+      toast.success("Feature linked successfully");
       setShowFeatureDialog(false);
     } catch (error) {
       handleError(error);
@@ -91,7 +91,7 @@ export const InitiativeLinkDialog = ({
         throw new Error(response.error);
       }
 
-      toast.success('Group linked successfully');
+      toast.success("Group linked successfully");
       setShowGroupDialog(false);
     } catch (error) {
       handleError(error);
@@ -117,7 +117,7 @@ export const InitiativeLinkDialog = ({
         throw new Error(response.error);
       }
 
-      toast.success('Product linked successfully');
+      toast.success("Product linked successfully");
       setShowProductDialog(false);
     } catch (error) {
       handleError(error);
@@ -139,13 +139,13 @@ export const InitiativeLinkDialog = ({
     <>
       <DropdownMenu
         data={[
-          { children: 'Feature', onClick: handleShowFeatureDialog },
-          { children: 'Group', onClick: handleShowGroupDialog },
-          { children: 'Product', onClick: handleShowProductDialog },
+          { children: "Feature", onClick: handleShowFeatureDialog },
+          { children: "Group", onClick: handleShowGroupDialog },
+          { children: "Product", onClick: handleShowProductDialog },
         ]}
       >
         <Tooltip content="Link a new...">
-          <Button size="icon" variant="ghost" className="-m-1.5 h-6 w-6">
+          <Button className="-m-1.5 h-6 w-6" size="icon" variant="ghost">
             <PlusIcon size={16} />
             <span className="sr-only">Add a new contributor</span>
           </Button>
@@ -153,28 +153,26 @@ export const InitiativeLinkDialog = ({
       </DropdownMenu>
 
       <Dialog
-        title="Link a Feature"
         description="Link a new feature to this initiative."
-        open={showFeatureDialog}
-        onOpenChange={setShowFeatureDialog}
-        modal={false}
         footer={
           <Button
-            onClick={handleLinkFeature}
             disabled={loading || !selectedFeature}
+            onClick={handleLinkFeature}
           >
             Link Feature
           </Button>
         }
+        modal={false}
+        onOpenChange={setShowFeatureDialog}
+        open={showFeatureDialog}
+        title="Link a Feature"
       >
         <Select
           data={features.map((feature) => ({
             value: feature.id,
             label: feature.title,
           }))}
-          value={selectedFeature}
           onChange={setSelectedFeature}
-          type="feature"
           renderItem={(item) => {
             const status = features.find(
               (feature) => feature.id === item.value
@@ -194,32 +192,32 @@ export const InitiativeLinkDialog = ({
               </div>
             );
           }}
+          type="feature"
+          value={selectedFeature}
         />
       </Dialog>
 
       <Dialog
-        title="Link a Group"
         description="Link a new group to this initiative."
-        open={showGroupDialog}
-        onOpenChange={setShowGroupDialog}
-        modal={false}
         footer={
           <Button
-            onClick={handleLinkGroup}
             disabled={loading || !selectedGroup}
+            onClick={handleLinkGroup}
           >
             Link Group
           </Button>
         }
+        modal={false}
+        onOpenChange={setShowGroupDialog}
+        open={showGroupDialog}
+        title="Link a Group"
       >
         <Select
           data={groups.map((group) => ({
             value: group.id,
             label: group.name,
           }))}
-          value={selectedGroup}
           onChange={setSelectedGroup}
-          type="group"
           renderItem={(item) => {
             const group = groups.find((group) => group.id === item.value);
 
@@ -234,32 +232,32 @@ export const InitiativeLinkDialog = ({
               </div>
             );
           }}
+          type="group"
+          value={selectedGroup}
         />
       </Dialog>
 
       <Dialog
-        title="Link a Product"
         description="Link a new product to this initiative."
-        open={showProductDialog}
-        onOpenChange={setShowProductDialog}
-        modal={false}
         footer={
           <Button
-            onClick={handleLinkProduct}
             disabled={loading || !selectedProduct}
+            onClick={handleLinkProduct}
           >
             Link Product
           </Button>
         }
+        modal={false}
+        onOpenChange={setShowProductDialog}
+        open={showProductDialog}
+        title="Link a Product"
       >
         <Select
           data={products.map((product) => ({
             value: product.id,
             label: product.name,
           }))}
-          value={selectedProduct}
           onChange={setSelectedProduct}
-          type="product"
           renderItem={(item) => {
             const product = products.find(
               (product) => product.id === item.value
@@ -276,6 +274,8 @@ export const InitiativeLinkDialog = ({
               </div>
             );
           }}
+          type="product"
+          value={selectedProduct}
         />
       </Dialog>
     </>

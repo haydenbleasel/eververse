@@ -1,5 +1,4 @@
-import { database } from '@/lib/database';
-import { StackCard } from '@repo/design-system/components/stack-card';
+import { StackCard } from "@repo/design-system/components/stack-card";
 import {
   Table,
   TableBody,
@@ -7,23 +6,24 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@repo/design-system/components/ui/table';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { CreateStatusMappingsButton } from './components/create-status-mappings-button';
-import { FeatureStatusConnectionPicker } from './components/feature-status-connection-picker';
+} from "@repo/design-system/components/ui/table";
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { database } from "@/lib/database";
+import { CreateStatusMappingsButton } from "./components/create-status-mappings-button";
+import { FeatureStatusConnectionPicker } from "./components/feature-status-connection-picker";
 
 export const metadata: Metadata = createMetadata({
-  title: 'GitHub Integration',
-  description: 'Configure your GitHub integration settings.',
+  title: "GitHub Integration",
+  description: "Configure your GitHub integration settings.",
 });
 
 const GitHubIntegrationSettings = async () => {
   const [featureStatuses, gitHubInstallation, statusMappings] =
     await Promise.all([
       database.featureStatus.findMany({
-        orderBy: { order: 'asc' },
+        orderBy: { order: "asc" },
         select: {
           id: true,
           name: true,
@@ -37,9 +37,9 @@ const GitHubIntegrationSettings = async () => {
       }),
       database.installationStatusMapping.findMany({
         where: {
-          type: 'GITHUB',
+          type: "GITHUB",
         },
-        orderBy: { eventType: 'asc' },
+        orderBy: { eventType: "asc" },
         select: {
           id: true,
           eventType: true,
@@ -56,7 +56,7 @@ const GitHubIntegrationSettings = async () => {
     <div>
       <h1 className="font-semibold text-2xl">GitHub Integration</h1>
 
-      <StackCard title="Status Mappings" className="p-0">
+      <StackCard className="p-0" title="Status Mappings">
         {statusMappings.length > 0 ? (
           <Table className="mb-0">
             <TableHeader>
@@ -74,8 +74,8 @@ const GitHubIntegrationSettings = async () => {
                   <TableCell>
                     <FeatureStatusConnectionPicker
                       connectionId={mapping.id}
-                      statuses={featureStatuses}
                       defaultValue={mapping.featureStatusId}
+                      statuses={featureStatuses}
                     />
                   </TableCell>
                 </TableRow>

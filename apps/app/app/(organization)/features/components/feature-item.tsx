@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import type { GetFeatureResponse } from '@/actions/feature/get';
-import { AvatarTooltip } from '@/components/avatar-tooltip';
-import { Link } from '@repo/design-system/components/link';
-import { cn } from '@repo/design-system/lib/utils';
-import { formatDate } from '@repo/lib/format';
-import { usePathname } from 'next/navigation';
+import { Link } from "@repo/design-system/components/link";
+import { cn } from "@repo/design-system/lib/utils";
+import { formatDate } from "@repo/lib/format";
+import { usePathname } from "next/navigation";
+import type { GetFeatureResponse } from "@/actions/feature/get";
+import { AvatarTooltip } from "@/components/avatar-tooltip";
 
 type FeatureItemProperties = {
   readonly feature: GetFeatureResponse;
 };
 
 const formatFeatureDate = (startAt: Date | null, endAt: Date | null) => {
-  if (!startAt && !endAt) {
-    return 'Not on the roadmap';
+  if (!(startAt || endAt)) {
+    return "Not on the roadmap";
   }
 
   if (startAt && endAt) {
@@ -28,7 +28,7 @@ const formatFeatureDate = (startAt: Date | null, endAt: Date | null) => {
     return `Ending ${formatDate(endAt)}`;
   }
 
-  return 'Unknown';
+  return "Unknown";
 };
 
 export const FeatureItem = ({ feature }: FeatureItemProperties) => {
@@ -38,19 +38,19 @@ export const FeatureItem = ({ feature }: FeatureItemProperties) => {
 
   return (
     <Link
-      href={href}
       className={cn(
-        'group relative flex gap-4 bg-transparent p-3 transition-colors hover:bg-card',
-        active && 'bg-card hover:bg-card/50'
+        "group relative flex gap-4 bg-transparent p-3 transition-colors hover:bg-card",
+        active && "bg-card hover:bg-card/50"
       )}
+      href={href}
     >
       <div>
         {feature.owner ? (
           <AvatarTooltip
+            fallback={feature.owner.name?.slice(0, 2) ?? "??"}
             src={feature.owner.imageUrl}
-            fallback={feature.owner.name?.slice(0, 2) ?? '??'}
-            title={feature.owner.name ?? 'Unknown'}
-            subtitle={feature.owner.email ?? 'Unknown'}
+            subtitle={feature.owner.email ?? "Unknown"}
+            title={feature.owner.name ?? "Unknown"}
           />
         ) : (
           <div className="aspect-square w-6 shrink-0 self-start rounded-full bg-card" />

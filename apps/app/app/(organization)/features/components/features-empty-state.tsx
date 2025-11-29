@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { EmptyState } from '@/components/empty-state';
-import { useFeatureForm } from '@/components/feature-form/use-feature-form';
-import { emptyStates } from '@/lib/empty-states';
-import { EververseRole } from '@repo/backend/auth';
-import type { Group, Product } from '@repo/backend/prisma/client';
-import { Button } from '@repo/design-system/components/ui/button';
+import { EververseRole } from "@repo/backend/auth";
+import type { Group, Product } from "@repo/backend/prisma/client";
+import { Button } from "@repo/design-system/components/ui/button";
+import { EmptyState } from "@/components/empty-state";
+import { useFeatureForm } from "@/components/feature-form/use-feature-form";
+import { emptyStates } from "@/lib/empty-states";
 
 type FeaturesEmptyStateProperties = {
-  readonly groupId?: Group['id'];
-  readonly productId?: Product['id'];
+  readonly groupId?: Group["id"];
+  readonly productId?: Product["id"];
   readonly role?: string;
 };
 
@@ -25,7 +25,7 @@ export const FeaturesEmptyState = ({
   return (
     <EmptyState {...emptyStates.feature}>
       {role !== EververseRole.Member && (
-        <Button onClick={handleShow} className="w-fit">
+        <Button className="w-fit" onClick={handleShow}>
           Create a feature
         </Button>
       )}

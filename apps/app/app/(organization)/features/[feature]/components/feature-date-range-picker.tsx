@@ -1,28 +1,28 @@
-'use client';
+"use client";
 
-import { updateFeature } from '@/actions/feature/update';
-import type { Feature } from '@repo/backend/prisma/client';
-import { Calendar } from '@repo/design-system/components/precomposed/calendar';
+import type { Feature } from "@repo/backend/prisma/client";
 import type {
   DateRange,
   SelectRangeEventHandler,
-} from '@repo/design-system/components/precomposed/calendar';
-import { Button } from '@repo/design-system/components/ui/button';
+} from "@repo/design-system/components/precomposed/calendar";
+import { Calendar } from "@repo/design-system/components/precomposed/calendar";
+import { Button } from "@repo/design-system/components/ui/button";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@repo/design-system/components/ui/popover';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { cn } from '@repo/design-system/lib/utils';
-import { format } from 'date-fns';
-import { CalendarIcon } from 'lucide-react';
-import { useState } from 'react';
+} from "@repo/design-system/components/ui/popover";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { cn } from "@repo/design-system/lib/utils";
+import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
+import { useState } from "react";
+import { updateFeature } from "@/actions/feature/update";
 
 type FeatureDateRangePickerProperties = {
-  readonly featureId: Feature['id'];
-  readonly defaultStartAt: Feature['startAt'];
-  readonly defaultEndAt: Feature['endAt'];
+  readonly featureId: Feature["id"];
+  readonly defaultStartAt: Feature["startAt"];
+  readonly defaultEndAt: Feature["endAt"];
   readonly disabled: boolean;
 };
 
@@ -65,23 +65,23 @@ export const FeatureDateRangePicker = ({
       <Popover>
         <PopoverTrigger asChild>
           <Button
-            id="date"
-            variant="outline"
             className={cn(
-              'flex items-center justify-start gap-2 text-left font-normal',
-              !date && 'text-muted-foreground'
+              "flex items-center justify-start gap-2 text-left font-normal",
+              !date && "text-muted-foreground"
             )}
             disabled={disabled}
+            id="date"
+            variant="outline"
           >
-            <CalendarIcon size={16} className="mr-2" />
+            <CalendarIcon className="mr-2" size={16} />
             {date?.from ? (
               date.to ? (
                 <>
-                  {format(date.from, 'LLL dd, y')} -{' '}
-                  {format(date.to, 'LLL dd, y')}
+                  {format(date.from, "LLL dd, y")} -{" "}
+                  {format(date.to, "LLL dd, y")}
                 </>
               ) : (
-                format(date.from, 'LLL dd, y')
+                format(date.from, "LLL dd, y")
               )
             ) : (
               <span>Pick a date</span>
@@ -89,17 +89,17 @@ export const FeatureDateRangePicker = ({
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="w-auto p-0"
           align="start"
+          className="w-auto p-0"
           collisionPadding={12}
         >
           <Calendar
+            defaultMonth={date?.from}
             initialFocus
             mode="range"
-            defaultMonth={date?.from}
-            selected={date}
-            onSelect={handleDateChange}
             numberOfMonths={2}
+            onSelect={handleDateChange}
+            selected={date}
           />
         </PopoverContent>
       </Popover>

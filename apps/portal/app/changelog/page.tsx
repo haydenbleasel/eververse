@@ -1,11 +1,11 @@
-import { getSlug } from '@/lib/slug';
-import { database } from '@repo/backend/database';
-import type { Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
+import { database } from "@repo/backend/database";
+import type { Metadata } from "next";
+import { notFound, redirect } from "next/navigation";
+import { getSlug } from "@/lib/slug";
 
 export const metadata: Metadata = {
-  title: 'Changelog',
-  description: 'The latest updates and changes to Eververse',
+  title: "Changelog",
+  description: "The latest updates and changes to Eververse",
 };
 
 const Changelog = async () => {
@@ -27,13 +27,13 @@ const Changelog = async () => {
   const latestChangelog = await database.changelog.findFirst({
     where: {
       organizationId: portal.organizationId,
-      status: 'PUBLISHED',
+      status: "PUBLISHED",
       publishAt: {
         lte: new Date(),
       },
     },
     orderBy: {
-      publishAt: 'desc',
+      publishAt: "desc",
     },
     select: {
       id: true,

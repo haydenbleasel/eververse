@@ -1,15 +1,15 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import type { Widget, WidgetItem } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import type { Widget, WidgetItem } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
-type CreateWidgetItemProperties = Pick<WidgetItem, 'icon' | 'name' | 'link'>;
+type CreateWidgetItemProperties = Pick<WidgetItem, "icon" | "name" | "link">;
 
 export const createWidgetItem = async (
-  widgetId: Widget['id'],
+  widgetId: Widget["id"],
   properties: CreateWidgetItemProperties
 ): Promise<{
   error?: string;
@@ -20,8 +20,8 @@ export const createWidgetItem = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('User or organization not found');
+    if (!(user && organizationId)) {
+      throw new Error("User or organization not found");
     }
 
     const organization = await database.organization.findUnique({
@@ -29,11 +29,11 @@ export const createWidgetItem = async (
     });
 
     if (!organization) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     if (!organization?.stripeSubscriptionId) {
-      throw new Error('Upgrade to to add more items');
+      throw new Error("Upgrade to to add more items");
     }
 
     await database.widgetItem.create({
@@ -45,7 +45,7 @@ export const createWidgetItem = async (
       },
     });
 
-    revalidatePath('/settings/widget');
+    revalidatePath("/settings/widget");
 
     return {};
   } catch (error) {

@@ -1,5 +1,5 @@
-import { env } from '@/env';
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
+import { env } from "@/env";
 
 const githubAppSlug = env.GITHUB_APP_SLUG;
 

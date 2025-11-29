@@ -1,15 +1,15 @@
-import { database } from '@/lib/database';
-import { currentMembers } from '@repo/backend/auth/utils';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { FrameIcon, NotebookIcon, PaperclipIcon } from 'lucide-react';
-import { InitiativePageCard } from './initiative-page-card';
+import { currentMembers } from "@repo/backend/auth/utils";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { FrameIcon, NotebookIcon, PaperclipIcon } from "lucide-react";
+import { database } from "@/lib/database";
+import { InitiativePageCard } from "./initiative-page-card";
 
 export const NewInitiativePages = async () => {
   const [pages, canvases, members] = await Promise.all([
     database.initiativePage.findMany({
       take: 5,
       orderBy: {
-        createdAt: 'desc',
+        createdAt: "desc",
       },
       select: {
         id: true,
@@ -22,7 +22,7 @@ export const NewInitiativePages = async () => {
     database.initiativeCanvas.findMany({
       take: 5,
       orderBy: {
-        createdAt: 'desc',
+        createdAt: "desc",
       },
       select: {
         id: true,
@@ -35,15 +35,14 @@ export const NewInitiativePages = async () => {
     currentMembers(),
   ]);
 
-  const getOwner = (userId: string) => {
-    return members.find((member) => member.id === userId);
-  };
+  const getOwner = (userId: string) =>
+    members.find((member) => member.id === userId);
 
   const pagesData = pages.map((page) => ({
     id: `${page.initiativeId}/${page.id}`,
     title: page.title,
     date: page.createdAt,
-    icon: () => <NotebookIcon size={16} className="text-muted-foreground" />,
+    icon: () => <NotebookIcon className="text-muted-foreground" size={16} />,
     owner: getOwner(page.creatorId),
   }));
 
@@ -51,19 +50,20 @@ export const NewInitiativePages = async () => {
     id: `${canvas.initiativeId}/${canvas.id}`,
     title: canvas.title,
     date: canvas.createdAt,
-    icon: () => <FrameIcon size={16} className="text-muted-foreground" />,
+    icon: () => <FrameIcon className="text-muted-foreground" size={16} />,
     owner: getOwner(canvas.creatorId),
   }));
 
-  const data = [...pagesData, ...canvasesData].sort((itemA, itemB) => {
-    return new Date(itemB.date).getTime() - new Date(itemA.date).getTime();
-  });
+  const data = [...pagesData, ...canvasesData].sort(
+    (itemA, itemB) =>
+      new Date(itemB.date).getTime() - new Date(itemA.date).getTime()
+  );
 
   return (
     <StackCard
       className="p-0"
-      title="New Initiative Pages"
       icon={PaperclipIcon}
+      title="New Initiative Pages"
     >
       <div className="flex flex-col gap-px p-1">
         {data.map((item) => (

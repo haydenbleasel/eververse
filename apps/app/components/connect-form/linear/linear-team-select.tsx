@@ -1,8 +1,8 @@
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import type { Team } from '@repo/linear';
-import { useEffect, useState } from 'react';
-import { getLinearTeams } from './get-linear-teams';
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import type { Team } from "@repo/linear";
+import { useEffect, useState } from "react";
+import { getLinearTeams } from "./get-linear-teams";
 
 type LinearTeamSelectProperties = {
   readonly value: string | undefined;
@@ -34,7 +34,7 @@ export const LinearTeamSelect = ({
         }
 
         if (!response.teams) {
-          throw new Error('No teams found');
+          throw new Error("No teams found");
         }
 
         if (response.teams.length === 1) {
@@ -53,13 +53,13 @@ export const LinearTeamSelect = ({
 
   return (
     <Select
-      label="Select a team"
-      value={value}
-      onChange={onValueChange}
       data={teams.map((team) => ({ value: team.id, label: team.name }))}
-      type="team"
-      loading={loading}
       disabled={loading || teams.length === 0}
+      label="Select a team"
+      loading={loading}
+      onChange={onValueChange}
+      type="team"
+      value={value}
     />
   );
 };

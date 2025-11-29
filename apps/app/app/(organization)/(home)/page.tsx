@@ -1,20 +1,20 @@
-import { currentUser } from '@repo/backend/auth/utils';
-import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
-import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
-import { Digest } from './components/digest';
+import { currentUser } from "@repo/backend/auth/utils";
+import { Skeleton } from "@repo/design-system/components/precomposed/skeleton";
+import type { Metadata } from "next";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+import { Digest } from "./components/digest";
 
 const Greeting = dynamic(
-  () => import('./components/greeting').then((mod) => mod.Greeting),
+  () => import("./components/greeting").then((mod) => mod.Greeting),
   {
     loading: () => <Skeleton className="h-10 w-full max-w-sm" />,
   }
 );
 
 export const metadata: Metadata = {
-  title: 'Home',
-  description: 'The homepage for your organization.',
+  title: "Home",
+  description: "The homepage for your organization.",
 };
 
 const Home = async () => {

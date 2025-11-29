@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
 type ProductFormState = {
   isOpen: boolean;
@@ -17,7 +17,7 @@ export const useProductForm = create<ProductFormState>()(
       toggle: () => set((state) => ({ isOpen: !state.isOpen })),
     }),
     {
-      name: 'eververse:product-form',
+      name: "eververse:product-form",
     }
   )
 );

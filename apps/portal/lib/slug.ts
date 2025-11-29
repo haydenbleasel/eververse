@@ -1,15 +1,15 @@
-import { headers } from 'next/headers';
-import 'server-only';
+import { headers } from "next/headers";
+import "server-only";
 
 export const getSlug = async (): Promise<string | null> => {
   const head = await headers();
-  const host = head.get('host');
+  const host = head.get("host");
 
   if (!host) {
     return null;
   }
 
-  const segments = host.split('.');
+  const segments = host.split(".");
 
   if (segments.length !== 3) {
     return null;

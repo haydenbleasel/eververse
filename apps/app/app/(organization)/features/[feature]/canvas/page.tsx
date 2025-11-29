@@ -1,9 +1,9 @@
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentUser } from '@repo/backend/auth/utils';
-import type { CanvasState } from '@repo/canvas';
-import { notFound } from 'next/navigation';
-import { FeatureCanvasLoader } from './components/feature-canvas-loader';
+import { EververseRole } from "@repo/backend/auth";
+import { currentUser } from "@repo/backend/auth/utils";
+import type { CanvasState } from "@repo/canvas";
+import { notFound } from "next/navigation";
+import { database } from "@/lib/database";
+import { FeatureCanvasLoader } from "./components/feature-canvas-loader";
 
 type FeatureCanvasProperties = {
   readonly params: Promise<{
@@ -11,7 +11,7 @@ type FeatureCanvasProperties = {
   }>;
 };
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 const FeatureCanvas = async (props: FeatureCanvasProperties) => {
   const params = await props.params;
@@ -36,9 +36,9 @@ const FeatureCanvas = async (props: FeatureCanvasProperties) => {
   return (
     <div className="relative flex flex-1">
       <FeatureCanvasLoader
-        featureId={params.feature}
         defaultValue={feature.canvas as unknown as CanvasState | undefined}
         editable={user.user_metadata.organization_role !== EververseRole.Member}
+        featureId={params.feature}
       />
     </div>
   );

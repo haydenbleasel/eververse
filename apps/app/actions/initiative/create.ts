@@ -1,12 +1,12 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import { textToContent } from '@repo/editor/lib/tiptap';
-import { MAX_FREE_INITIATIVES } from '@repo/lib/consts';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { EververseRole } from "@repo/backend/auth";
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import { textToContent } from "@repo/editor/lib/tiptap";
+import { MAX_FREE_INITIATIVES } from "@repo/lib/consts";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const createInitiative = async (
   title: string,
@@ -22,8 +22,8 @@ export const createInitiative = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('You must be logged in to create an initiative.');
+    if (!(user && organizationId)) {
+      throw new Error("You must be logged in to create an initiative.");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
@@ -43,7 +43,7 @@ export const createInitiative = async (
     });
 
     if (!organization) {
-      throw new Error('Organization not found.');
+      throw new Error("Organization not found.");
     }
 
     if (
@@ -51,7 +51,7 @@ export const createInitiative = async (
       organization._count.initiatives >= MAX_FREE_INITIATIVES
     ) {
       throw new Error(
-        'You have reached the maximum number of initiatives for your plan. Please upgrade to add more initiatives.'
+        "You have reached the maximum number of initiatives for your plan. Please upgrade to add more initiatives."
       );
     }
 
@@ -67,7 +67,7 @@ export const createInitiative = async (
             title,
             creatorId: user.id,
             default: true,
-            content: textToContent(''),
+            content: textToContent(""),
           },
         },
       },
@@ -82,7 +82,7 @@ export const createInitiative = async (
       },
     });
 
-    revalidatePath('/initiatives');
+    revalidatePath("/initiatives");
 
     return { id };
   } catch (error) {

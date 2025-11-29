@@ -1,23 +1,23 @@
-import { EmptyState } from '@/components/empty-state';
-import { database } from '@/lib/database';
-import { currentUser } from '@repo/backend/auth/utils';
-import type { InitiativeUpdate } from '@repo/backend/prisma/client';
-import { Link } from '@repo/design-system/components/link';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { Separator } from '@repo/design-system/components/ui/separator';
-import { colors } from '@repo/design-system/lib/colors';
-import { formatDate } from '@repo/lib/format';
-import { NewspaperIcon } from 'lucide-react';
-import { CreateInitiativeUpdateButton } from './create-initiative-update-button';
+import { currentUser } from "@repo/backend/auth/utils";
+import type { InitiativeUpdate } from "@repo/backend/prisma/client";
+import { Link } from "@repo/design-system/components/link";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { Separator } from "@repo/design-system/components/ui/separator";
+import { colors } from "@repo/design-system/lib/colors";
+import { formatDate } from "@repo/lib/format";
+import { NewspaperIcon } from "lucide-react";
+import { EmptyState } from "@/components/empty-state";
+import { database } from "@/lib/database";
+import { CreateInitiativeUpdateButton } from "./create-initiative-update-button";
 
 const getColor = (
   update: Pick<
     InitiativeUpdate,
-    'sendEmail' | 'sendSlack' | 'emailSentAt' | 'slackSentAt'
+    "sendEmail" | "sendSlack" | "emailSentAt" | "slackSentAt"
   >
 ) => {
   // Not sending to any channels
-  if (!update.sendEmail && !update.sendSlack) {
+  if (!(update.sendEmail || update.sendSlack)) {
     return colors.gray;
   }
 
@@ -53,7 +53,9 @@ const getColor = (
 
 export const InitiativeUpdatesCard = async ({
   initiativeId,
-}: { initiativeId: string }) => {
+}: {
+  initiativeId: string;
+}) => {
   const user = await currentUser();
 
   if (!user) {
@@ -84,10 +86,10 @@ export const InitiativeUpdatesCard = async ({
 
   if (!initiative.updates.length && user.id !== initiative.ownerId) {
     return (
-      <StackCard title="Updates" icon={NewspaperIcon} className="not-prose p-8">
+      <StackCard className="not-prose p-8" icon={NewspaperIcon} title="Updates">
         <EmptyState
-          title="No updates"
           description="No updates have been sent for this initiative yet."
+          title="No updates"
         />
       </StackCard>
     );
@@ -95,10 +97,10 @@ export const InitiativeUpdatesCard = async ({
 
   if (!initiative.updates.length) {
     return (
-      <StackCard title="Updates" icon={NewspaperIcon} className="not-prose p-8">
+      <StackCard className="not-prose p-8" icon={NewspaperIcon} title="Updates">
         <EmptyState
-          title="Send your first update"
           description="Send an update to all members on the initiative."
+          title="Send your first update"
         >
           <CreateInitiativeUpdateButton
             initiativeId={initiativeId}
@@ -111,15 +113,15 @@ export const InitiativeUpdatesCard = async ({
 
   return (
     <StackCard
-      title="Updates"
-      icon={NewspaperIcon}
       className="max-h-[20rem] w-full overflow-y-auto p-2"
+      icon={NewspaperIcon}
+      title="Updates"
     >
       {initiative.updates.map((update) => (
         <Link
-          key={update.id}
-          href={`/initiatives/${initiativeId}/updates/${update.id}`}
           className="flex items-center gap-2 rounded px-2 py-1.5 transition-colors hover:bg-card"
+          href={`/initiatives/${initiativeId}/updates/${update.id}`}
+          key={update.id}
         >
           <span
             className="h-2 w-2 shrink-0 rounded-full"

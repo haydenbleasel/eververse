@@ -1,14 +1,14 @@
-import { database } from '@repo/backend/database';
+import { database } from "@repo/backend/database";
 import type {
   FeedbackOrganization,
   FeedbackUser,
-} from '@repo/backend/prisma/client';
-import { textToContent } from '@repo/editor/lib/tiptap';
-import { MAX_FREE_FEEDBACK } from '@repo/lib/consts';
-import { getGravatarUrl } from '@repo/lib/gravatar';
-import { friendlyWords } from 'friendlier-words';
-import { NextResponse } from 'next/server';
-import { z } from 'zod/v3';
+} from "@repo/backend/prisma/client";
+import { textToContent } from "@repo/editor/lib/tiptap";
+import { MAX_FREE_FEEDBACK } from "@repo/lib/consts";
+import { getGravatarUrl } from "@repo/lib/gravatar";
+import { friendlyWords } from "friendlier-words";
+import { NextResponse } from "next/server";
+import { z } from "zod/v3";
 
 const FeedbackProperties = z.object({
   title: z.string(),
@@ -22,11 +22,11 @@ const FeedbackProperties = z.object({
 export const POST = async (request: Request): Promise<Response> => {
   const body = (await request.json()) as unknown;
   const parse = FeedbackProperties.safeParse(body);
-  const authorization = request.headers.get('Authorization');
-  const key = authorization?.split('Bearer ')[1];
+  const authorization = request.headers.get("Authorization");
+  const key = authorization?.split("Bearer ")[1];
 
   if (!key) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const apiKey = await database.apiKey.findFirst({
@@ -38,7 +38,7 @@ export const POST = async (request: Request): Promise<Response> => {
   });
 
   if (!apiKey) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   if (!parse.success) {
@@ -46,7 +46,7 @@ export const POST = async (request: Request): Promise<Response> => {
   }
 
   let feedbackOrganization: {
-    id: FeedbackOrganization['id'];
+    id: FeedbackOrganization["id"];
   } | null = null;
 
   if (parse.data.organization_domain && parse.data.organization_name) {
@@ -64,7 +64,7 @@ export const POST = async (request: Request): Promise<Response> => {
           domain: parse.data.organization_domain,
           name: parse.data.organization_name,
           organizationId: apiKey.organizationId,
-          source: 'API',
+          source: "API",
           apiKeyId: apiKey.id,
         },
         select: { id: true },
@@ -73,8 +73,8 @@ export const POST = async (request: Request): Promise<Response> => {
   }
 
   let feedbackUser: {
-    id: FeedbackUser['id'];
-    feedbackOrganizationId: FeedbackUser['feedbackOrganizationId'];
+    id: FeedbackUser["id"];
+    feedbackOrganizationId: FeedbackUser["feedbackOrganizationId"];
   } | null = null;
 
   if (parse.data.user_email) {
@@ -90,11 +90,11 @@ export const POST = async (request: Request): Promise<Response> => {
       feedbackUser = await database.feedbackUser.create({
         data: {
           email: parse.data.user_email,
-          name: parse.data.user_name ?? friendlyWords(2, ' '),
+          name: parse.data.user_name ?? friendlyWords(2, " "),
           organizationId: apiKey.organizationId,
           feedbackOrganizationId: feedbackOrganization?.id,
           imageUrl: await getGravatarUrl(parse.data.user_email),
-          source: 'API',
+          source: "API",
           apiKeyId: apiKey.id,
         },
         select: { id: true, feedbackOrganizationId: true },
@@ -119,14 +119,14 @@ export const POST = async (request: Request): Promise<Response> => {
   });
 
   if (!organization) {
-    throw new Error('Organization not found');
+    throw new Error("Organization not found");
   }
 
   if (
     !organization.stripeSubscriptionId &&
     organization._count.feedback >= MAX_FREE_FEEDBACK
   ) {
-    return new Response('Upgrade your subscription to create more feedback', {
+    return new Response("Upgrade your subscription to create more feedback", {
       status: 402,
     });
   }
@@ -137,7 +137,7 @@ export const POST = async (request: Request): Promise<Response> => {
       organizationId: apiKey.organizationId,
       title: parse.data.title,
       feedbackUserId: feedbackUser ? feedbackUser.id : null,
-      source: 'ZAPIER',
+      source: "ZAPIER",
       apiKeyId: apiKey.id,
     },
     select: { id: true },

@@ -1,12 +1,12 @@
-import type { Metadata } from 'next';
-import { FeaturesSection } from './components/features';
-import { FeedbackSection } from './components/feedback';
-import { InitiativesSection } from './components/initiatives';
-import { OverviewMetrics } from './components/overview-metrics';
-import { RoadmapSection } from './components/roadmap';
+import type { Metadata } from "next";
+import { FeaturesSection } from "./components/features";
+import { FeedbackSection } from "./components/feedback";
+import { InitiativesSection } from "./components/initiatives";
+import { OverviewMetrics } from "./components/overview-metrics";
+import { RoadmapSection } from "./components/roadmap";
 
-const title = 'Insights';
-const description = 'Trends and insights for your product.';
+const title = "Insights";
+const description = "Trends and insights for your product.";
 
 export const metadata: Metadata = {
   title,

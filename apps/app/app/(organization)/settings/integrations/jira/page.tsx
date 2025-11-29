@@ -1,12 +1,12 @@
-import { database } from '@/lib/database';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { InstallJira } from './components/install';
-import { ManageJira } from './components/manage';
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { database } from "@/lib/database";
+import { InstallJira } from "./components/install";
+import { ManageJira } from "./components/manage";
 
 export const metadata: Metadata = createMetadata({
-  title: 'Jira Integration',
-  description: 'Configure your Jira integration settings.',
+  title: "Jira Integration",
+  description: "Configure your Jira integration settings.",
 });
 
 const JiraIntegrationSettings = async () => {

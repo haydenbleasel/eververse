@@ -1,8 +1,8 @@
-import { database } from '@/lib/database';
-import { currentUser } from '@repo/backend/auth/utils';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { CheckCircleIcon } from 'lucide-react';
-import Link from 'next/link';
+import { currentUser } from "@repo/backend/auth/utils";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { CheckCircleIcon } from "lucide-react";
+import Link from "next/link";
+import { database } from "@/lib/database";
 
 export const AssignedFeatures = async () => {
   const user = await currentUser();
@@ -29,12 +29,12 @@ export const AssignedFeatures = async () => {
   });
 
   return (
-    <StackCard title="Assigned to you" icon={CheckCircleIcon} className="p-0">
+    <StackCard className="p-0" icon={CheckCircleIcon} title="Assigned to you">
       <div className="flex flex-col gap-px p-1.5">
         {features.slice(0, 10).map((feature) => (
           <Link
-            href={`/features/${feature.id}`}
             className="flex items-center justify-between gap-2 rounded-lg px-2 py-1.5 text-sm transition-colors hover:bg-card"
+            href={`/features/${feature.id}`}
             key={feature.id}
           >
             <div
@@ -43,7 +43,7 @@ export const AssignedFeatures = async () => {
             />
             <p className="flex-1 truncate font-medium">{feature.title}</p>
             <p className="shrink-0 text-muted-foreground">
-              {feature.status.complete ? 'Complete' : 'In Progress'}
+              {feature.status.complete ? "Complete" : "In Progress"}
             </p>
           </Link>
         ))}

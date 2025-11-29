@@ -1,17 +1,17 @@
-import { getFeedbackCompanies } from '@/actions/feedback-organization/list';
-import { database } from '@/lib/database';
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from '@repo/design-system/components/ui/resizable';
+} from "@repo/design-system/components/ui/resizable";
 import {
+  dehydrate,
   HydrationBoundary,
   QueryClient,
-  dehydrate,
-} from '@tanstack/react-query';
-import type { ReactNode } from 'react';
-import { FeedbackCompanyList } from './components/feedback-company-list';
+} from "@tanstack/react-query";
+import type { ReactNode } from "react";
+import { getFeedbackCompanies } from "@/actions/feedback-organization/list";
+import { database } from "@/lib/database";
+import { FeedbackCompanyList } from "./components/feedback-company-list";
 
 type CompaniesDataLayoutProperties = {
   readonly children: ReactNode;
@@ -25,11 +25,11 @@ const CompaniesDataLayout = async ({
   const [count] = await Promise.all([
     database.feedbackOrganization.count(),
     queryClient.prefetchInfiniteQuery({
-      queryKey: ['feedbackCompanies'],
+      queryKey: ["feedbackCompanies"],
       queryFn: async ({ pageParam }) => {
         const response = await getFeedbackCompanies(pageParam);
 
-        if ('error' in response) {
+        if ("error" in response) {
           throw response.error;
         }
 
@@ -47,20 +47,20 @@ const CompaniesDataLayout = async ({
   }
 
   return (
-    <ResizablePanelGroup direction="horizontal" style={{ overflow: 'unset' }}>
+    <ResizablePanelGroup direction="horizontal" style={{ overflow: "unset" }}>
       <ResizablePanel
-        minSize={25}
+        className="sticky top-0 h-screen"
         defaultSize={30}
         maxSize={35}
-        style={{ overflow: 'auto' }}
-        className="sticky top-0 h-screen"
+        minSize={25}
+        style={{ overflow: "auto" }}
       >
         <HydrationBoundary state={dehydrate(queryClient)}>
           <FeedbackCompanyList />
         </HydrationBoundary>
       </ResizablePanel>
       <ResizableHandle />
-      <ResizablePanel defaultSize={70} style={{ overflow: 'unset' }}>
+      <ResizablePanel defaultSize={70} style={{ overflow: "unset" }}>
         {children}
       </ResizablePanel>
     </ResizablePanelGroup>

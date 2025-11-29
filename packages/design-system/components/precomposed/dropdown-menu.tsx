@@ -1,5 +1,5 @@
-import type { ComponentProps, ReactNode } from 'react';
-import * as DropdownMenuComponent from '../ui/dropdown-menu';
+import type { ComponentProps, ReactNode } from "react";
+import * as DropdownMenuComponent from "../ui/dropdown-menu";
 
 export type DropdownMenuProperties = ComponentProps<
   typeof DropdownMenuComponent.DropdownMenu

@@ -1,6 +1,6 @@
-import type { GroupWithSubgroups } from '@/lib/group';
-import { Emoji } from '@repo/design-system/components/emoji';
-import { Select } from '@repo/design-system/components/precomposed/select';
+import { Emoji } from "@repo/design-system/components/emoji";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import type { GroupWithSubgroups } from "@/lib/group";
 
 type ParentGroupPickerProperties = {
   readonly data: GroupWithSubgroups[];
@@ -28,13 +28,11 @@ export const ParentGroupPicker = ({
 
   return (
     <Select
-      value={value}
-      onChange={onChange}
       data={flattenedData.map(({ id, name }) => ({
         value: id,
         label: name,
       }))}
-      type="group"
+      onChange={onChange}
       renderItem={(item) => {
         const group = flattenedData.find(({ id }) => id === item.value);
 
@@ -49,6 +47,8 @@ export const ParentGroupPicker = ({
           </div>
         );
       }}
+      type="group"
+      value={value}
     />
   );
 };

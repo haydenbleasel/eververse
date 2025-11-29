@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { createGitHubStatusMappings } from '@/actions/installation-status-mapping/github/create';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useState } from 'react';
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useState } from "react";
+import { createGitHubStatusMappings } from "@/actions/installation-status-mapping/github/create";
 
 export const CreateStatusMappingsButton = () => {
   const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ export const CreateStatusMappingsButton = () => {
   };
 
   return (
-    <Button onClick={handleCreateMappings} disabled={loading}>
+    <Button disabled={loading} onClick={handleCreateMappings}>
       Create Status Mappings
     </Button>
   );

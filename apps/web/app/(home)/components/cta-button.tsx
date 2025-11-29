@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { Button } from '@repo/design-system/components/ui/button';
-import { ArrowRightIcon } from 'lucide-react';
-import type { ComponentProps } from 'react';
+import { Button } from "@repo/design-system/components/ui/button";
+import { ArrowRightIcon } from "lucide-react";
+import type { ComponentProps } from "react";
 
 export const CTAButton = ({
   size,

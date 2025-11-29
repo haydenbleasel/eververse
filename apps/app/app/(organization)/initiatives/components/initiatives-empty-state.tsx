@@ -1,8 +1,8 @@
-import { EmptyState } from '@/components/empty-state';
-import { emptyStates } from '@/lib/empty-states';
-import { EververseRole } from '@repo/backend/auth';
-import { currentUser } from '@repo/backend/auth/utils';
-import { CreateInitiativeButton } from './create-initiative-button';
+import { EververseRole } from "@repo/backend/auth";
+import { currentUser } from "@repo/backend/auth/utils";
+import { EmptyState } from "@/components/empty-state";
+import { emptyStates } from "@/lib/empty-states";
+import { CreateInitiativeButton } from "./create-initiative-button";
 
 export const InitiativesEmptyState = async () => {
   const user = await currentUser();

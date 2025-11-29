@@ -1,11 +1,11 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import { MAX_FREE_RELEASES } from '@repo/lib/consts';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { EververseRole } from "@repo/backend/auth";
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import { MAX_FREE_RELEASES } from "@repo/lib/consts";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const createRelease = async (
   title: string,
@@ -21,8 +21,8 @@ export const createRelease = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('Not logged in');
+    if (!(user && organizationId)) {
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
@@ -40,7 +40,7 @@ export const createRelease = async (
     });
 
     if (!organization) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     if (
@@ -48,7 +48,7 @@ export const createRelease = async (
       organization._count.releases >= MAX_FREE_RELEASES
     ) {
       throw new Error(
-        'You have reached the maximum number of releases for your plan. Please upgrade to manage more releases.'
+        "You have reached the maximum number of releases for your plan. Please upgrade to manage more releases."
       );
     }
 
@@ -63,7 +63,7 @@ export const createRelease = async (
       select: { id: true },
     });
 
-    revalidatePath('/release', 'layout');
+    revalidatePath("/release", "layout");
 
     return { id: update.id };
   } catch (error) {

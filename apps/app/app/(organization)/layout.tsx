@@ -1,20 +1,20 @@
-import { Sidebar } from '@/components/sidebar';
-import { database } from '@/lib/database';
 import {
   currentMembers,
   currentOrganizationId,
   currentUser,
-} from '@repo/backend/auth/utils';
+} from "@repo/backend/auth/utils";
 import {
   SidebarInset,
   SidebarProvider,
-} from '@repo/design-system/components/ui/sidebar';
-import { MAX_FREE_MEMBERS } from '@repo/lib/consts';
-import { redirect } from 'next/navigation';
-import { Suspense } from 'react';
-import type { CSSProperties, ReactNode } from 'react';
-import { Forms } from './components/forms';
-import { Navbar } from './components/navbar';
+} from "@repo/design-system/components/ui/sidebar";
+import { MAX_FREE_MEMBERS } from "@repo/lib/consts";
+import { redirect } from "next/navigation";
+import type { CSSProperties, ReactNode } from "react";
+import { Suspense } from "react";
+import { Sidebar } from "@/components/sidebar";
+import { database } from "@/lib/database";
+import { Forms } from "./components/forms";
+import { Navbar } from "./components/navbar";
 
 type OrganizationLayoutProperties = {
   readonly children: ReactNode;
@@ -29,11 +29,11 @@ const OrganizationLayout = async ({
   ]);
 
   if (!user) {
-    redirect('/sign-in');
+    redirect("/sign-in");
   }
 
   if (!organizationId) {
-    redirect('/setup');
+    redirect("/setup");
   }
 
   const organization = await database.organization.findUnique({
@@ -41,14 +41,14 @@ const OrganizationLayout = async ({
   });
 
   if (!organization) {
-    throw new Error('Organization not found');
+    throw new Error("Organization not found");
   }
 
   if (!organization.stripeSubscriptionId) {
     const members = await currentMembers();
 
     if (members.length > MAX_FREE_MEMBERS) {
-      redirect('/upgrade');
+      redirect("/upgrade");
     }
   }
 
@@ -56,11 +56,11 @@ const OrganizationLayout = async ({
     <SidebarProvider
       style={
         {
-          '--sidebar-width': '220px',
+          "--sidebar-width": "220px",
         } as CSSProperties
       }
     >
-      <Sidebar user={user} organization={organization} />
+      <Sidebar organization={organization} user={user} />
       <SidebarInset className="bg-transparent">
         <div className="flex min-h-screen flex-1 flex-col">
           <Navbar />

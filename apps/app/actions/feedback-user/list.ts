@@ -1,12 +1,12 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import type { FeedbackUser } from '@repo/backend/prisma/client';
-import { FEEDBACK_PAGE_SIZE } from '@repo/lib/consts';
+import type { FeedbackUser } from "@repo/backend/prisma/client";
+import { FEEDBACK_PAGE_SIZE } from "@repo/lib/consts";
+import { database } from "@/lib/database";
 
 export type GetFeedbackUsersResponse = Pick<
   FeedbackUser,
-  'createdAt' | 'email' | 'id' | 'imageUrl' | 'name'
+  "createdAt" | "email" | "id" | "imageUrl" | "name"
 >[];
 
 export const getFeedbackUsers = async (
@@ -22,7 +22,7 @@ export const getFeedbackUsers = async (
   try {
     const data = await database.feedbackUser.findMany({
       orderBy: {
-        name: 'asc',
+        name: "asc",
       },
       skip: page * FEEDBACK_PAGE_SIZE,
       take: FEEDBACK_PAGE_SIZE,

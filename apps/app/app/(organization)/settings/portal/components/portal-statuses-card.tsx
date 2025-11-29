@@ -1,9 +1,9 @@
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentUser } from '@repo/backend/auth/utils';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { ListTodoIcon } from 'lucide-react';
-import { StatusMappingsForm } from './status-mappings-form';
+import { EververseRole } from "@repo/backend/auth";
+import { currentUser } from "@repo/backend/auth/utils";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { ListTodoIcon } from "lucide-react";
+import { database } from "@/lib/database";
+import { StatusMappingsForm } from "./status-mappings-form";
 
 export const PortalStatusesCard = async () => {
   const user = await currentUser();
@@ -43,11 +43,11 @@ export const PortalStatusesCard = async () => {
   ]);
 
   return (
-    <StackCard title="Statuses" icon={ListTodoIcon}>
+    <StackCard icon={ListTodoIcon} title="Statuses">
       <StatusMappingsForm
         defaultColumns={portalStatuses}
-        statuses={featureStatuses}
         disabled={user.user_metadata.organization_role === EververseRole.Member}
+        statuses={featureStatuses}
       />
     </StackCard>
   );

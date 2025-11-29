@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import type { User } from '@repo/backend/auth';
-import { EververseRole } from '@repo/backend/auth';
-import { createClient } from '@repo/backend/auth/client';
-import { getUserName } from '@repo/backend/auth/format';
-import type { Organization } from '@repo/backend/prisma/client';
+import type { User } from "@repo/backend/auth";
+import { EververseRole } from "@repo/backend/auth";
+import { createClient } from "@repo/backend/auth/client";
+import { getUserName } from "@repo/backend/auth/format";
+import type { Organization } from "@repo/backend/prisma/client";
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from '@repo/design-system/components/ui/avatar';
+} from "@repo/design-system/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,7 +18,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@repo/design-system/components/ui/dropdown-menu';
+} from "@repo/design-system/components/ui/dropdown-menu";
 import {
   Sidebar as SidebarComponent,
   SidebarContent,
@@ -31,21 +31,21 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from '@repo/design-system/components/ui/sidebar';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { cn } from '@repo/design-system/lib/utils';
+} from "@repo/design-system/components/ui/sidebar";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { cn } from "@repo/design-system/lib/utils";
 import {
   ChevronsUpDown,
   LifeBuoyIcon,
   LogOut,
   StarIcon,
   UserCircleIcon,
-} from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import * as navigation from '../../lib/navigation';
-import { SidebarItem } from './sidebar-item';
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import * as navigation from "../../lib/navigation";
+import { SidebarItem } from "./sidebar-item";
 
 type SidebarProps = {
   readonly user: User;
@@ -65,7 +65,7 @@ export const Sidebar = ({ user, organization }: SidebarProps) => {
         throw response.error;
       }
 
-      router.push('/sign-in');
+      router.push("/sign-in");
     } catch (error) {
       handleError(error);
     }
@@ -76,23 +76,23 @@ export const Sidebar = ({ user, organization }: SidebarProps) => {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem
-            className={cn('flex items-center gap-2', sidebar.open && 'px-2')}
+            className={cn("flex items-center gap-2", sidebar.open && "px-2")}
           >
             <div className="flex aspect-square size-8 shrink-0 items-center justify-center overflow-hidden rounded-lg border bg-sidebar-primary">
               {organization.logoUrl && (
                 <Image
-                  src={organization.logoUrl}
                   alt=""
-                  width={32}
-                  height={32}
                   className="object-cover"
+                  height={32}
+                  src={organization.logoUrl}
+                  width={32}
                 />
               )}
             </div>
             <div
               className={cn(
-                'flex flex-col leading-none',
-                !sidebar.open && 'hidden'
+                "flex flex-col leading-none",
+                !sidebar.open && "hidden"
               )}
             >
               <span className="truncate font-medium text-sm">
@@ -166,13 +166,13 @@ export const Sidebar = ({ user, organization }: SidebarProps) => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton
-                  size="lg"
                   className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                  size="lg"
                 >
                   <Avatar className="h-8 w-8 rounded-lg">
                     <AvatarImage
-                      src={user.user_metadata.image_url}
                       alt={getUserName(user)}
+                      src={user.user_metadata.image_url}
                     />
                     <AvatarFallback className="rounded-lg">
                       {getUserName(user).slice(0, 2).toUpperCase()}
@@ -190,17 +190,17 @@ export const Sidebar = ({ user, organization }: SidebarProps) => {
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent
+                align="end"
                 className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
                 side="bottom"
-                align="end"
                 sideOffset={4}
               >
                 <DropdownMenuLabel className="p-0 font-normal">
                   <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                     <Avatar className="h-8 w-8 rounded-lg">
                       <AvatarImage
-                        src={user.user_metadata.image_url}
                         alt={getUserName(user)}
+                        src={user.user_metadata.image_url}
                       />
                       <AvatarFallback className="rounded-lg">
                         {getUserName(user).slice(0, 2).toUpperCase()}
@@ -233,8 +233,8 @@ export const Sidebar = ({ user, organization }: SidebarProps) => {
                     <LifeBuoyIcon className="text-muted-foreground" size={16} />
                     <a
                       href="https://x.com/haydenbleasel"
-                      target="_blank"
                       rel="noopener noreferrer"
+                      target="_blank"
                     >
                       Support
                     </a>
@@ -243,7 +243,7 @@ export const Sidebar = ({ user, organization }: SidebarProps) => {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem className="flex items-center gap-2">
                   <LogOut className="text-muted-foreground" size={16} />
-                  <button type="button" onClick={handleSignOut}>
+                  <button onClick={handleSignOut} type="button">
                     Sign Out
                   </button>
                 </DropdownMenuItem>

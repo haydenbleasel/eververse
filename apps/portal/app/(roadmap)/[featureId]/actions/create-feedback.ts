@@ -1,10 +1,10 @@
-'use server';
+"use server";
 
-import { database } from '@repo/backend/database';
-import { textToContent } from '@repo/editor/lib/tiptap';
-import { MAX_FREE_FEEDBACK } from '@repo/lib/consts';
-import { getGravatarUrl } from '@repo/lib/gravatar';
-import { parseError } from '@repo/lib/parse-error';
+import { database } from "@repo/backend/database";
+import { textToContent } from "@repo/editor/lib/tiptap";
+import { MAX_FREE_FEEDBACK } from "@repo/lib/consts";
+import { getGravatarUrl } from "@repo/lib/gravatar";
+import { parseError } from "@repo/lib/parse-error";
 
 type CreateFeedbackProperties = {
   readonly email: string;
@@ -26,7 +26,7 @@ export const createFeedback = async (
     });
 
     if (!portal) {
-      throw new Error('Portal not found');
+      throw new Error("Portal not found");
     }
 
     let feedbackUser = await database.feedbackUser.findFirst({
@@ -58,14 +58,14 @@ export const createFeedback = async (
     });
 
     if (!organization) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     if (
       !organization.stripeSubscriptionId &&
       organization._count.feedback >= MAX_FREE_FEEDBACK
     ) {
-      throw new Error('Upgrade your subscription to create more feedback');
+      throw new Error("Upgrade your subscription to create more feedback");
     }
 
     const content = textToContent(properties.feedback);
@@ -74,7 +74,7 @@ export const createFeedback = async (
     if (!properties.featureId) {
       await database.feedback.create({
         data: {
-          title: 'New idea from Portal',
+          title: "New idea from Portal",
           feedbackUserId: feedbackUser.id,
           organizationId: portal.organizationId,
           content,
@@ -102,7 +102,7 @@ export const createFeedback = async (
     });
 
     if (!portalFeature?.feature) {
-      throw new Error('Feature not found');
+      throw new Error("Feature not found");
     }
 
     const feedback = await database.feedback.create({

@@ -1,29 +1,29 @@
-'use client';
+"use client";
 
-import { updatePortalStatusMapping } from '@/actions/portal-status-mapping/update';
-import { DndContext, rectIntersection } from '@dnd-kit/core';
-import type { DragEndEvent } from '@dnd-kit/core';
+import type { DragEndEvent } from "@dnd-kit/core";
+import { DndContext, rectIntersection } from "@dnd-kit/core";
 import type {
   FeatureStatus,
   PortalStatus,
   PortalStatusMapping,
-} from '@repo/backend/prisma/client';
-import { colors } from '@repo/design-system/lib/colors';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { toast } from '@repo/design-system/lib/toast';
-import { useState } from 'react';
-import { FeatureStatusColumn } from './feature-status-column';
+} from "@repo/backend/prisma/client";
+import { colors } from "@repo/design-system/lib/colors";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { toast } from "@repo/design-system/lib/toast";
+import { useState } from "react";
+import { updatePortalStatusMapping } from "@/actions/portal-status-mapping/update";
+import { FeatureStatusColumn } from "./feature-status-column";
 
 type StatusMappingsFormProperties = {
   readonly defaultColumns: (Pick<
     PortalStatus,
-    'color' | 'id' | 'name' | 'order'
+    "color" | "id" | "name" | "order"
   > & {
-    readonly portalStatusMappings: (Pick<PortalStatusMapping, 'id'> & {
-      readonly featureStatus: Pick<FeatureStatus, 'color' | 'id' | 'name'>;
+    readonly portalStatusMappings: (Pick<PortalStatusMapping, "id"> & {
+      readonly featureStatus: Pick<FeatureStatus, "color" | "id" | "name">;
     })[];
   })[];
-  readonly statuses: Pick<FeatureStatus, 'color' | 'id' | 'name'>[];
+  readonly statuses: Pick<FeatureStatus, "color" | "id" | "name">[];
   readonly disabled: boolean;
 };
 
@@ -79,7 +79,7 @@ export const StatusMappingsForm = ({
         throw new Error(error);
       }
 
-      toast.success('Status mapping updated');
+      toast.success("Status mapping updated");
     } catch (error) {
       handleError(error);
       setColumns(oldColumns);
@@ -111,7 +111,6 @@ export const StatusMappingsForm = ({
       <div className="mt-2">
         <FeatureStatusColumn
           color={colors.rose}
-          name="Unmapped"
           id="unmapped"
           items={statuses.filter(
             (status) =>
@@ -121,6 +120,7 @@ export const StatusMappingsForm = ({
                 )
               )
           )}
+          name="Unmapped"
         />
       </div>
     </DndContext>

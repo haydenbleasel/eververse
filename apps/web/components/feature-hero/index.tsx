@@ -1,5 +1,5 @@
-import type { features } from '@/lib/features';
-import { FeatureHeroInner } from './feature-hero-inner';
+import type { features } from "@/lib/features";
+import { FeatureHeroInner } from "./feature-hero-inner";
 
 type FeatureHeroProperties = (typeof features)[keyof typeof features];
 

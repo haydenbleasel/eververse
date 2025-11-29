@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import './styles/canvas.css';
-import { Excalidraw } from '@excalidraw/excalidraw';
-import type { ExcalidrawElement } from '@excalidraw/excalidraw/types/element/types';
+import "./styles/canvas.css";
+import { Excalidraw } from "@excalidraw/excalidraw";
+import type { ExcalidrawElement } from "@excalidraw/excalidraw/types/element/types";
 import type {
   BinaryFiles,
   ExcalidrawProps,
-} from '@excalidraw/excalidraw/types/types';
-import { useDebouncedCallback } from '@react-hookz/web';
-import deepEqual from 'deep-equal';
-import { useRef } from 'react';
-import { CanvasBackground } from './components/background';
+} from "@excalidraw/excalidraw/types/types";
+import { useDebouncedCallback } from "@react-hookz/web";
+import deepEqual from "deep-equal";
+import { useRef } from "react";
+import { CanvasBackground } from "./components/background";
 
 export type CanvasState = {
   readonly elements: readonly ExcalidrawElement[];
@@ -18,7 +18,7 @@ export type CanvasState = {
 };
 
 type CanvasProperties = {
-  readonly theme: 'dark' | 'light' | undefined;
+  readonly theme: "dark" | "light" | undefined;
   readonly onSave?: (state: CanvasState) => void;
   readonly defaultValue?: object;
   readonly autoFocus?: boolean;
@@ -34,7 +34,7 @@ export const Canvas = ({
 }: CanvasProperties) => {
   const lastSnapshot = useRef<CanvasState | null>(null);
 
-  const handleChange: ExcalidrawProps['onChange'] = (
+  const handleChange: ExcalidrawProps["onChange"] = (
     elements,
     _appState,
     files
@@ -54,22 +54,22 @@ export const Canvas = ({
     <div className="not-prose relative flex flex-1 bg-background">
       <CanvasBackground />
       <Excalidraw
-        viewModeEnabled={!editable}
+        autoFocus={autoFocus}
         initialData={{
           ...defaultValue,
           appState: {
-            viewBackgroundColor: 'transparent',
+            viewBackgroundColor: "transparent",
           },
         }}
-        autoFocus={autoFocus}
-        theme={theme}
         onChange={debouncedHandleChange}
+        theme={theme}
         UIOptions={{
           canvasActions: {
             toggleTheme: false,
             loadScene: false,
           },
         }}
+        viewModeEnabled={!editable}
         zenModeEnabled
       />
     </div>
@@ -84,7 +84,7 @@ export const CanvasBeta = ({
   editable = false,
 }: CanvasProperties) => {
   const lastSnapshot = useRef<CanvasState | null>(null);
-  const handleChange: ExcalidrawProps['onChange'] = (
+  const handleChange: ExcalidrawProps["onChange"] = (
     elements,
     _appState,
     files
@@ -104,22 +104,22 @@ export const CanvasBeta = ({
     <div className="not-prose relative flex flex-1 bg-background">
       <CanvasBackground />
       <Excalidraw
-        viewModeEnabled={!editable}
+        autoFocus={autoFocus}
         initialData={{
           ...defaultValue,
           appState: {
-            viewBackgroundColor: 'transparent',
+            viewBackgroundColor: "transparent",
           },
         }}
-        autoFocus={autoFocus}
-        theme={theme}
         onChange={debouncedHandleChange}
+        theme={theme}
         UIOptions={{
           canvasActions: {
             toggleTheme: false,
             loadScene: false,
           },
         }}
+        viewModeEnabled={!editable}
       />
     </div>
   );

@@ -1,15 +1,15 @@
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import type { RestEndpointMethodTypes } from '@repo/github';
-import { useEffect, useState } from 'react';
-import { getGitHubRepositories } from './get-github-repositories';
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import type { RestEndpointMethodTypes } from "@repo/github";
+import { useEffect, useState } from "react";
+import { getGitHubRepositories } from "./get-github-repositories";
 
 type GitHubRepoSelectProperties = {
   readonly value: string | undefined;
   readonly onValueChange: (value: string | undefined) => void;
-  readonly repositories: RestEndpointMethodTypes['apps']['listReposAccessibleToInstallation']['response']['data']['repositories'];
+  readonly repositories: RestEndpointMethodTypes["apps"]["listReposAccessibleToInstallation"]["response"]["data"]["repositories"];
   readonly setRepositories: (
-    repositories: RestEndpointMethodTypes['apps']['listReposAccessibleToInstallation']['response']['data']['repositories']
+    repositories: RestEndpointMethodTypes["apps"]["listReposAccessibleToInstallation"]["response"]["data"]["repositories"]
   ) => void;
 };
 
@@ -36,7 +36,7 @@ export const GitHubRepoSelect = ({
         }
 
         if (!response.repositories) {
-          throw new Error('No repositories found');
+          throw new Error("No repositories found");
         }
 
         if (response.repositories.length === 1) {
@@ -56,16 +56,16 @@ export const GitHubRepoSelect = ({
   return (
     <div className="relative">
       <Select
-        label="Select a repository"
-        value={value}
-        onChange={onValueChange}
         data={repositories.map((repo) => ({
           value: `${repo.id}`,
           label: repo.name,
         }))}
-        type="repo"
         disabled={loading || repositories.length === 0}
+        label="Select a repository"
         loading={loading}
+        onChange={onValueChange}
+        type="repo"
+        value={value}
       />
     </div>
   );

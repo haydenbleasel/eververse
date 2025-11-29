@@ -1,15 +1,15 @@
-import type { User } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
-import { createClient } from '@repo/backend/auth/server';
-import { database } from '@repo/backend/database';
-import { log } from '@repo/observability/log';
+import type { User } from "@repo/backend/auth";
+import { getUserName } from "@repo/backend/auth/format";
+import { createClient } from "@repo/backend/auth/server";
+import { database } from "@repo/backend/database";
+import { log } from "@repo/observability/log";
 
 export const maxDuration = 300;
 export const revalidate = 0;
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 type UpdatePayload = {
-  type: 'UPDATE';
+  type: "UPDATE";
   table: string;
   schema: string;
   record: User;
@@ -17,7 +17,7 @@ type UpdatePayload = {
 };
 
 type InsertPayload = {
-  type: 'INSERT';
+  type: "INSERT";
   table: string;
   schema: string;
   record: User;
@@ -26,7 +26,7 @@ type InsertPayload = {
 export const POST = async (request: Request): Promise<Response> => {
   const body = (await request.json()) as UpdatePayload | InsertPayload;
 
-  log.info('👨‍✈️ User has been updated or inserted');
+  log.info("👨‍✈️ User has been updated or inserted");
 
   const client = await createClient();
   const user = await client.auth.admin.getUserById(body.record.id);
@@ -39,12 +39,12 @@ export const POST = async (request: Request): Promise<Response> => {
     throw user.error;
   }
 
-  if (!user.data.user || !user.data.user.email || !organization) {
-    return new Response('User or organization not found', { status: 404 });
+  if (!(user.data.user && user.data.user.email && organization)) {
+    return new Response("User or organization not found", { status: 404 });
   }
 
   const userName = getUserName(user.data.user);
-  const [, domain] = user.data.user.email.split('@');
+  const [, domain] = user.data.user.email.split("@");
 
   let feedbackOrganization = await database.feedbackOrganization.findFirst({
     where: {
@@ -87,5 +87,5 @@ export const POST = async (request: Request): Promise<Response> => {
     });
   }
 
-  return new Response('Membership updated', { status: 201 });
+  return new Response("Membership updated", { status: 201 });
 };

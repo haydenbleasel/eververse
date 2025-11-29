@@ -1,12 +1,13 @@
-import { env } from '@/env';
-import Climate from '@repo/design-system/components/climate';
-import { Container } from '@repo/design-system/components/container';
-import { stripe } from '@repo/payments';
-import type { Metadata } from 'next';
-import { PricingTable } from './components/pricing-table';
-const title = 'Simple, transparent pricing';
+import Climate from "@repo/design-system/components/climate";
+import { Container } from "@repo/design-system/components/container";
+import { stripe } from "@repo/payments";
+import type { Metadata } from "next";
+import { env } from "@/env";
+import { PricingTable } from "./components/pricing-table";
+
+const title = "Simple, transparent pricing";
 const description =
-  'No hidden fees. No surprises. 15-day trial. Cancel anytime.';
+  "No hidden fees. No surprises. 15-day trial. Cancel anytime.";
 
 export const metadata: Metadata = {
   title,
@@ -19,15 +20,15 @@ const Pricing = async () => {
   });
 
   const monthlyPrice = prices.data.find(
-    (price) => price.recurring?.interval === 'month'
+    (price) => price.recurring?.interval === "month"
   )?.unit_amount;
 
   const annualPrice = prices.data.find(
-    (price) => price.recurring?.interval === 'year'
+    (price) => price.recurring?.interval === "year"
   )?.unit_amount;
 
-  if (!monthlyPrice || !annualPrice) {
-    throw new Error('No prices found');
+  if (!(monthlyPrice && annualPrice)) {
+    throw new Error("No prices found");
   }
 
   return (
@@ -41,8 +42,8 @@ const Pricing = async () => {
         </p>
       </header>
       <PricingTable
-        monthlyPrice={monthlyPrice / 100}
         annualPrice={annualPrice / 100 / 12}
+        monthlyPrice={monthlyPrice / 100}
       />
       <div className="flex justify-center py-16">
         <Climate />

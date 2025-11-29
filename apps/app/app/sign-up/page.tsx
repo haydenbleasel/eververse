@@ -1,10 +1,10 @@
-import { handleAuthedState } from '@/lib/auth';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { SignupForm } from './components/form';
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { handleAuthedState } from "@/lib/auth";
+import { SignupForm } from "./components/form";
 
-const title = 'Sign up';
-const description = 'Sign up to your account.';
+const title = "Sign up";
+const description = "Sign up to your account.";
 
 export const metadata: Metadata = createMetadata({ title, description });
 
@@ -16,21 +16,21 @@ const SignUpPage = async () => {
       <div className="w-full max-w-[400px] space-y-8">
         <SignupForm />
         <p className="text-balance text-center text-muted-foreground text-sm">
-          By signing in, you agree to our{' '}
+          By signing in, you agree to our{" "}
           <a
             className="font-medium text-primary underline"
             href="https://www.eververse.ai/legal/terms"
-            target="_blank"
             rel="noreferrer noopener"
+            target="_blank"
           >
             Terms of Service
-          </a>{' '}
-          and{' '}
+          </a>{" "}
+          and{" "}
           <a
             className="font-medium text-primary underline"
             href="https://www.eververse.ai/legal/privacy"
-            target="_blank"
             rel="noreferrer noopener"
+            target="_blank"
           >
             Privacy Policy
           </a>

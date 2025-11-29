@@ -1,16 +1,16 @@
-import { getMembers } from '@repo/backend/auth/utils';
-import { database } from '@repo/backend/database';
-import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
-import { createClient } from '@repo/productboard';
-import type { paths } from '@repo/productboard/types';
+import { getMembers } from "@repo/backend/auth/utils";
+import { database } from "@repo/backend/database";
+import type { Prisma, ProductboardImport } from "@repo/backend/prisma/client";
+import { createClient } from "@repo/productboard";
+import type { paths } from "@repo/productboard/types";
 
 type ImportJobProperties = Pick<
   ProductboardImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 type ProductboardComponent =
-  paths['/components']['get']['responses']['200']['content']['application/json']['data'][number];
+  paths["/components"]["get"]["responses"]["200"]["content"]["application/json"]["data"][number];
 
 export const migrateComponents = async ({
   creatorId,
@@ -19,22 +19,22 @@ export const migrateComponents = async ({
 }: ImportJobProperties): Promise<number> => {
   const productboard = createClient({ accessToken: token });
 
-  const components = await productboard.GET('/components', {
+  const components = await productboard.GET("/components", {
     params: {
       header: {
-        'X-Version': 1,
+        "X-Version": 1,
       },
     },
   });
 
   if (components.error) {
     throw new Error(
-      components.error.errors.map((error) => error.detail).join(', ')
+      components.error.errors.map((error) => error.detail).join(", ")
     );
   }
 
   if (!components.data) {
-    throw new Error('No components found');
+    throw new Error("No components found");
   }
 
   const members = await getMembers(organizationId);
@@ -47,13 +47,13 @@ export const migrateComponents = async ({
   });
 
   if (!databaseOrganization) {
-    throw new Error('Could not find organization');
+    throw new Error("Could not find organization");
   }
 
   const calculateDepth = (component: ProductboardComponent) => {
     let parentDepth = 0;
 
-    if ('component' in component.parent) {
+    if ("component" in component.parent) {
       const parentComponentId = component.parent.component.id;
       const parent = components.data.data.find(
         ({ id }) => id === parentComponentId
@@ -114,7 +114,7 @@ export const migrateComponents = async ({
 
       let productId: string | undefined;
 
-      if ('product' in component.parent) {
+      if ("product" in component.parent) {
         const parentProductId = component.parent.product.id;
         productId = databaseOrganization.products.find(
           ({ productboardId }) => productboardId === parentProductId
@@ -122,7 +122,7 @@ export const migrateComponents = async ({
       }
 
       const parentComponentId =
-        'component' in component.parent
+        "component" in component.parent
           ? component.parent.component.id
           : undefined;
 
@@ -130,7 +130,7 @@ export const migrateComponents = async ({
         ({ productboardId }) => productboardId === parentComponentId
       );
 
-      if (!productId && !relevantComponent?.id) {
+      if (!(productId || relevantComponent?.id)) {
         throw new Error(
           `Could not find product or component for ${component.id}`
         );

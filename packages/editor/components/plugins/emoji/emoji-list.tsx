@@ -1,7 +1,7 @@
 // @ts-nocheck
 
-import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
-import { SuggestionList } from '../suggestion-list';
+import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
+import { SuggestionList } from "../suggestion-list";
 
 export const EmojiList = forwardRef((props, ref) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -34,17 +34,17 @@ export const EmojiList = forwardRef((props, ref) => {
     ref,
     () => ({
       onKeyDown: (x) => {
-        if (x.event.key === 'ArrowUp') {
+        if (x.event.key === "ArrowUp") {
           upHandler();
           return true;
         }
 
-        if (x.event.key === 'ArrowDown') {
+        if (x.event.key === "ArrowDown") {
           downHandler();
           return true;
         }
 
-        if (x.event.key === 'Enter') {
+        if (x.event.key === "Enter") {
           enterHandler();
           return true;
         }
@@ -59,19 +59,19 @@ export const EmojiList = forwardRef((props, ref) => {
     <SuggestionList
       items={props.items}
       onSelect={selectItem}
-      selected={selectedIndex}
       render={(item) => (
         <div className="flex items-center gap-1">
           {item.fallbackImage ? (
-            <img className="h-4" src={item.fallbackImage} align="absmiddle" />
+            <img align="absmiddle" className="h-4" src={item.fallbackImage} />
           ) : (
             item.emoji
           )}
           :{item.name}:
         </div>
       )}
+      selected={selectedIndex}
     />
   );
 });
 
-EmojiList.displayName = 'EmojiList';
+EmojiList.displayName = "EmojiList";

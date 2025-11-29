@@ -1,13 +1,13 @@
-import 'server-only';
-import type { JsonValue } from '@repo/backend/prisma/client/runtime/library';
-import { parseError } from '@repo/lib/parse-error';
-import { generateText } from '@tiptap/core';
-import { generateJSON } from '@tiptap/html';
-import { Window } from 'happy-dom';
-import { marked } from 'marked';
-import { NodeHtmlMarkdown } from 'node-html-markdown';
-import { defaultExtensions } from './extensions/server';
-import { generateHTML } from './generate-html';
+import "server-only";
+import type { JsonValue } from "@repo/backend/prisma/client/runtime/library";
+import { parseError } from "@repo/lib/parse-error";
+import { generateText } from "@tiptap/core";
+import { generateJSON } from "@tiptap/html";
+import { Window } from "happy-dom";
+import { marked } from "marked";
+import { NodeHtmlMarkdown } from "node-html-markdown";
+import { defaultExtensions } from "./extensions/server";
+import { generateHTML } from "./generate-html";
 
 export const htmlToContent = (html: string): object =>
   generateJSON(html, defaultExtensions);
@@ -17,7 +17,7 @@ export const htmlToText = (html: string): string => {
 
   window.document.body.innerHTML = html;
 
-  return document.body.textContent ?? '';
+  return document.body.textContent ?? "";
 };
 
 export const contentToHtml = (json: JsonValue | object): string => {
@@ -34,9 +34,9 @@ export const contentToText = (json: JsonValue | object): string =>
 
 export const textToHtml = (text: string): string =>
   text
-    .split('\n')
+    .split("\n")
     .map((line) => `<p>${line}</p>`)
-    .join('');
+    .join("");
 
 export const textToContent = (text: string): object =>
   htmlToContent(textToHtml(text));
@@ -50,10 +50,10 @@ const unwrapImagesFromParagraphs = (html: string): string => {
   window.document.body.innerHTML = html;
 
   // Find all paragraph (<p>) elements
-  const paragraphs = [...window.document.querySelectorAll('p')];
+  const paragraphs = [...window.document.querySelectorAll("p")];
   for (const paragraph of paragraphs) {
     // Find all image (<img>) tags directly under this paragraph
-    const images = [...paragraph.querySelectorAll('img')];
+    const images = [...paragraph.querySelectorAll("img")];
     if (images.length > 0) {
       for (const image of images) {
         // Move each image outside and just after the paragraph
@@ -61,7 +61,7 @@ const unwrapImagesFromParagraphs = (html: string): string => {
       }
 
       // Remove the paragraph if it's empty now
-      if (paragraph.innerHTML.trim() === '') {
+      if (paragraph.innerHTML.trim() === "") {
         paragraph.remove();
       }
     }
@@ -76,22 +76,22 @@ const convertYouTubeImgToIframe = (html: string): string => {
   window.document.body.innerHTML = html;
 
   // Find all img elements
-  const images = [...window.document.querySelectorAll('img')];
+  const images = [...window.document.querySelectorAll("img")];
 
   for (const image of images) {
     const { src } = image;
     try {
       const url = new URL(src);
       // Check if the image src belongs to a trusted YouTube domain
-      const allowedYouTubeHosts = ['youtube.com', 'www.youtube.com'];
+      const allowedYouTubeHosts = ["youtube.com", "www.youtube.com"];
       if (allowedYouTubeHosts.includes(url.hostname)) {
         // Create a new div element to wrap the iframe
-        const div = window.document.createElement('div');
-        div.dataset.youtubeVideo = '';
-        div.dataset.youtubeVideo = '';
+        const div = window.document.createElement("div");
+        div.dataset.youtubeVideo = "";
+        div.dataset.youtubeVideo = "";
 
         // Create the iframe element
-        const iframe = window.document.createElement('iframe');
+        const iframe = window.document.createElement("iframe");
 
         // Set the src as it was in the <img>
         iframe.src = src;
@@ -112,7 +112,7 @@ const convertYouTubeImgToIframe = (html: string): string => {
 };
 
 export const markdownToHtml = async (markdown: string): Promise<string> => {
-  const string = markdown.replaceAll('<br>', '\n');
+  const string = markdown.replaceAll("<br>", "\n");
 
   let html = await marked(string, { gfm: true });
 

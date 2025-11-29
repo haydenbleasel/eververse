@@ -1,22 +1,22 @@
-import { CompanyLogo } from '@/app/(organization)/components/company-logo';
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import type { Feedback } from '@repo/backend/prisma/client';
-import { Link } from '@repo/design-system/components/link';
-import { Avatar } from '@repo/design-system/components/precomposed/avatar';
-import { Prose } from '@repo/design-system/components/prose';
-import { SentimentEmoji } from '@repo/design-system/components/sentiment-emoji';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import * as Accordion from '@repo/design-system/components/ui/accordion';
-import { formatDate } from '@repo/lib/format';
-import { SparklesIcon } from 'lucide-react';
-import Markdown from 'react-markdown';
-import { FeedbackSettingsDropdown } from './feedback-settings-dropdown';
-import { ProcessFeedbackButton } from './process-feedback-button';
+import { EververseRole } from "@repo/backend/auth";
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import type { Feedback } from "@repo/backend/prisma/client";
+import { Link } from "@repo/design-system/components/link";
+import { Avatar } from "@repo/design-system/components/precomposed/avatar";
+import { Prose } from "@repo/design-system/components/prose";
+import { SentimentEmoji } from "@repo/design-system/components/sentiment-emoji";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import * as Accordion from "@repo/design-system/components/ui/accordion";
+import { formatDate } from "@repo/lib/format";
+import { SparklesIcon } from "lucide-react";
+import Markdown from "react-markdown";
+import { CompanyLogo } from "@/app/(organization)/components/company-logo";
+import { database } from "@/lib/database";
+import { FeedbackSettingsDropdown } from "./feedback-settings-dropdown";
+import { ProcessFeedbackButton } from "./process-feedback-button";
 
 type FeedbackPanelProps = {
-  feedbackId: Feedback['id'];
+  feedbackId: Feedback["id"];
 };
 
 export const FeedbackPanel = async ({ feedbackId }: FeedbackPanelProps) => {
@@ -25,7 +25,7 @@ export const FeedbackPanel = async ({ feedbackId }: FeedbackPanelProps) => {
     currentOrganizationId(),
   ]);
 
-  if (!user || !organizationId) {
+  if (!(user && organizationId)) {
     return null;
   }
 
@@ -64,25 +64,25 @@ export const FeedbackPanel = async ({ feedbackId }: FeedbackPanelProps) => {
       }),
     ]);
 
-  if (!feedback || !organization) {
+  if (!(feedback && organization)) {
     return null;
   }
 
   const tabs = [
     {
-      label: 'Summary',
+      label: "Summary",
       value: feedback.analysis?.summary,
     },
     {
-      label: 'Pain Points',
+      label: "Pain Points",
       value: feedback.analysis?.painPoints,
     },
     {
-      label: 'Recommendations',
+      label: "Recommendations",
       value: feedback.analysis?.recommendations,
     },
     {
-      label: 'Outcomes',
+      label: "Outcomes",
       value: feedback.analysis?.outcomes,
     },
   ];
@@ -96,7 +96,7 @@ export const FeedbackPanel = async ({ feedbackId }: FeedbackPanelProps) => {
         </div>
         <div className="flex items-center justify-between gap-4">
           <p className="text-muted-foreground">Processed</p>
-          <p>{feedback.processed ? 'Yes' : 'No'}</p>
+          <p>{feedback.processed ? "Yes" : "No"}</p>
         </div>
         <div className="flex items-center justify-between gap-4">
           <p className="text-muted-foreground">Feedback User</p>
@@ -106,9 +106,9 @@ export const FeedbackPanel = async ({ feedbackId }: FeedbackPanelProps) => {
               href={`/data/users/${feedback.feedbackUser.id}`}
             >
               <Avatar
+                fallback={feedback.feedbackUser.name.slice(0, 2)}
                 size={20}
                 src={feedback.feedbackUser.imageUrl}
-                fallback={feedback.feedbackUser.name.slice(0, 2)}
               />
               <p>{feedback.feedbackUser.name}</p>
             </Link>
@@ -124,12 +124,12 @@ export const FeedbackPanel = async ({ feedbackId }: FeedbackPanelProps) => {
               href={`/data/companies/${feedback.feedbackUser.feedbackOrganization.id}`}
             >
               <CompanyLogo
-                size={20}
-                src={feedback.feedbackUser.feedbackOrganization.domain}
                 fallback={feedback.feedbackUser.feedbackOrganization.name.slice(
                   0,
                   2
                 )}
+                size={20}
+                src={feedback.feedbackUser.feedbackOrganization.domain}
               />
               <p>{feedback.feedbackUser.feedbackOrganization.name}</p>
             </Link>
@@ -145,8 +145,8 @@ export const FeedbackPanel = async ({ feedbackId }: FeedbackPanelProps) => {
             </div>
             <div className="flex items-center gap-2">
               <SentimentEmoji
-                value={feedback.aiSentiment}
                 description={feedback.aiSentimentReason}
+                value={feedback.aiSentiment}
               />
               <p>
                 {feedback.aiSentiment
@@ -158,12 +158,12 @@ export const FeedbackPanel = async ({ feedbackId }: FeedbackPanelProps) => {
         ) : null}
 
         {feedback.analysis && organization.stripeSubscriptionId ? (
-          <Accordion.Accordion type="multiple" className="grid gap-2">
+          <Accordion.Accordion className="grid gap-2" type="multiple">
             {tabs.map((tab) => (
               <Accordion.AccordionItem
                 className="border-none"
-                value={tab.label}
                 key={tab.label}
+                value={tab.label}
               >
                 <Accordion.AccordionTrigger className="p-0 font-normal no-underline">
                   <div className="flex items-center gap-2 text-primary">
@@ -188,17 +188,17 @@ export const FeedbackPanel = async ({ feedbackId }: FeedbackPanelProps) => {
       {user.user_metadata.organization_role === EververseRole.Member ? null : (
         <div className="flex items-center justify-between border-t p-1">
           <ProcessFeedbackButton
-            feedbackId={feedbackId}
             defaultValue={feedback.processed}
+            feedbackId={feedbackId}
           />
           <FeedbackSettingsDropdown
-            feedbackId={feedbackId}
-            defaultFeedbackUserId={feedback.feedbackUser?.id}
             defaultFeedbackOrganizationId={
               feedback.feedbackUser?.feedbackOrganization?.id
             }
-            users={feedbackUsers}
+            defaultFeedbackUserId={feedback.feedbackUser?.id}
+            feedbackId={feedbackId}
             organizations={feedbackOrganizations}
+            users={feedbackUsers}
           />
         </div>
       )}

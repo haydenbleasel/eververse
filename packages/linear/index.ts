@@ -1,1 +1,1 @@
-export * from '@linear/sdk';
+export * from "@linear/sdk";

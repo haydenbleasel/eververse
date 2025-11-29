@@ -1,12 +1,12 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import type { Product } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import type { Product } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const updateProduct = async (
-  id: Product['id'],
+  id: Product["id"],
   data: Partial<Product>
 ): Promise<{
   error?: string;
@@ -18,7 +18,7 @@ export const updateProduct = async (
       select: { id: true },
     });
 
-    revalidatePath('/features');
+    revalidatePath("/features");
 
     return {};
   } catch (error) {

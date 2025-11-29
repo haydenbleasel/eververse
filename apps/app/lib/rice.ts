@@ -1,4 +1,4 @@
-import type { FeatureRice } from '@repo/backend/prisma/client';
+import type { FeatureRice } from "@repo/backend/prisma/client";
 
 export const impactNumberMatrix = {
   1: 0.25,
@@ -9,10 +9,10 @@ export const impactNumberMatrix = {
 };
 
 export const calculateRice = (rice: {
-  reach: FeatureRice['reach'];
-  impact: FeatureRice['impact'];
-  confidence: FeatureRice['confidence'];
-  effort: FeatureRice['effort'];
+  reach: FeatureRice["reach"];
+  impact: FeatureRice["impact"];
+  confidence: FeatureRice["confidence"];
+  effort: FeatureRice["effort"];
 }): number =>
   Math.round(
     ((rice.confidence / 100) *

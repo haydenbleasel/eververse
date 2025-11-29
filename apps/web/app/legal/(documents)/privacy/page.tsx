@@ -1,6 +1,6 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 
-const title = 'Privacy Policy';
+const title = "Privacy Policy";
 const description =
   "Your privacy is important to us. It is Eververse's policy to respect your privacy and comply with any applicable law and regulation regarding any personal information we may collect about you, including across our website and other sites we own and operate.";
 
@@ -621,14 +621,14 @@ const Privacy = () => (
     </p>
     <h2>Contact Us</h2>
     <p>
-      For any questions or concerns regarding your privacy, you may{' '}
+      For any questions or concerns regarding your privacy, you may{" "}
       <a
         href="https://x.com/haydenbleasel"
-        target="_blank"
         rel="noreferrer noopener"
+        target="_blank"
       >
         contact us
-      </a>{' '}
+      </a>{" "}
       at any time.
     </p>
   </>

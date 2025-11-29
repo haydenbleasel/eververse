@@ -1,11 +1,11 @@
-import { database } from '@repo/backend/database';
-import type { CannyImport, Prisma } from '@repo/backend/prisma/client';
-import { Canny } from '@repo/canny';
-import { htmlToContent, markdownToHtml } from '@repo/editor/lib/tiptap';
+import { database } from "@repo/backend/database";
+import type { CannyImport, Prisma } from "@repo/backend/prisma/client";
+import { Canny } from "@repo/canny";
+import { htmlToContent, markdownToHtml } from "@repo/editor/lib/tiptap";
 
 type ImportJobProperties = Pick<
   CannyImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateChangelogs = async ({
@@ -28,7 +28,7 @@ export const migrateChangelogs = async ({
 
   if (changelogTags.length === 0) {
     await database.changelogTag.createMany({
-      data: ['new', 'fixed', 'improved'].map((tag) => {
+      data: ["new", "fixed", "improved"].map((tag) => {
         const properties: Prisma.ChangelogTagCreateManyInput = {
           name: tag,
           organizationId,
@@ -67,7 +67,7 @@ export const migrateChangelogs = async ({
           cannyId: changelog.id,
           createdAt: new Date(changelog.created),
           publishAt: new Date(changelog.publishedAt),
-          status: changelog.status === 'published' ? 'PUBLISHED' : 'DRAFT',
+          status: changelog.status === "published" ? "PUBLISHED" : "DRAFT",
           tags: {
             connect: changelog.types.map((type) => ({
               id: changelogTags.find(({ name }) => name === type)?.id,

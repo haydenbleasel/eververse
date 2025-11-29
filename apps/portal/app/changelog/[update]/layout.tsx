@@ -1,13 +1,13 @@
-import { getSlug } from '@/lib/slug';
-import { database } from '@repo/backend/database';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import type { ReactNode } from 'react';
-import { ChangelogLink } from './components/changelog-link';
+import { database } from "@repo/backend/database";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import type { ReactNode } from "react";
+import { getSlug } from "@/lib/slug";
+import { ChangelogLink } from "./components/changelog-link";
 
 export const metadata: Metadata = {
-  title: 'Changelog',
-  description: 'The latest updates and changes to Eververse',
+  title: "Changelog",
+  description: "The latest updates and changes to Eververse",
 };
 
 type UpdateLayoutProps = {
@@ -33,13 +33,13 @@ const UpdateLayout = async ({ children }: UpdateLayoutProps) => {
   const changelogs = await database.changelog.findMany({
     where: {
       organizationId: portal.organizationId,
-      status: 'PUBLISHED',
+      status: "PUBLISHED",
       publishAt: {
         lte: new Date(),
       },
     },
     orderBy: {
-      publishAt: 'desc',
+      publishAt: "desc",
     },
     select: {
       id: true,
@@ -51,7 +51,7 @@ const UpdateLayout = async ({ children }: UpdateLayoutProps) => {
     <div className="grid grid-cols-[200px_1fr]">
       <div className="flex flex-col gap-2">
         {changelogs.map((update) => (
-          <ChangelogLink key={update.id} id={update.id}>
+          <ChangelogLink id={update.id} key={update.id}>
             {update.title}
           </ChangelogLink>
         ))}

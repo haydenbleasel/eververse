@@ -1,8 +1,8 @@
-import { env } from '@/env';
-import { withBackend } from '@repo/backend/next-config';
-import { config, withAnalyzer } from '@repo/next-config';
-import { withLogtail, withSentry } from '@repo/observability/next-config';
-import type { NextConfig } from 'next';
+import { withBackend } from "@repo/backend/next-config";
+import { config, withAnalyzer } from "@repo/next-config";
+import { withLogtail, withSentry } from "@repo/observability/next-config";
+import type { NextConfig } from "next";
+import { env } from "@/env";
 
 let nextConfig: NextConfig = withBackend(
   withLogtail({
@@ -12,8 +12,8 @@ let nextConfig: NextConfig = withBackend(
     async redirects() {
       return [
         {
-          source: '/',
-          destination: 'https://www.eververse.ai/',
+          source: "/",
+          destination: "https://www.eververse.ai/",
           permanent: true,
         },
       ];
@@ -25,16 +25,16 @@ let nextConfig: NextConfig = withBackend(
     async headers() {
       return [
         {
-          source: '/(.*)',
+          source: "/(.*)",
           headers: [
-            { key: 'Access-Control-Allow-Origin', value: '*' },
+            { key: "Access-Control-Allow-Origin", value: "*" },
             {
-              key: 'Access-Control-Allow-Methods',
-              value: 'GET, POST, PUT, DELETE, OPTIONS',
+              key: "Access-Control-Allow-Methods",
+              value: "GET, POST, PUT, DELETE, OPTIONS",
             },
             {
-              key: 'Access-Control-Allow-Headers',
-              value: 'Content-Type, Authorization',
+              key: "Access-Control-Allow-Headers",
+              value: "Content-Type, Authorization",
             },
           ],
         },
@@ -47,7 +47,7 @@ if (env.VERCEL) {
   nextConfig = withSentry(nextConfig);
 }
 
-if (env.ANALYZE === 'true') {
+if (env.ANALYZE === "true") {
   nextConfig = withAnalyzer(nextConfig);
 }
 

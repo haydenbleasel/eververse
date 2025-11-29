@@ -1,14 +1,14 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import type { Changelog } from '@repo/backend/prisma/client';
-import { contentToText } from '@repo/editor/lib/tiptap';
-import { FEEDBACK_PAGE_SIZE } from '@repo/lib/consts';
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import type { Changelog } from "@repo/backend/prisma/client";
+import { contentToText } from "@repo/editor/lib/tiptap";
+import { FEEDBACK_PAGE_SIZE } from "@repo/lib/consts";
+import { database } from "@/lib/database";
 
 export type GetChangelogResponse = (Pick<
   Changelog,
-  'id' | 'publishAt' | 'status' | 'title'
+  "id" | "publishAt" | "status" | "title"
 > & {
   text: string;
 })[];
@@ -25,7 +25,7 @@ export const getChangelog = async (
 > => {
   try {
     const changelogs = await database.changelog.findMany({
-      orderBy: { publishAt: 'desc' },
+      orderBy: { publishAt: "desc" },
       skip: page * FEEDBACK_PAGE_SIZE,
       take: FEEDBACK_PAGE_SIZE,
       select: {
@@ -38,14 +38,14 @@ export const getChangelog = async (
 
     const modifiedData = changelogs.map(async (changelog) => {
       const content = await getJsonColumnFromTable(
-        'changelog',
-        'content',
+        "changelog",
+        "content",
         changelog.id
       );
 
       return {
         ...changelog,
-        text: content ? contentToText(content) : 'No description provided.',
+        text: content ? contentToText(content) : "No description provided.",
       };
     });
 

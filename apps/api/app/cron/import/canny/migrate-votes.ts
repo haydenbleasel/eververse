@@ -1,10 +1,10 @@
-import { database } from '@repo/backend/database';
-import type { CannyImport, Prisma } from '@repo/backend/prisma/client';
-import { Canny } from '@repo/canny';
+import { database } from "@repo/backend/database";
+import type { CannyImport, Prisma } from "@repo/backend/prisma/client";
+import { Canny } from "@repo/canny";
 
 type ImportJobProperties = Pick<
   CannyImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateVotes = async ({
@@ -31,11 +31,11 @@ export const migrateVotes = async ({
   });
 
   if (!databaseOrganization) {
-    throw new Error('Could not find organization');
+    throw new Error("Could not find organization");
   }
 
   if (databaseOrganization.portals.length === 0) {
-    throw new Error('Organization does not have a portal');
+    throw new Error("Organization does not have a portal");
   }
 
   const transactions: Prisma.PrismaPromise<unknown>[] = [];
@@ -53,7 +53,7 @@ export const migrateVotes = async ({
     );
 
     if (!feedbackUser) {
-      throw new Error('Could not find feedback user');
+      throw new Error("Could not find feedback user");
     }
 
     const portalFeature = databaseOrganization.portalFeatures.find(
@@ -61,7 +61,7 @@ export const migrateVotes = async ({
     );
 
     if (!portalFeature) {
-      throw new Error('Could not find portal feature');
+      throw new Error("Could not find portal feature");
     }
 
     const transaction = database.portalFeatureVote.create({

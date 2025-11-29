@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useReleaseForm } from '@/components/release-form/use-release-form';
-import { Button } from '@repo/design-system/components/ui/button';
+import { Button } from "@repo/design-system/components/ui/button";
+import { useReleaseForm } from "@/components/release-form/use-release-form";
 
 export const CreateReleaseButton = () => {
   const releaseForm = useReleaseForm();
 
   return (
-    <Button variant="outline" onClick={releaseForm.show}>
+    <Button onClick={releaseForm.show} variant="outline">
       Create a release
     </Button>
   );

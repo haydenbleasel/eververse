@@ -1,11 +1,11 @@
-import { Button } from '@repo/design-system/components/ui/button';
+import { Button } from "@repo/design-system/components/ui/button";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@repo/design-system/components/ui/popover';
-import { cn } from '@repo/design-system/lib/utils';
-import type { ReactNode } from 'react';
+} from "@repo/design-system/components/ui/popover";
+import { cn } from "@repo/design-system/lib/utils";
+import type { ReactNode } from "react";
 
 type FeatureRicePopoverProperties = {
   readonly item: {
@@ -30,18 +30,18 @@ export const FeatureRicePopover = ({
     <PopoverTrigger asChild>
       <Button
         className={cn(
-          'h-9 flex-1',
-          index > 0 && 'rounded-l-none border-l-0',
-          index < 3 && 'rounded-r-none',
+          "h-9 flex-1",
+          index > 0 && "rounded-l-none border-l-0",
+          index < 3 && "rounded-r-none",
           className
         )}
-        variant="outline"
         disabled={disabled}
+        variant="outline"
       >
         {item.value}
       </Button>
     </PopoverTrigger>
-    <PopoverContent collisionPadding={16} className="space-y-4">
+    <PopoverContent className="space-y-4" collisionPadding={16}>
       <div>
         <p className="font-medium text-foreground text-sm">{item.label}</p>
         <p className="mt-1 text-muted-foreground text-xs">{item.description}</p>

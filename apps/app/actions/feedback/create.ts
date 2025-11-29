@@ -1,19 +1,19 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import type { Feedback } from '@repo/backend/prisma/client';
-import { textToContent } from '@repo/editor/lib/tiptap';
-import { MAX_FREE_FEEDBACK } from '@repo/lib/consts';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import type { Feedback } from "@repo/backend/prisma/client";
+import { textToContent } from "@repo/editor/lib/tiptap";
+import { MAX_FREE_FEEDBACK } from "@repo/lib/consts";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 type CreateFeedbackProperties = {
-  title: Feedback['title'];
-  feedbackUserId: Feedback['feedbackUserId'];
+  title: Feedback["title"];
+  feedbackUserId: Feedback["feedbackUserId"];
   content?: object;
-  audioUrl?: Feedback['audioUrl'];
-  videoUrl?: Feedback['videoUrl'];
+  audioUrl?: Feedback["audioUrl"];
+  videoUrl?: Feedback["videoUrl"];
 };
 
 export const createFeedback = async ({
@@ -23,7 +23,7 @@ export const createFeedback = async ({
   audioUrl,
   videoUrl,
 }: CreateFeedbackProperties): Promise<{
-  id?: Feedback['id'];
+  id?: Feedback["id"];
   error?: string;
 }> => {
   try {
@@ -32,8 +32,8 @@ export const createFeedback = async ({
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('You must be logged in to create feedback.');
+    if (!(user && organizationId)) {
+      throw new Error("You must be logged in to create feedback.");
     }
 
     const [feedbackCount, organization] = await Promise.all([
@@ -45,7 +45,7 @@ export const createFeedback = async ({
     ]);
 
     if (!organization) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     if (
@@ -53,18 +53,18 @@ export const createFeedback = async ({
       feedbackCount >= MAX_FREE_FEEDBACK
     ) {
       throw new Error(
-        'You have reached the maximum number of feedback for your plan. Please upgrade to add more feedback.'
+        "You have reached the maximum number of feedback for your plan. Please upgrade to add more feedback."
       );
     }
 
     if (!organization.stripeSubscriptionId && (audioUrl ?? videoUrl)) {
-      throw new Error('Please upgrade to create audio or video feedback.');
+      throw new Error("Please upgrade to create audio or video feedback.");
     }
 
     const { id } = await database.feedback.create({
       data: {
         title,
-        content: content ?? textToContent(''),
+        content: content ?? textToContent(""),
         organizationId,
         feedbackUserId,
         audioUrl,
@@ -73,7 +73,7 @@ export const createFeedback = async ({
       select: { id: true },
     });
 
-    revalidatePath('/feedback', 'layout');
+    revalidatePath("/feedback", "layout");
 
     return { id };
   } catch (error) {

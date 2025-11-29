@@ -1,16 +1,16 @@
-import { getActivity } from '@/actions/activity/get';
-import { currentMembers } from '@repo/backend/auth/utils';
-import { createMetadata } from '@repo/seo/metadata';
+import { currentMembers } from "@repo/backend/auth/utils";
+import { createMetadata } from "@repo/seo/metadata";
 import {
+  dehydrate,
   HydrationBoundary,
   QueryClient,
-  dehydrate,
-} from '@tanstack/react-query';
-import type { Metadata } from 'next';
-import { ActivityFeed } from './components/activity-feed';
+} from "@tanstack/react-query";
+import type { Metadata } from "next";
+import { getActivity } from "@/actions/activity/get";
+import { ActivityFeed } from "./components/activity-feed";
 
-const title = 'Activity';
-const description = 'View the latest activity in your organization.';
+const title = "Activity";
+const description = "View the latest activity in your organization.";
 
 export const metadata: Metadata = createMetadata({
   title,
@@ -22,11 +22,11 @@ const Activity = async () => {
   const [members] = await Promise.all([
     currentMembers(),
     queryClient.prefetchInfiniteQuery({
-      queryKey: ['activity'],
+      queryKey: ["activity"],
       queryFn: async ({ pageParam }) => {
         const response = await getActivity(pageParam);
 
-        if ('error' in response) {
+        if ("error" in response) {
           throw response.error;
         }
 

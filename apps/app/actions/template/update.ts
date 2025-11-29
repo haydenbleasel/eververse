@@ -1,16 +1,16 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentUser } from '@repo/backend/auth/utils';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import type { Feature, Template } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { EververseRole } from "@repo/backend/auth";
+import { currentUser } from "@repo/backend/auth/utils";
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import type { Feature, Template } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const updateTemplate = async (
-  id: Template['id'],
-  data: Omit<Partial<Template>, 'content'> & {
+  id: Template["id"],
+  data: Omit<Partial<Template>, "content"> & {
     content?: object;
   }
 ): Promise<{
@@ -20,7 +20,7 @@ export const updateTemplate = async (
     const user = await currentUser();
 
     if (!user) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
@@ -32,7 +32,7 @@ export const updateTemplate = async (
       data,
     });
 
-    revalidatePath('/settings/templates');
+    revalidatePath("/settings/templates");
 
     return {};
   } catch (error) {
@@ -43,8 +43,8 @@ export const updateTemplate = async (
 };
 
 export const updateTemplateFromFeature = async (
-  templateId: Template['id'],
-  featureId: Feature['id']
+  templateId: Template["id"],
+  featureId: Feature["id"]
 ): Promise<
   | object
   | {
@@ -55,7 +55,7 @@ export const updateTemplateFromFeature = async (
     const user = await currentUser();
 
     if (!user) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
@@ -70,17 +70,17 @@ export const updateTemplateFromFeature = async (
     });
 
     if (!feature) {
-      throw new Error('Feature not found');
+      throw new Error("Feature not found");
     }
 
     const content = await getJsonColumnFromTable(
-      'feature',
-      'content',
+      "feature",
+      "content",
       feature.id
     );
 
     if (!content) {
-      throw new Error('Content not found');
+      throw new Error("Content not found");
     }
 
     await updateTemplate(templateId, { content });

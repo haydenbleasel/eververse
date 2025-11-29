@@ -1,15 +1,15 @@
-import { database } from '@repo/backend/database';
+import { database } from "@repo/backend/database";
 import type {
   CannyImport,
   FeedbackOrganization,
   Prisma,
-} from '@repo/backend/prisma/client';
-import { Canny } from '@repo/canny';
-import { getGravatarUrl } from '@repo/lib/gravatar';
+} from "@repo/backend/prisma/client";
+import { Canny } from "@repo/canny";
+import { getGravatarUrl } from "@repo/lib/gravatar";
 
 type ImportJobProperties = Pick<
   CannyImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateUsers = async ({
@@ -30,7 +30,7 @@ export const migrateUsers = async ({
   });
 
   if (!databaseOrganization) {
-    throw new Error('Could not find organization');
+    throw new Error("Could not find organization");
   }
 
   const newUsers = users.filter((user) => {
@@ -43,12 +43,12 @@ export const migrateUsers = async ({
 
   const promises = newUsers.map(async (user) => {
     let feedbackOrganization: {
-      id: FeedbackOrganization['id'];
-      cannyId: FeedbackOrganization['cannyId'];
+      id: FeedbackOrganization["id"];
+      cannyId: FeedbackOrganization["cannyId"];
     } | null = null;
 
     if (!user.email) {
-      throw new Error('User does not have an email');
+      throw new Error("User does not have an email");
     }
 
     if (user.companies.length > 0) {

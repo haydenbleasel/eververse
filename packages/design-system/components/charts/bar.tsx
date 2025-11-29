@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import type { ComponentProps } from 'react';
+import type { ComponentProps } from "react";
 import {
   Bar,
   BarChart as BarChartComponent,
@@ -8,18 +8,18 @@ import {
   LabelList,
   XAxis,
   YAxis,
-} from 'recharts';
-import { cn } from '../../lib/utils';
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from '../ui/chart';
-import type { ChartConfig } from '../ui/chart';
+} from "recharts";
+import { cn } from "../../lib/utils";
+import type { ChartConfig } from "../ui/chart";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../ui/chart";
 
 export type BarChartProperties = {
   readonly config: ChartConfig;
-  readonly data: ComponentProps<typeof Bar>['data'];
+  readonly data: ComponentProps<typeof Bar>["data"];
   readonly color: string;
   readonly className?: string;
-  readonly yAxisKey: ComponentProps<typeof YAxis>['dataKey'];
-  readonly xAxisKey: ComponentProps<typeof XAxis>['dataKey'];
+  readonly yAxisKey: ComponentProps<typeof YAxis>["dataKey"];
+  readonly xAxisKey: ComponentProps<typeof XAxis>["dataKey"];
 };
 
 export const BarChart = ({
@@ -30,7 +30,7 @@ export const BarChart = ({
   yAxisKey,
   xAxisKey,
 }: BarChartProperties) => (
-  <ChartContainer config={config} className={cn('w-full', className)}>
+  <ChartContainer className={cn("w-full", className)} config={config}>
     <BarChartComponent
       accessibilityLayer
       data={data}
@@ -39,33 +39,33 @@ export const BarChart = ({
     >
       <CartesianGrid horizontal={false} />
       <YAxis
+        axisLine={false}
         dataKey={yAxisKey}
-        type="category"
+        hide
+        tickFormatter={(value: string) => value.slice(0, 3)}
         tickLine={false}
         tickMargin={10}
-        axisLine={false}
-        tickFormatter={(value: string) => value.slice(0, 3)}
-        hide
+        type="category"
       />
-      <XAxis dataKey={xAxisKey} type="number" hide />
+      <XAxis dataKey={xAxisKey} hide type="number" />
       <ChartTooltip
-        cursor={false}
         content={<ChartTooltipContent indicator="line" />}
+        cursor={false}
       />
-      <Bar dataKey="count" layout="vertical" fill={color} radius={4}>
+      <Bar dataKey="count" fill={color} layout="vertical" radius={4}>
         <LabelList
-          dataKey="name"
-          position="insideLeft"
-          offset={8}
           className="fill-background"
+          dataKey="name"
           fontSize={12}
+          offset={8}
+          position="insideLeft"
         />
         <LabelList
-          dataKey="count"
-          position="right"
-          offset={8}
           className="fill-foreground"
+          dataKey="count"
           fontSize={12}
+          offset={8}
+          position="right"
         />
       </Bar>
     </BarChartComponent>

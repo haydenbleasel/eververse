@@ -1,8 +1,8 @@
-import { database } from '@/lib/database';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import type { ReactNode } from 'react';
-import { FeatureSidebar } from './components/feature-sidebar';
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import { database } from "@/lib/database";
+import { FeatureSidebar } from "./components/feature-sidebar";
 
 type FeaturePageLayoutProperties = {
   readonly params: Promise<{

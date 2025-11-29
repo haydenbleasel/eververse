@@ -1,6 +1,6 @@
-import { createAppAuth } from '@octokit/auth-app';
-import { Octokit } from '@octokit/rest';
-import { keys } from './keys';
+import { createAppAuth } from "@octokit/auth-app";
+import { Octokit } from "@octokit/rest";
+import { keys } from "./keys";
 
 export const createOctokit = (installationId: string): Octokit =>
   new Octokit({
@@ -12,4 +12,4 @@ export const createOctokit = (installationId: string): Octokit =>
     },
   });
 
-export * from '@octokit/rest';
+export * from "@octokit/rest";

@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { LoadingCircle } from '@repo/design-system/components/loading-circle';
-import { EqualIcon } from 'lucide-react';
-import { useInView } from 'motion/react';
-import { useEffect, useRef, useState } from 'react';
+import { LoadingCircle } from "@repo/design-system/components/loading-circle";
+import { EqualIcon } from "lucide-react";
+import { useInView } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 
 export const RiceGraphic = () => {
   const [reach, setReach] = useState(0);
@@ -12,7 +12,7 @@ export const RiceGraphic = () => {
   const [effort, setEffort] = useState(0);
   const loaded = useRef<boolean>(false);
   const reference = useRef<HTMLDivElement>(null);
-  const inView = useInView(reference, { once: true, amount: 'all' });
+  const inView = useInView(reference, { once: true, amount: "all" });
 
   useEffect(() => {
     if (loaded.current || !inView) {
@@ -74,7 +74,7 @@ export const RiceGraphic = () => {
         </div>
       </div>
       <div>
-        <EqualIcon size={24} className="text-muted-foreground" />
+        <EqualIcon className="text-muted-foreground" size={24} />
       </div>
       <div>
         {reach && impact && confidence && effort ? (

@@ -1,14 +1,14 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentUser } from '@repo/backend/auth/utils';
-import type { PortalFeature } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { EververseRole } from "@repo/backend/auth";
+import { currentUser } from "@repo/backend/auth/utils";
+import type { PortalFeature } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const removeFeaturePortal = async (
-  portalFeatureId: PortalFeature['id']
+  portalFeatureId: PortalFeature["id"]
 ): Promise<{
   error?: string;
 }> => {
@@ -16,7 +16,7 @@ export const removeFeaturePortal = async (
     const user = await currentUser();
 
     if (!user) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
@@ -28,7 +28,7 @@ export const removeFeaturePortal = async (
     const portal = await database.portal.findFirst();
 
     if (!portal) {
-      throw new Error('Portal not found');
+      throw new Error("Portal not found");
     }
 
     const { featureId } = await database.portalFeature.delete({

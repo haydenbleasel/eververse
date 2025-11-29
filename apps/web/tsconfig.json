@@ -3,12 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "@repo/*": [
-        "../../packages/*"
-      ]
+      "@/*": ["./*"],
+      "@repo/*": ["../../packages/*"]
     },
     "strictNullChecks": true
   },
@@ -19,7 +15,5 @@
     "**/*.tsx",
     ".next/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

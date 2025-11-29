@@ -1,14 +1,14 @@
-import { database } from '@repo/backend/database';
+import { database } from "@repo/backend/database";
 import type {
   Prisma,
   ProductboardImport,
   release_state,
-} from '@repo/backend/prisma/client';
-import { createClient } from '@repo/productboard';
+} from "@repo/backend/prisma/client";
+import { createClient } from "@repo/productboard";
 
 type ImportJobProperties = Pick<
   ProductboardImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateReleases = async ({
@@ -16,22 +16,22 @@ export const migrateReleases = async ({
   organizationId,
 }: ImportJobProperties): Promise<number> => {
   const productboard = createClient({ accessToken: token });
-  const releases = await productboard.GET('/releases', {
+  const releases = await productboard.GET("/releases", {
     params: {
       header: {
-        'X-Version': 1,
+        "X-Version": 1,
       },
     },
   });
 
   if (releases.error) {
     throw new Error(
-      releases.error.errors.map((error) => error.detail).join(', ')
+      releases.error.errors.map((error) => error.detail).join(", ")
     );
   }
 
   if (!releases.data) {
-    throw new Error('No releases found');
+    throw new Error("No releases found");
   }
 
   const databaseOrganization = await database.organization.findUnique({
@@ -42,7 +42,7 @@ export const migrateReleases = async ({
   });
 
   if (!databaseOrganization) {
-    throw new Error('Could not find organization');
+    throw new Error("Could not find organization");
   }
 
   const data: Prisma.ReleaseCreateManyInput[] = [];
@@ -56,20 +56,20 @@ export const migrateReleases = async ({
 
   for (const release of newReleases) {
     const startAt =
-      release.timeframe.startDate === 'none'
+      release.timeframe.startDate === "none"
         ? undefined
         : new Date(release.timeframe.startDate);
     const endAt =
-      release.timeframe.endDate === 'none'
+      release.timeframe.endDate === "none"
         ? undefined
         : new Date(release.timeframe.endDate);
 
-    let state: release_state = 'PLANNED';
+    let state: release_state = "PLANNED";
 
-    if (release.state === 'completed') {
-      state = 'COMPLETED';
-    } else if (release.state === 'in-progress') {
-      state = 'ACTIVE';
+    if (release.state === "completed") {
+      state = "COMPLETED";
+    } else if (release.state === "in-progress") {
+      state = "ACTIVE";
     }
 
     data.push({

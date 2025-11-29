@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { colors } from '@repo/design-system/lib/colors';
-import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
-import { ThemeProvider as NextThemesProvider, useTheme } from 'next-themes';
-import type { ThemeProviderProps } from 'next-themes';
-import Script from 'next/script';
-import type { ReactNode } from 'react';
-import { TooltipProvider } from './precomposed/tooltip';
-import { Toaster } from './ui/sonner';
+import { colors } from "@repo/design-system/lib/colors";
+import Script from "next/script";
+import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
+import type { ThemeProviderProps } from "next-themes";
+import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes";
+import type { ReactNode } from "react";
+import { TooltipProvider } from "./precomposed/tooltip";
+import { Toaster } from "./ui/sonner";
 
 type DesignSystemProviderProperties = ThemeProviderProps & {
   readonly children: ReactNode;
@@ -19,15 +19,15 @@ const IframelyEmbed = () => {
     return null;
   }
 
-  const scriptUrl = new URL('https://cdn.iframe.ly/embed.js');
+  const scriptUrl = new URL("https://cdn.iframe.ly/embed.js");
 
   scriptUrl.searchParams.set(
-    'api_key',
+    "api_key",
     process.env.NEXT_PUBLIC_IFRAMELY_API_KEY
   );
-  scriptUrl.searchParams.set('theme', resolvedTheme ?? 'light');
+  scriptUrl.searchParams.set("theme", resolvedTheme ?? "light");
 
-  return <Script src={scriptUrl.toString()} async />;
+  return <Script async src={scriptUrl.toString()} />;
 };
 
 export const DesignSystemProvider = ({
@@ -37,15 +37,15 @@ export const DesignSystemProvider = ({
   <NextThemesProvider
     attribute="class"
     defaultTheme="system"
-    enableSystem
     disableTransitionOnChange
+    enableSystem
     {...properties}
   >
     <TooltipProvider>{children}</TooltipProvider>
     <Toaster />
     <ProgressBar
-      height="2px"
       color={colors.violet}
+      height="2px"
       options={{ showSpinner: false }}
       shallowRouting
     />

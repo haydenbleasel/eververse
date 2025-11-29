@@ -1,16 +1,16 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { getUserName } from '@repo/backend/auth/format';
-import { currentMembers } from '@repo/backend/auth/utils';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import type { Feature } from '@repo/backend/prisma/client';
-import { contentToText } from '@repo/editor/lib/tiptap';
-import { FEEDBACK_PAGE_SIZE } from '@repo/lib/consts';
+import { getUserName } from "@repo/backend/auth/format";
+import { currentMembers } from "@repo/backend/auth/utils";
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import type { Feature } from "@repo/backend/prisma/client";
+import { contentToText } from "@repo/editor/lib/tiptap";
+import { FEEDBACK_PAGE_SIZE } from "@repo/lib/consts";
+import { database } from "@/lib/database";
 
 export type GetFeatureResponse = Pick<
   Feature,
-  'endAt' | 'id' | 'ownerId' | 'startAt' | 'title'
+  "endAt" | "id" | "ownerId" | "startAt" | "title"
 > & {
   readonly text: string;
   readonly owner: {
@@ -32,7 +32,7 @@ export const getFeature = async (
 > => {
   try {
     const feature = await database.feature.findFirst({
-      orderBy: { createdAt: 'desc' },
+      orderBy: { createdAt: "desc" },
       skip: page * FEEDBACK_PAGE_SIZE,
       take: FEEDBACK_PAGE_SIZE,
       select: {
@@ -47,7 +47,7 @@ export const getFeature = async (
     const members = await currentMembers();
 
     if (!feature) {
-      throw new Error('Feature not found');
+      throw new Error("Feature not found");
     }
 
     const owner = feature.ownerId
@@ -55,15 +55,15 @@ export const getFeature = async (
       : null;
 
     const content = await getJsonColumnFromTable(
-      'feature',
-      'content',
+      "feature",
+      "content",
       feature.id
     );
 
     return {
       data: {
         ...feature,
-        text: content ? contentToText(content) : '',
+        text: content ? contentToText(content) : "",
         owner: owner
           ? {
               name: getUserName(owner),

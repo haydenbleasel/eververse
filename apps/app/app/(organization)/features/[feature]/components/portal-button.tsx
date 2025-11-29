@@ -1,18 +1,18 @@
-import { database } from '@/lib/database';
-import { getPortalUrl } from '@/lib/portal';
-import { EververseRole } from '@repo/backend/auth';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import type { Feature, PortalFeature } from '@repo/backend/prisma/client';
-import { Link } from '@repo/design-system/components/link';
-import { Button } from '@repo/design-system/components/ui/button';
-import { textToContent } from '@repo/editor/lib/tiptap';
-import { notFound } from 'next/navigation';
-import { FeaturePortalButton } from './feature-portal-button';
+import { EververseRole } from "@repo/backend/auth";
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import type { Feature, PortalFeature } from "@repo/backend/prisma/client";
+import { Link } from "@repo/design-system/components/link";
+import { Button } from "@repo/design-system/components/ui/button";
+import { textToContent } from "@repo/editor/lib/tiptap";
+import { notFound } from "next/navigation";
+import { database } from "@/lib/database";
+import { getPortalUrl } from "@/lib/portal";
+import { FeaturePortalButton } from "./feature-portal-button";
 
 type PortalButtonProperties = {
-  readonly featureId: Feature['id'];
-  readonly portalFeatureId: PortalFeature['id'] | undefined;
+  readonly featureId: Feature["id"];
+  readonly portalFeatureId: PortalFeature["id"] | undefined;
 };
 
 export const PortalButton = async ({
@@ -24,7 +24,7 @@ export const PortalButton = async ({
     currentOrganizationId(),
   ]);
 
-  if (!user || !organizationId) {
+  if (!(user && organizationId)) {
     notFound();
   }
 
@@ -52,7 +52,7 @@ export const PortalButton = async ({
     }),
   ]);
 
-  if (!feature || !organization) {
+  if (!(feature && organization)) {
     notFound();
   }
 
@@ -76,23 +76,23 @@ export const PortalButton = async ({
     }
 
     const content = await getJsonColumnFromTable(
-      'portal_feature',
-      'content',
+      "portal_feature",
+      "content",
       portalFeature.id
     );
 
     return (
       <>
         <Button asChild variant="outline">
-          <Link href={url} aria-label="Portal">
+          <Link aria-label="Portal" href={url}>
             View in portal
           </Link>
         </Button>
         <FeaturePortalButton
+          defaultContent={content ?? textToContent("")}
+          defaultTitle={portalFeature.title}
           featureId={featureId}
           portalFeatureId={portalFeatureId}
-          defaultTitle={portalFeature.title}
-          defaultContent={content ?? textToContent('')}
           variant="link"
         />
       </>
@@ -100,16 +100,16 @@ export const PortalButton = async ({
   }
 
   const content = await getJsonColumnFromTable(
-    'feature',
-    'content',
+    "feature",
+    "content",
     feature.id
   );
 
   if (user.user_metadata.organization_role !== EververseRole.Member) {
     return (
       <FeaturePortalButton
+        defaultContent={content ?? textToContent("")}
         defaultTitle={feature.title}
-        defaultContent={content ?? textToContent('')}
         featureId={featureId}
         variant="outline"
       />

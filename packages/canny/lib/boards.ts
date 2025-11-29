@@ -1,4 +1,4 @@
-import ky from 'ky';
+import ky from "ky";
 
 export type CannyBoard = {
   id: string;
@@ -18,7 +18,7 @@ export const getCannyBoard = async (
   }
 ): Promise<CannyBoard> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/boards/retrieve', {
+    .post("https://canny.io/api/v1/boards/retrieve", {
       json: {
         apiKey,
         id: props.id,
@@ -26,7 +26,7 @@ export const getCannyBoard = async (
     })
     .json<CannyBoard | { error: string }>();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 
@@ -39,7 +39,7 @@ export const fetchCannyBoards = async (
 ): Promise<CannyBoard[]> => {
   const limit = 10_000;
   const payload = await ky
-    .post('https://canny.io/api/v1/boards/list', {
+    .post("https://canny.io/api/v1/boards/list", {
       json: {
         apiKey,
         limit,
@@ -56,7 +56,7 @@ export const fetchCannyBoards = async (
         }
     >();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 

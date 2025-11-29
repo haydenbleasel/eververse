@@ -1,11 +1,11 @@
-import { FeedbackEmptyState } from '@/app/(organization)/feedback/components/feedback-empty-state';
-import { database } from '@/lib/database';
-import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
-import { Suspense } from 'react';
-import { IncomingChart } from './incoming-chart';
-import { ProcessedChart } from './processed-chart';
-import { SentimentChart } from './sentiment-chart';
-import { FeedbackTrend } from './trend';
+import { Skeleton } from "@repo/design-system/components/precomposed/skeleton";
+import { Suspense } from "react";
+import { FeedbackEmptyState } from "@/app/(organization)/feedback/components/feedback-empty-state";
+import { database } from "@/lib/database";
+import { IncomingChart } from "./incoming-chart";
+import { ProcessedChart } from "./processed-chart";
+import { SentimentChart } from "./sentiment-chart";
+import { FeedbackTrend } from "./trend";
 
 export const FeedbackSection = async () => {
   const feedbackCount = await database.feedback.count();

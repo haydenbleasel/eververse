@@ -1,13 +1,13 @@
-import { database } from '@repo/backend/database';
-import { htmlToContent } from '@repo/editor/lib/tiptap';
-import { MAX_FREE_FEEDBACK } from '@repo/lib/consts';
-import { getGravatarUrl } from '@repo/lib/gravatar';
-import { log } from '@repo/observability/log';
-import { NextResponse } from 'next/server';
+import { database } from "@repo/backend/database";
+import { htmlToContent } from "@repo/editor/lib/tiptap";
+import { MAX_FREE_FEEDBACK } from "@repo/lib/consts";
+import { getGravatarUrl } from "@repo/lib/gravatar";
+import { log } from "@repo/observability/log";
+import { NextResponse } from "next/server";
 
 export const maxDuration = 300;
 export const revalidate = 0;
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 type IntercomWebhook = {
   type: string;
@@ -130,7 +130,7 @@ type IntercomWebhook = {
             id: string;
             notified_at: number;
             part_type: string;
-            type: 'conversation_part';
+            type: "conversation_part";
             updated_at: number;
           }[];
           total_count: number;
@@ -164,14 +164,14 @@ const handleConversationPartTagCreated = async (
 
   if (!intercomInstallation) {
     return NextResponse.json(
-      { message: 'Intercom installation not found' },
+      { message: "Intercom installation not found" },
       { status: 404 }
     );
   }
 
   const tag = event.data.item.tag.name;
 
-  if (tag.toLowerCase() !== 'eververse') {
+  if (tag.toLowerCase() !== "eververse") {
     return new Response(null, { status: 200 });
   }
 
@@ -186,14 +186,14 @@ const handleConversationPartTagCreated = async (
   });
 
   if (!organization) {
-    throw new Error('Organization not found');
+    throw new Error("Organization not found");
   }
 
   if (
     !organization.stripeSubscriptionId &&
     organization._count.feedback >= MAX_FREE_FEEDBACK
   ) {
-    return new Response('Upgrade your subscription to create more feedback', {
+    return new Response("Upgrade your subscription to create more feedback", {
       status: 402,
     });
   }
@@ -211,7 +211,7 @@ const handleConversationPartTagCreated = async (
     conversationHtml.push(event.data.item.conversation.source.body);
   }
 
-  const content = htmlToContent(conversationHtml.join('<br />'));
+  const content = htmlToContent(conversationHtml.join("<br />"));
   const { email, name } = event.data.item.conversation.source.author;
 
   let feedbackUser = await database.feedbackUser.findFirst({
@@ -236,8 +236,8 @@ const handleConversationPartTagCreated = async (
     data: {
       organizationId: intercomInstallation.organizationId,
       content,
-      title: 'Feedback from Intercom',
-      source: 'INTERCOM',
+      title: "Feedback from Intercom",
+      source: "INTERCOM",
       feedbackUserId: feedbackUser.id,
     },
     select: { id: true },
@@ -247,19 +247,19 @@ const handleConversationPartTagCreated = async (
 };
 
 export const POST = async (request: Request): Promise<Response> => {
-  const signature = request.headers.get('X-Hub-Signature');
+  const signature = request.headers.get("X-Hub-Signature");
   const text = await request.text();
   const event = JSON.parse(text) as IntercomWebhook;
 
   if (!signature) {
-    log.error('Intercom: Signature missing');
-    return NextResponse.json({ message: 'Signature missing' }, { status: 200 });
+    log.error("Intercom: Signature missing");
+    return NextResponse.json({ message: "Signature missing" }, { status: 200 });
   }
 
-  if (event.topic === 'conversation_part.tag.created') {
+  if (event.topic === "conversation_part.tag.created") {
     return handleConversationPartTagCreated(event);
   }
 
-  log.error('Intercom: Unhandled event');
-  return NextResponse.json({ message: 'Unhandled event' }, { status: 200 });
+  log.error("Intercom: Unhandled event");
+  return NextResponse.json({ message: "Unhandled event" }, { status: 200 });
 };

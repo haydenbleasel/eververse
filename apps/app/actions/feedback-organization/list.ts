@@ -1,12 +1,12 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import type { FeedbackOrganization } from '@repo/backend/prisma/client';
-import { FEEDBACK_PAGE_SIZE } from '@repo/lib/consts';
+import type { FeedbackOrganization } from "@repo/backend/prisma/client";
+import { FEEDBACK_PAGE_SIZE } from "@repo/lib/consts";
+import { database } from "@/lib/database";
 
 export type GetFeedbackCompaniesResponse = Pick<
   FeedbackOrganization,
-  'createdAt' | 'domain' | 'id' | 'name'
+  "createdAt" | "domain" | "id" | "name"
 >[];
 
 export const getFeedbackCompanies = async (
@@ -22,7 +22,7 @@ export const getFeedbackCompanies = async (
   try {
     const data = await database.feedbackOrganization.findMany({
       orderBy: {
-        name: 'asc',
+        name: "asc",
       },
       skip: page * FEEDBACK_PAGE_SIZE,
       take: FEEDBACK_PAGE_SIZE,

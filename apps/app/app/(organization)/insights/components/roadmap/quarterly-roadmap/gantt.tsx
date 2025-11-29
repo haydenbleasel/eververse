@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { FeatureItemInner } from '@/components/roadmap-item';
-import type { User } from '@repo/backend/auth';
-import * as Gantt from '@repo/design-system/components/ui/kibo-ui/gantt';
-import { useRouter } from 'next/navigation';
+import type { User } from "@repo/backend/auth";
+import * as Gantt from "@repo/design-system/components/ui/kibo-ui/gantt";
+import { useRouter } from "next/navigation";
+import { FeatureItemInner } from "@/components/roadmap-item";
 
 type QuarterlyRoadmapGanttProperties = {
   readonly groups: Record<string, (Gantt.GanttFeature & { ownerId: string })[]>;
@@ -25,8 +25,8 @@ export const QuarterlyRoadmapGantt = ({
           <Gantt.GanttSidebarGroup key={group} name={group}>
             {features.map((feature) => (
               <Gantt.GanttSidebarItem
-                key={feature.id}
                 feature={feature}
+                key={feature.id}
                 onSelectItem={handleSelectItem}
               />
             ))}

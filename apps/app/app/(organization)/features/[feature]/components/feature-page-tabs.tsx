@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { Link } from '@repo/design-system/components/link';
-import { Button } from '@repo/design-system/components/ui/button';
-import { cn } from '@repo/design-system/lib/utils';
-import { FrameIcon, NotebookIcon } from 'lucide-react';
-import { usePathname } from 'next/navigation';
+import { Link } from "@repo/design-system/components/link";
+import { Button } from "@repo/design-system/components/ui/button";
+import { cn } from "@repo/design-system/lib/utils";
+import { FrameIcon, NotebookIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 type FeaturePageTabsProperties = {
   readonly id: string;
@@ -15,12 +15,12 @@ export const FeaturePageTabs = ({ id }: FeaturePageTabsProperties) => {
   const pages = [
     {
       href: `/features/${id}`,
-      text: 'Notes',
+      text: "Notes",
       icon: NotebookIcon,
     },
     {
       href: `/features/${id}/canvas`,
-      text: 'Canvas',
+      text: "Canvas",
       icon: FrameIcon,
     },
   ];
@@ -30,19 +30,19 @@ export const FeaturePageTabs = ({ id }: FeaturePageTabsProperties) => {
       {pages.map((page) => (
         <Button
           asChild
-          variant="ghost"
-          size="sm"
-          key={page.href}
           className="rounded-[5px]"
+          key={page.href}
+          size="sm"
+          variant="ghost"
         >
           <Link
-            href={page.href}
             className={cn(
-              'm-px flex flex-1 items-center gap-1',
+              "m-px flex flex-1 items-center gap-1",
               page.href === pathname
-                ? 'bg-primary/10 text-primary hover:bg-primary/10 hover:text-primary'
-                : 'text-muted-foreground'
+                ? "bg-primary/10 text-primary hover:bg-primary/10 hover:text-primary"
+                : "text-muted-foreground"
             )}
+            href={page.href}
           >
             <page.icon size={14} />
             {page.text}

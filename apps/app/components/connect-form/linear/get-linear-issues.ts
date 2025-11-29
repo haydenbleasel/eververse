@@ -1,10 +1,10 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { staticify } from '@/lib/staticify';
-import { parseError } from '@repo/lib/parse-error';
-import { LinearClient } from '@repo/linear';
-import type { Issue } from '@repo/linear';
+import { parseError } from "@repo/lib/parse-error";
+import type { Issue } from "@repo/linear";
+import { LinearClient } from "@repo/linear";
+import { database } from "@/lib/database";
+import { staticify } from "@/lib/staticify";
 
 export const getLinearIssues = async (
   teamId: string
@@ -18,7 +18,7 @@ export const getLinearIssues = async (
     });
 
     if (!linearInstallation) {
-      throw new Error('Linear installation not found');
+      throw new Error("Linear installation not found");
     }
 
     const linear = new LinearClient({

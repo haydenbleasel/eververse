@@ -1,36 +1,36 @@
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
+import { EververseRole } from "@repo/backend/auth";
+import { getUserName } from "@repo/backend/auth/format";
 import {
   currentMembers,
   currentOrganizationId,
   currentUser,
-} from '@repo/backend/auth/utils';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import type { Initiative, InitiativeUpdate } from '@repo/backend/prisma/client';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { Button } from '@repo/design-system/components/ui/button';
-import { contentToHtml, contentToText } from '@repo/editor/lib/tiptap';
-import { formatDate } from '@repo/lib/format';
-import { createMetadata } from '@repo/seo/metadata';
-import { SendIcon } from 'lucide-react';
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
-import { InitiativeUpdateCopyContentButton } from './components/initiative-update-copy-content-button';
-import { InitiativeUpdateEditor } from './components/initiative-update-editor';
-import { UpdateEmptyState } from './components/initiative-update-empty-state';
-import { InitiativeUpdateSendButton } from './components/initiative-update-send-button';
-import { InitiativeUpdateTitle } from './components/initiative-update-title';
+} from "@repo/backend/auth/utils";
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import type { Initiative, InitiativeUpdate } from "@repo/backend/prisma/client";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { Button } from "@repo/design-system/components/ui/button";
+import { contentToHtml, contentToText } from "@repo/editor/lib/tiptap";
+import { formatDate } from "@repo/lib/format";
+import { createMetadata } from "@repo/seo/metadata";
+import { SendIcon } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { database } from "@/lib/database";
+import { InitiativeUpdateCopyContentButton } from "./components/initiative-update-copy-content-button";
+import { InitiativeUpdateEditor } from "./components/initiative-update-editor";
+import { UpdateEmptyState } from "./components/initiative-update-empty-state";
+import { InitiativeUpdateSendButton } from "./components/initiative-update-send-button";
+import { InitiativeUpdateTitle } from "./components/initiative-update-title";
 
 type InitiativeUpdatePageProperties = {
   readonly params: Promise<{
-    readonly initiative: Initiative['id'];
-    readonly update: InitiativeUpdate['id'];
+    readonly initiative: Initiative["id"];
+    readonly update: InitiativeUpdate["id"];
   }>;
 };
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export const generateMetadata = async (
   props: InitiativeUpdatePageProperties
@@ -49,11 +49,11 @@ export const generateMetadata = async (
   }
 
   const content = await getJsonColumnFromTable(
-    'initiative_update',
-    'content',
+    "initiative_update",
+    "content",
     update.id
   );
-  const text = content ? contentToText(content) : 'No content yet.';
+  const text = content ? contentToText(content) : "No content yet.";
 
   return createMetadata({
     title: update.title,
@@ -68,7 +68,7 @@ const InitiativeUpdatePage = async (props: InitiativeUpdatePageProperties) => {
     currentOrganizationId(),
   ]);
 
-  if (!user || !organizationId) {
+  if (!(user && organizationId)) {
     notFound();
   }
 
@@ -100,26 +100,26 @@ const InitiativeUpdatePage = async (props: InitiativeUpdatePageProperties) => {
     }),
   ]);
 
-  if (!update || !organization) {
+  if (!(update && organization)) {
     notFound();
   }
 
   const content = await getJsonColumnFromTable(
-    'initiative_update',
-    'content',
+    "initiative_update",
+    "content",
     update.id
   );
 
-  if (!content || !Object.keys(content).length) {
+  if (!(content && Object.keys(content).length)) {
     return (
       <div className="px-6 py-16">
         <div className="mx-auto grid max-w-prose gap-8">
           <InitiativeUpdateTitle
-            initiativeUpdateId={params.update}
             defaultTitle={update.title}
             editable={
               user.user_metadata.organization_role !== EververseRole.Member
             }
+            initiativeUpdateId={params.update}
           />
           <UpdateEmptyState
             initiativeId={params.initiative}
@@ -147,12 +147,12 @@ const InitiativeUpdatePage = async (props: InitiativeUpdatePageProperties) => {
               {recipients.map((recipient) =>
                 recipient.user_metadata.image_url ? (
                   <Image
-                    key={recipient.id}
-                    src={recipient.user_metadata.image_url}
                     alt={getUserName(recipient)}
                     className="h-6 w-6 shrink-0 overflow-hidden rounded-full border-2 border-backdrop object-cover"
-                    width={24}
                     height={24}
+                    key={recipient.id}
+                    src={recipient.user_metadata.image_url}
+                    width={24}
                   />
                 ) : null
               )}
@@ -160,18 +160,18 @@ const InitiativeUpdatePage = async (props: InitiativeUpdatePageProperties) => {
           </div>
           <div className="flex items-start justify-between gap-2">
             <InitiativeUpdateTitle
-              initiativeUpdateId={params.update}
               defaultTitle={update.title}
               editable={
                 user.user_metadata.organization_role !== EververseRole.Member
               }
+              initiativeUpdateId={params.update}
             />
             {update.emailSentAt ? (
               <div className="flex shrink-0 items-center gap-2">
                 <Button
-                  variant="outline"
-                  disabled
                   className="flex items-center gap-2"
+                  disabled
+                  variant="outline"
                 >
                   <SendIcon size={16} />
                   Sent {formatDate(update.emailSentAt)}
@@ -180,8 +180,8 @@ const InitiativeUpdatePage = async (props: InitiativeUpdatePageProperties) => {
               </div>
             ) : (
               <InitiativeUpdateSendButton
-                updateId={params.update}
                 recipientCount={recipients.length}
+                updateId={params.update}
               />
             )}
           </div>
@@ -189,11 +189,11 @@ const InitiativeUpdatePage = async (props: InitiativeUpdatePageProperties) => {
         <StackCard className="grid gap-8 px-6 py-12">
           {content && Object.keys(content).length > 0 ? (
             <InitiativeUpdateEditor
-              initiativeUpdateId={params.update}
               defaultValue={content}
               editable={
                 user.user_metadata.organization_role !== EververseRole.Member
               }
+              initiativeUpdateId={params.update}
               subscribed={Boolean(organization.stripeSubscriptionId)}
             />
           ) : (

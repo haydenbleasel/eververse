@@ -1,21 +1,21 @@
-'use client';
+"use client";
 
-import { getFeedbackCompanies } from '@/actions/feedback-organization/list';
-import { CompanyLogo } from '@/app/(organization)/components/company-logo';
-import { ItemList } from '@/components/item-list';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { formatDate } from '@repo/lib/format';
-import { useInfiniteQuery } from '@tanstack/react-query';
-import { useEffect } from 'react';
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { formatDate } from "@repo/lib/format";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+import { getFeedbackCompanies } from "@/actions/feedback-organization/list";
+import { CompanyLogo } from "@/app/(organization)/components/company-logo";
+import { ItemList } from "@/components/item-list";
 
 export const FeedbackCompanyList = () => {
   const { data, error, fetchNextPage, isFetching, hasNextPage } =
     useInfiniteQuery({
-      queryKey: ['feedbackCompanies'],
+      queryKey: ["feedbackCompanies"],
       queryFn: async ({ pageParam }) => {
         const response = await getFeedbackCompanies(pageParam);
 
-        if ('error' in response) {
+        if ("error" in response) {
           throw response.error;
         }
 
@@ -41,13 +41,13 @@ export const FeedbackCompanyList = () => {
           id: item.id,
           href: `/data/companies/${item.id}`,
           title: item.name,
-          description: item.domain ?? '',
+          description: item.domain ?? "",
           caption: formatDate(item.createdAt),
           image: (
             <CompanyLogo
-              src={item.domain}
               fallback={item.name.slice(0, 2)}
               size={20}
+              src={item.domain}
             />
           ),
         })) ?? []

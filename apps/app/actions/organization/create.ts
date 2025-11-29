@@ -1,12 +1,12 @@
-'use server';
+"use server";
 
-import { EververseRole } from '@repo/backend/auth';
-import { createClient } from '@repo/backend/auth/server';
-import { currentUser } from '@repo/backend/auth/utils';
-import { database } from '@repo/backend/database';
-import { colors } from '@repo/design-system/lib/colors';
-import { parseError } from '@repo/lib/parse-error';
-import { slugify } from '@repo/lib/slugify';
+import { EververseRole } from "@repo/backend/auth";
+import { createClient } from "@repo/backend/auth/server";
+import { currentUser } from "@repo/backend/auth/utils";
+import { database } from "@repo/backend/database";
+import { colors } from "@repo/design-system/lib/colors";
+import { parseError } from "@repo/lib/parse-error";
+import { slugify } from "@repo/lib/slugify";
 
 type CreateOrganizationProps = {
   name: string;
@@ -27,7 +27,7 @@ export const createOrganization = async ({
     const user = await currentUser();
 
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
     let slug = slugify(name);
@@ -49,17 +49,17 @@ export const createOrganization = async ({
           createMany: {
             data: [
               {
-                name: 'Backlog',
+                name: "Backlog",
                 color: colors.rose,
                 order: 0,
               },
               {
-                name: 'In Progress',
+                name: "In Progress",
                 color: colors.yellow,
                 order: 1,
               },
               {
-                name: 'Completed',
+                name: "Completed",
                 color: colors.emerald,
                 order: 2,
                 complete: true,

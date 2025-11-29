@@ -1,9 +1,9 @@
 // @ts-nocheck
 
-'use client';
+"use client";
 
-import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
-import { SuggestionList } from '../suggestion-list';
+import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
+import { SuggestionList } from "../suggestion-list";
 
 const MentionListInner = (props, ref) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -34,17 +34,17 @@ const MentionListInner = (props, ref) => {
 
   useImperativeHandle(ref, () => ({
     onKeyDown: ({ event }) => {
-      if (event.key === 'ArrowUp') {
+      if (event.key === "ArrowUp") {
         upHandler();
         return true;
       }
 
-      if (event.key === 'ArrowDown') {
+      if (event.key === "ArrowDown") {
         downHandler();
         return true;
       }
 
-      if (event.key === 'Enter') {
+      if (event.key === "Enter") {
         enterHandler();
         return true;
       }
@@ -56,8 +56,8 @@ const MentionListInner = (props, ref) => {
   return (
     <SuggestionList
       items={props.items}
-      selected={selectedIndex}
       onSelect={selectItem}
+      selected={selectedIndex}
     />
   );
 };

@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import { deleteSlackInstallation } from '@/actions/slack-installation/delete';
-import { testSlackInstallation } from '@/actions/slack-installation/test';
-import type { SlackInstallation } from '@repo/backend/prisma/client';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useRouter } from 'next/navigation';
-import { type FormEventHandler, useState } from 'react';
-import { toast } from 'sonner';
+import type { SlackInstallation } from "@repo/backend/prisma/client";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useRouter } from "next/navigation";
+import { type FormEventHandler, useState } from "react";
+import { toast } from "sonner";
+import { deleteSlackInstallation } from "@/actions/slack-installation/delete";
+import { testSlackInstallation } from "@/actions/slack-installation/test";
 
 type ManageSlackProps = {
-  id: SlackInstallation['id'];
+  id: SlackInstallation["id"];
 };
 
 export const ManageSlack = ({ id }: ManageSlackProps) => {
@@ -30,11 +30,11 @@ export const ManageSlack = ({ id }: ManageSlackProps) => {
     try {
       const response = await deleteSlackInstallation(id);
 
-      if ('error' in response) {
+      if ("error" in response) {
         throw new Error(response.error);
       }
 
-      toast.success('Slack integration removed');
+      toast.success("Slack integration removed");
 
       setTimeout(() => {
         router.refresh();
@@ -56,11 +56,11 @@ export const ManageSlack = ({ id }: ManageSlackProps) => {
     try {
       const response = await testSlackInstallation();
 
-      if ('error' in response) {
+      if ("error" in response) {
         throw new Error(response.error);
       }
 
-      toast.success('Done! You should receive a message in Slack.');
+      toast.success("Done! You should receive a message in Slack.");
     } catch (error) {
       handleError(error);
     } finally {
@@ -77,15 +77,15 @@ export const ManageSlack = ({ id }: ManageSlackProps) => {
         </p>
       </div>
 
-      <StackCard title="Test Slack Integration" className="p-4">
-        <Button variant="outline" onClick={handleTest} disabled={loading}>
+      <StackCard className="p-4" title="Test Slack Integration">
+        <Button disabled={loading} onClick={handleTest} variant="outline">
           Test Slack Integration
         </Button>
       </StackCard>
 
-      <StackCard title="Danger Zone" className="p-4">
+      <StackCard className="p-4" title="Danger Zone">
         <form onSubmit={handleDelete}>
-          <Button type="submit" variant="destructive" disabled={loading}>
+          <Button disabled={loading} type="submit" variant="destructive">
             Remove Slack Integration
           </Button>
         </form>

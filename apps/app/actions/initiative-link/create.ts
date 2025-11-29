@@ -1,19 +1,19 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
+import { EververseRole } from "@repo/backend/auth";
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
 import type {
   Initiative,
   InitiativeExternalLink,
-} from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+} from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const createInitiativeLink = async (
-  initiativeId: Initiative['id'],
-  title: InitiativeExternalLink['title'],
-  href: InitiativeExternalLink['href']
+  initiativeId: Initiative["id"],
+  title: InitiativeExternalLink["title"],
+  href: InitiativeExternalLink["href"]
 ): Promise<{
   error?: string;
 }> => {
@@ -23,8 +23,8 @@ export const createInitiativeLink = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('Not logged in');
+    if (!(user && organizationId)) {
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
@@ -37,7 +37,7 @@ export const createInitiativeLink = async (
         title,
         initiativeId,
         creatorId: user.id,
-        href: href.startsWith('http') ? href : `https://${href}`,
+        href: href.startsWith("http") ? href : `https://${href}`,
       },
       select: {
         id: true,

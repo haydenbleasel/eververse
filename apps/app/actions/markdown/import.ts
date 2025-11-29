@@ -1,11 +1,11 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import type { Prisma } from '@repo/backend/prisma/client';
-import { markdownToContent } from '@repo/editor/lib/tiptap';
-import { parseError } from '@repo/lib/parse-error';
-import { friendlyWords } from 'friendlier-words';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import type { Prisma } from "@repo/backend/prisma/client";
+import { markdownToContent } from "@repo/editor/lib/tiptap";
+import { parseError } from "@repo/lib/parse-error";
+import { friendlyWords } from "friendlier-words";
+import { database } from "@/lib/database";
 
 type MarkdownChangelog = {
   title: string | string[] | undefined;
@@ -26,8 +26,8 @@ export const importMarkdown = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('Not authorized');
+    if (!(user && organizationId)) {
+      throw new Error("Not authorized");
     }
 
     // Ensure all the tags are created first so we can link them
@@ -69,20 +69,20 @@ export const importMarkdown = async (
           organizationId,
           creatorId: user.id,
           fromMarkdown: true,
-          status: 'PUBLISHED',
+          status: "PUBLISHED",
           title:
-            typeof changelog.title === 'string'
+            typeof changelog.title === "string"
               ? changelog.title
               : friendlyWords(),
           createdAt:
-            typeof changelog.createdAt === 'string'
+            typeof changelog.createdAt === "string"
               ? new Date(changelog.createdAt)
               : undefined,
           publishAt:
-            typeof changelog.createdAt === 'string'
+            typeof changelog.createdAt === "string"
               ? new Date(changelog.createdAt)
               : undefined,
-          slug: typeof changelog.slug === 'string' ? changelog.slug : undefined,
+          slug: typeof changelog.slug === "string" ? changelog.slug : undefined,
           content,
           tags: {
             connect: Array.isArray(tags)

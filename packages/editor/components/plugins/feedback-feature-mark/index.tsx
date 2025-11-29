@@ -1,18 +1,18 @@
-import { Mark, mergeAttributes } from '@tiptap/core';
-import './feedback-feature-mark.css';
-import type { Editor } from '@tiptap/react';
+import { Mark, mergeAttributes } from "@tiptap/core";
+import "./feedback-feature-mark.css";
+import type { Editor } from "@tiptap/react";
 
-const markId = 'feedback-feature';
+const markId = "feedback-feature";
 
 export const feedbackFeatureMark = Mark.create({
   name: markId,
 
   addAttributes() {
     return {
-      'data-type': {
+      "data-type": {
         default: markId,
       },
-      'data-feature': {
+      "data-feature": {
         default: null,
       },
     };
@@ -45,8 +45,8 @@ export const feedbackFeatureMark = Mark.create({
       {
         tag: 'span[data-type="feedback-feature"]',
         getAttrs: (node) => ({
-          'data-feature':
-            typeof node === 'string' ? null : node.dataset.feature,
+          "data-feature":
+            typeof node === "string" ? null : node.dataset.feature,
         }),
       },
     ];
@@ -54,11 +54,11 @@ export const feedbackFeatureMark = Mark.create({
 
   renderHTML({ HTMLAttributes }) {
     return [
-      'span',
+      "span",
       mergeAttributes(
         {
-          'data-type': markId,
-          'data-feature': HTMLAttributes.feature as string,
+          "data-type": markId,
+          "data-feature": HTMLAttributes.feature as string,
         },
         HTMLAttributes
       ),

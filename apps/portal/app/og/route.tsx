@@ -1,12 +1,12 @@
-import { ImageResponse } from 'next/og';
+import { ImageResponse } from "next/og";
 
-export const runtime = 'edge';
+export const runtime = "edge";
 
 export const GET = (request: Request): ImageResponse => {
   const { searchParams } = new URL(request.url);
 
-  const title = searchParams.get('title');
-  const description = searchParams.get('description');
+  const title = searchParams.get("title");
+  const description = searchParams.get("description");
 
   return new ImageResponse(
     <div tw="bg-gray-100 w-full h-full flex items-center justify-center flex-col">

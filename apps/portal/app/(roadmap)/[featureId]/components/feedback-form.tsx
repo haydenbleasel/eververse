@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { LoginForm } from '@/app/components/login-form';
-import { useFeedbackForm } from '@/hooks/use-feedback-form';
-import { Textarea } from '@repo/design-system/components/precomposed/textarea';
-import { Button } from '@repo/design-system/components/ui/button';
-import { Label } from '@repo/design-system/components/ui/label';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { toast } from '@repo/design-system/lib/toast';
-import { useState } from 'react';
-import type { FormEventHandler } from 'react';
-import { createFeedback } from '../actions/create-feedback';
+import { Textarea } from "@repo/design-system/components/precomposed/textarea";
+import { Button } from "@repo/design-system/components/ui/button";
+import { Label } from "@repo/design-system/components/ui/label";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { toast } from "@repo/design-system/lib/toast";
+import type { FormEventHandler } from "react";
+import { useState } from "react";
+import { LoginForm } from "@/app/components/login-form";
+import { useFeedbackForm } from "@/hooks/use-feedback-form";
+import { createFeedback } from "../actions/create-feedback";
 
 type FeedbackFormProperties = {
   readonly featureId: string;
@@ -18,7 +18,7 @@ type FeedbackFormProperties = {
 
 export const FeedbackForm = ({ featureId, slug }: FeedbackFormProperties) => {
   const feedbackForm = useFeedbackForm();
-  const [feedback, setFeedback] = useState('');
+  const [feedback, setFeedback] = useState("");
   const [loading, setLoading] = useState(false);
   const authenticated = feedbackForm.email && feedbackForm.name;
   const disabled = !authenticated || feedback.trim().length < 10 || loading;
@@ -45,8 +45,8 @@ export const FeedbackForm = ({ featureId, slug }: FeedbackFormProperties) => {
         throw new Error(error);
       }
 
-      setFeedback('');
-      toast.success('Feedback submitted!');
+      setFeedback("");
+      toast.success("Feedback submitted!");
     } catch (error) {
       handleError(error);
     } finally {
@@ -64,23 +64,23 @@ export const FeedbackForm = ({ featureId, slug }: FeedbackFormProperties) => {
 
   return (
     <form
-      onSubmit={onSubmit}
       className="w-full space-y-4 rounded-lg border bg-background p-4"
+      onSubmit={onSubmit}
     >
       <div className="space-y-1.5">
         <Label htmlFor="feedback">Feedback</Label>
         <Textarea
-          value={feedback}
-          onChangeText={setFeedback}
           className="max-h-[20rem] min-h-[10rem] bg-background"
+          onChangeText={setFeedback}
           placeholder="I need this feature because..."
           required
+          value={feedback}
         />
         <small className="text-muted-foreground">
           Write at least 10 characters!
         </small>
       </div>
-      <Button type="submit" disabled={disabled}>
+      <Button disabled={disabled} type="submit">
         Submit Feedback
       </Button>
     </form>

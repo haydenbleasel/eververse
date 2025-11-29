@@ -1,12 +1,11 @@
-import { CheckIcon } from 'lucide-react';
-
-import type { Feature, FeatureStatus } from '@repo/backend/prisma/client';
-import { Button } from '@repo/design-system/components/ui/button';
-import { Label } from '@repo/design-system/components/ui/label';
+import type { Feature, FeatureStatus } from "@repo/backend/prisma/client";
+import { Button } from "@repo/design-system/components/ui/button";
+import { Label } from "@repo/design-system/components/ui/label";
+import { CheckIcon } from "lucide-react";
 
 type TriageSelectedFeaturesProperties = {
-  readonly features: (Pick<Feature, 'id' | 'title'> & {
-    readonly status: Pick<FeatureStatus, 'color'>;
+  readonly features: (Pick<Feature, "id" | "title"> & {
+    readonly status: Pick<FeatureStatus, "color">;
   })[];
   readonly onSelect: (id: string) => void;
   readonly value: string[];
@@ -24,10 +23,10 @@ export const TriageSelectedFeatures = ({
         .filter((feature) => value.includes(feature.id))
         .map((feature) => (
           <Button
-            key={feature.id}
-            variant="ghost"
             className="flex h-auto w-full items-center gap-2 px-2 py-1.5 text-left font-normal text-sm"
+            key={feature.id}
             onClick={() => onSelect(feature.id)}
+            variant="ghost"
           >
             <span
               className="h-1.5 w-1.5 rounded-full"

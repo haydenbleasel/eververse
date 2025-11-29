@@ -1,11 +1,11 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentUser } from '@repo/backend/auth/utils';
-import { parseError } from '@repo/lib/parse-error';
-import { generateObject } from 'ai';
-import { z } from 'zod/v3';
+import { EververseRole } from "@repo/backend/auth";
+import { currentUser } from "@repo/backend/auth/utils";
+import { parseError } from "@repo/lib/parse-error";
+import { generateObject } from "ai";
+import { z } from "zod/v3";
+import { database } from "@/lib/database";
 
 export const getFeatureRecommendations = async (
   text: string
@@ -21,7 +21,7 @@ export const getFeatureRecommendations = async (
     const user = await currentUser();
 
     if (!user) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
@@ -48,17 +48,17 @@ export const getFeatureRecommendations = async (
     }
 
     const { object } = await generateObject({
-      model: 'openai/gpt-4o-mini',
+      model: "openai/gpt-4o-mini",
       system: [
-        'You are an AI that recommends at most 5 related features based a snippet of user feedback provided.',
-        'You return an array of IDs of the features you recommend.',
-        '------',
-        'Here are all the features in the organization:',
+        "You are an AI that recommends at most 5 related features based a snippet of user feedback provided.",
+        "You return an array of IDs of the features you recommend.",
+        "------",
+        "Here are all the features in the organization:",
         ...features.map(
           (feature) => `{ id: "${feature.id}", title: "${feature.title}" }`
         ),
-        '------',
-      ].join('\n'),
+        "------",
+      ].join("\n"),
       prompt: text,
       schema: z.object({
         data: z.array(z.string()),

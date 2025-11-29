@@ -1,24 +1,24 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import type { Feedback, FeedbackUser } from '@repo/backend/prisma/client';
-import { contentToText } from '@repo/editor/lib/tiptap';
-import { parseError } from '@repo/lib/parse-error';
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import type { Feedback, FeedbackUser } from "@repo/backend/prisma/client";
+import { contentToText } from "@repo/editor/lib/tiptap";
+import { parseError } from "@repo/lib/parse-error";
+import { database } from "@/lib/database";
 
 export type FetchLinkResponse = Pick<
   Feedback,
-  'aiSentiment' | 'createdAt' | 'id' | 'title'
+  "aiSentiment" | "createdAt" | "id" | "title"
 > & {
   readonly text: string;
   readonly feedbackUser: Pick<
     FeedbackUser,
-    'email' | 'imageUrl' | 'name'
+    "email" | "imageUrl" | "name"
   > | null;
 };
 
 export const fetchLink = async (
-  id: Feedback['id']
+  id: Feedback["id"]
 ): Promise<{
   error?: string;
   data?: FetchLinkResponse;
@@ -42,18 +42,18 @@ export const fetchLink = async (
     });
 
     if (!feedback) {
-      throw new Error('Feedback not found');
+      throw new Error("Feedback not found");
     }
 
     const content = await getJsonColumnFromTable(
-      'feedback',
-      'content',
+      "feedback",
+      "content",
       feedback.id
     );
 
     const data = {
       ...feedback,
-      text: content ? contentToText(content) : '',
+      text: content ? contentToText(content) : "",
     };
 
     return { data };

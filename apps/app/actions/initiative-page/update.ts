@@ -1,14 +1,14 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentUser } from '@repo/backend/auth/utils';
-import type { InitiativePage } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
+import { EververseRole } from "@repo/backend/auth";
+import { currentUser } from "@repo/backend/auth/utils";
+import type { InitiativePage } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { database } from "@/lib/database";
 
 export const updateInitiativePage = async (
-  pageId: InitiativePage['id'],
-  data: Omit<Partial<InitiativePage>, 'content'> & {
+  pageId: InitiativePage["id"],
+  data: Omit<Partial<InitiativePage>, "content"> & {
     content?: object;
   }
 ): Promise<{
@@ -18,7 +18,7 @@ export const updateInitiativePage = async (
     const user = await currentUser();
 
     if (!user) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {

@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import type { MutableRefObject } from 'react';
+import type { MutableRefObject } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export const useScrollAnchor = (): {
   messagesRef: MutableRefObject<HTMLDivElement | null>;
@@ -19,8 +19,8 @@ export const useScrollAnchor = (): {
   const scrollToBottom = useCallback(() => {
     if (messagesReference.current) {
       messagesReference.current.scrollIntoView({
-        block: 'end',
-        behavior: 'smooth',
+        block: "end",
+        behavior: "smooth",
       });
     }
   }, []);
@@ -28,7 +28,7 @@ export const useScrollAnchor = (): {
   useEffect(() => {
     if (messagesReference.current && isAtBottom && !isVisible) {
       messagesReference.current.scrollIntoView({
-        block: 'end',
+        block: "end",
       });
     }
   }, [isAtBottom, isVisible]);
@@ -49,10 +49,10 @@ export const useScrollAnchor = (): {
       setIsAtBottom(newIsAtBottom);
     };
 
-    current.addEventListener('scroll', handleScroll);
+    current.addEventListener("scroll", handleScroll);
 
     return () => {
-      current.removeEventListener('scroll', handleScroll);
+      current.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -71,7 +71,7 @@ export const useScrollAnchor = (): {
         }
       },
       {
-        rootMargin: '0px 0px -150px 0px',
+        rootMargin: "0px 0px -150px 0px",
       }
     );
 

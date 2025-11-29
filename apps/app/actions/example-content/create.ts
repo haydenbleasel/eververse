@@ -1,19 +1,19 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 import {
   createExampleChangelogs,
   createExampleFeatures,
   createExampleFeedbackOrganizations,
-  createExampleFeedbackUsers,
   createExampleFeedbacks,
+  createExampleFeedbackUsers,
   createExampleInitiatives,
   createExampleProducts,
   createExampleReleases,
-} from '@/lib/example';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+} from "@/lib/example";
 
 export const createExampleContent = async (): Promise<{
   error?: string;
@@ -24,8 +24,8 @@ export const createExampleContent = async (): Promise<{
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('You need to be logged in to create example content.');
+    if (!(user && organizationId)) {
+      throw new Error("You need to be logged in to create example content.");
     }
 
     const featureStatuses = await database.featureStatus.findMany({
@@ -53,10 +53,10 @@ export const createExampleContent = async (): Promise<{
 
     await database.organization.update({
       where: { id: organizationId },
-      data: { onboardingType: 'EXAMPLE' },
+      data: { onboardingType: "EXAMPLE" },
     });
 
-    revalidatePath('/welcome');
+    revalidatePath("/welcome");
 
     return {};
   } catch (error) {
