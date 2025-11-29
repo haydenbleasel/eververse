@@ -3,10 +3,20 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@repo/*": ["../*"],
-      "@repo/design-system/*": ["./*"]
-    }
+      "@repo/*": [
+        "../*"
+      ],
+      "@repo/design-system/*": [
+        "./*"
+      ]
+    },
+    "strictNullChecks": true
   },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
