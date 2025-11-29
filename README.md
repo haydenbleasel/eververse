@@ -65,7 +65,6 @@ It also contains the following packages:
 
 | Package | Description |
 | --- | ----------- |
-| `ai` | The AI library, which contains the AI provider for the app. |
 | `analytics` | The analytics library, including Vercel Analytics, PostHog and Google Analytics. |
 | `atlassian` | An OpenAPI client for the Atlassian API. |
 | `backend` | The backend powered by Supabase, containing the database and auth system. |
