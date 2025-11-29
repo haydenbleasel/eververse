@@ -8,7 +8,7 @@
     "analyze": "turbo analyze",
     "migrate": "cd packages/backend && npx prisma format && npx prisma generate && npx prisma db push",
     "bump-deps": "npx npm-check-updates --deep -u -x react-day-picker,@tiptap/*,prosemirror-*,@tiptap-pro/*,@excalidraw/excalidraw,novel && pnpm install",
-    "bump-ui": "npx shadcn@latest add --all --overwrite -c packages/design-system"
+    "bump-ui": "npx shadcn@latest add --all --overwrite -c packages/design-system && npx shadcn@latest migrate radix -c packages/design-system"
   },
   "devDependencies": {
     "@auto-it/first-time-contributor": "^11.3.0",
