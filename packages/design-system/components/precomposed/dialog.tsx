@@ -2,6 +2,8 @@
 
 import type { ComponentProps, ReactNode } from "react";
 import { Button } from "../ui/button";
+
+// biome-ignore lint/performance/noNamespaceImport: we're using the primitive component
 import * as DialogComponent from "../ui/dialog";
 
 export type DialogProperties = ComponentProps<typeof DialogComponent.Dialog> & {

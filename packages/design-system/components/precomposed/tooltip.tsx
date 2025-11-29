@@ -2,8 +2,11 @@
 
 import { cn } from "@repo/design-system/lib/utils";
 import type { ComponentProps, ReactNode } from "react";
+
+// biome-ignore lint/performance/noNamespaceImport: we're using the primitive component
 import * as TooltipComponent from "../ui/tooltip";
 
+// biome-ignore lint/performance/noBarrelFile: we're using the primitive component
 export { TooltipProvider } from "../ui/tooltip";
 
 export type TooltipProperties = Omit<

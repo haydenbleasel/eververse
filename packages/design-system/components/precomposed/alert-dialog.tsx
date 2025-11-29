@@ -1,7 +1,9 @@
 "use client";
 
-import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
+import { AlertDialog as AlertDialogPrimitive } from "radix-ui";
 import type { ComponentProps, ReactNode } from "react";
+
+// biome-ignore lint/performance/noNamespaceImport: we're using the primitive component
 import * as AlertDialogComponent from "../ui/alert-dialog";
 import { Button } from "../ui/button";
 

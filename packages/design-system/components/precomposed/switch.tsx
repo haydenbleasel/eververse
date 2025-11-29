@@ -1,6 +1,8 @@
 import type { ComponentProps } from "react";
 import { useId } from "react";
 import { Label } from "../ui/label";
+
+// biome-ignore lint/performance/noNamespaceImport: we're using the primitive component
 import * as SwitchComponent from "../ui/switch";
 
 type SwitchProperties = Omit<

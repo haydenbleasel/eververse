@@ -1,3 +1,4 @@
+// biome-ignore lint/performance/noNamespaceImport: we're using the primitive component
 import * as AvatarComponent from "../ui/avatar";
 
 type AvatarProps = {

@@ -2,6 +2,8 @@
 
 import type { ComponentProps, FC } from "react";
 import { Fragment, useId } from "react";
+
+// biome-ignore lint/performance/noNamespaceImport: we're using the primitive component
 import * as BreadcrumbComponent from "../ui/breadcrumb";
 
 export type BreadcrumbsProperties = ComponentProps<
