@@ -1,16 +1,16 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
 import type {
   FeedbackOrganization,
   FeedbackUser,
-} from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+} from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 type AddOrganizationToUserProperties = {
-  feedbackUser: FeedbackUser['id'];
-  feedbackOrganization: FeedbackOrganization['id'];
+  feedbackUser: FeedbackUser["id"];
+  feedbackOrganization: FeedbackOrganization["id"];
 };
 
 export const addOrganizationToUser = async ({
@@ -26,7 +26,7 @@ export const addOrganizationToUser = async ({
       select: { id: true },
     });
 
-    revalidatePath('/feedback');
+    revalidatePath("/feedback");
 
     return {};
   } catch (error) {

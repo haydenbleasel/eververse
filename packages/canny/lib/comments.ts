@@ -1,4 +1,4 @@
-import ky from 'ky';
+import ky from "ky";
 
 export type CannyComment = {
   id: string;
@@ -66,7 +66,7 @@ export const getCannyComment = async (
   }
 ): Promise<CannyComment> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/comments/retrieve', {
+    .post("https://canny.io/api/v1/comments/retrieve", {
       json: {
         apiKey,
         id: props.id,
@@ -74,7 +74,7 @@ export const getCannyComment = async (
     })
     .json<CannyComment | { error: string }>();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 
@@ -92,17 +92,17 @@ export const createCannyComment = async (
     parentID?: string;
     shouldNotifyVoters?: boolean;
   }
-): Promise<{ id: CannyComment['id'] }> => {
+): Promise<{ id: CannyComment["id"] }> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/comments/create', {
+    .post("https://canny.io/api/v1/comments/create", {
       json: {
         apiKey,
         ...props,
       },
     })
-    .json<{ id: CannyComment['id'] } | { error: string }>();
+    .json<{ id: CannyComment["id"] } | { error: string }>();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 
@@ -116,17 +116,17 @@ export const deleteCannyComment = async (
   }
 ): Promise<void> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/comments/delete', {
+    .post("https://canny.io/api/v1/comments/delete", {
       json: {
         apiKey,
         commentID: props.id,
       },
     })
-    .json<'success' | { error: string }>();
+    .json<"success" | { error: string }>();
 
-  if (payload !== 'success') {
+  if (payload !== "success") {
     throw new Error(
-      'error' in payload ? payload.error : 'Unknown error occurred'
+      "error" in payload ? payload.error : "Unknown error occurred"
     );
   }
 };
@@ -137,7 +137,7 @@ export const fetchCannyComments = async (
   limit = 10_000
 ): Promise<CannyComment[]> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/comments/list', {
+    .post("https://canny.io/api/v1/comments/list", {
       json: {
         apiKey,
         limit,
@@ -154,7 +154,7 @@ export const fetchCannyComments = async (
         }
     >();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 

@@ -1,5 +1,5 @@
-import { Head, Hr, Html, Link, Preview, Text } from '@react-email/components';
-import { EmailLayout } from './layout';
+import { Head, Hr, Html, Link, Preview, Text } from "@react-email/components";
+import { EmailLayout } from "./layout";
 
 type ForgotPasswordEmailTemplateProps = {
   magicLink: string;
@@ -60,9 +60,9 @@ export const ForgotPasswordEmailTemplate = ({
 );
 
 ForgotPasswordEmailTemplate.PreviewProps = {
-  magicLink: 'https://app.eververse.ai/reset-password',
-  email: 'test@test.com',
-  siteUrl: 'www.eververse.ai',
+  magicLink: "https://app.eververse.ai/reset-password",
+  email: "test@test.com",
+  siteUrl: "www.eververse.ai",
 } as ForgotPasswordEmailTemplateProps;
 
 export default ForgotPasswordEmailTemplate;

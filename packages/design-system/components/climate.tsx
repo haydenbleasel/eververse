@@ -2,19 +2,19 @@ const Climate = () => (
   <div className="not-prose inline-flex items-center gap-3 rounded-full bg-background px-4 py-2 text-foreground text-sm shadow-sm">
     <div className="h-6 w-6">
       <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 32 32"
         aria-label="Stripe Climate"
+        viewBox="0 0 32 32"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <title>Stripe Climate</title>
         <linearGradient
-          id="StripeClimate-gradient-a"
-          gradientUnits="userSpaceOnUse"
-          x1="16"
-          y1="20.6293"
-          x2="16"
-          y2="7.8394"
           gradientTransform="matrix(1 0 0 -1 0 34)"
+          gradientUnits="userSpaceOnUse"
+          id="StripeClimate-gradient-a"
+          x1="16"
+          x2="16"
+          y1="20.6293"
+          y2="7.8394"
         >
           <stop offset="0" stopColor="#00d924" />
           <stop offset="1" stopColor="#00cb1b" />
@@ -24,13 +24,13 @@ const Climate = () => (
           fill="url(#StripeClimate-gradient-a)"
         />
         <linearGradient
-          id="StripeClimate-gradient-b"
-          gradientUnits="userSpaceOnUse"
-          x1="24"
-          y1="28.6289"
-          x2="24"
-          y2="17.2443"
           gradientTransform="matrix(1 0 0 -1 0 34)"
+          gradientUnits="userSpaceOnUse"
+          id="StripeClimate-gradient-b"
+          x1="24"
+          x2="24"
+          y1="28.6289"
+          y2="17.2443"
         >
           <stop offset=".1562" stopColor="#009c00" />
           <stop offset="1" stopColor="#00be20" />
@@ -40,13 +40,13 @@ const Climate = () => (
           fill="url(#StripeClimate-gradient-b)"
         />
         <linearGradient
-          id="StripeClimate-gradient-c"
-          gradientUnits="userSpaceOnUse"
-          x1="8"
-          y1="16.7494"
-          x2="8"
-          y2="29.1239"
           gradientTransform="matrix(1 0 0 -1 0 34)"
+          gradientUnits="userSpaceOnUse"
+          id="StripeClimate-gradient-c"
+          x1="8"
+          x2="8"
+          y1="16.7494"
+          y2="29.1239"
         >
           <stop offset="0" stopColor="#ffe37d" />
           <stop offset="1" stopColor="#ffc900" />
@@ -58,13 +58,13 @@ const Climate = () => (
       </svg>
     </div>
     <span>
-      We contribute 1% of our revenue to carbon removal with{' '}
+      We contribute 1% of our revenue to carbon removal with{" "}
       <a
         className="underline"
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://climate.stripe.com/nDHTq7"
         data-label="Stripe Climate"
+        href="https://climate.stripe.com/nDHTq7"
+        rel="noopener noreferrer"
+        target="_blank"
       >
         Stripe Climate
       </a>

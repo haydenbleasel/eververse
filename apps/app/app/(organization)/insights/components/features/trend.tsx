@@ -1,4 +1,4 @@
-import { database } from '@/lib/database';
+import { database } from "@/lib/database";
 
 export const FeaturesTrend = async () => {
   const features = await database.feature.findMany({
@@ -30,9 +30,10 @@ export const FeaturesTrend = async () => {
     }
   }
 
-  const highestCountFeature = statusCount.reduce((prev, current) => {
-    return prev.count > current.count ? prev : current;
-  }, statusCount[0]);
+  const highestCountFeature = statusCount.reduce(
+    (prev, current) => (prev.count > current.count ? prev : current),
+    statusCount[0]
+  );
 
   return (
     <p className="text-muted-foreground text-sm">

@@ -9,6 +9,7 @@
     "analyze": "ANALYZE=true pnpm build"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^2.0.74",
     "@repo/atlassian": "workspace:*",
     "@repo/backend": "workspace:*",
     "@repo/canny": "workspace:*",
@@ -21,7 +22,6 @@
     "@repo/observability": "workspace:*",
     "@repo/payments": "workspace:*",
     "@repo/productboard": "workspace:*",
-    "@repo/transcribe": "workspace:*",
     "@repo/widget": "workspace:*",
     "@t3-oss/env-nextjs": "^0.13.4",
     "ai": "^5.0.21",

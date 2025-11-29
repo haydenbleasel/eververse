@@ -132,12 +132,7 @@ div[data-panel-type="error"] {
 }
 
 .lb-portal.lb-elevation {
-  @apply z-[1000]
-}
-
-/* For mobile */
-.floating-threads {
-  display: none;
+  @apply z-[1000] } /* For mobile */ .floating-threads { display: none;
 }
 
 /* For desktop */

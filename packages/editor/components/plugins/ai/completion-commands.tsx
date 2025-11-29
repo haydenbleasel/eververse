@@ -2,9 +2,9 @@ import {
   CommandGroup,
   CommandItem,
   CommandSeparator,
-} from '@repo/design-system/components/ui/command';
-import { Check, TextQuote, TrashIcon } from 'lucide-react';
-import { useEditor } from 'novel';
+} from "@repo/design-system/components/ui/command";
+import { Check, TextQuote, TrashIcon } from "lucide-react";
+import { useEditor } from "novel";
 
 export const AICompletionCommands = ({
   completion,
@@ -51,16 +51,16 @@ export const AICompletionCommands = ({
       <CommandGroup>
         <CommandItem
           className="gap-2 px-4"
-          value="replace"
           onSelect={handleReplace}
+          value="replace"
         >
           <Check className="h-4 w-4 text-muted-foreground" />
           Replace selection
         </CommandItem>
         <CommandItem
           className="gap-2 px-4"
-          value="insert"
           onSelect={handleInsert}
+          value="insert"
         >
           <TextQuote className="h-4 w-4 text-muted-foreground" />
           Insert below
@@ -69,7 +69,7 @@ export const AICompletionCommands = ({
       <CommandSeparator />
 
       <CommandGroup>
-        <CommandItem onSelect={onDiscard} value="thrash" className="gap-2 px-4">
+        <CommandItem className="gap-2 px-4" onSelect={onDiscard} value="thrash">
           <TrashIcon className="h-4 w-4 text-muted-foreground" />
           Discard
         </CommandItem>

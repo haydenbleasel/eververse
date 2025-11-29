@@ -1,16 +1,16 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import type { User } from '@repo/backend/auth';
-import { EververseRole } from '@repo/backend/auth';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import type { Changelog } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import type { User } from "@repo/backend/auth";
+import { EververseRole } from "@repo/backend/auth";
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import type { Changelog } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 type DeleteChangelogContributorProperties = {
-  changelogId: Changelog['id'];
-  userId: User['id'];
+  changelogId: Changelog["id"];
+  userId: User["id"];
 };
 
 export const deleteChangelogContributor = async ({
@@ -25,12 +25,12 @@ export const deleteChangelogContributor = async ({
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('Not logged in');
+    if (!(user && organizationId)) {
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
-      throw new Error('You do not have permission to delete contributors');
+      throw new Error("You do not have permission to delete contributors");
     }
 
     const changelogContributor = await database.changelogContributor.findFirst({
@@ -38,7 +38,7 @@ export const deleteChangelogContributor = async ({
     });
 
     if (!changelogContributor) {
-      throw new Error('Changelog contributor not found');
+      throw new Error("Changelog contributor not found");
     }
 
     await database.changelogContributor.delete({

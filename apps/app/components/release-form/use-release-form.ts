@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
 type ReleaseFormState = {
   isOpen: boolean;
@@ -17,7 +17,7 @@ export const useReleaseForm = create<ReleaseFormState>()(
       toggle: () => set((state) => ({ isOpen: !state.isOpen })),
     }),
     {
-      name: 'eververse:release-form',
+      name: "eververse:release-form",
     }
   )
 );

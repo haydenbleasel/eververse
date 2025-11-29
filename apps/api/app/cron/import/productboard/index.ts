@@ -1,25 +1,25 @@
-import { database } from '@repo/backend/database';
-import { parseError } from '@repo/lib/parse-error';
-import { log } from '@repo/observability/log';
-import { migrateCompanies } from './migrate-companies';
-import { migrateComponents } from './migrate-components';
-import { migrateCustomFieldValues } from './migrate-custom-field-values';
-import { migrateCustomFields } from './migrate-custom-fields';
-import { migrateDomains } from './migrate-domains';
-import { migrateFeatureReleaseAssignments } from './migrate-feature-release-assignments';
-import { migrateFeatureStatuses } from './migrate-feature-statuses';
-import { migrateFeatures } from './migrate-features';
-import { migrateJiraConnections } from './migrate-jira-connections';
-import { migrateNoteConnections } from './migrate-note-connections';
-import { migrateNoteTags } from './migrate-note-tags';
-import { migrateNotes } from './migrate-notes';
-import { migrateProducts } from './migrate-products';
-import { migrateReleases } from './migrate-releases';
-import { migrateTags } from './migrate-tags';
-import { migrateUsers } from './migrate-users';
+import { database } from "@repo/backend/database";
+import { parseError } from "@repo/lib/parse-error";
+import { log } from "@repo/observability/log";
+import { migrateCompanies } from "./migrate-companies";
+import { migrateComponents } from "./migrate-components";
+import { migrateCustomFieldValues } from "./migrate-custom-field-values";
+import { migrateCustomFields } from "./migrate-custom-fields";
+import { migrateDomains } from "./migrate-domains";
+import { migrateFeatureReleaseAssignments } from "./migrate-feature-release-assignments";
+import { migrateFeatureStatuses } from "./migrate-feature-statuses";
+import { migrateFeatures } from "./migrate-features";
+import { migrateJiraConnections } from "./migrate-jira-connections";
+import { migrateNoteConnections } from "./migrate-note-connections";
+import { migrateNoteTags } from "./migrate-note-tags";
+import { migrateNotes } from "./migrate-notes";
+import { migrateProducts } from "./migrate-products";
+import { migrateReleases } from "./migrate-releases";
+import { migrateTags } from "./migrate-tags";
+import { migrateUsers } from "./migrate-users";
 
 export const handleProductboardImports = async (): Promise<boolean> => {
-  log.info('⏬ Looking for open Productboard imports...');
+  log.info("⏬ Looking for open Productboard imports...");
 
   /*
    * Find all imports that have a pending job
@@ -30,11 +30,11 @@ export const handleProductboardImports = async (): Promise<boolean> => {
     where: {
       jobs: {
         some: {
-          status: 'PENDING',
+          status: "PENDING",
         },
         none: {
           status: {
-            in: ['FAILURE', 'RUNNING'],
+            in: ["FAILURE", "RUNNING"],
           },
         },
       },
@@ -45,7 +45,7 @@ export const handleProductboardImports = async (): Promise<boolean> => {
       creatorId: true,
       jobs: {
         orderBy: {
-          order: 'asc',
+          order: "asc",
         },
         select: {
           type: true,
@@ -57,19 +57,19 @@ export const handleProductboardImports = async (): Promise<boolean> => {
   });
 
   if (!productboardImport) {
-    log.info('⏬ No open Productboard imports found.');
+    log.info("⏬ No open Productboard imports found.");
     return false;
   }
 
-  log.info('⏬ Found an open Productboard import...');
+  log.info("⏬ Found an open Productboard import...");
 
   // Get the next job to run
   const nextJob = productboardImport.jobs.find(
-    (job) => job.status === 'PENDING'
+    (job) => job.status === "PENDING"
   );
 
   if (!nextJob) {
-    log.error('⏬ No job found for the import.');
+    log.error("⏬ No job found for the import.");
     return false;
   }
 
@@ -78,7 +78,7 @@ export const handleProductboardImports = async (): Promise<boolean> => {
   // Update the job status to RUNNING
   await database.productboardImportJob.update({
     where: { id: nextJob.id },
-    data: { status: 'RUNNING' },
+    data: { status: "RUNNING" },
   });
 
   const properties = {
@@ -92,84 +92,84 @@ export const handleProductboardImports = async (): Promise<boolean> => {
     let count = 0;
 
     switch (nextJob.type) {
-      case 'PRODUCTS': {
+      case "PRODUCTS": {
         count = await migrateProducts(properties);
         break;
       }
-      case 'COMPONENTS': {
+      case "COMPONENTS": {
         count = await migrateComponents(properties);
         break;
       }
-      case 'FEATURE_STATUSES': {
+      case "FEATURE_STATUSES": {
         count = await migrateFeatureStatuses(properties);
         break;
       }
-      case 'FEATURES': {
+      case "FEATURES": {
         count = await migrateFeatures(properties);
         break;
       }
-      case 'CUSTOM_FIELDS': {
+      case "CUSTOM_FIELDS": {
         count = await migrateCustomFields(properties);
         break;
       }
-      case 'CUSTOM_FIELD_VALUES': {
+      case "CUSTOM_FIELD_VALUES": {
         count = await migrateCustomFieldValues(properties);
         break;
       }
-      case 'COMPANIES': {
+      case "COMPANIES": {
         count = await migrateCompanies(properties);
         break;
       }
-      case 'DOMAINS': {
+      case "DOMAINS": {
         count = await migrateDomains(properties);
         break;
       }
-      case 'USERS': {
+      case "USERS": {
         count = await migrateUsers(properties);
         break;
       }
-      case 'TAGS': {
+      case "TAGS": {
         count = await migrateTags(properties);
         break;
       }
-      case 'NOTES': {
+      case "NOTES": {
         count = await migrateNotes(properties);
         break;
       }
-      case 'NOTE_TAGS': {
+      case "NOTE_TAGS": {
         count = await migrateNoteTags(properties);
         break;
       }
-      case 'RELEASES': {
+      case "RELEASES": {
         count = await migrateReleases(properties);
         break;
       }
-      case 'FEATURE_RELEASE_ASSIGNMENTS': {
+      case "FEATURE_RELEASE_ASSIGNMENTS": {
         count = await migrateFeatureReleaseAssignments(properties);
         break;
       }
-      case 'JIRA_CONNECTIONS': {
+      case "JIRA_CONNECTIONS": {
         count = await migrateJiraConnections(properties);
         break;
       }
-      case 'NOTE_CONNECTIONS': {
+      case "NOTE_CONNECTIONS": {
         count = await migrateNoteConnections(properties);
         break;
       }
       default: {
-        throw new Error('Unknown job type');
+        throw new Error("Unknown job type");
       }
     }
 
     await database.productboardImportJob.update({
       where: { id: nextJob.id },
-      data: { status: 'SUCCESS', finishedAt: new Date(), count },
+      data: { status: "SUCCESS", finishedAt: new Date(), count },
     });
   } catch (error) {
     const message = parseError(error);
     await database.productboardImportJob.update({
       where: { id: nextJob.id },
-      data: { status: 'FAILURE', error: message, finishedAt: new Date() },
+      data: { status: "FAILURE", error: message, finishedAt: new Date() },
     });
   }
 

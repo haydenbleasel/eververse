@@ -1,9 +1,7 @@
-import { EmptyState } from '@/components/empty-state';
-import { database } from '@/lib/database';
-import type { User } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
-import { currentMembers } from '@repo/backend/auth/utils';
-import { StackCard } from '@repo/design-system/components/stack-card';
+import type { User } from "@repo/backend/auth";
+import { getUserName } from "@repo/backend/auth/format";
+import { currentMembers } from "@repo/backend/auth/utils";
+import { StackCard } from "@repo/design-system/components/stack-card";
 import {
   Table,
   TableBody,
@@ -11,10 +9,12 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@repo/design-system/components/ui/table';
-import { KeyIcon } from 'lucide-react';
-import { CreateAPIKeyButton } from './create-api-key-button';
-import { DeleteAPIKeyButton } from './delete-api-key-button';
+} from "@repo/design-system/components/ui/table";
+import { KeyIcon } from "lucide-react";
+import { EmptyState } from "@/components/empty-state";
+import { database } from "@/lib/database";
+import { CreateAPIKeyButton } from "./create-api-key-button";
+import { DeleteAPIKeyButton } from "./delete-api-key-button";
 
 export const ApiKeysTable = async () => {
   const [keys, members] = await Promise.all([
@@ -29,24 +29,24 @@ export const ApiKeysTable = async () => {
     currentMembers(),
   ]);
 
-  const getMemberName = (userId: User['id']) => {
+  const getMemberName = (userId: User["id"]) => {
     const member = members.find(({ id }) => userId === id);
 
-    return member ? getUserName(member) : 'Unknown';
+    return member ? getUserName(member) : "Unknown";
   };
 
   return (
     <StackCard
-      title="API Keys"
-      icon={KeyIcon}
       action={<CreateAPIKeyButton />}
       className="p-0"
+      icon={KeyIcon}
+      title="API Keys"
     >
       {keys.length === 0 ? (
         <div className="not-prose p-8">
           <EmptyState
-            title="No API keys"
             description="You haven't created any API keys yet."
+            title="No API keys"
           />
         </div>
       ) : (

@@ -1,8 +1,10 @@
-'use client';
+"use client";
 
-import { Fragment, useId } from 'react';
-import type { ComponentProps, FC } from 'react';
-import * as BreadcrumbComponent from '../ui/breadcrumb';
+import type { ComponentProps, FC } from "react";
+import { Fragment, useId } from "react";
+
+// biome-ignore lint/performance/noNamespaceImport: we're using the primitive component
+import * as BreadcrumbComponent from "../ui/breadcrumb";
 
 export type BreadcrumbsProperties = ComponentProps<
   typeof BreadcrumbComponent.Breadcrumb
@@ -14,7 +16,7 @@ export type BreadcrumbsProperties = ComponentProps<
   readonly title: string;
 };
 
-const BreadcrumbItem: FC<BreadcrumbsProperties['data'][number]> = ({
+const BreadcrumbItem: FC<BreadcrumbsProperties["data"][number]> = ({
   href,
   text,
 }) => {

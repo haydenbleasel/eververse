@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   BookIcon,
@@ -6,25 +6,25 @@ import {
   CircleArrowUpIcon,
   GripVerticalIcon,
   SlackIcon,
-} from 'lucide-react';
-import { LazyMotion, Reorder, domMax, useInView } from 'motion/react';
-import { useRef, useState } from 'react';
+} from "lucide-react";
+import { domMax, LazyMotion, Reorder, useInView } from "motion/react";
+import { useRef, useState } from "react";
 
 const links = [
   {
-    name: 'Documentation',
+    name: "Documentation",
     icon: BookIcon,
   },
   {
-    name: 'Slack Community',
+    name: "Slack Community",
     icon: SlackIcon,
   },
   {
-    name: 'Request a free trial',
+    name: "Request a free trial",
     icon: ChevronsRightIcon,
   },
   {
-    name: 'Upgrade your plan',
+    name: "Upgrade your plan",
     icon: CircleArrowUpIcon,
   },
 ];
@@ -32,7 +32,7 @@ const links = [
 export const WidgetLinkGraphic = () => {
   const [items, setItems] = useState(links);
   const reference = useRef<HTMLDivElement>(null);
-  const inView = useInView(reference, { once: true, amount: 'all' });
+  const inView = useInView(reference, { once: true, amount: "all" });
 
   if (!inView) {
     return <div ref={reference} />;
@@ -43,21 +43,21 @@ export const WidgetLinkGraphic = () => {
       <LazyMotion features={domMax}>
         <Reorder.Group
           axis="y"
-          values={items}
-          onReorder={setItems}
           className="w-full space-y-1"
+          onReorder={setItems}
+          values={items}
         >
           {items.map((item) => (
             <Reorder.Item
+              className="flex items-center gap-2 rounded-lg border bg-background px-3 py-1.5 shadow-sm"
               key={item.name}
               value={item}
-              className="flex items-center gap-2 rounded-lg border bg-background px-3 py-1.5 shadow-sm"
             >
               <GripVerticalIcon
-                size={16}
                 className="cursor-grab text-muted-foreground active:cursor-grabbing"
+                size={16}
               />
-              <item.icon size={16} className="shrink-0 text-muted-foreground" />
+              <item.icon className="shrink-0 text-muted-foreground" size={16} />
               <p className="font-medium text-sm">{item.name}</p>
             </Reorder.Item>
           ))}

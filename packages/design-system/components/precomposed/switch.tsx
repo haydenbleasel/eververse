@@ -1,11 +1,13 @@
-import { useId } from 'react';
-import type { ComponentProps } from 'react';
-import { Label } from '../ui/label';
-import * as SwitchComponent from '../ui/switch';
+import type { ComponentProps } from "react";
+import { useId } from "react";
+import { Label } from "../ui/label";
+
+// biome-ignore lint/performance/noNamespaceImport: we're using the primitive component
+import * as SwitchComponent from "../ui/switch";
 
 type SwitchProperties = Omit<
   ComponentProps<typeof SwitchComponent.Switch>,
-  'id'
+  "id"
 > & {
   readonly label?: string;
   readonly description?: string;

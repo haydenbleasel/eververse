@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { updateInitiative } from '@/actions/initiative/update';
-import { Emoji } from '@repo/design-system/components/emoji';
-import { EmojiSelector } from '@repo/design-system/components/emoji-selector';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { cn } from '@repo/design-system/lib/utils';
-import { useState } from 'react';
+import { Emoji } from "@repo/design-system/components/emoji";
+import { EmojiSelector } from "@repo/design-system/components/emoji-selector";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { cn } from "@repo/design-system/lib/utils";
+import { useState } from "react";
+import { updateInitiative } from "@/actions/initiative/update";
 
 type InitiativeEmojiProperties = {
   readonly initiativeId: string;
@@ -44,8 +44,8 @@ export const InitiativeEmoji = ({
     return (
       <div
         className={cn(
-          'flex h-12 w-12 items-center justify-center rounded-lg border bg-background shadow-sm',
-          loading && 'pointer-events-none opacity-50'
+          "flex h-12 w-12 items-center justify-center rounded-lg border bg-background shadow-sm",
+          loading && "pointer-events-none opacity-50"
         )}
       >
         <Emoji id={emoji} size="1.5rem" />
@@ -56,15 +56,15 @@ export const InitiativeEmoji = ({
   return (
     <div
       className={cn(
-        'w-fit rounded-lg border bg-background shadow-sm',
-        loading && 'pointer-events-none opacity-50'
+        "w-fit rounded-lg border bg-background shadow-sm",
+        loading && "pointer-events-none opacity-50"
       )}
     >
       <EmojiSelector
-        value={emoji}
+        large
         onChange={handleChange}
         onError={handleError}
-        large
+        value={emoji}
       />
     </div>
   );

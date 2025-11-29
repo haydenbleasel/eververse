@@ -1,15 +1,15 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import type { Widget } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import type { Widget } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 type UpdateWidgetProperties = Partial<Widget>;
 
 export const updateWidget = async (
-  id: Widget['id'],
+  id: Widget["id"],
   properties: UpdateWidgetProperties
 ): Promise<{
   error?: string;
@@ -20,8 +20,8 @@ export const updateWidget = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('User or organization not found');
+    if (!(user && organizationId)) {
+      throw new Error("User or organization not found");
     }
 
     await database.widget.update({
@@ -29,7 +29,7 @@ export const updateWidget = async (
       data: properties,
     });
 
-    revalidatePath('/settings/widget');
+    revalidatePath("/settings/widget");
 
     return {};
   } catch (error) {

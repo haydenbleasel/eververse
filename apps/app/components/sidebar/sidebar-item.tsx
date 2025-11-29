@@ -1,11 +1,10 @@
-'use client';
+"use client";
 
-import type * as navigation from '@/lib/navigation';
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@repo/design-system/components/ui/collapsible';
+} from "@repo/design-system/components/ui/collapsible";
 import {
   SidebarMenuAction,
   SidebarMenuButton,
@@ -13,9 +12,10 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from '@repo/design-system/components/ui/sidebar';
-import { ChevronRight } from 'lucide-react';
-import { usePathname } from 'next/navigation';
+} from "@repo/design-system/components/ui/sidebar";
+import { ChevronRight } from "lucide-react";
+import { usePathname } from "next/navigation";
+import type * as navigation from "@/lib/navigation";
 
 export const SidebarItem = ({
   active,
@@ -32,7 +32,7 @@ export const SidebarItem = ({
         <SidebarMenuButton
           asChild
           className={
-            !items?.length && active(pathname) ? 'bg-sidebar-accent' : ''
+            !items?.length && active(pathname) ? "bg-sidebar-accent" : ""
           }
         >
           {items?.length ? (
@@ -51,7 +51,7 @@ export const SidebarItem = ({
           <>
             <CollapsibleTrigger asChild>
               <SidebarMenuAction className="data-[state=open]:rotate-90">
-                <ChevronRight size={16} className="opacity-70" />
+                <ChevronRight className="opacity-70" size={16} />
                 <span className="sr-only">Toggle</span>
               </SidebarMenuAction>
             </CollapsibleTrigger>
@@ -63,8 +63,8 @@ export const SidebarItem = ({
                       asChild
                       className={
                         subItem.active(pathname)
-                          ? 'bg-primary text-primary-foreground'
-                          : ''
+                          ? "bg-primary text-primary-foreground"
+                          : ""
                       }
                     >
                       <a href={subItem.href}>

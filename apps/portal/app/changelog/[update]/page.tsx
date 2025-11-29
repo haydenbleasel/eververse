@@ -1,15 +1,15 @@
-import { getSlug } from '@/lib/slug';
-import { getUserName } from '@repo/backend/auth/format';
-import { getMembers } from '@repo/backend/auth/utils';
-import { database, getJsonColumnFromTable } from '@repo/backend/database';
-import { Prose } from '@repo/design-system/components/prose';
-import type { JSONContent } from '@repo/editor';
-import { contentToText } from '@repo/editor/lib/tiptap';
-import { formatDate } from '@repo/lib/format';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
-import { notFound } from 'next/navigation';
+import { getUserName } from "@repo/backend/auth/format";
+import { getMembers } from "@repo/backend/auth/utils";
+import { database, getJsonColumnFromTable } from "@repo/backend/database";
+import { Prose } from "@repo/design-system/components/prose";
+import type { JSONContent } from "@repo/editor";
+import { contentToText } from "@repo/editor/lib/tiptap";
+import { formatDate } from "@repo/lib/format";
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import dynamic from "next/dynamic";
+import { notFound } from "next/navigation";
+import { getSlug } from "@/lib/slug";
 
 type UpdateProperties = {
   readonly params: Promise<{
@@ -20,7 +20,7 @@ type UpdateProperties = {
 const Editor = dynamic(async () => {
   const component = await import(
     /* webpackChunkName: "editor" */
-    '@repo/editor'
+    "@repo/editor"
   );
 
   return component.Editor;
@@ -49,7 +49,7 @@ export const generateMetadata = async (
     where: {
       id: params.update,
       organizationId: portal.organizationId,
-      status: 'PUBLISHED',
+      status: "PUBLISHED",
       publishAt: {
         lte: new Date(),
       },
@@ -65,17 +65,17 @@ export const generateMetadata = async (
   }
 
   const content = await getJsonColumnFromTable(
-    'changelog',
-    'content',
+    "changelog",
+    "content",
     update.id
   );
   const image = content
-    ? (content as JSONContent).content?.find((node) => node.type === 'image')
+    ? (content as JSONContent).content?.find((node) => node.type === "image")
     : undefined;
 
   return createMetadata({
     title: update.title,
-    description: content ? contentToText(content) : '',
+    description: content ? contentToText(content) : "",
     image: image ? (image.attrs as { src?: string }).src : undefined,
   });
 };
@@ -102,10 +102,10 @@ const Update = async (props: UpdateProperties) => {
       where: {
         id: params.update,
         organizationId: portal.organizationId,
-        status: 'PUBLISHED',
+        status: "PUBLISHED",
       },
       orderBy: {
-        publishAt: 'desc',
+        publishAt: "desc",
       },
       select: {
         id: true,
@@ -128,22 +128,22 @@ const Update = async (props: UpdateProperties) => {
     const member = members.find(({ id }) => id === creatorId);
 
     if (!member) {
-      return 'Unknown';
+      return "Unknown";
     }
 
     return getUserName(member);
   };
 
   const content = await getJsonColumnFromTable(
-    'changelog',
-    'content',
+    "changelog",
+    "content",
     update.id
   );
 
   return (
     <div className="grid grid-cols-[1fr_200px]">
       <Prose className="prose-img:pointer-events-none mx-auto">
-        <h1>{update.title}</h1>
+        <h1 className="font-semibold! text-4xl! mb-6">{update.title}</h1>
         <Editor
           defaultValue={content as JSONContent | undefined}
           editable={false}
@@ -162,7 +162,7 @@ const Update = async (props: UpdateProperties) => {
           <p className="text-muted-foreground text-sm">Tags</p>
           <ul className="list-disc pl-4 text-sm">
             {update.tags.map((tag) => (
-              <li key={tag.name} className="text-sm">
+              <li className="text-sm" key={tag.name}>
                 {tag.name}
               </li>
             ))}

@@ -1,14 +1,14 @@
 // @ts-nocheck
 
-import { Node, mergeAttributes } from '@tiptap/core';
-import './file.css';
+import { mergeAttributes, Node } from "@tiptap/core";
+import "./file.css";
 
 export type FileOptions = {
   HTMLAttributes: Record<string, unknown>;
 };
 
 export const fileNode = Node.create<FileOptions>({
-  name: 'file',
+  name: "file",
 
   addOptions() {
     return {
@@ -17,11 +17,11 @@ export const fileNode = Node.create<FileOptions>({
   },
 
   group() {
-    return 'inline';
+    return "inline";
   },
 
   draggable: false,
-  content: 'text*',
+  content: "text*",
   inline: true,
 
   addAttributes() {
@@ -38,18 +38,18 @@ export const fileNode = Node.create<FileOptions>({
   parseHTML() {
     return [
       {
-        tag: 'a.file[href]',
+        tag: "a.file[href]",
       },
     ];
   },
 
   renderHTML({ node, HTMLAttributes }) {
     return [
-      'a',
+      "a",
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
-        'data-type': 'file',
-        target: '_blank',
-        rel: 'noopener noreferrer',
+        "data-type": "file",
+        target: "_blank",
+        rel: "noopener noreferrer",
       }),
       node.attrs.fileName,
     ];

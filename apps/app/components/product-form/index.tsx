@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { createProduct } from '@/actions/product/create';
-import { Dialog } from '@repo/design-system/components/precomposed/dialog';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { useProductForm } from './use-product-form';
+import { Dialog } from "@repo/design-system/components/precomposed/dialog";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { createProduct } from "@/actions/product/create";
+import { useProductForm } from "./use-product-form";
 
 export const ProductForm = () => {
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const disabled = !name.trim() || loading;
@@ -30,10 +30,10 @@ export const ProductForm = () => {
       }
 
       if (!id) {
-        throw new Error('Something went wrong');
+        throw new Error("Something went wrong");
       }
 
-      setName('');
+      setName("");
 
       hide();
       router.push(`/features/products/${id}`);
@@ -46,26 +46,26 @@ export const ProductForm = () => {
 
   return (
     <Dialog
-      open={isOpen}
-      onOpenChange={toggle}
+      className="sm:max-w-2xl"
+      cta="Create product"
+      disabled={disabled}
       modal={false}
+      onClick={handleCreate}
+      onOpenChange={toggle}
+      open={isOpen}
       title={
         <p className="font-medium text-muted-foreground text-sm tracking-tight">
           Create a product
         </p>
       }
-      className="sm:max-w-2xl"
-      cta="Create product"
-      onClick={handleCreate}
-      disabled={disabled}
     >
       <Input
-        placeholder="Admin Dashboard"
-        value={name}
-        onChangeText={setName}
+        autoComplete="off"
         className="border-none p-0 font-medium shadow-none focus-visible:ring-0 md:text-lg"
         maxLength={191}
-        autoComplete="off"
+        onChangeText={setName}
+        placeholder="Admin Dashboard"
+        value={name}
       />
     </Dialog>
   );

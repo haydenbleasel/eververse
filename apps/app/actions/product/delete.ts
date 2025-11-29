@@ -1,12 +1,12 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import type { Product } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import type { Product } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const deleteProduct = async (
-  id: Product['id']
+  id: Product["id"]
 ): Promise<{
   error?: string;
 }> => {
@@ -16,7 +16,7 @@ export const deleteProduct = async (
       select: { id: true },
     });
 
-    revalidatePath('/features');
+    revalidatePath("/features");
 
     return {};
   } catch (error) {

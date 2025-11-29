@@ -1,18 +1,18 @@
-import { LoadingCircle } from '@repo/design-system/components/loading-circle';
-import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
-import { SidebarTrigger } from '@repo/design-system/components/ui/sidebar';
-import { ChevronRight } from 'lucide-react';
-import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
-import { TeamSubscribe } from './team-subscribe';
+import { LoadingCircle } from "@repo/design-system/components/loading-circle";
+import { Skeleton } from "@repo/design-system/components/precomposed/skeleton";
+import { SidebarTrigger } from "@repo/design-system/components/ui/sidebar";
+import { ChevronRight } from "lucide-react";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+import { TeamSubscribe } from "./team-subscribe";
 
 const GlobalBreadcrumbs = dynamic(
-  () => import('./global-breadcrumbs').then((mod) => mod.GlobalBreadcrumbs),
+  () => import("./global-breadcrumbs").then((mod) => mod.GlobalBreadcrumbs),
   {
     loading: () => (
       <div className="flex items-center gap-4">
         <Skeleton className="h-4 w-10" />
-        <ChevronRight size={16} className="text-muted-foreground" />
+        <ChevronRight className="text-muted-foreground" size={16} />
         <Skeleton className="h-4 w-10" />
       </div>
     ),

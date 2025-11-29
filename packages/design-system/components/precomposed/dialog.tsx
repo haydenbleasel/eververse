@@ -1,8 +1,10 @@
-'use client';
+"use client";
 
-import type { ComponentProps, ReactNode } from 'react';
-import { Button } from '../ui/button';
-import * as DialogComponent from '../ui/dialog';
+import type { ComponentProps, ReactNode } from "react";
+import { Button } from "../ui/button";
+
+// biome-ignore lint/performance/noNamespaceImport: we're using the primitive component
+import * as DialogComponent from "../ui/dialog";
 
 export type DialogProperties = ComponentProps<typeof DialogComponent.Dialog> & {
   readonly title?: ReactNode;
@@ -51,7 +53,7 @@ export const Dialog = ({
         <DialogComponent.DialogFooter className="flex items-center justify-between gap-3 sm:justify-between">
           {footer ? <div>{footer}</div> : null}
           {cta && onClick ? (
-            <Button onClick={onClick} disabled={disabled}>
+            <Button disabled={disabled} onClick={onClick}>
               {cta}
             </Button>
           ) : null}

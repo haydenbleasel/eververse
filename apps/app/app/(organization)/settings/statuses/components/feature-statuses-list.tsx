@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { updateFeatureStatuses } from '@/actions/feature-status/bulk/update';
-import type { Feature, FeatureStatus } from '@repo/backend/prisma/client';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { Reorder } from 'motion/react';
-import { useState } from 'react';
-import { FeatureStatusItem } from './feature-status-item';
+import type { Feature, FeatureStatus } from "@repo/backend/prisma/client";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { Reorder } from "motion/react";
+import { useState } from "react";
+import { updateFeatureStatuses } from "@/actions/feature-status/bulk/update";
+import { FeatureStatusItem } from "./feature-status-item";
 
 type FeatureStatusesListProperties = {
   readonly initialStatuses: (Pick<
     FeatureStatus,
-    'color' | 'complete' | 'id' | 'name'
+    "color" | "complete" | "id" | "name"
   > & {
-    readonly features: Pick<Feature, 'id'>[];
+    readonly features: Pick<Feature, "id">[];
   })[];
 };
 
@@ -41,17 +41,17 @@ export const FeatureStatusesList = ({
   return (
     <Reorder.Group
       axis="y"
-      values={statuses}
-      onReorder={setStatuses}
       className="divide-y"
+      onReorder={setStatuses}
+      values={statuses}
     >
       {statuses.map((status) => (
         <Reorder.Item
+          className={dragging ? "cursor-grabbing" : "cursor-grab"}
           key={status.id}
-          value={status}
-          className={dragging ? 'cursor-grabbing' : 'cursor-grab'}
-          onDragStart={() => setDragging(true)}
           onDragEnd={handleDragEnd}
+          onDragStart={() => setDragging(true)}
+          value={status}
         >
           <FeatureStatusItem data={status} statuses={statuses} />
         </Reorder.Item>

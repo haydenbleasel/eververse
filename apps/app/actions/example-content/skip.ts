@@ -1,9 +1,9 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId } from '@repo/backend/auth/utils';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId } from "@repo/backend/auth/utils";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const skipExampleContent = async (): Promise<{
   error?: string;
@@ -12,18 +12,18 @@ export const skipExampleContent = async (): Promise<{
     const organizationId = await currentOrganizationId();
 
     if (!organizationId) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     await database.organization.update({
       where: { id: organizationId },
       data: {
-        onboardingType: 'BLANK',
+        onboardingType: "BLANK",
         onboardedAt: new Date(),
       },
     });
 
-    revalidatePath('/welcome');
+    revalidatePath("/welcome");
 
     return {};
   } catch (error) {

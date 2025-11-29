@@ -1,13 +1,13 @@
-import type { Organization } from '@repo/backend/prisma/client';
-import { log } from '@repo/observability/log';
-import { stripe } from '@repo/payments';
+import type { Organization } from "@repo/backend/prisma/client";
+import { log } from "@repo/observability/log";
+import { stripe } from "@repo/payments";
 
 export const maxDuration = 300;
 export const revalidate = 0;
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 type DeletePayload = {
-  type: 'DELETE';
+  type: "DELETE";
   table: string;
   schema: string;
   record: null;
@@ -22,7 +22,7 @@ export const POST = async (request: Request): Promise<Response> => {
   if (body.old_record.stripeSubscriptionId) {
     await stripe.subscriptions.cancel(body.old_record.stripeSubscriptionId, {
       cancellation_details: {
-        comment: 'Deleted organization',
+        comment: "Deleted organization",
       },
     });
 
@@ -31,5 +31,5 @@ export const POST = async (request: Request): Promise<Response> => {
     );
   }
 
-  return new Response('Organization deleted', { status: 201 });
+  return new Response("Organization deleted", { status: 201 });
 };

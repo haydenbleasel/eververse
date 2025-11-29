@@ -1,7 +1,7 @@
-import 'server-only';
-import { createClient } from '@supabase/supabase-js';
-import { keys } from './keys';
-import { PrismaClient } from './prisma/client';
+import "server-only";
+import { createClient } from "@supabase/supabase-js";
+import { keys } from "./keys";
+import { PrismaClient } from "./prisma/client";
 
 const env = keys();
 const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
@@ -9,7 +9,7 @@ const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
 const client = globalForPrisma.prisma || new PrismaClient();
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
   globalForPrisma.prisma = client;
 }
 
@@ -21,7 +21,7 @@ export const getJsonColumnFromTable = async (
   column: string,
   id: string
 ) => {
-  const response = await supabase.from(tableName).select(column).eq('id', id);
+  const response = await supabase.from(tableName).select(column).eq("id", id);
 
   if (response.error) {
     throw response.error;

@@ -1,16 +1,16 @@
-import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { createMetadata } from '@repo/seo/metadata';
-import { CheckIcon, ImportIcon, InfoIcon } from 'lucide-react';
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import { Suspense } from 'react';
-import { ProductboardImportForm } from './components/productboard-import-form';
-import { ProductboardImportsCard } from './components/productboard-imports-card';
+import { Skeleton } from "@repo/design-system/components/precomposed/skeleton";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { createMetadata } from "@repo/seo/metadata";
+import { CheckIcon, ImportIcon, InfoIcon } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import { Suspense } from "react";
+import { ProductboardImportForm } from "./components/productboard-import-form";
+import { ProductboardImportsCard } from "./components/productboard-imports-card";
 
-const title = 'Import from Productboard';
+const title = "Import from Productboard";
 const description =
-  'Import your Productboard notes, features and components into Eververse.';
+  "Import your Productboard notes, features and components into Eververse.";
 
 export const metadata: Metadata = createMetadata({
   title,
@@ -20,11 +20,11 @@ export const metadata: Metadata = createMetadata({
 const ProductboardImport = () => (
   <div className="grid gap-6">
     <Image
+      alt=""
+      className="m-0 h-8 w-8"
+      height={32}
       src="/productboard.svg"
       width={32}
-      height={32}
-      className="m-0 h-8 w-8"
-      alt=""
     />
     <div className="grid gap-2">
       <h1 className="m-0 font-semibold text-4xl tracking-tight">{title}</h1>
@@ -32,9 +32,9 @@ const ProductboardImport = () => (
     </div>
 
     <StackCard
-      title="Start a new import"
-      icon={ImportIcon}
       className="grid gap-2"
+      icon={ImportIcon}
+      title="Start a new import"
     >
       <ProductboardImportForm />
       <p className="mb-0 text-muted-foreground text-sm">
@@ -50,9 +50,9 @@ const ProductboardImport = () => (
     </Suspense>
 
     <StackCard
-      title="Supported Productboard features"
-      icon={CheckIcon}
       className="grid items-start text-sm sm:grid-cols-2"
+      icon={CheckIcon}
+      title="Supported Productboard features"
     >
       <div>
         <p className="font-medium">What gets imported:</p>
@@ -88,7 +88,7 @@ const ProductboardImport = () => (
       </div>
     </StackCard>
 
-    <StackCard title="Mapping" icon={InfoIcon}>
+    <StackCard icon={InfoIcon} title="Mapping">
       <ul className="mb-0 list-disc space-y-1 pl-4 text-sm">
         <li>Notes are imported as Feedback</li>
         <li>Features are imported as-is</li>

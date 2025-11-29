@@ -1,13 +1,13 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import type { Group } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import type { Group } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 type CreateGroupProperties = {
-  name: Group['name'];
+  name: Group["name"];
   productId: string | undefined;
   parentGroupId: string | undefined;
 };
@@ -17,7 +17,7 @@ export const createGroup = async ({
   productId,
   parentGroupId,
 }: CreateGroupProperties): Promise<{
-  id?: Group['id'];
+  id?: Group["id"];
   error?: string;
 }> => {
   try {
@@ -26,16 +26,16 @@ export const createGroup = async ({
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('You must be logged in to create a group.');
+    if (!(user && organizationId)) {
+      throw new Error("You must be logged in to create a group.");
     }
 
     if (!user.email) {
-      throw new Error('You must have an email to create a group.');
+      throw new Error("You must have an email to create a group.");
     }
 
     if (!user.email_confirmed_at) {
-      throw new Error('You must have a verified email to create a group.');
+      throw new Error("You must have a verified email to create a group.");
     }
 
     const { id } = await database.group.create({
@@ -51,7 +51,7 @@ export const createGroup = async ({
       },
     });
 
-    revalidatePath('/features');
+    revalidatePath("/features");
 
     return { id };
   } catch (error) {

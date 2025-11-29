@@ -11,14 +11,14 @@ export const MAX_FREE_INITIATIVE_UPDATES = 5;
 export const MAX_FREE_RELEASES = 5;
 
 if (!process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL) {
-  throw new Error('NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL is not defined.');
+  throw new Error("NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL is not defined.");
 }
 
 const protocol =
-  process.env.NODE_ENV === 'production' ||
-  process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL.endsWith('.local')
-    ? 'https'
-    : 'http';
+  process.env.NODE_ENV === "production" ||
+  process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL.endsWith(".local")
+    ? "https"
+    : "http";
 export const baseUrl = new URL(
   `${protocol}://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}`
 ).toString();

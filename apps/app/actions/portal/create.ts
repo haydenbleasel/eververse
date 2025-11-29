@@ -1,14 +1,14 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId } from '@repo/backend/auth/utils';
-import type { Prisma } from '@repo/backend/prisma/client';
-import { colors } from '@repo/design-system/lib/colors';
-import { parseError } from '@repo/lib/parse-error';
-import { friendlyWords } from 'friendlier-words';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId } from "@repo/backend/auth/utils";
+import type { Prisma } from "@repo/backend/prisma/client";
+import { colors } from "@repo/design-system/lib/colors";
+import { parseError } from "@repo/lib/parse-error";
+import { friendlyWords } from "friendlier-words";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
-const reservedSlugs = ['app', 'docs', 'api', 'widget', 'api-dev'];
+const reservedSlugs = ["app", "docs", "api", "widget", "api-dev"];
 
 export const createPortal = async (): Promise<{
   error?: string;
@@ -17,7 +17,7 @@ export const createPortal = async (): Promise<{
     const organizationId = await currentOrganizationId();
 
     if (!organizationId) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     const [organization, featureStatuses] = await Promise.all([
@@ -28,7 +28,7 @@ export const createPortal = async (): Promise<{
     ]);
 
     if (!organization) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     let slug = organization.slug;
@@ -46,19 +46,19 @@ export const createPortal = async (): Promise<{
           createMany: {
             data: [
               {
-                name: 'Backlog',
+                name: "Backlog",
                 order: 0,
                 color: colors.gray,
                 organizationId: organization.id,
               },
               {
-                name: 'In Progress',
+                name: "In Progress",
                 order: 1,
                 color: colors.yellow,
                 organizationId: organization.id,
               },
               {
-                name: 'Shipped',
+                name: "Shipped",
                 order: 2,
                 color: colors.green,
                 organizationId: organization.id,
@@ -138,7 +138,7 @@ export const createPortal = async (): Promise<{
       ],
     });
 
-    revalidatePath('/settings/portal');
+    revalidatePath("/settings/portal");
 
     return {};
   } catch (error) {

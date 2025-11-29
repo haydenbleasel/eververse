@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
 type GroupFormState = {
   isOpen: boolean;
@@ -17,7 +17,7 @@ export const useGroupForm = create<GroupFormState>()(
       toggle: () => set((state) => ({ isOpen: !state.isOpen })),
     }),
     {
-      name: 'eververse:group-form',
+      name: "eververse:group-form",
     }
   )
 );

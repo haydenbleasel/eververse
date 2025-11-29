@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { identify } from '@repo/analytics/posthog/client';
-import { useUser } from '@repo/backend/hooks/use-user';
+import { identify } from "@repo/analytics/posthog/client";
+import { useUser } from "@repo/backend/hooks/use-user";
 
 export const Identify = () => {
   const user = useUser();
 
-  if (!user || process.env.NODE_ENV === 'development') {
+  if (!user || process.env.NODE_ENV === "development") {
     return null;
   }
 

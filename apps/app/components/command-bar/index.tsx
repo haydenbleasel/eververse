@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useEventListener } from '@react-hookz/web';
+import { useEventListener } from "@react-hookz/web";
 import {
   Command,
   CommandDialog,
@@ -8,9 +8,9 @@ import {
   CommandGroup,
   CommandInput,
   CommandList,
-} from '@repo/design-system/components/ui/command';
-import { useSidebar } from '@repo/design-system/components/ui/sidebar';
-import { cn } from '@repo/design-system/lib/utils';
+} from "@repo/design-system/components/ui/command";
+import { useSidebar } from "@repo/design-system/components/ui/sidebar";
+import { cn } from "@repo/design-system/lib/utils";
 import {
   ArrowUpCircleIcon,
   BotMessageSquareIcon,
@@ -25,16 +25,16 @@ import {
   MessageCircleIcon,
   PlusIcon,
   StarIcon,
-} from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { useChangelogForm } from '../changelog-form/use-changelog-form';
-import { useFeatureForm } from '../feature-form/use-feature-form';
-import { useFeedbackForm } from '../feedback-form/use-feedback-form';
-import { useGroupForm } from '../group-form/use-group-form';
-import { useInitiativeForm } from '../initiative-form/use-initiative-form';
-import { useProductForm } from '../product-form/use-product-form';
-import { CommandBarItem } from './command-bar-item';
-import { useCommandBar } from './use-command-bar';
+} from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useChangelogForm } from "../changelog-form/use-changelog-form";
+import { useFeatureForm } from "../feature-form/use-feature-form";
+import { useFeedbackForm } from "../feedback-form/use-feedback-form";
+import { useGroupForm } from "../group-form/use-group-form";
+import { useInitiativeForm } from "../initiative-form/use-initiative-form";
+import { useProductForm } from "../product-form/use-product-form";
+import { CommandBarItem } from "./command-bar-item";
+import { useCommandBar } from "./use-command-bar";
 
 type CommandBarProperties = {
   readonly hasProducts: boolean;
@@ -52,10 +52,10 @@ export const CommandBar = ({ hasProducts }: CommandBarProperties) => {
   const router = useRouter();
 
   useEventListener(
-    typeof window === 'undefined' ? null : window,
-    'keydown',
+    typeof window === "undefined" ? null : window,
+    "keydown",
     (event: KeyboardEvent) => {
-      if (event.key === 'k' && (event.metaKey || event.ctrlKey)) {
+      if (event.key === "k" && (event.metaKey || event.ctrlKey)) {
         event.preventDefault();
         commandBar.toggle();
       }
@@ -65,20 +65,20 @@ export const CommandBar = ({ hasProducts }: CommandBarProperties) => {
 
   const homeItems = [
     {
-      label: 'View Home',
+      label: "View Home",
       icon: HomeIcon,
-      onSelect: () => router.push('/'),
+      onSelect: () => router.push("/"),
     },
   ];
 
   const feedbackItems = [
     {
-      label: 'View feedback',
+      label: "View feedback",
       icon: MessageCircleIcon,
-      onSelect: () => router.push('/feedback'),
+      onSelect: () => router.push("/feedback"),
     },
     {
-      label: 'Create new feedback...',
+      label: "Create new feedback...",
       icon: PlusIcon,
       onSelect: feedbackForm.show,
     },
@@ -86,12 +86,12 @@ export const CommandBar = ({ hasProducts }: CommandBarProperties) => {
 
   const initiativeItems = [
     {
-      label: 'View initiatives',
+      label: "View initiatives",
       icon: CompassIcon,
-      onSelect: () => router.push('/initiatives'),
+      onSelect: () => router.push("/initiatives"),
     },
     {
-      label: 'Create new initiative...',
+      label: "Create new initiative...",
       icon: PlusIcon,
       onSelect: () => initiativeForm.show(),
     },
@@ -99,17 +99,17 @@ export const CommandBar = ({ hasProducts }: CommandBarProperties) => {
 
   const featuresItems = [
     {
-      label: 'View features',
+      label: "View features",
       icon: GridIcon,
-      onSelect: () => router.push('/features'),
+      onSelect: () => router.push("/features"),
     },
     {
-      label: 'Create new feature...',
+      label: "Create new feature...",
       icon: PlusIcon,
       onSelect: featureForm.show,
     },
     {
-      label: 'Create new product...',
+      label: "Create new product...",
       icon: PlusIcon,
       onSelect: productForm.show,
     },
@@ -117,7 +117,7 @@ export const CommandBar = ({ hasProducts }: CommandBarProperties) => {
 
   if (hasProducts) {
     featuresItems.push({
-      label: 'Create new group...',
+      label: "Create new group...",
       icon: PlusIcon,
       onSelect: groupForm.show,
     });
@@ -125,12 +125,12 @@ export const CommandBar = ({ hasProducts }: CommandBarProperties) => {
 
   const changelogItems = [
     {
-      label: 'View changelog',
+      label: "View changelog",
       icon: ClockIcon,
-      onSelect: () => router.push('/changelog'),
+      onSelect: () => router.push("/changelog"),
     },
     {
-      label: 'Create new changelog...',
+      label: "Create new changelog...",
       icon: PlusIcon,
       onSelect: changelogForm.show,
     },
@@ -138,50 +138,50 @@ export const CommandBar = ({ hasProducts }: CommandBarProperties) => {
 
   const pageItems = [
     {
-      label: 'View Welcome',
+      label: "View Welcome",
       icon: StarIcon,
-      onSelect: () => router.push('/welcome'),
+      onSelect: () => router.push("/welcome"),
     },
     {
-      label: 'View Eve',
+      label: "View Eve",
       icon: BotMessageSquareIcon,
-      onSelect: () => router.push('/eve'),
+      onSelect: () => router.push("/eve"),
     },
     {
-      label: 'View Roadmap',
+      label: "View Roadmap",
       icon: ClockIcon,
-      onSelect: () => router.push('/roadmap'),
+      onSelect: () => router.push("/roadmap"),
     },
     {
-      label: 'View Settings',
+      label: "View Settings",
       icon: CogIcon,
-      onSelect: () => router.push('/settings'),
+      onSelect: () => router.push("/settings"),
     },
     {
-      label: 'View API',
+      label: "View API",
       icon: CodeIcon,
-      onSelect: () => router.push('/api'),
+      onSelect: () => router.push("/api"),
     },
     {
-      label: 'View Feature Statuses',
+      label: "View Feature Statuses",
       icon: ArrowUpCircleIcon,
-      onSelect: () => router.push('/settings/statuses'),
+      onSelect: () => router.push("/settings/statuses"),
     },
     {
-      label: 'View Integrations',
+      label: "View Integrations",
       icon: LinkIcon,
-      onSelect: () => router.push('/settings/integrations'),
+      onSelect: () => router.push("/settings/integrations"),
     },
     {
-      label: 'Import from another tool',
+      label: "Import from another tool",
       icon: ImportIcon,
-      onSelect: () => router.push('/settings/import'),
+      onSelect: () => router.push("/settings/import"),
     },
   ];
 
   const other = [
     {
-      label: 'Toggle sidebar',
+      label: "Toggle sidebar",
       icon: ClockIcon,
       onSelect: () => sidebar.setOpen(!sidebar.open),
     },
@@ -189,20 +189,20 @@ export const CommandBar = ({ hasProducts }: CommandBarProperties) => {
 
   return (
     <CommandDialog
-      open={commandBar.isOpen}
-      onOpenChange={() => commandBar.toggle()}
       modal={false}
+      onOpenChange={() => commandBar.toggle()}
+      open={commandBar.isOpen}
     >
       <Command
         className={cn(
-          '[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground',
-          '[&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2',
-          '[&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5',
-          '[&_[cmdk-input]]:h-12',
-          '[&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3',
+          "[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground",
+          "[&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2",
+          "[&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5",
+          "[&_[cmdk-input]]:h-12",
+          "[&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3",
           // '[&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5',
-          'dark:[&_[cmdk-group-heading]]:text-muted-foreground',
-          'bg-transparent dark:bg-transparent'
+          "dark:[&_[cmdk-group-heading]]:text-muted-foreground",
+          "bg-transparent dark:bg-transparent"
         )}
       >
         <CommandInput placeholder="Type a command or search..." />

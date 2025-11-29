@@ -1,29 +1,24 @@
-import { AvatarTooltip } from '@/components/avatar-tooltip';
-import { env } from '@/env';
-import { handleAuthedState } from '@/lib/auth';
-import { getUserName } from '@repo/backend/auth/format';
-import { createClient } from '@repo/backend/auth/server';
-import { database } from '@repo/backend/database';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import { Prose } from '@repo/design-system/components/prose';
-import { Badge } from '@repo/design-system/components/ui/badge';
-import { contentToHtml } from '@repo/editor/lib/tiptap';
-import { formatDate } from '@repo/lib/format';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { LoginForm } from './components/form';
-import { UrlErrors } from './components/url-errors';
+import { getUserName } from "@repo/backend/auth/format";
+import { createClient } from "@repo/backend/auth/server";
+import { database, getJsonColumnFromTable } from "@repo/backend/database";
+import { Prose } from "@repo/design-system/components/prose";
+import { Badge } from "@repo/design-system/components/ui/badge";
+import { contentToHtml } from "@repo/editor/lib/tiptap";
+import { formatDate } from "@repo/lib/format";
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { AvatarTooltip } from "@/components/avatar-tooltip";
+import { env } from "@/env";
+import { handleAuthedState } from "@/lib/auth";
+import { LoginForm } from "./components/form";
+import { UrlErrors } from "./components/url-errors";
 
-const title = 'Sign in';
-const description = 'Sign in to your account.';
+const title = "Sign in";
+const description = "Sign in to your account.";
 
 export const metadata: Metadata = createMetadata({ title, description });
 
-const ContributorAvatar = async ({
-  userId,
-}: {
-  readonly userId: string;
-}) => {
+const ContributorAvatar = async ({ userId }: { readonly userId: string }) => {
   const supabase = await createClient();
   const response = await supabase.auth.admin.getUserById(userId);
 
@@ -33,10 +28,10 @@ const ContributorAvatar = async ({
 
   return (
     <AvatarTooltip
-      title={getUserName(response.data.user)}
-      subtitle="Eververse team"
-      src={response.data.user.user_metadata.image_url}
       fallback="E"
+      src={response.data.user.user_metadata.image_url}
+      subtitle="Eververse team"
+      title={getUserName(response.data.user)}
     />
   );
 };
@@ -45,9 +40,9 @@ const SignInPage = async () => {
   const changelog = await database.changelog.findMany({
     where: {
       organizationId: env.EVERVERSE_ADMIN_ORGANIZATION_ID,
-      status: 'PUBLISHED',
+      status: "PUBLISHED",
     },
-    orderBy: { publishAt: 'desc' },
+    orderBy: { publishAt: "desc" },
     take: 1,
     select: {
       id: true,
@@ -64,9 +59,9 @@ const SignInPage = async () => {
 
   const latestUpdate = changelog.at(0);
   const content = latestUpdate
-    ? await getJsonColumnFromTable('changelog', 'content', latestUpdate.id)
+    ? await getJsonColumnFromTable("changelog", "content", latestUpdate.id)
     : null;
-  const html = content ? contentToHtml(content) : 'No content.';
+  const html = content ? contentToHtml(content) : "No content.";
 
   await handleAuthedState();
 
@@ -76,21 +71,21 @@ const SignInPage = async () => {
         <div className="w-full max-w-[400px] space-y-8">
           <LoginForm />
           <p className="text-balance text-center text-muted-foreground text-sm">
-            By signing in, you agree to our{' '}
+            By signing in, you agree to our{" "}
             <a
-              href="https://www.eververse.ai/legal/terms"
               className="font-medium text-primary underline"
-              target="_blank"
+              href="https://www.eververse.ai/legal/terms"
               rel="noreferrer noopener"
+              target="_blank"
             >
               Terms of Service
-            </a>{' '}
-            and{' '}
+            </a>{" "}
+            and{" "}
             <a
-              href="https://www.eververse.ai/legal/privacy"
               className="font-medium text-primary underline"
-              target="_blank"
+              href="https://www.eververse.ai/legal/privacy"
               rel="noreferrer noopener"
+              target="_blank"
             >
               Privacy Policy
             </a>
@@ -102,8 +97,8 @@ const SignInPage = async () => {
         <div className="flex w-full flex-col gap-8">
           {latestUpdate ? (
             <Prose
-              key={latestUpdate.id}
               className="mx-auto prose-img:rounded-lg"
+              key={latestUpdate.id}
             >
               <p className="font-medium text-muted-foreground text-sm">
                 Latest update
@@ -120,7 +115,7 @@ const SignInPage = async () => {
                     <div key={contributor.userId}>
                       <ContributorAvatar userId={contributor.userId} />
                     </div>
-                  ))}{' '}
+                  ))}{" "}
                 </div>
                 <span className="text-sm">
                   on {formatDate(latestUpdate.publishAt)}
@@ -135,7 +130,7 @@ const SignInPage = async () => {
 
               <div className="my-8 flex flex-wrap items-center gap-1">
                 {latestUpdate.tags.map((tag) => (
-                  <Badge variant="secondary" key={tag.id}>
+                  <Badge key={tag.id} variant="secondary">
                     {tag.name}
                   </Badge>
                 ))}

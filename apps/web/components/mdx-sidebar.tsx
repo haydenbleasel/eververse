@@ -1,5 +1,5 @@
-import { capitalize } from '@repo/lib/format';
-import { getTableOfContents } from 'fumadocs-core/server';
+import { capitalize } from "@repo/lib/format";
+import { getTableOfContents } from "fumadocs-core/server";
 
 type SidebarProperties = {
   readonly date: Date;
@@ -30,7 +30,7 @@ export const Sidebar = async ({
         <div className="grid gap-2">
           <p className="text-muted-foreground text-sm">Tags</p>
           <p className="rounded-sm text-foreground text-sm">
-            {tags?.map(capitalize).join(', ')}
+            {tags?.map(capitalize).join(", ")}
           </p>
         </div>
       )}
@@ -47,8 +47,8 @@ export const Sidebar = async ({
                   }}
                 >
                   <a
-                    href={item.url}
                     className="line-clamp-3 flex rounded-sm text-foreground text-sm underline decoration-foreground/0 transition-colors hover:decoration-foreground/50"
+                    href={item.url}
                   >
                     {item.title}
                   </a>

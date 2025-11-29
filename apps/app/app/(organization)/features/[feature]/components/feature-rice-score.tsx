@@ -1,24 +1,24 @@
-import { calculateRice, impactNumberMatrix } from '@/lib/rice';
-import type { FeatureRice } from '@repo/backend/prisma/client';
+import type { FeatureRice } from "@repo/backend/prisma/client";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from '@repo/design-system/components/ui/hover-card';
+} from "@repo/design-system/components/ui/hover-card";
+import { calculateRice, impactNumberMatrix } from "@/lib/rice";
 
 type FeatureRiceProperties = {
   readonly rice: Pick<
     FeatureRice,
-    'confidence' | 'effort' | 'impact' | 'reach'
+    "confidence" | "effort" | "impact" | "reach"
   >;
 };
 
 export const FeatureRiceScore = ({ rice }: FeatureRiceProperties) => (
-  <HoverCard openDelay={0} closeDelay={0}>
+  <HoverCard closeDelay={0} openDelay={0}>
     <HoverCardTrigger className="hover:underline">
       {calculateRice(rice)}
     </HoverCardTrigger>
-    <HoverCardContent sideOffset={8} className="divide-y bg-background p-0">
+    <HoverCardContent className="divide-y bg-background p-0" sideOffset={8}>
       <div className="flex items-center justify-between gap-4 px-3 py-1.5">
         <p>Reach</p>
         <p>{rice.reach}</p>

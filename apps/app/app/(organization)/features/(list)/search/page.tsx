@@ -1,21 +1,21 @@
-import { getFeatures } from '@/actions/feature/list';
-import { FeaturesList } from '@/app/(organization)/features/components/features-list';
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
+import { EververseRole } from "@repo/backend/auth";
 import {
   currentMembers,
   currentOrganizationId,
   currentUser,
-} from '@repo/backend/auth/utils';
-import type { Prisma } from '@repo/backend/prisma/client';
-import { createMetadata } from '@repo/seo/metadata';
+} from "@repo/backend/auth/utils";
+import type { Prisma } from "@repo/backend/prisma/client";
+import { createMetadata } from "@repo/seo/metadata";
 import {
+  dehydrate,
   HydrationBoundary,
   QueryClient,
-  dehydrate,
-} from '@tanstack/react-query';
-import type { Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
+} from "@tanstack/react-query";
+import type { Metadata } from "next";
+import { notFound, redirect } from "next/navigation";
+import { getFeatures } from "@/actions/feature/list";
+import { FeaturesList } from "@/app/(organization)/features/components/features-list";
+import { database } from "@/lib/database";
 
 type FeatureSeachPageProperties = {
   readonly searchParams?: Promise<{
@@ -24,8 +24,8 @@ type FeatureSeachPageProperties = {
 };
 
 export const metadata: Metadata = createMetadata({
-  title: 'Features',
-  description: 'Create and manage features for your product.',
+  title: "Features",
+  description: "Create and manage features for your product.",
 });
 
 const FeatureProduct = async (props: FeatureSeachPageProperties) => {
@@ -37,12 +37,12 @@ const FeatureProduct = async (props: FeatureSeachPageProperties) => {
   ]);
   const queryClient = new QueryClient();
 
-  if (!user || !organizationId) {
+  if (!(user && organizationId)) {
     notFound();
   }
 
-  if (typeof searchParams?.query !== 'string') {
-    redirect('/features');
+  if (typeof searchParams?.query !== "string") {
+    redirect("/features");
   }
 
   const query: Partial<Prisma.FeatureWhereInput> = {
@@ -91,11 +91,11 @@ const FeatureProduct = async (props: FeatureSeachPageProperties) => {
       },
     }),
     queryClient.prefetchInfiniteQuery({
-      queryKey: ['features', query],
+      queryKey: ["features", query],
       queryFn: async ({ pageParam }) => {
         const response = await getFeatures(pageParam, query);
 
-        if ('error' in response) {
+        if ("error" in response) {
           throw response.error;
         }
 
@@ -116,19 +116,19 @@ const FeatureProduct = async (props: FeatureSeachPageProperties) => {
     <div className="h-full overflow-y-auto">
       <HydrationBoundary state={dehydrate(queryClient)}>
         <FeaturesList
-          title={searchParams?.query}
-          breadcrumbs={[{ href: '/features', text: 'Features' }]}
-          query={query}
-          statuses={databaseOrganization.featureStatuses}
+          breadcrumbs={[{ href: "/features", text: "Features" }]}
           count={count}
-          products={databaseOrganization.products}
-          groups={databaseOrganization.groups}
-          releases={databaseOrganization.releases}
           editable={
             user.user_metadata.organization_role !== EververseRole.Member
           }
+          groups={databaseOrganization.groups}
           members={members}
+          products={databaseOrganization.products}
+          query={query}
+          releases={databaseOrganization.releases}
           role={user.user_metadata.organization_role}
+          statuses={databaseOrganization.featureStatuses}
+          title={searchParams?.query}
         />
       </HydrationBoundary>
     </div>

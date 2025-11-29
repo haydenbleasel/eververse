@@ -1,7 +1,7 @@
 /* https://github.com/ueberdosis/tiptap/issues/4089#issuecomment-2228313061 */
-import { type Extensions, type JSONContent, getSchema } from '@tiptap/core';
-import { DOMSerializer, Node } from '@tiptap/pm/model';
-import { Window } from 'happy-dom';
+import { type Extensions, getSchema, type JSONContent } from "@tiptap/core";
+import { DOMSerializer, Node } from "@tiptap/pm/model";
+import { Window } from "happy-dom";
 
 export const generateHTML = (
   doc: JSONContent,

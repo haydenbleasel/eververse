@@ -1,4 +1,4 @@
-import ky from 'ky';
+import ky from "ky";
 
 export type CannyChangelog = {
   id: string;
@@ -47,9 +47,9 @@ export type CannyChangelog = {
     like: number;
   };
   scheduledFor: string | null;
-  status: 'draft' | 'published' | 'scheduled';
+  status: "draft" | "published" | "scheduled";
   title: string;
-  types: ('fixed' | 'improved' | 'new')[];
+  types: ("fixed" | "improved" | "new")[];
   url: string;
 };
 
@@ -58,7 +58,7 @@ export const createCannyChangelog = async (
   props: {
     title: string;
     details: string;
-    type?: 'fixed' | 'improved' | 'new';
+    type?: "fixed" | "improved" | "new";
     notify?: boolean;
     published?: boolean;
     publishedOn?: Date;
@@ -66,9 +66,9 @@ export const createCannyChangelog = async (
     labelIDs?: string[];
     postIDs?: string[];
   }
-): Promise<{ id: CannyChangelog['id'] }> => {
+): Promise<{ id: CannyChangelog["id"] }> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/entries/create', {
+    .post("https://canny.io/api/v1/entries/create", {
       json: {
         apiKey,
         ...props,
@@ -76,9 +76,9 @@ export const createCannyChangelog = async (
         scheduledFor: props.scheduledFor?.toISOString(),
       },
     })
-    .json<{ id: CannyChangelog['id'] } | { error: string }>();
+    .json<{ id: CannyChangelog["id"] } | { error: string }>();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 
@@ -91,7 +91,7 @@ export const fetchCannyChangelogs = async (
   limit = 10_000
 ): Promise<CannyChangelog[]> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/entries/list', {
+    .post("https://canny.io/api/v1/entries/list", {
       json: {
         apiKey,
         limit,
@@ -108,7 +108,7 @@ export const fetchCannyChangelogs = async (
         }
     >();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 

@@ -1,5 +1,5 @@
-import { WidgetItem } from './widget-item';
-import type { WidgetItemProperties } from './widget-item';
+import type { WidgetItemProperties } from "./widget-item";
+import { WidgetItem } from "./widget-item";
 
 export type WidgetGroupProperties = {
   readonly title: string;

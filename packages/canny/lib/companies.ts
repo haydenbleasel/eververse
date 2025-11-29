@@ -1,4 +1,4 @@
-import ky from 'ky';
+import ky from "ky";
 
 export type CannyCompany = {
   id: string;
@@ -19,18 +19,18 @@ export const updateCannyCompany = async (
     monthlySpend?: number;
     name?: string;
   }
-): Promise<{ id: CannyCompany['id'] }> => {
+): Promise<{ id: CannyCompany["id"] }> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/companies/update', {
+    .post("https://canny.io/api/v1/companies/update", {
       json: {
         apiKey,
         ...props,
         created: props.created?.toISOString(),
       },
     })
-    .json<{ id: CannyCompany['id'] } | { error: string }>();
+    .json<{ id: CannyCompany["id"] } | { error: string }>();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 
@@ -44,17 +44,17 @@ export const deleteCannyCompany = async (
   }
 ): Promise<void> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/companies/delete', {
+    .post("https://canny.io/api/v1/companies/delete", {
       json: {
         apiKey,
         companyID: props.id,
       },
     })
-    .json<'success' | { error: string }>();
+    .json<"success" | { error: string }>();
 
-  if (payload !== 'success') {
+  if (payload !== "success") {
     throw new Error(
-      'error' in payload ? payload.error : 'Unknown error occurred'
+      "error" in payload ? payload.error : "Unknown error occurred"
     );
   }
 };
@@ -65,7 +65,7 @@ export const fetchCannyCompanies = async (
   limit = 10_000
 ): Promise<CannyCompany[]> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/companies/list', {
+    .post("https://canny.io/api/v1/companies/list", {
       json: {
         apiKey,
         limit,
@@ -82,7 +82,7 @@ export const fetchCannyCompanies = async (
         }
     >();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 

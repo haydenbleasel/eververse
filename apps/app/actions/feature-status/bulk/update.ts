@@ -1,12 +1,12 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import type { FeatureStatus, Prisma } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import type { FeatureStatus, Prisma } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const updateFeatureStatuses = async (
-  ids: FeatureStatus['id'][]
+  ids: FeatureStatus["id"][]
 ): Promise<{
   error?: string;
 }> => {
@@ -25,7 +25,7 @@ export const updateFeatureStatuses = async (
 
     await database.$transaction(promises);
 
-    revalidatePath('/settings');
+    revalidatePath("/settings");
 
     return {};
   } catch (error) {

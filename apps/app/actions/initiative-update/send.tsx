@@ -1,24 +1,24 @@
-'use server';
+"use server";
 
-import { env } from '@/env';
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
+import { EververseRole } from "@repo/backend/auth";
+import { getUserName } from "@repo/backend/auth/format";
 import {
   currentMembers,
   currentOrganizationId,
   currentUser,
-} from '@repo/backend/auth/utils';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import type { InitiativeUpdate } from '@repo/backend/prisma/client';
-import { contentToHtml, contentToText } from '@repo/editor/lib/tiptap';
-import { resend } from '@repo/email';
-import { InitiativeUpdateTemplate } from '@repo/email/templates/initiative-update';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+} from "@repo/backend/auth/utils";
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import type { InitiativeUpdate } from "@repo/backend/prisma/client";
+import { contentToHtml, contentToText } from "@repo/editor/lib/tiptap";
+import { resend } from "@repo/email";
+import { InitiativeUpdateTemplate } from "@repo/email/templates/initiative-update";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { env } from "@/env";
+import { database } from "@/lib/database";
 
 export const sendInitiativeUpdate = async (
-  initiativeUpdateId: InitiativeUpdate['id']
+  initiativeUpdateId: InitiativeUpdate["id"]
 ): Promise<{
   error?: string;
 }> => {
@@ -29,12 +29,12 @@ export const sendInitiativeUpdate = async (
       currentMembers(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('Not logged in');
+    if (!(user && organizationId)) {
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
-      throw new Error('You do not have permission to send initiative updates');
+      throw new Error("You do not have permission to send initiative updates");
     }
 
     const [update, content] = await Promise.all([
@@ -56,22 +56,22 @@ export const sendInitiativeUpdate = async (
         },
       }),
       getJsonColumnFromTable(
-        'initiative_update',
-        'content',
+        "initiative_update",
+        "content",
         initiativeUpdateId
       ),
     ]);
 
     if (!update) {
-      throw new Error('Initiative update not found');
+      throw new Error("Initiative update not found");
     }
 
     if (!update.initiative.team.length) {
-      throw new Error('No team members found.');
+      throw new Error("No team members found.");
     }
 
-    if (!content || !Object.keys(content).length) {
-      throw new Error('Initiative update content not found');
+    if (!(content && Object.keys(content).length)) {
+      throw new Error("Initiative update content not found");
     }
 
     const [users, html, text, owner] = await Promise.all([
@@ -84,17 +84,17 @@ export const sendInitiativeUpdate = async (
     ]);
 
     if (!owner) {
-      throw new Error('Owner not found.');
+      throw new Error("Owner not found.");
     }
 
     if (!users.length) {
-      throw new Error('No users found.');
+      throw new Error("No users found.");
     }
 
     const emails = users.map((user) => user.email).filter(Boolean) as string[];
 
     if (!emails.length) {
-      throw new Error('No emails found.');
+      throw new Error("No emails found.");
     }
 
     const response = await resend.emails.send({
@@ -105,10 +105,10 @@ export const sendInitiativeUpdate = async (
       react: (
         <InitiativeUpdateTemplate
           date={new Date()}
-          title={update.title}
-          name={getUserName(owner)}
           html={html}
+          name={getUserName(owner)}
           siteUrl={env.EVERVERSE_WEB_URL}
+          title={update.title}
         />
       ),
       text,

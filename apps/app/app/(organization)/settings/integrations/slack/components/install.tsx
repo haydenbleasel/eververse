@@ -1,7 +1,7 @@
-import { Prose } from '@repo/design-system/components/prose';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import Image from 'next/image';
-import { SlackInstallationForm } from './install-form';
+import { Prose } from "@repo/design-system/components/prose";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import Image from "next/image";
+import { SlackInstallationForm } from "./install-form";
 
 export const InstallSlack = () => (
   <>
@@ -11,12 +11,12 @@ export const InstallSlack = () => (
       </h1>
       <p className="mt-2 mb-0 text-muted-foreground">
         Follow the steps below to integrate Slack with Eververse. This assumes
-        you already have a Slack account. If you don&apos;t, head to the{' '}
+        you already have a Slack account. If you don&apos;t, head to the{" "}
         <a
-          href="https://slack.com/get-started"
-          target="_blank"
-          rel="noreferrer"
           className="text-primary underline"
+          href="https://slack.com/get-started"
+          rel="noreferrer"
+          target="_blank"
         >
           Slack signup page
         </a>
@@ -26,14 +26,14 @@ export const InstallSlack = () => (
     <StackCard title="1. Add Incoming WebHooks">
       <Prose className="max-w-none">
         <p>
-          To get started, you need to create a new Incoming WebHooks. Go to the{' '}
+          To get started, you need to create a new Incoming WebHooks. Go to the{" "}
           <a
             href="https://eververse.slack.com/marketplace/new/A0F7XDUAZ-incoming-webhooks"
-            target="_blank"
             rel="noreferrer"
+            target="_blank"
           >
             Incoming WebHooks
-          </a>{' '}
+          </a>{" "}
           app in the Slack App Directory and click "Add to Slack".
         </p>
       </Prose>
@@ -57,11 +57,11 @@ export const InstallSlack = () => (
         <p>Here is an icon you can use for the "Customize Icon" section:</p>
 
         <Image
-          src="/apple-icon.png"
           alt="Eververse icon"
-          width={192}
           height={192}
+          src="/apple-icon.png"
           unoptimized
+          width={192}
         />
       </Prose>
     </StackCard>

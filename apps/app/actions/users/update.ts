@@ -1,10 +1,10 @@
-'use server';
+"use server";
 
-import { EververseRole } from '@repo/backend/auth';
-import { createClient } from '@repo/backend/auth/server';
-import { currentMembers, currentUser } from '@repo/backend/auth/utils';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { EververseRole } from "@repo/backend/auth";
+import { createClient } from "@repo/backend/auth/server";
+import { currentMembers, currentUser } from "@repo/backend/auth/utils";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
 
 export const updateUserRole = async (
   userId: string,
@@ -15,11 +15,11 @@ export const updateUserRole = async (
     const user = await currentUser();
 
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
     if (user.user_metadata.organization_role !== EververseRole.Admin) {
-      throw new Error('You are not authorized to update user roles');
+      throw new Error("You are not authorized to update user roles");
     }
 
     const members = await currentMembers();
@@ -31,7 +31,7 @@ export const updateUserRole = async (
       const [admin] = admins;
 
       if (admin.id === userId && role !== EververseRole.Admin) {
-        throw new Error('There must be at least one admin.');
+        throw new Error("There must be at least one admin.");
       }
     }
 
@@ -43,7 +43,7 @@ export const updateUserRole = async (
       throw new Error(response.error.message);
     }
 
-    revalidatePath('/settings/members');
+    revalidatePath("/settings/members");
 
     return {};
   } catch (error) {

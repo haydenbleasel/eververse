@@ -1,16 +1,16 @@
-'use server';
+"use server";
 
-import { EververseRole } from '@repo/backend/auth';
-import { createClient } from '@repo/backend/auth/server';
+import { EververseRole } from "@repo/backend/auth";
+import { createClient } from "@repo/backend/auth/server";
 import {
   currentMembers,
   currentOrganizationId,
   currentUser,
-} from '@repo/backend/auth/utils';
-import { database } from '@repo/backend/database';
-import { parseError } from '@repo/lib/parse-error';
-import { stripe } from '@repo/payments';
-import { revalidatePath } from 'next/cache';
+} from "@repo/backend/auth/utils";
+import { database } from "@repo/backend/database";
+import { parseError } from "@repo/lib/parse-error";
+import { stripe } from "@repo/payments";
+import { revalidatePath } from "next/cache";
 
 export const removeUser = async (
   userId: string
@@ -24,15 +24,15 @@ export const removeUser = async (
     ]);
 
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
     if (user.user_metadata.organization_role !== EververseRole.Admin) {
-      throw new Error('You are not authorized to delete users');
+      throw new Error("You are not authorized to delete users");
     }
 
     if (!organizationId) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     const organization = await database.organization.findFirst({
@@ -40,7 +40,7 @@ export const removeUser = async (
     });
 
     if (!organization) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     const response = await supabase.auth.admin.updateUserById(userId, {
@@ -60,9 +60,9 @@ export const removeUser = async (
       });
     }
 
-    revalidatePath('/settings/members');
+    revalidatePath("/settings/members");
 
-    return { message: 'Member removed successfully' };
+    return { message: "Member removed successfully" };
   } catch (error) {
     const message = parseError(error);
 

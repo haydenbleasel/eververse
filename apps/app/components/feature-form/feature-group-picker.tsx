@@ -1,8 +1,8 @@
-import type { GroupWithSubgroups } from '@/lib/group';
-import emojiData from '@emoji-mart/data';
-import { Emoji } from '@repo/design-system/components/emoji';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { init } from 'emoji-mart';
+import emojiData from "@emoji-mart/data";
+import { Emoji } from "@repo/design-system/components/emoji";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { init } from "emoji-mart";
+import type { GroupWithSubgroups } from "@/lib/group";
 
 init({ data: emojiData });
 
@@ -32,13 +32,12 @@ export const FeatureGroupPicker = ({
 
   return (
     <Select
-      value={value}
-      onChange={onChange}
       data={flattenedData.map((group) => ({
         value: group.id,
         label: group.name,
       }))}
       disabled={data.length === 0}
+      onChange={onChange}
       renderItem={(item) => {
         const group = flattenedData.find((option) => option.id === item.value);
 
@@ -54,6 +53,7 @@ export const FeatureGroupPicker = ({
         );
       }}
       type="group"
+      value={value}
     />
   );
 };

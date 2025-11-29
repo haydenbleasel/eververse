@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import 'shadcn-prose';
+@import "shadcn-prose";
 
 @source "../**/*.{ts,tsx}";
 
@@ -25,7 +25,7 @@
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
-  --success: oklch(0.70 0.15 162);
+  --success: oklch(0.7 0.15 162);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
@@ -68,7 +68,7 @@
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --success: oklch(0.70 0.15 162);
+  --success: oklch(0.7 0.15 162);
   --border: oklch(0.269 0 0);
   --input: oklch(0.269 0 0);
   --ring: oklch(0.439 0 0);
@@ -219,7 +219,8 @@
   &::before {
     @apply inset-0;
 
-    background: radial-gradient(farthest-side, currentColor 98%, #0000) top /
+    background:
+      radial-gradient(farthest-side, currentColor 98%, #0000) top /
       var(--thickness) var(--thickness) no-repeat,
       conic-gradient(currentColor calc(var(--value) * 1%), #0000 0);
     mask: radial-gradient(
@@ -243,12 +244,8 @@
   --border-angle: 0turn;
 
   animation: bg-animated-border 10s linear infinite;
-  background-image: conic-gradient(
-      from var(--border-angle),
-      #213,
-      #112 50%,
-      #213
-    ),
+  background-image:
+    conic-gradient(from var(--border-angle), #213, #112 50%, #213),
     conic-gradient(
       from var(--border-angle),
       transparent 20%,
@@ -257,8 +254,9 @@
     );
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: calc(100% - (var(--border-size) * 2))
-    calc(100% - (var(--border-size) * 2)), cover;
+  background-size:
+    calc(100% - (var(--border-size) * 2)) calc(100% - (var(--border-size) * 2)),
+    cover;
 }
 
 @keyframes bg-animated-border {

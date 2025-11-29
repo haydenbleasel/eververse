@@ -1,36 +1,36 @@
-'use client';
+"use client";
 
-import { createInitiativePage } from '@/actions/initiative-page/create';
-import type { Initiative } from '@repo/backend/prisma/client';
-import { Dialog } from '@repo/design-system/components/precomposed/dialog';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
-import { Button } from '@repo/design-system/components/ui/button';
-import { Label } from '@repo/design-system/components/ui/label';
+import type { Initiative } from "@repo/backend/prisma/client";
+import { Dialog } from "@repo/design-system/components/precomposed/dialog";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { Tooltip } from "@repo/design-system/components/precomposed/tooltip";
+import { Button } from "@repo/design-system/components/ui/button";
+import { Label } from "@repo/design-system/components/ui/label";
 import {
   RadioGroup,
   RadioGroupItem,
-} from '@repo/design-system/components/ui/radio-group';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { cn } from '@repo/design-system/lib/utils';
-import { PlusIcon } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+} from "@repo/design-system/components/ui/radio-group";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { cn } from "@repo/design-system/lib/utils";
+import { PlusIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { createInitiativePage } from "@/actions/initiative-page/create";
 
 type CreateInitiativePageButtonProperties = {
-  readonly initiativeId: Initiative['id'];
+  readonly initiativeId: Initiative["id"];
 };
 
 const types = [
   {
-    id: 'document',
-    label: 'Document',
-    description: 'A document is a great way to write up long-form content.',
+    id: "document",
+    label: "Document",
+    description: "A document is a great way to write up long-form content.",
   },
   {
-    id: 'canvas',
-    label: 'Canvas',
-    description: 'A canvas is a great way to explore ideas more visually.',
+    id: "canvas",
+    label: "Canvas",
+    description: "A canvas is a great way to explore ideas more visually.",
   },
 ];
 
@@ -38,7 +38,7 @@ export const CreateInitiativePageButton = ({
   initiativeId,
 }: CreateInitiativePageButtonProperties) => {
   const [open, setOpen] = useState(false);
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(false);
   const [type, setType] = useState(types[0].id);
   const disabled = loading || !title.trim();
@@ -54,7 +54,7 @@ export const CreateInitiativePageButton = ({
     try {
       const response = await createInitiativePage(initiativeId, title, type);
 
-      if ('error' in response) {
+      if ("error" in response) {
         throw new Error(response.error);
       }
 
@@ -69,17 +69,17 @@ export const CreateInitiativePageButton = ({
 
   return (
     <Dialog
-      open={open}
-      onOpenChange={setOpen}
-      title="Create a new page"
-      description="Pages are a great way to organize your content. You can add multiple pages to an initiative."
-      onClick={onClick}
       cta="Create page"
+      description="Pages are a great way to organize your content. You can add multiple pages to an initiative."
       disabled={disabled}
+      onClick={onClick}
+      onOpenChange={setOpen}
+      open={open}
+      title="Create a new page"
       trigger={
         <div>
           <Tooltip content="Create a new page">
-            <Button size="icon" variant="ghost" className="-m-1.5 h-6 w-6">
+            <Button className="-m-1.5 h-6 w-6" size="icon" variant="ghost">
               <PlusIcon size={16} />
               <span className="sr-only">Create page</span>
             </Button>
@@ -91,29 +91,29 @@ export const CreateInitiativePageButton = ({
         <Input
           label="Title"
           name="title"
-          required
-          value={title}
           onChangeText={setTitle}
           placeholder="Early access program"
+          required
+          value={title}
         />
 
         <div className="space-y-1.5">
           <Label htmlFor="title">Type</Label>
           <RadioGroup
             className="grid w-full grid-cols-2 gap-4"
-            value={type}
             onValueChange={setType}
+            value={type}
           >
             {types.map((option) => (
               <div
-                key={option.id}
                 className={cn(
-                  'space-y-2 rounded border p-4',
-                  option.id === type ? 'bg-secondary' : 'bg-background'
+                  "space-y-2 rounded border p-4",
+                  option.id === type ? "bg-secondary" : "bg-background"
                 )}
+                key={option.id}
               >
                 <div className="flex items-center gap-2">
-                  <RadioGroupItem value={option.id} id={option.id} />
+                  <RadioGroupItem id={option.id} value={option.id} />
                   <Label htmlFor={option.id}>{option.label}</Label>
                 </div>
                 <p className="text-muted-foreground text-sm">

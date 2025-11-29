@@ -1,21 +1,21 @@
-import { getFeedback } from '@/actions/feedback/get';
-import { Header } from '@/components/header';
-import { database } from '@/lib/database';
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from '@repo/design-system/components/ui/resizable';
+} from "@repo/design-system/components/ui/resizable";
 import {
+  dehydrate,
   HydrationBoundary,
   QueryClient,
-  dehydrate,
-} from '@tanstack/react-query';
-import type { ReactNode } from 'react';
-import { CreateFeedbackButton } from './components/create-feedback-button';
-import { FeedbackEmptyState } from './components/feedback-empty-state';
-import { FeedbackList } from './components/feedback-list';
-import { ToggleProcessedButton } from './components/toggle-processed-button';
+} from "@tanstack/react-query";
+import type { ReactNode } from "react";
+import { getFeedback } from "@/actions/feedback/get";
+import { Header } from "@/components/header";
+import { database } from "@/lib/database";
+import { CreateFeedbackButton } from "./components/create-feedback-button";
+import { FeedbackEmptyState } from "./components/feedback-empty-state";
+import { FeedbackList } from "./components/feedback-list";
+import { ToggleProcessedButton } from "./components/toggle-processed-button";
 
 type FeedbackLayoutProperties = {
   readonly children: ReactNode;
@@ -26,11 +26,11 @@ const FeedbackLayout = async ({ children }: FeedbackLayoutProperties) => {
   const [count] = await Promise.all([
     database.feedback.count(),
     queryClient.prefetchInfiniteQuery({
-      queryKey: ['feedback', false],
+      queryKey: ["feedback", false],
       queryFn: async ({ pageParam }) => {
         const response = await getFeedback(pageParam, false);
 
-        if ('error' in response) {
+        if ("error" in response) {
           throw response.error;
         }
 
@@ -52,15 +52,15 @@ const FeedbackLayout = async ({ children }: FeedbackLayoutProperties) => {
   }
 
   return (
-    <ResizablePanelGroup direction="horizontal" style={{ overflow: 'unset' }}>
+    <ResizablePanelGroup direction="horizontal" style={{ overflow: "unset" }}>
       <ResizablePanel
-        minSize={25}
+        className="sticky top-0 h-screen"
         defaultSize={30}
         maxSize={35}
-        style={{ overflow: 'auto' }}
-        className="sticky top-0 h-screen"
+        minSize={25}
+        style={{ overflow: "auto" }}
       >
-        <Header title="Feedback" badge={count}>
+        <Header badge={count} title="Feedback">
           <div className="-m-2 flex items-center gap-px">
             <ToggleProcessedButton />
             <CreateFeedbackButton />
@@ -72,9 +72,9 @@ const FeedbackLayout = async ({ children }: FeedbackLayoutProperties) => {
       </ResizablePanel>
       <ResizableHandle />
       <ResizablePanel
-        style={{ overflow: 'unset' }}
         className="flex min-h-screen flex-col self-start"
         defaultSize={70}
+        style={{ overflow: "unset" }}
       >
         {children}
       </ResizablePanel>

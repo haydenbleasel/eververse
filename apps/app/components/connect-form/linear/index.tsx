@@ -1,17 +1,17 @@
-import { OrDivider } from '@/components/or-divider';
-import type { LinearInstallation } from '@repo/backend/prisma/client';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import type { Issue, Team } from '@repo/linear';
-import { useState } from 'react';
-import { useConnectForm } from '../use-connect-form';
-import { connectToLinear } from './connect-to-linear';
-import { createLinearIssue } from './create-linear-issue';
-import { LinearIssueSelect } from './linear-issue-select';
-import { LinearTeamSelect } from './linear-team-select';
+import type { LinearInstallation } from "@repo/backend/prisma/client";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import type { Issue, Team } from "@repo/linear";
+import { useState } from "react";
+import { OrDivider } from "@/components/or-divider";
+import { useConnectForm } from "../use-connect-form";
+import { connectToLinear } from "./connect-to-linear";
+import { createLinearIssue } from "./create-linear-issue";
+import { LinearIssueSelect } from "./linear-issue-select";
+import { LinearTeamSelect } from "./linear-team-select";
 
 type LinearSelectorProperties = {
-  readonly linearApiKey: LinearInstallation['apiKey'] | undefined;
+  readonly linearApiKey: LinearInstallation["apiKey"] | undefined;
 };
 
 export const LinearSelector = ({ linearApiKey }: LinearSelectorProperties) => {
@@ -47,7 +47,7 @@ export const LinearSelector = ({ linearApiKey }: LinearSelectorProperties) => {
 
       hide();
 
-      window.open(selectedIssue.url, '_blank');
+      window.open(selectedIssue.url, "_blank");
       window.location.reload();
     } catch (error) {
       handleError(error);
@@ -73,8 +73,8 @@ export const LinearSelector = ({ linearApiKey }: LinearSelectorProperties) => {
         throw new Error(issueResponse.error);
       }
 
-      if (!issueResponse.id || !issueResponse.href) {
-        throw new Error('Issue not found');
+      if (!(issueResponse.id && issueResponse.href)) {
+        throw new Error("Issue not found");
       }
 
       const { error } = await connectToLinear({
@@ -89,7 +89,7 @@ export const LinearSelector = ({ linearApiKey }: LinearSelectorProperties) => {
 
       hide();
 
-      window.open(issueResponse.href, '_blank');
+      window.open(issueResponse.href, "_blank");
     } catch (error) {
       handleError(error);
     } finally {
@@ -102,8 +102,8 @@ export const LinearSelector = ({ linearApiKey }: LinearSelectorProperties) => {
       <Button asChild>
         <a
           href="/api/integrations/linear/start"
-          target="_blank"
           rel="noopener noreferrer"
+          target="_blank"
         >
           Install Linear app
         </a>
@@ -114,35 +114,35 @@ export const LinearSelector = ({ linearApiKey }: LinearSelectorProperties) => {
   return (
     <>
       <LinearTeamSelect
-        value={linearTeam}
         onValueChange={setLinearTeam}
-        teams={linearTeams}
         setTeams={setLinearTeams}
+        teams={linearTeams}
+        value={linearTeam}
       />
       {linearTeam ? (
         <div className="flex flex-col gap-4">
           <div className="flex items-end gap-4">
             <LinearIssueSelect
-              value={linearIssue}
-              onValueChange={setLinearIssue}
               issues={linearIssues}
+              onValueChange={setLinearIssue}
               setIssues={setLinearIssues}
               team={linearTeam}
+              value={linearIssue}
             />
             <Button
-              type="submit"
+              className="shrink-0"
               disabled={disabled}
               onClick={handleConnectLinear}
-              className="shrink-0"
+              type="submit"
             >
               Sync feature
             </Button>
           </div>
           <OrDivider />
           <Button
-            variant="secondary"
-            onClick={handleCreateLinearIssue}
             disabled={loading}
+            onClick={handleCreateLinearIssue}
+            variant="secondary"
           >
             Create new issue
           </Button>

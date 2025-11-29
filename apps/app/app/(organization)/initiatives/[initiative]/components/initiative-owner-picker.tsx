@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { updateInitiative } from '@/actions/initiative/update';
-import type { User } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
-import type { Initiative } from '@repo/backend/prisma/client';
-import { Avatar } from '@repo/design-system/components/precomposed/avatar';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useState } from 'react';
+import type { User } from "@repo/backend/auth";
+import { getUserName } from "@repo/backend/auth/format";
+import type { Initiative } from "@repo/backend/prisma/client";
+import { Avatar } from "@repo/design-system/components/precomposed/avatar";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useState } from "react";
+import { updateInitiative } from "@/actions/initiative/update";
 
 type InitiativeOwnerPickerProperties = {
-  readonly initiativeId: Initiative['id'];
+  readonly initiativeId: Initiative["id"];
   readonly defaultValue: string;
   readonly disabled: boolean;
   readonly data: User[];
@@ -42,13 +42,12 @@ export const InitiativeOwnerPicker = ({
 
   return (
     <Select
-      value={value}
-      disabled={disabled}
-      onChange={handleSelect}
       data={data.map((member) => ({
         label: getUserName(member),
         value: member.id,
       }))}
+      disabled={disabled}
+      onChange={handleSelect}
       renderItem={(item) => {
         const assignee = data.find((member) => member.id === item.value);
 
@@ -64,6 +63,7 @@ export const InitiativeOwnerPicker = ({
         );
       }}
       type="user"
+      value={value}
     />
   );
 };

@@ -1,12 +1,12 @@
-import { getMembers } from '@repo/backend/auth/utils';
-import { database } from '@repo/backend/database';
-import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
-import { markdownToContent } from '@repo/editor/lib/tiptap';
-import { createClient } from '@repo/productboard';
+import { getMembers } from "@repo/backend/auth/utils";
+import { database } from "@repo/backend/database";
+import type { Prisma, ProductboardImport } from "@repo/backend/prisma/client";
+import { markdownToContent } from "@repo/editor/lib/tiptap";
+import { createClient } from "@repo/productboard";
 
 type ImportJobProperties = Pick<
   ProductboardImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateFeatures = async ({
@@ -15,22 +15,22 @@ export const migrateFeatures = async ({
   organizationId,
 }: ImportJobProperties): Promise<number> => {
   const productboard = createClient({ accessToken: token });
-  const features = await productboard.GET('/features', {
+  const features = await productboard.GET("/features", {
     params: {
       header: {
-        'X-Version': 1,
+        "X-Version": 1,
       },
     },
   });
 
   if (features.error) {
     throw new Error(
-      features.error.errors.map((error) => error.detail).join(', ')
+      features.error.errors.map((error) => error.detail).join(", ")
     );
   }
 
   if (!features.data) {
-    throw new Error('No features found');
+    throw new Error("No features found");
   }
 
   const members = await getMembers(organizationId);
@@ -45,7 +45,7 @@ export const migrateFeatures = async ({
   });
 
   if (!databaseOrganization) {
-    throw new Error('Could not find organization');
+    throw new Error("Could not find organization");
   }
 
   const rootFeatures: typeof features.data.data = [];
@@ -59,11 +59,11 @@ export const migrateFeatures = async ({
       return !existing;
     })
     .sort((featureA, featureB) => {
-      if ('feature' in featureA.parent) {
+      if ("feature" in featureA.parent) {
         return 1;
       }
 
-      if ('feature' in featureB.parent) {
+      if ("feature" in featureB.parent) {
         return -1;
       }
 
@@ -71,7 +71,7 @@ export const migrateFeatures = async ({
     });
 
   for (const feature of newFeatures) {
-    if ('feature' in feature.parent) {
+    if ("feature" in feature.parent) {
       subFeatures.push(feature);
     } else {
       rootFeatures.push(feature);
@@ -93,20 +93,20 @@ export const migrateFeatures = async ({
       const owner = members.find(({ email }) => email === feature.owner?.email);
 
       const startAt =
-        feature.timeframe.startDate === 'none'
+        feature.timeframe.startDate === "none"
           ? undefined
           : new Date(feature.timeframe.startDate);
       const endAt =
-        feature.timeframe.endDate === 'none'
+        feature.timeframe.endDate === "none"
           ? undefined
           : new Date(feature.timeframe.endDate);
 
       let parentProductId =
-        'product' in feature.parent ? feature.parent.product.id : null;
+        "product" in feature.parent ? feature.parent.product.id : null;
       let parentComponentId =
-        'component' in feature.parent ? feature.parent.component.id : null;
+        "component" in feature.parent ? feature.parent.component.id : null;
       const parentFeatureId =
-        'feature' in feature.parent ? feature.parent.feature.id : null;
+        "feature" in feature.parent ? feature.parent.feature.id : null;
 
       // If the feature is missing a product, but has a parent feature, we can use the parent feature's product.
       if (!parentProductId && parentFeatureId) {

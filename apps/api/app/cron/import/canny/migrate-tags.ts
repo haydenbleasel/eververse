@@ -1,11 +1,11 @@
-import { database } from '@repo/backend/database';
-import type { CannyImport, Prisma } from '@repo/backend/prisma/client';
-import { Canny } from '@repo/canny';
-import { slugify } from '@repo/lib/slugify';
+import { database } from "@repo/backend/database";
+import type { CannyImport, Prisma } from "@repo/backend/prisma/client";
+import { Canny } from "@repo/canny";
+import { slugify } from "@repo/lib/slugify";
 
 type ImportJobProperties = Pick<
   CannyImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateTags = async ({

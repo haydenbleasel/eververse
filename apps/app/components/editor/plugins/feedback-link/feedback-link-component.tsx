@@ -1,13 +1,13 @@
-import { FeedbackItem } from '@/app/(organization)/feedback/components/feedback-item';
-import type { Feedback } from '@repo/backend/prisma/client';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { NodeViewWrapper } from '@repo/editor';
-import { useEffect, useState } from 'react';
-import { fetchLink } from './fetch-link';
-import type { FetchLinkResponse } from './fetch-link';
+import type { Feedback } from "@repo/backend/prisma/client";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { NodeViewWrapper } from "@repo/editor";
+import { useEffect, useState } from "react";
+import { FeedbackItem } from "@/app/(organization)/feedback/components/feedback-item";
+import type { FetchLinkResponse } from "./fetch-link";
+import { fetchLink } from "./fetch-link";
 
 type FeedbackLinkComponentProperties = {
-  readonly id: Feedback['id'];
+  readonly id: Feedback["id"];
 };
 
 export const FeedbackLinkComponent = ({
@@ -28,7 +28,7 @@ export const FeedbackLinkComponent = ({
       }
 
       if (!response.data) {
-        throw new Error('No data');
+        throw new Error("No data");
       }
 
       return response.data;

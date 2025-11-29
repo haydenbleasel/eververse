@@ -1,16 +1,16 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentUser } from '@repo/backend/auth/utils';
-import type { Initiative, InitiativeUpdate } from '@repo/backend/prisma/client';
-import { textToContent } from '@repo/editor/lib/tiptap';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { EververseRole } from "@repo/backend/auth";
+import { currentUser } from "@repo/backend/auth/utils";
+import type { Initiative, InitiativeUpdate } from "@repo/backend/prisma/client";
+import { textToContent } from "@repo/editor/lib/tiptap";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const createInitiativeUpdateContent = async (
-  initiativeId: Initiative['id'],
-  initiativeUpdateId: InitiativeUpdate['id']
+  initiativeId: Initiative["id"],
+  initiativeUpdateId: InitiativeUpdate["id"]
 ): Promise<{
   error?: string;
 }> => {
@@ -18,11 +18,11 @@ export const createInitiativeUpdateContent = async (
     const user = await currentUser();
 
     if (!user) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
-      throw new Error('You do not have permission to create update versions');
+      throw new Error("You do not have permission to create update versions");
     }
 
     const update = await database.initiativeUpdate.update({
@@ -31,7 +31,7 @@ export const createInitiativeUpdateContent = async (
         initiativeId,
       },
       data: {
-        content: textToContent(''),
+        content: textToContent(""),
       },
       select: {
         id: true,

@@ -1,15 +1,15 @@
-'use server';
-import { EververseRole } from '@repo/backend/auth';
-import { createClient } from '@repo/backend/auth/server';
+"use server";
+import { EververseRole } from "@repo/backend/auth";
+import { createClient } from "@repo/backend/auth/server";
 import {
   currentMembers,
   currentOrganizationId,
   currentUser,
-} from '@repo/backend/auth/utils';
-import { database } from '@repo/backend/database';
-import { parseError } from '@repo/lib/parse-error';
-import { stripe } from '@repo/payments';
-import { revalidatePath } from 'next/cache';
+} from "@repo/backend/auth/utils";
+import { database } from "@repo/backend/database";
+import { parseError } from "@repo/lib/parse-error";
+import { stripe } from "@repo/payments";
+import { revalidatePath } from "next/cache";
 
 export const inviteMember = async (
   email: string,
@@ -31,15 +31,15 @@ export const inviteMember = async (
     ]);
 
     if (!user) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role !== EververseRole.Admin) {
-      throw new Error('You are not authorized to invite users');
+      throw new Error("You are not authorized to invite users");
     }
 
     if (!organizationId) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     const organization = await database.organization.findFirst({
@@ -47,12 +47,12 @@ export const inviteMember = async (
     });
 
     if (!organization) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     if (!organization.stripeSubscriptionId) {
       throw new Error(
-        'You must have a subscription to invite other users. Please upgrade your plan.'
+        "You must have a subscription to invite other users. Please upgrade your plan."
       );
     }
 
@@ -63,10 +63,10 @@ export const inviteMember = async (
 
     if (existingMember) {
       if (existingMember.user_metadata.organization_id === organizationId) {
-        throw new Error('This user is already a member of your organization');
+        throw new Error("This user is already a member of your organization");
       }
 
-      throw new Error('This user is already a member of another organization');
+      throw new Error("This user is already a member of another organization");
     }
 
     const response = await supabase.auth.admin.inviteUserByEmail(email, {
@@ -84,9 +84,9 @@ export const inviteMember = async (
       quantity: members.length + 1,
     });
 
-    revalidatePath('/settings/members');
+    revalidatePath("/settings/members");
 
-    return { message: 'Member invited successfully' };
+    return { message: "Member invited successfully" };
   } catch (error) {
     const message = parseError(error);
 

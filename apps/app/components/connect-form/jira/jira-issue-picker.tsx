@@ -1,6 +1,6 @@
-import { useDebouncedEffect } from '@react-hookz/web';
-import { LoadingCircle } from '@repo/design-system/components/loading-circle';
-import { Button } from '@repo/design-system/components/ui/button';
+import { useDebouncedEffect } from "@react-hookz/web";
+import { LoadingCircle } from "@repo/design-system/components/loading-circle";
+import { Button } from "@repo/design-system/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -8,29 +8,29 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@repo/design-system/components/ui/command';
-import { Label } from '@repo/design-system/components/ui/label';
+} from "@repo/design-system/components/ui/command";
+import { Label } from "@repo/design-system/components/ui/label";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@repo/design-system/components/ui/popover';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { cn } from '@repo/design-system/lib/utils';
-import { CheckIcon, ChevronDownIcon } from 'lucide-react';
-import Image from 'next/image';
-import { useId, useState } from 'react';
-import { useConnectForm } from '../use-connect-form';
-import { connectToJira } from './connect-to-jira';
-import { searchJiraIssues } from './search-jira-issues';
-import type { SearchJiraIssuesResponse } from './search-jira-issues';
+} from "@repo/design-system/components/ui/popover";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { cn } from "@repo/design-system/lib/utils";
+import { CheckIcon, ChevronDownIcon } from "lucide-react";
+import Image from "next/image";
+import { useId, useState } from "react";
+import { useConnectForm } from "../use-connect-form";
+import { connectToJira } from "./connect-to-jira";
+import type { SearchJiraIssuesResponse } from "./search-jira-issues";
+import { searchJiraIssues } from "./search-jira-issues";
 
 export const JiraIssuePicker = () => {
   const { featureId, hide } = useConnectForm();
   const [open, setOpen] = useState(false);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<SearchJiraIssuesResponse['issues']>([]);
+  const [data, setData] = useState<SearchJiraIssuesResponse["issues"]>([]);
   const [value, setValue] = useState<string | undefined>();
   const id = useId();
   const selectedIssue = data.find((issue) => issue.id === value);
@@ -56,7 +56,7 @@ export const JiraIssuePicker = () => {
 
       hide();
 
-      window.open(selectedIssue.url, '_blank');
+      window.open(selectedIssue.url, "_blank");
       window.location.reload();
     } catch (error) {
       handleError(error);
@@ -77,7 +77,7 @@ export const JiraIssuePicker = () => {
 
       searchJiraIssues(query)
         .then((response) => {
-          if ('error' in response) {
+          if ("error" in response) {
             throw new Error(response.error);
           }
 
@@ -95,22 +95,22 @@ export const JiraIssuePicker = () => {
     <div className="flex items-end gap-4">
       <div className="flex w-full flex-col gap-2">
         <Label htmlFor={id}>Select an existing issue</Label>
-        <Popover open={open} onOpenChange={setOpen}>
+        <Popover onOpenChange={setOpen} open={open}>
           <PopoverTrigger asChild>
             <Button
-              variant="outline"
               aria-expanded={open}
               className="w-full justify-between"
+              variant="outline"
             >
               {selectedIssue ? (
                 <div className="flex items-center gap-2">
                   <Image
-                    src={selectedIssue.image}
                     alt=""
-                    width={16}
-                    height={16}
                     className="h-4 w-4 shrink-0 object-fit"
+                    height={16}
+                    src={selectedIssue.image}
                     unoptimized
+                    width={16}
                   />
                   <span className="shrink-0">{selectedIssue.key}</span>
                   <span className="truncate text-muted-foreground">
@@ -118,7 +118,7 @@ export const JiraIssuePicker = () => {
                   </span>
                 </div>
               ) : (
-                'Select issue...'
+                "Select issue..."
               )}
               <ChevronDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             </Button>
@@ -127,10 +127,10 @@ export const JiraIssuePicker = () => {
             <Command shouldFilter={false}>
               <div className="relative">
                 <CommandInput
-                  placeholder="Search issues..."
                   className="h-9"
-                  value={query}
                   onValueChange={setQuery}
+                  placeholder="Search issues..."
+                  value={query}
                 />
                 {loading ? (
                   <div className="absolute top-3 right-3">
@@ -143,21 +143,21 @@ export const JiraIssuePicker = () => {
                 <CommandGroup>
                   {data.map((issue) => (
                     <CommandItem
+                      className="flex items-center gap-2"
                       key={issue.id}
-                      value={issue.id}
                       onSelect={(currentValue) => {
                         setValue(currentValue);
                         setOpen(false);
                       }}
-                      className="flex items-center gap-2"
+                      value={issue.id}
                     >
                       <Image
-                        src={issue.image}
                         alt=""
-                        width={16}
-                        height={16}
                         className="h-4 w-4 shrink-0 object-fit"
+                        height={16}
+                        src={issue.image}
                         unoptimized
+                        width={16}
                       />
                       <span className="shrink-0">{issue.key}</span>
                       <span className="truncate text-muted-foreground">
@@ -165,8 +165,8 @@ export const JiraIssuePicker = () => {
                       </span>
                       <CheckIcon
                         className={cn(
-                          'ml-auto h-4 w-4',
-                          value === issue.id ? 'opacity-100' : 'opacity-0'
+                          "ml-auto h-4 w-4",
+                          value === issue.id ? "opacity-100" : "opacity-0"
                         )}
                       />
                     </CommandItem>
@@ -179,9 +179,9 @@ export const JiraIssuePicker = () => {
       </div>
       <Button
         className="shrink-0"
-        type="submit"
         disabled={disabled}
         onClick={handleConnectJira}
+        type="submit"
       >
         Sync feature
       </Button>

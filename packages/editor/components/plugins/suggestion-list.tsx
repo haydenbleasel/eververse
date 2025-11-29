@@ -1,4 +1,4 @@
-import { cn } from '@repo/design-system/lib/utils';
+import { cn } from "@repo/design-system/lib/utils";
 
 type SuggestionListProperties = {
   readonly items: string[];
@@ -8,8 +8,8 @@ type SuggestionListProperties = {
 };
 
 const itemClassName = cn(
-  'flex w-full items-center space-x-2 rounded-md px-2 py-1 text-left text-sm',
-  'text-foreground'
+  "flex w-full items-center space-x-2 rounded-md px-2 py-1 text-left text-sm",
+  "text-foreground"
 );
 
 export const SuggestionList = ({
@@ -22,14 +22,14 @@ export const SuggestionList = ({
     {items.length > 0 ? (
       items.map((item, index) => (
         <button
-          type="button"
           className={cn(
             itemClassName,
-            index === selected && 'bg-card text-foreground',
-            'hover:bg-card'
+            index === selected && "bg-card text-foreground",
+            "hover:bg-card"
           )}
           key={index}
           onClick={() => onSelect(index)}
+          type="button"
         >
           {render ? render(item) : item}
         </button>

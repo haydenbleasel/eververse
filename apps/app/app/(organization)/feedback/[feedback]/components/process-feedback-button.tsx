@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { updateFeedback } from '@/actions/feedback/update';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { CheckCircleIcon, UndoIcon } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { CheckCircleIcon, UndoIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { updateFeedback } from "@/actions/feedback/update";
 
 type ProcessFeedbackButtonProperties = {
   readonly feedbackId: string;
@@ -29,17 +29,17 @@ export const ProcessFeedbackButton = ({
         processed: !processed,
       });
 
-      if ('error' in response) {
+      if ("error" in response) {
         throw new Error(response.error);
       }
 
       setProcessed(!processed);
 
       if (!originalProcessed) {
-        if ('id' in response) {
+        if ("id" in response) {
           router.push(`/feedback/${response.id}`);
         } else {
-          router.push('/feedback');
+          router.push("/feedback");
         }
       }
     } catch (error) {
@@ -55,10 +55,10 @@ export const ProcessFeedbackButton = ({
         className="flex items-center gap-2"
         disabled={loading}
         onClick={handleClick}
-        variant="ghost"
         size="sm"
+        variant="ghost"
       >
-        <UndoIcon size={16} className="text-muted-foreground" />
+        <UndoIcon className="text-muted-foreground" size={16} />
         <span>Mark feedback as unprocessed</span>
       </Button>
     );
@@ -69,10 +69,10 @@ export const ProcessFeedbackButton = ({
       className="flex items-center gap-2"
       disabled={loading}
       onClick={handleClick}
-      variant="ghost"
       size="sm"
+      variant="ghost"
     >
-      <CheckCircleIcon size={16} className="text-success" />
+      <CheckCircleIcon className="text-success" size={16} />
       <span>Mark feedback as processed</span>
     </Button>
   );

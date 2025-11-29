@@ -1,4 +1,4 @@
-import ky from 'ky';
+import ky from "ky";
 
 export type CannyStatusChange = {
   changeComment: {
@@ -89,7 +89,7 @@ export const fetchCannyStatusChanges = async (
   limit = 10_000
 ): Promise<CannyStatusChange[]> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/status_changes/list', {
+    .post("https://canny.io/api/v1/status_changes/list", {
       json: {
         apiKey,
         limit,
@@ -99,7 +99,7 @@ export const fetchCannyStatusChanges = async (
     })
     .json<GetCannyStatusChangesResponse>();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 

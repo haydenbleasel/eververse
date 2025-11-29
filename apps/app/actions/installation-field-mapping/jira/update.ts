@@ -1,25 +1,25 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
 import type {
   AtlassianInstallation,
   InstallationFieldMapping,
   Prisma,
-} from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { log } from '@repo/observability/log';
-import { revalidatePath } from 'next/cache';
+} from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { log } from "@repo/observability/log";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const updateJiraFieldMappings = async (
-  installationId: AtlassianInstallation['id'],
+  installationId: AtlassianInstallation["id"],
   internal: {
-    id: InstallationFieldMapping['internalId'];
-    type: InstallationFieldMapping['internalType'];
+    id: InstallationFieldMapping["internalId"];
+    type: InstallationFieldMapping["internalType"];
   },
   externals: {
-    id: InstallationFieldMapping['externalId'];
-    type: InstallationFieldMapping['externalType'];
+    id: InstallationFieldMapping["externalId"];
+    type: InstallationFieldMapping["externalType"];
   }[]
 ): Promise<{
   error?: string;
@@ -30,8 +30,8 @@ export const updateJiraFieldMappings = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('Not logged in');
+    if (!(user && organizationId)) {
+      throw new Error("Not logged in");
     }
 
     log.info(
@@ -42,7 +42,7 @@ export const updateJiraFieldMappings = async (
     await database.installationFieldMapping.deleteMany({
       where: {
         organizationId,
-        type: 'JIRA',
+        type: "JIRA",
         internalId: internal.id,
       },
     });
@@ -58,7 +58,7 @@ export const updateJiraFieldMappings = async (
     const data: Prisma.InstallationFieldMappingCreateManyInput[] =
       externals.map((external) => ({
         organizationId,
-        type: 'JIRA',
+        type: "JIRA",
         internalId: internal.id,
         internalType: internal.type,
         externalId: external.id,
@@ -72,7 +72,7 @@ export const updateJiraFieldMappings = async (
       skipDuplicates: true,
     });
 
-    revalidatePath('/settings/integrations/jira');
+    revalidatePath("/settings/integrations/jira");
 
     return {};
   } catch (error) {

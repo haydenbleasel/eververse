@@ -1,16 +1,16 @@
-import type { Release } from '@repo/backend/prisma/client';
-import { colors } from '@repo/design-system/lib/colors';
+import type { Release } from "@repo/backend/prisma/client";
+import { colors } from "@repo/design-system/lib/colors";
 
-const getBackgroundColor = (state: Release['state']) => {
-  if (state === 'COMPLETED') {
+const getBackgroundColor = (state: Release["state"]) => {
+  if (state === "COMPLETED") {
     return colors.emerald;
   }
 
-  if (state === 'ACTIVE') {
+  if (state === "ACTIVE") {
     return colors.amber;
   }
 
-  if (state === 'CANCELLED') {
+  if (state === "CANCELLED") {
     return colors.rose;
   }
 
@@ -18,14 +18,12 @@ const getBackgroundColor = (state: Release['state']) => {
 };
 
 type ReleaseStateDotProps = {
-  state: Release['state'];
+  state: Release["state"];
 };
 
-export const ReleaseStateDot = ({ state }: ReleaseStateDotProps) => {
-  return (
-    <div
-      className="h-2 w-2 rounded-full"
-      style={{ backgroundColor: getBackgroundColor(state) }}
-    />
-  );
-};
+export const ReleaseStateDot = ({ state }: ReleaseStateDotProps) => (
+  <div
+    className="h-2 w-2 rounded-full"
+    style={{ backgroundColor: getBackgroundColor(state) }}
+  />
+);

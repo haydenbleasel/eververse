@@ -1,43 +1,43 @@
-import { env } from '@/env';
-import { Container } from '@repo/design-system/components/container';
-import { Link } from '@repo/design-system/components/link';
-import { Logo } from '@repo/design-system/components/logo';
+import { Container } from "@repo/design-system/components/container";
+import { Link } from "@repo/design-system/components/link";
+import { Logo } from "@repo/design-system/components/logo";
 import {
   Status,
   StatusIndicator,
   StatusLabel,
-} from '@repo/design-system/components/ui/kibo-ui/status';
-import { getStatus } from '@repo/observability/status';
-import { FooterLink } from './footer-link';
-import { ThemeToggle } from './theme-toggle';
+} from "@repo/design-system/components/kibo-ui/status";
+import { getStatus } from "@repo/observability/status";
+import { env } from "@/env";
+import { FooterLink } from "./footer-link";
+import { ThemeToggle } from "./theme-toggle";
 
 const links = [
   {
-    name: 'Home',
-    href: '/',
+    name: "Home",
+    href: "/",
   },
   {
-    name: 'Pricing',
-    href: '/pricing',
+    name: "Pricing",
+    href: "/pricing",
   },
   {
-    name: 'Contact',
-    href: 'https://x.com/haydenbleasel',
+    name: "Contact",
+    href: "https://x.com/haydenbleasel",
   },
 ];
 
 const legal = [
   {
-    name: 'Privacy Policy',
-    href: '/legal/privacy',
+    name: "Privacy Policy",
+    href: "/legal/privacy",
   },
   {
-    name: 'Terms of Service',
-    href: '/legal/terms',
+    name: "Terms of Service",
+    href: "/legal/terms",
   },
   {
-    name: 'Acceptable Use Policy',
-    href: '/legal/acceptable-use',
+    name: "Acceptable Use Policy",
+    href: "/legal/acceptable-use",
   },
 ];
 
@@ -55,11 +55,11 @@ export const Footer = async () => {
             &copy; Eververse {new Date().getFullYear()}. All rights reserved.
           </p>
           <div className="flex items-center gap-2">
-            <a target="_blank" rel="noreferrer" href={env.BETTERSTACK_URL}>
+            <a href={env.BETTERSTACK_URL} rel="noreferrer" target="_blank">
               <Status
+                className="rounded-full bg-background px-4 py-[5px] text-sm"
                 status={status}
                 variant="outline"
-                className="rounded-full bg-background px-4 py-[5px] text-sm"
               >
                 <StatusIndicator />
                 <StatusLabel />
@@ -70,12 +70,12 @@ export const Footer = async () => {
         </div>
         <div className="col-start-3 flex flex-col gap-4">
           {links.map(({ href, name }) => (
-            <FooterLink key={name} href={href} name={name} />
+            <FooterLink href={href} key={name} name={name} />
           ))}
         </div>
         <div className="flex flex-col gap-4">
           {legal.map(({ href, name }) => (
-            <FooterLink key={name} href={href} name={name} />
+            <FooterLink href={href} key={name} name={name} />
           ))}
         </div>
       </Container>

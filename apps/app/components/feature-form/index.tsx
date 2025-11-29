@@ -1,28 +1,28 @@
-'use client';
+"use client";
 
-import { createFeature } from '@/actions/feature/create';
-import { nestGroups } from '@/lib/group';
-import type { User } from '@repo/backend/auth';
-import type { Group, Product } from '@repo/backend/prisma/client';
-import { Dialog } from '@repo/design-system/components/precomposed/dialog';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { QueryClient } from '@tanstack/react-query';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import type { KeyboardEventHandler } from 'react';
-import { FeatureAssigneePicker } from './feature-assignee-picker';
-import { FeatureGroupPicker } from './feature-group-picker';
-import { FeatureProductPicker } from './feature-product-picker';
-import { useFeatureForm } from './use-feature-form';
+import type { User } from "@repo/backend/auth";
+import type { Group, Product } from "@repo/backend/prisma/client";
+import { Dialog } from "@repo/design-system/components/precomposed/dialog";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { QueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+import type { KeyboardEventHandler } from "react";
+import { useState } from "react";
+import { createFeature } from "@/actions/feature/create";
+import { nestGroups } from "@/lib/group";
+import { FeatureAssigneePicker } from "./feature-assignee-picker";
+import { FeatureGroupPicker } from "./feature-group-picker";
+import { FeatureProductPicker } from "./feature-product-picker";
+import { useFeatureForm } from "./use-feature-form";
 
 type FeatureFormProperties = {
-  readonly userId: User['id'];
+  readonly userId: User["id"];
   readonly members: User[];
-  readonly products: Pick<Product, 'emoji' | 'id' | 'name'>[];
+  readonly products: Pick<Product, "emoji" | "id" | "name">[];
   readonly groups: Pick<
     Group,
-    'emoji' | 'id' | 'name' | 'parentGroupId' | 'productId'
+    "emoji" | "id" | "name" | "parentGroupId" | "productId"
   >[];
 };
 
@@ -32,7 +32,7 @@ export const FeatureForm = ({
   groups,
   userId,
 }: FeatureFormProperties) => {
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
   const [assignee, setAssignee] = useState(userId);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -50,7 +50,7 @@ export const FeatureForm = ({
 
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (event) => {
     if (
-      event.key === 'Enter' &&
+      event.key === "Enter" &&
       !event.shiftKey &&
       !event.nativeEvent.isComposing
     ) {
@@ -74,11 +74,11 @@ export const FeatureForm = ({
         groupId,
       });
 
-      if ('error' in response) {
+      if ("error" in response) {
         throw new Error(response.error);
       }
 
-      setTitle('');
+      setTitle("");
       setAssignee(userId);
       setProductId(undefined);
       setGroupId(undefined);
@@ -88,7 +88,7 @@ export const FeatureForm = ({
       router.push(`/features/${response.id}`);
 
       await queryClient.invalidateQueries({
-        queryKey: ['features'],
+        queryKey: ["features"],
       });
     } catch (error) {
       handleError(error);
@@ -108,50 +108,50 @@ export const FeatureForm = ({
 
   return (
     <Dialog
-      open={isOpen}
-      onOpenChange={setOpen}
-      modal={false}
       className="max-w-3xl"
       cta="Create feature"
-      onClick={onClick}
       disabled={disabled}
-      title={
-        <p className="font-medium text-muted-foreground text-sm tracking-tight">
-          Create a feature
-        </p>
-      }
       footer={
         <div className="flex items-center gap-3">
           <FeatureAssigneePicker
             data={members}
-            value={assignee}
             onChange={setAssignee}
+            value={assignee}
           />
           {products.length > 0 ? (
             <FeatureProductPicker
               data={products}
-              value={productId}
               onChange={handleProductChange}
+              value={productId}
             />
           ) : null}
           {productId && relevantGroups.length > 0 ? (
             <FeatureGroupPicker
               data={nestGroups(relevantGroups)}
-              value={groupId}
               onChange={setGroupId}
+              value={groupId}
             />
           ) : null}
         </div>
       }
+      modal={false}
+      onClick={onClick}
+      onOpenChange={setOpen}
+      open={isOpen}
+      title={
+        <p className="font-medium text-muted-foreground text-sm tracking-tight">
+          Create a feature
+        </p>
+      }
     >
       <Input
-        placeholder="Add ability to customize dashboard"
-        value={title}
-        onChangeText={setTitle}
+        autoComplete="off"
         className="border-none p-0 font-medium shadow-none focus-visible:ring-0 md:text-lg"
         maxLength={191}
-        autoComplete="off"
+        onChangeText={setTitle}
         onKeyDown={handleKeyDown}
+        placeholder="Add ability to customize dashboard"
+        value={title}
       />
     </Dialog>
   );

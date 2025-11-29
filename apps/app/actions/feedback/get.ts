@@ -1,19 +1,19 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import type { Feedback, FeedbackUser } from '@repo/backend/prisma/client';
-import { contentToText } from '@repo/editor/lib/tiptap';
-import { FEEDBACK_PAGE_SIZE } from '@repo/lib/consts';
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import type { Feedback, FeedbackUser } from "@repo/backend/prisma/client";
+import { contentToText } from "@repo/editor/lib/tiptap";
+import { FEEDBACK_PAGE_SIZE } from "@repo/lib/consts";
+import { database } from "@/lib/database";
 
 export type GetFeedbackResponse = (Pick<
   Feedback,
-  'aiSentiment' | 'createdAt' | 'id' | 'title'
+  "aiSentiment" | "createdAt" | "id" | "title"
 > & {
   readonly text: string;
   readonly feedbackUser: Pick<
     FeedbackUser,
-    'email' | 'imageUrl' | 'name'
+    "email" | "imageUrl" | "name"
   > | null;
 })[];
 
@@ -33,7 +33,7 @@ export const getFeedback = async (
       where: {
         processed: showProcessed ? undefined : false,
       },
-      orderBy: { createdAt: 'desc' },
+      orderBy: { createdAt: "desc" },
       skip: page * FEEDBACK_PAGE_SIZE,
       take: FEEDBACK_PAGE_SIZE,
       select: {
@@ -56,16 +56,16 @@ export const getFeedback = async (
     const promises = feedbacks.map(
       async ({ audioUrl, videoUrl, ...feedback }) => {
         const content = await getJsonColumnFromTable(
-          'feedback',
-          'content',
+          "feedback",
+          "content",
           feedback.id
         );
-        let text = content ? contentToText(content) : 'No content.';
+        let text = content ? contentToText(content) : "No content.";
 
         if (audioUrl) {
-          text = 'Audio feedback';
+          text = "Audio feedback";
         } else if (videoUrl) {
-          text = 'Video feedback';
+          text = "Video feedback";
         }
 
         return {

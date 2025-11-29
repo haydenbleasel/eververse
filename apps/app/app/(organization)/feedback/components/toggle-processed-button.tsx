@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useFeedbackOptions } from '@/hooks/use-feedback-options';
-import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
-import { Toggle } from '@repo/design-system/components/ui/toggle';
-import { EyeIcon, EyeOffIcon } from 'lucide-react';
+import { Tooltip } from "@repo/design-system/components/precomposed/tooltip";
+import { Toggle } from "@repo/design-system/components/ui/toggle";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
+import { useFeedbackOptions } from "@/hooks/use-feedback-options";
 
 export const ToggleProcessedButton = () => {
   const { showProcessed, toggleShowProcessed } = useFeedbackOptions();
@@ -11,18 +11,18 @@ export const ToggleProcessedButton = () => {
 
   return (
     <Tooltip
+      align="end"
       content={
-        showProcessed ? 'Hide processed feedback' : 'Show processed feedback'
+        showProcessed ? "Hide processed feedback" : "Show processed feedback"
       }
       side="bottom"
-      align="end"
     >
       <Toggle
-        pressed={showProcessed}
-        onPressedChange={toggleShowProcessed}
         className="!bg-transparent"
+        onPressedChange={toggleShowProcessed}
+        pressed={showProcessed}
       >
-        <Icon size={16} className="text-muted-foreground" />
+        <Icon className="text-muted-foreground" size={16} />
       </Toggle>
     </Tooltip>
   );

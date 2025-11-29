@@ -1,17 +1,17 @@
-import { database } from '@/lib/database';
-import { currentOrganizationId } from '@repo/backend/auth/utils';
-import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { Button } from '@repo/design-system/components/ui/button';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { CreateStatusButton } from './components/create-status-button';
-import { FeatureStatusesList } from './components/feature-statuses-list';
+import { currentOrganizationId } from "@repo/backend/auth/utils";
+import { Tooltip } from "@repo/design-system/components/precomposed/tooltip";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { Button } from "@repo/design-system/components/ui/button";
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { database } from "@/lib/database";
+import { CreateStatusButton } from "./components/create-status-button";
+import { FeatureStatusesList } from "./components/feature-statuses-list";
 
 export const metadata: Metadata = createMetadata({
-  title: 'Customize feature statuses',
-  description: 'Customize feature statuses for your organization.',
+  title: "Customize feature statuses",
+  description: "Customize feature statuses for your organization.",
 });
 
 const StatusesSettings = async () => {
@@ -22,7 +22,7 @@ const StatusesSettings = async () => {
   }
 
   const statuses = await database.featureStatus.findMany({
-    orderBy: { order: 'asc' },
+    orderBy: { order: "asc" },
     select: {
       id: true,
       name: true,
@@ -51,7 +51,7 @@ const StatusesSettings = async () => {
             <CreateStatusButton />
           ) : (
             <Tooltip content="Upgrade to create custom feature statuses">
-              <Button variant="outline" disabled>
+              <Button disabled variant="outline">
                 Create status
               </Button>
             </Tooltip>

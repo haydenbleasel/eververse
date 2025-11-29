@@ -1,20 +1,20 @@
-import { getSlug } from '@/lib/slug';
-import { database, getJsonColumnFromTable } from '@repo/backend/database';
-import { Link } from '@repo/design-system/components/link';
-import { contentToText } from '@repo/editor/lib/tiptap';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { VoteButton } from './components/vote-button';
+import { database, getJsonColumnFromTable } from "@repo/backend/database";
+import { Link } from "@repo/design-system/components/link";
+import { contentToText } from "@repo/editor/lib/tiptap";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { getSlug } from "@/lib/slug";
+import { VoteButton } from "./components/vote-button";
 
 export const metadata: Metadata = {
-  title: 'Roadmap',
-  description: 'Vote and track the latest updates and changes to Eververse',
+  title: "Roadmap",
+  description: "Vote and track the latest updates and changes to Eververse",
 };
 
 const getContent = async (featureId: string) => {
   const content = await getJsonColumnFromTable(
-    'portal_feature',
-    'content',
+    "portal_feature",
+    "content",
     featureId
   );
   return content ? contentToText(content) : null;
@@ -111,14 +111,14 @@ const Roadmap = async () => {
                   >
                     {data.organization.stripeSubscriptionId ? (
                       <VoteButton
-                        portalFeatureId={item.id}
                         defaultVotes={item.votes.length}
+                        portalFeatureId={item.id}
                         slug={slug}
                       />
                     ) : null}
                     <Link
-                      href={`/${item.id}`}
                       className="block font-normal text-inherit no-underline"
+                      href={`/${item.id}`}
                     >
                       <p className="m-0 truncate font-medium text-foreground text-sm">
                         {item.title}

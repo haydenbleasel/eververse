@@ -1,8 +1,8 @@
-import { env } from '@/env';
-import { withBackend } from '@repo/backend/next-config';
-import { config, withAnalyzer } from '@repo/next-config';
-import { withLogtail, withSentry } from '@repo/observability/next-config';
-import type { NextConfig } from 'next';
+import { withBackend } from "@repo/backend/next-config";
+import { config, withAnalyzer } from "@repo/next-config";
+import { withLogtail, withSentry } from "@repo/observability/next-config";
+import type { NextConfig } from "next";
+import { env } from "@/env";
 
 let nextConfig: NextConfig = withBackend(
   withLogtail({
@@ -12,28 +12,28 @@ let nextConfig: NextConfig = withBackend(
     async redirects() {
       return [
         {
-          source: '/features/groups',
-          destination: '/features',
+          source: "/features/groups",
+          destination: "/features",
           permanent: true,
         },
         {
-          source: '/features/products',
-          destination: '/features',
+          source: "/features/products",
+          destination: "/features",
           permanent: true,
         },
         {
-          source: '/data',
-          destination: '/data/users',
+          source: "/data",
+          destination: "/data/users",
           permanent: false,
         },
         {
-          source: '/api/webhooks/:path*',
-          destination: 'https://api.eververse.ai/webhooks/:path*',
+          source: "/api/webhooks/:path*",
+          destination: "https://api.eververse.ai/webhooks/:path*",
           permanent: true,
         },
         {
-          source: '/select-organization',
-          destination: '/setup',
+          source: "/select-organization",
+          destination: "/setup",
           permanent: true,
         },
       ];
@@ -45,7 +45,7 @@ if (env.VERCEL) {
   nextConfig = withSentry(nextConfig);
 }
 
-if (env.ANALYZE === 'true') {
+if (env.ANALYZE === "true") {
   nextConfig = withAnalyzer(nextConfig);
 }
 

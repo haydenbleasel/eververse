@@ -1,10 +1,10 @@
-import { env } from '@/env';
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from '@repo/design-system/components/ui/avatar';
-import type { ComponentProps } from 'react';
+} from "@repo/design-system/components/ui/avatar";
+import type { ComponentProps } from "react";
+import { env } from "@/env";
 
 type CompanyLogoProps = ComponentProps<typeof Avatar> & {
   src: string | null | undefined;
@@ -18,11 +18,11 @@ export const CompanyLogo = ({
   fallback,
   ...props
 }: CompanyLogoProps) => {
-  const imageUrl = src ? new URL(src, 'https://img.logo.dev/') : undefined;
+  const imageUrl = src ? new URL(src, "https://img.logo.dev/") : undefined;
 
   if (imageUrl) {
-    imageUrl.searchParams.set('token', env.NEXT_PUBLIC_LOGO_DEV_API_KEY);
-    imageUrl.searchParams.set('size', (size * 2).toString());
+    imageUrl.searchParams.set("token", env.NEXT_PUBLIC_LOGO_DEV_API_KEY);
+    imageUrl.searchParams.set("size", (size * 2).toString());
   }
 
   return (
@@ -35,17 +35,17 @@ export const CompanyLogo = ({
       {...props}
     >
       <AvatarImage
-        src={imageUrl?.toString()}
-        className="aspect-square h-full w-full object-cover"
         alt=""
-        width={size}
+        className="aspect-square h-full w-full object-cover"
         height={size}
+        src={imageUrl?.toString()}
+        width={size}
       />
       <AvatarFallback
-        style={{ fontSize: size / 2 }}
         className="border bg-background"
+        style={{ fontSize: size / 2 }}
       >
-        {fallback ?? '??'}
+        {fallback ?? "??"}
       </AvatarFallback>
     </Avatar>
   );

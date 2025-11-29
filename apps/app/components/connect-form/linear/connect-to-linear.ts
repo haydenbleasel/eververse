@@ -1,12 +1,12 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import type { Feature } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import type { Feature } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 type ConnectToLinearProperties = {
-  readonly featureId: Feature['id'];
+  readonly featureId: Feature["id"];
   readonly externalId: string;
   readonly href: string;
 };
@@ -27,7 +27,7 @@ export const connectToLinear = async ({
     });
 
     if (!linearInstallation) {
-      throw new Error('Linear installation not found');
+      throw new Error("Linear installation not found");
     }
 
     await database.featureConnection.create({
@@ -36,12 +36,12 @@ export const connectToLinear = async ({
         externalId,
         href,
         organizationId: linearInstallation.organizationId,
-        type: 'LINEAR',
+        type: "LINEAR",
       },
       select: { id: true },
     });
 
-    revalidatePath('/features', 'page');
+    revalidatePath("/features", "page");
 
     return {};
   } catch (error) {

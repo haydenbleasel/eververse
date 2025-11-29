@@ -1,8 +1,8 @@
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import type { Issue } from '@repo/linear';
-import { useEffect, useState } from 'react';
-import { getLinearIssues } from './get-linear-issues';
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import type { Issue } from "@repo/linear";
+import { useEffect, useState } from "react";
+import { getLinearIssues } from "./get-linear-issues";
 
 type LinearIssueSelectProperties = {
   readonly value: string | undefined;
@@ -36,7 +36,7 @@ export const LinearIssueSelect = ({
         }
 
         if (!response.issues) {
-          throw new Error('No issues found');
+          throw new Error("No issues found");
         }
 
         return response.issues;
@@ -51,16 +51,14 @@ export const LinearIssueSelect = ({
 
   return (
     <Select
-      label="Select an existing issue"
-      value={value}
-      onChange={onValueChange}
       data={issues.map((issueItem) => ({
         value: issueItem.id,
         label: issueItem.title,
       }))}
-      type="issue"
       disabled={loading || issues.length === 0}
+      label="Select an existing issue"
       loading={loading}
+      onChange={onValueChange}
       renderItem={(item) => {
         const issue = issues.find((issueItem) => issueItem.id === item.value);
 
@@ -75,6 +73,8 @@ export const LinearIssueSelect = ({
           </div>
         );
       }}
+      type="issue"
+      value={value}
     />
   );
 };

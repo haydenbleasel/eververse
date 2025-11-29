@@ -1,20 +1,20 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentUser } from '@repo/backend/auth/utils';
-import type { Prisma } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { currentUser } from "@repo/backend/auth/utils";
+import type { Prisma } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 const gitHubIssueActions = [
-  'opened',
-  'edited',
-  'closed',
-  'reopened',
-  'assigned',
-  'unassigned',
-  'labeled',
-  'unlabeled',
+  "opened",
+  "edited",
+  "closed",
+  "reopened",
+  "assigned",
+  "unassigned",
+  "labeled",
+  "unlabeled",
 ];
 
 export const createGitHubStatusMappings = async (): Promise<{
@@ -24,12 +24,12 @@ export const createGitHubStatusMappings = async (): Promise<{
     const user = await currentUser();
 
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
     const [defaultFeatureStatus, gitHubInstallation] = await Promise.all([
       database.featureStatus.findFirst({
-        orderBy: { order: 'asc' },
+        orderBy: { order: "asc" },
         select: { id: true },
       }),
       database.gitHubInstallation.findFirst({
@@ -41,11 +41,11 @@ export const createGitHubStatusMappings = async (): Promise<{
     ]);
 
     if (!defaultFeatureStatus) {
-      throw new Error('Default feature status not found');
+      throw new Error("Default feature status not found");
     }
 
     if (!gitHubInstallation) {
-      throw new Error('Installation not found');
+      throw new Error("Installation not found");
     }
 
     const data: Prisma.InstallationStatusMappingCreateManyInput[] =
@@ -54,7 +54,7 @@ export const createGitHubStatusMappings = async (): Promise<{
         featureStatusId: defaultFeatureStatus.id,
         creatorId: user.id,
         eventType: action,
-        type: 'GITHUB',
+        type: "GITHUB",
       }));
 
     await database.installationStatusMapping.createMany({
@@ -62,7 +62,7 @@ export const createGitHubStatusMappings = async (): Promise<{
       skipDuplicates: true,
     });
 
-    revalidatePath('/settings/integrations/github');
+    revalidatePath("/settings/integrations/github");
 
     return {};
   } catch (error) {

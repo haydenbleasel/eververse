@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import type {
   Feature,
@@ -6,28 +6,28 @@ import type {
   Feedback,
   Group,
   Product,
-} from '@repo/backend/prisma/client';
-import { Button } from '@repo/design-system/components/ui/button';
-import { Separator } from '@repo/design-system/components/ui/separator';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { EditorBubble, useEditor } from 'novel';
-import { useEffect, useState } from 'react';
-import { updateFeatureFeedbackConnections } from '../../actions/update-feature-feedback-connections';
-import { TriageAISelector } from './triage-ai-selector';
-import { TriageFeatureSelector } from './triage-feature-selector';
-import { TriageSelectedFeatures } from './triage-selected-features';
+} from "@repo/backend/prisma/client";
+import { Button } from "@repo/design-system/components/ui/button";
+import { Separator } from "@repo/design-system/components/ui/separator";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { EditorBubble, useEditor } from "novel";
+import { useEffect, useState } from "react";
+import { updateFeatureFeedbackConnections } from "../../actions/update-feature-feedback-connections";
+import { TriageAISelector } from "./triage-ai-selector";
+import { TriageFeatureSelector } from "./triage-feature-selector";
+import { TriageSelectedFeatures } from "./triage-selected-features";
 
 type TriageMenuProperties = {
-  readonly feedbackId: Feedback['id'];
-  readonly features: (Pick<Feature, 'id' | 'title'> & {
-    readonly status: Pick<FeatureStatus, 'color'>;
-    readonly product: Pick<Product, 'name'> | null;
-    readonly group: Pick<Group, 'name'> | null;
+  readonly feedbackId: Feedback["id"];
+  readonly features: (Pick<Feature, "id" | "title"> & {
+    readonly status: Pick<FeatureStatus, "color">;
+    readonly product: Pick<Product, "name"> | null;
+    readonly group: Pick<Group, "name"> | null;
   })[];
   readonly aiEnabled: boolean;
 };
 
-const dataAttribute = 'feedback-feature';
+const dataAttribute = "feedback-feature";
 
 export const TriageMenu = ({
   feedbackId,
@@ -43,13 +43,13 @@ export const TriageMenu = ({
     }
 
     const attributes = editor.getAttributes(dataAttribute) as {
-      'data-feature': string | null;
+      "data-feature": string | null;
     };
 
-    const featureValue = attributes['data-feature'];
+    const featureValue = attributes["data-feature"];
 
     if (featureValue) {
-      const existingFeatures = featureValue.split(',');
+      const existingFeatures = featureValue.split(",");
       setValue(existingFeatures);
     } else {
       setValue([]);
@@ -91,7 +91,7 @@ export const TriageMenu = ({
     editor
       .chain()
       .setMark(dataAttribute, {
-        'data-feature': newFeatures.join(','),
+        "data-feature": newFeatures.join(","),
       })
       .run();
 
@@ -102,18 +102,18 @@ export const TriageMenu = ({
 
   return (
     <EditorBubble
+      className="w-fit max-w-[90vw] overflow-hidden rounded border border-border/50 bg-background/90 shadow-xl backdrop-blur-lg"
       tippyOptions={{
-        placement: 'bottom-start',
+        placement: "bottom-start",
         appendTo: () => document.body,
       }}
-      className="w-fit max-w-[90vw] overflow-hidden rounded border border-border/50 bg-background/90 shadow-xl backdrop-blur-lg"
     >
       {value.length > 0 ? (
         <>
           <TriageSelectedFeatures
+            features={features}
             onSelect={handleSelect}
             value={value}
-            features={features}
           />
           <Separator />
         </>
@@ -121,26 +121,26 @@ export const TriageMenu = ({
       {aiEnabled ? (
         <>
           <TriageAISelector
+            features={features.filter((feature) => !value.includes(feature.id))}
             onSelect={handleSelect}
             value={value}
-            features={features.filter((feature) => !value.includes(feature.id))}
           />
           <Separator />
         </>
       ) : null}
       <TriageFeatureSelector
-        onSelect={handleSelect}
         features={features.filter((feature) => !value.includes(feature.id))}
+        onSelect={handleSelect}
       />
       {value.length > 0 ? (
         <>
           <Separator />
           <div className="p-3">
             <Button
-              onClick={handleRemoveMark}
               className="w-full text-left"
-              variant="destructive"
+              onClick={handleRemoveMark}
               size="sm"
+              variant="destructive"
             >
               Disconnect features
             </Button>

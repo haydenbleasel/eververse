@@ -1,7 +1,7 @@
-import { LoadingCircle } from '@repo/design-system/components/loading-circle';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useInView } from 'motion/react';
-import { useEffect, useRef, useState } from 'react';
+import { LoadingCircle } from "@repo/design-system/components/loading-circle";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useInView } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 
 type InfiniteLoaderProperties = {
   readonly onView: () => Promise<unknown>;
@@ -32,8 +32,8 @@ export const InfiniteLoader = ({
 
   return (
     <div
-      ref={listReference}
       className="flex w-full items-center justify-center p-3"
+      ref={listReference}
     >
       <LoadingCircle />
     </div>

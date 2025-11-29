@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { updateFeature } from '@/actions/feature/update';
-import type { Feature, FeatureStatus } from '@repo/backend/prisma/client';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useState } from 'react';
+import type { Feature, FeatureStatus } from "@repo/backend/prisma/client";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useState } from "react";
+import { updateFeature } from "@/actions/feature/update";
 
 type FeatureStatusPickerProperties = {
-  readonly featureId: Feature['id'];
-  readonly defaultValue?: FeatureStatus['id'];
-  readonly statuses: Pick<FeatureStatus, 'color' | 'id' | 'name'>[];
+  readonly featureId: Feature["id"];
+  readonly defaultValue?: FeatureStatus["id"];
+  readonly statuses: Pick<FeatureStatus, "color" | "id" | "name">[];
   readonly disabled: boolean;
 };
 
@@ -36,13 +36,12 @@ export const FeatureStatusPicker = ({
 
   return (
     <Select
-      value={value}
-      onChange={handleSelect}
       data={statuses.map((status) => ({
         label: status.name,
         value: status.id,
       }))}
       disabled={disabled}
+      onChange={handleSelect}
       renderItem={(item) => {
         const status = statuses.find(({ id }) => id === item.value);
 
@@ -61,6 +60,7 @@ export const FeatureStatusPicker = ({
         );
       }}
       type="status"
+      value={value}
     />
   );
 };

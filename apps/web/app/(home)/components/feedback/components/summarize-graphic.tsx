@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
-import { LoadingCircle } from '@repo/design-system/components/loading-circle';
-import { LazyMotion, domAnimation, m, useInView } from 'motion/react';
-import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { LoadingCircle } from "@repo/design-system/components/loading-circle";
+import { domAnimation, LazyMotion, m, useInView } from "motion/react";
+import Image from "next/image";
+import { useRef, useState } from "react";
 
 const feedback = [
-  'Hi there!',
-  'I wanted to give some feedback on signing in to Eververse.',
-  'I really like the new design, but I have a few suggestions for improvement.',
-  'Its taking a long time to get everyone onboarded as we have to create accounts for everyone.',
-  'We use Okta, so it would be great if we could use that to sign in.',
-].join(' ');
+  "Hi there!",
+  "I wanted to give some feedback on signing in to Eververse.",
+  "I really like the new design, but I have a few suggestions for improvement.",
+  "Its taking a long time to get everyone onboarded as we have to create accounts for everyone.",
+  "We use Okta, so it would be great if we could use that to sign in.",
+].join(" ");
 
-const summary = 'Candice wants Okta integration for SSO.';
+const summary = "Candice wants Okta integration for SSO.";
 
 export const SummarizeGraphic = () => {
   const reference = useRef<HTMLDivElement>(null);
-  const inView = useInView(reference, { once: true, amount: 'some' });
+  const inView = useInView(reference, { once: true, amount: "some" });
   const [loaded, setLoaded] = useState(false);
 
   const handleAnimationEnd = (index: number) => {
@@ -39,25 +39,25 @@ export const SummarizeGraphic = () => {
       <div className="not-prose flex h-full w-full flex-col justify-between gap-4 p-6">
         <div className="flex items-end gap-4">
           <Image
-            src="/example-user-4.jpg"
             alt=""
-            width={24}
-            height={24}
             className="h-6 w-6 shrink-0 rounded-full"
+            height={24}
+            src="/example-user-4.jpg"
+            width={24}
           />
           <div className="rounded-lg border bg-card p-4">
             <p className="m-0 line-clamp-5 text-sm">
               {[...feedback].map((char, index) => (
                 <m.span
-                  key={index}
-                  initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
+                  className="text-foreground text-sm"
+                  initial={{ opacity: 0 }}
+                  key={index}
+                  onAnimationComplete={() => handleAnimationEnd(index)}
                   transition={{
                     delay: 1 + index * 0.01,
                     duration: 0.01,
                   }}
-                  className="text-foreground text-sm"
-                  onAnimationComplete={() => handleAnimationEnd(index)}
                 >
                   {char}
                 </m.span>

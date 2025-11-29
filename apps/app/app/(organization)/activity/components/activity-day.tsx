@@ -1,9 +1,8 @@
-import type { GetActivityResponse } from '@/actions/activity/get';
-import type { User } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
-import type { feature_source } from '@repo/backend/prisma/client';
-import { Link } from '@repo/design-system/components/link';
-import { StackCard } from '@repo/design-system/components/stack-card';
+import type { User } from "@repo/backend/auth";
+import { getUserName } from "@repo/backend/auth/format";
+import type { feature_source } from "@repo/backend/prisma/client";
+import { Link } from "@repo/design-system/components/link";
+import { StackCard } from "@repo/design-system/components/stack-card";
 import {
   BlocksIcon,
   BoxIcon,
@@ -18,8 +17,9 @@ import {
   MessageCircleIcon,
   UserCircleIcon,
   UserPlusIcon,
-} from 'lucide-react';
-import { ActivityItem } from './activity-item';
+} from "lucide-react";
+import type { GetActivityResponse } from "@/actions/activity/get";
+import { ActivityItem } from "./activity-item";
 
 type ActivityDayProperties = {
   readonly members: User[];
@@ -28,17 +28,17 @@ type ActivityDayProperties = {
 
 const getIconForSource = (source: feature_source) => {
   switch (source) {
-    case 'INTERCOM': {
-      return '/intercom.svg';
+    case "INTERCOM": {
+      return "/intercom.svg";
     }
-    case 'SLACK': {
-      return '/slack.svg';
+    case "SLACK": {
+      return "/slack.svg";
     }
-    case 'ZAPIER': {
-      return '/zapier.svg';
+    case "ZAPIER": {
+      return "/zapier.svg";
     }
-    case 'EMAIL': {
-      return '/email.svg';
+    case "EMAIL": {
+      return "/email.svg";
     }
     default: {
       return null;
@@ -47,19 +47,19 @@ const getIconForSource = (source: feature_source) => {
 };
 
 export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
-  const getMemberById = (id: User['id']) =>
+  const getMemberById = (id: User["id"]) =>
     members.find((member) => member.id === id);
 
-  const getMemberName = (id: User['id']) => {
+  const getMemberName = (id: User["id"]) => {
     const member = getMemberById(id);
 
-    return member ? getUserName(member) : 'Someone';
+    return member ? getUserName(member) : "Someone";
   };
 
-  const date = new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+  const date = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   }).format(data.date);
 
   const items = [
@@ -76,9 +76,9 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       id: item.id,
       children: (
         <span>
-          {item.feedbackUser?.name ?? 'Someone'} from{' '}
-          {item.feedbackUser?.feedbackOrganization?.name ?? 'an organization'}{' '}
-          submitted feedback:{' '}
+          {item.feedbackUser?.name ?? "Someone"} from{" "}
+          {item.feedbackUser?.feedbackOrganization?.name ?? "an organization"}{" "}
+          submitted feedback:{" "}
           <Link
             className="text-primary underline"
             href={`/feedback/${item.id}`}
@@ -97,7 +97,7 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       id: item.id,
       children: (
         <span>
-          {getMemberName(item.creatorId)} created a new initiative:{' '}
+          {getMemberName(item.creatorId)} created a new initiative:{" "}
           <Link
             className="text-primary underline"
             href={`/initiatives/${item.id}`}
@@ -116,11 +116,11 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       id: item.id,
       children: (
         <span>
-          {getMemberName(item.creatorId)} added{' '}
+          {getMemberName(item.creatorId)} added{" "}
           {item.userId === item.creatorId
-            ? 'themselves'
-            : getMemberName(item.userId)}{' '}
-          to initiative{' '}
+            ? "themselves"
+            : getMemberName(item.userId)}{" "}
+          to initiative{" "}
           <Link
             className="text-primary underline"
             href={`/initiatives/${item.initiative.id}`}
@@ -139,14 +139,14 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       id: item.id,
       children: (
         <span>
-          {getMemberName(item.creatorId)} created{' '}
+          {getMemberName(item.creatorId)} created{" "}
           <Link
             className="text-primary underline"
             href={`/initiatives/${item.initiative.id}/pages/${item.id}`}
           >
             {item.title}
-          </Link>{' '}
-          in{' '}
+          </Link>{" "}
+          in{" "}
           <Link
             className="text-primary underline"
             href={`/initiatives/${item.initiative.id}`}
@@ -166,14 +166,14 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       id: item.id,
       children: (
         <span>
-          {getMemberName(item.creatorId)} created{' '}
+          {getMemberName(item.creatorId)} created{" "}
           <Link
             className="text-primary underline"
             href={`/initiatives/${item.initiative.id}/canvases/${item.id}`}
           >
             {item.title}
-          </Link>{' '}
-          in{' '}
+          </Link>{" "}
+          in{" "}
           <Link
             className="text-primary underline"
             href={`/initiatives/${item.initiative.id}`}
@@ -193,11 +193,11 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       id: item.id,
       children: (
         <span>
-          {getMemberName(item.creatorId)} added{' '}
+          {getMemberName(item.creatorId)} added{" "}
           <Link className="text-primary underline" href={item.href}>
             {item.title}
-          </Link>{' '}
-          to{' '}
+          </Link>{" "}
+          to{" "}
           <Link
             className="text-primary underline"
             href={`/initiatives/${item.initiative.id}`}
@@ -217,7 +217,7 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       id: item.id,
       children: (
         <span>
-          {getMemberName(item.creatorId)} created a new product:{' '}
+          {getMemberName(item.creatorId)} created a new product:{" "}
           <Link
             className="text-primary underline"
             href={`/features/products/${item.id}`}
@@ -236,7 +236,7 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       id: item.id,
       children: (
         <span>
-          {getMemberName(item.creatorId)} created a new group:{' '}
+          {getMemberName(item.creatorId)} created a new group:{" "}
           <Link
             className="text-primary underline"
             href={`/features/groups/${item.id}`}
@@ -255,7 +255,7 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       id: item.id,
       children: (
         <span>
-          {getMemberName(item.creatorId)} created a new feature:{' '}
+          {getMemberName(item.creatorId)} created a new feature:{" "}
           <Link
             className="text-primary underline"
             href={`/features/${item.id}`}
@@ -274,7 +274,7 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       id: item.id,
       children: (
         <span>
-          {getMemberName(item.creatorId)} created a new product update:{' '}
+          {getMemberName(item.creatorId)} created a new product update:{" "}
           <Link
             className="text-primary underline"
             href={`/changelog/${item.id}`}
@@ -307,14 +307,14 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       id: item.id,
       children: item.creatorId ? (
         <span>
-          {getMemberName(item.creatorId)} linked feedback{' '}
+          {getMemberName(item.creatorId)} linked feedback{" "}
           <Link
             className="text-primary underline"
             href={`/feedback/${item.feedback.id}`}
           >
             {item.feedback.title}
-          </Link>{' '}
-          to feature{' '}
+          </Link>{" "}
+          to feature{" "}
           <Link
             className="text-primary underline"
             href={`/features/${item.feature.id}`}
@@ -329,8 +329,8 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
             href={`/feedback/${item.feedback.id}`}
           >
             {item.feedback.title}
-          </Link>{' '}
-          was linked to feature{' '}
+          </Link>{" "}
+          was linked to feature{" "}
           <Link
             className="text-primary underline"
             href={`/features/${item.feature.id}`}
@@ -353,13 +353,13 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       id: item.id,
       children: (
         <span>
-          {getMemberName(item.creatorId)} pushed a feature to the portal:{' '}
+          {getMemberName(item.creatorId)} pushed a feature to the portal:{" "}
           <Link
             className="text-primary underline"
             href={`/features/${item.feature.id}`}
           >
             {item.feature.title}
-          </Link>{' '}
+          </Link>{" "}
         </span>
       ),
       createdAt: item.createdAt,
@@ -372,7 +372,7 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       id: item.id,
       children: (
         <span>
-          {getMemberName(item.creatorId)} added a new Widget link:{' '}
+          {getMemberName(item.creatorId)} added a new Widget link:{" "}
           <Link className="text-primary underline" href={item.link}>
             {item.name}
           </Link>
@@ -388,7 +388,7 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
       id: item.id,
       children: item.creatorId ? (
         <span>
-          {getMemberName(item.creatorId)} created a new release:{' '}
+          {getMemberName(item.creatorId)} created a new release:{" "}
           <Link
             className="text-primary underline"
             href={`/releases/${item.id}`}
@@ -398,7 +398,7 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
         </span>
       ) : (
         <span>
-          A release was created:{' '}
+          A release was created:{" "}
           <Link
             className="text-primary underline"
             href={`/releases/${item.id}`}
@@ -420,13 +420,13 @@ export const ActivityDay = ({ data, members }: ActivityDayProperties) => {
   ];
 
   return (
-    <StackCard title={date} className="flex flex-col gap-4 p-4">
+    <StackCard className="flex flex-col gap-4 p-4" title={date}>
       {items.length === 0 ? (
         <p className="m-0 text-center text-muted-foreground text-sm">
           No activity for this day
         </p>
       ) : (
-        items.map((item) => <ActivityItem key={item.id} data={item} />)
+        items.map((item) => <ActivityItem data={item} key={item.id} />)
       )}
     </StackCard>
   );

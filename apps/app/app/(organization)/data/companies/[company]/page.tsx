@@ -1,12 +1,12 @@
-import { CompanyLogo } from '@/app/(organization)/components/company-logo';
-import { FeedbackItem } from '@/app/(organization)/feedback/components/feedback-item';
-import { database } from '@/lib/database';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import { Separator } from '@repo/design-system/components/ui/separator';
-import { contentToText } from '@repo/editor/lib/tiptap';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import { Separator } from "@repo/design-system/components/ui/separator";
+import { contentToText } from "@repo/editor/lib/tiptap";
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { CompanyLogo } from "@/app/(organization)/components/company-logo";
+import { FeedbackItem } from "@/app/(organization)/feedback/components/feedback-item";
+import { database } from "@/lib/database";
 
 type FeedbackCompanyPageProperties = {
   readonly params: Promise<{
@@ -29,7 +29,7 @@ export const generateMetadata = async (
 
   return createMetadata({
     title: company.name,
-    description: company.domain ?? '',
+    description: company.domain ?? "",
   });
 };
 
@@ -71,14 +71,14 @@ const FeedbackCompanyPage = async (props: FeedbackCompanyPageProperties) => {
 
   const promises = feedback.map(async (feedbackItem) => {
     const content = await getJsonColumnFromTable(
-      'feedback',
-      'content',
+      "feedback",
+      "content",
       feedbackItem.id
     );
 
     return {
       ...feedbackItem,
-      text: content ? contentToText(content) : 'No description provided.',
+      text: content ? contentToText(content) : "No description provided.",
     };
   });
 
@@ -88,10 +88,10 @@ const FeedbackCompanyPage = async (props: FeedbackCompanyPageProperties) => {
     <div className="w-full px-6 py-16">
       <div className="mx-auto grid w-full max-w-prose gap-6">
         <CompanyLogo
-          src={company.domain}
-          size={96}
           className="m-0 rounded-full"
           fallback={company.name.slice(0, 2)}
+          size={96}
+          src={company.domain}
         />
 
         <div className="grid gap-2">

@@ -12,80 +12,80 @@ import {
   TableIcon,
   Text,
   TextQuote,
-} from 'lucide-react';
-import { Command, createSuggestionItems, renderItems } from 'novel/extensions';
-import { startImageUpload } from '../lib/upload-file';
+} from "lucide-react";
+import { Command, createSuggestionItems, renderItems } from "novel/extensions";
+import { startImageUpload } from "../lib/upload-file";
 
 export const suggestionItems = createSuggestionItems([
   {
-    title: 'Text',
-    description: 'Just start typing with plain text.',
-    searchTerms: ['p', 'paragraph'],
+    title: "Text",
+    description: "Just start typing with plain text.",
+    searchTerms: ["p", "paragraph"],
     icon: <Text size={18} />,
     command: ({ editor, range }) => {
       editor
         .chain()
         .focus()
         .deleteRange(range)
-        .toggleNode('paragraph', 'paragraph')
+        .toggleNode("paragraph", "paragraph")
         .run();
     },
   },
   {
-    title: 'To-do List',
-    description: 'Track tasks with a to-do list.',
-    searchTerms: ['todo', 'task', 'list', 'check', 'checkbox'],
+    title: "To-do List",
+    description: "Track tasks with a to-do list.",
+    searchTerms: ["todo", "task", "list", "check", "checkbox"],
     icon: <CheckSquare size={18} />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).toggleTaskList().run();
     },
   },
   {
-    title: 'Heading 1',
-    description: 'Big section heading.',
-    searchTerms: ['title', 'big', 'large'],
+    title: "Heading 1",
+    description: "Big section heading.",
+    searchTerms: ["title", "big", "large"],
     icon: <Heading1 size={18} />,
     command: ({ editor, range }) => {
       editor
         .chain()
         .focus()
         .deleteRange(range)
-        .setNode('heading', { level: 1 })
+        .setNode("heading", { level: 1 })
         .run();
     },
   },
   {
-    title: 'Heading 2',
-    description: 'Medium section heading.',
-    searchTerms: ['subtitle', 'medium'],
+    title: "Heading 2",
+    description: "Medium section heading.",
+    searchTerms: ["subtitle", "medium"],
     icon: <Heading2 size={18} />,
     command: ({ editor, range }) => {
       editor
         .chain()
         .focus()
         .deleteRange(range)
-        .setNode('heading', { level: 2 })
+        .setNode("heading", { level: 2 })
         .run();
     },
   },
   {
-    title: 'Heading 3',
-    description: 'Small section heading.',
-    searchTerms: ['subtitle', 'small'],
+    title: "Heading 3",
+    description: "Small section heading.",
+    searchTerms: ["subtitle", "small"],
     icon: <Heading3 size={18} />,
     command: ({ editor, range }) => {
       editor
         .chain()
         .focus()
         .deleteRange(range)
-        .setNode('heading', { level: 3 })
+        .setNode("heading", { level: 3 })
         .run();
     },
   },
   {
-    title: 'Bullet List',
-    description: 'Create a simple bullet list.',
-    searchTerms: ['unordered', 'point'],
+    title: "Bullet List",
+    description: "Create a simple bullet list.",
+    searchTerms: ["unordered", "point"],
     icon: <List size={18} />,
     command: ({ editor, range }) => {
       // @ts-expect-error Need to replace Novel with real extensions
@@ -93,9 +93,9 @@ export const suggestionItems = createSuggestionItems([
     },
   },
   {
-    title: 'Numbered List',
-    description: 'Create a list with numbering.',
-    searchTerms: ['ordered'],
+    title: "Numbered List",
+    description: "Create a list with numbering.",
+    searchTerms: ["ordered"],
     icon: <ListOrdered size={18} />,
     command: ({ editor, range }) => {
       // @ts-expect-error Need to replace Novel with real extensions
@@ -103,24 +103,24 @@ export const suggestionItems = createSuggestionItems([
     },
   },
   {
-    title: 'Quote',
-    description: 'Capture a quote.',
-    searchTerms: ['blockquote'],
+    title: "Quote",
+    description: "Capture a quote.",
+    searchTerms: ["blockquote"],
     icon: <TextQuote size={18} />,
     command: ({ editor, range }) =>
       editor
         .chain()
         .focus()
         .deleteRange(range)
-        .toggleNode('paragraph', 'paragraph')
+        .toggleNode("paragraph", "paragraph")
         // @ts-expect-error Need to replace Novel with real extensions
         .toggleBlockquote()
         .run(),
   },
   {
-    title: 'Code',
-    description: 'Capture a code snippet.',
-    searchTerms: ['codeblock'],
+    title: "Code",
+    description: "Capture a code snippet.",
+    searchTerms: ["codeblock"],
     icon: <Code size={18} />,
     command: ({ editor, range }) =>
       editor
@@ -132,16 +132,16 @@ export const suggestionItems = createSuggestionItems([
         .run(),
   },
   {
-    title: 'Image',
-    description: 'Upload an image from your computer.',
-    searchTerms: ['photo', 'picture', 'media'],
+    title: "Image",
+    description: "Upload an image from your computer.",
+    searchTerms: ["photo", "picture", "media"],
     icon: <ImageIcon size={18} />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).run();
-      const input = document.createElement('input');
-      input.type = 'file';
-      input.accept = 'image/*';
-      input.addEventListener('change', async () => {
+      const input = document.createElement("input");
+      input.type = "file";
+      input.accept = "image/*";
+      input.addEventListener("change", async () => {
         if (!input.files?.length) {
           return;
         }
@@ -155,15 +155,15 @@ export const suggestionItems = createSuggestionItems([
     },
   },
   {
-    title: 'File',
-    description: 'Upload a file from your computer.',
-    searchTerms: ['file', 'attachment'],
+    title: "File",
+    description: "Upload a file from your computer.",
+    searchTerms: ["file", "attachment"],
     icon: <FileIcon size={18} />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).run();
-      const input = document.createElement('input');
-      input.type = 'file';
-      input.addEventListener('change', async () => {
+      const input = document.createElement("input");
+      input.type = "file";
+      input.addEventListener("change", async () => {
         if (!input.files?.length) {
           return;
         }
@@ -177,9 +177,9 @@ export const suggestionItems = createSuggestionItems([
     },
   },
   {
-    title: 'Table',
-    description: 'Add a table view to organize data.',
-    searchTerms: ['table'],
+    title: "Table",
+    description: "Add a table view to organize data.",
+    searchTerms: ["table"],
     icon: <TableIcon size={18} />,
     command: ({ editor, range }) =>
       editor
@@ -191,12 +191,12 @@ export const suggestionItems = createSuggestionItems([
         .run(),
   },
   {
-    title: 'Embed Content',
-    description: 'Embed content from 1900+ sites.',
-    searchTerms: ['iframely', 'embed'],
+    title: "Embed Content",
+    description: "Embed content from 1900+ sites.",
+    searchTerms: ["iframely", "embed"],
     icon: <AppWindowIcon size={18} />,
     command: ({ editor, range }) => {
-      const url = window.prompt('Enter URL to embed');
+      const url = window.prompt("Enter URL to embed");
 
       if (!url) {
         return;

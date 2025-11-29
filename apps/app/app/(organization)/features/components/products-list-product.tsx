@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { deleteProduct } from '@/actions/product/delete';
-import { updateProduct } from '@/actions/product/update';
-import { nestGroups } from '@/lib/group';
-import type { Group, Product } from '@repo/backend/prisma/client';
-import { useParams, useRouter } from 'next/navigation';
-import { ProductsListGroup } from './products-list-group';
-import { ProductsListItem } from './products-list-item';
+import type { Group, Product } from "@repo/backend/prisma/client";
+import { useParams, useRouter } from "next/navigation";
+import { deleteProduct } from "@/actions/product/delete";
+import { updateProduct } from "@/actions/product/update";
+import { nestGroups } from "@/lib/group";
+import { ProductsListGroup } from "./products-list-group";
+import { ProductsListItem } from "./products-list-item";
 
 type ProductsListProductProperties = {
-  readonly data: Pick<Product, 'emoji' | 'id' | 'name'> & {
-    readonly groups: Pick<Group, 'emoji' | 'id' | 'name' | 'parentGroupId'>[];
+  readonly data: Pick<Product, "emoji" | "id" | "name"> & {
+    readonly groups: Pick<Group, "emoji" | "id" | "name" | "parentGroupId">[];
   };
   readonly role?: string;
 };
@@ -48,30 +48,30 @@ export const ProductsListProduct = ({
     }
 
     if (parameters.group === data.id) {
-      router.push('/features');
+      router.push("/features");
     }
   };
 
   return (
     <div key={data.id}>
       <ProductsListItem
+        active={active}
+        createProps={{ productId: data.id }}
+        emoji={data.emoji}
+        hasChildren={groups.length > 0}
+        href={`/features/products/${data.id}`}
         id={data.id}
         name={data.name}
-        href={`/features/products/${data.id}`}
-        active={active}
-        emoji={data.emoji}
+        onDelete={handleDelete}
         onEmojiSelect={handleEmojiSelect}
         onRename={handleRename}
-        onDelete={handleDelete}
-        createProps={{ productId: data.id }}
-        hasChildren={groups.length > 0}
         role={role}
       >
         <div>
           {groups.map((group) => (
             <ProductsListGroup
-              key={group.id}
               data={group}
+              key={group.id}
               productId={data.id}
               role={role}
             />

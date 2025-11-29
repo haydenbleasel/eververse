@@ -1,15 +1,15 @@
-import fs from 'node:fs';
-import { baseUrl } from '@repo/lib/consts';
-import type { MetadataRoute } from 'next';
+import fs from "node:fs";
+import { baseUrl } from "@repo/lib/consts";
+import type { MetadataRoute } from "next";
 
 const pages = fs
-  .readdirSync('app', { withFileTypes: true })
+  .readdirSync("app", { withFileTypes: true })
   .filter((file) => file.isDirectory())
-  .filter((folder) => !folder.name.startsWith('_'))
-  .filter((folder) => !folder.name.startsWith('('))
+  .filter((folder) => !folder.name.startsWith("_"))
+  .filter((folder) => !folder.name.startsWith("("))
   .map((folder) => folder.name);
 
-export const runtime = 'nodejs';
+export const runtime = "nodejs";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

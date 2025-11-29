@@ -1,27 +1,23 @@
-'use client';
+"use client";
 
-import dynamic from 'next/dynamic';
-import { useState } from 'react';
-import type { ReactPlayerProps } from 'react-player';
-import { cn } from '../lib/utils';
+import dynamic from "next/dynamic";
+import { useState } from "react";
+import type { ReactPlayerProps } from "react-player";
+import { cn } from "../lib/utils";
 
-const Placeholder = ({
-  className,
-}: {
-  readonly className?: string;
-}) => (
+const Placeholder = ({ className }: { readonly className?: string }) => (
   <div
     className={cn(
-      'pointer-events-none relative z-10 flex h-full w-full select-none items-center justify-center bg-background transition-opacity',
+      "pointer-events-none relative z-10 flex h-full w-full select-none items-center justify-center bg-background transition-opacity",
       className
     )}
   >
     <svg
+      aria-label="Loading..."
       className="-ml-1 mr-3 h-5 w-5 animate-spin text-foreground"
-      xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      aria-label="Loading..."
+      xmlns="http://www.w3.org/2000/svg"
     >
       <title>Loading...</title>
       <circle
@@ -34,8 +30,8 @@ const Placeholder = ({
       />
       <path
         className="opacity-75"
-        fill="currentColor"
         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+        fill="currentColor"
       />
     </svg>
   </div>
@@ -45,7 +41,7 @@ const Player = dynamic<ReactPlayerProps>(
   async () => {
     const player = await import(
       /* webpackChunkName: 'player' */
-      'react-player/lazy'
+      "react-player/lazy"
     );
 
     return player.default;
@@ -73,24 +69,24 @@ export const Video = ({
   return (
     <div
       className={cn(
-        'relative w-full select-none overflow-hidden rounded',
+        "relative w-full select-none overflow-hidden rounded",
         className,
-        !className?.includes('aspect-') && 'aspect-video'
+        !className?.includes("aspect-") && "aspect-video"
       )}
       style={style}
     >
-      <Placeholder className={loaded ? 'opacity-0' : 'opacity-100'} />
+      <Placeholder className={loaded ? "opacity-0" : "opacity-100"} />
       <Player
-        style={{
-          position: 'absolute',
-          inset: 0,
-        }}
-        width={width ?? '100%'}
-        height={height ?? '100%'}
+        height={height ?? "100%"}
         onReady={(player) => {
           setLoaded(true);
           onReady?.(player);
         }}
+        style={{
+          position: "absolute",
+          inset: 0,
+        }}
+        width={width ?? "100%"}
         {...properties}
       />
     </div>

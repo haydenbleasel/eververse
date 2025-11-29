@@ -1,15 +1,15 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import type { Product } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import type { Product } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const createProduct = async (
-  name: Product['name']
+  name: Product["name"]
 ): Promise<{
-  id?: Product['id'];
+  id?: Product["id"];
   error?: string;
 }> => {
   try {
@@ -18,8 +18,8 @@ export const createProduct = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('You must be logged in to create a product.');
+    if (!(user && organizationId)) {
+      throw new Error("You must be logged in to create a product.");
     }
 
     const { id } = await database.product.create({
@@ -33,7 +33,7 @@ export const createProduct = async (
       },
     });
 
-    revalidatePath('/features');
+    revalidatePath("/features");
 
     return { id };
   } catch (error) {

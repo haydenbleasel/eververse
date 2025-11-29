@@ -1,29 +1,29 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import type { productboard_import_job_type } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { createClient } from '@repo/productboard';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import type { productboard_import_job_type } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { createClient } from "@repo/productboard";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 const types: productboard_import_job_type[] = [
-  'PRODUCTS',
-  'COMPONENTS',
-  'FEATURE_STATUSES',
-  'FEATURES',
-  'CUSTOM_FIELDS',
-  'CUSTOM_FIELD_VALUES',
-  'COMPANIES',
-  'DOMAINS',
-  'USERS',
-  'TAGS',
-  'NOTES',
-  'NOTE_TAGS',
-  'RELEASES',
-  'FEATURE_RELEASE_ASSIGNMENTS',
-  'JIRA_CONNECTIONS',
-  'NOTE_CONNECTIONS',
+  "PRODUCTS",
+  "COMPONENTS",
+  "FEATURE_STATUSES",
+  "FEATURES",
+  "CUSTOM_FIELDS",
+  "CUSTOM_FIELD_VALUES",
+  "COMPANIES",
+  "DOMAINS",
+  "USERS",
+  "TAGS",
+  "NOTES",
+  "NOTE_TAGS",
+  "RELEASES",
+  "FEATURE_RELEASE_ASSIGNMENTS",
+  "JIRA_CONNECTIONS",
+  "NOTE_CONNECTIONS",
 ];
 
 export const productboardImport = async (
@@ -42,8 +42,8 @@ export const productboardImport = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('Not logged in');
+    if (!(user && organizationId)) {
+      throw new Error("Not logged in");
     }
 
     try {
@@ -51,15 +51,15 @@ export const productboardImport = async (
         accessToken: token,
       });
 
-      await productboard.GET('/users', {
+      await productboard.GET("/users", {
         params: {
           header: {
-            'X-Version': 1,
+            "X-Version": 1,
           },
         },
       });
     } catch {
-      throw new Error('Please provide a valid Productboard token.');
+      throw new Error("Please provide a valid Productboard token.");
     }
 
     const { id } = await database.productboardImport.create({
@@ -89,7 +89,7 @@ export const productboardImport = async (
       await database.organization.update({
         where: { id: organizationId },
         data: {
-          onboardingType: 'IMPORT',
+          onboardingType: "IMPORT",
           onboardedAt: new Date(),
         },
         select: {
@@ -98,7 +98,7 @@ export const productboardImport = async (
       });
     }
 
-    revalidatePath('/settings/import/productboard');
+    revalidatePath("/settings/import/productboard");
 
     return { id };
   } catch (error) {

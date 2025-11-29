@@ -1,12 +1,10 @@
-'use client';
+"use client";
 
-import { createOrganization } from '@/actions/organization/create';
-import { updateOrganization } from '@/actions/organization/update';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { createClient } from '@repo/backend/auth/client';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { Textarea } from '@repo/design-system/components/precomposed/textarea';
-import { Button } from '@repo/design-system/components/ui/button';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { createClient } from "@repo/backend/auth/client";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { Textarea } from "@repo/design-system/components/precomposed/textarea";
+import { Button } from "@repo/design-system/components/ui/button";
 import {
   Form,
   FormControl,
@@ -14,11 +12,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@repo/design-system/components/ui/form';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod/v3';
+} from "@repo/design-system/components/ui/form";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { z } from "zod/v3";
+import { createOrganization } from "@/actions/organization/create";
+import { updateOrganization } from "@/actions/organization/update";
 
 const formSchema = z.object({
   name: z.string().min(1),
@@ -31,9 +31,9 @@ export const CreateOrganizationForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
+      name: "",
       logo: undefined,
-      productDescription: '',
+      productDescription: "",
     },
   });
 
@@ -44,14 +44,14 @@ export const CreateOrganizationForm = () => {
         productDescription: values.productDescription,
       });
 
-      if ('error' in response) {
+      if ("error" in response) {
         throw new Error(response.error);
       }
 
       if (values.logo) {
         const supabase = await createClient();
         const uploadResponse = await supabase.storage
-          .from('organizations')
+          .from("organizations")
           .upload(response.id, values.logo);
 
         if (uploadResponse.error) {
@@ -59,19 +59,19 @@ export const CreateOrganizationForm = () => {
         }
 
         const { data: publicUrl } = supabase.storage
-          .from('organizations')
+          .from("organizations")
           .getPublicUrl(response.id);
 
         const updateResponse = await updateOrganization({
           logoUrl: publicUrl.publicUrl,
         });
 
-        if ('error' in updateResponse) {
+        if ("error" in updateResponse) {
           throw new Error(updateResponse.error);
         }
       }
 
-      router.push('/');
+      router.push("/");
     } catch (error) {
       handleError(error);
     }
@@ -87,7 +87,7 @@ export const CreateOrganizationForm = () => {
         </p>
       </div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
+        <form className="grid gap-4" onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
             control={form.control}
             name="name"
@@ -139,12 +139,12 @@ export const CreateOrganizationForm = () => {
             )}
           />
           <Button
-            type="submit"
             disabled={
               form.formState.disabled ||
               !form.formState.isValid ||
               form.formState.isSubmitting
             }
+            type="submit"
           >
             Continue
           </Button>

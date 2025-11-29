@@ -1,22 +1,25 @@
-'use client';
+"use client";
 
-import { cn } from '@repo/design-system/lib/utils';
-import type { ComponentProps, ReactNode } from 'react';
-import * as TooltipComponent from '../ui/tooltip';
+import { cn } from "@repo/design-system/lib/utils";
+import type { ComponentProps, ReactNode } from "react";
 
-export { TooltipProvider } from '../ui/tooltip';
+// biome-ignore lint/performance/noNamespaceImport: we're using the primitive component
+import * as TooltipComponent from "../ui/tooltip";
+
+// biome-ignore lint/performance/noBarrelFile: we're using the primitive component
+export { TooltipProvider } from "../ui/tooltip";
 
 export type TooltipProperties = Omit<
   ComponentProps<typeof TooltipComponent.Tooltip>,
-  'delayDuration'
+  "delayDuration"
 > & {
   readonly content: ReactNode;
   readonly side?: ComponentProps<
     typeof TooltipComponent.TooltipContent
-  >['side'];
+  >["side"];
   readonly align?: ComponentProps<
     typeof TooltipComponent.TooltipContent
-  >['align'];
+  >["align"];
 };
 
 export const Tooltip = ({
@@ -31,13 +34,13 @@ export const Tooltip = ({
       <div>{children}</div>
     </TooltipComponent.TooltipTrigger>
     <TooltipComponent.TooltipContent
-      collisionPadding={8}
-      side={side}
       align={align}
       className={cn(
-        'max-w-md rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-foreground text-sm',
-        '[&_svg]:bg-background [&_svg]:fill-background'
+        "max-w-md rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-foreground text-sm",
+        "[&_svg]:bg-background [&_svg]:fill-background"
       )}
+      collisionPadding={8}
+      side={side}
     >
       {content}
     </TooltipComponent.TooltipContent>

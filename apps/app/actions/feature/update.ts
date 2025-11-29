@@ -1,23 +1,23 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { createClient } from '@repo/atlassian';
-import { EververseRole } from '@repo/backend/auth';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import { getJsonColumnFromTable } from '@repo/backend/database';
+import { createClient } from "@repo/atlassian";
+import { EververseRole } from "@repo/backend/auth";
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import { getJsonColumnFromTable } from "@repo/backend/database";
 import type {
   Feature,
   FeatureConnection,
   Template,
-} from '@repo/backend/prisma/client';
-import { textToContent } from '@repo/editor/lib/tiptap';
-import atlassianTemplate from '@repo/editor/templates/atlassian.json';
-import loomTemplate from '@repo/editor/templates/loom.json';
-import notionTemplate from '@repo/editor/templates/notion.json';
-import { createOctokit } from '@repo/github';
-import { parseError } from '@repo/lib/parse-error';
-import { type Issue, LinearClient } from '@repo/linear';
-import { revalidatePath } from 'next/cache';
+} from "@repo/backend/prisma/client";
+import { textToContent } from "@repo/editor/lib/tiptap";
+import atlassianTemplate from "@repo/editor/templates/atlassian.json";
+import loomTemplate from "@repo/editor/templates/loom.json";
+import notionTemplate from "@repo/editor/templates/notion.json";
+import { createOctokit } from "@repo/github";
+import { parseError } from "@repo/lib/parse-error";
+import { type Issue, LinearClient } from "@repo/linear";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 const updateJira = async (
   connection: FeatureConnection,
@@ -26,7 +26,7 @@ const updateJira = async (
   const organizationId = await currentOrganizationId();
 
   if (!organizationId) {
-    throw new Error('Organization not found');
+    throw new Error("Organization not found");
   }
 
   const [installation, fieldMappings] = await Promise.all([
@@ -38,13 +38,13 @@ const updateJira = async (
     database.installationFieldMapping.findMany({
       where: {
         organizationId,
-        type: 'JIRA',
+        type: "JIRA",
       },
     }),
   ]);
 
   if (!installation) {
-    throw new Error('Atlassian installation not found');
+    throw new Error("Atlassian installation not found");
   }
 
   const fields: Record<string, unknown> = {};
@@ -54,20 +54,20 @@ const updateJira = async (
   }
 
   const startAtMapping = fieldMappings.find(
-    (mapping) => mapping.internalId === 'STARTAT'
+    (mapping) => mapping.internalId === "STARTAT"
   );
   const endAtMapping = fieldMappings.find(
-    (mapping) => mapping.internalId === 'ENDAT'
+    (mapping) => mapping.internalId === "ENDAT"
   );
 
   if (data.startAt && startAtMapping) {
     fields[startAtMapping.externalId] = data.startAt
       .toISOString()
-      .split('T')[0];
+      .split("T")[0];
   }
 
   if (data.endAt && endAtMapping) {
-    fields[endAtMapping.externalId] = data.endAt.toISOString().split('T')[0];
+    fields[endAtMapping.externalId] = data.endAt.toISOString().split("T")[0];
   }
 
   if (!Object.keys(fields).length) {
@@ -75,7 +75,7 @@ const updateJira = async (
   }
 
   const atlassian = createClient(installation);
-  const response = await atlassian.PUT('/rest/api/2/issue/{issueIdOrKey}', {
+  const response = await atlassian.PUT("/rest/api/2/issue/{issueIdOrKey}", {
     params: {
       path: {
         issueIdOrKey: connection.externalId,
@@ -87,7 +87,7 @@ const updateJira = async (
   });
 
   if (response.error) {
-    throw new Error('Failed to update Jira ticket.');
+    throw new Error("Failed to update Jira ticket.");
   }
 };
 
@@ -102,7 +102,7 @@ const updateGitHub = async (
   const organizationId = await currentOrganizationId();
 
   if (!organizationId) {
-    throw new Error('Organization not found');
+    throw new Error("Organization not found");
   }
 
   const githubInstallation = await database.gitHubInstallation.findFirst({
@@ -112,16 +112,16 @@ const updateGitHub = async (
   });
 
   if (!githubInstallation) {
-    throw new Error('GitHub installation not found');
+    throw new Error("GitHub installation not found");
   }
 
   const octokit = createOctokit(githubInstallation.installationId);
 
   // Parse repo and owner from https://github.com/[owner]/[repo]/issues/[issue_number]
-  const segments = connection.href.split('/');
+  const segments = connection.href.split("/");
 
   if (segments.length !== 7) {
-    throw new Error('Invalid GitHub issue URL');
+    throw new Error("Invalid GitHub issue URL");
   }
 
   const owner = segments[3];
@@ -134,8 +134,8 @@ const updateGitHub = async (
     title: data.title,
   });
 
-  if (!`${response.status}`.startsWith('2')) {
-    throw new Error('Failed to update GitHub issue.');
+  if (!`${response.status}`.startsWith("2")) {
+    throw new Error("Failed to update GitHub issue.");
   }
 };
 
@@ -146,7 +146,7 @@ const updateLinear = async (
   const organizationId = await currentOrganizationId();
 
   if (!organizationId) {
-    throw new Error('Organization not found');
+    throw new Error("Organization not found");
   }
 
   const linearInstallation = await database.linearInstallation.findFirst({
@@ -156,12 +156,12 @@ const updateLinear = async (
   });
 
   if (!linearInstallation) {
-    throw new Error('Linear installation not found');
+    throw new Error("Linear installation not found");
   }
 
   const fields: {
-    title?: Issue['title'];
-    dueDate?: Issue['dueDate'];
+    title?: Issue["title"];
+    dueDate?: Issue["dueDate"];
   } = {};
 
   if (data.title) {
@@ -169,7 +169,7 @@ const updateLinear = async (
   }
 
   if (data.endAt) {
-    fields.dueDate = data.endAt.toISOString().split('T')[0];
+    fields.dueDate = data.endAt.toISOString().split("T")[0];
   }
 
   if (Object.keys(fields).length === 0) {
@@ -182,13 +182,13 @@ const updateLinear = async (
   const response = await linear.updateIssue(connection.externalId, fields);
 
   if (!response.success) {
-    throw new Error('Failed to update Linear issue.');
+    throw new Error("Failed to update Linear issue.");
   }
 };
 
 export const updateFeature = async (
-  featureId: Feature['id'],
-  data: Omit<Partial<Feature>, 'content' | 'canvas'> & {
+  featureId: Feature["id"],
+  data: Omit<Partial<Feature>, "content" | "canvas"> & {
     canvas?: object;
     content?: object;
   }
@@ -199,7 +199,7 @@ export const updateFeature = async (
     const user = await currentUser();
 
     if (!user) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
@@ -212,7 +212,7 @@ export const updateFeature = async (
       });
 
       if (!group) {
-        throw new Error('Group not found');
+        throw new Error("Group not found");
       }
 
       data.productId = group.productId;
@@ -227,20 +227,20 @@ export const updateFeature = async (
       },
     });
 
-    if (feature.connection?.type === 'LINEAR') {
+    if (feature.connection?.type === "LINEAR") {
       await updateLinear(feature.connection, data);
     }
 
-    if (feature.connection?.type === 'GITHUB') {
+    if (feature.connection?.type === "GITHUB") {
       await updateGitHub(feature.connection, data);
     }
 
-    if (feature.connection?.type === 'JIRA') {
+    if (feature.connection?.type === "JIRA") {
       await updateJira(feature.connection, data);
     }
 
-    revalidatePath('/features');
-    revalidatePath('/roadmap');
+    revalidatePath("/features");
+    revalidatePath("/roadmap");
     revalidatePath(`/features/${featureId}`);
 
     return {};
@@ -252,8 +252,8 @@ export const updateFeature = async (
 };
 
 export const updateFeatureFromTemplate = async (
-  featureId: Feature['id'],
-  templateId: Template['id'] | null
+  featureId: Feature["id"],
+  templateId: Template["id"] | null
 ): Promise<{
   error?: string;
 }> => {
@@ -261,27 +261,27 @@ export const updateFeatureFromTemplate = async (
     const user = await currentUser();
 
     if (!user) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
       throw new Error("You don't have permission to update features");
     }
 
-    let content = textToContent('');
+    let content = textToContent("");
 
     switch (templateId) {
-      case 'atlassian': {
+      case "atlassian": {
         content = atlassianTemplate;
 
         break;
       }
-      case 'notion': {
+      case "notion": {
         content = notionTemplate;
 
         break;
       }
-      case 'loom': {
+      case "loom": {
         content = loomTemplate;
 
         break;
@@ -296,12 +296,12 @@ export const updateFeatureFromTemplate = async (
           });
 
           if (!template) {
-            throw new Error('Template not found.');
+            throw new Error("Template not found.");
           }
 
           const templateContent = await getJsonColumnFromTable(
-            'template',
-            'content',
+            "template",
+            "content",
             template.id
           );
 

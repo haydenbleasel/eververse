@@ -1,15 +1,15 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId } from '@repo/backend/auth/utils';
-import type { Feature } from '@repo/backend/prisma/client';
-import { createOctokit } from '@repo/github';
-import { baseUrl } from '@repo/lib/consts';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId } from "@repo/backend/auth/utils";
+import type { Feature } from "@repo/backend/prisma/client";
+import { createOctokit } from "@repo/github";
+import { baseUrl } from "@repo/lib/consts";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 type ConnectToGitHubProperties = {
-  readonly featureId: Feature['id'];
+  readonly featureId: Feature["id"];
   readonly externalId: string;
   readonly href: string;
   readonly owner: string;
@@ -31,7 +31,7 @@ export const connectToGitHub = async ({
     const organizationId = await currentOrganizationId();
 
     if (!organizationId) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     const githubInstallation = await database.gitHubInstallation.findFirst({
@@ -42,7 +42,7 @@ export const connectToGitHub = async ({
     });
 
     if (!githubInstallation) {
-      throw new Error('GitHub installation not found');
+      throw new Error("GitHub installation not found");
     }
 
     await database.featureConnection.create({
@@ -51,7 +51,7 @@ export const connectToGitHub = async ({
         externalId,
         href,
         organizationId,
-        type: 'GITHUB',
+        type: "GITHUB",
       },
       select: { id: true },
     });
@@ -72,7 +72,7 @@ export const connectToGitHub = async ({
       repo,
     });
 
-    revalidatePath('/features');
+    revalidatePath("/features");
 
     return {};
   } catch (error) {

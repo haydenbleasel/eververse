@@ -1,5 +1,5 @@
-import { Head, Hr, Html, Link, Preview, Text } from '@react-email/components';
-import { EmailLayout } from './layout';
+import { Head, Hr, Html, Link, Preview, Text } from "@react-email/components";
+import { EmailLayout } from "./layout";
 
 type LoginEmailTemplateProps = {
   magicLink: string;
@@ -59,9 +59,9 @@ export const LoginEmailTemplate = ({
 );
 
 LoginEmailTemplate.PreviewProps = {
-  magicLink: 'https://app.eververse.ai/login',
-  email: 'test@test.com',
-  siteUrl: 'www.eververse.ai',
+  magicLink: "https://app.eververse.ai/login",
+  email: "test@test.com",
+  siteUrl: "www.eververse.ai",
 } as LoginEmailTemplateProps;
 
 export default LoginEmailTemplate;

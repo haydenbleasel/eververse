@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import type { Template as TemplateClass } from '@repo/backend/prisma/client';
-import { cn } from '@repo/design-system/lib/utils';
-import dynamic from 'next/dynamic';
-import type { ReactNode } from 'react';
+import type { Template as TemplateClass } from "@repo/backend/prisma/client";
+import { cn } from "@repo/design-system/lib/utils";
+import dynamic from "next/dynamic";
+import type { ReactNode } from "react";
 
 export type TemplateProperties = Pick<
   TemplateClass,
-  'description' | 'id' | 'title' | 'content'
+  "description" | "id" | "title" | "content"
 >;
 
 const Editor = dynamic(
   async () => {
     const Module = await import(
       /* webpackChunkName: "editor" */
-      '@/components/editor'
+      "@/components/editor"
     );
 
     return Module.Editor;
@@ -38,10 +38,10 @@ export const Template = ({
 }) => (
   <div
     className={cn(
-      'flex aspect-[2/3] w-full flex-col divide-y overflow-hidden rounded-md border bg-background transition-colors',
-      !children && 'hover:bg-card',
+      "flex aspect-[2/3] w-full flex-col divide-y overflow-hidden rounded-md border bg-background transition-colors",
+      !children && "hover:bg-card",
       active &&
-        'border-transparent ring-2 ring-violet-500 dark:ring-violet-400',
+        "border-transparent ring-2 ring-violet-500 dark:ring-violet-400",
       className
     )}
   >

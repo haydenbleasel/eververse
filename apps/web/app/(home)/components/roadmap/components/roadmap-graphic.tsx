@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import * as Gantt from '@repo/design-system/components/ui/kibo-ui/gantt';
-import { colors } from '@repo/design-system/lib/colors';
-import { addDays, addMonths, subDays, subMonths } from 'date-fns';
-import Image from 'next/image';
+import * as Gantt from "@repo/design-system/components/kibo-ui/gantt";
+import { colors } from "@repo/design-system/lib/colors";
+import { addDays, addMonths, subDays, subMonths } from "date-fns";
+import Image from "next/image";
 
 const data: (Gantt.GanttFeature & {
   owner: {
@@ -13,185 +13,185 @@ const data: (Gantt.GanttFeature & {
   };
 })[] = [
   {
-    name: 'Optimize for mobile',
+    name: "Optimize for mobile",
     startAt: subMonths(new Date(), 3),
     endAt: subDays(new Date(), 7),
-    id: '1',
+    id: "1",
     status: {
-      id: '1',
-      name: '',
+      id: "1",
+      name: "",
       color: colors.emerald,
     },
     owner: {
-      id: '1',
-      name: '',
-      image: '/example-user-1.jpg',
+      id: "1",
+      name: "",
+      image: "/example-user-1.jpg",
     },
   },
   {
-    name: 'Add dark mode',
+    name: "Add dark mode",
     startAt: addDays(new Date(), 2),
     endAt: addMonths(new Date(), 3),
-    id: '2',
+    id: "2",
     status: {
-      id: '2',
-      name: '',
+      id: "2",
+      name: "",
       color: colors.gray,
     },
     owner: {
-      id: '1',
-      name: '',
-      image: '/example-user-2.jpg',
+      id: "1",
+      name: "",
+      image: "/example-user-2.jpg",
     },
   },
   {
-    name: 'Redesign checkout flow',
+    name: "Redesign checkout flow",
     startAt: subMonths(new Date(), 5),
     endAt: subMonths(new Date(), 2),
-    id: '3',
+    id: "3",
     status: {
-      id: '3',
-      name: '',
+      id: "3",
+      name: "",
       color: colors.emerald,
     },
     owner: {
-      id: '1',
-      name: '',
-      image: '/example-user-3.jpg',
+      id: "1",
+      name: "",
+      image: "/example-user-3.jpg",
     },
   },
   {
-    name: 'New pricing plans',
+    name: "New pricing plans",
     startAt: subMonths(new Date(), 5),
     endAt: addMonths(new Date(), 6),
-    id: '4',
+    id: "4",
     status: {
-      id: '4',
-      name: '',
+      id: "4",
+      name: "",
       color: colors.yellow,
     },
     owner: {
-      id: '1',
-      name: '',
-      image: '/example-user-4.jpg',
+      id: "1",
+      name: "",
+      image: "/example-user-4.jpg",
     },
   },
   {
-    name: 'Beta Launch',
+    name: "Beta Launch",
     startAt: subMonths(new Date(), 6),
     endAt: addMonths(new Date(), 6),
-    id: '5',
+    id: "5",
     status: {
-      id: '5',
-      name: '',
+      id: "5",
+      name: "",
       color: colors.emerald,
     },
     owner: {
-      id: '1',
-      name: '',
-      image: '/example-user-5.jpg',
+      id: "1",
+      name: "",
+      image: "/example-user-5.jpg",
     },
   },
   {
-    name: 'Improve onboarding experience',
+    name: "Improve onboarding experience",
     startAt: subMonths(new Date(), 4),
     endAt: addMonths(new Date(), 1),
-    id: '6',
+    id: "6",
     status: {
-      id: '6',
-      name: '',
+      id: "6",
+      name: "",
       color: colors.blue,
     },
     owner: {
-      id: '2',
-      name: '',
-      image: '/example-user-6.jpg',
+      id: "2",
+      name: "",
+      image: "/example-user-6.jpg",
     },
   },
   {
-    name: 'Integrate with third-party API',
+    name: "Integrate with third-party API",
     startAt: subMonths(new Date(), 2),
     endAt: addMonths(new Date(), 2),
-    id: '7',
+    id: "7",
     status: {
-      id: '7',
-      name: '',
+      id: "7",
+      name: "",
       color: colors.red,
     },
     owner: {
-      id: '3',
-      name: '',
-      image: '/example-user-1.jpg',
+      id: "3",
+      name: "",
+      image: "/example-user-1.jpg",
     },
   },
   {
-    name: 'Enhance security features',
+    name: "Enhance security features",
     startAt: subMonths(new Date(), 1),
     endAt: addMonths(new Date(), 3),
-    id: '8',
+    id: "8",
     status: {
-      id: '8',
-      name: '',
+      id: "8",
+      name: "",
       color: colors.purple,
     },
     owner: {
-      id: '4',
-      name: '',
-      image: '/example-user-2.jpg',
+      id: "4",
+      name: "",
+      image: "/example-user-2.jpg",
     },
   },
   {
-    name: 'Launch marketing campaign',
+    name: "Launch marketing campaign",
     startAt: subMonths(new Date(), 3),
     endAt: addMonths(new Date(), 4),
-    id: '9',
+    id: "9",
     status: {
-      id: '9',
-      name: '',
+      id: "9",
+      name: "",
       color: colors.orange,
     },
     owner: {
-      id: '5',
-      name: '',
-      image: '/example-user-3.jpg',
+      id: "5",
+      name: "",
+      image: "/example-user-3.jpg",
     },
   },
   {
-    name: 'Develop mobile app',
+    name: "Develop mobile app",
     startAt: subMonths(new Date(), 6),
     endAt: addMonths(new Date(), 5),
-    id: '10',
+    id: "10",
     status: {
-      id: '10',
-      name: '',
+      id: "10",
+      name: "",
       color: colors.teal,
     },
     owner: {
-      id: '6',
-      name: '',
-      image: '/example-user-4.jpg',
+      id: "6",
+      name: "",
+      image: "/example-user-4.jpg",
     },
   },
 ];
 
 const markers = [
   {
-    id: 'beta',
-    label: 'Beta Launch',
+    id: "beta",
+    label: "Beta Launch",
     date: new Date(),
-    className: 'bg-rose-100 text-rose-700',
+    className: "bg-rose-100 text-rose-700",
   },
   {
-    id: 'launch',
-    label: 'Launch',
+    id: "launch",
+    label: "Launch",
     date: addMonths(new Date(), 1),
-    className: 'bg-cyan-100 text-cyan-700',
+    className: "bg-cyan-100 text-cyan-700",
   },
   {
-    id: 'review',
-    label: 'Review',
+    id: "review",
+    label: "Review",
     date: subMonths(new Date(), 3),
-    className: 'bg-teal-100 text-teal-700',
+    className: "bg-teal-100 text-teal-700",
   },
 ];
 
@@ -207,11 +207,11 @@ export const RoadmapGraphic = () => (
                 <div className="flex w-full items-center gap-2 overflow-hidden">
                   <p className="flex-1 truncate text-xs">{feature.name}</p>
                   <Image
-                    src={feature.owner.image}
                     alt={feature.owner.name}
-                    width={20}
-                    height={20}
                     className="overflow-hidden rounded-full"
+                    height={20}
+                    src={feature.owner.image}
+                    width={20}
                   />
                 </div>
               </Gantt.GanttFeatureItem>
@@ -220,11 +220,11 @@ export const RoadmapGraphic = () => (
         </Gantt.GanttFeatureList>
         {markers.map((marker) => (
           <Gantt.GanttMarker
-            key={marker.id}
-            id={marker.id}
-            date={marker.date}
-            label={marker.label}
             className={marker.className}
+            date={marker.date}
+            id={marker.id}
+            key={marker.id}
+            label={marker.label}
           />
         ))}
       </Gantt.GanttTimeline>

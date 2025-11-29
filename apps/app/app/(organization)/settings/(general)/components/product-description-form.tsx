@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { updateOrganization } from '@/actions/organization/update';
-import { Textarea } from '@repo/design-system/components/precomposed/textarea';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useState } from 'react';
-import type { FormEventHandler } from 'react';
+import { Textarea } from "@repo/design-system/components/precomposed/textarea";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import type { FormEventHandler } from "react";
+import { useState } from "react";
+import { updateOrganization } from "@/actions/organization/update";
 
 type ProductDescriptionFormProperties = {
   readonly defaultValue: string;
@@ -43,14 +43,14 @@ export const ProductDescriptionForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full space-y-2">
+    <form className="w-full space-y-2" onSubmit={handleSubmit}>
       <Textarea
-        value={description}
-        onChangeText={setDescription}
         className="max-h-[20rem] min-h-[10rem] resize-y bg-background"
+        onChangeText={setDescription}
         placeholder="Eververse is a new standard for modern product management. It's a web application designed to help Product teams at SaaS companies explore problems, ideate solutions, prioritize features and plan your roadmap all in one place."
+        value={description}
       />
-      <Button type="submit" disabled={disabled}>
+      <Button disabled={disabled} type="submit">
         Save
       </Button>
     </form>

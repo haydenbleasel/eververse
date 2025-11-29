@@ -1,5 +1,5 @@
-import { createBrowserClient } from '@supabase/ssr';
-import { keys } from '../keys';
+import { createBrowserClient } from "@supabase/ssr";
+import { keys } from "../keys";
 
 const env = keys();
 

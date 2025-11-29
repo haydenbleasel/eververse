@@ -1,7 +1,7 @@
-import type { NextConfig } from 'next/types';
-import { keys } from './keys';
+import type { NextConfig } from "next/types";
+import { keys } from "./keys";
 
-const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
 
 export const withBackend = (config: NextConfig) => {
   const newConfig = { ...config };

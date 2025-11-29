@@ -1,15 +1,15 @@
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import type { CanvasState } from '@repo/canvas';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { InitiativeCanvasLoader } from '../components/initiative-canvas';
-import { InitiativeCanvasDropdown } from '../components/initiative-canvas-dropdown';
-import { InitiativePageEditor } from '../components/initiative-page-editor';
-import { InitiativePageTitle } from '../components/initiative-page-title';
+import { EververseRole } from "@repo/backend/auth";
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import type { CanvasState } from "@repo/canvas";
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { database } from "@/lib/database";
+import { InitiativeCanvasLoader } from "../components/initiative-canvas";
+import { InitiativeCanvasDropdown } from "../components/initiative-canvas-dropdown";
+import { InitiativePageEditor } from "../components/initiative-page-editor";
+import { InitiativePageTitle } from "../components/initiative-page-title";
 
 type InitiativeProperties = {
   readonly params: Promise<{
@@ -51,7 +51,7 @@ export const generateMetadata = async (
 
   return createMetadata({
     title: resolvedPage.title,
-    description: 'A page in an initiative',
+    description: "A page in an initiative",
   });
 };
 
@@ -62,7 +62,7 @@ const Initiative = async (props: InitiativeProperties) => {
     currentOrganizationId(),
   ]);
 
-  if (!user || !organizationId) {
+  if (!(user && organizationId)) {
     notFound();
   }
 
@@ -109,8 +109,8 @@ const Initiative = async (props: InitiativeProperties) => {
 
   if (canvas) {
     const content = await getJsonColumnFromTable(
-      'initiative_canvas',
-      'content',
+      "initiative_canvas",
+      "content",
       canvas.id
     );
 
@@ -121,11 +121,11 @@ const Initiative = async (props: InitiativeProperties) => {
           defaultTitle={canvas.title}
         />
         <InitiativeCanvasLoader
-          initiativeCanvasId={params.page}
           defaultValue={content as unknown as CanvasState | undefined}
           editable={
             user.user_metadata.organization_role !== EververseRole.Member
           }
+          initiativeCanvasId={params.page}
         />
       </div>
     );
@@ -133,8 +133,8 @@ const Initiative = async (props: InitiativeProperties) => {
 
   if (page) {
     const content = await getJsonColumnFromTable(
-      'initiative_page',
-      'content',
+      "initiative_page",
+      "content",
       page.id
     );
 
@@ -145,17 +145,17 @@ const Initiative = async (props: InitiativeProperties) => {
           <div className="mx-auto grid w-full max-w-prose gap-6">
             <InitiativePageTitle
               defaultTitle={page.title}
-              pageId={params.page}
               editable={
                 user.user_metadata.organization_role !== EververseRole.Member
               }
+              pageId={params.page}
             />
             <InitiativePageEditor
               defaultValue={content as never}
-              pageId={params.page}
               editable={
                 user.user_metadata.organization_role !== EververseRole.Member
               }
+              pageId={params.page}
             />
           </div>
         </div>

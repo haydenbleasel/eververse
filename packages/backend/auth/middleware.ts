@@ -1,6 +1,6 @@
-import { createServerClient } from '@supabase/ssr';
-import { type NextRequest, NextResponse } from 'next/server';
-import { keys } from '../keys';
+import { createServerClient } from "@supabase/ssr";
+import { type NextRequest, NextResponse } from "next/server";
+import { keys } from "../keys";
 
 const env = keys();
 
@@ -41,14 +41,16 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   if (
-    !user &&
-    !request.nextUrl.pathname.startsWith('/sign-in') &&
-    !request.nextUrl.pathname.startsWith('/sign-up') &&
-    !request.nextUrl.pathname.startsWith('/auth')
+    !(
+      user ||
+      request.nextUrl.pathname.startsWith("/sign-in") ||
+      request.nextUrl.pathname.startsWith("/sign-up") ||
+      request.nextUrl.pathname.startsWith("/auth")
+    )
   ) {
     // no user, potentially respond by redirecting the user to the sign-in page
     const url = request.nextUrl.clone();
-    url.pathname = '/sign-in';
+    url.pathname = "/sign-in";
     return NextResponse.redirect(url);
   }
 

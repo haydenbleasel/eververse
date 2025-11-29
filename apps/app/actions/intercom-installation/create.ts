@@ -1,8 +1,8 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import { parseError } from '@repo/lib/src/parse-error';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import { parseError } from "@repo/lib/src/parse-error";
+import { database } from "@/lib/database";
 
 export const createIntercomInstallation = async (
   appId: string
@@ -20,8 +20,8 @@ export const createIntercomInstallation = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('Unauthorized');
+    if (!(user && organizationId)) {
+      throw new Error("Unauthorized");
     }
 
     await database.intercomInstallation.create({

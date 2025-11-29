@@ -1,13 +1,13 @@
-import { database } from '@/lib/database';
-import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { Suspense } from 'react';
-import { CreateTemplateButton } from './components/create-template-button';
-import { TemplateComponent } from './components/template';
+import { Skeleton } from "@repo/design-system/components/precomposed/skeleton";
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { Suspense } from "react";
+import { database } from "@/lib/database";
+import { CreateTemplateButton } from "./components/create-template-button";
+import { TemplateComponent } from "./components/template";
 
-const title = 'Templates';
-const description = 'Manage templates for your organization.';
+const title = "Templates";
+const description = "Manage templates for your organization.";
 
 export const metadata: Metadata = createMetadata({
   title,
@@ -31,8 +31,8 @@ const Templates = async () => {
       <div className="grid grid-cols-3 gap-8">
         {templates.map((template) => (
           <Suspense
-            key={template.id}
             fallback={<Skeleton className="aspect-[2/3] w-full" />}
+            key={template.id}
           >
             <TemplateComponent id={template.id} />
           </Suspense>

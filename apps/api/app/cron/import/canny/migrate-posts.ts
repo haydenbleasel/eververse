@@ -1,31 +1,31 @@
-import { getMembers } from '@repo/backend/auth/utils';
-import { database } from '@repo/backend/database';
+import { getMembers } from "@repo/backend/auth/utils";
+import { database } from "@repo/backend/database";
 import type {
   AtlassianInstallation,
   CannyImport,
   Prisma,
-} from '@repo/backend/prisma/client';
-import { Canny } from '@repo/canny';
-import { textToContent } from '@repo/editor/lib/tiptap';
+} from "@repo/backend/prisma/client";
+import { Canny } from "@repo/canny";
+import { textToContent } from "@repo/editor/lib/tiptap";
 
 type ImportJobProperties = Pick<
   CannyImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 const determineConnection = (
-  post: Awaited<ReturnType<Canny['post']['list']>>[number],
+  post: Awaited<ReturnType<Canny["post"]["list"]>>[number],
   atlassianInstallations: {
-    id: AtlassianInstallation['id'];
-    organizationId: AtlassianInstallation['organizationId'];
+    id: AtlassianInstallation["id"];
+    organizationId: AtlassianInstallation["organizationId"];
   }[]
-): Prisma.FeatureCreateInput['connection'] => {
+): Prisma.FeatureCreateInput["connection"] => {
   // clickup.linkedTasks, jira.linkedIssues
   if (
     post.jira.linkedIssues.length === 0 ||
     atlassianInstallations.length === 0
   ) {
-    return undefined;
+    return;
   }
 
   const [linkedIssue] = post.jira.linkedIssues;
@@ -35,7 +35,7 @@ const determineConnection = (
     create: {
       externalId: linkedIssue.id,
       href: linkedIssue.url,
-      type: 'JIRA',
+      type: "JIRA",
       organizationId: installation.organizationId,
     },
   };
@@ -64,11 +64,11 @@ export const migratePosts = async ({
   });
 
   if (!databaseOrganization) {
-    throw new Error('Could not find organization');
+    throw new Error("Could not find organization");
   }
 
   if (databaseOrganization.portals.length === 0) {
-    throw new Error('Organization does not have a portal');
+    throw new Error("Organization does not have a portal");
   }
 
   const transactions: Prisma.PrismaPromise<unknown>[] = [];

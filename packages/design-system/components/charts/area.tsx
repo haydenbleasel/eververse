@@ -1,21 +1,21 @@
-'use client';
+"use client";
 
-import type { ComponentProps } from 'react';
+import type { ComponentProps } from "react";
 import {
   Area,
   AreaChart as AreaChartComponent,
   CartesianGrid,
   XAxis,
-} from 'recharts';
-import { cn } from '../../lib/utils';
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from '../ui/chart';
-import type { ChartConfig } from '../ui/chart';
+} from "recharts";
+import { cn } from "../../lib/utils";
+import type { ChartConfig } from "../ui/chart";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../ui/chart";
 
 export type AreaChartProperties = {
   readonly config: ChartConfig;
-  readonly data: ComponentProps<typeof Area>['data'];
-  readonly dataKey: ComponentProps<typeof Area>['dataKey'];
-  readonly axisKey: ComponentProps<typeof XAxis>['dataKey'];
+  readonly data: ComponentProps<typeof Area>["data"];
+  readonly dataKey: ComponentProps<typeof Area>["dataKey"];
+  readonly axisKey: ComponentProps<typeof XAxis>["dataKey"];
   readonly className?: string;
 };
 
@@ -26,7 +26,7 @@ export const AreaChart = ({
   axisKey,
   className,
 }: AreaChartProperties) => (
-  <ChartContainer config={config} className={cn('w-full', className)}>
+  <ChartContainer className={cn("w-full", className)} config={config}>
     <AreaChartComponent
       accessibilityLayer
       data={data}
@@ -39,23 +39,23 @@ export const AreaChart = ({
     >
       <CartesianGrid vertical={false} />
       <XAxis
-        dataKey={axisKey}
-        tickLine={false}
         axisLine={false}
-        tickMargin={8}
+        dataKey={axisKey}
         tickFormatter={(value) => value.slice(0, 3)}
+        tickLine={false}
+        tickMargin={8}
       />
       <ChartTooltip
-        cursor={false}
         content={<ChartTooltipContent indicator="dot" />}
+        cursor={false}
       />
       <Area
         dataKey={dataKey}
-        type="natural"
         fill={Object.values(config)?.at(0)?.color}
         fillOpacity={0.4}
-        stroke={Object.values(config)?.at(0)?.color}
         stackId="1"
+        stroke={Object.values(config)?.at(0)?.color}
+        type="natural"
       />
     </AreaChartComponent>
   </ChartContainer>

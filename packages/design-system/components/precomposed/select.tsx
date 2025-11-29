@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useMeasure } from '@react-hookz/web';
-import { createFuse } from '@repo/lib/fuse';
-import { useCommandState } from 'cmdk';
-import { CheckIcon, ChevronsUpDown, PlusIcon } from 'lucide-react';
-import { useCallback, useId, useState } from 'react';
-import type { ComponentProps, ReactNode } from 'react';
-import { Virtuoso } from 'react-virtuoso';
-import { cn } from '../../lib/utils';
-import { LoadingCircle } from '../loading-circle';
-import { Button } from '../ui/button';
+import { useMeasure } from "@react-hookz/web";
+import { createFuse } from "@repo/lib/fuse";
+import { useCommandState } from "cmdk";
+import { CheckIcon, ChevronsUpDown, PlusIcon } from "lucide-react";
+import type { ComponentProps, ReactNode } from "react";
+import { useCallback, useId, useState } from "react";
+import { Virtuoso } from "react-virtuoso";
+import { cn } from "../../lib/utils";
+import { LoadingCircle } from "../loading-circle";
+import { Button } from "../ui/button";
 import {
   Command,
   CommandEmpty,
@@ -17,13 +17,13 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '../ui/command';
-import { Label } from '../ui/label';
-import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
+} from "../ui/command";
+import { Label } from "../ui/label";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 type SelectProperties = Omit<
   ComponentProps<typeof Popover>,
-  'open' | 'setOpen'
+  "open" | "setOpen"
 > & {
   readonly label?: string;
   readonly caption?: string;
@@ -32,7 +32,7 @@ type SelectProperties = Omit<
     readonly value: string;
     readonly label: string;
   }[];
-  readonly renderItem?: (item: SelectProperties['data'][number]) => ReactNode;
+  readonly renderItem?: (item: SelectProperties["data"][number]) => ReactNode;
   readonly disabled?: boolean;
   readonly type?: string;
   readonly trigger?: ReactNode;
@@ -46,18 +46,18 @@ type SelectProperties = Omit<
 const CreateEmptyState = ({
   onCreate,
 }: {
-  readonly onCreate: SelectProperties['onCreate'];
+  readonly onCreate: SelectProperties["onCreate"];
 }) => {
   const search = useCommandState((state) => state.search);
 
   return (
     <div className="flex h-full w-full items-center justify-center">
       <button
+        className="flex items-center gap-2"
         onClick={() => onCreate?.(search)}
         type="button"
-        className="flex items-center gap-2"
       >
-        <PlusIcon size={16} className="shrink-0" />
+        <PlusIcon className="shrink-0" size={16} />
         <span>Create &quot;{search}&quot;</span>
       </button>
     </div>
@@ -71,7 +71,7 @@ export const Select = ({
   data,
   disabled,
   onChange,
-  type = 'item',
+  type = "item",
   renderItem,
   trigger,
   loading,
@@ -84,7 +84,7 @@ export const Select = ({
   const [open, setOpen] = useState(false);
   const selected = data.find((item) => item.value === value);
   const [measurements, ref] = useMeasure<HTMLDivElement>();
-  const fuse = createFuse(data, ['label']);
+  const fuse = createFuse(data, ["label"]);
 
   const handleSelect = useCallback(
     (newValue: string) => {
@@ -107,13 +107,10 @@ export const Select = ({
       : 0;
   };
 
-  const filterByFuse = (currentValue: string, search: string) => {
-    return fuse
-      .search(search)
-      .find((result) => result.item.value === currentValue)
+  const filterByFuse = (currentValue: string, search: string) =>
+    fuse.search(search).find((result) => result.item.value === currentValue)
       ? 1
       : 0;
-  };
 
   const VirtuosoItem = useCallback(
     (_index: number, item: (typeof data)[number]) => {
@@ -123,17 +120,17 @@ export const Select = ({
 
       return (
         <CommandItem
-          key={item.value}
-          value={item.value}
-          onSelect={() => handleSelect(item.value)}
           className="flex items-center gap-2"
+          key={item.value}
+          onSelect={() => handleSelect(item.value)}
+          value={item.value}
         >
           <div className="flex-1 truncate text-left">
             {renderItem ? renderItem(item) : item.label}
           </div>
           <CheckIcon
+            className={cn("shrink-0", active ? "opacity-100" : "opacity-0")}
             size={16}
-            className={cn('shrink-0', active ? 'opacity-100' : 'opacity-0')}
           />
         </CommandItem>
       );
@@ -144,23 +141,23 @@ export const Select = ({
   return (
     <Popover
       {...properties}
-      open={disabled ? false : open}
       onOpenChange={(newOpen) => (disabled ? setOpen(false) : setOpen(newOpen))}
+      open={disabled ? false : open}
     >
       <PopoverTrigger asChild>
         {trigger ?? (
           <div className="flex w-full flex-col gap-1.5" ref={ref}>
             {label ? <Label htmlFor={id}>{label}</Label> : null}
             <Button
-              type="button"
-              variant="outline"
-              id={id}
               aria-expanded={open}
               className={cn(
-                'flex w-full items-center justify-between gap-2 px-3',
+                "flex w-full items-center justify-between gap-2 px-3",
                 className
               )}
               disabled={disabled}
+              id={id}
+              type="button"
+              variant="outline"
             >
               {!selected && `Select a ${type}...`}
               {selected && !renderItem ? selected.label : null}
@@ -200,9 +197,9 @@ export const Select = ({
             <CommandGroup>
               <Virtuoso
                 data={data}
+                itemContent={VirtuosoItem}
                 style={{ height: Math.min(292, data.length * 32) }}
                 totalCount={data.length}
-                itemContent={VirtuosoItem}
               />
             </CommandGroup>
           </CommandList>

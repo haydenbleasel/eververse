@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { updateFeature } from '@/actions/feature/update';
-import type { Feature } from '@repo/backend/prisma/client';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { toast } from '@repo/design-system/lib/toast';
-import { useState } from 'react';
+import type { Feature } from "@repo/backend/prisma/client";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { toast } from "@repo/design-system/lib/toast";
+import { useState } from "react";
+import { updateFeature } from "@/actions/feature/update";
 
 type FeatureClearReleaseButtonProps = {
-  featureId: Feature['id'];
+  featureId: Feature["id"];
 };
 
 export const FeatureClearReleaseButton = ({
@@ -32,7 +32,7 @@ export const FeatureClearReleaseButton = ({
         throw new Error(response.error);
       }
 
-      toast.success('Release cleared');
+      toast.success("Release cleared");
     } catch (error) {
       handleError(error);
     } finally {
@@ -43,9 +43,9 @@ export const FeatureClearReleaseButton = ({
   return (
     <Button
       className="h-auto p-0 text-destructive"
-      variant="ghost"
-      size="sm"
       onClick={handleClear}
+      size="sm"
+      variant="ghost"
     >
       Clear
     </Button>

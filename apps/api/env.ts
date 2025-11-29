@@ -1,19 +1,21 @@
-import { keys as email } from '@repo/email/keys';
-import { keys as core } from '@repo/next-config/keys';
-import { keys as observability } from '@repo/observability/keys';
-import { keys as payments } from '@repo/payments/keys';
-import { createEnv } from '@t3-oss/env-nextjs';
-import { z } from 'zod/v3';
+import { keys as email } from "@repo/email/keys";
+import { keys as core } from "@repo/next-config/keys";
+import { keys as observability } from "@repo/observability/keys";
+import { keys as payments } from "@repo/payments/keys";
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod/v3";
 
 export const env = createEnv({
   extends: [core(), observability(), payments(), email()],
   server: {
-    SUPABASE_AUTH_HOOK_SECRET: z.string().startsWith('v1,whsec_'),
+    SUPABASE_AUTH_HOOK_SECRET: z.string().startsWith("v1,whsec_"),
     AI_GATEWAY_API_KEY: z.string(),
+    OPENAI_API_KEY: z.string(),
   },
   client: {},
   runtimeEnv: {
     SUPABASE_AUTH_HOOK_SECRET: process.env.SUPABASE_AUTH_HOOK_SECRET,
     AI_GATEWAY_API_KEY: process.env.AI_GATEWAY_API_KEY,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   },
 });

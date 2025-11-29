@@ -1,21 +1,21 @@
-import { EmptyState } from '@/components/empty-state';
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentUser } from '@repo/backend/auth/utils';
-import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
-import { createMetadata } from '@repo/seo/metadata';
-import { AppWindowIcon } from 'lucide-react';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
-import { CreatePortalButton } from './components/create-portal-button';
-import { PortalFeaturesCard } from './components/portal-features-card';
-import { PortalStatusesCard } from './components/portal-statuses-card';
-import { PortalUrlCard } from './components/portal-url-card';
+import { EververseRole } from "@repo/backend/auth";
+import { currentUser } from "@repo/backend/auth/utils";
+import { Skeleton } from "@repo/design-system/components/precomposed/skeleton";
+import { createMetadata } from "@repo/seo/metadata";
+import { AppWindowIcon } from "lucide-react";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
+import { EmptyState } from "@/components/empty-state";
+import { database } from "@/lib/database";
+import { CreatePortalButton } from "./components/create-portal-button";
+import { PortalFeaturesCard } from "./components/portal-features-card";
+import { PortalStatusesCard } from "./components/portal-statuses-card";
+import { PortalUrlCard } from "./components/portal-url-card";
 
 export const metadata: Metadata = createMetadata({
-  title: 'Portal',
-  description: 'Manage your portal',
+  title: "Portal",
+  description: "Manage your portal",
 });
 
 const Portal = async () => {
@@ -31,9 +31,9 @@ const Portal = async () => {
     return (
       <div className="flex flex-1 items-center justify-center">
         <EmptyState
-          title="Create your portal"
           description="A portal is a place where you can share your changelog and upcoming features with your users."
           icon={AppWindowIcon}
+          title="Create your portal"
         >
           {user.user_metadata.organization_role === EververseRole.Admin ? (
             <CreatePortalButton />

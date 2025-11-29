@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { updateInitiative } from '@/actions/initiative/update';
-import type { Initiative, initiative_state } from '@repo/backend/prisma/client';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { colors } from '@repo/design-system/lib/colors';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useState } from 'react';
+import type { Initiative, initiative_state } from "@repo/backend/prisma/client";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { colors } from "@repo/design-system/lib/colors";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useState } from "react";
+import { updateInitiative } from "@/actions/initiative/update";
 
 type InitiativeStatusPickerProperties = {
-  readonly initiativeId: Initiative['id'];
-  readonly defaultValue?: Initiative['state'];
+  readonly initiativeId: Initiative["id"];
+  readonly defaultValue?: Initiative["state"];
   readonly disabled: boolean;
 };
 
@@ -19,23 +19,23 @@ const initiativeStates: {
   color: string;
 }[] = [
   {
-    value: 'PLANNED',
-    label: 'Planned',
+    value: "PLANNED",
+    label: "Planned",
     color: colors.gray,
   },
   {
-    value: 'ACTIVE',
-    label: 'Active',
+    value: "ACTIVE",
+    label: "Active",
     color: colors.amber,
   },
   {
-    value: 'COMPLETED',
-    label: 'Completed',
+    value: "COMPLETED",
+    label: "Completed",
     color: colors.emerald,
   },
   {
-    value: 'CANCELLED',
-    label: 'Cancelled',
+    value: "CANCELLED",
+    label: "Cancelled",
     color: colors.rose,
   },
 ];
@@ -65,14 +65,12 @@ export const InitiativeStatusPicker = ({
 
   return (
     <Select
-      value={value}
-      onChange={handleSelect}
       data={initiativeStates.map((state) => ({
         value: state.value,
         label: state.label,
       }))}
       disabled={disabled}
-      type="initiative"
+      onChange={handleSelect}
       renderItem={(item) => {
         const state = initiativeStates.find(
           ({ value }) => value === item.value
@@ -92,6 +90,8 @@ export const InitiativeStatusPicker = ({
           </div>
         );
       }}
+      type="initiative"
+      value={value}
     />
   );
 };

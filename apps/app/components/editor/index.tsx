@@ -1,7 +1,7 @@
-import type { EditorProperties, Extensions } from '@repo/editor';
-import dynamic from 'next/dynamic';
-import { ImageResizer } from 'novel/extensions';
-import { feedbackLink } from './plugins/feedback-link';
+import type { EditorProperties, Extensions } from "@repo/editor";
+import dynamic from "next/dynamic";
+import { ImageResizer } from "novel/extensions";
+import { feedbackLink } from "./plugins/feedback-link";
 
 type SingleEditorProperties = EditorProperties;
 
@@ -11,7 +11,7 @@ const EditorInner = dynamic(
   async () => {
     const component = await import(
       /* webpackChunkName: "editor" */
-      '@repo/editor'
+      "@repo/editor"
     );
 
     return component.Editor;

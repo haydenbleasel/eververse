@@ -1,4 +1,4 @@
-import ky from 'ky';
+import ky from "ky";
 
 export type CannyVote = {
   id: string;
@@ -64,7 +64,7 @@ export const getCannyVote = async (
   }
 ): Promise<CannyVote> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/votes/retrieve', {
+    .post("https://canny.io/api/v1/votes/retrieve", {
       json: {
         apiKey,
         ...props,
@@ -72,7 +72,7 @@ export const getCannyVote = async (
     })
     .json<CannyVote | { error: string }>();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 
@@ -86,19 +86,19 @@ export const createCannyVote = async (
     voterID: string;
     byID?: string;
   }
-): Promise<'success'> => {
+): Promise<"success"> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/votes/create', {
+    .post("https://canny.io/api/v1/votes/create", {
       json: {
         apiKey,
         ...props,
       },
     })
-    .json<'success' | { error: string }>();
+    .json<"success" | { error: string }>();
 
-  if (payload !== 'success') {
+  if (payload !== "success") {
     throw new Error(
-      'error' in payload ? payload.error : 'Unknown error occurred'
+      "error" in payload ? payload.error : "Unknown error occurred"
     );
   }
 
@@ -111,19 +111,19 @@ export const deleteCannyVote = async (
     postID: string;
     voterID: string;
   }
-): Promise<'success'> => {
+): Promise<"success"> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/votes/delete', {
+    .post("https://canny.io/api/v1/votes/delete", {
       json: {
         apiKey,
         ...props,
       },
     })
-    .json<'success' | { error: string }>();
+    .json<"success" | { error: string }>();
 
-  if (payload !== 'success') {
+  if (payload !== "success") {
     throw new Error(
-      'error' in payload ? payload.error : 'Unknown error occurred'
+      "error" in payload ? payload.error : "Unknown error occurred"
     );
   }
 
@@ -136,7 +136,7 @@ export const fetchCannyVotes = async (
   limit = 10_000
 ): Promise<CannyVote[]> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/votes/list', {
+    .post("https://canny.io/api/v1/votes/list", {
       json: {
         apiKey,
         limit,
@@ -153,7 +153,7 @@ export const fetchCannyVotes = async (
         }
     >();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 

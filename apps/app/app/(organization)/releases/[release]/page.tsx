@@ -1,22 +1,22 @@
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
+import { EververseRole } from "@repo/backend/auth";
 import {
   currentMembers,
   currentOrganizationId,
   currentUser,
-} from '@repo/backend/auth/utils';
-import { Link } from '@repo/design-system/components/link';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { Button } from '@repo/design-system/components/ui/button';
-import { createMetadata } from '@repo/seo/metadata';
-import { TablePropertiesIcon } from 'lucide-react';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { ReleaseDatePicker } from './components/release-date-picker';
-import { ReleaseFeature } from './components/release-feature';
-import { ReleaseSettingsDropdown } from './components/release-settings-dropdown';
-import { ReleaseStatePicker } from './components/release-state-picker';
-import { ReleaseTitle } from './components/release-title';
+} from "@repo/backend/auth/utils";
+import { Link } from "@repo/design-system/components/link";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { Button } from "@repo/design-system/components/ui/button";
+import { createMetadata } from "@repo/seo/metadata";
+import { TablePropertiesIcon } from "lucide-react";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { database } from "@/lib/database";
+import { ReleaseDatePicker } from "./components/release-date-picker";
+import { ReleaseFeature } from "./components/release-feature";
+import { ReleaseSettingsDropdown } from "./components/release-settings-dropdown";
+import { ReleaseStatePicker } from "./components/release-state-picker";
+import { ReleaseTitle } from "./components/release-title";
 
 type ReleasePageProps = {
   params: Promise<{
@@ -25,8 +25,8 @@ type ReleasePageProps = {
 };
 
 export const metadata: Metadata = createMetadata({
-  title: 'Release',
-  description: 'View details about a release.',
+  title: "Release",
+  description: "View details about a release.",
 });
 
 const ReleasePage = async (props: ReleasePageProps) => {
@@ -36,7 +36,7 @@ const ReleasePage = async (props: ReleasePageProps) => {
     currentOrganizationId(),
   ]);
 
-  if (!user || !organizationId) {
+  if (!(user && organizationId)) {
     return notFound();
   }
 
@@ -70,7 +70,7 @@ const ReleasePage = async (props: ReleasePageProps) => {
     }),
   ]);
 
-  if (!release || !organization) {
+  if (!(release && organization)) {
     return notFound();
   }
 
@@ -80,10 +80,10 @@ const ReleasePage = async (props: ReleasePageProps) => {
         <div className="flex items-start justify-between gap-3">
           <ReleaseTitle
             defaultTitle={release.title}
-            releaseId={release.id}
             editable={
               user.user_metadata.organization_role !== EververseRole.Member
             }
+            releaseId={release.id}
           />
           {user.user_metadata.organization_role !== EververseRole.Member && (
             <ReleaseSettingsDropdown releaseId={release.id} />
@@ -92,34 +92,34 @@ const ReleasePage = async (props: ReleasePageProps) => {
         <div className="flex flex-wrap items-center gap-2">
           <div>
             <ReleaseStatePicker
-              releaseId={release.id}
               defaultValue={release.state}
               disabled={
                 user.user_metadata.organization_role === EververseRole.Member
               }
+              releaseId={release.id}
             />
           </div>
           <div>
             <ReleaseDatePicker
-              releaseId={release.id}
-              defaultStartAt={release.startAt}
               defaultEndAt={release.endAt}
+              defaultStartAt={release.startAt}
               disabled={
                 user.user_metadata.organization_role === EververseRole.Member
               }
+              releaseId={release.id}
             />
           </div>
         </div>
         {release.features.length ? (
           <StackCard
-            title="Features"
-            icon={TablePropertiesIcon}
             className="not-prose space-y-4"
+            icon={TablePropertiesIcon}
+            title="Features"
           >
             {release.features.map((feature) => (
               <ReleaseFeature
-                key={feature.id}
                 id={feature.id}
+                key={feature.id}
                 owner={members.find((member) => member.id === feature.ownerId)}
               />
             ))}
@@ -131,8 +131,8 @@ const ReleasePage = async (props: ReleasePageProps) => {
               feature backlog to assign some.
             </p>
             {user.user_metadata.organization_role !== EververseRole.Member && (
-              <Button asChild variant="outline" className="w-fit">
-                <Link href="/features" className="no-underline">
+              <Button asChild className="w-fit" variant="outline">
+                <Link className="no-underline" href="/features">
                   Browse features
                 </Link>
               </Button>

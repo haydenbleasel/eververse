@@ -1,3 +1,1 @@
-export const OrganizationList = () => {
-  return <div>OrganizationList</div>;
-};
+export const OrganizationList = () => <div>OrganizationList</div>;

@@ -1,20 +1,20 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import type { Feature, Template } from '@repo/backend/prisma/client';
-import { textToContent } from '@repo/editor/lib/tiptap';
-import { parseError } from '@repo/lib/parse-error';
+import { EververseRole } from "@repo/backend/auth";
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import type { Feature, Template } from "@repo/backend/prisma/client";
+import { textToContent } from "@repo/editor/lib/tiptap";
+import { parseError } from "@repo/lib/parse-error";
+import { database } from "@/lib/database";
 
 export const createTemplate = async (
-  title: Template['title'],
-  description: Template['description'],
+  title: Template["title"],
+  description: Template["description"],
   content?: object
 ): Promise<
   | {
-      id: Template['id'];
+      id: Template["id"];
     }
   | {
       error: string;
@@ -26,8 +26,8 @@ export const createTemplate = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('Not logged in');
+    if (!(user && organizationId)) {
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
@@ -42,7 +42,7 @@ export const createTemplate = async (
         description,
         organizationId,
         creatorId: user.id,
-        content: content ?? textToContent(''),
+        content: content ?? textToContent(""),
       },
       select: {
         id: true,
@@ -58,9 +58,9 @@ export const createTemplate = async (
 };
 
 export const createTemplateFromFeature = async (
-  featureId: Feature['id'],
-  title: Template['title'],
-  description: Template['description']
+  featureId: Feature["id"],
+  title: Template["title"],
+  description: Template["description"]
 ): Promise<
   | object
   | {
@@ -73,8 +73,8 @@ export const createTemplateFromFeature = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('Not logged in');
+    if (!(user && organizationId)) {
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
@@ -91,12 +91,12 @@ export const createTemplateFromFeature = async (
     });
 
     if (!feature) {
-      throw new Error('Feature not found');
+      throw new Error("Feature not found");
     }
 
     const content = await getJsonColumnFromTable(
-      'feature',
-      'content',
+      "feature",
+      "content",
       feature.id
     );
 
@@ -106,7 +106,7 @@ export const createTemplateFromFeature = async (
         description,
         organizationId,
         creatorId: user.id,
-        content: content ?? textToContent(''),
+        content: content ?? textToContent(""),
       },
     });
 

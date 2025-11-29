@@ -1,16 +1,16 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import type { Feature } from '@repo/backend/prisma/client';
-import { MAX_FREE_FEATURES } from '@repo/lib/consts';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { EververseRole } from "@repo/backend/auth";
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import type { Feature } from "@repo/backend/prisma/client";
+import { MAX_FREE_FEATURES } from "@repo/lib/consts";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 type CreateFeatureProperties = {
-  title: Feature['title'];
-  assignee: Feature['ownerId'];
+  title: Feature["title"];
+  assignee: Feature["ownerId"];
   productId: string | undefined;
   groupId: string | undefined;
 };
@@ -25,7 +25,7 @@ export const createFeature = async ({
       error: string;
     }
   | {
-      id: Feature['id'];
+      id: Feature["id"];
     }
 > => {
   try {
@@ -34,17 +34,17 @@ export const createFeature = async ({
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('You must be logged in to create a feature.');
+    if (!(user && organizationId)) {
+      throw new Error("You must be logged in to create a feature.");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
-      throw new Error('You must be an editor to create a feature.');
+      throw new Error("You must be an editor to create a feature.");
     }
 
     const [defaultStatus, featureCount, organization] = await Promise.all([
       database.featureStatus.findFirst({
-        orderBy: { order: 'asc' },
+        orderBy: { order: "asc" },
         select: { id: true },
       }),
       database.feature.count(),
@@ -55,11 +55,11 @@ export const createFeature = async ({
     ]);
 
     if (!organization) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     if (!defaultStatus) {
-      throw new Error('You must have a feature status to create a feature.');
+      throw new Error("You must have a feature status to create a feature.");
     }
 
     if (
@@ -67,7 +67,7 @@ export const createFeature = async ({
       featureCount >= MAX_FREE_FEATURES
     ) {
       throw new Error(
-        'You have reached the maximum number of features for your plan. Please upgrade to add more features.'
+        "You have reached the maximum number of features for your plan. Please upgrade to add more features."
       );
     }
 
@@ -86,7 +86,7 @@ export const createFeature = async ({
       },
     });
 
-    revalidatePath('/features');
+    revalidatePath("/features");
 
     return { id };
   } catch (error) {

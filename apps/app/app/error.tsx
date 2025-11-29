@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { EmptyState } from '@/components/empty-state';
-import { Link } from '@repo/design-system/components/link';
-import { Button } from '@repo/design-system/components/ui/button';
-import { parseError } from '@repo/lib/parse-error';
-import { BugIcon } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { Link } from "@repo/design-system/components/link";
+import { Button } from "@repo/design-system/components/ui/button";
+import { parseError } from "@repo/lib/parse-error";
+import { BugIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import { EmptyState } from "@/components/empty-state";
 
 type ErrorProperties = {
   readonly error: Error & { digest?: string };
@@ -13,7 +13,7 @@ type ErrorProperties = {
 };
 
 const ErrorPage = ({ error, reset }: ErrorProperties) => {
-  const [message, setMessage] = useState<string>('');
+  const [message, setMessage] = useState<string>("");
 
   useEffect(() => {
     const newMessage = parseError(error);
@@ -25,9 +25,9 @@ const ErrorPage = ({ error, reset }: ErrorProperties) => {
     <main className="grid h-screen w-screen sm:grid-cols-2">
       <div className="flex items-center justify-center">
         <EmptyState
+          description="This is on our end. We're looking into it and will get it fixed as soon as possible."
           icon={BugIcon}
           title="Oops, something went wrong"
-          description="This is on our end. We're looking into it and will get it fixed as soon as possible."
         >
           <div className="mt-4 flex items-center gap-2">
             <Button onClick={() => reset()}>Try again</Button>

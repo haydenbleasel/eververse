@@ -1,6 +1,6 @@
-import { useDraggable } from '@dnd-kit/core';
-import type { FeatureStatus } from '@repo/backend/prisma/client';
-import { cn } from '@repo/design-system/lib/utils';
+import { useDraggable } from "@dnd-kit/core";
+import type { FeatureStatus } from "@repo/backend/prisma/client";
+import { cn } from "@repo/design-system/lib/utils";
 
 export const FeatureStatusCard = ({
   id,
@@ -9,9 +9,9 @@ export const FeatureStatusCard = ({
   parent,
   color,
 }: {
-  readonly id: FeatureStatus['id'];
-  readonly name: FeatureStatus['name'];
-  readonly color: FeatureStatus['color'];
+  readonly id: FeatureStatus["id"];
+  readonly name: FeatureStatus["name"];
+  readonly color: FeatureStatus["color"];
   readonly index: number;
   readonly parent: string;
 }) => {
@@ -24,13 +24,13 @@ export const FeatureStatusCard = ({
   return (
     <div
       className={cn(
-        'flex cursor-grab items-center gap-2 rounded-md border bg-background p-2 shadow-sm',
-        isDragging && 'cursor-grabbing'
+        "flex cursor-grab items-center gap-2 rounded-md border bg-background p-2 shadow-sm",
+        isDragging && "cursor-grabbing"
       )}
       style={{
         transform: transform
           ? `translateX(${transform.x}px) translateY(${transform.y}px)`
-          : 'none',
+          : "none",
       }}
       {...listeners}
       {...attributes}

@@ -1,22 +1,22 @@
-import { AvatarTooltip } from '@/components/avatar-tooltip';
-import { database } from '@/lib/database';
-import type { User } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
+import type { User } from "@repo/backend/auth";
+import { getUserName } from "@repo/backend/auth/format";
 import {
   currentMembers,
   currentOrganizationId,
-} from '@repo/backend/auth/utils';
+} from "@repo/backend/auth/utils";
 import type {
   Feature,
   FeatureConnection,
   FeatureStatus,
-} from '@repo/backend/prisma/client';
-import { Link } from '@repo/design-system/components/link';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { formatDate } from '@repo/lib/format';
-import { TablePropertiesIcon } from 'lucide-react';
-import Image from 'next/image';
-import { InitiativeTimeline } from './initiative-timeline';
+} from "@repo/backend/prisma/client";
+import { Link } from "@repo/design-system/components/link";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { formatDate } from "@repo/lib/format";
+import { TablePropertiesIcon } from "lucide-react";
+import Image from "next/image";
+import { AvatarTooltip } from "@/components/avatar-tooltip";
+import { database } from "@/lib/database";
+import { InitiativeTimeline } from "./initiative-timeline";
 
 type InitiativeFeaturesProps = {
   readonly initiativeId: string;
@@ -26,27 +26,27 @@ const InitiativeFeature = ({
   feature,
   owner,
 }: {
-  feature: Pick<Feature, 'id' | 'title' | 'ownerId' | 'startAt' | 'endAt'> & {
-    status: Pick<FeatureStatus, 'color'>;
-    connection: Pick<FeatureConnection, 'type'> | null;
+  feature: Pick<Feature, "id" | "title" | "ownerId" | "startAt" | "endAt"> & {
+    status: Pick<FeatureStatus, "color">;
+    connection: Pick<FeatureConnection, "type"> | null;
   };
   readonly owner: User | undefined;
 }) => {
   let featureConnectionSource = null;
 
-  if (feature.connection?.type === 'GITHUB') {
-    featureConnectionSource = '/github.svg';
-  } else if (feature.connection?.type === 'JIRA') {
-    featureConnectionSource = '/jira.svg';
-  } else if (feature.connection?.type === 'LINEAR') {
-    featureConnectionSource = '/linear.svg';
+  if (feature.connection?.type === "GITHUB") {
+    featureConnectionSource = "/github.svg";
+  } else if (feature.connection?.type === "JIRA") {
+    featureConnectionSource = "/jira.svg";
+  } else if (feature.connection?.type === "LINEAR") {
+    featureConnectionSource = "/linear.svg";
   }
 
   return (
     <Link
-      key={feature.id}
       className="flex items-center gap-2 rounded px-2 py-1.5 transition-colors hover:bg-card"
       href={`/features/${feature.id}`}
+      key={feature.id}
     >
       <span
         className="h-2 w-2 shrink-0 rounded-full"
@@ -68,18 +68,18 @@ const InitiativeFeature = ({
       </span>
       {featureConnectionSource && (
         <Image
+          alt="Feature connection source"
+          height={16}
           src={featureConnectionSource}
           width={16}
-          height={16}
-          alt="Feature connection source"
         />
       )}
       {owner ? (
         <AvatarTooltip
-          title={getUserName(owner)}
-          subtitle={owner.email ?? ''}
+          fallback={owner.email?.slice(0, 2).toUpperCase() ?? "??"}
           src={owner.user_metadata.image_url}
-          fallback={owner.email?.slice(0, 2).toUpperCase() ?? '??'}
+          subtitle={owner.email ?? ""}
+          title={getUserName(owner)}
         />
       ) : (
         <div className="h-6 w-6 rounded-full bg-card" />
@@ -208,7 +208,7 @@ export const InitiativeFeatures = async ({
     currentMembers(),
   ]);
 
-  if (!databaseOrganization || !databaseOrganization.initiatives) {
+  if (!(databaseOrganization && databaseOrganization.initiatives)) {
     return <div />;
   }
 
@@ -225,14 +225,14 @@ export const InitiativeFeatures = async ({
     <>
       {uniqueFeatures.length > 0 && (
         <StackCard
-          title="Features"
-          icon={TablePropertiesIcon}
           className="max-h-[20rem] w-full overflow-y-auto p-2"
+          icon={TablePropertiesIcon}
+          title="Features"
         >
           {uniqueFeatures.map((feature) => (
             <InitiativeFeature
-              key={feature.id}
               feature={feature}
+              key={feature.id}
               owner={members.find((member) => member.id === feature.ownerId)}
             />
           ))}
@@ -240,9 +240,9 @@ export const InitiativeFeatures = async ({
       )}
       {roadmapFeatures.length > 0 && (
         <InitiativeTimeline
-          title={databaseOrganization.initiatives[0].title}
           features={roadmapFeatures as never}
           members={members}
+          title={databaseOrganization.initiatives[0].title}
         />
       )}
     </>

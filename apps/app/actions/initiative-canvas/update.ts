@@ -1,14 +1,14 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentUser } from '@repo/backend/auth/utils';
-import type { InitiativeCanvas } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
+import { EververseRole } from "@repo/backend/auth";
+import { currentUser } from "@repo/backend/auth/utils";
+import type { InitiativeCanvas } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { database } from "@/lib/database";
 
 export const updateInitiativeCanvas = async (
-  initiativeCanvasId: InitiativeCanvas['id'],
-  data: Omit<Partial<InitiativeCanvas>, 'content'> & {
+  initiativeCanvasId: InitiativeCanvas["id"],
+  data: Omit<Partial<InitiativeCanvas>, "content"> & {
     content?: object;
   }
 ): Promise<{
@@ -18,7 +18,7 @@ export const updateInitiativeCanvas = async (
     const user = await currentUser();
 
     if (!user) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {

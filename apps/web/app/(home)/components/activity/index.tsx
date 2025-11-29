@@ -1,10 +1,10 @@
-import { Card } from '@/app/(home)/components/card';
-import { FeatureHero } from '@/components/feature-hero';
-import { features } from '@/lib/features';
-import { Container } from '@repo/design-system/components/container';
-import type { HTMLAttributes } from 'react';
-import { ActivityGraphic } from './components/activity-graphic';
-import { PresenceGraphic } from './components/presence-graphic';
+import { Container } from "@repo/design-system/components/container";
+import type { HTMLAttributes } from "react";
+import { Card } from "@/app/(home)/components/card";
+import { FeatureHero } from "@/components/feature-hero";
+import { features } from "@/lib/features";
+import { ActivityGraphic } from "./components/activity-graphic";
+import { PresenceGraphic } from "./components/presence-graphic";
 
 type ActivityProperties = HTMLAttributes<HTMLDivElement>;
 
@@ -15,9 +15,9 @@ export const Activity = (properties: ActivityProperties) => (
       <div className="grid gap-4 md:grid-cols-6">
         <Card
           className="h-full md:col-span-3"
+          description="Eververse keeps a log of all activity across your product team, from new features to portal updates."
           feature="Activity Log"
           title="Stay up to date"
-          description="Eververse keeps a log of all activity across your product team, from new features to portal updates."
         >
           <ActivityGraphic />
         </Card>
@@ -41,9 +41,9 @@ export const Activity = (properties: ActivityProperties) => (
   </Card> */}
         <Card
           className="h-full md:col-span-3"
+          description="Get a real-time view of who's on Eververse and what they're working on."
           feature="Presence"
           title="See who's active"
-          description="Get a real-time view of who's on Eververse and what they're working on."
         >
           <PresenceGraphic />
         </Card>

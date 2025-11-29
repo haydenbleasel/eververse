@@ -5,8 +5,8 @@ import {
   Img,
   Section,
   Tailwind,
-} from '@react-email/components';
-import type { ReactNode } from 'react';
+} from "@react-email/components";
+import type { ReactNode } from "react";
 
 type EmailLayoutProps = {
   children: ReactNode;
@@ -19,10 +19,10 @@ export const EmailLayout = ({ children, siteUrl }: EmailLayoutProps) => (
       <Container className="mx-auto mb-16 bg-white py-5 pb-12">
         <Section className="px-12">
           <Img
-            src={new URL('/logo.png', siteUrl).toString()}
-            width="36"
-            height="36"
             alt="Eververse"
+            height="36"
+            src={new URL("/logo.png", siteUrl).toString()}
+            width="36"
           />
           <Hr className="my-5 border-[#e6ebf1]" />
           {children}

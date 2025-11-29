@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import data from '@emoji-mart/data';
-import Picker from '@emoji-mart/react';
-import { init } from 'emoji-mart';
-import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
-import { cn } from '../lib/utils';
-import { Emoji } from './emoji';
-import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
+import { init } from "emoji-mart";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import { cn } from "../lib/utils";
+import { Emoji } from "./emoji";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
 type EmojiSelectorProperties = {
   readonly value: string;
@@ -46,17 +46,17 @@ export const EmojiSelector = ({
   };
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover onOpenChange={setOpen} open={open}>
       <PopoverTrigger asChild>
         <button
-          type="button"
           aria-label="Select an emoji"
           className={cn(
-            'flex items-center justify-center',
-            large ? 'h-12 w-12' : 'h-4 w-4'
+            "flex items-center justify-center",
+            large ? "h-12 w-12" : "h-4 w-4"
           )}
+          type="button"
         >
-          <Emoji id={value} size={large ? '1.5rem' : '0.825rem'} />
+          <Emoji id={value} size={large ? "1.5rem" : "0.825rem"} />
         </button>
       </PopoverTrigger>
       <PopoverContent className="w-[352] p-0" collisionPadding={16}>

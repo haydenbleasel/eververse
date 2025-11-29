@@ -1,21 +1,21 @@
-'use client';
+"use client";
 
-import { getFeedbackUsers } from '@/actions/feedback-user/list';
-import { ItemList } from '@/components/item-list';
-import { Avatar } from '@repo/design-system/components/precomposed/avatar';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { formatDate } from '@repo/lib/format';
-import { useInfiniteQuery } from '@tanstack/react-query';
-import { useEffect } from 'react';
+import { Avatar } from "@repo/design-system/components/precomposed/avatar";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { formatDate } from "@repo/lib/format";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+import { getFeedbackUsers } from "@/actions/feedback-user/list";
+import { ItemList } from "@/components/item-list";
 
 export const FeedbackUsersList = () => {
   const { data, error, fetchNextPage, isFetching, hasNextPage } =
     useInfiniteQuery({
-      queryKey: ['feedbackUsers'],
+      queryKey: ["feedbackUsers"],
       queryFn: async ({ pageParam }) => {
         const response = await getFeedbackUsers(pageParam);
 
-        if ('error' in response) {
+        if ("error" in response) {
           throw response.error;
         }
 
@@ -44,7 +44,7 @@ export const FeedbackUsersList = () => {
           description: item.email,
           caption: formatDate(item.createdAt),
           image: (
-            <Avatar src={item.imageUrl} fallback={item.name.slice(0, 2)} />
+            <Avatar fallback={item.name.slice(0, 2)} src={item.imageUrl} />
           ),
         })) ?? []
       }

@@ -1,17 +1,17 @@
-import NumberFlow from '@number-flow/react';
-import { Link } from '@repo/design-system/components/link';
-import { Button } from '@repo/design-system/components/ui/button';
-import { CircleCheckBigIcon } from 'lucide-react';
+import NumberFlow from "@number-flow/react";
+import { Link } from "@repo/design-system/components/link";
+import { Button } from "@repo/design-system/components/ui/button";
+import { CircleCheckBigIcon } from "lucide-react";
 
 export type PlanCardProperties = {
-  readonly interval: 'MONTHLY' | 'YEARLY';
+  readonly interval: "MONTHLY" | "YEARLY";
   readonly previousPlanName: string | null;
   readonly plan: {
     id: string;
     name: string;
     description: string | null;
     prices: {
-      interval: PlanCardProperties['interval'];
+      interval: PlanCardProperties["interval"];
       id: string;
       value: number | string;
     }[];
@@ -36,12 +36,12 @@ export const PlanCard = ({
 
   const caption = previousPlanName
     ? `Everything in ${previousPlanName}, plus...`
-    : 'Everything you need to start...';
+    : "Everything you need to start...";
 
   return (
     <div
-      key={plan.id}
       className="rounded-lg border bg-background p-4 shadow-sm"
+      key={plan.id}
     >
       <h2 className="font-semibold">{plan.name}</h2>
       <div className="flex flex-col">
@@ -49,16 +49,16 @@ export const PlanCard = ({
           <p className="text-muted-foreground text-sm">{plan.description}</p>
         </div>
         <div className="my-4">
-          {typeof price.value === 'string' ? (
+          {typeof price.value === "string" ? (
             <p className="font-semibold text-3xl text-foreground">
               {price.value}
             </p>
           ) : (
             <div className="flex items-center gap-2 text-muted-foreground text-sm">
               <NumberFlow
-                value={interval === 'YEARLY' ? price.value / 12 : price.value}
-                prefix="$"
                 className="-my-1 font-semibold text-3xl text-foreground"
+                prefix="$"
+                value={interval === "YEARLY" ? price.value / 12 : price.value}
               />
               <div className="text-xs">
                 <p>per user</p>
@@ -70,8 +70,8 @@ export const PlanCard = ({
         <p className="text-muted-foreground text-sm">{caption}</p>
         <div className="my-4 flex flex-col gap-1">
           {plan.features.map((feature) => (
-            <div key={feature} className="flex items-center gap-2">
-              <CircleCheckBigIcon size={16} className="shrink-0 text-success" />
+            <div className="flex items-center gap-2" key={feature}>
+              <CircleCheckBigIcon className="shrink-0 text-success" size={16} />
               <p className="truncate text-sm">{feature}</p>
             </div>
           ))}
@@ -79,12 +79,12 @@ export const PlanCard = ({
         <div className="flex flex-col">
           {plan.cta ? (
             <Button asChild>
-              <a href={plan.cta} target="_blank" rel="noopener noreferrer">
+              <a href={plan.cta} rel="noopener noreferrer" target="_blank">
                 {plan.label}
               </a>
             </Button>
           ) : (
-            <Button variant="outline" disabled>
+            <Button disabled variant="outline">
               Current Plan
             </Button>
           )}

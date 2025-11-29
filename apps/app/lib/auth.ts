@@ -1,5 +1,5 @@
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import { redirect } from 'next/navigation';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import { redirect } from "next/navigation";
 
 export const handleAuthedState = async (): Promise<void> => {
   const [user, organizationId] = await Promise.all([
@@ -12,6 +12,6 @@ export const handleAuthedState = async (): Promise<void> => {
   }
 
   if (!organizationId) {
-    redirect('/setup');
+    redirect("/setup");
   }
 };

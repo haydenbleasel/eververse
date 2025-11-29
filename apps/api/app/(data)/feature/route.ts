@@ -1,8 +1,8 @@
-import { database } from '@repo/backend/database';
-import { textToContent } from '@repo/editor/lib/tiptap';
-import { MAX_FREE_FEATURES } from '@repo/lib/consts';
-import { NextResponse } from 'next/server';
-import { z } from 'zod/v3';
+import { database } from "@repo/backend/database";
+import { textToContent } from "@repo/editor/lib/tiptap";
+import { MAX_FREE_FEATURES } from "@repo/lib/consts";
+import { NextResponse } from "next/server";
+import { z } from "zod/v3";
 
 const FeatureProperties = z.object({
   title: z.string(),
@@ -20,11 +20,11 @@ const FeatureProperties = z.object({
 export const POST = async (request: Request): Promise<Response> => {
   const body = (await request.json()) as unknown;
   const parse = FeatureProperties.safeParse(body);
-  const authorization = request.headers.get('Authorization');
-  const key = authorization?.split('Bearer ')[1];
+  const authorization = request.headers.get("Authorization");
+  const key = authorization?.split("Bearer ")[1];
 
   if (!key) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const apiKey = await database.apiKey.findFirst({
@@ -42,14 +42,14 @@ export const POST = async (request: Request): Promise<Response> => {
   });
 
   if (!apiKey) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   if (!apiKey.organization.stripeSubscriptionId) {
     return NextResponse.json(
       {
         error:
-          'You need to have a subscription to use the API. Please upgrade your plan.',
+          "You need to have a subscription to use the API. Please upgrade your plan.",
       },
       { status: 403 }
     );
@@ -64,7 +64,7 @@ export const POST = async (request: Request): Promise<Response> => {
     select: {
       stripeSubscriptionId: true,
       featureStatuses: {
-        orderBy: { order: 'asc' },
+        orderBy: { order: "asc" },
         select: { id: true },
         take: 1,
       },
@@ -75,18 +75,18 @@ export const POST = async (request: Request): Promise<Response> => {
   });
 
   if (!organization) {
-    throw new Error('Organization not found');
+    throw new Error("Organization not found");
   }
 
   if (organization.featureStatuses.length === 0) {
-    throw new Error('You must have a feature status to create a feature.');
+    throw new Error("You must have a feature status to create a feature.");
   }
 
   if (
     !organization.stripeSubscriptionId &&
     organization._count.features >= MAX_FREE_FEATURES
   ) {
-    return new Response('Upgrade your subscription to create more features', {
+    return new Response("Upgrade your subscription to create more features", {
       status: 402,
     });
   }
@@ -98,7 +98,7 @@ export const POST = async (request: Request): Promise<Response> => {
       ownerId: apiKey.creatorId,
       title: parse.data.title,
       statusId: organization.featureStatuses[0].id,
-      source: 'API',
+      source: "API",
       apiKeyId: apiKey.id,
       content: textToContent(parse.data.text),
       customFields: parse.data.custom

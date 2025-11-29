@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { updateFeature } from '@/actions/feature/update';
-import type { Feature, Release } from '@repo/backend/prisma/client';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useState } from 'react';
+import type { Feature, Release } from "@repo/backend/prisma/client";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useState } from "react";
+import { updateFeature } from "@/actions/feature/update";
 
 type FeatureReleasePickerProperties = {
-  readonly featureId: Feature['id'];
-  readonly defaultValue?: Feature['releaseId'] | null;
-  readonly releases: Pick<Release, 'id' | 'title'>[];
+  readonly featureId: Feature["id"];
+  readonly defaultValue?: Feature["releaseId"] | null;
+  readonly releases: Pick<Release, "id" | "title">[];
   readonly disabled: boolean;
 };
 
@@ -37,14 +37,14 @@ export const FeatureReleasePicker = ({
 
   return (
     <Select
-      value={value}
-      onChange={handleSelect}
       data={releases.map((release) => ({
         label: release.title,
         value: release.id,
       }))}
       disabled={disabled}
+      onChange={handleSelect}
       type="release"
+      value={value}
     />
   );
 };

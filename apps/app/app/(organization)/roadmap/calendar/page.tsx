@@ -1,11 +1,11 @@
-import { database } from '@/lib/database';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { Calendar } from './components/calendar';
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { database } from "@/lib/database";
+import { Calendar } from "./components/calendar";
 
 export const metadata: Metadata = createMetadata({
-  title: 'Calendar',
-  description: 'See a calendar view of your organization’s features.',
+  title: "Calendar",
+  description: "See a calendar view of your organization’s features.",
 });
 
 const Roadmap = async () => {
@@ -53,7 +53,7 @@ const Roadmap = async () => {
         },
       },
     },
-    orderBy: { startAt: 'asc' },
+    orderBy: { startAt: "asc" },
   });
 
   return (

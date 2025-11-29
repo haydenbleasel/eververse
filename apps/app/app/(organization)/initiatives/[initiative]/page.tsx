@@ -1,22 +1,22 @@
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import { Skeleton } from '@repo/design-system/components/precomposed/skeleton';
-import { textToContent } from '@repo/editor/lib/tiptap';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import type { JSONContent } from 'novel';
-import { Suspense } from 'react';
-import { CreateInitiativeUpdateButton } from './components/create-initiative-update-button';
-import { InitiativeEmoji } from './components/initiative-emoji';
-import { InitiativeFeatures } from './components/initiative-features';
-import { InitiativePageEditor } from './components/initiative-page-editor';
-import { InitiativeQuestionCard } from './components/initiative-question-card';
-import { InitiativeSidebar } from './components/initiative-sidebar';
-import { InitiativeTitle } from './components/initiative-title';
-import { InitiativeUpdatesCard } from './components/initiative-updates-card';
+import { EververseRole } from "@repo/backend/auth";
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import { Skeleton } from "@repo/design-system/components/precomposed/skeleton";
+import { textToContent } from "@repo/editor/lib/tiptap";
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import type { JSONContent } from "novel";
+import { Suspense } from "react";
+import { database } from "@/lib/database";
+import { CreateInitiativeUpdateButton } from "./components/create-initiative-update-button";
+import { InitiativeEmoji } from "./components/initiative-emoji";
+import { InitiativeFeatures } from "./components/initiative-features";
+import { InitiativePageEditor } from "./components/initiative-page-editor";
+import { InitiativeQuestionCard } from "./components/initiative-question-card";
+import { InitiativeSidebar } from "./components/initiative-sidebar";
+import { InitiativeTitle } from "./components/initiative-title";
+import { InitiativeUpdatesCard } from "./components/initiative-updates-card";
 
 type InitiativeProperties = {
   readonly params: Promise<{
@@ -38,7 +38,7 @@ export const generateMetadata = async (
 
   return createMetadata({
     title: initiative.title,
-    description: 'Create and edit content for your initiative.',
+    description: "Create and edit content for your initiative.",
   });
 };
 
@@ -49,7 +49,7 @@ const Initiative = async (props: InitiativeProperties) => {
     currentOrganizationId(),
   ]);
 
-  if (!user || !organizationId) {
+  if (!(user && organizationId)) {
     notFound();
   }
 
@@ -125,7 +125,7 @@ const Initiative = async (props: InitiativeProperties) => {
 
   const initiative = organization?.initiatives.at(0);
 
-  if (!organization || !initiative) {
+  if (!(organization && initiative)) {
     notFound();
   }
 
@@ -147,13 +147,13 @@ const Initiative = async (props: InitiativeProperties) => {
   }
 
   let content = await getJsonColumnFromTable(
-    'initiative_page',
-    'content',
+    "initiative_page",
+    "content",
     page.id
   );
 
   if (!content) {
-    const newContent = textToContent('');
+    const newContent = textToContent("");
 
     await database.initiativePage.update({
       where: { id: page.id },
@@ -174,11 +174,11 @@ const Initiative = async (props: InitiativeProperties) => {
         <div className="mx-auto grid max-w-prose gap-6">
           <div className="flex items-center justify-between gap-2">
             <InitiativeEmoji
-              initiativeId={params.initiative}
               defaultEmoji={initiative.emoji}
               editable={
                 user.user_metadata.organization_role !== EververseRole.Member
               }
+              initiativeId={params.initiative}
             />
             <CreateInitiativeUpdateButton
               initiativeId={params.initiative}
@@ -186,11 +186,11 @@ const Initiative = async (props: InitiativeProperties) => {
             />
           </div>
           <InitiativeTitle
-            initiativeId={params.initiative}
             defaultTitle={initiative.title}
             editable={
               user.user_metadata.organization_role !== EververseRole.Member
             }
+            initiativeId={params.initiative}
           />
           {organization.stripeSubscriptionId && (
             <InitiativeQuestionCard
@@ -199,11 +199,11 @@ const Initiative = async (props: InitiativeProperties) => {
             />
           )}
           <InitiativePageEditor
-            pageId={page.id}
             defaultValue={content as JSONContent}
             editable={
               user.user_metadata.organization_role !== EververseRole.Member
             }
+            pageId={page.id}
           />
           <Suspense fallback={<Skeleton className="h-[366px] w-full" />}>
             <InitiativeUpdatesCard initiativeId={params.initiative} />

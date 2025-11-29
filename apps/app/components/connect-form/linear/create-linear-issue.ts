@@ -1,15 +1,15 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import type { Feature } from '@repo/backend/prisma/client';
-import { contentToMarkdown } from '@repo/editor/lib/tiptap';
-import { parseError } from '@repo/lib/parse-error';
-import { LinearClient } from '@repo/linear';
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import type { Feature } from "@repo/backend/prisma/client";
+import { contentToMarkdown } from "@repo/editor/lib/tiptap";
+import { parseError } from "@repo/lib/parse-error";
+import { LinearClient } from "@repo/linear";
+import { database } from "@/lib/database";
 
 type CreateLinearIssueProperties = {
   readonly teamId: string;
-  readonly featureId: Feature['id'];
+  readonly featureId: Feature["id"];
 };
 
 export const createLinearIssue = async ({
@@ -36,19 +36,19 @@ export const createLinearIssue = async ({
     ]);
 
     if (!linearInstallation) {
-      throw new Error('Installation not found');
+      throw new Error("Installation not found");
     }
 
     if (!feature) {
-      throw new Error('Feature not found');
+      throw new Error("Feature not found");
     }
 
     const content = await getJsonColumnFromTable(
-      'feature',
-      'content',
+      "feature",
+      "content",
       feature.id
     );
-    const description = content ? await contentToMarkdown(content) : '';
+    const description = content ? await contentToMarkdown(content) : "";
 
     const linear = new LinearClient({
       apiKey: linearInstallation.apiKey,
@@ -61,13 +61,13 @@ export const createLinearIssue = async ({
     });
 
     if (!response.success) {
-      throw new Error('Issue not created');
+      throw new Error("Issue not created");
     }
 
     const newIssue = await response.issue;
 
     if (!newIssue) {
-      throw new Error('New issue not found');
+      throw new Error("New issue not found");
     }
 
     return { id: newIssue.id, href: newIssue.url };

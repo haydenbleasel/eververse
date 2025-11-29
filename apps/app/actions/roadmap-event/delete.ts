@@ -1,14 +1,14 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentUser } from '@repo/backend/auth/utils';
-import type { RoadmapEvent } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { EververseRole } from "@repo/backend/auth";
+import { currentUser } from "@repo/backend/auth/utils";
+import type { RoadmapEvent } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const deleteMarker = async (
-  id: RoadmapEvent['id']
+  id: RoadmapEvent["id"]
 ): Promise<{
   error?: string;
 }> => {
@@ -16,7 +16,7 @@ export const deleteMarker = async (
     const user = await currentUser();
 
     if (!user) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
@@ -28,7 +28,7 @@ export const deleteMarker = async (
       select: { id: true },
     });
 
-    revalidatePath('/roadmap');
+    revalidatePath("/roadmap");
 
     return {};
   } catch (error) {

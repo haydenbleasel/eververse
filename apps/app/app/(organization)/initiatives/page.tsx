@@ -1,21 +1,21 @@
-import { EmptyState } from '@/components/empty-state';
-import { database } from '@/lib/database';
-import emojiData from '@emoji-mart/data';
-import { EververseRole } from '@repo/backend/auth';
-import { currentMembers, currentUser } from '@repo/backend/auth/utils';
-import { createMetadata } from '@repo/seo/metadata';
-import { init } from 'emoji-mart';
-import { CompassIcon } from 'lucide-react';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { CreateInitiativeButton } from './components/create-initiative-button';
-import { InitiativeItem } from './components/initiative-item';
-import { InitiativesEmptyState } from './components/initiatives-empty-state';
+import emojiData from "@emoji-mart/data";
+import { EververseRole } from "@repo/backend/auth";
+import { currentMembers, currentUser } from "@repo/backend/auth/utils";
+import { createMetadata } from "@repo/seo/metadata";
+import { init } from "emoji-mart";
+import { CompassIcon } from "lucide-react";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { EmptyState } from "@/components/empty-state";
+import { database } from "@/lib/database";
+import { CreateInitiativeButton } from "./components/create-initiative-button";
+import { InitiativeItem } from "./components/initiative-item";
+import { InitiativesEmptyState } from "./components/initiatives-empty-state";
 
 init({ data: emojiData });
 
-const title = 'Initiatives';
-const description = 'Create and manage initiatives for your product.';
+const title = "Initiatives";
+const description = "Create and manage initiatives for your product.";
 
 export const metadata: Metadata = createMetadata({
   title,
@@ -31,7 +31,7 @@ const Initiatives = async () => {
 
   const [initiatives, members] = await Promise.all([
     database.initiative.findMany({
-      orderBy: { createdAt: 'desc' },
+      orderBy: { createdAt: "desc" },
       select: {
         id: true,
         title: true,
@@ -45,7 +45,7 @@ const Initiatives = async () => {
         pages: {
           where: { default: true },
           take: 1,
-          orderBy: { createdAt: 'desc' },
+          orderBy: { createdAt: "desc" },
           select: {
             id: true,
             content: true,
@@ -63,9 +63,9 @@ const Initiatives = async () => {
     return (
       <div className="flex flex-1 flex-col items-center justify-center">
         <EmptyState
-          title="You don't have any initiatives"
           description="Initiatives are a way to organize your product development efforts."
           icon={CompassIcon}
+          title="You don't have any initiatives"
         />
       </div>
     );
@@ -97,10 +97,10 @@ const Initiatives = async () => {
           {initiatives
             .sort((initiativeA, initiativeB) => {
               const stateOrder = [
-                'ACTIVE',
-                'PLANNED',
-                'COMPLETED',
-                'CANCELLED',
+                "ACTIVE",
+                "PLANNED",
+                "COMPLETED",
+                "CANCELLED",
               ];
               const stateA = stateOrder.indexOf(initiativeA.state);
               const stateB = stateOrder.indexOf(initiativeB.state);
@@ -114,8 +114,8 @@ const Initiatives = async () => {
             })
             .map((initiative) => (
               <InitiativeItem
-                key={initiative.id}
                 initiative={initiative}
+                key={initiative.id}
                 members={members.filter((member) =>
                   initiative.team.some((team) => team.userId === member.id)
                 )}

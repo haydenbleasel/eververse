@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
 type CommandBarState = {
   isOpen: boolean;
@@ -17,7 +17,7 @@ export const useCommandBar = create<CommandBarState>()(
       toggle: () => set((state) => ({ isOpen: !state.isOpen })),
     }),
     {
-      name: 'eververse:command-bar',
+      name: "eververse:command-bar",
     }
   )
 );

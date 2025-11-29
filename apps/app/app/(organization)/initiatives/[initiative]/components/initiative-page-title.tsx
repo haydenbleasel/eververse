@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { updateInitiativePage } from '@/actions/initiative-page/update';
-import { DocumentInput } from '@/components/document-input';
-import type { InitiativePage } from '@repo/backend/prisma/client';
-import { handleError } from '@repo/design-system/lib/handle-error';
+import type { InitiativePage } from "@repo/backend/prisma/client";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { updateInitiativePage } from "@/actions/initiative-page/update";
+import { DocumentInput } from "@/components/document-input";
 
 type InitiativePageTitleProperties = {
-  readonly pageId: InitiativePage['id'];
-  readonly defaultTitle: InitiativePage['title'];
+  readonly pageId: InitiativePage["id"];
+  readonly defaultTitle: InitiativePage["title"];
   readonly editable: boolean;
 };
 
@@ -31,8 +31,8 @@ export const InitiativePageTitle = ({
   return (
     <DocumentInput
       defaultValue={defaultTitle}
-      onDebouncedUpdate={handleDebouncedUpdate}
       disabled={!editable}
+      onDebouncedUpdate={handleDebouncedUpdate}
     />
   );
 };

@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { deleteRelease } from '@/actions/release/delete';
-import type { Release } from '@repo/backend/prisma/client';
-import { AlertDialog } from '@repo/design-system/components/precomposed/alert-dialog';
-import { DropdownMenu } from '@repo/design-system/components/precomposed/dropdown-menu';
-import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { MoreHorizontalIcon } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import type { Release } from "@repo/backend/prisma/client";
+import { AlertDialog } from "@repo/design-system/components/precomposed/alert-dialog";
+import { DropdownMenu } from "@repo/design-system/components/precomposed/dropdown-menu";
+import { Tooltip } from "@repo/design-system/components/precomposed/tooltip";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { MoreHorizontalIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { deleteRelease } from "@/actions/release/delete";
 
 type ReleaseSettingsDropdownProperties = {
-  readonly releaseId: Release['id'];
+  readonly releaseId: Release["id"];
 };
 
 export const ReleaseSettingsDropdown = ({
@@ -37,7 +37,7 @@ export const ReleaseSettingsDropdown = ({
       }
 
       setDeleteOpen(false);
-      router.push('/releases');
+      router.push("/releases");
     } catch (error) {
       handleError(error);
     } finally {
@@ -52,13 +52,13 @@ export const ReleaseSettingsDropdown = ({
           {
             onClick: () => setDeleteOpen(true),
             disabled: loading,
-            children: 'Delete',
+            children: "Delete",
           },
         ]}
       >
         <div className="-m-2">
-          <Tooltip content="Settings" side="bottom" align="end">
-            <Button variant="ghost" size="icon">
+          <Tooltip align="end" content="Settings" side="bottom">
+            <Button size="icon" variant="ghost">
               <MoreHorizontalIcon size={16} />
             </Button>
           </Tooltip>
@@ -66,12 +66,12 @@ export const ReleaseSettingsDropdown = ({
       </DropdownMenu>
 
       <AlertDialog
-        open={deleteOpen}
-        onOpenChange={setDeleteOpen}
-        title="Are you absolutely sure?"
         description="This action cannot be undone. This will permanently delete this release."
-        onClick={handleDelete}
         disabled={loading}
+        onClick={handleDelete}
+        onOpenChange={setDeleteOpen}
+        open={deleteOpen}
+        title="Are you absolutely sure?"
       />
     </>
   );

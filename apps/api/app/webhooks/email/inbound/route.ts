@@ -1,9 +1,9 @@
-import { database } from '@repo/backend/database';
-import { htmlToContent } from '@repo/editor/lib/tiptap';
-import { MAX_FREE_FEEDBACK } from '@repo/lib/consts';
-import { getGravatarUrl } from '@repo/lib/gravatar';
-import { log } from '@repo/observability/log';
-import { z } from 'zod/v3';
+import { database } from "@repo/backend/database";
+import { htmlToContent } from "@repo/editor/lib/tiptap";
+import { MAX_FREE_FEEDBACK } from "@repo/lib/consts";
+import { getGravatarUrl } from "@repo/lib/gravatar";
+import { log } from "@repo/observability/log";
+import { z } from "zod/v3";
 
 const messageSchema = z.object({
   From: z.string(),
@@ -75,13 +75,13 @@ export const POST = async (request: Request): Promise<Response> => {
   log.info(`Received inbound email: JSON: ${JSON.stringify(parse, null, 2)}`);
 
   if (!parse.success) {
-    return new Response(`Bad Request: ${parse.error.errors.join(',')}`, {
+    return new Response(`Bad Request: ${parse.error.errors.join(",")}`, {
       status: 400,
     });
   }
 
-  if (parse.data.MessageStream !== 'inbound') {
-    return new Response('Not an inbound message', { status: 400 });
+  if (parse.data.MessageStream !== "inbound") {
+    return new Response("Not an inbound message", { status: 400 });
   }
 
   const match = [
@@ -97,7 +97,7 @@ export const POST = async (request: Request): Promise<Response> => {
     log.error(
       `Invalid recipient email format: ${parse.data.To}, ${parse.data.OriginalRecipient}, ${parse.data.Cc}, ${parse.data.Bcc}`
     );
-    return new Response('Invalid recipient email format', { status: 400 });
+    return new Response("Invalid recipient email format", { status: 400 });
   }
 
   const organizationId = `org_${match[1]}`;
@@ -115,7 +115,7 @@ export const POST = async (request: Request): Promise<Response> => {
 
   if (!organization) {
     log.error(`Organization not found: ${organizationId}`);
-    return new Response('Organization not found', { status: 404 });
+    return new Response("Organization not found", { status: 404 });
   }
 
   const email = parse.data.FromFull.Email;
@@ -145,7 +145,7 @@ export const POST = async (request: Request): Promise<Response> => {
     !organization.stripeSubscriptionId &&
     organization._count.feedback >= MAX_FREE_FEEDBACK
   ) {
-    return new Response('Upgrade your subscription to create more feedback', {
+    return new Response("Upgrade your subscription to create more feedback", {
       status: 402,
     });
   }
@@ -155,7 +155,7 @@ export const POST = async (request: Request): Promise<Response> => {
       organizationId,
       content: htmlToContent(parse.data.HtmlBody),
       title: parse.data.Subject,
-      source: 'EMAIL',
+      source: "EMAIL",
       feedbackUserId: feedbackUser.id,
     },
     select: {
@@ -163,5 +163,5 @@ export const POST = async (request: Request): Promise<Response> => {
     },
   });
 
-  return new Response('OK', { status: 200 });
+  return new Response("OK", { status: 200 });
 };

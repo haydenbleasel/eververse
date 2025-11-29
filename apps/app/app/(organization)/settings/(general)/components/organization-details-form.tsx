@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { updateOrganization } from '@/actions/organization/update';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useState } from 'react';
-import type { FormEventHandler } from 'react';
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import type { FormEventHandler } from "react";
+import { useState } from "react";
+import { updateOrganization } from "@/actions/organization/update";
 
 type OrganizationDetailsFormProperties = {
   readonly defaultName: string;
@@ -47,23 +47,23 @@ export const OrganizationDetailsForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full space-y-4">
+    <form className="w-full space-y-4" onSubmit={handleSubmit}>
       <Input
-        label="Name"
-        value={name}
-        onChangeText={setName}
         className="bg-background"
+        label="Name"
+        onChangeText={setName}
         placeholder="Eververse"
+        value={name}
       />
       <Input
-        label="Slug"
-        value={slug}
-        onChangeText={setSlug}
-        placeholder="eververse"
         className="bg-background"
         disabled
+        label="Slug"
+        onChangeText={setSlug}
+        placeholder="eververse"
+        value={slug}
       />
-      <Button type="submit" disabled={disabled}>
+      <Button disabled={disabled} type="submit">
         Save
       </Button>
     </form>

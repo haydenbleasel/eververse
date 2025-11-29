@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { updateFeature } from '@/actions/feature/update';
-import { DocumentInput } from '@/components/document-input';
-import type { Feature } from '@repo/backend/prisma/client';
-import { handleError } from '@repo/design-system/lib/handle-error';
+import type { Feature } from "@repo/backend/prisma/client";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { updateFeature } from "@/actions/feature/update";
+import { DocumentInput } from "@/components/document-input";
 
 type FeatureTitleProperties = {
-  readonly featureId: Feature['id'];
-  readonly defaultTitle: Feature['title'];
+  readonly featureId: Feature["id"];
+  readonly defaultTitle: Feature["title"];
   readonly editable: boolean;
 };
 
@@ -33,8 +33,8 @@ export const FeatureTitle = ({
   return (
     <DocumentInput
       defaultValue={defaultTitle}
-      onDebouncedUpdate={handleDebouncedUpdate}
       disabled={!editable}
+      onDebouncedUpdate={handleDebouncedUpdate}
     />
   );
 };

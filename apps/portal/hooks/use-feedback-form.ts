@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { devtools, persist } from 'zustand/middleware';
+import { create } from "zustand";
+import { devtools, persist } from "zustand/middleware";
 
 type FeedbackFormState = {
   open: boolean;
@@ -16,13 +16,13 @@ export const useFeedbackForm = create<FeedbackFormState>()(
       (set) => ({
         open: false,
         setOpen: (open) => set({ open }),
-        email: '',
+        email: "",
         setEmail: (email) => set({ email }),
-        name: '',
+        name: "",
         setName: (name) => set({ name }),
       }),
       {
-        name: 'eververse-portal:feedback-form',
+        name: "eververse-portal:feedback-form",
       }
     )
   )

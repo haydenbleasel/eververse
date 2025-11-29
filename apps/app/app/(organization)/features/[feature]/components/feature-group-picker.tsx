@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { updateFeature } from '@/actions/feature/update';
-import type { Feature, Group } from '@repo/backend/prisma/client';
-import { Emoji } from '@repo/design-system/components/emoji';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { toast } from '@repo/design-system/lib/toast';
-import { useState } from 'react';
+import type { Feature, Group } from "@repo/backend/prisma/client";
+import { Emoji } from "@repo/design-system/components/emoji";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { toast } from "@repo/design-system/lib/toast";
+import { useState } from "react";
+import { updateFeature } from "@/actions/feature/update";
 
 type FeatureGroupPickerProperties = {
-  readonly featureId: Feature['id'];
+  readonly featureId: Feature["id"];
   readonly defaultValue: string | undefined;
   readonly disabled: boolean;
-  readonly data: Pick<Group, 'id' | 'name' | 'emoji'>[];
+  readonly data: Pick<Group, "id" | "name" | "emoji">[];
 };
 
 export const FeatureGroupPicker = ({
@@ -39,7 +39,7 @@ export const FeatureGroupPicker = ({
         throw new Error(error);
       }
 
-      toast.success('Group updated');
+      toast.success("Group updated");
     } catch (error) {
       handleError(error);
     } finally {
@@ -49,13 +49,12 @@ export const FeatureGroupPicker = ({
 
   return (
     <Select
-      value={value}
-      onChange={handleSelect}
       data={data.map((group) => ({
         label: group.name,
         value: group.id,
       }))}
       disabled={disabled || loading}
+      onChange={handleSelect}
       renderItem={(item) => {
         const group = data.find((group) => group.id === item.value);
 
@@ -71,6 +70,7 @@ export const FeatureGroupPicker = ({
         );
       }}
       type="group"
+      value={value}
     />
   );
 };

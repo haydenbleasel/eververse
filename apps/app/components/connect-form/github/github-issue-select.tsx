@@ -1,16 +1,16 @@
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import type { RestEndpointMethodTypes } from '@repo/github';
-import { useEffect, useState } from 'react';
-import { getGitHubIssues } from './get-github-issues';
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import type { RestEndpointMethodTypes } from "@repo/github";
+import { useEffect, useState } from "react";
+import { getGitHubIssues } from "./get-github-issues";
 
 type GitHubIssueSelectProperties = {
   readonly value: string | undefined;
   readonly onValueChange: (value: string | undefined) => void;
-  readonly repository: RestEndpointMethodTypes['apps']['listReposAccessibleToInstallation']['response']['data']['repositories'][0];
-  readonly issues: RestEndpointMethodTypes['issues']['listForRepo']['response']['data'];
+  readonly repository: RestEndpointMethodTypes["apps"]["listReposAccessibleToInstallation"]["response"]["data"]["repositories"][0];
+  readonly issues: RestEndpointMethodTypes["issues"]["listForRepo"]["response"]["data"];
   readonly setIssues: (
-    issues: RestEndpointMethodTypes['issues']['listForRepo']['response']['data']
+    issues: RestEndpointMethodTypes["issues"]["listForRepo"]["response"]["data"]
   ) => void;
 };
 
@@ -38,7 +38,7 @@ export const GitHubIssueSelect = ({
         }
 
         if (!response.issues) {
-          throw new Error('No issues found');
+          throw new Error("No issues found");
         }
 
         return response.issues;
@@ -53,13 +53,14 @@ export const GitHubIssueSelect = ({
 
   return (
     <Select
-      label="Select an existing issue"
-      value={value}
-      onChange={onValueChange}
       data={issues.map((issueItem) => ({
         value: `${issueItem.id}`,
         label: issueItem.title,
       }))}
+      disabled={loading || issues.length === 0}
+      label="Select an existing issue"
+      loading={loading}
+      onChange={onValueChange}
       renderItem={(item) => {
         const issue = issues.find(
           (issueItem) => issueItem.id === Number.parseInt(item.value, 10)
@@ -77,8 +78,7 @@ export const GitHubIssueSelect = ({
         );
       }}
       type="issue"
-      loading={loading}
-      disabled={loading || issues.length === 0}
+      value={value}
     />
   );
 };

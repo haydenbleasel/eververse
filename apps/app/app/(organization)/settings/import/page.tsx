@@ -1,32 +1,32 @@
-import { Link } from '@repo/design-system/components/link';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { createMetadata } from '@repo/seo/metadata';
-import { ArrowRightIcon } from 'lucide-react';
-import type { Metadata } from 'next';
-import Image from 'next/image';
+import { Link } from "@repo/design-system/components/link";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { createMetadata } from "@repo/seo/metadata";
+import { ArrowRightIcon } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
 
-const title = 'Import from other apps';
+const title = "Import from other apps";
 const description =
-  'Import your feedback, features and components into Eververse.';
+  "Import your feedback, features and components into Eververse.";
 
 const sources = [
   {
-    title: 'Productboard',
-    description: 'Import your Notes, Products, Components, Features and more.',
-    icon: '/productboard.svg',
-    link: '/settings/import/productboard',
+    title: "Productboard",
+    description: "Import your Notes, Products, Components, Features and more.",
+    icon: "/productboard.svg",
+    link: "/settings/import/productboard",
   },
   {
-    title: 'Canny',
-    description: 'Import your Changelogs, Statuses, Companies and more.',
-    icon: '/canny.svg',
-    link: '/settings/import/canny',
+    title: "Canny",
+    description: "Import your Changelogs, Statuses, Companies and more.",
+    icon: "/canny.svg",
+    link: "/settings/import/canny",
   },
   {
-    title: 'Markdown',
-    description: 'Import Markdown files as Changelogs.',
-    icon: '/markdown.svg',
-    link: '/settings/import/markdown',
+    title: "Markdown",
+    description: "Import Markdown files as Changelogs.",
+    icon: "/markdown.svg",
+    link: "/settings/import/markdown",
   },
 ];
 
@@ -46,16 +46,16 @@ const Import = () => (
     <StackCard className="divide-y p-0">
       {sources.map((source) => (
         <Link
-          key={source.title}
-          href={source.link}
           className="flex items-center gap-4 p-4"
+          href={source.link}
+          key={source.title}
         >
           <Image
-            src={source.icon}
             alt={source.title}
-            width={32}
-            height={32}
             className="m-0 h-8 w-8 shrink-0 object-contain"
+            height={32}
+            src={source.icon}
+            width={32}
           />
           <span className="block flex-1">
             <span className="block font-medium">{source.title}</span>

@@ -1,13 +1,13 @@
-'use client';
-import { GlobeIcon } from 'lucide-react';
-import Image from 'next/image';
+"use client";
 
-import type { InitiativeExternalLink } from '@repo/backend/prisma/client';
-import { externalLinkProperties } from './create-initiative-link-button';
+import type { InitiativeExternalLink } from "@repo/backend/prisma/client";
+import { GlobeIcon } from "lucide-react";
+import Image from "next/image";
+import { externalLinkProperties } from "./create-initiative-link-button";
 
 type InitiativeExternalLinkButtonProperties = Pick<
   InitiativeExternalLink,
-  'href' | 'title'
+  "href" | "title"
 >;
 
 export const InitiativeExternalLinkButton = ({
@@ -20,21 +20,21 @@ export const InitiativeExternalLinkButton = ({
 
   return (
     <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
       className="group flex items-center gap-1.5 font-medium text-xs"
+      href={href}
+      rel="noopener noreferrer"
+      target="_blank"
     >
       {icon ? (
         <Image
-          src={icon}
           alt=""
-          width={16}
-          height={16}
           className="h-4 w-4 shrink-0 object-contain"
+          height={16}
+          src={icon}
+          width={16}
         />
       ) : (
-        <GlobeIcon size={16} className="shrink-0 text-muted-foreground" />
+        <GlobeIcon className="shrink-0 text-muted-foreground" size={16} />
       )}
       <span className="w-full truncate group-hover:underline">{title}</span>
     </a>

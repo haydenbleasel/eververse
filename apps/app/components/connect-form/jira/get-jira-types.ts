@@ -1,9 +1,9 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { createClient } from '@repo/atlassian';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { createClient } from "@repo/atlassian";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export type GetJiraTypesResponse = {
   readonly types: {
@@ -32,11 +32,11 @@ export const getJiraTypes = async (
     });
 
     if (!installation) {
-      throw new Error('Jira installation not found');
+      throw new Error("Jira installation not found");
     }
 
     const atlassian = createClient(installation);
-    const response = await atlassian.GET('/rest/api/2/issuetype/project', {
+    const response = await atlassian.GET("/rest/api/2/issuetype/project", {
       params: {
         query: {
           projectId: Number(projectId),
@@ -45,7 +45,7 @@ export const getJiraTypes = async (
     });
 
     if (response.error) {
-      throw new Error('Error fetching Jira types');
+      throw new Error("Error fetching Jira types");
     }
 
     if (!response.data) {
@@ -53,13 +53,13 @@ export const getJiraTypes = async (
     }
 
     const types = response.data.map((type) => ({
-      id: type.id ?? '',
-      image: type.iconUrl ?? '',
-      title: type.name ?? '',
-      key: type.id ?? '',
+      id: type.id ?? "",
+      image: type.iconUrl ?? "",
+      title: type.name ?? "",
+      key: type.id ?? "",
     }));
 
-    revalidatePath('/features', 'page');
+    revalidatePath("/features", "page");
 
     return { types };
   } catch (error) {

@@ -1,12 +1,10 @@
-'use client';
+"use client";
 
-import { addFeatureToPortal } from '@/actions/portal-feature/create';
-import { editFeaturePortal } from '@/actions/portal-feature/update';
-import { zodResolver } from '@hookform/resolvers/zod';
-import type { Feature, PortalFeature } from '@repo/backend/prisma/client';
-import { Dialog } from '@repo/design-system/components/precomposed/dialog';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { Button } from '@repo/design-system/components/ui/button';
+import { zodResolver } from "@hookform/resolvers/zod";
+import type { Feature, PortalFeature } from "@repo/backend/prisma/client";
+import { Dialog } from "@repo/design-system/components/precomposed/dialog";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { Button } from "@repo/design-system/components/ui/button";
 import {
   Form,
   FormControl,
@@ -14,19 +12,21 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@repo/design-system/components/ui/form';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { toast } from '@repo/design-system/lib/toast';
-import dynamic from 'next/dynamic';
-import { type ComponentProps, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod/v3';
+} from "@repo/design-system/components/ui/form";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { toast } from "@repo/design-system/lib/toast";
+import dynamic from "next/dynamic";
+import { type ComponentProps, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod/v3";
+import { addFeatureToPortal } from "@/actions/portal-feature/create";
+import { editFeaturePortal } from "@/actions/portal-feature/update";
 
 const Editor = dynamic(
   async () => {
     const Module = await import(
       /* webpackChunkName: "editor" */
-      '@/components/editor'
+      "@/components/editor"
     );
 
     return Module.Editor;
@@ -42,11 +42,11 @@ const formSchema = z.object({
 });
 
 type FeaturePortalButtonProperties = {
-  readonly featureId: Feature['id'];
-  readonly defaultTitle: Feature['title'];
-  readonly defaultContent: Feature['content'];
-  readonly portalFeatureId?: PortalFeature['id'];
-  readonly variant: ComponentProps<typeof Button>['variant'];
+  readonly featureId: Feature["id"];
+  readonly defaultTitle: Feature["title"];
+  readonly defaultContent: Feature["content"];
+  readonly portalFeatureId?: PortalFeature["id"];
+  readonly variant: ComponentProps<typeof Button>["variant"];
 };
 
 export const FeaturePortalButton = ({
@@ -65,7 +65,7 @@ export const FeaturePortalButton = ({
     },
   });
   const disabled = form.formState.isSubmitting || !form.formState.isValid;
-  const title = portalFeatureId ? 'Edit portal feature' : 'Add to portal';
+  const title = portalFeatureId ? "Edit portal feature" : "Add to portal";
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     if (disabled) {
@@ -82,13 +82,13 @@ export const FeaturePortalButton = ({
       }
 
       if (!url) {
-        throw new Error('No URL returned');
+        throw new Error("No URL returned");
       }
 
       toast.success(
-        portalFeatureId ? 'Portal feature updated' : 'Feature added to portal'
+        portalFeatureId ? "Portal feature updated" : "Feature added to portal"
       );
-      window.open(url, '_blank');
+      window.open(url, "_blank");
       setOpen(false);
     } catch (error) {
       handleError(error);
@@ -97,22 +97,22 @@ export const FeaturePortalButton = ({
 
   return (
     <Dialog
-      open={open}
+      description="Add this feature to your portal to share it with the public. Gather feedback, track sentiment, and validate your ideas faster."
       onOpenChange={setOpen}
+      open={open}
+      title={title}
       trigger={
         <Button
-          variant={variant}
-          onClick={() => setOpen(true)}
           className="w-full"
+          onClick={() => setOpen(true)}
+          variant={variant}
         >
           {title}
         </Button>
       }
-      title={title}
-      description="Add this feature to your portal to share it with the public. Gather feedback, track sentiment, and validate your ideas faster."
     >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
             control={form.control}
             name="title"
@@ -148,7 +148,7 @@ export const FeaturePortalButton = ({
               </FormItem>
             )}
           />
-          <Button type="submit" disabled={disabled}>
+          <Button disabled={disabled} type="submit">
             {title}
           </Button>
         </form>

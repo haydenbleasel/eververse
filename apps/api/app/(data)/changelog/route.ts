@@ -1,15 +1,15 @@
-import { getUserName } from '@repo/backend/auth/format';
-import { getMembers } from '@repo/backend/auth/utils';
-import { database, getJsonColumnFromTable } from '@repo/backend/database';
-import { contentToMarkdown } from '@repo/editor/lib/tiptap';
-import { NextResponse } from 'next/server';
+import { getUserName } from "@repo/backend/auth/format";
+import { getMembers } from "@repo/backend/auth/utils";
+import { database, getJsonColumnFromTable } from "@repo/backend/database";
+import { contentToMarkdown } from "@repo/editor/lib/tiptap";
+import { NextResponse } from "next/server";
 
 export const GET = async (request: Request): Promise<Response> => {
-  const authorization = request.headers.get('Authorization');
-  const key = authorization?.split('Bearer ')[1];
+  const authorization = request.headers.get("Authorization");
+  const key = authorization?.split("Bearer ")[1];
 
   if (!key) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const apiKey = await database.apiKey.findFirst({
@@ -25,14 +25,14 @@ export const GET = async (request: Request): Promise<Response> => {
   });
 
   if (!apiKey) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   if (!apiKey.organization.stripeSubscriptionId) {
     return NextResponse.json(
       {
         error:
-          'You need to have a subscription to use the API. Please upgrade your plan.',
+          "You need to have a subscription to use the API. Please upgrade your plan.",
       },
       { status: 403 }
     );
@@ -42,7 +42,7 @@ export const GET = async (request: Request): Promise<Response> => {
     database.changelog.findMany({
       where: {
         organizationId: apiKey.organization.id,
-        status: 'PUBLISHED',
+        status: "PUBLISHED",
       },
       select: {
         id: true,
@@ -57,7 +57,7 @@ export const GET = async (request: Request): Promise<Response> => {
         },
       },
       orderBy: {
-        publishAt: 'desc',
+        publishAt: "desc",
       },
     }),
     getMembers(apiKey.organization.id),
@@ -65,11 +65,11 @@ export const GET = async (request: Request): Promise<Response> => {
 
   const promises = changelogs.map(async (changelog) => {
     const content = await getJsonColumnFromTable(
-      'changelog',
-      'content',
+      "changelog",
+      "content",
       changelog.id
     );
-    const markdown = content ? await contentToMarkdown(content) : '';
+    const markdown = content ? await contentToMarkdown(content) : "";
 
     return {
       id: changelog.id,

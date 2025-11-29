@@ -1,4 +1,4 @@
-import { Validator } from './components/validator';
+import { Validator } from "./components/validator";
 
 const Home = () => <Validator />;
 

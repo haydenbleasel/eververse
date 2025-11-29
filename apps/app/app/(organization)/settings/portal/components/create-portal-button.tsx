@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { createPortal } from '@/actions/portal/create';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useState } from 'react';
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useState } from "react";
+import { createPortal } from "@/actions/portal/create";
 
 export const CreatePortalButton = () => {
   const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ export const CreatePortalButton = () => {
   };
 
   return (
-    <Button onClick={handleCreatePortal} disabled={loading}>
+    <Button disabled={loading} onClick={handleCreatePortal}>
       Create
     </Button>
   );

@@ -1,23 +1,23 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import type { Initiative, InitiativePage } from '@repo/backend/prisma/client';
-import { MAX_FREE_INITIATIVE_PAGES } from '@repo/lib/consts';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { EververseRole } from "@repo/backend/auth";
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import type { Initiative, InitiativePage } from "@repo/backend/prisma/client";
+import { MAX_FREE_INITIATIVE_PAGES } from "@repo/lib/consts";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const createInitiativePage = async (
-  initiativeId: Initiative['id'],
-  title: InitiativePage['title'],
+  initiativeId: Initiative["id"],
+  title: InitiativePage["title"],
   type: string
 ): Promise<
   | {
       error: string;
     }
   | {
-      id: InitiativePage['id'];
+      id: InitiativePage["id"];
     }
 > => {
   try {
@@ -26,8 +26,8 @@ export const createInitiativePage = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('Not logged in');
+    if (!(user && organizationId)) {
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
@@ -44,19 +44,19 @@ export const createInitiativePage = async (
     ]);
 
     if (!organization) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     if (
       !organization.stripeSubscriptionId &&
       existingPages.length >= MAX_FREE_INITIATIVE_PAGES
     ) {
-      throw new Error('Upgrade to create more initiative pages');
+      throw new Error("Upgrade to create more initiative pages");
     }
 
-    let pageId = '';
+    let pageId = "";
 
-    if (type === 'document') {
+    if (type === "document") {
       const page = await database.initiativePage.create({
         data: {
           organizationId: organization.id,
@@ -72,7 +72,7 @@ export const createInitiativePage = async (
       pageId = page.id;
     }
 
-    if (type === 'canvas') {
+    if (type === "canvas") {
       const page = await database.initiativeCanvas.create({
         data: {
           organizationId: organization.id,

@@ -1,20 +1,20 @@
-import { ChangelogForm } from '@/components/changelog-form';
-import { CommandBar } from '@/components/command-bar';
-import { ConnectForm } from '@/components/connect-form';
-import { FeatureForm } from '@/components/feature-form';
-import { FeedbackForm } from '@/components/feedback-form';
-import { GroupForm } from '@/components/group-form';
-import { InitiativeForm } from '@/components/initiative-form';
-import { ProductForm } from '@/components/product-form';
-import { ReleaseForm } from '@/components/release-form';
-import { database } from '@/lib/database';
-import { staticify } from '@/lib/staticify';
-import { EververseRole } from '@repo/backend/auth';
+import { EververseRole } from "@repo/backend/auth";
 import {
   currentMembers,
   currentOrganizationId,
   currentUser,
-} from '@repo/backend/auth/utils';
+} from "@repo/backend/auth/utils";
+import { ChangelogForm } from "@/components/changelog-form";
+import { CommandBar } from "@/components/command-bar";
+import { ConnectForm } from "@/components/connect-form";
+import { FeatureForm } from "@/components/feature-form";
+import { FeedbackForm } from "@/components/feedback-form";
+import { GroupForm } from "@/components/group-form";
+import { InitiativeForm } from "@/components/initiative-form";
+import { ProductForm } from "@/components/product-form";
+import { ReleaseForm } from "@/components/release-form";
+import { database } from "@/lib/database";
+import { staticify } from "@/lib/staticify";
 
 export const Forms = async () => {
   const [user, organizationId] = await Promise.all([
@@ -22,7 +22,7 @@ export const Forms = async () => {
     currentOrganizationId(),
   ]);
 
-  if (!user || !organizationId) {
+  if (!(user && organizationId)) {
     return <div />;
   }
 
@@ -32,7 +32,7 @@ export const Forms = async () => {
       select: {
         stripeSubscriptionId: true,
         feedbackUsers: {
-          orderBy: { name: 'desc' },
+          orderBy: { name: "desc" },
           select: {
             id: true,
             feedbackOrganizationId: true,
@@ -42,15 +42,15 @@ export const Forms = async () => {
           },
         },
         feedbackOrganizations: {
-          orderBy: { name: 'desc' },
+          orderBy: { name: "desc" },
           select: { id: true, name: true, domain: true },
         },
         products: {
-          orderBy: { name: 'desc' },
+          orderBy: { name: "desc" },
           select: { id: true, name: true, emoji: true },
         },
         groups: {
-          orderBy: { name: 'desc' },
+          orderBy: { name: "desc" },
           select: {
             id: true,
             name: true,
@@ -83,34 +83,34 @@ export const Forms = async () => {
   return (
     <>
       <FeedbackForm
+        isSubscribed={Boolean(databaseOrganization.stripeSubscriptionId)}
+        organizations={databaseOrganization.feedbackOrganizations}
         userEmail={user.email}
         users={databaseOrganization.feedbackUsers}
-        organizations={databaseOrganization.feedbackOrganizations}
-        isSubscribed={Boolean(databaseOrganization.stripeSubscriptionId)}
       />
       {user.user_metadata.organization_role !== EververseRole.Member && (
         <>
           <FeatureForm
-            userId={user.id}
+            groups={databaseOrganization.groups}
             members={staticify(members)}
             products={databaseOrganization.products}
-            groups={databaseOrganization.groups}
+            userId={user.id}
           />
           <ProductForm />
           <GroupForm
-            products={databaseOrganization.products}
             groups={databaseOrganization.groups}
+            products={databaseOrganization.products}
           />
-          <InitiativeForm userId={user.id} members={staticify(members)} />
+          <InitiativeForm members={staticify(members)} userId={user.id} />
           <ConnectForm
             githubAppInstallationId={
               databaseOrganization.githubInstallations.at(0)?.installationId
             }
-            linearApiKey={
-              databaseOrganization.linearInstallations.at(0)?.apiKey
-            }
             jiraAccessToken={
               databaseOrganization.atlassianInstallations.at(0)?.accessToken
+            }
+            linearApiKey={
+              databaseOrganization.linearInstallations.at(0)?.apiKey
             }
           />
           <ChangelogForm />

@@ -1,37 +1,37 @@
-import { AvatarTooltip } from '@/components/avatar-tooltip';
-import type { User } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
-import { getJsonColumnFromTable } from '@repo/backend/database';
+import type { User } from "@repo/backend/auth";
+import { getUserName } from "@repo/backend/auth/format";
+import { getJsonColumnFromTable } from "@repo/backend/database";
 import type {
   Initiative,
   InitiativeMember,
   InitiativePage,
-} from '@repo/backend/prisma/client';
-import { Emoji } from '@repo/design-system/components/emoji';
-import { Link } from '@repo/design-system/components/link';
-import { colors } from '@repo/design-system/lib/colors';
-import { cn } from '@repo/design-system/lib/utils';
-import { contentToText } from '@repo/editor/lib/tiptap';
-import { ArrowRightIcon } from 'lucide-react';
+} from "@repo/backend/prisma/client";
+import { Emoji } from "@repo/design-system/components/emoji";
+import { Link } from "@repo/design-system/components/link";
+import { colors } from "@repo/design-system/lib/colors";
+import { cn } from "@repo/design-system/lib/utils";
+import { contentToText } from "@repo/editor/lib/tiptap";
+import { ArrowRightIcon } from "lucide-react";
+import { AvatarTooltip } from "@/components/avatar-tooltip";
 
 type InitiativeItemProps = {
-  initiative: Pick<Initiative, 'id' | 'emoji' | 'title' | 'state'> & {
-    team: Pick<InitiativeMember, 'userId'>[];
-    pages: Pick<InitiativePage, 'id'>[];
+  initiative: Pick<Initiative, "id" | "emoji" | "title" | "state"> & {
+    team: Pick<InitiativeMember, "userId">[];
+    pages: Pick<InitiativePage, "id">[];
   };
   members: User[];
 };
 
-const getBackgroundColor = (state: Initiative['state']) => {
-  if (state === 'COMPLETED') {
+const getBackgroundColor = (state: Initiative["state"]) => {
+  if (state === "COMPLETED") {
     return colors.emerald;
   }
 
-  if (state === 'ACTIVE') {
+  if (state === "ACTIVE") {
     return colors.amber;
   }
 
-  if (state === 'CANCELLED') {
+  if (state === "CANCELLED") {
     return colors.rose;
   }
 
@@ -44,8 +44,8 @@ export const InitiativeItem = async ({
 }: InitiativeItemProps) => {
   const content = initiative.pages.length
     ? await getJsonColumnFromTable(
-        'initiative_page',
-        'content',
+        "initiative_page",
+        "content",
         initiative.pages[0].id
       )
     : null;
@@ -53,13 +53,13 @@ export const InitiativeItem = async ({
 
   return (
     <Link
+      className={cn(
+        "flex items-center justify-between gap-8 py-4",
+        initiative.state === "COMPLETED" && "opacity-50",
+        initiative.state === "CANCELLED" && "opacity-50"
+      )}
       href={`/initiatives/${initiative.id}`}
       key={initiative.id}
-      className={cn(
-        'flex items-center justify-between gap-8 py-4',
-        initiative.state === 'COMPLETED' && 'opacity-50',
-        initiative.state === 'CANCELLED' && 'opacity-50'
-      )}
     >
       <span className="flex items-center gap-4">
         <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border bg-background shadow-sm">
@@ -80,20 +80,18 @@ export const InitiativeItem = async ({
       </span>
       <div className="flex shrink-0 items-center justify-end gap-4">
         <div className="-space-x-1 flex items-center hover:space-x-1">
-          {members.map((member) => {
-            return (
-              <div className="shrink-0 transition-all" key={member.id}>
-                <AvatarTooltip
-                  title={getUserName(member)}
-                  subtitle={member.email ?? 'Unknown'}
-                  src={member.user_metadata.image_url}
-                  fallback={getUserName(member).slice(0, 2)}
-                />
-              </div>
-            );
-          })}
+          {members.map((member) => (
+            <div className="shrink-0 transition-all" key={member.id}>
+              <AvatarTooltip
+                fallback={getUserName(member).slice(0, 2)}
+                src={member.user_metadata.image_url}
+                subtitle={member.email ?? "Unknown"}
+                title={getUserName(member)}
+              />
+            </div>
+          ))}
         </div>
-        <ArrowRightIcon size={16} className="shrink-0 text-muted-foreground" />
+        <ArrowRightIcon className="shrink-0 text-muted-foreground" size={16} />
       </div>
     </Link>
   );

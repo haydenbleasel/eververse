@@ -1,12 +1,12 @@
-import { getMembers } from '@repo/backend/auth/utils';
-import { database } from '@repo/backend/database';
-import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
-import { log } from '@repo/observability/log';
-import { createClient } from '@repo/productboard';
+import { getMembers } from "@repo/backend/auth/utils";
+import { database } from "@repo/backend/database";
+import type { Prisma, ProductboardImport } from "@repo/backend/prisma/client";
+import { log } from "@repo/observability/log";
+import { createClient } from "@repo/productboard";
 
 type ImportJobProperties = Pick<
   ProductboardImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateCustomFieldValues = async ({
@@ -28,7 +28,7 @@ export const migrateCustomFieldValues = async ({
   ]);
 
   if (!databaseOrganization) {
-    throw new Error('Could not find organization');
+    throw new Error("Could not find organization");
   }
 
   const transactions: Prisma.PrismaPromise<unknown>[] = [];
@@ -37,14 +37,14 @@ export const migrateCustomFieldValues = async ({
   const customFieldValuesPromises =
     databaseOrganization.featureCustomFields.map(async (customField) => {
       const response = await productboard.GET(
-        '/hierarchy-entities/custom-fields-values',
+        "/hierarchy-entities/custom-fields-values",
         {
           params: {
             query: {
-              'customField.id': customField.productboardId ?? '',
+              "customField.id": customField.productboardId ?? "",
             },
             header: {
-              'X-Version': 1,
+              "X-Version": 1,
             },
           },
         }
@@ -52,12 +52,12 @@ export const migrateCustomFieldValues = async ({
 
       if (response.error) {
         throw new Error(
-          response.error.errors.map((error) => error.detail).join(', ')
+          response.error.errors.map((error) => error.detail).join(", ")
         );
       }
 
       if (!response.data) {
-        throw new Error('No data returned');
+        throw new Error("No data returned");
       }
 
       return response.data.data;
@@ -74,7 +74,7 @@ export const migrateCustomFieldValues = async ({
     members.find((member) => member.email === email)?.id ?? null;
 
   const featureCustomFields = customFieldValues.filter(
-    (customFieldValue) => customFieldValue.hierarchyEntity.type === 'feature'
+    (customFieldValue) => customFieldValue.hierarchyEntity.type === "feature"
   );
 
   for (const customFieldValue of featureCustomFields) {
@@ -105,26 +105,26 @@ export const migrateCustomFieldValues = async ({
     let parsedValue: string | null = null;
 
     switch (customFieldValue.type) {
-      case 'text':
-      case 'custom-description': {
+      case "text":
+      case "custom-description": {
         parsedValue = customFieldValue.value;
         break;
       }
-      case 'number': {
+      case "number": {
         parsedValue = customFieldValue.value?.toString() ?? null;
         break;
       }
-      case 'dropdown': {
+      case "dropdown": {
         parsedValue = customFieldValue.value?.id ?? null;
         break;
       }
-      case 'multi-dropdown': {
+      case "multi-dropdown": {
         parsedValue = customFieldValue.value
-          ? customFieldValue.value.map((option) => option?.id).join(', ')
+          ? customFieldValue.value.map((option) => option?.id).join(", ")
           : null;
         break;
       }
-      case 'member': {
+      case "member": {
         parsedValue = customFieldValue.value?.email
           ? getMemberByEmail(customFieldValue.value.email)
           : null;

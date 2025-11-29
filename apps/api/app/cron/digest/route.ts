@@ -1,16 +1,16 @@
-import { database } from '@repo/backend/database';
-import type { Prisma } from '@repo/backend/prisma/client';
-import { log } from '@repo/observability/log';
-import { generateText } from 'ai';
-import { subDays } from 'date-fns';
-import { NextResponse } from 'next/server';
+import { database } from "@repo/backend/database";
+import type { Prisma } from "@repo/backend/prisma/client";
+import { log } from "@repo/observability/log";
+import { generateText } from "ai";
+import { subDays } from "date-fns";
+import { NextResponse } from "next/server";
 
 export const maxDuration = 300;
 export const revalidate = 0;
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export const GET = async (): Promise<Response> => {
-  log.info('🤖 Looking for organizations to create digests for...');
+  log.info("🤖 Looking for organizations to create digests for...");
 
   const yesterday = subDays(new Date(), 1);
   const where = {
@@ -113,7 +113,7 @@ export const GET = async (): Promise<Response> => {
         },
         take: 1,
         orderBy: {
-          endAt: 'asc',
+          endAt: "asc",
         },
         select: {
           title: true,
@@ -123,9 +123,9 @@ export const GET = async (): Promise<Response> => {
   });
 
   if (!organizations.length) {
-    log.error('📰 No organizations found.');
+    log.error("📰 No organizations found.");
     return NextResponse.json(
-      { message: 'No organizations found.' },
+      { message: "No organizations found." },
       { status: 200 }
     );
   }
@@ -138,36 +138,36 @@ export const GET = async (): Promise<Response> => {
 
   for (const organization of organizations) {
     const prompt = [
-      'Feedback created:',
+      "Feedback created:",
       JSON.stringify(organization.feedback),
-      '------',
-      'Features created:',
+      "------",
+      "Features created:",
       JSON.stringify(organization.features),
-      '------',
-      'Changelogs created:',
+      "------",
+      "Changelogs created:",
       JSON.stringify(organization.changelog),
-      '------',
-      'Next release:',
+      "------",
+      "Next release:",
       JSON.stringify(organization.releases),
-    ].join('\n');
+    ].join("\n");
 
     const [text, summary] = await Promise.all([
       generateText({
-        model: 'openai/gpt-4o-mini',
+        model: "openai/gpt-4o-mini",
         system: [
-          'You are an AI that creates a digest of the most important things that happened in the last 24 hours.',
-          'Be as comprehensive as possible.',
-          'Use markdown formatting to highlight important parts of the digest.',
-        ].join('\n'),
+          "You are an AI that creates a digest of the most important things that happened in the last 24 hours.",
+          "Be as comprehensive as possible.",
+          "Use markdown formatting to highlight important parts of the digest.",
+        ].join("\n"),
         prompt,
       }),
       generateText({
-        model: 'openai/gpt-4o-mini',
+        model: "openai/gpt-4o-mini",
         system: [
-          'You are an AI that creates a digest of the most important things that happened in the last 24 hours.',
-          'You have maximum 2000 characters to describe the digest.',
-          'Do not include any markdown formatting.',
-        ].join('\n'),
+          "You are an AI that creates a digest of the most important things that happened in the last 24 hours.",
+          "You have maximum 2000 characters to describe the digest.",
+          "Do not include any markdown formatting.",
+        ].join("\n"),
         prompt,
       }),
     ]);
@@ -185,5 +185,5 @@ export const GET = async (): Promise<Response> => {
 
   await Promise.all(transactions);
 
-  return new Response('OK', { status: 200 });
+  return new Response("OK", { status: 200 });
 };

@@ -1,12 +1,12 @@
-import { createEnv } from '@t3-oss/env-nextjs';
-import { z } from 'zod/v3';
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod/v3";
 
 export const keys = () =>
   createEnv({
     client: {
-      NEXT_PUBLIC_POSTHOG_KEY: z.string().min(1).startsWith('phc_'),
+      NEXT_PUBLIC_POSTHOG_KEY: z.string().min(1).startsWith("phc_"),
       NEXT_PUBLIC_POSTHOG_HOST: z.string().min(1).url(),
-      NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string().min(1).startsWith('G-'),
+      NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string().min(1).startsWith("G-"),
     },
     runtimeEnv: {
       NEXT_PUBLIC_POSTHOG_KEY: process.env.NEXT_PUBLIC_POSTHOG_KEY,

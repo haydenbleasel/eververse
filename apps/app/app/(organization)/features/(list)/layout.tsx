@@ -1,23 +1,23 @@
-import { Header } from '@/components/header';
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
+import { EververseRole } from "@repo/backend/auth";
+import { getUserName } from "@repo/backend/auth/format";
 import {
   currentMembers,
   currentOrganizationId,
   currentUser,
-} from '@repo/backend/auth/utils';
+} from "@repo/backend/auth/utils";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from '@repo/design-system/components/ui/resizable';
-import { formatDate } from '@repo/lib/format';
-import { notFound } from 'next/navigation';
-import type { ReactNode } from 'react';
-import { FeatureCreateDropdown } from '../components/feature-create-dropdown';
-import { FeaturesDragProvider } from '../components/features-drag-provider';
-import { ProductsList } from '../components/products-list';
+} from "@repo/design-system/components/ui/resizable";
+import { formatDate } from "@repo/lib/format";
+import { notFound } from "next/navigation";
+import type { ReactNode } from "react";
+import { Header } from "@/components/header";
+import { database } from "@/lib/database";
+import { FeatureCreateDropdown } from "../components/feature-create-dropdown";
+import { FeaturesDragProvider } from "../components/features-drag-provider";
+import { ProductsList } from "../components/products-list";
 
 type FeatureListLayoutProperties = {
   readonly children: ReactNode;
@@ -29,7 +29,7 @@ const FeatureListLayout = async ({ children }: FeatureListLayoutProperties) => {
     currentOrganizationId(),
   ]);
 
-  if (!user || !organizationId) {
+  if (!(user && organizationId)) {
     notFound();
   }
 
@@ -38,7 +38,7 @@ const FeatureListLayout = async ({ children }: FeatureListLayoutProperties) => {
       where: { id: organizationId },
       select: {
         products: {
-          orderBy: { createdAt: 'desc' },
+          orderBy: { createdAt: "desc" },
           select: {
             id: true,
             name: true,
@@ -93,18 +93,18 @@ const FeatureListLayout = async ({ children }: FeatureListLayoutProperties) => {
 
   return (
     <FeaturesDragProvider
-      products={databaseOrganization.products}
       features={modifiedFeatures}
+      products={databaseOrganization.products}
     >
-      <ResizablePanelGroup direction="horizontal" style={{ overflow: 'unset' }}>
+      <ResizablePanelGroup direction="horizontal" style={{ overflow: "unset" }}>
         <ResizablePanel
-          minSize={15}
+          className="sticky top-0 h-screen"
           defaultSize={20}
           maxSize={25}
-          style={{ overflow: 'auto' }}
-          className="sticky top-0 h-screen"
+          minSize={15}
+          style={{ overflow: "auto" }}
         >
-          <Header title="Products" badge={databaseOrganization.products.length}>
+          <Header badge={databaseOrganization.products.length} title="Products">
             {user.user_metadata.organization_role ===
             EververseRole.Member ? null : (
               <FeatureCreateDropdown
@@ -118,7 +118,7 @@ const FeatureListLayout = async ({ children }: FeatureListLayoutProperties) => {
           />
         </ResizablePanel>
         <ResizableHandle />
-        <ResizablePanel defaultSize={80} style={{ overflow: 'unset' }}>
+        <ResizablePanel defaultSize={80} style={{ overflow: "unset" }}>
           {children}
         </ResizablePanel>
       </ResizablePanelGroup>

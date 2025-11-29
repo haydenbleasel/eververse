@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
 type ShowProperties = {
   groupId?: string | undefined;
@@ -35,7 +35,7 @@ export const useFeatureForm = create<FeatureFormState>()(
       setProductId: (productId) => set({ productId }),
     }),
     {
-      name: 'eververse:feature-form',
+      name: "eververse:feature-form",
     }
   )
 );

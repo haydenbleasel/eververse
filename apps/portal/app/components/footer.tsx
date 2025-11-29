@@ -1,14 +1,14 @@
-import { Container } from '@repo/design-system/components/container';
+import { Container } from "@repo/design-system/components/container";
 
 export const Footer = () => (
   <Container className="py-4">
     <p className="text-muted-foreground text-sm">
-      Powered by{' '}
+      Powered by{" "}
       <a
-        href="https://www.eververse.ai/"
         className="underline"
-        target="_blank"
+        href="https://www.eververse.ai/"
         rel="noreferrer"
+        target="_blank"
       >
         Eververse
       </a>

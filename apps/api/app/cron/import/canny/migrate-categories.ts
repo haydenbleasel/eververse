@@ -1,10 +1,10 @@
-import { database } from '@repo/backend/database';
-import type { CannyImport, Prisma } from '@repo/backend/prisma/client';
-import { Canny } from '@repo/canny';
+import { database } from "@repo/backend/database";
+import type { CannyImport, Prisma } from "@repo/backend/prisma/client";
+import { Canny } from "@repo/canny";
 
 type ImportJobProperties = Pick<
   CannyImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateCategories = async ({
@@ -24,7 +24,7 @@ export const migrateCategories = async ({
   });
 
   if (!databaseOrganization) {
-    throw new Error('Organization not found');
+    throw new Error("Organization not found");
   }
 
   const transactions: Prisma.PrismaPromise<unknown>[] = [];
@@ -42,7 +42,7 @@ export const migrateCategories = async ({
     );
 
     if (!product) {
-      throw new Error('Product not found');
+      throw new Error("Product not found");
     }
 
     const transaction = database.group.create({

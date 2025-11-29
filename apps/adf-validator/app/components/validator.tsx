@@ -1,31 +1,31 @@
-'use client';
+"use client";
 
-import schema from '@atlaskit/adf-schema/dist/json-schema/v1/full.json';
-import Editor from '@monaco-editor/react';
-import { convertToAdf } from '@repo/editor/lib/jira';
-import Ajv from 'ajv-draft-04';
+import schema from "@atlaskit/adf-schema/dist/json-schema/v1/full.json";
+import Editor from "@monaco-editor/react";
+import { convertToAdf } from "@repo/editor/lib/jira";
+import Ajv from "ajv-draft-04";
 
 // @ts-expect-error no types
-import betterAjvErrors from 'better-ajv-errors';
-import { useEffect, useState } from 'react';
+import betterAjvErrors from "better-ajv-errors";
+import { useEffect, useState } from "react";
 
 const example = {
   version: 1,
-  type: 'doc',
+  type: "doc",
   content: [
     {
-      type: 'paragraph',
+      type: "paragraph",
       content: [
         {
-          type: 'text',
-          text: 'Hello ',
+          type: "text",
+          text: "Hello ",
         },
         {
-          type: 'text',
-          text: 'world',
+          type: "text",
+          text: "world",
           marks: [
             {
-              type: 'strong',
+              type: "strong",
             },
           ],
         },
@@ -40,10 +40,10 @@ export const Validator = () => {
   const [source, setSource] = useState(JSON.stringify(example, null, 2));
   const [adf, setAdf] = useState(convertToAdf(example));
   const [adfError, setAdfError] = useState<Error | null>(null);
-  const [validationErrors, setValidationErrors] = useState<string>('');
+  const [validationErrors, setValidationErrors] = useState<string>("");
 
   useEffect(() => {
-    console.log('Converting');
+    console.log("Converting");
     try {
       const parsedSource = JSON.parse(source);
 
@@ -60,7 +60,7 @@ export const Validator = () => {
   }, [source]);
 
   useEffect(() => {
-    console.log('Validating');
+    console.log("Validating");
     const validate = ajv.compile(schema);
     const isValid = validate(adf);
 
@@ -71,7 +71,7 @@ export const Validator = () => {
 
       setValidationErrors(betterErrors);
     } else {
-      setValidationErrors('');
+      setValidationErrors("");
     }
   }, [adf]);
 
@@ -79,31 +79,31 @@ export const Validator = () => {
     <div className="grid h-screen grid-rows-2 bg-backdrop">
       <main className="mx-4 grid h-full grid-cols-2 gap-4">
         <Editor
+          className="my-4 overflow-hidden rounded-lg border bg-background"
           height="100%"
           language="json"
-          value={source}
-          onChange={(value) => setSource(value ?? '')}
-          theme="vs-dark"
+          onChange={(value) => setSource(value ?? "")}
           options={{
-            wordWrap: 'on',
+            wordWrap: "on",
             minimap: { enabled: false },
           }}
-          className="my-4 overflow-hidden rounded-lg border bg-background"
+          theme="vs-dark"
+          value={source}
         />
         {adfError ? (
           <div>{adfError.message}</div>
         ) : (
           <Editor
+            className="my-4 overflow-hidden rounded-lg border bg-background"
             height="100%"
             language="json"
-            value={JSON.stringify(adf, null, 2)}
-            theme="vs-dark"
             options={{
-              wordWrap: 'on',
+              wordWrap: "on",
               minimap: { enabled: false },
               readOnly: true,
             }}
-            className="my-4 overflow-hidden rounded-lg border bg-background"
+            theme="vs-dark"
+            value={JSON.stringify(adf, null, 2)}
           />
         )}
       </main>

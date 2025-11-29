@@ -1,21 +1,21 @@
 import {
-  Node,
   mergeAttributes,
+  Node,
   nodePasteRule,
   reactNodeViewRenderer,
-} from '@repo/editor';
-import { baseUrl } from '@repo/lib/consts';
-import { FeedbackLinkComponent } from './feedback-link-component';
+} from "@repo/editor";
+import { baseUrl } from "@repo/lib/consts";
+import { FeedbackLinkComponent } from "./feedback-link-component";
 
 const eververseLinkRegex = new RegExp(
   `^${baseUrl}feedback/([a-zA-Z0-9-]+)$`,
-  'ug'
+  "ug"
 );
 
 export const feedbackLink = Node.create({
-  name: 'eververse-feedback-link',
+  name: "eververse-feedback-link",
   atom: true,
-  group: 'block',
+  group: "block",
   inline: false,
 
   addAttributes() {
@@ -48,10 +48,10 @@ export const feedbackLink = Node.create({
         tag: `a[href^="${baseUrl}feedback/"]`,
         getAttrs: (element) => {
           const url =
-            typeof element === 'string'
+            typeof element === "string"
               ? element
-              : element.getAttribute('href');
-          const feedbackId = url?.split('/').pop() || null;
+              : element.getAttribute("href");
+          const feedbackId = url?.split("/").pop() || null;
           return { url, feedbackId };
         },
       },
@@ -60,7 +60,7 @@ export const feedbackLink = Node.create({
 
   renderHTML({ HTMLAttributes }) {
     return [
-      'a',
+      "a",
       mergeAttributes(HTMLAttributes, {
         href: `${baseUrl}feedback/${HTMLAttributes.feedbackId}`,
       }),

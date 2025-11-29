@@ -1,24 +1,24 @@
-'use client';
-import { createAtlassianInstallation } from '@/actions/atlassian-installation/create';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { Loader2Icon } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { type FormEventHandler, useState } from 'react';
-import { toast } from 'sonner';
+"use client";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { Loader2Icon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { type FormEventHandler, useState } from "react";
+import { toast } from "sonner";
+import { createAtlassianInstallation } from "@/actions/atlassian-installation/create";
 
 export const JiraInstallationForm = () => {
-  const [email, setEmail] = useState('');
-  const [siteUrl, setSiteUrl] = useState('');
-  const [accessToken, setAccessToken] = useState('');
+  const [email, setEmail] = useState("");
+  const [siteUrl, setSiteUrl] = useState("");
+  const [accessToken, setAccessToken] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
 
-    if (!accessToken || !email || !siteUrl || loading) {
+    if (!(accessToken && email && siteUrl) || loading) {
       return;
     }
 
@@ -28,7 +28,7 @@ export const JiraInstallationForm = () => {
       try {
         new URL(siteUrl);
       } catch (_error) {
-        throw new Error('Invalid site URL');
+        throw new Error("Invalid site URL");
       }
 
       const response = await createAtlassianInstallation({
@@ -37,11 +37,11 @@ export const JiraInstallationForm = () => {
         siteUrl,
       });
 
-      if ('error' in response) {
+      if ("error" in response) {
         throw new Error(response.error);
       }
 
-      toast.success('Jira installation created');
+      toast.success("Jira installation created");
 
       setTimeout(() => {
         router.refresh();
@@ -54,31 +54,31 @@ export const JiraInstallationForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <Input
+        caption="The email for the Atlassian account you're using to install the app."
         label="Email"
-        value={email}
         onChange={({ target }) => setEmail(target.value)}
         placeholder="jane@acme.com"
-        caption="The email for the Atlassian account you're using to install the app."
+        value={email}
       />
       <Input
+        caption="The URL for the Atlassian site you're using to install the app."
         label="Site URL"
-        value={siteUrl}
         onChange={({ target }) => setSiteUrl(target.value)}
         placeholder="https://acme.atlassian.net"
-        caption="The URL for the Atlassian site you're using to install the app."
+        value={siteUrl}
       />
       <Input
+        caption="The access token you were just provided."
         label="Access Token"
-        value={accessToken}
         onChange={({ target }) => setAccessToken(target.value)}
         placeholder="••••••••"
-        caption="The access token you were just provided."
+        value={accessToken}
       />
       <div>
-        <Button type="submit" disabled={loading}>
-          {loading ? <Loader2Icon className="animate-spin" /> : 'Install'}
+        <Button disabled={loading} type="submit">
+          {loading ? <Loader2Icon className="animate-spin" /> : "Install"}
         </Button>
       </div>
     </form>

@@ -1,6 +1,6 @@
-import { Avatar } from '@repo/design-system/components/precomposed/avatar';
-import { Dialog } from '@repo/design-system/components/precomposed/dialog';
-import { Button } from '@repo/design-system/components/ui/button';
+import { Avatar } from "@repo/design-system/components/precomposed/avatar";
+import { Dialog } from "@repo/design-system/components/precomposed/dialog";
+import { Button } from "@repo/design-system/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -8,17 +8,17 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@repo/design-system/components/ui/command';
+} from "@repo/design-system/components/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@repo/design-system/components/ui/popover';
-import { createFuse } from '@repo/lib/fuse';
-import { CheckIcon, PlusCircleIcon } from 'lucide-react';
-import { useState } from 'react';
-import { UserCommandItem } from '../user-command-item';
-import { CreateFeedbackUserForm } from './create-feedback-user-form';
+} from "@repo/design-system/components/ui/popover";
+import { createFuse } from "@repo/lib/fuse";
+import { CheckIcon, PlusCircleIcon } from "lucide-react";
+import { useState } from "react";
+import { UserCommandItem } from "../user-command-item";
+import { CreateFeedbackUserForm } from "./create-feedback-user-form";
 
 type FeedbackUserPickerProperties = {
   readonly usersData: {
@@ -36,10 +36,10 @@ export const FeedbackUserPicker = ({
   value,
   onChange,
 }: FeedbackUserPickerProperties) => {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [open, setOpen] = useState(false);
   const active = usersData.find((item) => item.value === value);
-  const usersFuse = createFuse(usersData, ['label', 'email']);
+  const usersFuse = createFuse(usersData, ["label", "email"]);
   const filteredUsers = search
     ? usersFuse.search(search).map((item) => item.item)
     : usersData;
@@ -50,24 +50,24 @@ export const FeedbackUserPicker = ({
   };
 
   const handleClearSelect = () => {
-    onChange('');
+    onChange("");
     setOpen(false);
   };
 
   return (
     <Dialog
-      open={open}
-      onOpenChange={setOpen}
-      title="Select a user"
       description="Who is this feedback from?"
+      onOpenChange={setOpen}
+      open={open}
+      title="Select a user"
       trigger={
-        <Button variant="secondary" aria-expanded={open} size="sm">
+        <Button aria-expanded={open} size="sm" variant="secondary">
           {active?.image ? (
             <div className="flex items-center gap-2">
               <Avatar
+                fallback={active.label.slice(0, 2)}
                 size={16}
                 src={active.image}
-                fallback={active.label.slice(0, 2)}
               />
               <p className="max-w-[5rem] truncate text-foreground">
                 {active.label}
@@ -84,27 +84,27 @@ export const FeedbackUserPicker = ({
     >
       <Command shouldFilter={false}>
         <CommandInput
+          onValueChange={setSearch}
           placeholder="Search user..."
           value={search}
-          onValueChange={setSearch}
         />
         <CommandList>
           <CommandEmpty>No user found.</CommandEmpty>
           <CommandGroup>
             <UserCommandItem
-              user={{
-                value: '',
-                label: 'No user',
-                image: '',
-              }}
               onSelect={handleClearSelect}
+              user={{
+                value: "",
+                label: "No user",
+                image: "",
+              }}
               value={value}
             />
             <Popover>
               <PopoverTrigger className="w-full">
-                <CommandItem key="add-user" className="flex items-center gap-2">
-                  <CheckIcon size={16} className="opacity-0" />
-                  <PlusCircleIcon size={16} className="text-muted-foreground" />
+                <CommandItem className="flex items-center gap-2" key="add-user">
+                  <CheckIcon className="opacity-0" size={16} />
+                  <PlusCircleIcon className="text-muted-foreground" size={16} />
                   Add user
                 </CommandItem>
               </PopoverTrigger>
@@ -117,8 +117,8 @@ export const FeedbackUserPicker = ({
             {filteredUsers.map((user) => (
               <UserCommandItem
                 key={user.value}
-                user={user}
                 onSelect={handleUserSelect}
+                user={user}
                 value={value}
               />
             ))}

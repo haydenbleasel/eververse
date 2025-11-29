@@ -1,19 +1,19 @@
-'use server';
-import { database } from '@/lib/database';
-import { getPortalUrl } from '@/lib/portal';
-import { EververseRole } from '@repo/backend/auth';
-import { currentUser } from '@repo/backend/auth/utils';
-import type { PortalFeature } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+"use server";
+import { EververseRole } from "@repo/backend/auth";
+import { currentUser } from "@repo/backend/auth/utils";
+import type { PortalFeature } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
+import { getPortalUrl } from "@/lib/portal";
 
 type EditFeaturePortalProperties = {
-  title: PortalFeature['title'];
+  title: PortalFeature["title"];
   content: string;
 };
 
 export const editFeaturePortal = async (
-  portalFeatureId: PortalFeature['id'],
+  portalFeatureId: PortalFeature["id"],
   { title, content }: EditFeaturePortalProperties
 ): Promise<{
   url?: string;
@@ -23,7 +23,7 @@ export const editFeaturePortal = async (
     const user = await currentUser();
 
     if (!user) {
-      throw new Error('Not logged in');
+      throw new Error("Not logged in");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
@@ -35,7 +35,7 @@ export const editFeaturePortal = async (
     const portal = await database.portal.findFirst();
 
     if (!portal) {
-      throw new Error('Portal not found');
+      throw new Error("Portal not found");
     }
 
     const { featureId, id } = await database.portalFeature.update({
@@ -48,7 +48,7 @@ export const editFeaturePortal = async (
     });
 
     if (!id) {
-      throw new Error('No portal ID returned');
+      throw new Error("No portal ID returned");
     }
 
     const url = await getPortalUrl(id);

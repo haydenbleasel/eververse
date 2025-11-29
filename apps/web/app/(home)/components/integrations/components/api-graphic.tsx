@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   type BundledLanguage,
@@ -6,12 +6,12 @@ import {
   CodeBlockBody,
   CodeBlockContent,
   CodeBlockItem,
-} from '@repo/design-system/components/ui/kibo-ui/code-block';
+} from "@repo/design-system/components/kibo-ui/code-block";
 
 const code = [
   {
-    language: 'javascript',
-    filename: 'api.js',
+    language: "javascript",
+    filename: "api.js",
     code: `const payload = {
   title: 'Make the logo bigger',                          // String, required
   text: 'The logo is too small, please make it bigger',   // String, required
@@ -42,22 +42,22 @@ if (!response.ok) {
 
 export const APIGraphic = () => (
   <CodeBlock
+    className="dark border-none"
     data={code}
     defaultValue={code[0].language}
-    className="dark border-none"
   >
     <CodeBlockBody>
       {(item) => (
         <CodeBlockItem
+          className="[&_.shiki]:!bg-transparent dark:[&_.shiki]:!bg-transparent [&_.shiki_code]:!text-base"
           key={item.language}
           value={item.language}
-          className="[&_.shiki]:!bg-transparent dark:[&_.shiki]:!bg-transparent [&_.shiki_code]:!text-base"
         >
           <CodeBlockContent
             language={item.language as BundledLanguage}
             themes={{
-              light: 'nord',
-              dark: 'nord',
+              light: "nord",
+              dark: "nord",
             }}
           >
             {item.code}

@@ -1,15 +1,15 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import type { InitiativeUpdate } from '@repo/backend/prisma/client';
-import { MAX_FREE_INITIATIVE_UPDATES } from '@repo/lib/consts';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import type { InitiativeUpdate } from "@repo/backend/prisma/client";
+import { MAX_FREE_INITIATIVE_UPDATES } from "@repo/lib/consts";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const createInitiativeUpdate = async (
   initiativeId: string,
-  data: Pick<InitiativeUpdate, 'title'>
+  data: Pick<InitiativeUpdate, "title">
 ): Promise<{
   id?: string;
   error?: string;
@@ -20,8 +20,8 @@ export const createInitiativeUpdate = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('Not logged in');
+    if (!(user && organizationId)) {
+      throw new Error("Not logged in");
     }
 
     const organization = await database.organization.findFirst({
@@ -35,7 +35,7 @@ export const createInitiativeUpdate = async (
     });
 
     if (!organization) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     if (
@@ -43,7 +43,7 @@ export const createInitiativeUpdate = async (
       organization._count.initiativeUpdates >= MAX_FREE_INITIATIVE_UPDATES
     ) {
       throw new Error(
-        'You have reached the maximum number of updates for your plan. Please upgrade to post more updates.'
+        "You have reached the maximum number of updates for your plan. Please upgrade to post more updates."
       );
     }
 

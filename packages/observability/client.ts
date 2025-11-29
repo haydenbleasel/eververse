@@ -8,8 +8,8 @@ import {
   captureRouterTransitionStart,
   init,
   replayIntegration,
-} from '@sentry/nextjs';
-import { keys } from './keys';
+} from "@sentry/nextjs";
+import { keys } from "./keys";
 
 export const initializeSentry = (): ReturnType<typeof init> =>
   init({

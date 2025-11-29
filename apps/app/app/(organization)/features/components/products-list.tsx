@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import type { Group, Product } from '@repo/backend/prisma/client';
-import { usePathname } from 'next/navigation';
-import { ProductsListItem } from './products-list-item';
-import { ProductsListProduct } from './products-list-product';
+import type { Group, Product } from "@repo/backend/prisma/client";
+import { usePathname } from "next/navigation";
+import { ProductsListItem } from "./products-list-item";
+import { ProductsListProduct } from "./products-list-product";
 
 type ProductsListProperties = {
-  readonly products: (Pick<Product, 'emoji' | 'id' | 'name'> & {
-    readonly groups: Pick<Group, 'emoji' | 'id' | 'name' | 'parentGroupId'>[];
+  readonly products: (Pick<Product, "emoji" | "id" | "name"> & {
+    readonly groups: Pick<Group, "emoji" | "id" | "name" | "parentGroupId">[];
   })[];
   readonly role?: string;
 };
@@ -18,11 +18,11 @@ export const ProductsList = ({ products, role }: ProductsListProperties) => {
   return (
     <div className="h-full divide-y pb-16">
       <ProductsListItem
+        active={pathname === "/features"}
+        emoji="package"
+        href="/features"
         id="all"
         name="All Products"
-        href="/features"
-        active={pathname === '/features'}
-        emoji="package"
         role={role}
       />
       {products
@@ -30,7 +30,7 @@ export const ProductsList = ({ products, role }: ProductsListProperties) => {
           productA.name.localeCompare(productB.name)
         )
         .map((product) => (
-          <ProductsListProduct key={product.id} data={product} role={role} />
+          <ProductsListProduct data={product} key={product.id} role={role} />
         ))}
     </div>
   );

@@ -1,15 +1,15 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import type { ApiKey } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import type { ApiKey } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { database } from "@/lib/database";
 
 export const createAPIKey = async (
-  name: ApiKey['name']
+  name: ApiKey["name"]
 ): Promise<{
   error?: string;
-  key?: ApiKey['key'];
+  key?: ApiKey["key"];
 }> => {
   try {
     const [user, organizationId] = await Promise.all([
@@ -17,8 +17,8 @@ export const createAPIKey = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('User or organization not found');
+    if (!(user && organizationId)) {
+      throw new Error("User or organization not found");
     }
 
     const { key } = await database.apiKey.create({

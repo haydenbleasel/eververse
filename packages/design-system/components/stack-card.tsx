@@ -1,6 +1,6 @@
-import type { PlusIcon } from 'lucide-react';
-import type { ReactNode } from 'react';
-import { cn } from '../lib/utils';
+import type { PlusIcon } from "lucide-react";
+import type { ReactNode } from "react";
+import { cn } from "../lib/utils";
 
 type StackCardProperties = {
   readonly title?: ReactNode;
@@ -8,7 +8,7 @@ type StackCardProperties = {
   readonly className?: string;
   readonly icon?: typeof PlusIcon;
   readonly action?: ReactNode;
-  readonly variant?: 'default' | 'primary';
+  readonly variant?: "default" | "primary";
 };
 
 export const StackCard = ({
@@ -17,13 +17,13 @@ export const StackCard = ({
   className,
   icon: Icon,
   action,
-  variant = 'default',
+  variant = "default",
 }: StackCardProperties) => (
   <div
     className={cn(
-      'flex h-full flex-col divide-y overflow-hidden rounded-xl border bg-background shadow-sm',
-      variant === 'primary' &&
-        'divide-primary/20 border-primary/20 bg-primary/5 text-primary'
+      "flex h-full flex-col divide-y overflow-hidden rounded-xl border bg-background shadow-sm",
+      variant === "primary" &&
+        "divide-primary/20 border-primary/20 bg-primary/5 text-primary"
     )}
   >
     {title && (
@@ -31,8 +31,8 @@ export const StackCard = ({
         {Icon && (
           <Icon
             className={cn(
-              'shrink-0 text-muted-foreground',
-              variant === 'primary' && 'text-primary/50'
+              "shrink-0 text-muted-foreground",
+              variant === "primary" && "text-primary/50"
             )}
             size={16}
           />
@@ -41,6 +41,6 @@ export const StackCard = ({
         {action && <div className="shrink-0">{action}</div>}
       </div>
     )}
-    <div className={cn('overflow-hidden p-3', className)}>{children}</div>
+    <div className={cn("overflow-hidden p-3", className)}>{children}</div>
   </div>
 );

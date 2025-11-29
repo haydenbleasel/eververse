@@ -1,5 +1,7 @@
-import type { ComponentProps, ReactNode } from 'react';
-import * as DropdownMenuComponent from '../ui/dropdown-menu';
+import type { ComponentProps, ReactNode } from "react";
+
+// biome-ignore lint/performance/noNamespaceImport: we're using the primitive component
+import * as DropdownMenuComponent from "../ui/dropdown-menu";
 
 export type DropdownMenuProperties = ComponentProps<
   typeof DropdownMenuComponent.DropdownMenu

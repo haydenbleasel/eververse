@@ -1,17 +1,17 @@
-import { currentOrganizationId } from '@repo/backend/auth/utils';
-import { database } from '@repo/backend/database';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { createMetadata } from '@repo/seo/metadata';
-import { BookIcon, BuildingIcon } from 'lucide-react';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { OrganizationDetailsForm } from './components/organization-details-form';
-import { OrganizationLogoForm } from './components/organization-logo-form';
-import { ProductDescriptionForm } from './components/product-description-form';
+import { currentOrganizationId } from "@repo/backend/auth/utils";
+import { database } from "@repo/backend/database";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { createMetadata } from "@repo/seo/metadata";
+import { BookIcon, BuildingIcon } from "lucide-react";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { OrganizationDetailsForm } from "./components/organization-details-form";
+import { OrganizationLogoForm } from "./components/organization-logo-form";
+import { ProductDescriptionForm } from "./components/product-description-form";
 
 export const metadata: Metadata = createMetadata({
-  title: 'General Settings',
-  description: 'General settings for your organization.',
+  title: "General Settings",
+  description: "General settings for your organization.",
 });
 
 const GeneralSettings = async () => {
@@ -49,9 +49,9 @@ const GeneralSettings = async () => {
           </p>
         </div>
         <StackCard
-          title="Organization Details"
-          icon={BuildingIcon}
           className="flex items-start gap-8"
+          icon={BuildingIcon}
+          title="Organization Details"
         >
           <OrganizationDetailsForm
             defaultName={organization.name}
@@ -59,8 +59,8 @@ const GeneralSettings = async () => {
           />
           <div>
             <OrganizationLogoForm
-              organizationId={organizationId}
               logoUrl={organization.logoUrl}
+              organizationId={organizationId}
             />
             {organization.logoUrl && (
               <p className="mt-1 text-center text-muted-foreground text-xs">
@@ -70,16 +70,16 @@ const GeneralSettings = async () => {
           </div>
         </StackCard>
         <StackCard
-          title="Product Description"
-          icon={BookIcon}
           className="grid gap-2"
+          icon={BookIcon}
+          title="Product Description"
         >
           <p className="text-muted-foreground text-sm">
             By telling us about your product and its users, our AI can help you
             triage and prioritize your feedback.
           </p>
           <ProductDescriptionForm
-            defaultValue={organization.productDescription ?? ''}
+            defaultValue={organization.productDescription ?? ""}
           />
         </StackCard>
       </div>

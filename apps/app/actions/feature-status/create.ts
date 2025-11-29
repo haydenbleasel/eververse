@@ -1,15 +1,15 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import type { FeatureStatus } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import type { FeatureStatus } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const createStatus = async (
-  name: FeatureStatus['name'],
-  color: FeatureStatus['color'],
-  complete: FeatureStatus['complete']
+  name: FeatureStatus["name"],
+  color: FeatureStatus["color"],
+  complete: FeatureStatus["complete"]
 ): Promise<{
   error?: string;
 }> => {
@@ -19,8 +19,8 @@ export const createStatus = async (
       currentOrganizationId(),
     ]);
 
-    if (!user || !organizationId) {
-      throw new Error('Not logged in');
+    if (!(user && organizationId)) {
+      throw new Error("Not logged in");
     }
 
     const databaseOrganization = await database.organization.findUnique({
@@ -29,16 +29,16 @@ export const createStatus = async (
     });
 
     if (!databaseOrganization) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     if (!databaseOrganization.stripeSubscriptionId) {
-      throw new Error('Please upgrade to create custom feature statuses.');
+      throw new Error("Please upgrade to create custom feature statuses.");
     }
 
     const highestOrder = await database.featureStatus.findFirst({
       where: { organizationId },
-      orderBy: { order: 'desc' },
+      orderBy: { order: "desc" },
       select: { order: true },
     });
 
@@ -55,7 +55,7 @@ export const createStatus = async (
       select: { id: true },
     });
 
-    revalidatePath('/settings/statuses');
+    revalidatePath("/settings/statuses");
 
     return {};
   } catch (error) {

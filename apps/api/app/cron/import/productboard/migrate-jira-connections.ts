@@ -1,11 +1,11 @@
-import { database } from '@repo/backend/database';
-import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
-import { log } from '@repo/observability/log';
-import { createClient } from '@repo/productboard';
+import { database } from "@repo/backend/database";
+import type { Prisma, ProductboardImport } from "@repo/backend/prisma/client";
+import { log } from "@repo/observability/log";
+import { createClient } from "@repo/productboard";
 
 type ImportJobProperties = Pick<
   ProductboardImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateJiraConnections = async ({
@@ -13,35 +13,35 @@ export const migrateJiraConnections = async ({
   token,
 }: ImportJobProperties): Promise<number> => {
   const productboard = createClient({ accessToken: token });
-  const jiraIntegrations = await productboard.GET('/jira-integrations', {
+  const jiraIntegrations = await productboard.GET("/jira-integrations", {
     params: {
       header: {
-        'X-Version': 1,
+        "X-Version": 1,
       },
     },
   });
 
   if (jiraIntegrations.error) {
     throw new Error(
-      jiraIntegrations.error.errors.map((error) => error.detail).join(', ')
+      jiraIntegrations.error.errors.map((error) => error.detail).join(", ")
     );
   }
 
   if (!jiraIntegrations.data) {
-    throw new Error('No jira integrations found');
+    throw new Error("No jira integrations found");
   }
 
   const jiraConnectionPromises = jiraIntegrations.data.data.map(
     async (integration) => {
       const response = await productboard.GET(
-        '/jira-integrations/{id}/connections',
+        "/jira-integrations/{id}/connections",
         {
           params: {
             path: {
               id: integration.id,
             },
             header: {
-              'X-Version': 1,
+              "X-Version": 1,
             },
           },
         }
@@ -49,7 +49,7 @@ export const migrateJiraConnections = async ({
 
       if (response.error) {
         throw new Error(
-          response.error.errors.map((error) => error.detail).join(', ')
+          response.error.errors.map((error) => error.detail).join(", ")
         );
       }
 
@@ -77,14 +77,14 @@ export const migrateJiraConnections = async ({
   });
 
   if (!databaseOrganization) {
-    throw new Error('Could not find organization');
+    throw new Error("Could not find organization");
   }
 
   const data: Prisma.FeatureConnectionCreateManyInput[] = [];
   const baseUrl = databaseOrganization.atlassianInstallations.at(0)?.siteUrl;
 
   if (!baseUrl) {
-    log.error('No Atlassian installation found, skipping...');
+    log.error("No Atlassian installation found, skipping...");
     return 0;
   }
 
@@ -102,7 +102,7 @@ export const migrateJiraConnections = async ({
     );
 
     if (!feature) {
-      throw new Error('Feature not found');
+      throw new Error("Feature not found");
     }
 
     data.push({
@@ -110,7 +110,7 @@ export const migrateJiraConnections = async ({
       externalId: link.connection.issueId,
       featureId: feature.id,
       href: new URL(`/browse/${link.connection.issueKey}`, baseUrl).toString(),
-      type: 'JIRA',
+      type: "JIRA",
     });
   }
 

@@ -1,6 +1,5 @@
-import { Head, Hr, Preview, Text } from '@react-email/components';
-import { Html } from '@react-email/components';
-import { EmailLayout } from './layout';
+import { Head, Hr, Html, Preview, Text } from "@react-email/components";
+import { EmailLayout } from "./layout";
 
 type InitiativeUpdateTemplateProperties = {
   readonly title: string;
@@ -30,9 +29,9 @@ export const InitiativeUpdateTemplate = ({
       />
       <Hr className="my-5 border-[#e6ebf1]" />
       <Text className="text-[#8898aa] text-xs leading-4">
-        From {name} on{' '}
-        {new Intl.DateTimeFormat('en-US', {
-          dateStyle: 'medium',
+        From {name} on{" "}
+        {new Intl.DateTimeFormat("en-US", {
+          dateStyle: "medium",
         }).format(date)}
       </Text>
     </EmailLayout>
@@ -40,8 +39,8 @@ export const InitiativeUpdateTemplate = ({
 );
 
 InitiativeUpdateTemplate.PreviewProps = {
-  title: 'Project Alpha: Quarterly Update',
-  name: 'Jane Smith',
+  title: "Project Alpha: Quarterly Update",
+  name: "Jane Smith",
   html: `
     <p>Dear team members,</p>
     <p>I'm excited to share our progress on Project Alpha for this quarter. We've made significant strides in several key areas:</p>
@@ -87,7 +86,7 @@ InitiativeUpdateTemplate.PreviewProps = {
     <p>If you have any questions or suggestions, please don't hesitate to reach out.</p>
   `,
   date: new Date(),
-  siteUrl: 'www.eververse.ai',
+  siteUrl: "www.eververse.ai",
 } as InitiativeUpdateTemplateProperties;
 
 export default InitiativeUpdateTemplate;

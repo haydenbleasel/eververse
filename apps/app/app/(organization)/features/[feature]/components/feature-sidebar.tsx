@@ -1,39 +1,39 @@
-import { FeedbackItem } from '@/app/(organization)/feedback/components/feedback-item';
-import * as SettingsBar from '@/components/settings-bar';
-import { database } from '@/lib/database';
-import { calculateRice } from '@/lib/rice';
-import { EververseRole } from '@repo/backend/auth';
+import { EververseRole } from "@repo/backend/auth";
 import {
   currentMembers,
   currentOrganizationId,
   currentUser,
-} from '@repo/backend/auth/utils';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import type { Feature } from '@repo/backend/prisma/client';
-import { Button } from '@repo/design-system/components/ui/button';
-import { contentToText } from '@repo/editor/lib/tiptap';
-import { formatDate } from '@repo/lib/format';
-import { SparklesIcon } from 'lucide-react';
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
-import type { ReactNode } from 'react';
-import { ConnectButton } from './connect-button';
-import { DisconnectButton } from './disconnect-button';
-import { FeatureClearDateButton } from './feature-clear-date-button';
-import { FeatureClearReleaseButton } from './feature-clear-release-button';
-import { FeatureDateRangePicker } from './feature-date-range-picker';
-import { FeatureGroupPicker } from './feature-group-picker';
-import { FeatureOwnerPicker } from './feature-owner-picker';
-import { FeaturePageTabs } from './feature-page-tabs';
-import { FeatureProductPicker } from './feature-product-picker';
-import { FeatureReleasePicker } from './feature-release-picker';
-import { FeatureRiceEditor } from './feature-rice-editor';
-import { FeatureSettingsDropdown } from './feature-settings-dropdown';
-import { FeatureStatusPicker } from './feature-status-picker';
-import { PortalButton } from './portal-button';
+} from "@repo/backend/auth/utils";
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import type { Feature } from "@repo/backend/prisma/client";
+import { Button } from "@repo/design-system/components/ui/button";
+import { contentToText } from "@repo/editor/lib/tiptap";
+import { formatDate } from "@repo/lib/format";
+import { SparklesIcon } from "lucide-react";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import type { ReactNode } from "react";
+import { FeedbackItem } from "@/app/(organization)/feedback/components/feedback-item";
+import * as SettingsBar from "@/components/settings-bar";
+import { database } from "@/lib/database";
+import { calculateRice } from "@/lib/rice";
+import { ConnectButton } from "./connect-button";
+import { DisconnectButton } from "./disconnect-button";
+import { FeatureClearDateButton } from "./feature-clear-date-button";
+import { FeatureClearReleaseButton } from "./feature-clear-release-button";
+import { FeatureDateRangePicker } from "./feature-date-range-picker";
+import { FeatureGroupPicker } from "./feature-group-picker";
+import { FeatureOwnerPicker } from "./feature-owner-picker";
+import { FeaturePageTabs } from "./feature-page-tabs";
+import { FeatureProductPicker } from "./feature-product-picker";
+import { FeatureReleasePicker } from "./feature-release-picker";
+import { FeatureRiceEditor } from "./feature-rice-editor";
+import { FeatureSettingsDropdown } from "./feature-settings-dropdown";
+import { FeatureStatusPicker } from "./feature-status-picker";
+import { PortalButton } from "./portal-button";
 
 type FeatureSidebarProperties = {
-  readonly featureId: Feature['id'];
+  readonly featureId: Feature["id"];
 };
 
 export const FeatureSidebar = async ({
@@ -45,7 +45,7 @@ export const FeatureSidebar = async ({
     currentMembers(),
   ]);
 
-  if (!user || !organizationId) {
+  if (!(user && organizationId)) {
     notFound();
   }
 
@@ -149,7 +149,7 @@ export const FeatureSidebar = async ({
       },
       featureStatuses: {
         select: { id: true, name: true, color: true },
-        orderBy: { order: 'asc' },
+        orderBy: { order: "asc" },
       },
       products: {
         select: {
@@ -164,11 +164,11 @@ export const FeatureSidebar = async ({
             },
           },
         },
-        orderBy: { name: 'asc' },
+        orderBy: { name: "asc" },
       },
       releases: {
         select: { id: true, title: true },
-        orderBy: { title: 'asc' },
+        orderBy: { title: "asc" },
       },
       templates: {
         select: {
@@ -181,7 +181,7 @@ export const FeatureSidebar = async ({
 
   const feature = databaseOrganization?.features.at(0);
 
-  if (!databaseOrganization || !feature) {
+  if (!(databaseOrganization && feature)) {
     notFound();
   }
 
@@ -205,20 +205,20 @@ export const FeatureSidebar = async ({
     );
   }
 
-  let featureConnectionSource = '';
+  let featureConnectionSource = "";
 
-  if (feature.connection?.type === 'GITHUB') {
-    featureConnectionSource = '/github.svg';
-  } else if (feature.connection?.type === 'JIRA') {
-    featureConnectionSource = '/jira.svg';
-  } else if (feature.connection?.type === 'LINEAR') {
-    featureConnectionSource = '/linear.svg';
+  if (feature.connection?.type === "GITHUB") {
+    featureConnectionSource = "/github.svg";
+  } else if (feature.connection?.type === "JIRA") {
+    featureConnectionSource = "/jira.svg";
+  } else if (feature.connection?.type === "LINEAR") {
+    featureConnectionSource = "/linear.svg";
   }
 
   const promises = feature.feedback.map(async (feedbackItem) => {
     const content = await getJsonColumnFromTable(
-      'feedback',
-      'content',
+      "feedback",
+      "content",
       feedbackItem.feedback.id
     );
 
@@ -249,95 +249,95 @@ export const FeatureSidebar = async ({
 
       <SettingsBar.Item title="Owner">
         <FeatureOwnerPicker
-          featureId={feature.id}
+          data={members}
           defaultValue={feature.ownerId}
           disabled={
             user.user_metadata.organization_role === EververseRole.Member
           }
-          data={members}
+          featureId={feature.id}
         />
       </SettingsBar.Item>
 
       <SettingsBar.Item title="Product">
         <FeatureProductPicker
-          featureId={feature.id}
+          data={databaseOrganization.products}
           defaultValue={feature.product?.id}
           disabled={
             user.user_metadata.organization_role === EververseRole.Member
           }
-          data={databaseOrganization.products}
+          featureId={feature.id}
         />
       </SettingsBar.Item>
 
       {feature.product?.groups && (
         <SettingsBar.Item title="Group">
           <FeatureGroupPicker
-            featureId={feature.id}
+            data={feature.product.groups}
             defaultValue={feature.group?.id}
             disabled={
               user.user_metadata.organization_role === EververseRole.Member ||
               !feature.product.groups.length
             }
-            data={feature.product.groups}
+            featureId={feature.id}
           />
         </SettingsBar.Item>
       )}
 
       <SettingsBar.Item title="Status">
         <FeatureStatusPicker
-          featureId={feature.id}
           defaultValue={feature.statusId}
-          statuses={databaseOrganization.featureStatuses}
           disabled={
             user.user_metadata.organization_role === EververseRole.Member
           }
+          featureId={feature.id}
+          statuses={databaseOrganization.featureStatuses}
         />
       </SettingsBar.Item>
 
       <SettingsBar.Item
-        title="Release"
         action={
           user.user_metadata.organization_role !== EververseRole.Member && (
             <FeatureClearReleaseButton featureId={feature.id} />
           )
         }
+        title="Release"
       >
         <FeatureReleasePicker
-          featureId={feature.id}
           defaultValue={feature.releaseId}
-          releases={databaseOrganization.releases}
           disabled={
             user.user_metadata.organization_role === EververseRole.Member
           }
+          featureId={feature.id}
+          releases={databaseOrganization.releases}
         />
       </SettingsBar.Item>
 
       <SettingsBar.Item
-        title="Date"
         action={
           user.user_metadata.organization_role !== EververseRole.Member && (
             <FeatureClearDateButton featureId={feature.id} />
           )
         }
+        title="Date"
       >
         <FeatureDateRangePicker
-          featureId={feature.id}
-          defaultStartAt={feature.startAt}
           defaultEndAt={feature.endAt}
+          defaultStartAt={feature.startAt}
           disabled={
             user.user_metadata.organization_role === EververseRole.Member
           }
+          featureId={feature.id}
         />
       </SettingsBar.Item>
 
-      <SettingsBar.Item title="RICE Score" action={riceScoreCaption}>
+      <SettingsBar.Item action={riceScoreCaption} title="RICE Score">
         <FeatureRiceEditor
-          featureId={feature.id}
-          rice={feature.rice}
           aiRice={feature.aiRice}
           disabled={
             user.user_metadata.organization_role === EververseRole.Member
           }
+          featureId={feature.id}
+          rice={feature.rice}
         />
       </SettingsBar.Item>
 
@@ -346,18 +346,18 @@ export const FeatureSidebar = async ({
           <>
             <Button asChild variant="outline">
               <a
-                href={feature.connection.href}
-                target="_blank"
-                rel="noreferrer"
                 aria-label="Connection"
                 className="flex items-center gap-2"
+                href={feature.connection.href}
+                rel="noreferrer"
+                target="_blank"
               >
                 {featureConnectionSource && (
                   <Image
+                    alt=""
+                    height={16}
                     src={featureConnectionSource}
                     width={16}
-                    height={16}
-                    alt=""
                   />
                 )}
                 <span>View connected feature</span>
@@ -398,7 +398,7 @@ export const FeatureSidebar = async ({
         <SettingsBar.Item title="Custom Fields">
           <>
             {feature.customFields.map((field) => (
-              <div key={field.id} className="flex items-center gap-2 text-sm">
+              <div className="flex items-center gap-2 text-sm" key={field.id}>
                 <p className="truncate text-muted-foreground">
                   {field.customField.name}
                 </p>

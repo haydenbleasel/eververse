@@ -1,9 +1,9 @@
-import { env } from '@/env';
-import { Prose } from '@repo/design-system/components/prose';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { IntercomInstallationForm } from './install-form';
+import { Prose } from "@repo/design-system/components/prose";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { env } from "@/env";
+import { IntercomInstallationForm } from "./install-form";
 
-const webhookUrl = new URL('/webhooks/intercom', env.EVERVERSE_API_URL);
+const webhookUrl = new URL("/webhooks/intercom", env.EVERVERSE_API_URL);
 
 export const InstallIntercom = () => (
   <>
@@ -14,12 +14,12 @@ export const InstallIntercom = () => (
       <p className="mt-2 mb-0 text-muted-foreground">
         Follow the steps below to integrate Intercom with Eververse. This
         assumes you already have an Intercom account. If you don&apos;t, head to
-        the{' '}
+        the{" "}
         <a
-          href="https://www.intercom.com/signup"
-          target="_blank"
-          rel="noreferrer"
           className="text-primary underline"
+          href="https://www.intercom.com/signup"
+          rel="noreferrer"
+          target="_blank"
         >
           Intercom signup page
         </a>
@@ -29,14 +29,14 @@ export const InstallIntercom = () => (
     <StackCard title="1. Create a new Intercom app">
       <Prose className="max-w-none">
         <p>
-          To get started, you need to create a new Intercom app. Go to the{' '}
+          To get started, you need to create a new Intercom app. Go to the{" "}
           <a
             href="https://app.intercom.com/a/apps/_/developer-hub"
-            target="_blank"
             rel="noreferrer"
+            target="_blank"
           >
             Developer Hub
-          </a>{' '}
+          </a>{" "}
           and click "New app". Give it a name, like "Eververse".
         </p>
       </Prose>
@@ -52,7 +52,7 @@ export const InstallIntercom = () => (
         </div>
 
         <p>
-          Open the Topics dropdown and select{' '}
+          Open the Topics dropdown and select{" "}
           <code>conversation_part.tag.created</code>.
         </p>
       </Prose>
@@ -64,7 +64,7 @@ export const InstallIntercom = () => (
         <div className="rounded-md bg-secondary px-4 py-3">
           <p>
             https://app.intercom.com/a/apps/
-            <span className="font-semibold text-primary">{'your-app-id'}</span>
+            <span className="font-semibold text-primary">{"your-app-id"}</span>
           </p>
         </div>
 

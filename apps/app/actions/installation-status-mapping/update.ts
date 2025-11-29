@@ -1,12 +1,12 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import type { InstallationStatusMapping } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import type { InstallationStatusMapping } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const updateInstallationStatusMapping = async (
-  connectionId: InstallationStatusMapping['id'],
+  connectionId: InstallationStatusMapping["id"],
   data: Partial<InstallationStatusMapping>
 ): Promise<{
   error?: string;
@@ -18,9 +18,9 @@ export const updateInstallationStatusMapping = async (
       select: { id: true },
     });
 
-    revalidatePath('/settings/integrations/github');
-    revalidatePath('/settings/integrations/jira');
-    revalidatePath('/settings/integrations/linear');
+    revalidatePath("/settings/integrations/github");
+    revalidatePath("/settings/integrations/jira");
+    revalidatePath("/settings/integrations/linear");
 
     return {};
   } catch (error) {

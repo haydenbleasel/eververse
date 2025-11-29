@@ -1,6 +1,8 @@
-export * from '../ui/calendar';
 export type {
-  SelectSingleEventHandler,
   DateRange,
   SelectRangeEventHandler,
-} from 'react-day-picker';
+  SelectSingleEventHandler,
+} from "react-day-picker";
+
+// biome-ignore lint/performance/noBarrelFile: we're using the primitive component
+export * from "../ui/calendar";

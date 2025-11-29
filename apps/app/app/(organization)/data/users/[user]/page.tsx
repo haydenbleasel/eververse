@@ -1,13 +1,13 @@
-import { FeedbackItem } from '@/app/(organization)/feedback/components/feedback-item';
-import { database } from '@/lib/database';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import { Separator } from '@repo/design-system/components/ui/separator';
-import { cn } from '@repo/design-system/lib/utils';
-import { contentToText } from '@repo/editor/lib/tiptap';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import { Separator } from "@repo/design-system/components/ui/separator";
+import { cn } from "@repo/design-system/lib/utils";
+import { contentToText } from "@repo/editor/lib/tiptap";
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { FeedbackItem } from "@/app/(organization)/feedback/components/feedback-item";
+import { database } from "@/lib/database";
 
 type FeedbackUserPageProperties = {
   readonly params: Promise<{
@@ -70,14 +70,14 @@ const FeedbackUserPage = async (props: FeedbackUserPageProperties) => {
 
   const promises = feedback.map(async (feedbackItem) => {
     const content = await getJsonColumnFromTable(
-      'feedback',
-      'content',
+      "feedback",
+      "content",
       feedbackItem.id
     );
 
     return {
       ...feedbackItem,
-      text: content ? contentToText(content) : 'No description provided.',
+      text: content ? contentToText(content) : "No description provided.",
     };
   });
 
@@ -87,18 +87,18 @@ const FeedbackUserPage = async (props: FeedbackUserPageProperties) => {
     <div className="w-full px-6 py-16">
       <div className="mx-auto grid w-full max-w-prose gap-6">
         <Image
-          src={user.imageUrl}
           alt={user.name}
-          width={96}
-          height={96}
           className="m-0 h-24 w-24 rounded-full object-fill"
+          height={96}
+          src={user.imageUrl}
+          width={96}
         />
 
         <div className="grid gap-2">
           <h2
             className={cn(
-              'resize-none border-none bg-transparent p-0 font-semibold text-4xl tracking-tight shadow-none outline-none',
-              'text-foreground'
+              "resize-none border-none bg-transparent p-0 font-semibold text-4xl tracking-tight shadow-none outline-none",
+              "text-foreground"
             )}
           >
             {user.name}

@@ -1,36 +1,35 @@
-import withBundleAnalyzer from '@next/bundle-analyzer';
-import type { NextConfig } from 'next';
-import { createSecureHeaders } from 'next-secure-headers';
-
+import withBundleAnalyzer from "@next/bundle-analyzer";
 // @ts-expect-error "no types"
-import { PrismaPlugin } from '@prisma/nextjs-monorepo-workaround-plugin';
+import { PrismaPlugin } from "@prisma/nextjs-monorepo-workaround-plugin";
+import type { NextConfig } from "next";
+import { createSecureHeaders } from "next-secure-headers";
 
 const otelRegex = /@opentelemetry\/instrumentation/;
 
 export const config: NextConfig = {
   images: {
-    formats: ['image/avif', 'image/webp'],
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'img.logo.dev',
+        protocol: "https",
+        hostname: "img.logo.dev",
       },
       {
-        protocol: 'https',
-        hostname: 'www.gravatar.com',
+        protocol: "https",
+        hostname: "www.gravatar.com",
       },
 
       // Seed data
       {
-        protocol: 'https',
-        hostname: 'avatars.githubusercontent.com',
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
       },
     ],
   },
 
   experimental: {
     serverActions: {
-      bodySizeLimit: '10mb',
+      bodySizeLimit: "10mb",
     },
   },
 
@@ -38,7 +37,7 @@ export const config: NextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: "/(.*)",
         headers: createSecureHeaders({
           // HSTS Preload: https://hstspreload.org/
           forceHTTPSRedirect: [
@@ -54,16 +53,16 @@ export const config: NextConfig = {
   async rewrites() {
     return [
       {
-        source: '/ingest/static/:path*',
-        destination: 'https://us-assets.i.posthog.com/static/:path*',
+        source: "/ingest/static/:path*",
+        destination: "https://us-assets.i.posthog.com/static/:path*",
       },
       {
-        source: '/ingest/:path*',
-        destination: 'https://us.i.posthog.com/:path*',
+        source: "/ingest/:path*",
+        destination: "https://us.i.posthog.com/:path*",
       },
       {
-        source: '/ingest/decide',
-        destination: 'https://us.i.posthog.com/decide',
+        source: "/ingest/decide",
+        destination: "https://us.i.posthog.com/decide",
       },
     ];
   },
@@ -82,7 +81,7 @@ export const config: NextConfig = {
   skipTrailingSlashRedirect: true,
 
   // This is required to support Sentry
-  transpilePackages: ['@sentry/nextjs'],
+  transpilePackages: ["@sentry/nextjs"],
 };
 
 export const withAnalyzer = (sourceConfig: NextConfig): NextConfig =>

@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { updateChangelog } from '@/actions/changelog/update';
-import { DocumentInput } from '@/components/document-input';
-import type { Changelog } from '@repo/backend/prisma/client';
-import { handleError } from '@repo/design-system/lib/handle-error';
+import type { Changelog } from "@repo/backend/prisma/client";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { updateChangelog } from "@/actions/changelog/update";
+import { DocumentInput } from "@/components/document-input";
 
 type ChangelogTitleProperties = {
-  readonly changelogId: Changelog['id'];
-  readonly defaultTitle: Changelog['title'];
+  readonly changelogId: Changelog["id"];
+  readonly defaultTitle: Changelog["title"];
   readonly editable: boolean;
 };
 
@@ -31,8 +31,8 @@ export const ChangelogTitle = ({
   return (
     <DocumentInput
       defaultValue={defaultTitle}
-      onDebouncedUpdate={handleDebouncedUpdate}
       disabled={!editable}
+      onDebouncedUpdate={handleDebouncedUpdate}
     />
   );
 };

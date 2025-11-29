@@ -1,15 +1,15 @@
-import { database, getJsonColumnFromTable } from '@repo/backend/database';
-import type { Feedback } from '@repo/backend/prisma/client';
-import { contentToText } from '@repo/editor/lib/tiptap';
-import { baseUrl } from '@repo/lib/consts';
-import { parseError } from '@repo/lib/parse-error';
+import { database, getJsonColumnFromTable } from "@repo/backend/database";
+import type { Feedback } from "@repo/backend/prisma/client";
+import { contentToText } from "@repo/editor/lib/tiptap";
+import { baseUrl } from "@repo/lib/consts";
+import { parseError } from "@repo/lib/parse-error";
 
 export const maxDuration = 300;
 export const revalidate = 0;
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 type InsertPayload = {
-  type: 'INSERT';
+  type: "INSERT";
   table: string;
   schema: string;
   record: Feedback;
@@ -30,50 +30,50 @@ export const POST = async (request: Request): Promise<Response> => {
   });
 
   if (slackInstallations.length === 0) {
-    return new Response('No Slack installations found', { status: 404 });
+    return new Response("No Slack installations found", { status: 404 });
   }
 
   const [slackInstallation] = slackInstallations;
 
   try {
     const content = await getJsonColumnFromTable(
-      'feedback',
-      'content',
+      "feedback",
+      "content",
       body.record.id
     );
 
     const response = await fetch(slackInstallation.webhookUrl, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify({
         text: `New feedback on Eververse: *${body.record.title}*`,
         blocks: [
           {
-            type: 'rich_text',
+            type: "rich_text",
             elements: [
               {
-                type: 'rich_text_section',
+                type: "rich_text_section",
                 elements: [
                   {
-                    type: 'text',
+                    type: "text",
                     style: { bold: true },
                     text: `New feedback on Eververse: ${body.record.title}`,
                   },
                   {
-                    type: 'text',
-                    text: `\n${content ? contentToText(content) : 'No content provided.'}`,
+                    type: "text",
+                    text: `\n${content ? contentToText(content) : "No content provided."}`,
                   },
                 ],
               },
             ],
           },
           {
-            type: 'actions',
+            type: "actions",
             elements: [
               {
-                type: 'button',
+                type: "button",
                 text: {
-                  type: 'plain_text',
-                  text: 'View Feedback',
+                  type: "plain_text",
+                  text: "View Feedback",
                 },
                 url: new URL(`/feedback/${body.record.id}`, baseUrl).toString(),
               },
@@ -94,7 +94,7 @@ export const POST = async (request: Request): Promise<Response> => {
       },
     });
 
-    return new Response('OK');
+    return new Response("OK");
   } catch (error) {
     const message = parseError(error);
 

@@ -1,11 +1,11 @@
-import { currentMembers } from '@repo/backend/auth/utils';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { InviteMemberButton } from './components/invite-member-button';
-import { MembersTable } from './components/members-table';
+import { currentMembers } from "@repo/backend/auth/utils";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { InviteMemberButton } from "./components/invite-member-button";
+import { MembersTable } from "./components/members-table";
 
-const title = 'Members';
+const title = "Members";
 const description = "Manage your organization's members.";
 
 export const metadata: Metadata = createMetadata({

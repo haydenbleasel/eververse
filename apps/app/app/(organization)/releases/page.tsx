@@ -1,16 +1,16 @@
-import { EmptyState } from '@/components/empty-state';
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentUser } from '@repo/backend/auth/utils';
-import { createMetadata } from '@repo/seo/metadata';
-import { FlagIcon } from 'lucide-react';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { CreateReleaseButton } from './components/create-release-button';
-import { ReleaseItem } from './components/release-item';
+import { EververseRole } from "@repo/backend/auth";
+import { currentUser } from "@repo/backend/auth/utils";
+import { createMetadata } from "@repo/seo/metadata";
+import { FlagIcon } from "lucide-react";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { EmptyState } from "@/components/empty-state";
+import { database } from "@/lib/database";
+import { CreateReleaseButton } from "./components/create-release-button";
+import { ReleaseItem } from "./components/release-item";
 
-const title = 'Releases';
-const description = 'Create and manage software versions';
+const title = "Releases";
+const description = "Create and manage software versions";
 
 export const metadata: Metadata = createMetadata({
   title,
@@ -35,10 +35,10 @@ const Releases = async () => {
     },
     orderBy: [
       {
-        startAt: 'desc',
+        startAt: "desc",
       },
       {
-        title: 'desc',
+        title: "desc",
       },
     ],
   });
@@ -50,9 +50,9 @@ const Releases = async () => {
     return (
       <div className="flex flex-1 items-center justify-center">
         <EmptyState
-          title="You don't have any releases"
           description="Releases are a way to communicate with your team about changes to your product."
           icon={FlagIcon}
+          title="You don't have any releases"
         />
       </div>
     );
@@ -62,9 +62,9 @@ const Releases = async () => {
     return (
       <div className="flex flex-1 items-center justify-center">
         <EmptyState
-          title="Create your first release"
           description="Releases are a way to communicate with your team about changes to your product."
           icon={FlagIcon}
+          title="Create your first release"
         >
           <CreateReleaseButton />
         </EmptyState>

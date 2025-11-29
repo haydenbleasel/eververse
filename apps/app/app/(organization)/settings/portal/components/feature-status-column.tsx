@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useDroppable } from '@dnd-kit/core';
-import type { FeatureStatus } from '@repo/backend/prisma/client';
-import { cn } from '@repo/design-system/lib/utils';
-import { FeatureStatusCard } from './feature-status-card';
+import { useDroppable } from "@dnd-kit/core";
+import type { FeatureStatus } from "@repo/backend/prisma/client";
+import { cn } from "@repo/design-system/lib/utils";
+import { FeatureStatusCard } from "./feature-status-card";
 
 type FeatureStatusColumnProperties = Pick<
   FeatureStatus,
-  'color' | 'id' | 'name'
+  "color" | "id" | "name"
 > & {
-  readonly items: Pick<FeatureStatus, 'color' | 'id' | 'name'>[];
+  readonly items: Pick<FeatureStatus, "color" | "id" | "name">[];
 };
 
 export const FeatureStatusColumn = ({
@@ -23,8 +23,8 @@ export const FeatureStatusColumn = ({
   return (
     <div
       className={cn(
-        'flex min-h-40 flex-col gap-2 rounded-lg bg-card p-2 outline-2 transition-all',
-        isOver ? 'outline-violet-500' : 'outline-transparent'
+        "flex min-h-40 flex-col gap-2 rounded-lg bg-card p-2 outline-2 transition-all",
+        isOver ? "outline-violet-500" : "outline-transparent"
       )}
     >
       <div className="flex shrink-0 items-center gap-2">
@@ -37,8 +37,8 @@ export const FeatureStatusColumn = ({
       <div className="flex flex-1 flex-col gap-2" ref={setNodeRef}>
         {items.map((item, index) => (
           <FeatureStatusCard
-            key={item.id}
             index={index}
+            key={item.id}
             parent={id}
             {...item}
           />

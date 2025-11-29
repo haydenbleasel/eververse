@@ -1,17 +1,17 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { createClient } from '@repo/atlassian';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import type { Feature } from '@repo/backend/prisma/client';
-import { convertToAdf } from '@repo/editor/lib/jira';
-import { textToContent } from '@repo/editor/lib/tiptap';
-import { parseError } from '@repo/lib/parse-error';
+import { createClient } from "@repo/atlassian";
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import type { Feature } from "@repo/backend/prisma/client";
+import { convertToAdf } from "@repo/editor/lib/jira";
+import { textToContent } from "@repo/editor/lib/tiptap";
+import { parseError } from "@repo/lib/parse-error";
+import { database } from "@/lib/database";
 
 type CreateJiraIssueProperties = {
   readonly projectId: string;
   readonly typeId: string;
-  readonly featureId: Feature['id'];
+  readonly featureId: Feature["id"];
 };
 
 export const createJiraIssue = async ({
@@ -43,33 +43,33 @@ export const createJiraIssue = async ({
     ]);
 
     if (!installation) {
-      throw new Error('Installation not found');
+      throw new Error("Installation not found");
     }
 
     if (!feature) {
-      throw new Error('Feature not found');
+      throw new Error("Feature not found");
     }
 
     const content = await getJsonColumnFromTable(
-      'feature',
-      'content',
+      "feature",
+      "content",
       feature.id
     );
 
-    const body = content ?? textToContent('');
+    const body = content ?? textToContent("");
     const atlassian = createClient(installation);
-    const response = await atlassian.POST('/rest/api/2/issue', {
+    const response = await atlassian.POST("/rest/api/2/issue", {
       body: {
         fields: {
           description: {
             ...convertToAdf(body),
             version: 1,
           },
-          duedate: feature.endAt?.toISOString().split('T')[0],
+          duedate: feature.endAt?.toISOString().split("T")[0],
           issuetype: {
             id: typeId,
           },
-          labels: ['eververse'],
+          labels: ["eververse"],
           project: {
             id: projectId,
           },
@@ -85,12 +85,12 @@ export const createJiraIssue = async ({
 
     if (response.error) {
       throw new Error(
-        `Error creating Jira issue: ${response.error.errorMessages?.join(', ')}`
+        `Error creating Jira issue: ${response.error.errorMessages?.join(", ")}`
       );
     }
 
-    if (!response.data.id || !response.data.key) {
-      throw new Error('No issue ID or key returned from Jira');
+    if (!(response.data.id && response.data.key)) {
+      throw new Error("No issue ID or key returned from Jira");
     }
 
     return {

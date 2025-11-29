@@ -1,30 +1,30 @@
-import { updateFeatures } from '@/actions/feature/bulk/update';
-import type { User } from '@repo/backend/auth';
-import { getUserName } from '@repo/backend/auth/format';
+import type { User } from "@repo/backend/auth";
+import { getUserName } from "@repo/backend/auth/format";
 import type {
   Feature,
   FeatureStatus,
   Group,
   Product,
   Release,
-} from '@repo/backend/prisma/client';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { useSidebar } from '@repo/design-system/components/ui/sidebar';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { toast } from '@repo/design-system/lib/toast';
-import { cn } from '@repo/design-system/lib/utils';
-import { QueryClient } from '@tanstack/react-query';
-import Image from 'next/image';
-import { FeatureToolbarDeleteButton } from './feature-toolbar-delete-button';
-import { FeatureToolbarMoveButton } from './feature-toolbar-move-button';
+} from "@repo/backend/prisma/client";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { useSidebar } from "@repo/design-system/components/ui/sidebar";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { toast } from "@repo/design-system/lib/toast";
+import { cn } from "@repo/design-system/lib/utils";
+import { QueryClient } from "@tanstack/react-query";
+import Image from "next/image";
+import { updateFeatures } from "@/actions/feature/bulk/update";
+import { FeatureToolbarDeleteButton } from "./feature-toolbar-delete-button";
+import { FeatureToolbarMoveButton } from "./feature-toolbar-move-button";
 
 type FeaturesToolbarProperties = {
-  readonly statuses: Pick<FeatureStatus, 'color' | 'id' | 'name'>[];
-  readonly products: Pick<Product, 'emoji' | 'id' | 'name'>[];
-  readonly releases: Pick<Release, 'id' | 'title'>[];
+  readonly statuses: Pick<FeatureStatus, "color" | "id" | "name">[];
+  readonly products: Pick<Product, "emoji" | "id" | "name">[];
+  readonly releases: Pick<Release, "id" | "title">[];
   readonly groups: Pick<
     Group,
-    'emoji' | 'id' | 'name' | 'parentGroupId' | 'productId'
+    "emoji" | "id" | "name" | "parentGroupId" | "productId"
   >[];
   readonly selected: string[];
   readonly onClose: () => void;
@@ -52,10 +52,10 @@ export const FeaturesToolbar = ({
       }
 
       onClose();
-      toast.success('Features updated successfully!');
+      toast.success("Features updated successfully!");
 
       await queryClient.invalidateQueries({
-        queryKey: ['features'],
+        queryKey: ["features"],
       });
     } catch (error) {
       handleError(error);
@@ -65,22 +65,21 @@ export const FeaturesToolbar = ({
   return (
     <div
       className={cn(
-        'fixed right-0 bottom-0 ml-px flex items-center justify-between gap-4 border-t bg-background/90 p-3 backdrop-blur-sm transition-all',
-        sidebar.open ? 'left-[220px]' : 'left-16'
+        "fixed right-0 bottom-0 ml-px flex items-center justify-between gap-4 border-t bg-background/90 p-3 backdrop-blur-sm transition-all",
+        sidebar.open ? "left-[220px]" : "left-16"
       )}
     >
       <p className="shrink-0 whitespace-nowrap font-medium text-muted-foreground text-sm">
-        {selected.length} feature{selected.length === 1 ? '' : 's'} selected
+        {selected.length} feature{selected.length === 1 ? "" : "s"} selected
       </p>
       <div className="flex flex-1 items-center justify-end gap-2">
         <div>
           <Select
-            value={undefined}
-            onChange={(statusId) => handleUpdateFeatures({ statusId })}
             data={statuses.map((item) => ({
               value: item.id,
               label: item.name,
             }))}
+            onChange={(statusId) => handleUpdateFeatures({ statusId })}
             renderItem={(item) => {
               const status = statuses.find(({ id }) => id === item.value);
 
@@ -99,16 +98,16 @@ export const FeaturesToolbar = ({
               );
             }}
             type="status"
+            value={undefined}
           />
         </div>
         <div>
           <Select
-            value={undefined}
-            onChange={(ownerId) => handleUpdateFeatures({ ownerId })}
             data={members.map((item) => ({
               value: item.id,
               label: getUserName(item),
             }))}
+            onChange={(ownerId) => handleUpdateFeatures({ ownerId })}
             renderItem={(item) => {
               const member = members.find(({ id }) => id === item.value);
 
@@ -119,37 +118,38 @@ export const FeaturesToolbar = ({
               return (
                 <div className="flex items-center gap-2">
                   <Image
-                    src={member.user_metadata.image_url}
                     alt=""
-                    width={20}
-                    height={20}
                     className="h-5 w-5 shrink-0 rounded-full object-cover"
+                    height={20}
+                    src={member.user_metadata.image_url}
+                    width={20}
                   />
                   <span>{item.label}</span>
                 </div>
               );
             }}
             type="owner"
+            value={undefined}
           />
         </div>
         <div>
           <Select
-            value={undefined}
-            onChange={(releaseId) => handleUpdateFeatures({ releaseId })}
             data={releases.map((item) => ({
               value: item.id,
               label: item.title,
             }))}
+            onChange={(releaseId) => handleUpdateFeatures({ releaseId })}
             type="release"
+            value={undefined}
           />
         </div>
         <FeatureToolbarMoveButton
-          products={products}
           groups={groups}
-          selected={selected}
           onClose={onClose}
+          products={products}
+          selected={selected}
         />
-        <FeatureToolbarDeleteButton selected={selected} onClose={onClose} />
+        <FeatureToolbarDeleteButton onClose={onClose} selected={selected} />
       </div>
     </div>
   );

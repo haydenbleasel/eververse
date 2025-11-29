@@ -1,12 +1,12 @@
-import { getMembers } from '@repo/backend/auth/utils';
-import { database } from '@repo/backend/database';
-import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
-import { log } from '@repo/observability/log';
-import { createClient } from '@repo/productboard';
+import { getMembers } from "@repo/backend/auth/utils";
+import { database } from "@repo/backend/database";
+import type { Prisma, ProductboardImport } from "@repo/backend/prisma/client";
+import { log } from "@repo/observability/log";
+import { createClient } from "@repo/productboard";
 
 type ImportJobProperties = Pick<
   ProductboardImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateProducts = async ({
@@ -24,25 +24,25 @@ export const migrateProducts = async ({
     getMembers(organizationId),
   ]);
 
-  const products = await productboard.GET('/products', {
+  const products = await productboard.GET("/products", {
     params: {
       header: {
-        'X-Version': 1,
+        "X-Version": 1,
       },
     },
   });
 
   if (products.error) {
     throw new Error(
-      products.error.errors.map((error) => error.detail).join(', ')
+      products.error.errors.map((error) => error.detail).join(", ")
     );
   }
 
   if (!products.data) {
-    throw new Error('No products found');
+    throw new Error("No products found");
   }
 
-  log.info('⏬ Successfully fetched products from Productboard', {
+  log.info("⏬ Successfully fetched products from Productboard", {
     count: products.data.data.length,
   });
 

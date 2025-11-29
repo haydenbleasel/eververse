@@ -1,5 +1,5 @@
-import { currentOrganizationId } from '@repo/backend/auth/utils';
-import { database as prisma } from '@repo/backend/database';
+import { currentOrganizationId } from "@repo/backend/auth/utils";
+import { database as prisma } from "@repo/backend/database";
 
 export const database = prisma.$extends({
   query: {
@@ -7,15 +7,15 @@ export const database = prisma.$extends({
       const organizationId = await currentOrganizationId();
 
       // Create operations don't use where clauses
-      if (operation.includes('create')) {
+      if (operation.includes("create")) {
         return query(args);
       }
 
       if (!organizationId) {
-        throw new Error('Organization not found');
+        throw new Error("Organization not found");
       }
 
-      if (model !== 'Organization') {
+      if (model !== "Organization") {
         args.where = {
           ...(args.where ?? {}),
           organizationId,

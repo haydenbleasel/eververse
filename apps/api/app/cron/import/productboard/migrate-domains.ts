@@ -1,12 +1,12 @@
-import { database } from '@repo/backend/database';
-import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
-import { emailRegex } from '@repo/lib/email';
-import { createClient } from '@repo/productboard';
-import commonProviders from 'email-providers/all.json' assert { type: 'json' };
+import { database } from "@repo/backend/database";
+import type { Prisma, ProductboardImport } from "@repo/backend/prisma/client";
+import { emailRegex } from "@repo/lib/email";
+import { createClient } from "@repo/productboard";
+import commonProviders from "email-providers/all.json" assert { type: "json" };
 
 type ImportJobProperties = Pick<
   ProductboardImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateDomains = async ({
@@ -14,20 +14,20 @@ export const migrateDomains = async ({
   token,
 }: ImportJobProperties): Promise<number> => {
   const productboard = createClient({ accessToken: token });
-  const users = await productboard.GET('/users', {
+  const users = await productboard.GET("/users", {
     params: {
       header: {
-        'X-Version': 1,
+        "X-Version": 1,
       },
     },
   });
 
   if (users.error) {
-    throw new Error(users.error.errors.map((error) => error.detail).join(', '));
+    throw new Error(users.error.errors.map((error) => error.detail).join(", "));
   }
 
   if (!users.data.data) {
-    throw new Error('No users found');
+    throw new Error("No users found");
   }
 
   const existingCompanies = await database.feedbackOrganization.findMany({
@@ -39,7 +39,7 @@ export const migrateDomains = async ({
 
   for (const user of users.data.data) {
     if (user.email && emailRegex.test(user.email)) {
-      const [, domain] = user.email.split('@');
+      const [, domain] = user.email.split("@");
 
       if (domain) {
         userDomains.add(domain);
@@ -49,11 +49,13 @@ export const migrateDomains = async ({
 
   const newDomains = [...userDomains].filter(
     (domain) =>
-      !existingCompanies.some((company) => company.domain === domain) &&
-      !commonProviders.includes(domain)
+      !(
+        existingCompanies.some((company) => company.domain === domain) ||
+        commonProviders.includes(domain)
+      )
   );
 
-  const data: Prisma.FeedbackOrganizationCreateManyArgs['data'] =
+  const data: Prisma.FeedbackOrganizationCreateManyArgs["data"] =
     newDomains.map((domain) => ({
       domain,
       organizationId,

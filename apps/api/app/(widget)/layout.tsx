@@ -1,7 +1,7 @@
-import './styles.css';
-import { fonts } from '@repo/design-system/lib/fonts';
-import { cn } from '@repo/design-system/lib/utils';
-import type { ReactNode } from 'react';
+import "./styles.css";
+import { fonts } from "@repo/design-system/lib/fonts";
+import { cn } from "@repo/design-system/lib/utils";
+import type { ReactNode } from "react";
 
 type RootLayoutProperties = {
   readonly children: ReactNode;
@@ -9,8 +9,8 @@ type RootLayoutProperties = {
 
 const RootLayout = ({ children }: RootLayoutProperties) => (
   <html
+    className={cn(fonts, "h-full w-full")}
     lang="en"
-    className={cn(fonts, 'h-full w-full')}
     suppressHydrationWarning
   >
     <head>

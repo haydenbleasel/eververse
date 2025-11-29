@@ -1,9 +1,9 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentUser } from '@repo/backend/auth/utils';
-import { parseError } from '@repo/lib/parse-error';
+import { EververseRole } from "@repo/backend/auth";
+import { currentUser } from "@repo/backend/auth/utils";
+import { parseError } from "@repo/lib/parse-error";
+import { database } from "@/lib/database";
 
 export const deleteAtlassianInstallation = async (): Promise<
   | {
@@ -17,12 +17,12 @@ export const deleteAtlassianInstallation = async (): Promise<
     const user = await currentUser();
 
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
     if (user.user_metadata.organization_role === EververseRole.Member) {
       throw new Error(
-        'You do not have permission to delete Atlassian installations'
+        "You do not have permission to delete Atlassian installations"
       );
     }
 
@@ -37,7 +37,7 @@ export const deleteAtlassianInstallation = async (): Promise<
       });
 
     if (!atlassianInstallation) {
-      throw new Error('Installation not found');
+      throw new Error("Installation not found");
     }
 
     await database.atlassianInstallation.delete({

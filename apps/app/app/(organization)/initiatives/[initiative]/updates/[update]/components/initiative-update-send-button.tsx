@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { sendInitiativeUpdate } from '@/actions/initiative-update/send';
-import type { InitiativeUpdate } from '@repo/backend/prisma/client';
-import { Dialog } from '@repo/design-system/components/precomposed/dialog';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { toast } from '@repo/design-system/lib/toast';
-import { SendIcon } from 'lucide-react';
-import { useState } from 'react';
+import type { InitiativeUpdate } from "@repo/backend/prisma/client";
+import { Dialog } from "@repo/design-system/components/precomposed/dialog";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { toast } from "@repo/design-system/lib/toast";
+import { SendIcon } from "lucide-react";
+import { useState } from "react";
+import { sendInitiativeUpdate } from "@/actions/initiative-update/send";
 
 type InitiativeUpdateSendButtonProps = {
-  updateId: InitiativeUpdate['id'];
+  updateId: InitiativeUpdate["id"];
   recipientCount: number;
 };
 
@@ -35,7 +35,7 @@ export const InitiativeUpdateSendButton = ({
         throw new Error(response.error);
       }
 
-      toast.success('Update sent.');
+      toast.success("Update sent.");
       setOpen(false);
     } catch (error) {
       handleError(error);
@@ -46,13 +46,13 @@ export const InitiativeUpdateSendButton = ({
 
   return (
     <Dialog
-      open={open}
-      onOpenChange={setOpen}
-      title="Send update"
-      description={`Are you sure you want to send this update to ${recipientCount} recipients?`}
       cta="Send"
-      onClick={handleSend}
+      description={`Are you sure you want to send this update to ${recipientCount} recipients?`}
       disabled={loading}
+      onClick={handleSend}
+      onOpenChange={setOpen}
+      open={open}
+      title="Send update"
       trigger={
         <Button className="flex items-center gap-2">
           <SendIcon size={16} />

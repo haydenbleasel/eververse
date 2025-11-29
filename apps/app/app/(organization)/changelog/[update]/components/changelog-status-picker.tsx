@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { updateChangelog } from '@/actions/changelog/update';
-import type { Changelog } from '@repo/backend/prisma/client';
-import { Switch } from '@repo/design-system/components/precomposed/switch';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useState } from 'react';
+import type { Changelog } from "@repo/backend/prisma/client";
+import { Switch } from "@repo/design-system/components/precomposed/switch";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useState } from "react";
+import { updateChangelog } from "@/actions/changelog/update";
 
 type ChangelogStatusPickerProperties = {
-  readonly changelogId: Changelog['id'];
-  readonly defaultValue: Changelog['status'];
+  readonly changelogId: Changelog["id"];
+  readonly defaultValue: Changelog["status"];
   readonly disabled: boolean;
 };
 
@@ -18,7 +18,7 @@ export const ChangelogStatusPicker = ({
   disabled,
 }: ChangelogStatusPickerProperties) => {
   const [published, setPublished] = useState<boolean>(
-    defaultValue === 'PUBLISHED'
+    defaultValue === "PUBLISHED"
   );
 
   const handleSelect = async (newPublished: boolean) => {
@@ -26,7 +26,7 @@ export const ChangelogStatusPicker = ({
 
     try {
       const { error } = await updateChangelog(changelogId, {
-        status: newPublished ? 'PUBLISHED' : 'DRAFT',
+        status: newPublished ? "PUBLISHED" : "DRAFT",
       });
 
       if (error) {
@@ -40,9 +40,9 @@ export const ChangelogStatusPicker = ({
   return (
     <Switch
       checked={published}
-      onCheckedChange={handleSelect}
-      description={published ? 'Published' : 'Draft'}
+      description={published ? "Published" : "Draft"}
       disabled={disabled}
+      onCheckedChange={handleSelect}
     />
   );
 };

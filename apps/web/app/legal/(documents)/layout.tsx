@@ -1,6 +1,6 @@
-import { Container } from '@repo/design-system/components/container';
-import { Prose } from '@repo/design-system/components/prose';
-import type { ReactNode } from 'react';
+import { Container } from "@repo/design-system/components/container";
+import { Prose } from "@repo/design-system/components/prose";
+import type { ReactNode } from "react";
 
 type LegalLayoutProps = {
   children: ReactNode;

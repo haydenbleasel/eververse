@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { deleteLinearInstallation } from '@/actions/linear-installation/delete';
-import type { LinearInstallation } from '@repo/backend/prisma/client';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { type FormEventHandler, useState } from 'react';
-import { toast } from 'sonner';
+import type { LinearInstallation } from "@repo/backend/prisma/client";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { type FormEventHandler, useState } from "react";
+import { toast } from "sonner";
+import { deleteLinearInstallation } from "@/actions/linear-installation/delete";
 
 type ManageLinearProps = {
-  id: LinearInstallation['id'];
+  id: LinearInstallation["id"];
 };
 
 export const ManageLinear = ({ id }: ManageLinearProps) => {
@@ -27,11 +27,11 @@ export const ManageLinear = ({ id }: ManageLinearProps) => {
     try {
       const response = await deleteLinearInstallation(id);
 
-      if ('error' in response) {
+      if ("error" in response) {
         throw new Error(response.error);
       }
 
-      toast.success('Intercom integration removed');
+      toast.success("Intercom integration removed");
     } catch (error) {
       handleError(error);
     } finally {
@@ -48,7 +48,7 @@ export const ManageLinear = ({ id }: ManageLinearProps) => {
         </p>
       </div>
 
-      <StackCard title="Danger Zone" className="p-4">
+      <StackCard className="p-4" title="Danger Zone">
         <form onSubmit={handleDelete}>
           <Button type="submit" variant="destructive">
             Remove Linear Integration

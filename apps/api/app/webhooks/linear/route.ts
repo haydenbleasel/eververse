@@ -1,20 +1,20 @@
-import { database } from '@repo/backend/database';
-import { LINEAR_WEBHOOK_SIGNATURE_HEADER, LinearClient } from '@repo/linear';
+import { database } from "@repo/backend/database";
+import { LINEAR_WEBHOOK_SIGNATURE_HEADER, LinearClient } from "@repo/linear";
 
 export const maxDuration = 300;
 export const revalidate = 0;
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 type LinearEvent =
-  | 'Comment'
-  | 'Cycle'
-  | 'Issue'
-  | 'IssueLabel'
-  | 'Project'
-  | 'Reaction';
+  | "Comment"
+  | "Cycle"
+  | "Issue"
+  | "IssueLabel"
+  | "Project"
+  | "Reaction";
 
 type DataChangeEvent = {
-  action: 'create' | 'remove' | 'update';
+  action: "create" | "remove" | "update";
   data: {
     id: string;
     createdAt: string;
@@ -32,13 +32,13 @@ type DataChangeEvent = {
   webhookId: string;
 };
 
-const linearIps = new Set(['35.231.147.226', '35.243.134.228']);
+const linearIps = new Set(["35.231.147.226", "35.243.134.228"]);
 
 const handleIssueUpdate = async (event: DataChangeEvent) => {
   const featureConnection = await database.featureConnection.findFirst({
     where: {
       externalId: event.data.id,
-      type: 'LINEAR',
+      type: "LINEAR",
     },
     select: {
       id: true,
@@ -58,14 +58,14 @@ const handleIssueUpdate = async (event: DataChangeEvent) => {
   });
 
   if (!featureConnection) {
-    return new Response('OK');
+    return new Response("OK");
   }
 
   const linearInstallation =
     featureConnection.organization.linearInstallations.at(0);
 
   if (!linearInstallation) {
-    return new Response('OK');
+    return new Response("OK");
   }
 
   const linear = new LinearClient({
@@ -78,14 +78,14 @@ const handleIssueUpdate = async (event: DataChangeEvent) => {
     data: { title: linearIssue.title },
   });
 
-  return new Response('OK');
+  return new Response("OK");
 };
 
 const handleIssueRemove = async (event: DataChangeEvent) => {
   const featureConnection = await database.featureConnection.findFirst({
     where: {
       externalId: event.data.id,
-      type: 'LINEAR',
+      type: "LINEAR",
     },
     select: {
       id: true,
@@ -95,7 +95,7 @@ const handleIssueRemove = async (event: DataChangeEvent) => {
   });
 
   if (!featureConnection) {
-    return new Response('OK');
+    return new Response("OK");
   }
 
   const completedFeatureStatus = await database.featureStatus.findFirst({
@@ -109,7 +109,7 @@ const handleIssueRemove = async (event: DataChangeEvent) => {
   });
 
   if (!completedFeatureStatus) {
-    return new Response('OK');
+    return new Response("OK");
   }
 
   await database.feature.update({
@@ -117,19 +117,19 @@ const handleIssueRemove = async (event: DataChangeEvent) => {
     data: { statusId: completedFeatureStatus.id },
   });
 
-  return new Response('OK');
+  return new Response("OK");
 };
 
 const handleIssueEvent = (event: DataChangeEvent) => {
   switch (event.action) {
-    case 'update': {
+    case "update": {
       return handleIssueUpdate(event);
     }
-    case 'remove': {
+    case "remove": {
       return handleIssueRemove(event);
     }
     default: {
-      return new Response('OK');
+      return new Response("OK");
     }
   }
 };
@@ -137,22 +137,22 @@ const handleIssueEvent = (event: DataChangeEvent) => {
 export const POST = async (request: Request): Promise<Response> => {
   const text = await request.text();
   const signature = request.headers.get(LINEAR_WEBHOOK_SIGNATURE_HEADER);
-  const ip = request.headers.get('x-forwarded-for');
+  const ip = request.headers.get("x-forwarded-for");
   const body = JSON.parse(text) as DataChangeEvent;
 
   // Validate request IP
   if (ip && !linearIps.has(ip)) {
-    return new Response('Invalid request', { status: 400 });
+    return new Response("Invalid request", { status: 400 });
   }
 
   // Ensure signature is present
   if (!signature) {
-    return new Response('Invalid request', { status: 400 });
+    return new Response("Invalid request", { status: 400 });
   }
 
-  if (body.type === 'Issue') {
+  if (body.type === "Issue") {
     return handleIssueEvent(body);
   }
 
-  return new Response('OK');
+  return new Response("OK");
 };

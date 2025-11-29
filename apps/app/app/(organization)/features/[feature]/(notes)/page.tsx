@@ -1,12 +1,12 @@
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import { getJsonColumnFromTable } from '@repo/backend/database';
-import { notFound } from 'next/navigation';
-import { FeatureEditor } from './components/feature-editor';
-import { FeatureTemplateSelector } from './components/feature-template-selector';
-import { FeatureTitle } from './components/feature-title';
-import type { TemplateProperties } from './components/template';
+import { EververseRole } from "@repo/backend/auth";
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import { getJsonColumnFromTable } from "@repo/backend/database";
+import { notFound } from "next/navigation";
+import { database } from "@/lib/database";
+import { FeatureEditor } from "./components/feature-editor";
+import { FeatureTemplateSelector } from "./components/feature-template-selector";
+import { FeatureTitle } from "./components/feature-title";
+import type { TemplateProperties } from "./components/template";
 
 type FeaturePageProperties = {
   readonly params: Promise<{
@@ -14,7 +14,7 @@ type FeaturePageProperties = {
   }>;
 };
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 const FeaturePage = async (props: FeaturePageProperties) => {
   const params = await props.params;
@@ -23,7 +23,7 @@ const FeaturePage = async (props: FeaturePageProperties) => {
     currentOrganizationId(),
   ]);
 
-  if (!user || !organizationId) {
+  if (!(user && organizationId)) {
     notFound();
   }
 
@@ -63,20 +63,20 @@ const FeaturePage = async (props: FeaturePageProperties) => {
     }),
   ]);
 
-  if (!feature || !organization) {
+  if (!(feature && organization)) {
     notFound();
   }
 
   const content = await getJsonColumnFromTable(
-    'feature',
-    'content',
+    "feature",
+    "content",
     feature.id
   );
 
   const templatePromises = templates.map(async (template) => {
     const content = await getJsonColumnFromTable(
-      'template',
-      'content',
+      "template",
+      "content",
       template.id
     );
 
@@ -96,19 +96,19 @@ const FeaturePage = async (props: FeaturePageProperties) => {
     <div className="w-full px-6 py-16">
       <div className="mx-auto grid w-full max-w-prose gap-6">
         <FeatureTitle
-          featureId={params.feature}
           defaultTitle={feature.title}
           editable={
             user.user_metadata.organization_role !== EververseRole.Member
           }
+          featureId={params.feature}
         />
         {content ? (
           <FeatureEditor
-            featureId={params.feature}
             defaultValue={content}
             editable={
               user.user_metadata.organization_role !== EververseRole.Member
             }
+            featureId={params.feature}
           />
         ) : (
           <FeatureTemplateSelector

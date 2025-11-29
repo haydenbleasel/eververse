@@ -1,26 +1,26 @@
-'use client';
+"use client";
 
-import type { GetFeatureResponse } from '@/actions/feature/get';
-import { updateFeature } from '@/actions/feature/update';
+import type { DragEndEvent, DragStartEvent } from "@dnd-kit/core";
 import {
   DndContext,
   DragOverlay,
   PointerSensor,
   useSensor,
   useSensors,
-} from '@dnd-kit/core';
-import type { DragEndEvent, DragStartEvent } from '@dnd-kit/core';
-import type { Group, Product } from '@repo/backend/prisma/client';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { toast } from '@repo/design-system/lib/toast';
-import { QueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
-import type { ReactNode } from 'react';
-import { FeatureItem } from './feature-item';
+} from "@dnd-kit/core";
+import type { Group, Product } from "@repo/backend/prisma/client";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { toast } from "@repo/design-system/lib/toast";
+import { QueryClient } from "@tanstack/react-query";
+import type { ReactNode } from "react";
+import { useState } from "react";
+import type { GetFeatureResponse } from "@/actions/feature/get";
+import { updateFeature } from "@/actions/feature/update";
+import { FeatureItem } from "./feature-item";
 
 type FeaturesDragProviderProperties = {
-  readonly products: (Pick<Product, 'emoji' | 'id' | 'name'> & {
-    readonly groups: Pick<Group, 'emoji' | 'id' | 'name' | 'parentGroupId'>[];
+  readonly products: (Pick<Product, "emoji" | "id" | "name"> & {
+    readonly groups: Pick<Group, "emoji" | "id" | "name" | "parentGroupId">[];
   })[];
   readonly features: GetFeatureResponse[];
   readonly children: ReactNode;
@@ -50,7 +50,7 @@ export const FeaturesDragProvider = ({
   };
 
   const handleDragEnd = async ({ over }: DragEndEvent) => {
-    if (!over || !activeId) {
+    if (!(over && activeId)) {
       return;
     }
 
@@ -61,7 +61,7 @@ export const FeaturesDragProvider = ({
       try {
         await updateFeature(activeId, { productId: product.id, groupId: null });
         await queryClient.invalidateQueries({
-          queryKey: ['features'],
+          queryKey: ["features"],
         });
 
         toast.success(`Successfully moved feature to ${product.name}`);
@@ -80,10 +80,10 @@ export const FeaturesDragProvider = ({
       try {
         await updateFeature(activeId, { productId: null, groupId: null });
         await queryClient.invalidateQueries({
-          queryKey: ['features'],
+          queryKey: ["features"],
         });
 
-        toast.success('Successfully removed feature from products and groups.');
+        toast.success("Successfully removed feature from products and groups.");
       } catch (error) {
         handleError(error);
       }
@@ -95,7 +95,7 @@ export const FeaturesDragProvider = ({
     const groupProduct = products.find(({ groups }) => groups.includes(group));
 
     if (!groupProduct) {
-      handleError('Product not found');
+      handleError("Product not found");
       return;
     }
 
@@ -105,7 +105,7 @@ export const FeaturesDragProvider = ({
         groupId: group.id,
       });
       await queryClient.invalidateQueries({
-        queryKey: ['features'],
+        queryKey: ["features"],
       });
 
       toast.success(

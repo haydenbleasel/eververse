@@ -1,7 +1,7 @@
-import { env } from '@/env';
-import { database } from '@repo/backend/database';
-import { Widget } from '@repo/widget';
-import { notFound } from 'next/navigation';
+import { database } from "@repo/backend/database";
+import { Widget } from "@repo/widget";
+import { notFound } from "next/navigation";
+import { env } from "@/env";
 
 type WidgetPageProperties = {
   readonly searchParams?: Promise<
@@ -12,9 +12,9 @@ type WidgetPageProperties = {
 const WidgetPage = async (props: WidgetPageProperties) => {
   const searchParams = await props.searchParams;
   const id = searchParams?.id;
-  const darkMode = searchParams?.darkMode === 'true';
+  const darkMode = searchParams?.darkMode === "true";
 
-  if (typeof id !== 'string') {
+  if (typeof id !== "string") {
     notFound();
   }
 
@@ -41,16 +41,16 @@ const WidgetPage = async (props: WidgetPageProperties) => {
           },
           changelog: {
             where: {
-              status: 'PUBLISHED',
+              status: "PUBLISHED",
             },
             orderBy: {
-              createdAt: 'desc',
+              createdAt: "desc",
             },
             take: 3,
           },
           portalFeatures: {
             orderBy: {
-              createdAt: 'desc',
+              createdAt: "desc",
             },
             take: 3,
           },
@@ -64,21 +64,21 @@ const WidgetPage = async (props: WidgetPageProperties) => {
   }
 
   const portalSlug = widget.organization.portals.at(0)?.slug;
-  const portalUrl = new URL('/', env.EVERVERSE_PORTAL_URL);
-  portalUrl.hostname = [portalSlug, portalUrl.hostname].join('.');
-  const changelogUrl = new URL('/changelog', portalUrl);
+  const portalUrl = new URL("/", env.EVERVERSE_PORTAL_URL);
+  portalUrl.hostname = [portalSlug, portalUrl.hostname].join(".");
+  const changelogUrl = new URL("/changelog", portalUrl);
 
   return (
     <Widget
       changelog={widget.organization.changelog}
-      customLinks={widget.organization.stripeSubscriptionId ? widget.items : []}
-      features={widget.organization.portalFeatures}
-      portalUrl={portalUrl.toString()}
       changelogUrl={changelogUrl.toString()}
+      className={darkMode ? "dark" : ""}
+      customLinks={widget.organization.stripeSubscriptionId ? widget.items : []}
       enableChangelog={widget.enableChangelog}
       enableFeedback={widget.enableFeedback}
       enablePortal={widget.enablePortal}
-      className={darkMode ? 'dark' : ''}
+      features={widget.organization.portalFeatures}
+      portalUrl={portalUrl.toString()}
     />
   );
 };

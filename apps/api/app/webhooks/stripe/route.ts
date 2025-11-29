@@ -1,14 +1,14 @@
-import { env } from '@/env';
-import { database } from '@repo/backend/database';
-import { log } from '@repo/observability/log';
-import { stripe } from '@repo/payments';
-import type { Stripe } from '@repo/payments';
-import { NextResponse } from 'next/server';
-import { z } from 'zod/v3';
+import { database } from "@repo/backend/database";
+import { log } from "@repo/observability/log";
+import type { Stripe } from "@repo/payments";
+import { stripe } from "@repo/payments";
+import { NextResponse } from "next/server";
+import { z } from "zod/v3";
+import { env } from "@/env";
 
 export const maxDuration = 300;
 export const revalidate = 0;
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 const handleSubscriptionCreation = async (
   event: Stripe.CustomerSubscriptionCreatedEvent
@@ -23,7 +23,7 @@ const handleSubscriptionCreation = async (
 
   if (!parse.success) {
     return new Response(
-      `Invalid Stripe metadata: ${parse.error.errors.join(', ')}`,
+      `Invalid Stripe metadata: ${parse.error.errors.join(", ")}`,
       { status: 400 }
     );
   }
@@ -32,16 +32,16 @@ const handleSubscriptionCreation = async (
 
   let stripeCustomerId: string | null = null;
 
-  if (typeof subscription.customer === 'string') {
+  if (typeof subscription.customer === "string") {
     stripeCustomerId = subscription.customer;
   } else if (subscription.customer.deleted) {
-    return new Response('Customer was deleted', { status: 400 });
+    return new Response("Customer was deleted", { status: 400 });
   } else {
     stripeCustomerId = subscription.customer.id;
   }
 
   if (subscription.items.data.length === 0) {
-    return new Response('No subscription items', { status: 400 });
+    return new Response("No subscription items", { status: 400 });
   }
 
   await database.organization.update({
@@ -53,7 +53,7 @@ const handleSubscriptionCreation = async (
     select: { id: true },
   });
 
-  return new Response('OK', { status: 200 });
+  return new Response("OK", { status: 200 });
 };
 
 const handleSubscriptionDeletion = async (
@@ -67,7 +67,7 @@ const handleSubscriptionDeletion = async (
   });
 
   if (!organization) {
-    return new Response('Organization already deleted', { status: 200 });
+    return new Response("Organization already deleted", { status: 200 });
   }
 
   await database.organization.update({
@@ -76,15 +76,15 @@ const handleSubscriptionDeletion = async (
     select: { id: true },
   });
 
-  return new Response('OK', { status: 200 });
+  return new Response("OK", { status: 200 });
 };
 
 export const POST = async (request: Request): Promise<Response> => {
   const body = await request.text();
-  const signature = request.headers.get('stripe-signature');
+  const signature = request.headers.get("stripe-signature");
 
   if (!signature) {
-    return new Response('Missing stripe-signature header', { status: 400 });
+    return new Response("Missing stripe-signature header", { status: 400 });
   }
 
   const event = stripe.webhooks.constructEvent(
@@ -94,10 +94,10 @@ export const POST = async (request: Request): Promise<Response> => {
   );
 
   switch (event.type) {
-    case 'customer.subscription.created': {
+    case "customer.subscription.created": {
       return handleSubscriptionCreation(event);
     }
-    case 'customer.subscription.deleted': {
+    case "customer.subscription.deleted": {
       return handleSubscriptionDeletion(event);
     }
     default: {

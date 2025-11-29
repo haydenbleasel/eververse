@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { updateFeedback } from '@/actions/feedback/update';
-import { DocumentInput } from '@/components/document-input';
-import type { Feedback } from '@repo/backend/prisma/client';
-import { handleError } from '@repo/design-system/lib/handle-error';
+import type { Feedback } from "@repo/backend/prisma/client";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { updateFeedback } from "@/actions/feedback/update";
+import { DocumentInput } from "@/components/document-input";
 
 type FeedbackTitleProperties = {
-  readonly feedbackId: Feedback['id'];
-  readonly defaultTitle: Feedback['title'];
+  readonly feedbackId: Feedback["id"];
+  readonly defaultTitle: Feedback["title"];
   readonly editable: boolean;
 };
 
@@ -31,8 +31,8 @@ export const FeedbackTitle = ({
   return (
     <DocumentInput
       defaultValue={defaultTitle}
-      onDebouncedUpdate={handleDebouncedUpdate}
       disabled={!editable}
+      onDebouncedUpdate={handleDebouncedUpdate}
     />
   );
 };

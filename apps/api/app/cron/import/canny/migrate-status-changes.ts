@@ -1,11 +1,11 @@
-import { getMembers } from '@repo/backend/auth/utils';
-import { database } from '@repo/backend/database';
-import type { CannyImport, Prisma } from '@repo/backend/prisma/client';
-import { Canny } from '@repo/canny';
+import { getMembers } from "@repo/backend/auth/utils";
+import { database } from "@repo/backend/database";
+import type { CannyImport, Prisma } from "@repo/backend/prisma/client";
+import { Canny } from "@repo/canny";
 
 type ImportJobProperties = Pick<
   CannyImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateStatusChanges = async ({
@@ -33,7 +33,7 @@ export const migrateStatusChanges = async ({
   });
 
   if (!databaseOrganization) {
-    throw new Error('Organization not found');
+    throw new Error("Organization not found");
   }
 
   const transactions: Prisma.PrismaPromise<unknown>[] = [];
@@ -51,7 +51,7 @@ export const migrateStatusChanges = async ({
     );
 
     if (!portalFeature) {
-      throw new Error('Portal feature not found');
+      throw new Error("Portal feature not found");
     }
 
     const transaction = database.portalFeatureStatusChange.create({

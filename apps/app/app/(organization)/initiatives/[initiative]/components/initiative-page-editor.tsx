@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { updateInitiativePage } from '@/actions/initiative-page/update';
-import { staticify } from '@/lib/staticify';
-import type { InitiativePage } from '@repo/backend/prisma/client';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import type { EditorInstance, JSONContent } from '@repo/editor';
-import dynamic from 'next/dynamic';
+import type { InitiativePage } from "@repo/backend/prisma/client";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import type { EditorInstance, JSONContent } from "@repo/editor";
+import dynamic from "next/dynamic";
+import { updateInitiativePage } from "@/actions/initiative-page/update";
+import { staticify } from "@/lib/staticify";
 
 type InitiativePageEditorProperties = {
   readonly defaultValue: JSONContent;
-  readonly pageId: InitiativePage['id'];
+  readonly pageId: InitiativePage["id"];
   readonly editable: boolean;
 };
 
@@ -17,7 +17,7 @@ const Editor = dynamic(
   async () => {
     const Module = await import(
       /* webpackChunkName: "editor" */
-      '@/components/editor'
+      "@/components/editor"
     );
 
     return Module.Editor;
@@ -50,8 +50,8 @@ export const InitiativePageEditor = ({
   return (
     <Editor
       defaultValue={defaultValue}
-      onDebouncedUpdate={handleDebouncedUpdate}
       editable={editable}
+      onDebouncedUpdate={handleDebouncedUpdate}
     />
   );
 };

@@ -1,5 +1,5 @@
-import type { SVGProps } from 'react';
-import { cn } from '../lib/utils';
+import type { SVGProps } from "react";
+import { cn } from "../lib/utils";
 
 type LogoProperties = {
   readonly showName?: boolean;
@@ -8,8 +8,8 @@ type LogoProperties = {
 
 export const Logomark = (props: SVGProps<SVGSVGElement>) => (
   <svg
-    viewBox="0 0 118 118"
     fill="none"
+    viewBox="0 0 118 118"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
@@ -22,12 +22,12 @@ export const Logomark = (props: SVGProps<SVGSVGElement>) => (
 );
 
 export const Logo = ({ showName, className }: LogoProperties) => (
-  <div className={cn('not-prose flex items-center gap-2', className)}>
+  <div className={cn("not-prose flex items-center gap-2", className)}>
     <Logomark className="h-4 text-primary" />
     <p
       className={cn(
-        'font-semibold text-foreground text-lg tracking-tight',
-        !showName && 'sr-only'
+        "font-semibold text-foreground text-lg tracking-tight",
+        !showName && "sr-only"
       )}
     >
       Eververse

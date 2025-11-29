@@ -5,7 +5,8 @@
     "paths": {
       "@repo/*": ["../*"],
       "@repo/design-system/*": ["./*"]
-    }
+    },
+    "strictNullChecks": true
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

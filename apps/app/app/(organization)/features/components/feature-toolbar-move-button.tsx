@@ -1,23 +1,23 @@
-import { updateFeatures } from '@/actions/feature/bulk/update';
-import { FeatureGroupPicker } from '@/components/feature-form/feature-group-picker';
-import { FeatureProductPicker } from '@/components/feature-form/feature-product-picker';
-import { nestGroups } from '@/lib/group';
-import type { Feature, Group, Product } from '@repo/backend/prisma/client';
-import { Dialog } from '@repo/design-system/components/precomposed/dialog';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { toast } from '@repo/design-system/lib/toast';
-import { QueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
-import type { FormEventHandler } from 'react';
+import type { Feature, Group, Product } from "@repo/backend/prisma/client";
+import { Dialog } from "@repo/design-system/components/precomposed/dialog";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { toast } from "@repo/design-system/lib/toast";
+import { QueryClient } from "@tanstack/react-query";
+import type { FormEventHandler } from "react";
+import { useState } from "react";
+import { updateFeatures } from "@/actions/feature/bulk/update";
+import { FeatureGroupPicker } from "@/components/feature-form/feature-group-picker";
+import { FeatureProductPicker } from "@/components/feature-form/feature-product-picker";
+import { nestGroups } from "@/lib/group";
 
 type FeatureToolbarMoveButtonProperties = {
-  readonly products: Pick<Product, 'emoji' | 'id' | 'name'>[];
+  readonly products: Pick<Product, "emoji" | "id" | "name">[];
   readonly groups: Pick<
     Group,
-    'emoji' | 'id' | 'name' | 'parentGroupId' | 'productId'
+    "emoji" | "id" | "name" | "parentGroupId" | "productId"
   >[];
-  readonly selected: Feature['id'][];
+  readonly selected: Feature["id"][];
   readonly onClose: () => void;
 };
 
@@ -55,10 +55,10 @@ export const FeatureToolbarMoveButton = ({
 
       setOpen(false);
       onClose();
-      toast.success('Features moved successfully!');
+      toast.success("Features moved successfully!");
 
       await queryClient.invalidateQueries({
-        queryKey: ['features'],
+        queryKey: ["features"],
       });
     } catch (error) {
       handleError(error);
@@ -78,36 +78,36 @@ export const FeatureToolbarMoveButton = ({
 
   return (
     <Dialog
-      open={open}
+      description="Move the selected features to another product or group."
+      modal={false}
       onOpenChange={setOpen}
+      open={open}
+      title="Move Features"
       trigger={
-        <Button variant="outline" disabled={loading} className="shrink-0">
+        <Button className="shrink-0" disabled={loading} variant="outline">
           Move
         </Button>
       }
-      title="Move Features"
-      description="Move the selected features to another product or group."
-      modal={false}
     >
-      <form onSubmit={handleMoveFeature} className="space-y-4">
+      <form className="space-y-4" onSubmit={handleMoveFeature}>
         <div className="flex items-center gap-3">
           {products.length > 0 ? (
             <FeatureProductPicker
               data={products}
-              value={productId}
               onChange={handleProductChange}
+              value={productId}
             />
           ) : null}
           {productId && relevantGroups.length > 0 ? (
             <FeatureGroupPicker
               data={nestGroups(relevantGroups)}
-              value={groupId}
               onChange={setGroupId}
+              value={groupId}
             />
           ) : null}
         </div>
 
-        <Button type="submit" disabled={disabled}>
+        <Button disabled={disabled} type="submit">
           Move features
         </Button>
       </form>

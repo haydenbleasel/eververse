@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { updateRelease } from '@/actions/release/update';
-import type { Release, release_state } from '@repo/backend/prisma/client';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { colors } from '@repo/design-system/lib/colors';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useState } from 'react';
+import type { Release, release_state } from "@repo/backend/prisma/client";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { colors } from "@repo/design-system/lib/colors";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useState } from "react";
+import { updateRelease } from "@/actions/release/update";
 
 type ReleaseStatePickerProperties = {
-  readonly releaseId: Release['id'];
-  readonly defaultValue?: Release['state'];
+  readonly releaseId: Release["id"];
+  readonly defaultValue?: Release["state"];
   readonly disabled: boolean;
 };
 
@@ -19,23 +19,23 @@ const releaseStates: {
   color: string;
 }[] = [
   {
-    value: 'PLANNED',
-    label: 'Planned',
+    value: "PLANNED",
+    label: "Planned",
     color: colors.gray,
   },
   {
-    value: 'ACTIVE',
-    label: 'Active',
+    value: "ACTIVE",
+    label: "Active",
     color: colors.amber,
   },
   {
-    value: 'COMPLETED',
-    label: 'Completed',
+    value: "COMPLETED",
+    label: "Completed",
     color: colors.emerald,
   },
   {
-    value: 'CANCELLED',
-    label: 'Cancelled',
+    value: "CANCELLED",
+    label: "Cancelled",
     color: colors.rose,
   },
 ];
@@ -65,13 +65,12 @@ export const ReleaseStatePicker = ({
 
   return (
     <Select
-      value={value}
-      onChange={handleSelect}
       data={releaseStates.map((state) => ({
         label: state.label,
         value: state.value,
       }))}
       disabled={disabled}
+      onChange={handleSelect}
       renderItem={(item) => {
         const state = releaseStates.find(({ value }) => value === item.value);
 
@@ -90,6 +89,7 @@ export const ReleaseStatePicker = ({
         );
       }}
       type="state"
+      value={value}
     />
   );
 };

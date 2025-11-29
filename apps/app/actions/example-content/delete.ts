@@ -1,9 +1,9 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId } from '@repo/backend/auth/utils';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId } from "@repo/backend/auth/utils";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
 export const deleteExampleContent = async (): Promise<{
   error?: string;
@@ -12,7 +12,7 @@ export const deleteExampleContent = async (): Promise<{
     const organizationId = await currentOrganizationId();
 
     if (!organizationId) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     const example = true;
@@ -54,7 +54,7 @@ export const deleteExampleContent = async (): Promise<{
       data: { onboardedAt: new Date() },
     });
 
-    revalidatePath('/welcome');
+    revalidatePath("/welcome");
 
     return {};
   } catch (error) {

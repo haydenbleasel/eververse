@@ -1,11 +1,11 @@
 // @ts-nocheck
 
-import { ReactRenderer } from '@tiptap/react';
-import type { SuggestionOptions } from '@tiptap/suggestion';
-import tippy from 'tippy.js';
-import { MentionList } from './mention-list';
+import { ReactRenderer } from "@tiptap/react";
+import type { SuggestionOptions } from "@tiptap/suggestion";
+import tippy from "tippy.js";
+import { MentionList } from "./mention-list";
 
-import './mention.css';
+import "./mention.css";
 
 export const createMentionSuggestions = (
   memberships: string[]
@@ -30,14 +30,14 @@ export const createMentionSuggestions = (
           return;
         }
 
-        popup = tippy('body', {
+        popup = tippy("body", {
           getReferenceClientRect: props.clientRect,
           appendTo: () => document.body,
           content: component.element,
           showOnCreate: true,
           interactive: true,
-          trigger: 'manual',
-          placement: 'bottom-start',
+          trigger: "manual",
+          placement: "bottom-start",
         });
       },
 
@@ -54,7 +54,7 @@ export const createMentionSuggestions = (
       },
 
       onKeyDown(props) {
-        if (props.event.key === 'Escape') {
+        if (props.event.key === "Escape") {
           popup[0].hide();
 
           return true;

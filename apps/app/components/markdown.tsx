@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { memo } from 'react';
-import ReactMarkdown from 'react-markdown';
+import { memo } from "react";
+import ReactMarkdown from "react-markdown";
 
 export const MemoizedReactMarkdown = memo(
   ReactMarkdown,

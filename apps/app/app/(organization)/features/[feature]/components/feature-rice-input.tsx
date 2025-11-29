@@ -1,4 +1,4 @@
-import { Input } from '@repo/design-system/components/precomposed/input';
+import { Input } from "@repo/design-system/components/precomposed/input";
 
 type FeatureRiceInputProperties = {
   readonly value: number | undefined;
@@ -13,18 +13,18 @@ export const FeatureRiceInput = ({
 }: FeatureRiceInputProperties) => {
   const handleChange = (newValue: string) => {
     // if value is not blank, then test the regex
-    if (newValue === '' || regex.test(newValue)) {
+    if (newValue === "" || regex.test(newValue)) {
       onChange(Number.parseInt(newValue, 10));
     }
   };
 
   return (
     <Input
-      type="number"
-      placeholder="1"
-      value={value}
-      onChangeText={handleChange}
       autoComplete="off"
+      onChangeText={handleChange}
+      placeholder="1"
+      type="number"
+      value={value}
     />
   );
 };

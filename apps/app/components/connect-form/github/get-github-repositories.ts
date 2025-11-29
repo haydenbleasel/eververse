@@ -1,12 +1,12 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import type { RestEndpointMethodTypes } from '@repo/github';
-import { createOctokit } from '@repo/github';
-import { parseError } from '@repo/lib/parse-error';
+import type { RestEndpointMethodTypes } from "@repo/github";
+import { createOctokit } from "@repo/github";
+import { parseError } from "@repo/lib/parse-error";
+import { database } from "@/lib/database";
 
 export const getGitHubRepositories = async (): Promise<{
-  repositories?: RestEndpointMethodTypes['apps']['listReposAccessibleToInstallation']['response']['data']['repositories'];
+  repositories?: RestEndpointMethodTypes["apps"]["listReposAccessibleToInstallation"]["response"]["data"]["repositories"];
   error?: string;
 }> => {
   try {
@@ -15,7 +15,7 @@ export const getGitHubRepositories = async (): Promise<{
     });
 
     if (!installation) {
-      throw new Error('GitHub installation not found');
+      throw new Error("GitHub installation not found");
     }
 
     const octokit = createOctokit(installation.installationId);

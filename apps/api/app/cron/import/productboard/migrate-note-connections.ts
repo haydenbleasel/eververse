@@ -1,10 +1,10 @@
-import { database } from '@repo/backend/database';
-import type { Prisma, ProductboardImport } from '@repo/backend/prisma/client';
-import { createClient } from '@repo/productboard';
+import { database } from "@repo/backend/database";
+import type { Prisma, ProductboardImport } from "@repo/backend/prisma/client";
+import { createClient } from "@repo/productboard";
 
 type ImportJobProperties = Pick<
   ProductboardImport,
-  'creatorId' | 'organizationId' | 'token'
+  "creatorId" | "organizationId" | "token"
 >;
 
 export const migrateNoteConnections = async ({
@@ -14,20 +14,20 @@ export const migrateNoteConnections = async ({
 }: ImportJobProperties): Promise<number> => {
   const productboard = createClient({ accessToken: token });
 
-  const notes = await productboard.GET('/notes', {
+  const notes = await productboard.GET("/notes", {
     params: {
       header: {
-        'X-Version': 1,
+        "X-Version": 1,
       },
     },
   });
 
   if (notes.error) {
-    throw new Error(notes.error.errors?.source?.join(', ') ?? 'Unknown error');
+    throw new Error(notes.error.errors?.source?.join(", ") ?? "Unknown error");
   }
 
   if (!notes.data) {
-    throw new Error('No notes found');
+    throw new Error("No notes found");
   }
 
   const databaseOrganization = await database.organization.findUnique({
@@ -53,7 +53,7 @@ export const migrateNoteConnections = async ({
   });
 
   if (!databaseOrganization) {
-    throw new Error('Could not find organization');
+    throw new Error("Could not find organization");
   }
 
   const transactions: Prisma.PrismaPromise<unknown>[] = [];

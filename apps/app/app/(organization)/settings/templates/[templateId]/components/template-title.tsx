@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { updateTemplate } from '@/actions/template/update';
-import { DocumentInput } from '@/components/document-input';
-import type { Template } from '@repo/backend/prisma/client';
-import { handleError } from '@repo/design-system/lib/handle-error';
+import type { Template } from "@repo/backend/prisma/client";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { updateTemplate } from "@/actions/template/update";
+import { DocumentInput } from "@/components/document-input";
 
 type TemplateTitleProperties = {
-  readonly templateId: Template['id'];
-  readonly defaultTitle: Template['title'];
+  readonly templateId: Template["id"];
+  readonly defaultTitle: Template["title"];
   readonly editable: boolean;
 };
 
@@ -31,8 +31,8 @@ export const TemplateTitle = ({
   return (
     <DocumentInput
       defaultValue={defaultTitle}
-      onDebouncedUpdate={handleDebouncedUpdate}
       disabled={!editable}
+      onDebouncedUpdate={handleDebouncedUpdate}
     />
   );
 };

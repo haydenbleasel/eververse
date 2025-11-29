@@ -1,8 +1,8 @@
-import { CTAButton } from '@/app/(home)/components/cta-button';
-import { Container } from '@repo/design-system/components/container';
-import { Button } from '@repo/design-system/components/ui/button';
-import Link from 'next/link';
-import Balancer from 'react-wrap-balancer';
+import { Container } from "@repo/design-system/components/container";
+import { Button } from "@repo/design-system/components/ui/button";
+import Link from "next/link";
+import Balancer from "react-wrap-balancer";
+import { CTAButton } from "@/app/(home)/components/cta-button";
 
 export const CallToAction = () => (
   <section className="relative overflow-hidden">

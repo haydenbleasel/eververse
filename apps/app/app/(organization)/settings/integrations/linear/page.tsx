@@ -1,14 +1,14 @@
-import { database } from '@/lib/database';
-import { currentOrganizationId } from '@repo/backend/auth/utils';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { InstallLinear } from './components/install';
-import { ManageLinear } from './components/manage';
+import { currentOrganizationId } from "@repo/backend/auth/utils";
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { database } from "@/lib/database";
+import { InstallLinear } from "./components/install";
+import { ManageLinear } from "./components/manage";
 
 export const metadata: Metadata = createMetadata({
-  title: 'Linear Integration',
-  description: 'Configure your Linear integration settings.',
+  title: "Linear Integration",
+  description: "Configure your Linear integration settings.",
 });
 
 const LinearIntegrationSettings = async () => {

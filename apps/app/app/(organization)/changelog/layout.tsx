@@ -1,33 +1,33 @@
-import { getChangelog } from '@/actions/changelog/get';
-import { Header } from '@/components/header';
-import { database } from '@/lib/database';
-import { EververseRole } from '@repo/backend/auth';
-import { currentUser } from '@repo/backend/auth/utils';
-import { Tooltip } from '@repo/design-system/components/precomposed/tooltip';
+import { EververseRole } from "@repo/backend/auth";
+import { currentUser } from "@repo/backend/auth/utils";
+import { Tooltip } from "@repo/design-system/components/precomposed/tooltip";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from '@repo/design-system/components/ui/resizable';
-import { createMetadata } from '@repo/seo/metadata';
+} from "@repo/design-system/components/ui/resizable";
+import { createMetadata } from "@repo/seo/metadata";
 import {
+  dehydrate,
   HydrationBoundary,
   QueryClient,
-  dehydrate,
-} from '@tanstack/react-query';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import type { ReactNode } from 'react';
-import { ChangelogEmptyState } from './components/changelog-empty-state';
-import { ChangelogList } from './components/changelog-list';
-import { CreateChangelogButton } from './components/create-changelog-button';
+} from "@tanstack/react-query";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import type { ReactNode } from "react";
+import { getChangelog } from "@/actions/changelog/get";
+import { Header } from "@/components/header";
+import { database } from "@/lib/database";
+import { ChangelogEmptyState } from "./components/changelog-empty-state";
+import { ChangelogList } from "./components/changelog-list";
+import { CreateChangelogButton } from "./components/create-changelog-button";
 
 type ChangelogLayoutProperties = {
   readonly children: ReactNode;
 };
 
-const title = 'Changelog';
-const description = 'View the changelog for the organization.';
+const title = "Changelog";
+const description = "View the changelog for the organization.";
 
 export const metadata: Metadata = createMetadata({
   title,
@@ -45,11 +45,11 @@ const ChangelogLayout = async ({ children }: ChangelogLayoutProperties) => {
   const [count] = await Promise.all([
     database.changelog.count(),
     queryClient.prefetchInfiniteQuery({
-      queryKey: ['changelog'],
+      queryKey: ["changelog"],
       queryFn: async ({ pageParam }) => {
         const response = await getChangelog(pageParam);
 
-        if ('error' in response) {
+        if ("error" in response) {
           throw response.error;
         }
 
@@ -71,19 +71,19 @@ const ChangelogLayout = async ({ children }: ChangelogLayoutProperties) => {
   }
 
   return (
-    <ResizablePanelGroup direction="horizontal" style={{ overflow: 'unset' }}>
+    <ResizablePanelGroup direction="horizontal" style={{ overflow: "unset" }}>
       <ResizablePanel
-        minSize={25}
+        className="sticky top-0 h-screen"
         defaultSize={30}
         maxSize={35}
-        style={{ overflow: 'auto' }}
-        className="sticky top-0 h-screen"
+        minSize={25}
+        style={{ overflow: "auto" }}
       >
-        <Header title="Changelog" badge={count}>
+        <Header badge={count} title="Changelog">
           {user.user_metadata.organization_role ===
           EververseRole.Member ? null : (
             <div className="-m-2">
-              <Tooltip content="Post a new update" side="bottom" align="end">
+              <Tooltip align="end" content="Post a new update" side="bottom">
                 <CreateChangelogButton />
               </Tooltip>
             </div>
@@ -95,9 +95,9 @@ const ChangelogLayout = async ({ children }: ChangelogLayoutProperties) => {
       </ResizablePanel>
       <ResizableHandle />
       <ResizablePanel
-        defaultSize={70}
-        style={{ overflow: 'unset' }}
         className="self-start"
+        defaultSize={70}
+        style={{ overflow: "unset" }}
       >
         {children}
       </ResizablePanel>

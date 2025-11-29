@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import { createChangelog } from '@/actions/changelog/create';
-import { Dialog } from '@repo/design-system/components/precomposed/dialog';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { QueryClient } from '@tanstack/react-query';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import type { KeyboardEventHandler } from 'react';
-import { useChangelogForm } from './use-changelog-form';
+import { Dialog } from "@repo/design-system/components/precomposed/dialog";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { QueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+import type { KeyboardEventHandler } from "react";
+import { useState } from "react";
+import { createChangelog } from "@/actions/changelog/create";
+import { useChangelogForm } from "./use-changelog-form";
 
 export const ChangelogForm = () => {
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const disabled = !name.trim() || loading;
@@ -33,14 +33,14 @@ export const ChangelogForm = () => {
       }
 
       if (!id) {
-        throw new Error('Something went wrong');
+        throw new Error("Something went wrong");
       }
 
-      setName('');
+      setName("");
 
       hide();
 
-      await queryClient.invalidateQueries({ queryKey: ['changelog'] });
+      await queryClient.invalidateQueries({ queryKey: ["changelog"] });
 
       router.push(`/changelog/${id}`);
     } catch (error) {
@@ -52,7 +52,7 @@ export const ChangelogForm = () => {
 
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (event) => {
     if (
-      event.key === 'Enter' &&
+      event.key === "Enter" &&
       !event.shiftKey &&
       !event.nativeEvent.isComposing
     ) {
@@ -63,27 +63,27 @@ export const ChangelogForm = () => {
 
   return (
     <Dialog
-      open={isOpen}
+      className="sm:max-w-2xl"
+      cta="Create product update"
+      disabled={disabled}
+      modal={false}
+      onClick={handleCreate}
       onOpenChange={toggle}
+      open={isOpen}
       title={
         <p className="font-medium text-muted-foreground text-sm tracking-tight">
           Create a product update
         </p>
       }
-      cta="Create product update"
-      onClick={handleCreate}
-      disabled={disabled}
-      className="sm:max-w-2xl"
-      modal={false}
     >
       <Input
-        placeholder="Product update 1.1"
-        value={name}
-        onChangeText={setName}
+        autoComplete="off"
         className="border-none p-0 font-medium shadow-none focus-visible:ring-0 md:text-lg"
         maxLength={191}
-        autoComplete="off"
+        onChangeText={setName}
         onKeyDown={handleKeyDown}
+        placeholder="Product update 1.1"
+        value={name}
       />
     </Dialog>
   );

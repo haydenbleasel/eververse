@@ -1,4 +1,4 @@
-import ky from 'ky';
+import ky from "ky";
 
 export type CannyTag = {
   id: string;
@@ -22,7 +22,7 @@ export const getCannyTag = async (
   }
 ): Promise<CannyTag> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/tags/retrieve', {
+    .post("https://canny.io/api/v1/tags/retrieve", {
       json: {
         apiKey,
         ...props,
@@ -30,7 +30,7 @@ export const getCannyTag = async (
     })
     .json<CannyTag | { error: string }>();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 
@@ -45,11 +45,11 @@ export const createCannyTag = async (
   }
 ): Promise<CannyTag> => {
   if (props.name.length < 1 || props.name.length > 30) {
-    throw new Error('Tag name must be between 1 and 30 characters long.');
+    throw new Error("Tag name must be between 1 and 30 characters long.");
   }
 
   const payload = await ky
-    .post('https://canny.io/api/v1/tags/create', {
+    .post("https://canny.io/api/v1/tags/create", {
       json: {
         apiKey,
         ...props,
@@ -57,7 +57,7 @@ export const createCannyTag = async (
     })
     .json<CannyTag | { error: string }>();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 
@@ -70,7 +70,7 @@ export const fetchCannyTags = async (
   limit = 10_000
 ): Promise<CannyTag[]> => {
   const payload = await ky
-    .post('https://canny.io/api/v1/tags/list', {
+    .post("https://canny.io/api/v1/tags/list", {
       json: {
         apiKey,
         limit,
@@ -87,7 +87,7 @@ export const fetchCannyTags = async (
         }
     >();
 
-  if ('error' in payload) {
+  if ("error" in payload) {
     throw new Error(payload.error);
   }
 

@@ -1,13 +1,11 @@
-'use client';
+"use client";
 
-import { createWidgetItem } from '@/actions/widget-item/create';
-import { updateWidgetItem } from '@/actions/widget-item/update';
-import { zodResolver } from '@hookform/resolvers/zod';
-import type { Widget, WidgetItem } from '@repo/backend/prisma/client';
-import { Dialog } from '@repo/design-system/components/precomposed/dialog';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { Select } from '@repo/design-system/components/precomposed/select';
-import { Button } from '@repo/design-system/components/ui/button';
+import { zodResolver } from "@hookform/resolvers/zod";
+import type { Widget, WidgetItem } from "@repo/backend/prisma/client";
+import { Dialog } from "@repo/design-system/components/precomposed/dialog";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { Button } from "@repo/design-system/components/ui/button";
 import {
   Form,
   FormControl,
@@ -15,15 +13,17 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@repo/design-system/components/ui/form';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { toast } from '@repo/design-system/lib/toast';
-import { DynamicIcon } from '@repo/widget/components/dynamic-icon';
-import dynamicIconImports from 'lucide-react/dynamicIconImports';
-import { useState } from 'react';
-import type { ReactNode } from 'react';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod/v3';
+} from "@repo/design-system/components/ui/form";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { toast } from "@repo/design-system/lib/toast";
+import { DynamicIcon } from "@repo/widget/components/dynamic-icon";
+import dynamicIconImports from "lucide-react/dynamicIconImports";
+import type { ReactNode } from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod/v3";
+import { createWidgetItem } from "@/actions/widget-item/create";
+import { updateWidgetItem } from "@/actions/widget-item/update";
 
 const formSchema = z.object({
   name: z.string().min(1).max(255),
@@ -33,7 +33,7 @@ const formSchema = z.object({
 const iconKeys = Object.keys(dynamicIconImports);
 
 type CreateLinkModalProperties = {
-  readonly widgetId: Widget['id'];
+  readonly widgetId: Widget["id"];
   readonly data?: WidgetItem;
   readonly children: ReactNode;
 };
@@ -71,7 +71,7 @@ export const CreateLinkModal = ({
       setOpen(false);
       form.reset();
 
-      toast.success(data ? 'Link updated' : 'Link created');
+      toast.success(data ? "Link updated" : "Link created");
     } catch (error) {
       handleError(error);
     }
@@ -79,16 +79,16 @@ export const CreateLinkModal = ({
 
   return (
     <Dialog
-      open={open}
-      onOpenChange={setOpen}
-      modal={false}
-      trigger={children}
-      title="Add a new link"
       description="Link out to a Slack channel, documentation or other resources."
       disabled={disabled}
+      modal={false}
+      onOpenChange={setOpen}
+      open={open}
+      title="Add a new link"
+      trigger={children}
     >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
             control={form.control}
             name="name"
@@ -123,29 +123,29 @@ export const CreateLinkModal = ({
                 <FormLabel>Icon</FormLabel>
                 <div>
                   <Select
-                    value={field.value}
-                    onChange={(value) => form.setValue('icon', value)}
                     data={iconKeys.map((icon) => ({
                       label: icon,
                       value: icon,
                     }))}
+                    onChange={(value) => form.setValue("icon", value)}
                     renderItem={(item) => (
                       <div className="flex items-center gap-2">
                         <DynamicIcon
+                          className="h-4 w-4 shrink-0 text-muted-foreground"
                           name={item.value as keyof typeof dynamicIconImports}
                           size={16}
-                          className="h-4 w-4 shrink-0 text-muted-foreground"
                         />
                         <span>{item.label}</span>
                       </div>
                     )}
+                    value={field.value}
                   />
                 </div>
               </FormItem>
             )}
           />
-          <Button type="submit" disabled={disabled}>
-            {data ? 'Update link' : 'Create link'}
+          <Button disabled={disabled} type="submit">
+            {data ? "Update link" : "Create link"}
           </Button>
         </form>
       </Form>

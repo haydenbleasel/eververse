@@ -1,4 +1,4 @@
-import { createClient } from './server';
+import { createClient } from "./server";
 
 export const currentUser = async () => {
   const client = await createClient();
@@ -12,7 +12,7 @@ export const currentOrganizationId = async () => {
 
   if (
     !user ||
-    typeof user.user_metadata.organization_id !== 'string' ||
+    typeof user.user_metadata.organization_id !== "string" ||
     !user.user_metadata.organization_id
   ) {
     return null;

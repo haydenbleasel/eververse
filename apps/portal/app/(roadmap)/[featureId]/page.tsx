@@ -1,15 +1,15 @@
-import { getSlug } from '@/lib/slug';
-import { database, getJsonColumnFromTable } from '@repo/backend/database';
-import { Prose } from '@repo/design-system/components/prose';
-import { Badge } from '@repo/design-system/components/ui/badge';
-import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
-import { notFound } from 'next/navigation';
-import { FeedbackForm } from './components/feedback-form';
+import { database, getJsonColumnFromTable } from "@repo/backend/database";
+import { Prose } from "@repo/design-system/components/prose";
+import { Badge } from "@repo/design-system/components/ui/badge";
+import type { Metadata } from "next";
+import dynamic from "next/dynamic";
+import { notFound } from "next/navigation";
+import { getSlug } from "@/lib/slug";
+import { FeedbackForm } from "./components/feedback-form";
 
 export const metadata: Metadata = {
-  title: 'Feature',
-  description: 'Vote and track the latest updates and changes to Eververse',
+  title: "Feature",
+  description: "Vote and track the latest updates and changes to Eververse",
 };
 
 type FeatureProperties = {
@@ -21,14 +21,14 @@ type FeatureProperties = {
 const Editor = dynamic(async () => {
   const component = await import(
     /* webpackChunkName: "editor" */
-    '@repo/editor'
+    "@repo/editor"
   );
 
   return component.Editor;
 });
 
 const FeaturePage = async (props: FeatureProperties) => {
-  console.log('Feature ID page');
+  console.log("Feature ID page");
   const params = await props.params;
   const slug = await getSlug();
   const { featureId } = params;
@@ -77,8 +77,8 @@ const FeaturePage = async (props: FeatureProperties) => {
     feature.feature.status.portalStatusMapping.at(0)?.portalStatus;
 
   const content = await getJsonColumnFromTable(
-    'portal_feature',
-    'content',
+    "portal_feature",
+    "content",
     feature.id
   );
 
@@ -88,7 +88,7 @@ const FeaturePage = async (props: FeatureProperties) => {
         <h1 className="m-0 font-semibold text-4xl tracking-tight">
           {feature.title}
         </h1>
-        <Badge variant="secondary" className="my-6 text-sm">
+        <Badge className="my-6 text-sm" variant="secondary">
           <div
             className="h-2 w-2 rounded-full"
             style={{ backgroundColor: portalStatus?.color }}

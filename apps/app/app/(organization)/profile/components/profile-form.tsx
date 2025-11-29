@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { createClient } from '@repo/backend/auth/client';
-import { Input } from '@repo/design-system/components/precomposed/input';
-import { Button } from '@repo/design-system/components/ui/button';
-import { handleError } from '@repo/design-system/lib/handle-error';
-import { useState } from 'react';
-import { toast } from 'sonner';
+import { createClient } from "@repo/backend/auth/client";
+import { Input } from "@repo/design-system/components/precomposed/input";
+import { Button } from "@repo/design-system/components/ui/button";
+import { handleError } from "@repo/design-system/lib/handle-error";
+import { useState } from "react";
+import { toast } from "sonner";
 
 type ProfileFormProps = {
   defaultFirstName: string;
@@ -59,7 +59,7 @@ export const ProfileForm = ({
         throw error;
       }
 
-      toast.success('Profile updated');
+      toast.success("Profile updated");
     } catch (error) {
       handleError(error);
     } finally {
@@ -68,29 +68,29 @@ export const ProfileForm = ({
   };
 
   return (
-    <form onSubmit={updateProfile} className="space-y-4">
+    <form className="space-y-4" onSubmit={updateProfile}>
       <Input
         label="First Name"
         name="first-name"
+        onChange={(e) => setFirstName(e.target.value)}
         placeholder="First Name"
         value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
       />
       <Input
         label="Last Name"
         name="last-name"
+        onChange={(e) => setLastName(e.target.value)}
         placeholder="Last Name"
         value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
       />
       <Input
         label="Email"
         name="email"
+        onChange={(e) => setEmail(e.target.value)}
         placeholder="Email"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
       />
-      <Button type="submit" disabled={disabled}>
+      <Button disabled={disabled} type="submit">
         Update
       </Button>
     </form>

@@ -1,15 +1,15 @@
-'use server';
+"use server";
 
-import { database } from '@/lib/database';
-import { currentOrganizationId } from '@repo/backend/auth/utils';
-import type { WidgetItem } from '@repo/backend/prisma/client';
-import { parseError } from '@repo/lib/parse-error';
-import { revalidatePath } from 'next/cache';
+import { currentOrganizationId } from "@repo/backend/auth/utils";
+import type { WidgetItem } from "@repo/backend/prisma/client";
+import { parseError } from "@repo/lib/parse-error";
+import { revalidatePath } from "next/cache";
+import { database } from "@/lib/database";
 
-type UpdateWidgetItemProperties = Pick<WidgetItem, 'icon' | 'name' | 'link'>;
+type UpdateWidgetItemProperties = Pick<WidgetItem, "icon" | "name" | "link">;
 
 export const updateWidgetItem = async (
-  id: WidgetItem['id'],
+  id: WidgetItem["id"],
   properties: UpdateWidgetItemProperties
 ): Promise<{
   error?: string;
@@ -18,7 +18,7 @@ export const updateWidgetItem = async (
     const organizationId = await currentOrganizationId();
 
     if (!organizationId) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     const organization = await database.organization.findUnique({
@@ -26,11 +26,11 @@ export const updateWidgetItem = async (
     });
 
     if (!organization) {
-      throw new Error('Organization not found');
+      throw new Error("Organization not found");
     }
 
     if (!organization.stripeSubscriptionId) {
-      throw new Error('Upgrade to to add more items');
+      throw new Error("Upgrade to to add more items");
     }
 
     await database.widgetItem.update({
@@ -38,7 +38,7 @@ export const updateWidgetItem = async (
       data: properties,
     });
 
-    revalidatePath('/settings/widget');
+    revalidatePath("/settings/widget");
 
     return {};
   } catch (error) {

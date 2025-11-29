@@ -1,12 +1,12 @@
-import { createEnv } from '@t3-oss/env-nextjs';
-import { z } from 'zod/v3';
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod/v3";
 
 export const keys = () =>
   createEnv({
     server: {
-      STRIPE_SECRET_KEY: z.string().min(1).startsWith('sk_'),
-      STRIPE_WEBHOOK_SECRET: z.string().min(1).startsWith('whsec_'),
-      STRIPE_PRODUCT_PRO_ID: z.string().min(1).startsWith('prod_'),
+      STRIPE_SECRET_KEY: z.string().min(1).startsWith("sk_"),
+      STRIPE_WEBHOOK_SECRET: z.string().min(1).startsWith("whsec_"),
+      STRIPE_PRODUCT_PRO_ID: z.string().min(1).startsWith("prod_"),
       STRIPE_PRODUCT_ENTERPRISE_ID: z.string().min(1),
     },
     runtimeEnv: {

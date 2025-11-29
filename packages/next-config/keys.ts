@@ -1,6 +1,6 @@
-import { vercel } from '@t3-oss/env-core/presets-zod';
-import { createEnv } from '@t3-oss/env-nextjs';
-import { z } from 'zod/v3';
+import { vercel } from "@t3-oss/env-core/presets-zod";
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod/v3";
 
 export const keys = () =>
   createEnv({
@@ -9,7 +9,7 @@ export const keys = () =>
       ANALYZE: z.string().optional(),
 
       // Added by Vercel
-      NEXT_RUNTIME: z.enum(['nodejs', 'edge']).optional(),
+      NEXT_RUNTIME: z.enum(["nodejs", "edge"]).optional(),
 
       // URLs
       EVERVERSE_WEB_URL: z.string().url().min(1),
@@ -18,7 +18,7 @@ export const keys = () =>
       EVERVERSE_ADMIN_ORGANIZATION_ID: z.string().min(1),
 
       // Node
-      NODE_ENV: z.enum(['development', 'production', 'test']).optional(),
+      NODE_ENV: z.enum(["development", "production", "test"]).optional(),
     },
     client: {},
     runtimeEnv: {

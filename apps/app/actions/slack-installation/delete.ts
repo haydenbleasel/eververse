@@ -1,7 +1,7 @@
-'use server';
+"use server";
 
-import { database } from '@repo/backend/database';
-import { parseError } from '@repo/lib/src/parse-error';
+import { database } from "@repo/backend/database";
+import { parseError } from "@repo/lib/src/parse-error";
 
 export const deleteSlackInstallation = async (
   id: string
@@ -20,7 +20,7 @@ export const deleteSlackInstallation = async (
     });
 
     if (!installation) {
-      throw new Error('Slack installation not found');
+      throw new Error("Slack installation not found");
     }
 
     await database.slackInstallation.delete({

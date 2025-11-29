@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useFeatureForm } from '@/components/feature-form/use-feature-form';
-import { useGroupForm } from '@/components/group-form/use-group-form';
-import { useProductForm } from '@/components/product-form/use-product-form';
-import { DropdownMenu } from '@repo/design-system/components/precomposed/dropdown-menu';
-import { Button } from '@repo/design-system/components/ui/button';
-import { PlusIcon } from 'lucide-react';
+import { DropdownMenu } from "@repo/design-system/components/precomposed/dropdown-menu";
+import { Button } from "@repo/design-system/components/ui/button";
+import { PlusIcon } from "lucide-react";
+import { useFeatureForm } from "@/components/feature-form/use-feature-form";
+import { useGroupForm } from "@/components/group-form/use-group-form";
+import { useProductForm } from "@/components/product-form/use-product-form";
 
 type FeatureCreateDropdownProperties = {
   readonly hasProducts: boolean;
@@ -21,18 +21,18 @@ export const FeatureCreateDropdown = ({
   return (
     <DropdownMenu
       data={[
-        { onClick: () => featureForm.show(), children: 'Feature' },
-        { onClick: () => productForm.show(), children: 'Product' },
+        { onClick: () => featureForm.show(), children: "Feature" },
+        { onClick: () => productForm.show(), children: "Product" },
         {
           onClick: () => (hasProducts ? groupForm.show() : null),
-          children: 'Group',
+          children: "Group",
           disabled: !hasProducts,
         },
       ]}
       label="Create a new..."
     >
       <div className="-m-2">
-        <Button variant="ghost" size="icon">
+        <Button size="icon" variant="ghost">
           <PlusIcon size={16} />
         </Button>
       </div>

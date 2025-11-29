@@ -1,8 +1,8 @@
-'use server';
-import { database } from '@/lib/database';
-import { faker } from '@faker-js/faker';
-import { currentOrganizationId } from '@repo/backend/auth/utils';
-import { parseError } from '@repo/lib/src/parse-error';
+"use server";
+import { faker } from "@faker-js/faker";
+import { currentOrganizationId } from "@repo/backend/auth/utils";
+import { parseError } from "@repo/lib/src/parse-error";
+import { database } from "@/lib/database";
 
 export const testSlackInstallation = async (): Promise<
   | {
@@ -16,7 +16,7 @@ export const testSlackInstallation = async (): Promise<
     const organizationId = await currentOrganizationId();
 
     if (!organizationId) {
-      throw new Error('Unauthorized');
+      throw new Error("Unauthorized");
     }
 
     const slackInstallation = await database.slackInstallation.findFirst({
@@ -29,30 +29,30 @@ export const testSlackInstallation = async (): Promise<
     });
 
     if (!slackInstallation) {
-      throw new Error('Slack installation not found');
+      throw new Error("Slack installation not found");
     }
 
     const fakeName = faker.company.buzzPhrase();
     const fakeContent = faker.lorem.paragraphs(3);
 
     const response = await fetch(slackInstallation.webhookUrl, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify({
         text: `[TEST] New feedback on Eververse: *${fakeName}*`,
         blocks: [
           {
-            type: 'rich_text',
+            type: "rich_text",
             elements: [
               {
-                type: 'rich_text_section',
+                type: "rich_text_section",
                 elements: [
                   {
-                    type: 'text',
+                    type: "text",
                     style: { bold: true },
                     text: `[TEST] New feedback on Eververse: ${fakeName}`,
                   },
                   {
-                    type: 'text',
+                    type: "text",
                     text: `\n${fakeContent}`,
                   },
                 ],
@@ -64,7 +64,7 @@ export const testSlackInstallation = async (): Promise<
     });
 
     if (!response.ok) {
-      throw new Error('Failed to test Slack integration');
+      throw new Error("Failed to test Slack integration");
     }
 
     return {

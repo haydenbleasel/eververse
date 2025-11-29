@@ -1,11 +1,11 @@
-import { database } from '@/lib/database';
 import {
   RadialChart,
   type RadialChartProperties,
-} from '@repo/design-system/components/charts/radial';
-import { StackCard } from '@repo/design-system/components/stack-card';
-import { colors } from '@repo/design-system/lib/colors';
-import { DatabaseIcon } from 'lucide-react';
+} from "@repo/design-system/components/charts/radial";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { colors } from "@repo/design-system/lib/colors";
+import { DatabaseIcon } from "lucide-react";
+import { database } from "@/lib/database";
 
 export const AiIndexingChart = async () => {
   const [feedbacks, features] = await Promise.all([
@@ -49,46 +49,46 @@ export const AiIndexingChart = async () => {
     ? (aiRiceFeatureCount / totalFeatures) * 100
     : 0;
 
-  const config: RadialChartProperties['config'] = {
+  const config: RadialChartProperties["config"] = {
     value: {
-      label: 'Indexed',
+      label: "Indexed",
     },
     summarize: {
-      label: 'AI Feedback Summarization',
+      label: "AI Feedback Summarization",
       color: colors.amber,
     },
     sentiment: {
-      label: 'AI Sentiment Analysis',
+      label: "AI Sentiment Analysis",
       color: colors.emerald,
     },
     rice: {
-      label: 'AI RICE Score Estimation',
+      label: "AI RICE Score Estimation",
       color: colors.indigo,
     },
   };
 
-  const data: RadialChartProperties['data'] = [
+  const data: RadialChartProperties["data"] = [
     {
-      type: 'summarize',
+      type: "summarize",
       value: aiSummaryPercentage,
-      fill: 'var(--color-summarize)',
+      fill: "var(--color-summarize)",
     },
     {
-      type: 'sentiment',
+      type: "sentiment",
       value: aiSentimentPercentage,
-      fill: 'var(--color-sentiment)',
+      fill: "var(--color-sentiment)",
     },
-    { type: 'rice', value: aiRiceFeaturePercentage, fill: 'var(--color-rice)' },
+    { type: "rice", value: aiRiceFeaturePercentage, fill: "var(--color-rice)" },
   ];
 
   return (
     <StackCard icon={DatabaseIcon} title="AI Indexing">
       <RadialChart
-        data={data}
+        className="mx-auto h-80"
         config={config}
+        data={data}
         dataKey="value"
         nameKey="type"
-        className="mx-auto h-80"
       />
     </StackCard>
   );

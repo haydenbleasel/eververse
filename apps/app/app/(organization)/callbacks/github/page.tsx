@@ -1,12 +1,12 @@
-import { database } from '@/lib/database';
-import { currentOrganizationId, currentUser } from '@repo/backend/auth/utils';
-import { createMetadata } from '@repo/seo/metadata';
-import type { Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
+import { createMetadata } from "@repo/seo/metadata";
+import type { Metadata } from "next";
+import { notFound, redirect } from "next/navigation";
+import { database } from "@/lib/database";
 
 export const metadata: Metadata = createMetadata({
-  title: 'Processing',
-  description: 'Please wait while we process your request.',
+  title: "Processing",
+  description: "Please wait while we process your request.",
 });
 
 type GitHubCallbackPageProperties = {
@@ -22,7 +22,7 @@ const GitHubCallbackPage = async (props: GitHubCallbackPageProperties) => {
     currentOrganizationId(),
   ]);
 
-  if (!user || !organizationId || !installationId) {
+  if (!(user && organizationId && installationId)) {
     notFound();
   }
 

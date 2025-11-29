@@ -1,10 +1,10 @@
-'use server';
+"use server";
 
-import { createClient } from './server';
+import { createClient } from "./server";
 
-const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
 const redirectUrl = new URL(
-  '/auth/confirm',
+  "/auth/confirm",
   `${protocol}://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}`
 ).toString();
 

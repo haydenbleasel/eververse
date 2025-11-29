@@ -1,7 +1,7 @@
-'use server';
+"use server";
 
-import { database } from '@repo/backend/database';
-import { parseError } from '@repo/lib/src/parse-error';
+import { database } from "@repo/backend/database";
+import { parseError } from "@repo/lib/src/parse-error";
 
 export const deleteIntercomInstallation = async (
   id: string
@@ -20,7 +20,7 @@ export const deleteIntercomInstallation = async (
     });
 
     if (!installation) {
-      throw new Error('Intercom installation not found');
+      throw new Error("Intercom installation not found");
     }
 
     await database.intercomInstallation.delete({
