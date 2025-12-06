@@ -1,4 +1,5 @@
 import "server-only";
+import { PrismaPg } from "@prisma/adapter-pg";
 import { createClient } from "@supabase/supabase-js";
 import { keys } from "./keys";
 import { PrismaClient } from "./prisma/client";
@@ -7,7 +8,10 @@ const env = keys();
 const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
-const client = globalForPrisma.prisma || new PrismaClient();
+const adapter = new PrismaPg({
+  connectionString: keys().PGBOUNCER_POSTGRES_PRISMA_URL,
+});
+const client = globalForPrisma.prisma || new PrismaClient({ adapter });
 
 if (process.env.NODE_ENV !== "production") {
   globalForPrisma.prisma = client;

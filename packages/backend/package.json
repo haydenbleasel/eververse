@@ -8,6 +8,7 @@
     "build": "prisma generate --schema=\"./prisma/schema.prisma\" --no-hints"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.1.0",
     "@prisma/client": "7.1.0",
     "@prisma/client-runtime-utils": "^7.1.0",
     "@supabase/ssr": "^0.6.1",
