@@ -1,7 +1,7 @@
-import { updateSession } from "@repo/backend/auth/middleware";
+import { updateSession } from "@repo/backend/auth/proxy";
 import type { NextRequest, NextResponse } from "next/server";
 
-export const middleware = async (request: NextRequest): Promise<NextResponse> =>
+export const proxy = async (request: NextRequest): Promise<NextResponse> =>
   updateSession(request);
 
 export const config = {
