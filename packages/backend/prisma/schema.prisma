@@ -1,6 +1,7 @@
 generator client {
   provider        = "prisma-client-js"
   extensions      = ["vector"]
+  previewFeatures = ["postgresqlExtensions"]
   output          = "client"
 }
 
