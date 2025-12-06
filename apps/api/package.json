@@ -21,7 +21,7 @@
     "@repo/payments": "workspace:*",
     "@repo/productboard": "workspace:*",
     "@repo/widget": "workspace:*",
-    "@t3-oss/env-nextjs": "^0.13.4",
+    "@t3-oss/env-nextjs": "^0.13.8",
     "ai": "^5.0.21",
     "date-fns": "^4.1.0",
     "email-providers": "^2.11.0",

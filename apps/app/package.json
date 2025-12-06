@@ -31,7 +31,7 @@
     "@repo/productboard": "workspace:*",
     "@repo/seo": "workspace:*",
     "@repo/widget": "workspace:*",
-    "@t3-oss/env-nextjs": "^0.13.4",
+    "@t3-oss/env-nextjs": "^0.13.8",
     "@tanstack/react-query": "^5.76.1",
     "@tanstack/react-table": "^8.21.3",
     "ai": "^5.0.21",
