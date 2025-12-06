@@ -1,7 +1,7 @@
 generator client {
   provider        = "prisma-client-js"
   extensions      = ["vector"]
-  previewFeatures = ["postgresqlExtensions"]
+  previewFeatures = ["postgresqlExtensions", "fullTextSearchPostgres"]
   output          = "client"
 }
 
