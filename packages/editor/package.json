@@ -5,7 +5,7 @@
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
     "@types/deep-equal": "^1.0.4",
-    "@types/react": "^19.1.5",
+    "@types/react": "^19.2.7",
     "typescript": "^5.8.3"
   },
   "dependencies": {
@@ -63,6 +63,6 @@
     "tiptap-extension-jira": "^1.0.10"
   },
   "peerDependencies": {
-    "react": "19.0.0"
+    "react": "19.2.1"
   }
 }

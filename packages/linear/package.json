@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@linear/sdk": "^40.0.0",
-    "@t3-oss/env-nextjs": "^0.13.4",
+    "@t3-oss/env-nextjs": "^0.13.8",
     "zod": "^3.25.17"
   }
 }

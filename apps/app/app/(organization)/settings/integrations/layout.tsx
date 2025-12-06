@@ -1,7 +1,7 @@
-import type { ReactElement } from "react";
+import type { ReactNode } from "react";
 
 type IntegrationsLayoutProperties = {
-  readonly children: ReactElement;
+  readonly children: ReactNode;
 };
 
 const IntegrationsLayout = async ({

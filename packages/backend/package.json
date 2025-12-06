@@ -8,20 +8,22 @@
     "build": "prisma generate --schema=\"./prisma/schema.prisma\" --no-hints"
   },
   "dependencies": {
-    "@prisma/client": "6.8.2",
+    "@prisma/adapter-pg": "^7.1.0",
+    "@prisma/client": "7.1.0",
+    "@prisma/client-runtime-utils": "^7.1.0",
     "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.49.7",
-    "@t3-oss/env-nextjs": "^0.13.4",
-    "react": "19.0.0",
+    "@t3-oss/env-nextjs": "^0.13.8",
+    "react": "19.2.1",
     "server-only": "^0.0.1",
     "zod": "^3.25.17"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
     "@types/node": "22.15.21",
-    "@types/react": "^19.1.5",
-    "next": "^15.3.2",
-    "prisma": "6.8.2",
+    "@types/react": "^19.2.7",
+    "next": "^16.0.7",
+    "prisma": "7.1.0",
     "typescript": "^5.8.3"
   }
 }

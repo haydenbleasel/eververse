@@ -2,10 +2,8 @@
   "name": "portal",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack -p 3001",
+    "dev": "next dev -p 3001",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
     "analyze": "ANALYZE=true pnpm build"
   },
   "dependencies": {
@@ -17,14 +15,14 @@
     "@repo/next-config": "workspace:*",
     "@repo/observability": "workspace:*",
     "@repo/seo": "workspace:*",
-    "@sentry/nextjs": "^9.22.0",
-    "@t3-oss/env-nextjs": "^0.13.4",
+    "@sentry/nextjs": "^10.29.0",
+    "@t3-oss/env-nextjs": "^0.13.8",
     "import-in-the-middle": "^1.13.2",
     "lucide-react": "^0.511.0",
-    "next": "15.3.2",
+    "next": "16.0.7",
     "next-themes": "^0.4.6",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "19.2.1",
+    "react-dom": "19.2.1",
     "require-in-the-middle": "^7.5.2",
     "server-only": "^0.0.1",
     "zod": "^3.25.17",
@@ -32,7 +30,7 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "@types/react": "19.1.5",
+    "@types/react": "19.2.7",
     "tailwindcss": "^4.1.7",
     "typescript": "^5.8.3"
   }

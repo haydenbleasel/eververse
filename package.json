@@ -43,13 +43,13 @@
     "prosemirror-trailing-node": "^3.0.0",
     "prosemirror-transform": "^1.10.2",
     "prosemirror-view": "^1.37.0",
-    "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react": "19.2.1",
+    "react-dom": "19.2.1"
   },
   "pnpm": {
     "overrides": {
-      "react": "19.0.0",
-      "react-dom": "19.0.0"
+      "react": "19.2.1",
+      "react-dom": "19.2.1"
     }
   },
   "packageManager": "pnpm@10.11.0"

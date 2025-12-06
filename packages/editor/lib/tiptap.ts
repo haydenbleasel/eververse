@@ -1,5 +1,5 @@
 import "server-only";
-import type { JsonValue } from "@repo/backend/prisma/client/runtime/library";
+import type { Prisma } from "@repo/backend/prisma/client";
 import { parseError } from "@repo/lib/parse-error";
 import { generateText } from "@tiptap/core";
 import { generateJSON } from "@tiptap/html";
@@ -20,7 +20,7 @@ export const htmlToText = (html: string): string => {
   return document.body.textContent ?? "";
 };
 
-export const contentToHtml = (json: JsonValue | object): string => {
+export const contentToHtml = (json: Prisma.JsonValue | object): string => {
   try {
     return generateHTML(json as object, defaultExtensions);
   } catch (error) {
@@ -29,7 +29,7 @@ export const contentToHtml = (json: JsonValue | object): string => {
   }
 };
 
-export const contentToText = (json: JsonValue | object): string =>
+export const contentToText = (json: Prisma.JsonValue | object): string =>
   generateText(json as object, defaultExtensions);
 
 export const textToHtml = (text: string): string =>
@@ -129,7 +129,7 @@ export const markdownToText = async (markdown: string): Promise<string> =>
   htmlToText(await markdownToHtml(markdown));
 
 export const contentToMarkdown = async (
-  content: JsonValue | object
+  content: Prisma.JsonValue | object
 ): Promise<string> => await NodeHtmlMarkdown.translate(contentToHtml(content));
 
 export const htmlToMarkdown = async (html: string): Promise<string> =>

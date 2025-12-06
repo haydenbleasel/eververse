@@ -6,11 +6,11 @@
     "@repo/design-system": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/node": "^22.15.21",
-    "@types/react": "^19.1.5",
+    "@types/react": "^19.2.7",
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "react": "19.0.0"
+    "react": "19.2.1"
   },
   "dependencies": {
     "@repo/lib": "workspace:*",
