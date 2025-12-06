@@ -1,14 +1,11 @@
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["driverAdapters", "fullTextSearchPostgres", "postgresqlExtensions"]
   extensions      = ["vector"]
   output          = "client"
 }
 
 datasource db {
   provider     = "postgresql"
-  url          = env("PGBOUNCER_POSTGRES_PRISMA_URL")
-  directUrl    = env("POSTGRES_URL_NON_POOLING")
   relationMode = "prisma"
   extensions   = [uuid_ossp(map: "uuid-ossp", schema: "extensions")]
 }
