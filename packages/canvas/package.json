@@ -7,7 +7,7 @@
     "@repo/typescript-config": "workspace:*",
     "@types/deep-equal": "^1.0.4",
     "@types/lodash.throttle": "^4.1.9",
-    "@types/react": "^19.1.5",
+    "@types/react": "^19.2.7",
     "typescript": "^5.8.3"
   },
   "dependencies": {
@@ -16,6 +16,6 @@
     "deep-equal": "^2.2.3"
   },
   "peerDependencies": {
-    "react": "19.0.0"
+    "react": "19.2.1"
   }
 }

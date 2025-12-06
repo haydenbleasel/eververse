@@ -18,6 +18,6 @@
   },
   "peerDependencies": {
     "next": "^16.0.7",
-    "react": "19.0.0"
+    "react": "19.2.1"
   }
 }

@@ -50,8 +50,8 @@
     "next-usequerystate": "^1.20.0",
     "novel": "^0.5.0",
     "pluralize": "^8.0.0",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "19.2.1",
+    "react-dom": "19.2.1",
     "react-hook-form": "^7.56.4",
     "react-markdown": "^10.1.0",
     "react-textarea-autosize": "^8.5.9",
@@ -68,8 +68,8 @@
     "@repo/typescript-config": "workspace:*",
     "@types/node": "22.15.21",
     "@types/pluralize": "^0.0.33",
-    "@types/react": "19.1.5",
-    "@types/react-dom": "19.1.5",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
     "tailwindcss": "^4.1.7",
     "typescript": "^5.8.3"
   }
