@@ -1,11 +1,11 @@
 import { Container } from "@repo/design-system/components/container";
-import { Link } from "@repo/design-system/components/link";
-import { Logo } from "@repo/design-system/components/logo";
 import {
   Status,
   StatusIndicator,
   StatusLabel,
 } from "@repo/design-system/components/kibo-ui/status";
+import { Link } from "@repo/design-system/components/link";
+import { Logo } from "@repo/design-system/components/logo";
 import { getStatus } from "@repo/observability/status";
 import { env } from "@/env";
 import { FooterLink } from "./footer-link";

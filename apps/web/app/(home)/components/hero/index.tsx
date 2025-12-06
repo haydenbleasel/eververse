@@ -1,13 +1,13 @@
 "use client";
 
 import { Container } from "@repo/design-system/components/container";
-import { Link } from "@repo/design-system/components/link";
-import { Button } from "@repo/design-system/components/ui/button";
 import {
   Announcement,
   AnnouncementTag,
   AnnouncementTitle,
 } from "@repo/design-system/components/kibo-ui/announcement";
+import { Link } from "@repo/design-system/components/link";
+import { Button } from "@repo/design-system/components/ui/button";
 import { cn } from "@repo/design-system/lib/utils";
 import { ArrowUpRightIcon } from "lucide-react";
 import { domAnimation, LazyMotion, m } from "motion/react";

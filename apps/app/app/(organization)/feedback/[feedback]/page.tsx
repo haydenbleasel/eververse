@@ -1,8 +1,6 @@
 import { EververseRole } from "@repo/backend/auth";
 import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
 import { getJsonColumnFromTable } from "@repo/backend/database";
-import { Skeleton } from "@repo/design-system/components/precomposed/skeleton";
-import { StackCard } from "@repo/design-system/components/stack-card";
 import {
   VideoPlayer,
   VideoPlayerContent,
@@ -15,6 +13,8 @@ import {
   VideoPlayerTimeRange,
   VideoPlayerVolumeRange,
 } from "@repo/design-system/components/kibo-ui/video-player";
+import { Skeleton } from "@repo/design-system/components/precomposed/skeleton";
+import { StackCard } from "@repo/design-system/components/stack-card";
 import { cn } from "@repo/design-system/lib/utils";
 import { contentToText } from "@repo/editor/lib/tiptap";
 import { createMetadata } from "@repo/seo/metadata";

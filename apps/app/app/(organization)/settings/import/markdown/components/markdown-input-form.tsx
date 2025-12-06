@@ -1,12 +1,12 @@
 "use client";
 
-import { Dialog } from "@repo/design-system/components/precomposed/dialog";
-import { Select } from "@repo/design-system/components/precomposed/select";
 import {
   Dropzone,
   DropzoneContent,
   DropzoneEmptyState,
 } from "@repo/design-system/components/kibo-ui/dropzone";
+import { Dialog } from "@repo/design-system/components/precomposed/dialog";
+import { Select } from "@repo/design-system/components/precomposed/select";
 import { handleError } from "@repo/design-system/lib/handle-error";
 import { toast } from "@repo/design-system/lib/toast";
 import { useState } from "react";

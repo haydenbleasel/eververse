@@ -2,8 +2,6 @@
 
 import { EververseRole, type User } from "@repo/backend/auth";
 import { getUserName } from "@repo/backend/auth/format";
-import { Select } from "@repo/design-system/components/precomposed/select";
-import { Badge } from "@repo/design-system/components/ui/badge";
 import {
   TableBody,
   TableCell,
@@ -14,6 +12,8 @@ import {
   TableProvider,
   TableRow,
 } from "@repo/design-system/components/kibo-ui/table";
+import { Select } from "@repo/design-system/components/precomposed/select";
+import { Badge } from "@repo/design-system/components/ui/badge";
 import { handleError } from "@repo/design-system/lib/handle-error";
 import { capitalize } from "@repo/lib/format";
 import type { ColumnDef } from "@tanstack/react-table";

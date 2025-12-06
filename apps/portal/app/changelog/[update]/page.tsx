@@ -143,7 +143,7 @@ const Update = async (props: UpdateProperties) => {
   return (
     <div className="grid grid-cols-[1fr_200px]">
       <Prose className="prose-img:pointer-events-none mx-auto">
-        <h1 className="font-semibold! text-4xl! mb-6">{update.title}</h1>
+        <h1 className="mb-6 font-semibold! text-4xl!">{update.title}</h1>
         <Editor
           defaultValue={content as JSONContent | undefined}
           editable={false}

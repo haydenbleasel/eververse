@@ -1,11 +1,6 @@
 "use client";
 
 import type { Widget, WidgetItem } from "@repo/backend/prisma/client";
-import { Link } from "@repo/design-system/components/link";
-import { Switch } from "@repo/design-system/components/precomposed/switch";
-import { Tooltip } from "@repo/design-system/components/precomposed/tooltip";
-import { StackCard } from "@repo/design-system/components/stack-card";
-import { Button } from "@repo/design-system/components/ui/button";
 import {
   type BundledLanguage,
   CodeBlock,
@@ -13,6 +8,11 @@ import {
   CodeBlockContent,
   CodeBlockItem,
 } from "@repo/design-system/components/kibo-ui/code-block";
+import { Link } from "@repo/design-system/components/link";
+import { Switch } from "@repo/design-system/components/precomposed/switch";
+import { Tooltip } from "@repo/design-system/components/precomposed/tooltip";
+import { StackCard } from "@repo/design-system/components/stack-card";
+import { Button } from "@repo/design-system/components/ui/button";
 import { handleError } from "@repo/design-system/lib/handle-error";
 import { toast } from "@repo/design-system/lib/toast";
 import { DynamicIcon } from "@repo/widget/components/dynamic-icon";
