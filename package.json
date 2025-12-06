@@ -4,7 +4,8 @@
   "scripts": {
     "build": "turbo build",
     "dev": "concurrently -n \"Turbo,Stripe,Supabase\" \"turbo dev --\" \"stripe listen --forward-to http://localhost:3004/webhooks/stripe \" \"npx supabase start\"",
-    "lint": "turbo lint",
+    "check": "ultracite check",
+    "fix": "ultracite fix",
     "analyze": "turbo analyze",
     "migrate": "cd packages/backend && npx prisma format && npx prisma generate && npx prisma db push",
     "bump-deps": "npx npm-check-updates --deep -u -x react-day-picker,@tiptap/*,prosemirror-*,@tiptap-pro/*,@excalidraw/excalidraw,novel && pnpm install",
@@ -18,7 +19,7 @@
     "concurrently": "^9.1.2",
     "turbo": "^2.5.3",
     "typescript": "^5.8.3",
-    "ultracite": "6.3.8"
+    "ultracite": "6.3.9"
   },
   "engines": {
     "node": ">=20"
