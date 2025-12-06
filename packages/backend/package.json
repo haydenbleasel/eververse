@@ -20,7 +20,7 @@
     "@repo/typescript-config": "workspace:*",
     "@types/node": "22.15.21",
     "@types/react": "^19.1.5",
-    "next": "^15.3.2",
+    "next": "^16.0.7",
     "prisma": "6.8.2",
     "typescript": "^5.8.3"
   }

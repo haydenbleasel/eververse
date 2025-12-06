@@ -21,7 +21,7 @@
     "@t3-oss/env-nextjs": "^0.13.4",
     "import-in-the-middle": "^1.13.2",
     "lucide-react": "^0.511.0",
-    "next": "15.3.2",
+    "next": "16.0.7",
     "next-themes": "^0.4.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
