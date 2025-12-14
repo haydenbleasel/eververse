@@ -11,7 +11,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "@excalidraw/excalidraw": "0.17.0",
+    "@excalidraw/excalidraw": "0.17.6",
     "@react-hookz/web": "^25.1.1",
     "deep-equal": "^2.2.3"
   },
