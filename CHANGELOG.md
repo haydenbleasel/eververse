@@ -1,3 +1,15 @@
+# v1.6.3 (Sun Dec 14 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Address CVEs ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.6.2 (Sat Dec 06 2025)
 
 #### ⚠️ Pushed to `main`
