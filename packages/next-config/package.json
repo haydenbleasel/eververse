@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "next": "16.0.7",
+    "next": "16.0.10",
     "next-secure-headers": "^2.2.0"
   },
   "dependencies": {
