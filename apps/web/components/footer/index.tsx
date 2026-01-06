@@ -52,7 +52,8 @@ export const Footer = async () => {
             <Logo showName />
           </Link>
           <p className="text-muted-foreground text-sm">
-            &copy; Eververse {new Date().getFullYear()}. All rights reserved.
+            &copy; Haste Ventures, LLC. {new Date().getFullYear()}. All rights
+            reserved.
           </p>
           <div className="flex items-center gap-2">
             <a href={env.BETTERSTACK_URL} rel="noreferrer" target="_blank">
