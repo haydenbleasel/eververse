@@ -62,7 +62,7 @@ const Climate = () => (
       <a
         className="underline"
         data-label="Stripe Climate"
-        href="https://climate.stripe.com/nDHTq7"
+        href="https://climate.stripe.com/3c2O1e"
         rel="noopener noreferrer"
         target="_blank"
       >
