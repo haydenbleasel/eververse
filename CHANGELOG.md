@@ -1,3 +1,22 @@
+# v1.6.4 (Tue Jan 06 2026)
+
+#### ⚠️ Pushed to `main`
+
+- Update index.tsx ([@haydenbleasel](https://github.com/haydenbleasel))
+- Update climate.tsx ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### 🔩 Dependency Updates
+
+- Bump actions/cache from 4 to 5 [#43](https://github.com/haydenbleasel/eververse/pull/43) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump actions/checkout from 4 to 6 [#39](https://github.com/haydenbleasel/eververse/pull/39) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.6.3 (Sun Dec 14 2025)
 
 #### ⚠️ Pushed to `main`
