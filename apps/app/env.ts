@@ -8,14 +8,10 @@ import { z } from "zod/v3";
 
 export const env = createEnv({
   extends: [core(), observability(), email(), github(), payments()],
-  server: {
-    AI_GATEWAY_API_KEY: z.string().min(1),
-  },
   client: {
     NEXT_PUBLIC_LOGO_DEV_API_KEY: z.string().min(1),
   },
   runtimeEnv: {
     NEXT_PUBLIC_LOGO_DEV_API_KEY: process.env.NEXT_PUBLIC_LOGO_DEV_API_KEY,
-    AI_GATEWAY_API_KEY: process.env.AI_GATEWAY_API_KEY,
   },
 });
