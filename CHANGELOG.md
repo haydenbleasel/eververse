@@ -1,3 +1,15 @@
+# v1.6.5 (Tue Jan 20 2026)
+
+#### ⚠️ Pushed to `main`
+
+- Use OIDC token for Gateway ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.6.4 (Tue Jan 06 2026)
 
 #### ⚠️ Pushed to `main`
