@@ -8,6 +8,6 @@ export default defineConfig({
     path: "prisma/migrations",
   },
   datasource: {
-    url: keys().PGBOUNCER_POSTGRES_PRISMA_URL,
+    url: keys().POSTGRES_PRISMA_URL,
   },
 });

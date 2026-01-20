@@ -7,10 +7,19 @@ import { PrismaClient } from "./prisma/client";
 const env = keys();
 const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
 
+if (!env.POSTGRES_PRISMA_URL) {
+  throw new Error("POSTGRES_PRISMA_URL is not set");
+}
+
+const url = new URL(env.POSTGRES_PRISMA_URL);
+
+if (process.env.NODE_ENV === "production") {
+  // Patch issue: https://github.com/prisma/prisma/issues/19209#issuecomment-1575711892
+  url.searchParams.set("sslmode", "no-verify");
+}
+
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
-const adapter = new PrismaPg({
-  connectionString: keys().PGBOUNCER_POSTGRES_PRISMA_URL,
-});
+const adapter = new PrismaPg({ connectionString: url.toString() });
 const client = globalForPrisma.prisma || new PrismaClient({ adapter });
 
 if (process.env.NODE_ENV !== "production") {
