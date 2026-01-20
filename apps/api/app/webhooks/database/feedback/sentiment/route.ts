@@ -36,7 +36,7 @@ export const POST = async (request: Request): Promise<Response> => {
   }
 
   const { object } = await generateObject({
-    model: "openai/gpt-4o-mini",
+    model: "openai/gpt-5-nano",
     system: [
       "You are an AI that detect the sentiment of user feedback.",
       "You are given a user feedback message and a prompt to perform sentiment analysis on it.",

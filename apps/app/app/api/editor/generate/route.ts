@@ -80,7 +80,7 @@ export const POST = async (request: Request): Promise<Response> => {
   }
 
   const response = streamText({
-    model: "openai/gpt-4o-mini",
+    model: "openai/gpt-5-nano",
     temperature: 0.7,
     topP: 1,
     frequencyPenalty: 0,

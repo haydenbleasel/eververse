@@ -129,7 +129,7 @@ export const generateInitiativeUpdateContent = async (
 
       if (newContent) {
         const markdown = await generateText({
-          model: "openai/gpt-4o-mini",
+          model: "openai/gpt-5-nano",
           system: [
             "You are an AI that generates a update for an initiative that will be shared with the initiative stakeholders.",
             "You will be given a list of content that has been created for that have been completed since the last update",

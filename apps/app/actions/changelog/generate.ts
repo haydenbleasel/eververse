@@ -94,7 +94,7 @@ export const generateChangelog = async (
         const features = await Promise.all(promises);
 
         const markdown = await generateText({
-          model: "openai/gpt-4o-mini",
+          model: "openai/gpt-5-nano",
           system: [
             "You are an AI that takes a list of features that have been completed since the last update and potentially a product description.",
             "Your job is to generate a public-facing product update for a changelog that will be shared with the organization's customers.",

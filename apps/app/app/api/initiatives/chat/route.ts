@@ -169,7 +169,7 @@ export const POST = async (req: Request) => {
 
   log.info("🤖 Successfully created prompt. Starting stream...");
   const result = streamText({
-    model: "openai/gpt-4o-mini",
+    model: "openai/gpt-5-nano",
     system: prompt,
     messages: convertToModelMessages(messages),
   });

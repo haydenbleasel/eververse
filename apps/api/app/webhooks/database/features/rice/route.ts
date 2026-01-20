@@ -41,7 +41,7 @@ export const POST = async (request: Request): Promise<Response> => {
   }
 
   const { object } = await generateObject({
-    model: "openai/gpt-4o-mini",
+    model: "openai/gpt-5-nano",
     system: [
       "You are an AI that determines the RICE score of a new product feature, where:",
       "- Reach is the number of people who will be affected by the feature. This can be between 0 and 100.",

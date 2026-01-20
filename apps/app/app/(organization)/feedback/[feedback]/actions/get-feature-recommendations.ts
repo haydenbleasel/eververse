@@ -48,7 +48,7 @@ export const getFeatureRecommendations = async (
     }
 
     const { object } = await generateObject({
-      model: "openai/gpt-4o-mini",
+      model: "openai/gpt-5-nano",
       system: [
         "You are an AI that recommends at most 5 related features based a snippet of user feedback provided.",
         "You return an array of IDs of the features you recommend.",
