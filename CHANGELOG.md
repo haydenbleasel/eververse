@@ -1,3 +1,15 @@
+# v1.6.6 (Tue Jan 20 2026)
+
+#### ⚠️ Pushed to `main`
+
+- Fix DB Url ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.6.5 (Tue Jan 20 2026)
 
 #### ⚠️ Pushed to `main`
