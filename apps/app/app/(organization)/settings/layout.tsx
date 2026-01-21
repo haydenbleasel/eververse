@@ -1,5 +1,5 @@
 import { EververseRole } from "@repo/backend/auth";
-import { currentUser } from "@repo/backend/auth/utils";
+import { currentOrganizationId, currentUser } from "@repo/backend/auth/utils";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -7,6 +7,7 @@ import {
 } from "@repo/design-system/components/ui/resizable";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
+import { database } from "@/lib/database";
 import { SettingsNavigation } from "./components/settings-navigation";
 
 type SettingsLayoutProperties = {
@@ -14,11 +15,23 @@ type SettingsLayoutProperties = {
 };
 
 const SettingsLayout = async ({ children }: SettingsLayoutProperties) => {
-  const user = await currentUser();
+  const [user, organizationId] = await Promise.all([
+    currentUser(),
+    currentOrganizationId(),
+  ]);
 
   if (!user || user.user_metadata.organization_role !== EververseRole.Admin) {
     notFound();
   }
+
+  const organization = organizationId
+    ? await database.organization.findFirst({
+        where: { id: organizationId },
+        select: { stripeSubscriptionId: true },
+      })
+    : null;
+
+  const isSubscribed = Boolean(organization?.stripeSubscriptionId);
 
   return (
     <ResizablePanelGroup
@@ -33,7 +46,7 @@ const SettingsLayout = async ({ children }: SettingsLayoutProperties) => {
         minSize={15}
         style={{ overflow: "auto" }}
       >
-        <SettingsNavigation />
+        <SettingsNavigation isSubscribed={isSubscribed} />
       </ResizablePanel>
       <ResizableHandle />
       <ResizablePanel

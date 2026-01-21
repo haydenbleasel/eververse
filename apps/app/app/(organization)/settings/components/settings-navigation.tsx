@@ -70,11 +70,6 @@ const pages = [
     label: "API",
     href: "/settings/api",
   },
-  {
-    icon: CreditCardIcon,
-    label: "Subscription",
-    href: "/api/stripe/portal",
-  },
   /* {
    *   label: 'Notifications',
    *   href: '/settings/notifications',
@@ -82,14 +77,29 @@ const pages = [
    */
 ];
 
-export const SettingsNavigation = () => {
+type SettingsNavigationProps = {
+  readonly isSubscribed: boolean;
+};
+
+export const SettingsNavigation = ({
+  isSubscribed,
+}: SettingsNavigationProps) => {
   const pathname = usePathname();
   const isActive = (href: string) =>
     href === "/settings" ? pathname === href : pathname.startsWith(href);
 
+  const allPages = [
+    ...pages,
+    {
+      icon: CreditCardIcon,
+      label: "Subscription",
+      href: isSubscribed ? "/api/stripe/portal" : "/subscribe",
+    },
+  ];
+
   return (
     <div className="flex h-full flex-col gap-0.5 overflow-y-auto p-2.5">
-      {pages.map((page) => (
+      {allPages.map((page) => (
         <Button
           asChild
           className={cn(
