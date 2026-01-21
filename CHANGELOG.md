@@ -1,3 +1,15 @@
+# v1.6.8 (Wed Jan 21 2026)
+
+#### ⚠️ Pushed to `main`
+
+- Fix subscription button for unsubscribed users ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.6.7 (Tue Jan 20 2026)
 
 #### ⚠️ Pushed to `main`
