@@ -9,6 +9,7 @@ import {
   CodeIcon,
   CogIcon,
   CreditCardIcon,
+  DownloadIcon,
   ExternalLinkIcon,
   ImportIcon,
   ListTodoIcon,
@@ -44,6 +45,11 @@ const pages = [
     icon: ImportIcon,
     label: "Import",
     href: "/settings/import",
+  },
+  {
+    icon: DownloadIcon,
+    label: "Export",
+    href: "/settings/export",
   },
   {
     icon: NewspaperIcon,
