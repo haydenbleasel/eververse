@@ -4,7 +4,7 @@ import { generateCsv } from "@/lib/csv";
 import { database } from "@/lib/database";
 
 export const exportAll = async (): Promise<
-  { data: Record<string, string> } | { error: unknown }
+  { data: Record<string, string> } | { error: string }
 > => {
   try {
     const [
@@ -127,12 +127,47 @@ export const exportAll = async (): Promise<
       database.template.findMany(),
       database.widget.findMany(),
       database.widgetItem.findMany(),
-      database.apiKey.findMany(),
+      database.apiKey.findMany({
+        select: {
+          id: true,
+          name: true,
+          creatorId: true,
+          createdAt: true,
+          updatedAt: true,
+        },
+      }),
       database.gitHubInstallation.findMany(),
-      database.linearInstallation.findMany(),
-      database.slackInstallation.findMany(),
-      database.intercomInstallation.findMany(),
-      database.atlassianInstallation.findMany(),
+      database.linearInstallation.findMany({
+        select: {
+          id: true,
+          creatorId: true,
+          createdAt: true,
+        },
+      }),
+      database.slackInstallation.findMany({
+        select: {
+          id: true,
+          creatorId: true,
+          createdAt: true,
+        },
+      }),
+      database.intercomInstallation.findMany({
+        select: {
+          id: true,
+          appId: true,
+          creatorId: true,
+          createdAt: true,
+        },
+      }),
+      database.atlassianInstallation.findMany({
+        select: {
+          id: true,
+          email: true,
+          siteUrl: true,
+          creatorId: true,
+          createdAt: true,
+        },
+      }),
       database.installationStatusMapping.findMany(),
       database.installationFieldMapping.findMany(),
       database.installationState.findMany(),
@@ -861,6 +896,8 @@ export const exportAll = async (): Promise<
 
     return { data };
   } catch (error) {
-    return { error };
+    return {
+      error: error instanceof Error ? error.message : "Export failed",
+    };
   }
 };

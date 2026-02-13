@@ -1,8 +1,22 @@
+const formulaPrefixes = new Set(["=", "+", "-", "@"]);
+
 export const escapeField = (value: unknown): string => {
-  const str = String(value ?? "");
-  if (str.includes(",") || str.includes('"') || str.includes("\n")) {
+  let str = String(value ?? "");
+
+  // Prevent CSV formula injection
+  if (str.length > 0 && formulaPrefixes.has(str[0])) {
+    str = `'${str}`;
+  }
+
+  if (
+    str.includes(",") ||
+    str.includes('"') ||
+    str.includes("\n") ||
+    str.includes("\r")
+  ) {
     return `"${str.replace(/"/g, '""')}"`;
   }
+
   return str;
 };
 

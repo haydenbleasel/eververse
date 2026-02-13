@@ -17,7 +17,7 @@ export const ExportButton = () => {
       const result = await exportAll();
 
       if ("error" in result) {
-        throw result.error;
+        throw new Error(result.error);
       }
 
       const zip = new JSZip();
