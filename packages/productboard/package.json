@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npm run build",
-    "build": "npx -y openapi-typescript@latest ./schema.json -o ./types.d.ts"
+    "build": "npx -y openapi-typescript@7.12.0 ./schema.json -o ./types.d.ts"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
