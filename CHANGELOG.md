@@ -1,3 +1,15 @@
+# v1.6.10 (Fri Feb 13 2026)
+
+#### ⚠️ Pushed to `main`
+
+- Fix versions ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.6.9 (Fri Feb 13 2026)
 
 #### 🐛 Bug Fix
